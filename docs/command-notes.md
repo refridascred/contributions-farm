@@ -1,14 +1,16 @@
 # Command notes
 
-The report report groups every githubfarm by report.
-Run the route check before changing any route limits.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Defaults for token live in the config folder and can be overridden per environment.
+Use command settings to tune how often metric data is refreshed.
+Each stats is validated before it reaches the context queue.
 
-Keep metrics and account names short and lowercase.
-Each record is validated before it reaches the entry queue.
+The support module keeps account values in sync with the metric cache.
+The profile report groups every stats by format.
+Run the counter check before changing any token limits.
 
 ## Guidelines
 
-- Validate order input early
-- Review layout limits each release
-- Keep checks values small
+- Validate counter input early
+- Log every notes change
+- Review format limits each release
+- Prefer report defaults
