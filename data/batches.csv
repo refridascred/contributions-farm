@@ -1,9 +1,8 @@
-id,region,weight
-1,235,legacy
-2,649,73.62
-3,cached,128
-4,8.99,759
-5,69.08,394
-6,536,blue
-7,local,65.96
-8,81,eu-west
+id,score,count,region,label
+1,32.68,57.51,773,97.06
+2,643,green,283,standard
+3,latest,42,26.12,strict
+4,702,0.99,4.27,green
+5,legacy,staging,60.47,primary
+6,386,3.42,standard,926
+7,open,53.58,108,standard
