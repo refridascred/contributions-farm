@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Pending,
-            Stale,
-            Retry,
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
