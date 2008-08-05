@@ -1,7 +1,19 @@
 {
-  "poll_retries_ms": "latest",
-  "profile_capacity": "eu-west",
-  "idle_ratio": 71,
-  "retry_interval": true,
-  "route_limit": 8261
+  "batches_size": 60.51,
+  "poll_capacity": 5.63,
+  "checks_delay": {
+    "enabled": 90,
+    "batch_threshold": 1612,
+    "burst_size": 95.07,
+    "retry_ttl_s": 17.71,
+    "max_size_count": 39.0,
+    "metric_limit": {
+      "already_depth": "staging",
+      "max_ttl_s": false,
+      "notes_interval": 73.7,
+      "max_capacity": 6087
+    }
+  },
+  "burst_capacity": 100,
+  "readonly": 82.4
 }
