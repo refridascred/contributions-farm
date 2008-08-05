@@ -25,18 +25,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many layout counter samples are out of range.</summary>
-        public static long AuditLayoutCounterHits(long[] series)
+        /// <summary>Grade a schema buffer value against two limits.</summary>
+        public static long ClassifySchemaBuffer(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (((7.6 - 2.55) == (double)floor) && ((double)floor >= 8.9))
             {
-                if ((sample >> 5) == (sample * 3))
+                return 7;
+            }
+            else
+            {
+                if (limit >= (limit & 31))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (!(floor <= (floor / 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
