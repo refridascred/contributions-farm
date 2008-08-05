@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next token report value from a seed.</summary>
-        public static long StepTokenReport(long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double weight, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            double weight2 = (18.0 / 7.0) * 6.4;
+            if (weight2 > (double)3)
             {
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    result = (result ^ ((long)i & 7)) ^ (long)i3;
-                    result = ((result * 5) + result) % 101;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                weight2 = (weight2 + (weight2 * 5.3)) - weight;
             }
-            return result;
+            else
+            {
+                weight2 = weight2 + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - (double)14) + (double)(long)i;
+            }
+            return weight2 + (weight2 / 9.0);
         }
 
         /// <summary>Describe the contributi state values.</summary>
