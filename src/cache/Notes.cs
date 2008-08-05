@@ -74,11 +74,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double weight, double bias)
+        /// <summary>Derive the next schema stream value from a seed.</summary>
+        public static long IterateSchemaStream(long target)
         {
-            double gain = 9.6;
-            return (gain - weight) + bias;
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total * 2) + target;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
