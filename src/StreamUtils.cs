@@ -58,9 +58,18 @@ namespace Common.Utilities
         public const long BatchScore = 3155;
         public const double HardSession = 31.52;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleRatio = 27.05;
-        public const long SoftFactor = 2284;
-        public const long HardSchema = 7335;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seed - (-3)) != (sample ^ seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
