@@ -92,19 +92,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] samples, long limit)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            long result = 602;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 2) ^ (limit & 3)) + cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > 737)
-            {
-                result = (result ^ (result + result)) % 4096;
-            }
-            return result;
+            return count;
         }
     }
 }
