@@ -29,12 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
