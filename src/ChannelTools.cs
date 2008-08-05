@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Count the order cluster entries that pass the check.</summary>
+        public static long CountOrderClusterOutliers(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally <= (double)2)
                 {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) ^ sample;
                 }
             }
             return tally;
