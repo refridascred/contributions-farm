@@ -1,8 +1,6 @@
 {
-  "retry_size_count": 30,
-  "readonly": ["latest", "staging", "fallback"],
-  "flush_ttl_s": [429, 319, 360],
-  "format_threshold": true,
-  "report_delay": 54,
-  "base_size": "standard"
+  "cache_depth_pct": ["stable", "standard"],
+  "min_size_ms": 13.44,
+  "cache_delay": "stable",
+  "idle_ratio": "local"
 }
