@@ -44,14 +44,12 @@ namespace Common.Utilities
         public const long LimitSpan = 9297;
         public const string SoftLevel = "fallback";
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstBudget = "open";
+        public const string MinLevel = "legacy";
+        public const string BatchLevel = "standard-edge";
+        public const long BaseSize = 1638;
+        public const long IdleReport = 9838;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] data)
