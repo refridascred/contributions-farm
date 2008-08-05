@@ -71,19 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
+        public static bool ValidateCommitsGithubfarmRange(long[] levels, long target)
         {
-            double mean = bias;
-            if (mean < mean)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                mean = (mean - (double)4) - scale;
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - bias;
+            return flag;
         }
 
         /// <summary>Describe the commits phase values.</summary>
