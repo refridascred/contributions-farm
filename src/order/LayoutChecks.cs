@@ -28,12 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((220 * 3) > (entry * 5))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric level values.</summary>
