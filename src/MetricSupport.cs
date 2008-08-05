@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            Active,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Combine route values into a single score.</summary>
