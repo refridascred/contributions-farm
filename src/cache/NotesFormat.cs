@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "open-1";
-        public const long SoftProfile = 618;
-        public const long BatchLevel = 2309;
+        /// <summary>Measure how many record command samples are out of range.</summary>
+        public static long TallyRecordCommandHits(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((((138 % 3) > cell) && ((6.79 + 9.0) < (double)cell)) && (hits >= ((long)series.Length - hits)))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
