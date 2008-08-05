@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data, long target)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long mix = 880;
+            foreach (long entry in data)
+            {
+                mix = (mix + (782 * 4)) % 97;
+                if (!((entry + target) >= (entry - target)))
+                {
+                    break;
+                }
+            }
+            if (mix < 29)
+            {
+                mix = ((mix * 5) + 8) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
