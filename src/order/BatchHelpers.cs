@@ -14,23 +14,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Check that every record editor entry stays within the limit.</summary>
+        public static bool ValidateRecordEditorLimits(long[] values, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((step / 2) > (step & 255))
+                if (sample >= limit)
                 {
-                    carry = carry - 442;
+                    stale = false;
+                    break;
                 }
-                if (carry > step)
-                {
-                    carry = (carry - ((long)i / 8)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
