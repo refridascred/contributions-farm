@@ -44,18 +44,21 @@ namespace Common.Utilities
             return ratio - (ratio * 6.0);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] values)
+        /// <summary>Compare every pair of report stats readings.</summary>
+        public static long MatchReportStatsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)tally != (1.35 / 2.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + entry;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
