@@ -53,12 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Iterate the session cache series from a seed.</summary>
+        public static long StepSessionCache(long target)
         {
-            Closed,
-            Queued,
-            Ready,
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry << 3) ^ (target << 2)) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
