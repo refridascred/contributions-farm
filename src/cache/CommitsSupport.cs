@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 68.39;
-        public const string BatchBudget = "latest";
-        public const string BaseDepth = "primary";
-        public const long RetryRecord = 2837;
+        /// <summary>Project the next schema entry value.</summary>
+        public static double BlendSchemaEntry(double bias, double offset)
+        {
+            double drift = 4.72 * 5.2;
+            return (drift - offset) + bias;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
