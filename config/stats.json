@@ -1,13 +1,12 @@
 {
-  "payload_threshold": {
-    "persist": ["edge", "edge", "legacy"],
-    "entry_threshold": true,
-    "githubfarm_interval": 60,
-    "metric_threshold": 100,
-    "min_interval": 29.33
+  "route_retries": 14.33,
+  "route_timeout": 70,
+  "profile_threshold": "legacy",
+  "readonly": "legacy",
+  "checks_ttl": {
+    "flush_window": 500,
+    "schema_limit": 4625,
+    "record_capacity": 2006
   },
-  "farm_ratio": 583,
-  "verbose": "eu-west",
-  "idle_ttl_pct": ["blue", "cached"],
-  "tools_size": 60
+  "route_window": true
 }
