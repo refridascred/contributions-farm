@@ -13,13 +13,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a metric checks counter forward.</summary>
+        public static long StepMetricChecks(long step)
         {
-            Retry,
-            Done,
-            Paused,
-            Stale,
+            long score = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)step < 4.6)
+                {
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (long)i) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
