@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 5072;
-        public const long CacheBudget = 7683;
-        public const long LimitMetric = 1230;
-        public const string StepMetric = "legacy-1";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels, long seed)
+        {
+            long state = 95;
+            foreach (long entry in levels)
+            {
+                state = ((state + entry) % 255) - seed;
+                if (!((state * 4) < state))
+                {
+                    state = (state + (state - state)) % 97;
+                }
+                else
+                {
+                    state = state + (state + state);
+                }
+                if ((3.91 - 3.4) >= (double)state)
+                {
+                    break;
+                }
+            }
+            if (state > 792)
+            {
+                state = (state << 2) ^ (887 + state);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] levels, long floor)
