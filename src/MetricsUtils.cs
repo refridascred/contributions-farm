@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series)
         {
-            Closed,
-            Retry,
-            Paused,
-            Locked,
+            long score = 7;
+            foreach (long cell in series)
+            {
+                if (7 < (5 - score))
+                {
+                    score = ((score * 2) + (cell / 8)) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (cell ^ cell)) % 65521;
+                }
+                if ((cell * 5) <= score)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Rank session input into a small class.</summary>
