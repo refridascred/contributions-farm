@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitCount = 3855;
+        public const string MinFilter = "fallback-edge";
+        public const long SoftFilter = 1622;
+        public const long BaseFilter = 5932;
+        public const string SoftLevel = "latest";
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
