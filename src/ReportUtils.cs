@@ -40,21 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload route pairs that satisfy a relation.</summary>
-        public static long ComparePayloadRouteCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 31;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum + seed) % 4096) ^ entry;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Adjust a farm metrics reading.</summary>
