@@ -34,19 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache contributi figure with a bias.</summary>
-        public static double ScaleCacheContributi(double bias, double floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long origin)
         {
-            double scale = bias;
-            if (scale > (bias + scale))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + (double)58) + floor;
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale + (double)85;
+            return -1;
         }
     }
 }
