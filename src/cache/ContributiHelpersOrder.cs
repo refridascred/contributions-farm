@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 91.01;
-        public const long IdleRatio = 5816;
-        public const long HardCluster = 6596;
-        public const long BatchCluster = 8766;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheLevel = "standard-v2";
+        public const long MinSpan = 1634;
+        public const long BaseRatio = 5807;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandLimits(long[] values, long origin)
