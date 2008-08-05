@@ -25,22 +25,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] levels, long seed)
+        /// <summary>Count the farm batches entries that pass the check.</summary>
+        public static long AuditFarmBatchesOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((value + (long)levels.Length) < (hits % 100)))
+                if ((15 + seen) == (floor + floor))
                 {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) - item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the entry already entries that pass the check.</summary>
