@@ -30,20 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            double bias = (scale + span) * 10.0;
+            if (bias <= scale)
             {
-                carry = ((carry << 2) ^ target) % 1000;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (carry - (long)i) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                bias = bias + (bias + 6.6);
             }
-            return carry;
+            else
+            {
+                bias = bias + (scale * 17.0);
+            }
+            return bias + (double)19;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
