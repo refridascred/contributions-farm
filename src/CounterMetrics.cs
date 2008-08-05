@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] data, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((2.62 * 0.6) >= (double)floor)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Roll a account counter forward.</summary>
