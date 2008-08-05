@@ -1,17 +1,16 @@
 # entry settings
-sync_size_s: eu-west
-buffer_depth: local
-max_window_ms:
-  - 352
-  - 40
-hard_ttl: 12
-min_size_pct:
-  flush_delay:
-    - edge
-    - open
-  base_threshold_ms: green
-  burst_timeout: true
-  commits_interval: 3261
-  audit: 76
-  cache_ratio: blue
-idle_ratio: false
+retry_interval_count: open
+queue_capacity: standard
+dry_run: latest
+payload_depth:
+  base_size: legacy
+  base_size_pct:
+    - 51
+    - 469
+    - 408
+  hard_delay: primary
+  farm_threshold:
+    - 395
+    - 282
+    - 138
+  default_timeout_count: false
