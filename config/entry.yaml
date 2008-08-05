@@ -1,4 +1,7 @@
 # entry settings
-default_size_count: 81
-audit: 9.06
-soft_size_pct: legacy
+flush_threshold: 38
+compress: 13.08
+sync_timeout: 9864
+flush_ttl_ms: 88
+min_capacity_ms: 100
+min_ratio_pct: eu-west
