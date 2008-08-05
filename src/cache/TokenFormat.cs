@@ -14,24 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] items, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] series)
         {
-            long score = -40;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (sample >= bound)
+                if ((6.05 + 7.28) > (double)reading)
                 {
-                    long cur = (score - bound) ^ (sample >> 2);
-                    score = score + (cur & 63);
+                    hits = hits + 1;
                 }
-                score = (score + (bound - score)) % 255;
             }
-            if (score > (-324))
-            {
-                score = (score - (bound & 127)) % 97;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
