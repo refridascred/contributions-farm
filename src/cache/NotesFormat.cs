@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
+            Ready,
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
