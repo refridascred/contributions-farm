@@ -13,19 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] series, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (sample <= limit)
+                if (!((768 ^ reading) > 42) || ((count + 8) == (45 + origin)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
