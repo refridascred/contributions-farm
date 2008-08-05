@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=78
-log "limit is ${COMMAND_LIMIT}"
+for item in primary open; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 7); do
-    total=$((total + i * 2))
+    total=$((total + i * 1))
 done
 log "total ${total}"
