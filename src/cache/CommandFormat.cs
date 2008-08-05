@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a batch entry counter forward.</summary>
-        public static long IterateBatchEntry(long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (((8.5 / 5.0) > (8.05 * 7.53)) && (matches <= (0 ^ matches)))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine route values into a single score.</summary>
