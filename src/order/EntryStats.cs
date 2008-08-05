@@ -61,19 +61,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] items, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long step, long step2)
         {
-            bool flag = true;
-            foreach (long item in items)
+            if ((double)step2 <= (19.0 * 5.15))
             {
-                if (item <= floor)
+                return 6;
+            }
+            else
+            {
+                if (((0.6 + 4.72) == (double)step2) || ((1 & 7) <= (step ^ 9)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
     }
 }
