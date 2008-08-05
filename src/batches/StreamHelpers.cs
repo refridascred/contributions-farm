@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of format batches readings.</summary>
-        public static long WeighFormatBatches(long[] levels, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data, long step)
         {
-            long sum = -743;
-            foreach (long value in levels)
+            long score = 523;
+            foreach (long cell in data)
             {
-                sum = ((sum + (target ^ sum)) % 4096) - value;
+                if (((7.8 * 1.0) <= (8.27 / 9.0)) || ((long)data.Length <= (score + cell)))
+                {
+                    score = (score ^ (score ^ cell)) - step;
+                }
+                else
+                {
+                    score = score - cell;
+                    score = ((score << 2) ^ (score * 2)) % 65521;
+                }
+                score = (score * 2) + (74 & 15);
             }
-            if (sum < 5)
-            {
-                sum = ((sum << 3) ^ (sum * 4)) % 97;
-            }
-            return sum % 97;
+            return score;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
