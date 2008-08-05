@@ -16,17 +16,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
