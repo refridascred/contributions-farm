@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] values)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long seed, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((seed + seed) > (seed ^ 891))
             {
-                if ((3 % 12) <= (count / 2))
+                return 6;
+            }
+            else
+            {
+                if (((6.0 + 19.0) != (double)offset) && ((4.0 / 4.0) > (double)seed))
                 {
-                    count = (count + 3) ^ datum;
+                    return 2;
+                }
+                else
+                {
+                    if (((-313) >> 3) != (offset / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset < (offset + 729))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
