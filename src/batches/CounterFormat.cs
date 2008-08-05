@@ -38,32 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long bound2)
+        /// <summary>Validate queue batch readings against a bound.</summary>
+        public static bool GuardQueueBatchBounds(long[] series, long floor)
         {
-            long delta = bound - bound2;
-            if (13.0 > (double)delta)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound & 3) < 395)
+                if (sample > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound2 <= (double)(-6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
