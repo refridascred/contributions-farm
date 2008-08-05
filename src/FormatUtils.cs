@@ -30,12 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] series, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a account header.</summary>
