@@ -33,13 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Blend two metric measurements.</summary>
