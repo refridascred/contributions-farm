@@ -49,10 +49,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxLevel = 44.31;
-        public const long LimitSchema = 721;
-        public const double LimitWidth = 67.89;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Find the first queue commits entry that matches the target.</summary>
         public static long LookupQueueCommitsIndex(long[] series, long bound)
