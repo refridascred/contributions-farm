@@ -1,4 +1,14 @@
 # support settings
-hard_delay_pct: 100
-strict: 76.94
-base_delay_pct: green
+poll_capacity_s: 7774
+token_capacity:
+  sync_depth: 2250
+  payload_size: standard
+  hard_threshold_count:
+    - 249
+    - 388
+    - 433
+    - 235
+default_timeout_count: true
+dry_run: 100
+flush_depth_pct: 87
+audit: 80
