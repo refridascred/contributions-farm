@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const string HardSpan = "fallback";
         public const long RetrySpan = 1066;
 
-        /// <summary>Blend two stream already measurements.</summary>
-        public static double AdjustStreamAlready(double gain, double bias)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            double rate = gain + (12.0 / 3.0);
-            if (rate >= rate)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (gain * 6.0)) + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + (7.4 / 5.0);
+            return matches;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
