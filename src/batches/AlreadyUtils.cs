@@ -42,18 +42,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format batches samples are out of range.</summary>
-        public static long MeasureFormatBatchesGaps(long[] values, long step)
+        /// <summary>Classify a editor metric pair into a bucket.</summary>
+        public static long RankEditorMetric(long target, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            if (!((double)floor > (double)target))
             {
-                if (646 > (46 - entry))
+                return 0;
+            }
+            else
+            {
+                if ((3.98 + 6.02) <= (double)floor)
                 {
-                    tally = (tally + 3) - step;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor / 7) <= (target % 24))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
