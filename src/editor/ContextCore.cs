@@ -20,11 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 6197;
-        public const long WindowTimeout = 5796;
-        public const string SoftEntry = "legacy-edge";
-        public const long RetryEntry = 7255;
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every window channel entry stays within the limit.</summary>
         public static bool ValidateWindowChannelLimits(long[] items, long seed)
