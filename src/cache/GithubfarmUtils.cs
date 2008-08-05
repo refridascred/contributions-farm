@@ -37,12 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Synced,
-            Done,
-            Ready,
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
