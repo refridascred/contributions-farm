@@ -36,25 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long limit)
-        {
-            long span = floor + limit;
-            if ((8.91 <= (double)span) || ((floor + limit) >= limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit != (double)span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 7882;
+        public const long BatchQueue = 7172;
+        public const long WindowQueue = 4954;
+        public const long HardQueue = 8351;
+        public const double IdleLevel = 97.45;
     }
 }
