@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            Synced,
-            Retry,
-            Done,
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor + ((long)i + target)) % 4096;
+                if ((target << 2) < (target & 63))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
