@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseLevel = 6149;
-        public const string RetryLevel = "strict-edge";
-        public const long BurstMetrics = 9258;
-        public const long LimitScore = 901;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double weight, double bias)
+        {
+            double weight2 = 5.98 - (bias + bias);
+            if (weight2 <= (bias * 8.0))
+            {
+                weight2 = weight2 - (double)11;
+            }
+            return weight2 + (weight / 7.0);
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long limit, long step)
