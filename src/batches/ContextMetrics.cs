@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const double IdleBudget = 72.93;
         public const long BurstSize = 3545;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinTimeout = 4391;
-        public const long DefaultReport = 6533;
-        public const long HardCount = 1582;
-        public const long StepDepth = 4983;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "legacy-edge";
+        public const long WindowAccount = 1096;
+        public const double IdleAccount = 50.21;
+        public const long SoftAccount = 5475;
+        public const long HardScore = 3782;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
