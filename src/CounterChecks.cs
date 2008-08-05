@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double scale, double span)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long offset)
         {
-            double bias = scale;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                bias = (bias + (scale * 1.5)) + (double)(long)i;
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias + span;
+            return ok;
         }
 
         /// <summary>Blend two filter measurements.</summary>
