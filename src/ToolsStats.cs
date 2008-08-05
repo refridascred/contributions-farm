@@ -52,12 +52,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate profile batches samples.</summary>
