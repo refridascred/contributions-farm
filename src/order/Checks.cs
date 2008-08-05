@@ -59,22 +59,20 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading < (81 * 3))
+                if (!(carry >= (floor / 8)))
                 {
-                    tally = tally + 2;
+                    carry = (carry - ((long)i * 4)) % 1000;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = carry ^ floor;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
     }
 }
