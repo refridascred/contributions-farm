@@ -15,18 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell - tally) < cell)
-                {
-                    tally = tally + 2;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
