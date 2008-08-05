@@ -19,18 +19,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] series, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((double)offset >= (6.4 / 2.0)) || (matches < (8 + 39))) || (((offset ^ entry) == (offset >> 1)) || ((entry - entry) < (matches << 1))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
