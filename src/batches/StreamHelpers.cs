@@ -52,13 +52,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Match up tools filter samples.</summary>
+        public static long CompareToolsFilterCount(long[] readings)
         {
-            Locked,
-            Done,
-            Dropped,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
