@@ -24,18 +24,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster queue samples are out of range.</summary>
-        public static long CountClusterQueueHits(long[] levels, long offset)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5 & 1) >= entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + offset;
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a account record.</summary>
