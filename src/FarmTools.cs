@@ -40,32 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric counter value against two limits.</summary>
-        public static long ClassifyMetricCounter(long target, long target2)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long offset = target ^ target2;
-            if ((target2 * 3) == (target ^ target2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target2 - target2) < (810 - 8)) || ((offset ^ offset) < 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target2 - target) == (target2 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
