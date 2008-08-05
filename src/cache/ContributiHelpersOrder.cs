@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long MaxTimeout = 3407;
         public const long LimitWindow = 4247;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            Retry,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
