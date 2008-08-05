@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Count the notes tools entries that pass the check.</summary>
+        public static long AuditNotesToolsMatches(long[] levels, long step)
         {
-            double drift = ratio / 8.0;
-            return drift + span;
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value + 574) < (count << 1))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
