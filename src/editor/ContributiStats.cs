@@ -37,12 +37,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleFactor = 2386;
-        public const long DefaultPayload = 7261;
-        public const long MaxPayload = 1449;
-        public const string BurstPayload = "staging-edge";
-        public const string BatchPayload = "stable";
+        /// <summary>Iterate the cluster payload series from a seed.</summary>
+        public static long RollClusterPayload(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((double)(long)i <= (double)target)
+                {
+                    result = (result * 5) + 1;
+                }
+                else
+                {
+                    result = (result ^ (long)i) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Rank profile account input into a small class.</summary>
         public static long BucketProfileAccount(long origin, long bound)
