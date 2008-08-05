@@ -51,30 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mark = -4;
-            foreach (long datum in items)
-            {
-                if ((4.3 + 1.2) >= (double)datum)
-                {
-                    mark = (mark + (mark + 4)) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - mark)) % 101;
-                }
-                if (5.2 < (double)mark)
-                {
-                    mark = (mark ^ (mark - mark)) % 4096;
-                }
-            }
-            if (mark > 44)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 65521;
-            }
-            return mark % 4096;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
