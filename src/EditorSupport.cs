@@ -54,13 +54,12 @@ namespace Common.Utilities
         public const long IdleBatches = 5399;
         public const double CacheBatches = 5.95;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Stale,
-            Locked,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "cached-1";
+        public const long HardSize = 984;
+        public const long RetrySpan = 3097;
+        public const long MinFilter = 488;
+        public const string IdleFilter = "staging";
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
