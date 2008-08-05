@@ -16,19 +16,14 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] data, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Done,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Iterate the cluster batch series from a seed.</summary>
