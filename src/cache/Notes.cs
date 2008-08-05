@@ -27,15 +27,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Scale a token contributi figure with a bias.</summary>
-        public static double ProjectTokenContributi(double bias, double floor)
+        /// <summary>Count the stats record entries that pass the check.</summary>
+        public static long CountStatsRecordHits(long[] values, long seed)
         {
-            double mean = floor;
-            if (mean > (floor * 6.4))
+            long matches = 0;
+            foreach (long value in values)
             {
-                mean = mean + (floor * 1.6);
+                if (!(75 <= (seed >> 1)))
+                {
+                    matches = (matches + 3) - value;
+                }
             }
-            return mean - (mean + bias);
+            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
