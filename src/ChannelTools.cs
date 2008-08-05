@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 5800;
-        public const long CacheCount = 6769;
-        public const double WindowCommand = 79.02;
-        public const string BatchFactor = "latest-edge";
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 35.73;
+        public const long MaxAccount = 4610;
+        public const string RetryAccount = "standard-v2";
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long floor, long offset)
