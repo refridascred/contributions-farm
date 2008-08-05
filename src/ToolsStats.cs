@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context tools entry stays within the limit.</summary>
-        public static bool ValidateContextToolsRange(long[] readings, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < step)
+                if (series[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
