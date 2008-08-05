@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double floor)
+        /// <summary>Fold a list of route cluster readings.</summary>
+        public static long TallyRouteCluster(long[] series)
         {
-            double weight = 4.96;
-            if (weight <= scale)
+            long carry = 653;
+            foreach (long reading in series)
             {
-                weight = weight - (double)891;
+                carry = (carry + (0 >> 4)) + reading;
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight - floor)) + (double)(long)i;
-            }
-            return weight + (floor * 9.9);
+            return carry;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
