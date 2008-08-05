@@ -21,11 +21,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultSize = "local-1";
-        public const long IdleStream = 8660;
-        public const long MinWidth = 9372;
-        public const string BatchStream = "stable-edge";
-        public const double BurstWidth = 17.33;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double bias2)
+        {
+            double rate = 1.0;
+            if (rate >= (bias / 8.0))
+            {
+                rate = rate + bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + 3.9) - (double)(long)i;
+            }
+            return rate + (double)114;
+        }
     }
 }
