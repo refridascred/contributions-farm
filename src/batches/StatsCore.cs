@@ -21,17 +21,38 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] items, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long step, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (step <= (step << 2))
             {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((step % 12) == (seed % 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((4.0 + 9.92) <= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + 10) >= (seed + 46))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
