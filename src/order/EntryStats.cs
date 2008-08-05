@@ -45,22 +45,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] samples, long seed)
         {
-            long anchor = 4;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (!((double)cell < (5.33 - 17.0)))
+                if (datum <= seed)
                 {
-                    anchor = ((anchor << 3) ^ cell) % 255;
-                }
-                if (((cell << 2) == (anchor + anchor)) || ((cell & 3) < (39 - cell)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
