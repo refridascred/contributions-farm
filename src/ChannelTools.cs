@@ -22,12 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 3535;
-        public const long StepAccount = 6457;
-        public const long DefaultWidth = 2323;
-        public const long DefaultFactor = 4294;
-        public const double LimitAccount = 4.79;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long offset)
+        {
+            if (!((offset / 6) < floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((385 << 2) == (floor + 728))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultTimeout = 28.65;
