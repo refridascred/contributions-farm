@@ -27,11 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many already window samples are out of range.</summary>
+        public static long TallyAlreadyWindowOutliers(long[] series, long limit)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((((limit * 2) < (sample % 97)) || ((hits + hits) > (hits + limit))) || ((810 < (limit / 3)) || ((0.6 + 7.8) > (double)sample)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
