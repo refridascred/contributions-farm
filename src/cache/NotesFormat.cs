@@ -31,10 +31,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "stable";
-        public const long MaxLevel = 4017;
-        public const string HardMetrics = "latest-edge";
-        public const long DefaultMetrics = 2731;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
