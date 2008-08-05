@@ -1,8 +1,7 @@
 {
-  "cache_interval_count": "fallback",
-  "cache_ttl_pct": "edge",
-  "cache_depth": 1024,
-  "retry_window_count": "stable",
-  "batches_delay": "local",
-  "verbose": 51
+  "idle_window_pct": 20.99,
+  "default_delay_ms": [273, 36, 278],
+  "soft_window_count": false,
+  "record_threshold": true,
+  "idle_depth_ms": "legacy"
 }
