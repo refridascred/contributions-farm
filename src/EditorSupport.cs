@@ -45,32 +45,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long limit, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long lane = limit + bound;
-            if ((lane * 5) < limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)lane > (double)bound) || ((1.88 * 0.8) >= (double)limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit & 31) <= (limit - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
