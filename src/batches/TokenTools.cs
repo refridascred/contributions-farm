@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Match up checks profile samples.</summary>
+        public static long PairChecksProfileCount(long[] levels)
         {
-            double bias2 = bias;
-            if (bias2 >= (bias - bias))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 + (bias2 / 7.0)) + ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)289;
-            }
-            return bias2 + (double)0;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
