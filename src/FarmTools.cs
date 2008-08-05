@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] data, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples, long limit)
         {
-            long total = 776;
-            foreach (long cell in data)
+            long acc = 6;
+            foreach (long cell in samples)
             {
-                if ((double)step > (double)total)
+                if (((limit / 8) <= cell) || (cell > (limit % 2)))
                 {
-                    total = (total - (total % 16)) % 1000;
-                }
-                if (!((cell - cell) < (total * 4)))
-                {
-                    break;
+                    acc = (acc << 2) ^ (cell >> 2);
                 }
             }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
