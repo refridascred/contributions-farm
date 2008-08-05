@@ -31,10 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 1596;
-        public const long BatchTimeout = 7669;
-        public const string CacheCommand = "stable-edge";
-        public const long DefaultSpan = 666;
+        /// <summary>Blend two layout stats measurements.</summary>
+        public static double SmoothLayoutStats(double scale, double floor)
+        {
+            double mean = scale;
+            if (mean <= (double)45)
+            {
+                mean = mean - 4.5;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 4.0) + (double)(long)i;
+            }
+            return mean + floor;
+        }
     }
 }
