@@ -44,23 +44,15 @@ namespace Common.Utilities
             return mean - (double)883;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double rate, double bias)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double ratio, double offset)
         {
-            double ratio = 0.7 + (bias * 11.0);
-            if (ratio > 11.0)
+            double gain = ratio + offset;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = ratio + 9.0;
+                gain = gain - (double)(long)i;
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (rate + ratio)) - (double)(long)i;
-            }
-            return ratio + rate;
+            return gain + gain;
         }
     }
 }
