@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] series)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - 1) == (entry - entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a account counter forward.</summary>
