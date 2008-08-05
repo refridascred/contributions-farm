@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] items, long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first buffer editor entry that matches the target.</summary>
