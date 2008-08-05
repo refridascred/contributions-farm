@@ -22,11 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleFilter = "standard";
-        public const long RetryRatio = 335;
-        public const long BaseFilter = 4038;
-        public const double MinRatio = 79.77;
+        /// <summary>Roll a layout tools counter forward.</summary>
+        public static long SeriesLayoutTools(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((offset ^ (long)i) != ((long)i & 7)))
+                {
+                    acc = acc - (offset << 3);
+                }
+                acc = ((acc * 5) + (63 % 64)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 4574;
