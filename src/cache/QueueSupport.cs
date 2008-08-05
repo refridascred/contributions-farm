@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            double load = bias / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total ^ (long)i) % 101) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                load = ((load - (1.1 * 2.64)) + (double)(long)i) - floor;
             }
-            return total;
+            return load - load;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
