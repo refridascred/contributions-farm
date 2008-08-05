@@ -47,12 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
