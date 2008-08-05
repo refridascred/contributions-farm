@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Adjust a entry reading.</summary>
