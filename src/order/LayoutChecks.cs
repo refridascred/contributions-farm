@@ -29,24 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)offset <= (3.02 - 2.78))
-                {
-                    total = (total * 4) + (total >> 5);
-                    total = ((total * 4) + (6 + offset)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (offset + offset)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Done,
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
