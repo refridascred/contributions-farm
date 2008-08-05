@@ -24,21 +24,22 @@ namespace Common.Utilities
             return ratio - (double)0;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((score >= (score ^ entry)) || ((double)entry < 8.0))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score - score;
+                }
+                if ((3 + score) == (score - score))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
