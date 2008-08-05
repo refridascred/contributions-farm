@@ -40,12 +40,11 @@ namespace Common.Utilities
         public const double IdleRoute = 13.06;
         public const long MinLevel = 3064;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
