@@ -1,10 +1,10 @@
 # entry settings
-profile_size: 60
-route_capacity: strict
-compress:
-  - 487
-  - 324
-  - 439
-idle_retries_ms: 250
-sync_size: false
-farm_retries: false
+commits_retries:
+  - 134
+  - 175
+  - 46
+  - 179
+record_delay:
+  - staging
+  - staging
+cache_retries_pct: edge
