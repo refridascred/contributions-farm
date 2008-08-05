@@ -42,18 +42,22 @@ namespace Common.Utilities
         public const long WindowFactor = 5075;
         public const long MinLevel = 5931;
 
-        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
-        public static long MeasureFilterGithubfarmGaps(long[] readings)
+        /// <summary>Count the cache contributi entries that pass the check.</summary>
+        public static long TallyCacheContributiMatches(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((double)cell == (13.0 - 7.5))
+                if ((((long)items.Length ^ matches) < (seed + 952)) && (((double)matches > (9.1 + 4.6)) && (5 > (matches - 749))))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first contributi tools entry that matches the target.</summary>
