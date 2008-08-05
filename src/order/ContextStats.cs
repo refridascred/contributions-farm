@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowScore = "latest-1";
-        public const double LimitQueue = 6.02;
-        public const long CacheSpan = 4259;
-        public const long MaxQueue = 4144;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmLimits(long[] samples, long bound)
