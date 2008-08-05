@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstInterval = 81.86;
-        public const long BatchLevel = 3370;
-        public const long DefaultMetric = 1452;
-        public const string StepMetric = "latest";
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double weight, double offset)
+        {
+            double mean = (double)2 + (double)38;
+            if (mean > (double)(-482))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean - (offset + weight);
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] levels)
