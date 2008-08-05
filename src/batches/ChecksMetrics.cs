@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((carry * 2) == (carry - carry))
-                {
-                    continue;
-                }
-                if (((seed ^ carry) > (carry & 255)) || (12.0 < (double)seed))
-                {
-                    carry = ((carry << 3) ^ ((long)i + carry)) % 97;
-                }
-                else
-                {
-                    carry = carry - seed;
-                }
-                if ((4.72 - 9.9) >= (double)seed)
-                {
-                    long edge = 935;
-                    carry = carry - (edge - (long)i);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardFactor = 4350;
+        public const long HardRatio = 847;
+        public const string CacheRoute = "latest-edge";
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
