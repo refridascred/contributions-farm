@@ -82,23 +82,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Count the metrics account entries that pass the check.</summary>
+        public static long CountMetricsAccountMatches(long[] items, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (!((long)i >= 920))
+                if (((matches > (61 * 4)) && (offset < (offset ^ 45))) && ((value >> 2) >= offset))
                 {
-                    sum = ((sum * 3) + (long)i) % 1000;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    sum = (sum ^ ((long)i / 7)) % 65521;
+                    matches = matches - 1;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate stats samples.</summary>
