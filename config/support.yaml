@@ -1,7 +1,4 @@
 # support settings
-compress: stable
-soft_ratio_s: false
-strict: 199
-burst_timeout: strict
-cache_retries: 1024
-burst_limit: 1101
+sync_limit_s: eu-west
+channel_size: staging
+githubfarm_limit: 8
