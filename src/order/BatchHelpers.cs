@@ -39,18 +39,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] readings)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((0.6 * 8.5) == (double)tally)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Ready,
+            Failed,
         }
     }
 }
