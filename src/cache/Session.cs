@@ -40,15 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double bias, double floor)
-        {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - (bias * 0.56)) + (double)(long)i) - floor;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 31.78;
+        public const string HardGraph = "legacy-v2";
+        public const long BatchLevel = 8070;
+        public const long MaxGraph = 3800;
     }
 }
