@@ -13,17 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                if ((seen % 16) < step)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cache summary.</summary>
