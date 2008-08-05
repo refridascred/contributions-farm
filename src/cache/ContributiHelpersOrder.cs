@@ -34,18 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] series, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally / 2) >= 11)
+                if (values[i] <= offset)
                 {
-                    tally = ((tally + 3) + cell) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
