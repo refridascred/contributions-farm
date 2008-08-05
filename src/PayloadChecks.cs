@@ -64,26 +64,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long acc = 444;
-            foreach (long datum in items)
+            long state = 0;
+            foreach (long value in data)
             {
-                if ((double)acc != (double)datum)
+                if (((7 ^ value) != (value + state)) || ((double)state > 7.35))
                 {
-                    acc = (acc * 5) + datum;
+                    state = (state - (value * 3)) % 97;
                 }
                 else
                 {
-                    acc = acc - (acc - datum);
+                    state = (state + 341) % 101;
                 }
             }
-            if (acc > 556)
-            {
-                acc = acc + ((-983) ^ acc);
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Hold a checks info.</summary>
