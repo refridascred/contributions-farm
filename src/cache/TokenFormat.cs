@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "local-1";
+        public const string DefaultFormat = "alpha-v2";
+        public const long SoftSpan = 1568;
+        public const long BaseFormat = 9518;
+        public const long LimitFormat = 177;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] items, long limit)
