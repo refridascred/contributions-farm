@@ -1,7 +1,8 @@
 {
-  "commits_size": "fallback",
-  "soft_delay_pct": ["primary", "fallback", "standard", "standard"],
-  "warm_limit_ms": 5187,
-  "poll_window_ms": 8.49,
-  "default_delay_pct": 91.56
+  "format_ratio": [308, 187, 413],
+  "min_retries_s": true,
+  "cache_timeout": true,
+  "channel_delay": 1256,
+  "default_size_s": false,
+  "min_delay_pct": 100
 }
