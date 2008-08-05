@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Active,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
