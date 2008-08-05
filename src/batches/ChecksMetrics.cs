@@ -42,12 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Locked,
-            Ready,
-            Paused,
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
