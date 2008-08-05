@@ -14,24 +14,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)floor > (double)mix)
-                {
-                    break;
-                }
-                long count = floor;
-                if (!((floor << 3) < floor))
-                {
-                    mix = ((mix * 2) + count) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Pending,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
