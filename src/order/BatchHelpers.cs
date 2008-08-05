@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (seed > count)
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
