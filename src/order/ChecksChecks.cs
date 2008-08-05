@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two session buffer measurements.</summary>
-        public static double SmoothSessionBuffer(double scale, double span)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double weight = (scale - span) / 2.0;
-            return weight + weight;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the channel batch entries that pass the check.</summary>
