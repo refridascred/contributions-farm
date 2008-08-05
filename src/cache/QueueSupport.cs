@@ -26,11 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Iterate the metric schema series from a seed.</summary>
+        public static long RollMetricSchema(long origin)
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
