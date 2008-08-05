@@ -52,22 +52,12 @@ namespace Common.Utilities
         public const double MaxCount = 19.66;
         public const double BaseWidth = 42.41;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxInterval = "standard-1";
+        public const long StepOrder = 6944;
+        public const double RetryWidth = 20.03;
+        public const string StepWidth = "alpha-edge";
+        public const string BatchOrder = "staging-edge";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] series, long target)
