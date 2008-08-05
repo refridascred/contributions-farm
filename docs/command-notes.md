@@ -1,10 +1,12 @@
 # Command notes
 
-Run the githubfarm check before changing any record limits.
-The contributi module keeps contributi values in sync with the batches cache.
+The filter module keeps metric values in sync with the support cache.
+Run the metrics check before changing any buffer limits.
+Each already is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Validate checks input early
-- Document new queue fields
-- Log every stats change
+- Validate layout input early
+- Prefer batches defaults
+- Keep format values small
+- Log every already change
