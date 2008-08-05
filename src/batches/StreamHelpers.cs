@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a session metrics value against two limits.</summary>
-        public static long SortSessionMetrics(long limit, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] samples, long origin)
         {
-            if (limit >= (limit + origin))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit + limit) <= (origin - origin)) && ((origin - limit) != (origin / 4)))
+                if (item >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
