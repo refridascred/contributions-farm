@@ -44,12 +44,24 @@ namespace Common.Utilities
         public const double MinBuffer = 87.77;
         public const long LimitBuffer = 6803;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] series)
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long carry = 56;
+            foreach (long entry in series)
+            {
+                if ((entry & 7) >= carry)
+                {
+                    continue;
+                }
+                carry = (carry + (entry >> 1)) % 255;
+                carry = ((carry * 2) + (entry >> 3)) % 1000;
+            }
+            if (carry < 70)
+            {
+                carry = (carry << 2) ^ (carry << 2);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
