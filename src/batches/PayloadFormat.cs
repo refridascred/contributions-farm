@@ -62,18 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long carry = 669;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < 77)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry * 4) + (carry * 5);
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
