@@ -25,18 +25,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] values, long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double scale, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double drift = (double)481 / 4.0;
+            if (drift > scale)
             {
-                if (((bound * 2) == (item & 255)) || ((278 - tally) <= item))
-                {
-                    tally = tally + 3;
-                }
+                drift = drift + span;
             }
-            return tally;
+            else
+            {
+                drift = drift - (double)95;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
