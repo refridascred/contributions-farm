@@ -1,10 +1,5 @@
 {
-  "strict": 98.44,
-  "githubfarm_ratio": 500,
-  "batch_capacity_count": {
-    "buffer_limit": ["strict", "cached", "green", "strict"],
-    "min_limit": "strict",
-    "batch_timeout_pct": true,
-    "graph_size": 9631
-  }
+  "base_size_s": 7889,
+  "flush_interval_s": 64.98,
+  "hard_ratio_s": 500
 }
