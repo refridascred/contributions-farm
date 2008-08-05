@@ -1,12 +1,10 @@
 # Command notes
 
-Use graph settings to tune how often counter data is refreshed.
-The metrics module keeps editor values in sync with the channel cache.
-Defaults for batch live in the config folder and can be overridden per environment.
+Use filter settings to tune how often channel data is refreshed.
+Run the stats check before changing any buffer limits.
 
 ## Guidelines
 
-- Document new context fields
-- Log every order change
-- Validate metrics input early
-- Prefer session defaults
+- Validate stream input early
+- Keep contributi values small
+- Prefer metric defaults
