@@ -44,13 +44,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Pending,
-            Idle,
-            Ready,
-            Failed,
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
