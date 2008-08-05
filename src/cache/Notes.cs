@@ -24,10 +24,14 @@ namespace Common.Utilities
         public const long BurstAlready = 3528;
         public const double DefaultLevel = 87.4;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 7509;
-        public const long IdleQueue = 4741;
-        public const string BatchWidth = "alpha-1";
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Closed,
+            Synced,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
