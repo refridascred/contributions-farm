@@ -1,7 +1,6 @@
 {
-  "soft_limit": ["local", "open", "fallback"],
-  "flush_window_s": "stable",
-  "flush_delay_s": "staging",
-  "dry_run": [96, 457, 342],
-  "strict": 62
+  "order_delay": "local",
+  "stats_ttl": [57, 225],
+  "buffer_retries": 1182,
+  "default_limit": 31.81
 }
