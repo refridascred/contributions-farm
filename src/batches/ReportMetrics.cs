@@ -14,18 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] readings, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((88 & 15) >= (49 + hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 2) ^ cell) + origin;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
