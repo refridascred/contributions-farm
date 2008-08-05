@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((tally + 94) >= 3))
+                if ((value % 24) == (floor >> 3))
                 {
-                    tally = (tally + 1) + item;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
