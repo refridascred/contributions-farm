@@ -18,15 +18,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double scale, double bias)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double bias2 = scale;
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (double)2) + (double)(long)i;
-            }
-            return bias2 - bias;
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
