@@ -67,26 +67,12 @@ namespace Common.Utilities
         public const double MinSupport = 26.57;
         public const long BaseDepth = 2990;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long state = 531;
-            foreach (long reading in samples)
-            {
-                if ((7 - state) < state)
-                {
-                    state = ((state << 3) ^ (reading << 2)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 2) + (reading ^ reading)) % 1000;
-                }
-            }
-            if (state < 6)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
+            Paused,
+            Failed,
+            Queued,
         }
     }
 }
