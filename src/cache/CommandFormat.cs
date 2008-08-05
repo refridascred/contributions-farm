@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] readings, long target)
+        /// <summary>Roll a batch entry counter forward.</summary>
+        public static long IterateBatchEntry(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine route values into a single score.</summary>
