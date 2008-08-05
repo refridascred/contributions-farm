@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheScore = 3824;
+        public const string WindowMetrics = "strict-v2";
+        public const long StepRatio = 6210;
+        public const long StepMetrics = 3965;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long limit, long limit2)
