@@ -1,5 +1,6 @@
 {
-  "idle_ratio_pct": true,
-  "graph_ttl": 100,
-  "retry_limit": 92.62
+  "verbose": false,
+  "notes_limit": 100,
+  "warm_size_s": 63.31,
+  "default_ratio_count": 46.97
 }
