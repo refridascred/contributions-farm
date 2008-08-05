@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long bound, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels, long step)
         {
-            if ((7.3 / 2.0) == (double)bound)
+            long total = 95;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 3) != (24 - bound))
+                if ((5 * 5) >= total)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    total = (total + (datum ^ step)) % 4096;
                 }
             }
+            return total;
         }
 
         /// <summary>Fold a list of command channel readings.</summary>
