@@ -1,5 +1,5 @@
 {
-  "poll_retries": true,
-  "dry_run": "cached",
-  "filter_window": "latest"
+  "max_timeout_s": 14,
+  "batch_retries": [78, 53, 144, 47],
+  "flush_limit": [177, 440]
 }
