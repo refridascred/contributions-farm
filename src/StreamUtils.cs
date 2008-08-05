@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitBudget = "fallback-1";
+        public const long MinLevel = 1047;
+        public const double RetryScore = 42.49;
+        public const long WindowInterval = 8402;
+        public const long CacheStream = 6380;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long FoldCache(long[] readings)
