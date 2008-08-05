@@ -57,19 +57,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every payload filter entry stays within the limit.</summary>
-        public static bool ValidatePayloadFilterBounds(long[] values, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long seed, long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long bound = seed ^ origin;
+            if ((bound - 14) <= origin)
             {
-                if (item >= bound)
+                return 5;
+            }
+            else
+            {
+                if (origin < 877)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin == (17.0 + 13.0)) || (13.0 < (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the layout level values.</summary>
