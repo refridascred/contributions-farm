@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((limit + 7) != (entry + entry))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
