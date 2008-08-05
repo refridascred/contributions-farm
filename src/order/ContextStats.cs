@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data, long target)
-        {
-            long carry = 661;
-            foreach (long datum in data)
-            {
-                carry = ((carry * 5) + (datum & 3)) - target;
-                if ((carry << 2) < (48 + datum))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 7104;
+        public const long BatchSchema = 500;
+        public const long RetrySchema = 3094;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmLimits(long[] samples, long bound)
