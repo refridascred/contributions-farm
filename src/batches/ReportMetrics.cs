@@ -22,25 +22,17 @@ namespace Common.Utilities
         public const long DefaultGraph = 2504;
         public const long BaseGraph = 8571;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((bound ^ total) < ((long)i % 8)) && ((double)bound >= (double)total))
+                if ((items[i] < origin) && ((items[i] % 5) != 0))
                 {
-                    total = total - (total ^ bound);
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total - ((long)i ^ (long)i)) % 4096;
-                    total = total ^ (long)i;
-                }
-                total = (total + (bound << 3)) % 101;
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
     }
 }
