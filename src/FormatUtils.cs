@@ -31,18 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] items, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((count & 7) > ((-670) - target)) && !((cell ^ cell) < (count + target)))
-                {
-                    count = count + 2;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
