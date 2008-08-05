@@ -5,25 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            long span = floor - step;
-            if ((floor - 7) == (span - 3))
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor * 5) != (step - floor)))
+                if ((carry * 2) == (carry - carry))
                 {
-                    return 3;
+                    continue;
+                }
+                if (((seed ^ carry) > (carry & 255)) || (12.0 < (double)seed))
+                {
+                    carry = ((carry << 3) ^ ((long)i + carry)) % 97;
                 }
                 else
                 {
-                    return 5;
+                    carry = carry - seed;
                 }
+                if ((4.72 - 9.9) >= (double)seed)
+                {
+                    long edge = 935;
+                    carry = carry - (edge - (long)i);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
