@@ -53,12 +53,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultLevel = 6599;
-        public const string LimitStats = "strict-1";
-        public const long SoftSize = 3517;
-        public const long WindowStats = 492;
-        public const double SoftStats = 74.3;
+        /// <summary>Rank payload notes input into a small class.</summary>
+        public static long SortPayloadNotes(long offset, long origin)
+        {
+            long lane = offset - origin;
+            if ((double)lane != (1.62 * 9.85))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + lane) <= (offset ^ (-294)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset >= (5.98 + 1.87))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long target)
