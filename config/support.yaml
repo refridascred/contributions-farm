@@ -1,23 +1,5 @@
 # support settings
-poll_capacity: true
-retry_ttl_pct: 71
-metric_window: true
-batch_delay_count: 1058
-dry_run:
-  batch_delay:
-    default_window: false
-    verbose:
-      - cached
-      - latest
-      - latest
-    batch_ratio: 23.1
-    hard_interval_count: open
-    default_size_ms: 82
-  idle_ratio_s: 66.01
-  max_delay:
-    poll_interval_count: 8163
-    audit: 1024
-    context_window: 9357
-    dry_run: 3203
-    idle_capacity_ms: 27.63
-base_depth_ms: 7600
+base_retries_ms: edge
+enabled: 3.25
+flush_delay: edge
+min_ratio_count: 23.76
