@@ -26,23 +26,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine editor contributi values into a single score.</summary>
-        public static long ScoreEditorContributi(long[] items)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            long sum = 481;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (sum - reading)) % 1000;
-                if ((sum + reading) > (reading >> 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 57)
-            {
-                sum = (sum << 2) ^ (sum ^ sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
