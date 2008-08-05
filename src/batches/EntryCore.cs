@@ -52,24 +52,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] values, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] data, long bound)
         {
-            long mix = 52;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((entry << 2) <= (step / 4)) || ((entry - mix) <= (step << 2)))
+                if ((double)bound <= 2.62)
                 {
-                    mix = mix ^ mix;
+                    seen = (seen + 2) + value;
                 }
-                mix = mix + (step & 1);
-                mix = (mix + (entry + entry)) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mix < 90)
-            {
-                mix = (mix - (step - step)) % 255;
-            }
-            return mix % 1000;
+            return seen;
         }
     }
 }
