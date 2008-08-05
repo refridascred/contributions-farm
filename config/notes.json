@@ -1,12 +1,8 @@
 {
-  "schema_threshold": [269, 127, 439, 418],
-  "max_interval": true,
-  "account_capacity": {
-    "min_retries_ms": false,
-    "retry_depth_pct": 55.66,
-    "flush_ttl_s": false
-  },
-  "dry_run": 1828,
-  "channel_interval": 1.77,
-  "sync_delay": 3544
+  "cache_ratio_ms": 67.74,
+  "soft_depth_pct": "stable",
+  "verbose": "strict",
+  "persist": "legacy",
+  "soft_threshold_ms": false,
+  "hard_capacity": 30
 }
