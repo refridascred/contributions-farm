@@ -38,22 +38,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many format counter samples are out of range.</summary>
-        public static long AuditFormatCounterGaps(long[] data, long step)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + (-164)) > (long)data.Length)
-                {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
