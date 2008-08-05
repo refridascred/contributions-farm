@@ -52,22 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (tally > (value - tally))
+                if ((entry - matches) < (step / 8))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a format snapshot.</summary>
