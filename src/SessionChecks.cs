@@ -36,17 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first stream payload entry that matches the target.</summary>
-        public static long FindStreamPayloadIndex(long[] levels, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (levels[i] <= seed)
+                if ((((matches >> 2) < (limit >> 1)) && ((13.0 + 0.1) <= (double)item)) || ((item << 3) == (matches & 255)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
