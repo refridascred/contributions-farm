@@ -53,11 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Scale a format profile figure with a bias.</summary>
+        public static double SmoothFormatProfile(double bias, double span)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            double gain = (1.3 - bias) + span;
+            if (gain < (bias * 17.0))
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + 0.15) + (double)(long)i;
+            }
+            return gain + (bias / 3.0);
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
