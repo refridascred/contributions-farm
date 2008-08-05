@@ -62,22 +62,24 @@ namespace Common.Utilities
             return load - (span - 15.0);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] items, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long origin, long offset)
         {
-            long result = 995;
-            foreach (long item in items)
+            if (((-73) < (offset << 3)) || ((origin / 6) > (offset - origin)))
             {
-                if ((20.0 - 5.8) <= (double)item)
+                return 7;
+            }
+            else
+            {
+                if (((double)offset >= 9.0) || ((offset - origin) > (origin * 4)))
                 {
-                    result = ((result ^ item) % 97) - limit;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (result > 662)
-            {
-                result = (result + (5 & 255)) % 97;
-            }
-            return result;
         }
     }
 }
