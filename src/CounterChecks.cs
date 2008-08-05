@@ -82,11 +82,17 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Find the first editor tools entry that matches the target.</summary>
+        public static long LocateEditorToolsIndex(long[] readings, long seed)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
