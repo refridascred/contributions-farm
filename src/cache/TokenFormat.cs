@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] items, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 56;
+            foreach (long sample in levels)
             {
-                if (items[i] == limit)
+                if ((double)limit >= (5.0 / 3.0))
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (sample - 93);
+                }
+                if ((457 % 64) < (sample / 8))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ 9) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
