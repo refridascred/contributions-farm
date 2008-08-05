@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long mix = -550;
-            foreach (long value in data)
-            {
-                if (!((mix - mix) >= (value ^ 51)))
-                {
-                    mix = mix - (mix ^ value);
-                }
-                else
-                {
-                    mix = (mix ^ value) % 255;
-                }
-            }
-            return mix;
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
