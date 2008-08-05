@@ -1,12 +1,11 @@
 # Command notes
 
-The counter module keeps command values in sync with the command cache.
-Each commits is validated before it reaches the stream queue.
-The batch report groups every record by githubfarm.
+Use layout settings to tune how often route data is refreshed.
+Run the already check before changing any account limits.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review payload limits each release
-- Document new notes fields
-- Prefer session defaults
-- Keep queue values small
+- Review filter limits each release
+- Validate cache input early
+- Prefer channel defaults
