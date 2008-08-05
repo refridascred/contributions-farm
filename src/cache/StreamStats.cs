@@ -35,25 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long state = 463;
-            foreach (long entry in levels)
-            {
-                long hits = 54 % 97;
-                state = state - (hits - hits);
-                state = (state * 4) + (entry + (long)levels.Length);
-                if ((double)state < (15.0 + 3.2))
-                {
-                    break;
-                }
-            }
-            if (state > 859)
-            {
-                state = state - (state % 60);
-            }
-            return state % 1000;
+            Ready,
+            Synced,
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
