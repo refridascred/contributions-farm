@@ -35,13 +35,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxSize = 8362;
+        public const long SoftSize = 4693;
+        public const long IdleNotes = 4064;
+        public const long WindowNotes = 3085;
     }
 }
