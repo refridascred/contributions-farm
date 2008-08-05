@@ -48,18 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] values, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((seed << 1) < (seed % 5))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
