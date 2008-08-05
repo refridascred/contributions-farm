@@ -50,19 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long MeasureBatchAccountGaps(long[] levels)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits << 1) > (value ^ hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
