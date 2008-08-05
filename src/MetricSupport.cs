@@ -25,23 +25,11 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8818;
         public const long DefaultGithubfarm = 8531;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data)
-        {
-            long total = 328;
-            foreach (long sample in data)
-            {
-                total = (total + (total / 9)) % 255;
-                if (!(sample <= (total % 2)))
-                {
-                    total = (total * 3) + (sample + total);
-                }
-                else
-                {
-                    total = total + sample;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowInterval = "standard-v2";
+        public const long MinReport = 4103;
+        public const double DefaultInterval = 23.62;
+        public const long SoftInterval = 7135;
+        public const long WindowDepth = 1491;
     }
 }
