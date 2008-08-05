@@ -33,20 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 5377;
+        public const double BaseCount = 16.94;
+        public const long RetryBudget = 8900;
+        public const long BaseSize = 1983;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleBuffer = "stable-v2";
