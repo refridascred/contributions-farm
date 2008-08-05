@@ -23,12 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchBudget = 6501;
-        public const long LimitQueue = 9534;
-        public const long CacheTimeout = 5194;
-        public const long StepFactor = 6253;
-        public const long SoftQueue = 1493;
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double offset)
+        {
+            double load = (offset * 2.0) / 3.0;
+            if (load >= load)
+            {
+                load = (load - offset) + rate;
+            }
+            return load + (9.06 - load);
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxDepth = 7265;
