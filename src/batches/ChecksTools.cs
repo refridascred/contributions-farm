@@ -16,15 +16,17 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Blend two contributi already measurements.</summary>
-        public static double AdjustContributiAlready(double scale, double bias)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] values, long floor)
         {
-            double weight = 19.0;
-            if (weight <= scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - (scale * 14.0)) + bias;
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Describe the schema class values.</summary>
