@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const double LimitSize = 76.74;
         public const double MaxScore = 54.94;
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double scale, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
         {
-            double gain = (double)(1 >> 1);
-            for (int i = 0; i < 4; i++)
+            long anchor = 9;
+            foreach (long item in items)
             {
-                gain = ((gain - (bias / 7.0)) + (double)(long)i) - scale;
+                anchor = (anchor ^ item) % 101;
             }
-            return gain + bias;
+            return anchor;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
