@@ -40,10 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 53.45;
-        public const long SoftLayout = 7989;
-        public const string BurstLayout = "latest-1";
-        public const long WindowCount = 2658;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Retry,
+            Active,
+            Failed,
+            Ready,
+        }
     }
 }
