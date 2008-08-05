@@ -30,9 +30,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitSize = 111;
-        public const long LimitSpan = 8769;
-        public const long BatchTools = 4124;
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels, long limit)
+        {
+            long acc = 3;
+            foreach (long value in levels)
+            {
+                acc = (((acc ^ (acc << 3)) % 101) - value) - limit;
+                if (!((4.69 * 16.0) != (double)acc))
+                {
+                    acc = (acc << 3) ^ (acc % 10);
+                }
+                acc = (acc - (acc >> 2)) % 101;
+            }
+            return acc;
+        }
     }
 }
