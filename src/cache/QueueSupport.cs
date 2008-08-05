@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long target, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
         {
-            if (13.0 < (double)offset)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target > (86 + 68)) && ((target - (-81)) <= (target + offset)))
+                if (!((double)anchor <= (3.0 / 6.0)))
                 {
-                    return 2;
+                    anchor = (anchor - (anchor + anchor)) % 97;
                 }
-                else
-                {
-                    if ((offset + 58) < ((-344) / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
