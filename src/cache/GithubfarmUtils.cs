@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] values, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                mark = (mark ^ (origin + origin)) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (datum >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Rank token input into a small class.</summary>
