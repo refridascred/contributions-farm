@@ -46,22 +46,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings, long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long total = 3;
-            foreach (long value in readings)
-            {
-                if ((value ^ total) == (total - value))
-                {
-                    total = ((total * 4) + (value + offset)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ offset) % 1000;
-                }
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
