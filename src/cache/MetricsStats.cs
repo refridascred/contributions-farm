@@ -63,31 +63,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long origin, long step)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if ((15 ^ step) <= step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step >= (origin >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step > 57)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Retry,
+            Ready,
+            Closed,
         }
     }
 }
