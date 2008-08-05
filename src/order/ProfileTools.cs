@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double span)
         {
-            Failed,
-            Synced,
-            Draft,
+            double bias = (double)(162 / 2);
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)(long)i) - gain;
+            }
+            return bias - span;
         }
 
         /// <summary>Define account limits and defaults.</summary>
