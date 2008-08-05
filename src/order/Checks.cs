@@ -61,21 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < step)
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
