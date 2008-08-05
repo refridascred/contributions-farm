@@ -28,11 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitLevel = 5915;
-        public const double BurstMetrics = 95.59;
-        public const string BatchRatio = "legacy-1";
-        public const long BatchMetrics = 4534;
-        public const long BaseLevel = 6826;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] levels)
+        {
+            long state = 7;
+            foreach (long reading in levels)
+            {
+                state = (state + reading) % 255;
+            }
+            return state;
+        }
     }
 }
