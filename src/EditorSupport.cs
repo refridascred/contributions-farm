@@ -73,19 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] series, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a counter snapshot.</summary>
