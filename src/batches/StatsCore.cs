@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const double StepFilter = 41.41;
         public const long MaxFilter = 911;
 
-        /// <summary>Combine metrics support values into a single score.</summary>
-        public static long DigestMetricsSupport(long[] series, long seed)
+        /// <summary>Look up the position of a layout editor sample.</summary>
+        public static long LookupLayoutEditorIndex(long[] series, long offset)
         {
-            long state = 2;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((state + seed) > (value + value)))
+                if (series[i] >= offset)
                 {
-                    state = (state * 5) + (long)series.Length;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
