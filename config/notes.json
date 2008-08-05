@@ -1,7 +1,6 @@
 {
-  "base_threshold_ms": true,
-  "profile_window": 3,
-  "soft_ttl": true,
-  "queue_interval": true,
-  "max_window": 52
+  "flush_depth_pct": ["cached", "standard", "legacy", "local"],
+  "enabled": "primary",
+  "readonly": "blue",
+  "cache_size": "cached"
 }
