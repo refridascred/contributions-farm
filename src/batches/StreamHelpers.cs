@@ -47,21 +47,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up tools filter samples.</summary>
-        public static long CompareToolsFilterCount(long[] readings)
+        /// <summary>Check that every payload filter entry stays within the limit.</summary>
+        public static bool ValidatePayloadFilterBounds(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= bound)
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the layout level values.</summary>
