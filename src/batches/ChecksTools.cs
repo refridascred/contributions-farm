@@ -44,18 +44,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] items)
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long MeasureSchemaChecksHits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((matches + matches) < reading) || ((double)(long)items.Length <= (0.24 / 3.0)))
+                if ((9 - 6) < (step + item))
                 {
-                    matches = matches + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
