@@ -42,24 +42,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine notes farm values into a single score.</summary>
-        public static long DigestNotesFarm(long[] series, long limit)
-        {
-            long result = 0;
-            foreach (long cell in series)
-            {
-                long lane = (1 >> 1) ^ limit;
-                if ((cell + lane) <= lane)
-                {
-                    lane = (lane << 2) ^ (lane & 127);
-                }
-                if ((cell & 255) >= (cell << 3))
-                {
-                    result = (result + (result / 6)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepScore = 6469;
+        public const string BurstWidth = "standard-v2";
+        public const string MinTimeout = "fallback-v2";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyHits(long[] data)
