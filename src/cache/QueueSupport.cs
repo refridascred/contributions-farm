@@ -35,9 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 8223;
-        public const long IdleCommand = 4984;
-        public const long MaxRatio = 8557;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] items, long origin)
+        {
+            long mix = 37;
+            foreach (long cell in items)
+            {
+                if ((double)2 == (double)mix)
+                {
+                    mix = ((mix + cell) % 65521) - origin;
+                }
+            }
+            if (mix > 3)
+            {
+                mix = mix + (mix << 3);
+            }
+            return mix % 97;
+        }
     }
 }
