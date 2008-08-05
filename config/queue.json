@@ -1,17 +1,5 @@
 {
-  "verbose": "green",
-  "retry_window_ms": {
-    "window_depth": "eu-west",
-    "batch_capacity": "local",
-    "sync_timeout_s": 77.08
-  },
-  "persist": {
-    "readonly": 100,
-    "verbose": "fallback",
-    "base_limit_ms": false,
-    "max_ratio": true,
-    "format_interval": false
-  },
-  "strict": "strict",
-  "burst_window_ms": 60
+  "persist": "edge",
+  "flush_capacity_pct": 6707,
+  "flush_window_pct": "legacy"
 }
