@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            Draft,
-            Idle,
-            New,
-            Synced,
-            Queued,
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((floor - floor) < floor)
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
