@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long total = 196;
+            foreach (long sample in items)
             {
-                if (((sample * 2) <= 2) || ((tally + tally) == (sample % 5)))
-                {
-                    tally = tally + 3;
-                }
+                total = ((total + (total + total)) % 1000) ^ sample;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
