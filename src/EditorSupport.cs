@@ -49,14 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Pending,
-            Stale,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "open-v2";
+        public const long IdleBatches = 5399;
+        public const double CacheBatches = 5.95;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
