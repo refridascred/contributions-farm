@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            long score = 1;
+            foreach (long entry in data)
             {
-                mix = mix - (floor >> 1);
-                mix = ((mix * 4) + (long)i) % 97;
+                score = (score ^ (score + entry)) % 65521;
+                if (!((507 - entry) < score))
+                {
+                    score = ((score * 5) + 8) % 1000;
+                }
             }
-            return mix;
+            return score % 65521;
         }
 
         /// <summary>Rank window input into a small class.</summary>
