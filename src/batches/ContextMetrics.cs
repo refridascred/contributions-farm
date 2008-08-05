@@ -34,15 +34,26 @@ namespace Common.Utilities
             return gain2 - (gain - gain2);
         }
 
-        /// <summary>Adjust a cache order reading.</summary>
-        public static double BlendCacheOrder(double scale, double span)
+        /// <summary>Combine order editor values into a single score.</summary>
+        public static long TallyOrderEditor(long[] series, long floor)
         {
-            double rate = span;
-            for (int i = 0; i < 6; i++)
+            long result = 67;
+            foreach (long datum in series)
             {
-                rate = ((rate + (span * 3.9)) + (double)(long)i) + scale;
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (result ^ (result >> 3)) + (long)i;
+                }
+                if ((floor + datum) != (floor / 2))
+                {
+                    result = result - (floor % 3);
+                }
+                if (((long)series.Length ^ datum) < (datum >> 2))
+                {
+                    break;
+                }
             }
-            return rate - (rate + rate);
+            return result;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
