@@ -25,17 +25,13 @@ namespace Common.Utilities
             return mean + (weight + span);
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] readings, long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
