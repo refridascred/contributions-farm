@@ -53,20 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format profile figure with a bias.</summary>
-        public static double SmoothFormatProfile(double bias, double span)
-        {
-            double gain = (1.3 - bias) + span;
-            if (gain < (bias * 17.0))
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + 0.15) + (double)(long)i;
-            }
-            return gain + (bias / 3.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultLevel = 6599;
+        public const string LimitStats = "strict-1";
+        public const long SoftSize = 3517;
+        public const long WindowStats = 492;
+        public const double SoftStats = 74.3;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long target)
