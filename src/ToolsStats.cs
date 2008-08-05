@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a route batches reading by value.</summary>
-        public static long FindRouteBatchesIndex(long[] readings, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(6 - 66);
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight - (5.1 - gain)) + (double)(long)i) + offset;
             }
-            return -1;
+            return weight - (gain / 9.0);
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
