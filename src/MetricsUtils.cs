@@ -42,18 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long state = 3;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= (value << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state - (value >> 2)) % 1000;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a profile stats.</summary>
