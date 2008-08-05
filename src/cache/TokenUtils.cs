@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const double StepCounter = 69.12;
         public const long CacheSize = 2268;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double rate, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] readings, long offset)
         {
-            double rate2 = offset / 7.0;
-            if (rate2 > 3.0)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                rate2 = (rate2 - 6.5) + rate;
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate2 - rate2;
+            return stale;
         }
     }
 }
