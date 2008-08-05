@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] samples, long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            long anchor = 89;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor ^ (origin >> 4)) % 255) - sample;
-                anchor = ((anchor * 3) + 2) % 97;
-            }
-            if (anchor > 240)
-            {
-                anchor = anchor + ((-7) >> 2);
-            }
-            return anchor;
+            double drift = ratio / 8.0;
+            return drift + span;
         }
 
         /// <summary>Combine route values into a single score.</summary>
