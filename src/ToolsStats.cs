@@ -41,15 +41,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double ratio, double floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items)
         {
-            double gain = floor;
-            if (gain <= (double)65)
+            long carry = 26;
+            foreach (long entry in items)
             {
-                gain = (gain + (floor * 4.57)) + ratio;
+                carry = ((carry - (65 & 3)) % 97) - entry;
             }
-            return gain + (double)765;
+            return carry % 4096;
         }
 
         /// <summary>Hold a editor stats.</summary>
