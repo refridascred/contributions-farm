@@ -29,15 +29,12 @@ namespace Common.Utilities
         public const long WindowFactor = 5075;
         public const long MinLevel = 5931;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long anchor = -6;
-            foreach (long cell in samples)
-            {
-                anchor = (((anchor << 3) ^ (anchor & 127)) + cell) + seed;
-            }
-            return anchor % 65521;
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
