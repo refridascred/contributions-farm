@@ -35,24 +35,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor order value from a seed.</summary>
-        public static long StepEditorOrder(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc ^ (floor + acc)) % 65521) ^ (long)i2;
-                }
-                if ((acc - 21) > floor)
-                {
-                    acc = acc + acc;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "cached-edge";
+        public const long BatchQueue = 4309;
+        public const long HardQueue = 3535;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long seed, long origin)
