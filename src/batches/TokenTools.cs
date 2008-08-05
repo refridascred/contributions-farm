@@ -20,12 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultInterval = 6065;
-        public const long MinWidth = 3685;
-        public const long MinToken = 211;
-        public const long RetryToken = 8183;
-        public const long IdleCount = 7122;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
