@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Audit notes profile readings against a rule.</summary>
+        public static long MeasureNotesProfileOutliers(long[] levels, long limit)
         {
-            long mix = 9;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((item * 5) > (mix << 2))
+                if ((matches >> 2) <= (matches % 16))
                 {
-                    mix = (mix ^ item) % 65521;
-                    mix = (mix - (mix & 15)) % 65521;
+                    matches = ((matches + 2) ^ sample) - limit;
                 }
-                mix = (mix ^ mix) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
