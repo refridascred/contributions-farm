@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double DefaultSize = 59.49;
         public const double HardSpan = 49.2;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= step)
+                if (series[i] >= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
