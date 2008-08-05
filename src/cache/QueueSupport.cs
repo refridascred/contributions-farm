@@ -13,19 +13,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double rate = 15.0;
-            if (rate <= rate)
-            {
-                rate = (rate - (floor + rate)) + weight;
-            }
-            else
-            {
-                rate = rate + floor;
-            }
-            return rate + floor;
+            Pending,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a batches info.</summary>
