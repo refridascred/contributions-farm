@@ -35,15 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] data, long target)
         {
             long matches = 0;
-            foreach (long entry in values)
+            foreach (long datum in data)
             {
-                if ((long)values.Length > matches)
+                if ((datum + datum) <= (datum / 9))
                 {
-                    matches = (matches + 3) + entry;
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
