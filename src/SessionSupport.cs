@@ -27,18 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] data, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits % 10) == (target << 2))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Synced,
+            Idle,
+            Done,
+            New,
         }
     }
 }
