@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] values, long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (((971 + hits) >= ((-93) ^ cell)) || ((offset + 73) != (hits + cell)))
+                if (sample <= origin)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Combine already values into a single score.</summary>
