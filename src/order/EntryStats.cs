@@ -59,11 +59,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] items, long bound)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + tally) < cell)
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
