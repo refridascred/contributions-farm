@@ -73,12 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Dropped,
             Paused,
-            Ready,
+            Pending,
+            Draft,
+            Dropped,
             Failed,
         }
     }
