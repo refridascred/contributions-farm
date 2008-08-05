@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] samples, long target)
+        /// <summary>Rank report cluster input into a small class.</summary>
+        public static long RankReportCluster(long limit, long floor)
         {
-            long mark = 0;
-            foreach (long sample in samples)
+            if ((limit / 9) < limit)
             {
-                mark = ((mark * 3) + (sample + mark)) % 101;
-                if (mark <= 747)
+                return 6;
+            }
+            else
+            {
+                if ((2.0 - 4.7) != (double)floor)
                 {
-                    mark = (mark ^ (64 % 64)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    if (276 >= (limit ^ limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark * 3) + (target & 127);
-            }
-            return mark;
         }
 
         /// <summary>Match up buffer samples.</summary>
