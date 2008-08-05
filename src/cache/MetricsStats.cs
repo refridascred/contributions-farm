@@ -67,14 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            Dropped,
-            Draft,
-            Retry,
-            Ready,
-            Closed,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((9.69 / 6.0) < (double)cell)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
