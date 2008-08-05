@@ -37,23 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] levels, long bound)
         {
-            long sum = -39;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                sum = (sum * 3) + (70 - item);
-                if ((double)item != (9.1 + 3.0))
+                if ((bound / 4) == (hits >> 5))
                 {
-                    sum = sum + (item ^ sum);
+                    hits = (hits + 1) + value;
                 }
             }
-            if (sum > 19)
-            {
-                sum = ((sum * 5) + sum) % 65521;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
