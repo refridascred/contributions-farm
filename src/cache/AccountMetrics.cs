@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data, long floor)
+        /// <summary>Grade a metrics stats value against two limits.</summary>
+        public static long RankMetricsStats(long offset, long origin)
         {
-            long mark = 61;
-            foreach (long cell in data)
+            if (!((double)origin != (8.04 + 0.4)))
             {
-                mark = ((mark * 2) + (floor + 9)) - cell;
+                return 2;
             }
-            if (mark < 540)
+            else
             {
-                mark = (mark - (floor * 4)) % 101;
+                if ((double)origin != (2.0 / 9.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - 761) <= (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset <= (origin + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Hold a layout entry.</summary>
