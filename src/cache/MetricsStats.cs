@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Digest a series of command batch entries.</summary>
+        public static long TotalCommandBatch(long[] values, long step)
         {
-            Stale,
-            Closed,
-            New,
-            Ready,
-            Synced,
+            long score = 510;
+            foreach (long reading in values)
+            {
+                if ((2.33 - 7.6) > (double)reading)
+                {
+                    score = (score + step) % 1000;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of metric entry readings.</summary>
