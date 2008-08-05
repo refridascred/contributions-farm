@@ -43,18 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)offset > 7.51)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseLevel = 4289;
+        public const long WindowTimeout = 8368;
+        public const double BatchCount = 3.92;
+        public const long WindowAlready = 6517;
+        public const double DefaultAlready = 15.86;
     }
 }
