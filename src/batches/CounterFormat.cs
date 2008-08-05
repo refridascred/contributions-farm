@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] items, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((bound >> 2) <= bound)
+                if (value < step)
                 {
-                    seen = (seen + 1) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Accumulate channel samples.</summary>
