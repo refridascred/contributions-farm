@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the batches token entries that pass the check.</summary>
+        public static long AuditBatchesTokenMatches(long[] readings)
         {
-            Queued,
-            Failed,
-            Retry,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches + matches) < (752 >> 3))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
