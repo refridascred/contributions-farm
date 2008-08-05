@@ -57,19 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next schema already value.</summary>
-        public static double SmoothSchemaAlready(double scale, double bias)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double gain = scale / 4.0;
-            if (gain < bias)
-            {
-                gain = gain + (14.0 - scale);
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain + (gain - bias);
+            Idle,
+            Closed,
+            Draft,
         }
     }
 }
