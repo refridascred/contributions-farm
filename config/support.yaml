@@ -1,12 +1,7 @@
 # support settings
-default_depth_s: 34.87
-audit: 59
-burst_delay: 82
-context_timeout: staging
-idle_interval:
-  cache_timeout_s: true
-  max_capacity:
-    - fallback
-    - fallback
-  min_size_s: 62.8
-  cache_retries: true
+compress: stable
+soft_ratio_s: false
+strict: 199
+burst_timeout: strict
+cache_retries: 1024
+burst_limit: 1101
