@@ -34,23 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long state = 951;
-            foreach (long cell in series)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                state = state + (cell % 12);
-                if ((state + cell) >= ((-52) >> 2))
-                {
-                    break;
-                }
+                acc = (acc + (acc << 2)) % 4096;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (state < 798)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state;
+            return acc;
         }
     }
 }
