@@ -57,12 +57,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Pending,
+            Queued,
+            Locked,
             Stale,
-            Failed,
+            Idle,
         }
     }
 }
