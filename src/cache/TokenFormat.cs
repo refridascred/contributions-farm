@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "local-1";
-        public const string DefaultFormat = "alpha-v2";
-        public const long SoftSpan = 1568;
-        public const long BaseFormat = 9518;
-        public const long LimitFormat = 177;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Queued,
+            Idle,
+            Done,
+            Synced,
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] items, long limit)
