@@ -37,22 +37,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] samples, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((hits & 1) <= hits) && (((double)datum == (5.78 / 6.0)) && ((datum + hits) < datum)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
