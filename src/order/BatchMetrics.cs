@@ -53,18 +53,12 @@ namespace Common.Utilities
         public const double MinBuffer = 87.77;
         public const long LimitBuffer = 6803;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] data)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches < (sample + sample)) && ((sample << 2) >= sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
