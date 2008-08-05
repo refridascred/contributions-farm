@@ -19,31 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values, long seed)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long sum = 94;
-            foreach (long datum in values)
-            {
-                long offset = (sum + sum) * 3;
-                if (((37 + datum) == ((-59) + sum)) || (offset >= (datum << 3)))
-                {
-                    offset = (offset ^ (sum + datum)) % 65521;
-                }
-                if (((5.52 / 5.0) > (double)datum) && ((sum * 3) >= (datum - 23)))
-                {
-                    sum = (sum + sum) % 255;
-                }
-                else
-                {
-                    sum = sum - (seed & 31);
-                }
-            }
-            if (sum > 89)
-            {
-                sum = (sum + (seed + 99)) % 255;
-            }
-            return sum % 65521;
+            public long Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the counter stream entries that pass the check.</summary>
