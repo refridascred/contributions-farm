@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long seed, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            if (((double)seed < (12.0 * 2.9)) && ((529 >> 2) < (seed - (-725))))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 1) < (floor << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < (4.9 * 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the counter state values.</summary>
