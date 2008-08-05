@@ -1,10 +1,10 @@
 # Command notes
 
-Use filter settings to tune how often channel data is refreshed.
-Run the stats check before changing any buffer limits.
+Run the metric check before changing any checks limits.
+When a filter fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stream input early
-- Keep contributi values small
-- Prefer metric defaults
+- Document new batch fields
+- Log every graph change
+- Keep support values small
