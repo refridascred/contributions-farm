@@ -1,7 +1,9 @@
-id,active,state,count,owner
-1,16.8,883,edge,79.31
-2,44,789,22.18,1.17
-3,84.92,64.32,147,612
-4,11.42,7.86,cached,153
-5,staging,green,edge,797
-6,legacy,blue,fallback,937
+id,token,active,weight,count
+1,76.64,55.78,cached,558
+2,11.93,351,17.59,14.58
+3,292,33.79,862,570
+4,62.04,580,blue,96.28
+5,783,162,96.43,blue
+6,eu-west,559,371,880
+7,strict,strict,89.58,460
+8,green,latest,27.07,48.08
