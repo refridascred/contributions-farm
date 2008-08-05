@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long floor)
         {
-            New,
-            Done,
-            Paused,
-            Active,
-            Failed,
+            if ((floor + step) > (step * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((628 ^ step) >= 57)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the editor level values.</summary>
