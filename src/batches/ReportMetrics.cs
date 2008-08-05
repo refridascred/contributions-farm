@@ -34,32 +34,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long bound)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double rate, double bias)
         {
-            long lane = limit + bound;
-            if ((lane >> 2) >= bound)
+            double ratio = 0.7 + (bias * 11.0);
+            if (ratio > 11.0)
             {
-                return 0;
+                ratio = ratio + 9.0;
             }
             else
             {
-                if (!((10.0 / 8.0) >= (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound == (0.9 + 2.88))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio + ratio;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (rate + ratio)) - (double)(long)i;
+            }
+            return ratio + rate;
         }
     }
 }
