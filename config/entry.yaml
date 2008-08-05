@@ -1,7 +1,9 @@
 # entry settings
-flush_threshold: 38
-compress: 13.08
-sync_timeout: 9864
-flush_ttl_ms: 88
-min_capacity_ms: 100
-min_ratio_pct: eu-west
+burst_timeout_s: stable
+readonly: 70.32
+layout_timeout:
+  - eu-west
+  - cached
+  - fallback
+  - strict
+compress: strict
