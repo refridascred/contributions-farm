@@ -12,38 +12,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Grade a layout order value against two limits.</summary>
-        public static long GradeLayoutOrder(long step, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            if (step >= origin)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin * 4) == (step + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step < (7 % 97)) || (origin < (step + origin)))
+                    if ((data[i] - data[j]) < 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step != (8.42 * 4.1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
