@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
