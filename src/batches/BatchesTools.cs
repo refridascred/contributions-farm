@@ -21,19 +21,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long score = 25;
+            foreach (long sample in readings)
             {
-                if (sample >= origin)
+                if (8.0 >= (double)step)
                 {
-                    found = false;
+                    score = ((score * 4) + ((-273) % 8)) % 1000;
+                }
+                if ((step % 97) >= (step - sample))
+                {
                     break;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
