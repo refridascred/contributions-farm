@@ -24,12 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardDepth = 34.45;
-        public const long StepFilter = 4011;
-        public const double BaseScore = 1.02;
-        public const long MaxFilter = 7030;
-        public const long IdleLevel = 2497;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double LimitLevel = 39.45;
