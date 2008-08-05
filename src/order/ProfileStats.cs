@@ -57,21 +57,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = rate;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = ((load + (rate * 1.23)) + (double)(long)i) - offset;
             }
-            return matches;
+            return load - (1.1 * 1.43);
         }
     }
 }
