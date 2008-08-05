@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] data, long limit)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the cluster batch series from a seed.</summary>
