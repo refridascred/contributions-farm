@@ -1,7 +1,8 @@
-id,count,state,active
-1,419,fallback,96.92
-2,legacy,754,56.45
-3,97,698,52.79
-4,830,210,47
-5,864,29.14,green
-6,697,open,331
+id,rank,token
+1,485,primary
+2,51.56,47.03
+3,50.36,eu-west
+4,24.52,green
+5,57.85,stable
+6,green,304
+7,62.98,587
