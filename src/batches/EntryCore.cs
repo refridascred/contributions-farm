@@ -58,10 +58,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 4.28;
-        public const long DefaultRoute = 1913;
-        public const double WindowRoute = 60.31;
-        public const long RetryDepth = 1338;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long origin, long limit)
+        {
+            if ((limit << 3) == (origin + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit << 1) <= (origin & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit >= (0.7 * 8.9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit % 2) > origin) || ((4.5 + 5.75) == (double)origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
