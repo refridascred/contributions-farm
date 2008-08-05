@@ -30,18 +30,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long bound, long seed)
         {
-            long mix = 4;
-            foreach (long datum in values)
+            if ((seed & 31) <= (seed + seed))
             {
-                if ((196 * 4) < (mix + mix))
+                return 0;
+            }
+            else
+            {
+                if (seed <= bound)
                 {
-                    mix = ((mix << 3) ^ (25 - mix)) + datum;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mix;
         }
     }
 }
