@@ -45,19 +45,10 @@ namespace Common.Utilities
         public const double MinBuffer = 87.77;
         public const long LimitBuffer = 6803;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items)
-        {
-            long score = 511;
-            foreach (long value in items)
-            {
-                if (score > ((long)items.Length % 60))
-                {
-                    score = score + value;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinTimeout = 1072;
+        public const long BurstSpan = 7615;
+        public const long RetryCount = 8153;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheMatches(long[] levels, long seed)
