@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Blend two session buffer measurements.</summary>
+        public static double SmoothSessionBuffer(double scale, double span)
         {
-            long acc = 13;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length << 3) != (datum + datum))
-                {
-                    acc = acc - (acc + datum);
-                }
-            }
-            if (acc > 710)
-            {
-                acc = ((acc * 5) + (acc << 3)) % 4096;
-            }
-            return acc;
+            double weight = (scale - span) / 2.0;
+            return weight + weight;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
