@@ -20,27 +20,12 @@ namespace Common.Utilities
             return ((gain2 - (gain2 / 7.0)) + gain) + floor;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc - acc) % 97;
-                if ((double)(long)i < (2.23 + 0.93))
-                {
-                    acc = (acc << 3) ^ (acc / 2);
-                    acc = ((acc * 3) + (795 + floor)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 4770;
+        public const string LimitTimeout = "cached";
+        public const long BaseLevel = 2744;
+        public const string CacheLevel = "staging-v2";
+        public const long WindowRatio = 185;
 
         /// <summary>Accumulate entry already samples.</summary>
         public static long TotalEntryAlready(long[] readings)
