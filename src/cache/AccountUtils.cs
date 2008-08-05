@@ -12,39 +12,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long seed, long seed2)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            long bound = seed + seed2;
-            if ((57 & 127) >= (bound & 7))
+            double mean = (ratio + ratio) / 2.0;
+            if (mean < bias)
             {
-                return 4;
+                mean = mean - (bias * 1.73);
             }
             else
             {
-                if (((bound + bound) >= (602 - seed)) && ((seed2 + bound) <= (seed2 / 8)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed >= (seed2 % 64)) || ((bound ^ seed2) >= (bound + (-760))))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed2 - bound) >= (bound + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mean = mean - (double)68;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (7.06 / 6.0)) - (double)(long)i;
+            }
+            return mean + (ratio / 5.0);
         }
 
         /// <summary>Roll a report token counter forward.</summary>
