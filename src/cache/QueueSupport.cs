@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxBudget = 481;
-        public const string MaxLevel = "stable-1";
-        public const long CacheStats = 5479;
-        public const long StepStats = 5727;
+        /// <summary>Locate a cache buffer reading by value.</summary>
+        public static long FindCacheBufferIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
