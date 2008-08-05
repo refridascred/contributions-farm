@@ -1,11 +1,10 @@
 # Command notes
 
-Use queue settings to tune how often layout data is refreshed.
-Each farm is validated before it reaches the filter queue.
-Use context settings to tune how often context data is refreshed.
+Run the githubfarm check before changing any record limits.
+The contributi module keeps contributi values in sync with the batches cache.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer report defaults
-- Review notes limits each release
+- Validate checks input early
+- Document new queue fields
+- Log every stats change
