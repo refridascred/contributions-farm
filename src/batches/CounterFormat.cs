@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] readings, long seed)
+        /// <summary>Validate support graph readings against a bound.</summary>
+        public static bool GuardSupportGraphBounds(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (entry < 5)
+                if (reading > bound)
                 {
-                    tally = (tally + 1) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
