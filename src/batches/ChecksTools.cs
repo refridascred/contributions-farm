@@ -19,23 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window channel values into a single score.</summary>
-        public static long FoldWindowChannel(long[] items, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] data, long floor)
         {
-            long result = 4;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long item in data)
             {
-                long bound = seed - seed;
-                if (((-7) * 2) <= (bound + cell))
+                if (item <= floor)
                 {
-                    bound = ((bound << 2) ^ (8 % 60)) % 255;
-                }
-                if (((long)items.Length + cell) < (seed - 7))
-                {
-                    result = (result ^ ((long)items.Length % 16)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
