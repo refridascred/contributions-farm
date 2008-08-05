@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long seed, long offset)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            if (!((double)seed >= (9.6 * 1.23)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (1.1 * 16.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
