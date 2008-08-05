@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double ratio, double bias)
         {
-            Ready,
-            Pending,
-            Done,
+            double load = (bias * 4.7) + (bias + bias);
+            if (load >= (ratio - 6.7))
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (ratio + ratio)) + (double)(long)i;
+            }
+            return load + 15.0;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
