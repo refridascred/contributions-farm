@@ -1,8 +1,7 @@
 {
-  "stream_delay": 29,
-  "sync_ratio_ms": "latest",
-  "compress": 55.82,
-  "verbose": 57,
-  "format_window": 3298,
-  "readonly": 18
+  "base_delay_pct": "latest",
+  "retry_limit": false,
+  "base_size_count": "eu-west",
+  "base_interval": [84, 136],
+  "default_delay_pct": "strict"
 }
