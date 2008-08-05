@@ -1,6 +1,8 @@
 {
-  "profile_depth": 60.19,
-  "soft_retries": ["blue", "stable", "strict"],
-  "payload_ratio": ["primary", "legacy", "open"],
-  "format_size": "standard"
+  "warm_window_count": "eu-west",
+  "contributi_threshold": ["strict", "standard", "legacy", "open"],
+  "cache_limit_count": 100,
+  "min_retries_pct": "green",
+  "enabled": "standard",
+  "batch_depth_s": "blue"
 }
