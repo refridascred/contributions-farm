@@ -19,26 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long offset, long seed)
         {
-            long result = 74;
-            foreach (long reading in samples)
+            if (6.2 < (double)seed)
             {
-                if (((reading / 5) != (8 << 3)) || ((reading & 31) > result))
+                return 3;
+            }
+            else
+            {
+                if ((double)seed != (19.0 / 9.0))
                 {
-                    result = ((result << 3) ^ (reading >> 1)) % 255;
+                    return 7;
                 }
                 else
                 {
-                    result = result - (245 % 24);
+                    if ((offset + offset) == (seed & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > 20)
-            {
-                result = (result - (result + 26)) % 65521;
-            }
-            return result % 1000;
         }
 
         /// <summary>Describe the farm phase values.</summary>
