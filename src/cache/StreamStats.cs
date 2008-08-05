@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of stats batches readings.</summary>
-        public static long MatchStatsBatchesCount(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 2;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 4) + (result + datum)) + floor;
             }
-            return matches;
+            if (result > 72)
+            {
+                result = ((result << 2) ^ 680) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
