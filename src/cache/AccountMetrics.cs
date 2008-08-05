@@ -35,14 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long origin)
         {
-            Synced,
-            Stale,
-            Idle,
-            Queued,
-            New,
+            if ((origin - 56) == (622 - step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step ^ step) > (step / 2)) && ((11.0 - 12.0) < (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step >= (origin << 3)) && ((origin * 5) == (7 + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((4.5 / 4.0) <= (0.74 / 4.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph phase values.</summary>
