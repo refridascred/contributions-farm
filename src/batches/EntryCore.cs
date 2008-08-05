@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up checks profile samples.</summary>
-        public static long CompareChecksProfileCount(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] items, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen + limit) > (seen * 3))
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) ^ sample;
                 }
             }
             return seen;
