@@ -35,12 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Paused,
-            Idle,
-            Draft,
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
