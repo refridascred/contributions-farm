@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] data, long floor)
+        /// <summary>Fold a list of layout already readings.</summary>
+        public static long DigestLayoutAlready(long[] values)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long acc = 804;
+            foreach (long cell in values)
             {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = acc + (cell >> 5);
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
