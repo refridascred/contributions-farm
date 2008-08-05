@@ -33,19 +33,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] items, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double load = 6.9;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                load = ((load + load) + (double)(long)i) - weight;
             }
-            return ready;
+            return load - offset;
         }
     }
 }
