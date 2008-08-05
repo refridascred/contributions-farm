@@ -35,10 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardSpan = 4280;
-        public const long StepInterval = 117;
-        public const string SoftFarm = "legacy-1";
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Retry,
+            Idle,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long SeriesMetric(long floor)
