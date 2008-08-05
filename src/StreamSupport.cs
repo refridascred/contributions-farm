@@ -34,19 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] samples, long limit)
         {
-            double load = bias;
-            if (load <= load)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (load + load)) - rate;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 2.7) + (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
     }
 }
