@@ -95,20 +95,15 @@ namespace Common.Utilities
             return mean + (bias + bias2);
         }
 
-        /// <summary>Iterate the entry record series from a seed.</summary>
-        public static long SeriesEntryRecord(long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                mark = mark ^ mark;
-                if ((limit + mark) >= limit)
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
     }
 }
