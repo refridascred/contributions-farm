@@ -1,9 +1,35 @@
 # entry settings
-max_ratio: 90
-soft_depth: 2634
-buffer_delay:
-  - fallback
-  - primary
-farm_interval: true
-poll_ratio_pct: stable
-base_size_s: latest
+flush_retries_ms: true
+min_limit_pct:
+  - staging
+  - green
+  - staging
+support_retries: false
+default_depth_ms: 31.65
+warm_threshold_s:
+  - 312
+  - 412
+  - 78
+  - 329
+poll_size_count:
+  soft_ratio_count:
+    - 405
+    - 480
+    - 69
+  retry_ratio_pct:
+    persist: 30
+    batches_ratio: primary
+    cache_ttl_ms: 3803
+  retry_capacity_s: 33.52
+  metric_capacity:
+    batch_retries_ms: local
+    cache_ratio: fallback
+    persist: 30
+    default_threshold_count:
+      - cached
+      - primary
+      - cached
+    soft_limit_pct: 87
+    cache_window_pct: staging
+  max_capacity: true
+  base_timeout_s: stable
