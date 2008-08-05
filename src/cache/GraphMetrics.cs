@@ -41,19 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache already figure with a bias.</summary>
-        public static double SmoothCacheAlready(double rate, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] data, long floor)
         {
-            double rate2 = bias;
-            if (rate2 <= (rate - 19.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = rate2 + (2.0 - rate);
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + bias) - (double)(long)i;
-            }
-            return rate2 + (rate - rate2);
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
