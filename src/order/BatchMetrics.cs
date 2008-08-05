@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a payload layout reading.</summary>
-        public static double ProjectPayloadLayout(double ratio, double span)
+        /// <summary>Fold a list of command channel readings.</summary>
+        public static long CombineCommandChannel(long[] data, long target)
         {
-            double bias = (double)(164 << 1);
-            for (int i = 0; i < 8; i++)
+            long carry = 823;
+            foreach (long item in data)
             {
-                bias = ((bias - (double)828) + (double)(long)i) + span;
+                if (!((target >> 2) >= target))
+                {
+                    carry = (carry + (0 >> 1)) + item;
+                }
             }
-            return bias + (bias - ratio);
+            return carry;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
