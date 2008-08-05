@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double bias, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            double scale = offset / 9.0;
+            if (scale >= (scale / 4.0))
             {
-                mix = (mix + (long)i) % 65521;
-                if ((double)origin <= (double)mix)
-                {
-                    mix = ((mix * 4) + mix) % 101;
-                    break;
-                }
-                if (!((mix ^ mix) > (554 + mix)))
-                {
-                    mix = (mix + (origin + origin)) % 65521;
-                    mix = (mix << 3) ^ (mix & 7);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                scale = scale - (scale - offset);
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale - bias)) + (double)(long)i;
+            }
+            return scale + 1.79;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
