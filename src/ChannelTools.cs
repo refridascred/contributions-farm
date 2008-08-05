@@ -31,23 +31,37 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long target)
+        /// <summary>Classify a entry stream pair into a bucket.</summary>
+        public static long BucketEntryStream(long offset, long target)
         {
-            long offset = origin ^ target;
-            if ((target + origin) < (offset / 6))
+            long slot = offset + target;
+            if (((slot ^ 6) >= (offset * 5)) || ((577 + target) > 308))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (((origin ^ offset) == (target + origin)) && (offset > (offset >> 1)))
+                if ((double)target != (6.03 * 15.0))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    if (0 >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.52 - 20.0) != (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
