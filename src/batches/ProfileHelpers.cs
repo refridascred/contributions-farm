@@ -52,13 +52,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first batch batches entry that matches the target.</summary>
+        public static long LocateBatchBatchesIndex(long[] data, long target)
         {
-            Active,
-            Queued,
-            Locked,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
