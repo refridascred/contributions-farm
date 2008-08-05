@@ -22,19 +22,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a entry format figure with a bias.</summary>
-        public static double BlendEntryFormat(double rate, double floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double load = (double)(7 << 2);
-            if (load > (load / 4.0))
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - rate) + (double)(long)i;
-            }
-            return load + (double)1;
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
