@@ -1,5 +1,7 @@
 {
-  "farm_depth": 60.25,
-  "report_threshold": true,
-  "burst_retries": false
+  "profile_limit": true,
+  "editor_ratio": ["legacy", "strict", "fallback"],
+  "verbose": "legacy",
+  "metric_size": 33.61,
+  "warm_threshold": "latest"
 }
