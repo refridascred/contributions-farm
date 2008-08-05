@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    weight REAL,
     owner TEXT NOT NULL,
-    created_at TIMESTAMP
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
+CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+
+INSERT INTO layout_items (region, owner, active) VALUES ('green', 'cached', 23);
+INSERT INTO layout_items (region, owner, active) VALUES ('open', 'open', 11);
