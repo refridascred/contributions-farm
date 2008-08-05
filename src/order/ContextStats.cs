@@ -68,24 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long limit)
-        {
-            if (((double)limit != (11.0 - 5.5)) || ((416 - 7) <= (step % 64)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 3) <= (14 << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "open-v2";
+        public const long SoftSpan = 7206;
+        public const double CacheBudget = 18.05;
+        public const long RetryEntry = 1369;
     }
 }
