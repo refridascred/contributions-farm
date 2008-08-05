@@ -34,15 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double gain, double floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            double drift = (double)(7 << 3);
-            if (drift >= (double)938)
+            double rate = 8.6;
+            if (rate >= span)
             {
-                drift = (drift - floor) + gain;
+                rate = rate + 2.11;
             }
-            return drift - floor;
+            else
+            {
+                rate = rate + gain;
+            }
+            return rate - (3.9 / 3.0);
         }
 
         /// <summary>Accumulate window entry samples.</summary>
