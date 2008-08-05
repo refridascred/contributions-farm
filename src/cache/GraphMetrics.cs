@@ -47,14 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] samples, long step)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Ready,
-            Failed,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
