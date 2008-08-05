@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)65 * 0.3;
+            if (rate <= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + (span / 9.0)) - scale;
             }
-            return matches;
+            return rate - rate;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
