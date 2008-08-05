@@ -1,12 +1,6 @@
 {
-  "audit": "cached",
-  "enabled": {
-    "idle_interval": [252, 443],
-    "cluster_ttl": 60,
-    "retry_limit_count": "stable",
-    "base_delay": [333, 167, 247]
-  },
-  "compress": false,
-  "cluster_depth": 48.32,
-  "batch_interval": true
+  "batch_ratio_s": ["edge", "latest", "cached", "blue"],
+  "strict": 72,
+  "graph_window": false,
+  "retry_ttl": "strict"
 }
