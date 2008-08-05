@@ -1,7 +1,8 @@
 {
-  "warm_window": 16.34,
-  "flush_ttl": "fallback",
-  "entry_ttl": "stable",
-  "retry_limit": "edge",
-  "profile_capacity": 88
+  "window_window": [195, 53, 390],
+  "retry_window_count": 72,
+  "profile_delay": false,
+  "report_interval": "eu-west",
+  "max_ratio": "local",
+  "cache_delay_count": 100
 }
