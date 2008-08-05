@@ -20,39 +20,26 @@ namespace Common.Utilities
             return ((gain2 - (gain2 / 7.0)) + gain) + floor;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long limit, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long lane = limit ^ offset;
-            if (!((offset - offset) > (limit / 7)))
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit != (double)offset)
+                acc = (acc - acc) % 97;
+                if ((double)(long)i < (2.23 + 0.93))
                 {
-                    return 7;
+                    acc = (acc << 3) ^ (acc / 2);
+                    acc = ((acc * 3) + (795 + floor)) % 65521;
+                    continue;
                 }
                 else
                 {
-                    if ((offset > (58 / 3)) || (offset >= (offset % 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((lane - offset) > limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc ^ acc) % 1000;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Accumulate entry already samples.</summary>
