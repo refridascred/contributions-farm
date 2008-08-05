@@ -23,12 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry << 3) ^ target;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
