@@ -51,23 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item - 21) < (item << 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 8868;
+        public const long MinQueue = 424;
+        public const string BurstQueue = "latest";
+        public const long BaseWidth = 1918;
+        public const string RetryQueue = "stable-1";
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderGaps(long[] series)
