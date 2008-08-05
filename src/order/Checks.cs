@@ -26,17 +26,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a metric cache reading by value.</summary>
-        public static long SeekMetricCacheIndex(long[] levels, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (levels[i] <= limit)
+                if (!(((18.0 + 4.3) >= (double)count) || ((cell - count) >= (count ^ cell))))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first route counter entry that matches the target.</summary>
