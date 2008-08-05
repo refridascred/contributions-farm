@@ -25,23 +25,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a githubfarm contributi reading.</summary>
-        public static double AdjustGithubfarmContributi(double ratio, double offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long limit)
         {
-            double mean = ratio / 7.0;
-            if (mean <= 11.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + 1.7) + offset;
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)(-55);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean / 3.0)) - (double)(long)i;
-            }
-            return mean - (double)883;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
