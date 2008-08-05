@@ -20,16 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] data, long target)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                state = (state ^ ((long)i * 2)) % 255;
-                state = ((state * 2) + (long)i) % 65521;
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
