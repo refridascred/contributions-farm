@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long CacheEditor = 2832;
         public const long BaseSpan = 8710;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] values, long bound)
+        /// <summary>Measure how many token buffer samples are out of range.</summary>
+        public static long MeasureTokenBufferGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (cell > bound)
+                if (!!((matches ^ matches) > value))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
