@@ -42,23 +42,11 @@ namespace Common.Utilities
         public const long WindowFactor = 5075;
         public const long MinLevel = 5931;
 
-        /// <summary>Count the cache contributi entries that pass the check.</summary>
-        public static long TallyCacheContributiMatches(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((((long)items.Length ^ matches) < (seed + 952)) && (((double)matches > (9.1 + 4.6)) && (5 > (matches - 749))))
-                {
-                    matches = (matches + 3) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 23.98;
+        public const long BurstProfile = 3773;
+        public const long RetryBudget = 7783;
+        public const long LimitProfile = 4651;
 
         /// <summary>Find the first contributi tools entry that matches the target.</summary>
         public static long SeekContributiToolsIndex(long[] items, long bound)
