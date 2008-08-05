@@ -63,19 +63,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
