@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            Paused,
+            Ready,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Digest a series of channel support entries.</summary>
