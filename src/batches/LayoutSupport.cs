@@ -64,19 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long bound, long target)
         {
-            long mix = 3;
-            foreach (long item in items)
+            if ((8 + target) <= (bound + target))
             {
-                mix = ((mix * 3) + (mix + mix)) % 101;
-                if ((mix - mix) > item)
+                return 6;
+            }
+            else
+            {
+                if (((bound / 7) < (target - 14)) || ((target ^ target) >= (9 / 5)))
                 {
-                    mix = (mix * 5) + (item % 10);
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return mix;
         }
     }
 }
