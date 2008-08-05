@@ -25,22 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] readings, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((tally * 5) != (tally - tally)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 1) ^ datum) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many batches commits samples are out of range.</summary>
