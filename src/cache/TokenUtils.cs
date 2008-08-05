@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -47;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark << 2) ^ (limit + limit)) ^ cell;
             }
-            return seen;
+            if (mark > 0)
+            {
+                mark = (mark - (mark ^ mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
