@@ -12,6 +12,15 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in strict latest; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=311
+log "limit is ${CHANNEL_LIMIT}"
