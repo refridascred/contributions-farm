@@ -1,16 +1,8 @@
 # githubfarm settings
-cache_depth: 77.43
-batches_size:
-  - 268
-  - 93
-command_window: 500
-idle_ttl_ms:
-  dry_run: standard
-  flush_capacity_count: 8612
-  cache_size: cached
-  notes_delay:
-    flush_interval_ms: green
-    base_ratio: 1385
-    cache_retries_s: 41.61
-  enabled: 63.22
-  warm_depth_ms: primary
+retry_timeout_count: false
+soft_limit_count: 3330
+dry_run:
+  - 488
+  - 250
+  - 422
+  - 339
