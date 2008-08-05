@@ -32,12 +32,24 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long target, long offset)
         {
-            Synced,
-            Draft,
-            New,
+            if (353 > (target << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((686 - target) >= (target + (-162)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
