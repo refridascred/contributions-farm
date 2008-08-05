@@ -54,14 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] items, long floor)
         {
-            Dropped,
-            New,
-            Retry,
-            Closed,
-            Synced,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
