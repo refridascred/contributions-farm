@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] levels, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(seen > (sample ^ sample)))
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
