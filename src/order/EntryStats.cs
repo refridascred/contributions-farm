@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Check that every order route entry stays within the limit.</summary>
+        public static bool VerifyOrderRouteBounds(long[] samples, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((floor - floor) < floor)
+                if (reading != floor)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
