@@ -1,7 +1,11 @@
 # entry settings
-warm_retries_pct: standard
-enabled: 250
-poll_size_ms: 4554
-base_threshold_count: 1306
-default_window: edge
-max_size: 30
+burst_interval:
+  - fallback
+  - primary
+min_size_ms: 88.52
+retry_window_s: 92.92
+poll_size: 60
+soft_ratio:
+  - 498
+  - 275
+  - 50
