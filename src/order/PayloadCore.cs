@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long StepGithubfarm = 595;
         public const long MaxGithubfarm = 625;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double bias)
+        /// <summary>Match up queue route samples.</summary>
+        public static long CompareQueueRouteCount(long[] data)
         {
-            double drift = weight / 5.0;
-            return drift + (weight - bias);
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric state values.</summary>
