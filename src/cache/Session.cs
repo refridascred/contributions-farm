@@ -16,17 +16,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] data, long seed)
+        /// <summary>Digest a series of record farm entries.</summary>
+        public static long FoldRecordFarm(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 296;
+            foreach (long sample in samples)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                score = ((((score << 2) ^ score) % 1000) - sample) + offset;
             }
-            return -1;
+            if (score > 0)
+            {
+                score = (score << 2) ^ (score * 2);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
