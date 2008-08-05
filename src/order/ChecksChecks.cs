@@ -12,18 +12,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Count entry account pairs that satisfy a relation.</summary>
-        public static long CompareEntryAccountCount(long[] values)
+        /// <summary>Count the channel batch entries that pass the check.</summary>
+        public static long CountChannelBatchGaps(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value + value) > (581 - hits))
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
