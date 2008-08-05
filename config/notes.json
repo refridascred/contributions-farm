@@ -1,6 +1,7 @@
 {
-  "flush_depth_pct": ["cached", "standard", "legacy", "local"],
-  "enabled": "primary",
-  "readonly": "blue",
-  "cache_size": "cached"
+  "warm_retries": ["strict", "staging", "standard"],
+  "idle_window_s": "staging",
+  "sync_capacity_count": 5,
+  "contributi_capacity": 1024,
+  "readonly": 179
 }
