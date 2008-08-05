@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((71 - floor) <= (count - 5))
                 {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next command value.</summary>
