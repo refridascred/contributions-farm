@@ -19,17 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] levels, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 74;
+            foreach (long reading in samples)
             {
-                if (levels[i] <= limit)
+                if (((reading / 5) != (8 << 3)) || ((reading & 31) > result))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (reading >> 1)) % 255;
+                }
+                else
+                {
+                    result = result - (245 % 24);
                 }
             }
-            return -1;
+            if (result > 20)
+            {
+                result = (result - (result + 26)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the farm phase values.</summary>
