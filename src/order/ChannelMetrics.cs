@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of editor batches readings.</summary>
-        public static long WeighEditorBatches(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values)
         {
-            long total = 157;
-            foreach (long cell in data)
+            long acc = 747;
+            foreach (long reading in values)
             {
-                if ((double)total == (6.0 / 3.0))
+                if ((18 % 24) <= (26 - reading))
                 {
-                    total = ((total * 5) + (cell + 0)) % 97;
+                    acc = (acc << 2) ^ acc;
                 }
+                acc = acc + reading;
             }
-            if (total < 7)
+            if (acc < 4)
             {
-                total = (total * 3) + ((-999) % 8);
+                acc = ((acc << 3) ^ (acc * 4)) % 97;
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Rank support input into a small class.</summary>
