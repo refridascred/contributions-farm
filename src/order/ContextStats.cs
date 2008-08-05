@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((origin + origin) < origin)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSpan = 1231;
+        public const long MinWidth = 1570;
+        public const long StepStream = 6424;
 
         /// <summary>Blend two session measurements.</summary>
         public static double AdjustSession(double scale, double span)
