@@ -33,18 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order notes entries that pass the check.</summary>
-        public static long MeasureOrderNotesGaps(long[] values)
+        /// <summary>Look up the position of a metrics support sample.</summary>
+        public static long LocateMetricsSupportIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > (value + seen))
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
