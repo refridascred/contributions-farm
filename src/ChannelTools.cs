@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] values, long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long result = 84;
-            foreach (long entry in values)
-            {
-                if ((entry / 3) >= 827)
-                {
-                    result = ((result << 2) ^ ((long)values.Length >> 1)) - floor;
-                }
-            }
-            return result;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
