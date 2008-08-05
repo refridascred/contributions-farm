@@ -72,12 +72,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            Locked,
+            Idle,
+            Active,
+            Failed,
         }
     }
 }
