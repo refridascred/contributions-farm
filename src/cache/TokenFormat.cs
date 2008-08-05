@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many layout payload samples are out of range.</summary>
-        public static long TallyLayoutPayloadHits(long[] values, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = 835;
+            foreach (long entry in levels)
             {
-                if ((seen & 127) >= seen)
+                acc = ((acc - (1 * 3)) % 4096) - target;
+                if (!(((-6) * 2) > entry))
                 {
-                    seen = ((seen + 1) - reading) + target;
+                    acc = acc ^ ((-78) + acc);
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Describe the farm phase values.</summary>
