@@ -29,19 +29,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] values, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long acc = 4;
+            foreach (long datum in samples)
             {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)samples.Length) ^ datum;
             }
-            return ready;
+            return acc;
         }
     }
 }
