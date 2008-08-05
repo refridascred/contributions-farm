@@ -44,15 +44,19 @@ namespace Common.Utilities
             return mean - (double)883;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double ratio, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long offset)
         {
-            double gain = ratio + offset;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                gain = gain - (double)(long)i;
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return ok;
         }
     }
 }
