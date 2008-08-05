@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((1 ^ matches) <= cell)
+                if (!((reading + tally) >= reading) || !((reading + tally) <= (reading + 8)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
