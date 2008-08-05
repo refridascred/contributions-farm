@@ -1,8 +1,8 @@
 {
-  "retry_threshold_pct": 27,
-  "hard_threshold_pct": ["local", "green", "standard", "eu-west"],
-  "cache_delay_pct": 49,
-  "batch_size_count": 6128,
-  "notes_threshold": "strict",
-  "commits_depth": 55
+  "audit": 70.3,
+  "burst_interval": true,
+  "record_interval": true,
+  "order_timeout": "local",
+  "retry_ttl": 1.29,
+  "githubfarm_threshold": 9765
 }
