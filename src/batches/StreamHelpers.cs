@@ -63,20 +63,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSpan = 8824;
+        public const double MinSupport = 26.57;
+        public const long BaseDepth = 2990;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TallyMetrics(long[] samples)
