@@ -68,10 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSpan = 8824;
-        public const double MinSupport = 26.57;
-        public const long BaseDepth = 2990;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Draft,
+            New,
+            Ready,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Count the session contributi entries that pass the check.</summary>
         public static long MeasureSessionContributiHits(long[] series)
