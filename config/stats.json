@@ -1,20 +1,6 @@
 {
-  "base_ttl": "edge",
-  "compress": false,
-  "flush_depth": true,
-  "warm_retries_count": {
-    "hard_window_s": "primary",
-    "readonly": "legacy",
-    "soft_depth_ms": true,
-    "max_threshold_s": 7,
-    "stats_interval": {
-      "readonly": 7714,
-      "batch_window": [452, 329, 328],
-      "batch_capacity_pct": 80,
-      "min_interval_ms": "fallback"
-    },
-    "max_limit": 2581
-  },
-  "metrics_timeout": ["cached", "open"],
-  "soft_timeout_s": false
+  "hard_limit_s": 2719,
+  "stats_capacity": 80.82,
+  "soft_threshold_count": 30,
+  "tools_ratio": 0.93
 }
