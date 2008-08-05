@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Weight { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
