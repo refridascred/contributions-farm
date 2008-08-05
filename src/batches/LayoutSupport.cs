@@ -16,22 +16,31 @@ namespace Common.Utilities
             return mean - (double)7;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long target, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (offset < (offset - offset))
             {
-                if (((hits ^ 4) == (hits << 3)) && (hits >= (701 ^ hits)))
+                return 6;
+            }
+            else
+            {
+                if ((offset < (offset + target)) && ((5.27 + 20.0) <= (double)target))
                 {
-                    hits = (hits + 3) + value;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((target < (target - 1)) && ((-8) > (target & 15)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
