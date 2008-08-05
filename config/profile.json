@@ -1,11 +1,5 @@
 {
-  "base_ttl_pct": 3.41,
-  "idle_retries_s": "strict",
-  "batch_delay_s": "fallback",
-  "retry_delay": {
-    "cache_delay_pct": ["latest", "staging", "staging"],
-    "min_ratio_count": 500,
-    "readonly": "open",
-    "enabled": ["blue", "edge", "open"]
-  }
+  "soft_ratio_s": "stable",
+  "channel_capacity": 413,
+  "batch_limit_ms": "green"
 }
