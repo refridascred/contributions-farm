@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit commits report readings against a rule.</summary>
-        public static long MeasureCommitsReportOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((value % 100) != (count * 4)) || ((double)value == (3.31 + 4.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 1987;
+        public const long BaseMetric = 3980;
+        public const long StepTimeout = 7885;
+        public const double DefaultWidth = 32.22;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] samples, long offset)
