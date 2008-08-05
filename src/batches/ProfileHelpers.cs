@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up command support samples.</summary>
-        public static long OverlapCommandSupportCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 40.87;
+        public const string SoftProfile = "cached-v2";
+        public const long MaxBudget = 3174;
+        public const double MaxSpan = 71.48;
+        public const long HardProfile = 8327;
 
         /// <summary>Scale a contributi format figure with a bias.</summary>
         public static double SmoothContributiFormat(double rate, double bias)
