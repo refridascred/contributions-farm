@@ -26,23 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream context values into a single score.</summary>
-        public static long CombineStreamContext(long[] items, long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long anchor = 67;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor * 2) + (entry - anchor)) % 4096;
-                if (((7 << 3) != (anchor >> 1)) && ((entry >> 1) > anchor))
-                {
-                    anchor = (anchor << 3) ^ (entry - entry);
-                }
-                if (target <= (target * 2))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            New,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
