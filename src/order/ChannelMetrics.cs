@@ -14,18 +14,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit layout metric readings against a rule.</summary>
-        public static long MeasureLayoutMetricMatches(long[] levels, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((96 + count) <= ((-66) ^ count)) || ((8.0 - 7.0) >= (double)step)) || (count < 1))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = (count + 1) ^ value;
+                    mix = ((mix ^ (mix * 4)) % 101) ^ (long)i2;
                 }
+                mix = (mix - (mix << 3)) % 97;
+                mix = (mix - mix) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
