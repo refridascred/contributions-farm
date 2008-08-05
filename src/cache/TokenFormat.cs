@@ -29,15 +29,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long target, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long edge = target - origin;
+            if ((double)target != (0.53 - 1.85))
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((target - origin) > (271 + edge))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target + target) > edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
