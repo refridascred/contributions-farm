@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double ratio, double bias)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score - (long)i) % 4096;
-                score = score + (origin * 2);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score ^ (origin - score)) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            double gain = (double)((-685) - 829);
+            return (gain + bias) + ratio;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
