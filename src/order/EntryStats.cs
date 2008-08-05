@@ -29,11 +29,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 337;
-        public const string BurstCluster = "alpha-edge";
-        public const long BatchCount = 5095;
-        public const string BatchLevel = "legacy-v2";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] samples, long seed)
