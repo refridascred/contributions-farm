@@ -14,38 +14,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a contributi stream pair into a bucket.</summary>
-        public static long BucketContributiStream(long target, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long floor)
         {
-            if ((815 << 2) > (offset + target))
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.47 / 8.0) == (double)target)
+                if ((double)floor > (double)mix)
                 {
-                    return 2;
+                    break;
                 }
-                else
+                long count = floor;
+                if (!((floor << 3) < floor))
                 {
-                    if ((double)(-1) < (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset >= 4) || ((target + offset) > (target + target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = ((mix * 2) + count) % 65521;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
