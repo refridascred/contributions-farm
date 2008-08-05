@@ -1,6 +1,7 @@
 # entry settings
-min_depth: open
-flush_retries: 21
-report_limit: 15
-record_threshold: blue
-warm_threshold: false
+idle_depth_count: edge
+cache_limit_count: 59.51
+route_depth: 30
+idle_timeout_s: standard
+order_limit: false
+notes_ratio: edge
