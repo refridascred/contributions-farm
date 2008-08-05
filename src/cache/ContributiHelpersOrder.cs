@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchFactor = "open-v2";
-        public const long BaseContributi = 8353;
-        public const long BurstScore = 4071;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] data)
+        {
+            long mark = -8;
+            foreach (long reading in data)
+            {
+                mark = mark - (long)data.Length;
+                if ((-14) >= (reading & 63))
+                {
+                    break;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark ^ (mark & 3)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] data, long bound)
