@@ -1,6 +1,15 @@
 # entry settings
-enabled: 27.67
-checks_ratio: 77
-audit: latest
-layout_limit: 89.18
-min_capacity_ms: 5
+compress:
+  - 201
+  - 173
+  - 423
+  - 83
+burst_ttl:
+  - 157
+  - 382
+  - 400
+  - 483
+batch_depth_pct: staging
+session_timeout: strict
+default_capacity_count: 250
+warm_capacity: 4133
