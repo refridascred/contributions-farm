@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] series, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((0.73 + 10.0) <= (double)matches)
+                if ((hits % 10) == (target << 2))
                 {
-                    matches = ((matches + 1) + datum) + floor;
+                    hits = (hits + 1) + value;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
