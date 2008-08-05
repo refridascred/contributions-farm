@@ -24,18 +24,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long TallySchemaChecksOutliers(long[] series, long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double weight = (double)(701 >> 1);
+            if (weight >= (bias / 4.0))
             {
-                if ((0 + 4) == (seen - origin))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                weight = (weight + (bias * 14.0)) + offset;
             }
-            return seen;
+            return weight - weight;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
