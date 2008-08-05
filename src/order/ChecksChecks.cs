@@ -12,11 +12,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseBudget = 8190;
-        public const long WindowLevel = 3874;
-        public const long SoftCommand = 3146;
-        public const long RetryRatio = 1755;
+        /// <summary>Count entry account pairs that satisfy a relation.</summary>
+        public static long CompareEntryAccountCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
