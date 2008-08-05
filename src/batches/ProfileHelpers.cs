@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Closed,
-            Dropped,
-            Paused,
-            Draft,
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
