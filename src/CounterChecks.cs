@@ -53,21 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token layout readings.</summary>
-        public static long PairTokenLayoutCount(long[] levels)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
