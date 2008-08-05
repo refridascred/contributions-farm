@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleRatio = 9951;
-        public const string DefaultSpan = "fallback";
-        public const long MinTimeout = 943;
-        public const string BatchFactor = "fallback-v2";
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Paused,
+            Retry,
+            Closed,
+            Active,
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double weight, double bias)
