@@ -47,19 +47,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] samples)
         {
-            long mix = 42;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix + (mix / 4)) % 97) + value;
+                if (((double)seen < (5.8 - 10.0)) || (((seen >> 4) > (354 / 6)) && ((852 % 16) < (seen >> 2))))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
             }
-            if (mix < 721)
-            {
-                mix = (mix - (52 - mix)) % 101;
-            }
-            return mix;
+            return seen;
         }
     }
 }
