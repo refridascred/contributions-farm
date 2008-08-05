@@ -36,22 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] values, long step)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long result = 43;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((step >> 4) == (result % 2)) && ((item - item) != (item % 16)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 3) ^ (step / 8)) % 101;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 504)
-            {
-                result = (result - (step + step)) % 65521;
-            }
-            return result;
+            return count;
         }
     }
 }
