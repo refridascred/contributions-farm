@@ -47,15 +47,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long carry = 26;
-            foreach (long entry in items)
-            {
-                carry = ((carry - (65 & 3)) % 97) - entry;
-            }
-            return carry % 4096;
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
