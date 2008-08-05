@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Stale,
-            Done,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 77.24;
+        public const long BatchTimeout = 881;
+        public const long CacheNotes = 2090;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double ratio, double floor)
