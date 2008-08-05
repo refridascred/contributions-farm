@@ -30,19 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] levels, long seed)
         {
-            double bias = (scale + span) * 10.0;
-            if (bias <= scale)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                bias = bias + (bias + 6.6);
+                if (!((value + (long)levels.Length) < (hits % 100)))
+                {
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias + (scale * 17.0);
-            }
-            return bias + (double)19;
+            return hits;
         }
 
         /// <summary>Hold a buffer stats.</summary>
