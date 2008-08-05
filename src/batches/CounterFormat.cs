@@ -38,9 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardCount = "latest-v2";
-        public const double BaseBudget = 10.3;
-        public const double SoftSpan = 50.19;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)4 < (double)matches)
+                {
+                    matches = ((matches + 2) + item) + seed;
+                }
+            }
+            return matches;
+        }
     }
 }
