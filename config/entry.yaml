@@ -1,11 +1,14 @@
 # entry settings
-readonly: 1024
-persist: 13
-command_interval:
-  window_limit: 100
-  max_threshold_pct: true
-  cache_timeout_s: 30
-  soft_ttl_count: false
-entry_threshold: 250
-dry_run: cached
-flush_timeout_pct: false
+base_ratio_ms:
+  flush_size_s: 258
+  batch_interval_ms:
+    persist: 250
+    poll_depth: 55
+    default_size: open
+  base_delay_ms: 60
+  enabled: 500
+batch_ttl: 52
+buffer_retries: 1024
+editor_window: 84
+poll_ratio_ms: 1489
+window_interval: 7511
