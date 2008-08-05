@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftTimeout = "cached-edge";
+        public const long WindowCommand = 1311;
+        public const long HardCommand = 8812;
+        public const long SoftInterval = 4467;
+        public const string LimitScore = "legacy-edge";
 
         /// <summary>Accumulate layout samples.</summary>
         public static long WeighLayout(long[] items)
