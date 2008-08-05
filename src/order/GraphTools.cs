@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every entry already entry stays within the limit.</summary>
-        public static bool VerifyEntryAlreadyRange(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "latest-edge";
+        public const string DefaultFactor = "local-edge";
+        public const string WindowWidth = "standard-1";
+        public const string WindowRecord = "alpha-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string DefaultRatio = "fallback-v2";
