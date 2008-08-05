@@ -45,11 +45,40 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 4819;
-        public const double RetryCache = 9.0;
-        public const long BatchScore = 1388;
-        public const long LimitDepth = 3151;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long floor)
+        {
+            long cur = seed + floor;
+            if (cur > (floor << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (6 > (seed / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(7.07 < (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((2.67 - 9.0) < (double)cur) || ((80 ^ (-5)) >= seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long StepTools = 2047;
