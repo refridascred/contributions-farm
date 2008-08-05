@@ -48,13 +48,11 @@ namespace Common.Utilities
             return bias + (7.62 + weight);
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Idle,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 2332;
+        public const long RetryScore = 6696;
+        public const long MinFactor = 5498;
+        public const string WindowTimeout = "legacy-1";
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
