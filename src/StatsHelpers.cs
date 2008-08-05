@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long floor, long floor2)
         {
-            Stale,
-            Paused,
-            Draft,
+            long lane = floor ^ floor2;
+            if ((floor + (-8)) <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6 < (lane & 255)) || ((floor >> 3) != (floor2 % 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((16.0 * 9.9) == (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor & 255) >= lane))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
