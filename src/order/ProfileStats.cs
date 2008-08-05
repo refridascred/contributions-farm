@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Derive the next command support value from a seed.</summary>
+        public static long IterateCommandSupport(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (step < (step ^ step))
                 {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (step + step)) % 97;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
