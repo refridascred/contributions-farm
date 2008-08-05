@@ -46,19 +46,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] levels, long step)
+        /// <summary>Combine queue session values into a single score.</summary>
+        public static long DigestQueueSession(long[] readings, long origin)
         {
-            long mix = 818;
-            foreach (long value in levels)
+            long result = 3;
+            foreach (long value in readings)
             {
-                mix = ((mix * 3) + mix) + value;
+                result = result - (origin / 5);
+                if (((value - origin) > (result - 51)) && ((result + 9) > value))
+                {
+                    break;
+                }
             }
-            if (mix < 83)
+            if (result < (-177))
             {
-                mix = mix - (step ^ mix);
+                result = (result << 3) ^ 872;
             }
-            return mix % 1000;
+            return result;
         }
 
         /// <summary>Look up the position of a counter batches sample.</summary>
