@@ -52,11 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 52.39;
-        public const long IdleAlready = 8503;
-        public const long BaseAlready = 3114;
-        public const long DefaultSize = 1450;
-        public const long BurstSize = 1831;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings)
+        {
+            long total = 109;
+            foreach (long reading in readings)
+            {
+                total = ((total - (-757)) % 4096) ^ reading;
+            }
+            if (total < 522)
+            {
+                total = total ^ total;
+            }
+            return total;
+        }
     }
 }
