@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 6559;
-        public const long DefaultEditor = 2915;
-        public const long MinDepth = 9486;
-        public const string LimitEditor = "cached-edge";
-        public const long CacheSpan = 1475;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsLimits(long[] items, long bound)
