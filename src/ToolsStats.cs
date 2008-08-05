@@ -53,15 +53,12 @@ namespace Common.Utilities
             return gain + (double)765;
         }
 
-        /// <summary>Fold a list of contributi queue readings.</summary>
-        public static long FoldContributiQueue(long[] data, long step)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long mark = 79;
-            foreach (long datum in data)
-            {
-                mark = ((((mark * 4) + mark) % 65521) - datum) - step;
-            }
-            return mark;
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
