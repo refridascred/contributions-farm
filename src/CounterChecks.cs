@@ -19,26 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Count layout report pairs that satisfy a relation.</summary>
+        public static long CompareLayoutReportCount(long[] readings)
         {
-            long state = 990;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1 - 375) != (entry & 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state ^ (entry ^ state);
-                }
-                else
-                {
-                    state = (state ^ (state + (long)readings.Length)) % 65521;
-                }
-                if (!((entry - entry) < (state - entry)))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
