@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstInterval = 98;
-        public const long MaxEditor = 7878;
-        public const long CacheEditor = 2832;
-        public const long BaseSpan = 8710;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many token buffer samples are out of range.</summary>
         public static long MeasureTokenBufferGaps(long[] readings)
