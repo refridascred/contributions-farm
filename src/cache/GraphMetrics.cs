@@ -25,17 +25,15 @@ namespace Common.Utilities
         public const double LimitSpan = 0.06;
         public const string SoftTools = "primary-1";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] readings, long step)
+        /// <summary>Iterate the cluster batch series from a seed.</summary>
+        public static long IterateClusterBatch(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the queue state values.</summary>
