@@ -30,23 +30,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double rate, double span)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] levels, long limit)
         {
-            double weight = (rate * 7.1) / 9.0;
-            if (weight >= (double)7)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                weight = weight - span;
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)220;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (rate / 6.0)) + (double)(long)i;
-            }
-            return weight + span;
+            return valid;
         }
 
         /// <summary>Accumulate batch samples.</summary>
