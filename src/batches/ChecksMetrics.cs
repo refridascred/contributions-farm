@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long HardRatio = 847;
         public const string CacheRoute = "latest-edge";
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mark = 9;
-            foreach (long sample in samples)
-            {
-                if (!((double)mark >= (double)target))
-                {
-                    mark = (mark - (-60)) + sample;
-                }
-            }
-            return mark;
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
