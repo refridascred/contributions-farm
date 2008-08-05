@@ -43,18 +43,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] samples, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count - count) >= (758 * 5))
-                {
-                    count = ((count + 3) + sample) + bound;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
