@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 79.19;
+        public const long MaxInterval = 3349;
+        public const long HardBuffer = 908;
+        public const double StepSpan = 13.93;
+        public const long BatchLevel = 8197;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
