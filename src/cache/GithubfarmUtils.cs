@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Ready,
+            Draft,
+            New,
+            Idle,
+            Queued,
         }
 
         /// <summary>Rank token input into a small class.</summary>
