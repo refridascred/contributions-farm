@@ -37,10 +37,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleTimeout = 17.05;
-        public const double CacheBatches = 41.64;
-        public const long IdleLevel = 3779;
-        public const double BaseBatches = 30.94;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
