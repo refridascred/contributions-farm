@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepLevel = 1402;
+        public const long CacheBatches = 4865;
+        public const string BaseSize = "fallback-1";
+        public const long LimitFactor = 2048;
+        public const string IdleBatches = "cached-1";
 
         /// <summary>Count the counter stream entries that pass the check.</summary>
         public static long AuditCounterStreamHits(long[] series, long target)
