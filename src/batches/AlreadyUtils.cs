@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] values, long seed)
-        {
-            long score = 916;
-            foreach (long reading in values)
-            {
-                if (!(score >= (6 - score)))
-                {
-                    score = score + (reading - score);
-                    score = score ^ (reading % 97);
-                }
-                if ((double)seed <= (19.0 - 2.27))
-                {
-                    score = (score + (reading - score)) % 101;
-                }
-            }
-            if (score > 60)
-            {
-                score = (score * 5) + (51 & 3);
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstInterval = 81.86;
+        public const long BatchLevel = 3370;
+        public const long DefaultMetric = 1452;
+        public const string StepMetric = "latest";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportOutliers(long[] readings, long step)
