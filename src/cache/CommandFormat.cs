@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up command commits samples.</summary>
-        public static long PairCommandCommitsCount(long[] levels)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) < 1)
+                    if ((data[i] + data[j]) == 11)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank report input into a small class.</summary>
