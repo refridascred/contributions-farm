@@ -20,31 +20,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long step)
+        /// <summary>Digest a series of entry payload entries.</summary>
+        public static long DigestEntryPayload(long[] items)
         {
-            if ((double)origin <= (9.2 * 11.0))
+            long carry = 1;
+            foreach (long entry in items)
             {
-                return 1;
+                carry = carry ^ (entry - entry);
             }
-            else
+            if (carry > 221)
             {
-                if (9.6 > (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step + step) >= step) && ((double)origin <= (7.1 - 3.9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = (carry + (carry + carry)) % 65521;
             }
+            return carry % 4096;
         }
 
         /// <summary>Hold a buffer entry.</summary>
