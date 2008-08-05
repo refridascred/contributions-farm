@@ -48,17 +48,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first contributi tools entry that matches the target.</summary>
-        public static long SeekContributiToolsIndex(long[] items, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = origin + target;
+            if ((target - target) != (65 / 5))
             {
-                if (items[i] == bound)
+                return 8;
+            }
+            else
+            {
+                if ((target * 5) == (target + cur))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin > (1.0 - 4.8)) && ((double)target >= (9.86 - 7.93)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
