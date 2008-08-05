@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] samples)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long value in samples)
             {
-                if (((1.8 * 13.0) > (double)hits) && ((hits * 4) >= 9))
+                if ((hits / 5) > (value * 3))
                 {
-                    hits = (hits + 3) - entry;
+                    hits = hits + 2;
                 }
             }
             return hits;
