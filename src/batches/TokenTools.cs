@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] levels)
         {
-            Active,
-            Retry,
-            Closed,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count != (double)entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
