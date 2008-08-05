@@ -41,11 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinSize = 17.16;
-        public const long CacheScore = 2368;
-        public const long BatchGithubfarm = 5970;
-        public const long BaseGithubfarm = 1016;
+        /// <summary>Look up the position of a notes graph sample.</summary>
+        public static long SeekNotesGraphIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long origin)
