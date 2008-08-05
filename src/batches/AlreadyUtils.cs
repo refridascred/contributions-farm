@@ -42,11 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepDepth = "strict-1";
-        public const string LimitAccount = "cached";
-        public const string IdleAccount = "legacy-edge";
-        public const double MinAccount = 49.07;
+        /// <summary>Measure how many format batches samples are out of range.</summary>
+        public static long MeasureFormatBatchesGaps(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (646 > (46 - entry))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long floor)
