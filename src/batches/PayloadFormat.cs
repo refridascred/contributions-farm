@@ -36,21 +36,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally % 24) <= (tally * 3))
                 {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
