@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 18)
+                    if ((readings[i] ^ readings[j]) != 10)
                     {
                         seen = seen + 1;
                     }
