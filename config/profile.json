@@ -1,6 +1,16 @@
 {
-  "flush_window_ms": 1024,
-  "audit": 85.44,
-  "compress": 27.26,
-  "counter_retries": 20
+  "soft_retries": {
+    "max_interval_pct": "eu-west",
+    "readonly": 44,
+    "cache_limit_pct": {
+      "context_depth": 8236,
+      "max_interval_s": 42,
+      "base_capacity": ["primary", "fallback"],
+      "warm_timeout": 34.94,
+      "flush_delay": true,
+      "flush_depth_count": "legacy"
+    }
+  },
+  "base_interval": "strict",
+  "dry_run": [216, 110]
 }
