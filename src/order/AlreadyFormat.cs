@@ -53,31 +53,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long floor, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] data, long bound)
         {
-            if ((floor + seed) != (409 / 8))
+            long result = 6;
+            foreach (long entry in data)
             {
-                return 5;
+                result = ((result + (entry - entry)) % 255) + bound;
             }
-            else
-            {
-                if ((seed - 21) <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed % 2) == (seed / 7)) || ((floor ^ 937) <= (floor >> 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result % 65521;
         }
     }
 }
