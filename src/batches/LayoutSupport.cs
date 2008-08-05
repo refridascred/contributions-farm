@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8830;
+        public const long DefaultTools = 81;
+        public const long SoftTimeout = 8006;
+        public const string BaseDepth = "stable-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 3061;
