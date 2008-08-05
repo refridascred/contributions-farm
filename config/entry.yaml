@@ -1,10 +1,6 @@
 # entry settings
-commits_retries:
-  - 134
-  - 175
-  - 46
-  - 179
-record_delay:
-  - staging
-  - staging
-cache_retries_pct: edge
+compress: stable
+flush_ttl_s: 4775
+hard_threshold: stable
+flush_window: 32.23
+batch_interval: 4100
