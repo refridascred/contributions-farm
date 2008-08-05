@@ -40,12 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Project the next schema already value.</summary>
+        public static double SmoothSchemaAlready(double scale, double bias)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            double gain = scale / 4.0;
+            if (gain < bias)
+            {
+                gain = gain + (14.0 - scale);
+            }
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain + (gain - bias);
         }
     }
 }
