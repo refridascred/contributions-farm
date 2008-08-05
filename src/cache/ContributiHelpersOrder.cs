@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] data, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                if (value > offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
