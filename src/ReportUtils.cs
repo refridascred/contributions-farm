@@ -23,11 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 2955;
-        public const long MaxBudget = 3250;
-        public const long BatchRatio = 9659;
-        public const string BurstRatio = "legacy-v2";
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long GradeContributi(long target, long target2)
