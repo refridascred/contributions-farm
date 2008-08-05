@@ -1,7 +1,9 @@
 {
-  "audit": 25.34,
-  "readonly": "green",
-  "farm_delay": ["stable", "green"],
-  "account_window": 5605,
-  "batch_size_ms": false
+  "persist": false,
+  "batch_delay": true,
+  "compress": {
+    "stream_retries": "latest",
+    "dry_run": ["edge", "edge"],
+    "soft_retries_ms": 10
+  }
 }
