@@ -49,15 +49,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the stats notes series from a seed.</summary>
-        public static long IterateStatsNotes(long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long state = 935;
+            foreach (long value in samples)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                state = state ^ (value * 2);
             }
-            return score;
+            return state;
         }
 
         /// <summary>Combine support values into a single score.</summary>
