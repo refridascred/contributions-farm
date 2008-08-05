@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] levels, long bound)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((bound ^ bound) <= (value * 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a metrics support sample.</summary>
