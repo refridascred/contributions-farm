@@ -1,5 +1,11 @@
 {
-  "retry_window_pct": 22,
-  "verbose": false,
-  "batch_depth_s": "local"
+  "base_ttl_pct": 3.41,
+  "idle_retries_s": "strict",
+  "batch_delay_s": "fallback",
+  "retry_delay": {
+    "cache_delay_pct": ["latest", "staging", "staging"],
+    "min_ratio_count": 500,
+    "readonly": "open",
+    "enabled": ["blue", "edge", "open"]
+  }
 }
