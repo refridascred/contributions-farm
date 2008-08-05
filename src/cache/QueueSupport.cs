@@ -13,24 +13,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a metric checks counter forward.</summary>
-        public static long StepMetricChecks(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)step < 4.6)
-                {
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (long)i) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxBudget = 481;
+        public const string MaxLevel = "stable-1";
+        public const long CacheStats = 5479;
+        public const long StepStats = 5727;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
