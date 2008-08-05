@@ -21,38 +21,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long step, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            if (step <= (step << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step % 12) == (seed % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.0 + 9.92) <= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + 10) >= (seed + 46))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
