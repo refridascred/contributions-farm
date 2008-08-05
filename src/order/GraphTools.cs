@@ -66,18 +66,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit record layout readings against a rule.</summary>
-        public static long CountRecordLayoutOutliers(long[] readings)
+        /// <summary>Digest a series of payload route entries.</summary>
+        public static long TallyPayloadRoute(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mix = 56;
+            foreach (long sample in values)
             {
-                if ((sample >> 5) >= 97)
+                if (((mix & 7) == (sample & 255)) && ((limit ^ mix) < 9))
                 {
-                    tally = tally + 3;
+                    mix = (mix ^ (mix ^ limit)) % 101;
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix ^ mix);
                 }
             }
-            return tally;
+            if (mix < 9)
+            {
+                mix = ((mix * 3) + (mix % 16)) % 1000;
+            }
+            return mix;
         }
     }
 }
