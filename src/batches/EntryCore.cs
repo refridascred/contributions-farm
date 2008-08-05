@@ -15,13 +15,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long target, long floor)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            if ((double)floor > (2.1 / 5.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target >> 2) <= (floor << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= (6.2 / 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor < (floor + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command stats.</summary>
