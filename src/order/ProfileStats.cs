@@ -35,18 +35,27 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] levels, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = 1;
+            foreach (long cell in values)
             {
-                if (!(4 >= entry) || ((seed % 16) != (entry * 3)))
+                result = ((result * 2) + 49) % 4096;
+                if ((cell + 20) < result)
                 {
-                    hits = hits + 1;
+                    result = (result ^ result) % 255;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result / 8);
                 }
             }
-            return hits;
+            if (result < 34)
+            {
+                result = ((result * 3) + (result / 7)) % 65521;
+            }
+            return result;
         }
     }
 }
