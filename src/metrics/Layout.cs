@@ -20,18 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the farm route entries that pass the check.</summary>
-        public static long AuditFarmRouteMatches(long[] items)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((matches & 15) < (datum + matches))
+                if ((target > (state % 60)) || ((state * 5) < target))
                 {
-                    matches = matches + 1;
+                    state = (state * 3) + target;
+                    state = state + target;
                 }
+                if ((target << 1) >= 35)
+                {
+                    state = state ^ (state - target);
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Match up stream samples.</summary>
