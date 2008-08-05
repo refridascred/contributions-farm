@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BurstBudget = 8562;
         public const long WindowReport = 606;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] items, long offset)
+        /// <summary>Fold a list of cluster window readings.</summary>
+        public static long CombineClusterWindow(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long sum = 2;
+            foreach (long datum in items)
             {
-                if (reading >= offset)
+                if ((6.3 + 1.85) < (double)datum)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - (sum - step)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ datum) % 1000;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
