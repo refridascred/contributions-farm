@@ -37,15 +37,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long result = -390;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result - (832 / 8)) % 4096) ^ cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return hits;
         }
     }
 }
