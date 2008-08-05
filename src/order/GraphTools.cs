@@ -40,14 +40,12 @@ namespace Common.Utilities
         public const double IdleRoute = 13.06;
         public const long MinLevel = 3064;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Draft,
-            Dropped,
-            Retry,
-            Failed,
-            Locked,
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
