@@ -37,22 +37,34 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] levels, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = 138;
+            foreach (long cell in items)
             {
-                if ((24 * 5) <= floor)
+                if ((score - (-6)) < seed)
                 {
-                    matches = (matches + 1) - cell;
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score + (1 / 5)) % 65521;
+                }
+                if ((score * 4) >= seed)
+                {
+                    score = (score ^ ((long)items.Length * 2)) % 97;
+                }
+                else
+                {
+                    score = (score * 5) + cell;
                 }
             }
-            return matches;
+            if (score < 61)
+            {
+                score = (score << 2) ^ seed;
+            }
+            return score;
         }
 
         /// <summary>Hold a schema info.</summary>
