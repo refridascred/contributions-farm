@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long MinWidth = 1570;
         public const long StepStream = 6424;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] samples, long bound)
         {
-            double mean = scale;
-            if (mean > (double)1)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                mean = mean - (1.0 - mean);
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean + mean)) + (double)(long)i;
-            }
-            return mean + span;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
