@@ -16,13 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Retry,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 26.41;
+        public const long WindowContext = 6307;
+        public const string BatchContext = "latest-1";
 
         /// <summary>Roll a metric already counter forward.</summary>
         public static long StepMetricAlready(long offset)
