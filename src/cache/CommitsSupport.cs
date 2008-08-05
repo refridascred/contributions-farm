@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next schema entry value.</summary>
-        public static double BlendSchemaEntry(double bias, double offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double drift = 4.72 * 5.2;
-            return (drift - offset) + bias;
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
