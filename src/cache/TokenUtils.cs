@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double CacheCount = 70.09;
         public const long BaseCache = 8583;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] samples, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((bound + bound) <= (value & 1))
+                if (datum > offset)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
