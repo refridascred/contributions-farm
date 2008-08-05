@@ -32,13 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            Retry,
-            Locked,
-            Queued,
-            Dropped,
+            double ratio = weight;
+            if (ratio > (span + weight))
+            {
+                ratio = ratio + (double)2;
+            }
+            else
+            {
+                ratio = ratio - (double)59;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (ratio * 3.88);
         }
 
         /// <summary>Describe the counter level values.</summary>
