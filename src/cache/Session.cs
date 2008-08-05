@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of tools layout entries.</summary>
-        public static long CombineToolsLayout(long[] readings, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = 157;
-            foreach (long cell in readings)
-            {
-                carry = carry - ((-8) + cell);
-            }
-            if (carry > 35)
-            {
-                carry = (carry * 4) + (offset ^ carry);
-            }
-            return carry;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
