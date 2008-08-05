@@ -19,27 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long TotalFormatAccount(long[] values, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long result = 476;
-            foreach (long item in values)
-            {
-                if (!((target << 1) > item))
-                {
-                    result = (result << 3) ^ (item - result);
-                    result = result - (item << 2);
-                }
-                if ((47 + item) != (long)values.Length)
-                {
-                    result = (result << 3) ^ target;
-                }
-            }
-            if (result > 55)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result;
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
