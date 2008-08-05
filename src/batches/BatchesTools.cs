@@ -20,20 +20,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long mix = 70;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 2) + (mix & 63)) + entry;
-                mix = mix + (mix + mix);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mix > (-904))
-            {
-                mix = (mix + mix) % 65521;
-            }
-            return mix;
+            return matches;
         }
     }
 }
