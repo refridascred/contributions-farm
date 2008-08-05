@@ -14,19 +14,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every record editor entry stays within the limit.</summary>
-        public static bool ValidateRecordEditorLimits(long[] values, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Stale,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a cluster info.</summary>
