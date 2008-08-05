@@ -1,10 +1,10 @@
 # Command notes
 
-Run the metric check before changing any checks limits.
-When a filter fails, the notes handler retries a few times before giving up.
+Defaults for checks live in the config folder and can be overridden per environment.
+The editor report groups every checks by record.
 
 ## Guidelines
 
-- Document new batch fields
-- Log every graph change
-- Keep support values small
+- Log every editor change
+- Review stream limits each release
+- Validate metric input early
