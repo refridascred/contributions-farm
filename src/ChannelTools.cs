@@ -19,23 +19,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            double load = bias;
-            if (load >= (load + 2.4))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (9.5 + offset);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - 3.91;
+            return hits;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
