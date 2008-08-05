@@ -43,11 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchSpan = "standard-edge";
-        public const long CacheCounter = 4769;
-        public const long IdleRatio = 2102;
-        public const long BurstCounter = 909;
-        public const long SoftScore = 4446;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)offset > 7.51)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
+        }
     }
 }
