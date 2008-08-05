@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const long SoftRatio = 4463;
         public const double BurstTimeout = 12.34;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] series, long limit)
+        /// <summary>Scale a graph batches figure with a bias.</summary>
+        public static double ProjectGraphBatches(double scale, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double gain = 9.43 * 0.81;
+            if (gain >= (double)5)
             {
-                if ((((matches >> 2) < (limit >> 1)) && ((13.0 + 0.1) <= (double)item)) || ((item << 3) == (matches & 255)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (gain - span) - scale;
             }
-            return matches;
+            else
+            {
+                gain = gain - (gain * 9.0);
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a profile record.</summary>
