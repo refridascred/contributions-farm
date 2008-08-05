@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxTimeout = "alpha-v2";
-        public const long BurstReport = 7935;
-        public const long BatchReport = 4384;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((floor << 2) >= (count - floor))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorHits(long[] data, long offset)
