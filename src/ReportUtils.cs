@@ -54,18 +54,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] values, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((limit % 3) < (cell & 31)) || ((limit & 7) < (hits >> 1))) && (((double)cell != (double)limit) && (1.9 > (double)cell)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
