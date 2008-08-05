@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi cache samples.</summary>
-        public static long DigestContributiCache(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] samples, long seed)
         {
-            long sum = -87;
-            foreach (long reading in series)
+            long carry = 90;
+            foreach (long cell in samples)
             {
-                if ((8.46 / 4.0) > (double)reading)
+                carry = carry ^ (36 % 3);
+                if (((double)carry >= (7.0 + 3.55)) && ((double)cell > (7.6 * 10.0)))
                 {
-                    sum = ((sum << 2) ^ (reading ^ sum)) % 101;
+                    carry = (carry * 5) + seed;
                 }
             }
-            if (sum > 70)
-            {
-                sum = (sum ^ (149 - sum)) % 101;
-            }
-            return sum % 4096;
+            return carry;
         }
 
         /// <summary>Accumulate metric batch samples.</summary>
