@@ -1,8 +1,6 @@
 {
-  "commits_ttl": 100,
-  "enabled": "standard",
-  "batch_size": 100,
-  "readonly": "green",
-  "base_retries_ms": [75, 117],
-  "cache_limit_s": "blue"
+  "context_size": [51, 345, 24],
+  "persist": true,
+  "min_limit_s": "fallback",
+  "compress": 2485
 }
