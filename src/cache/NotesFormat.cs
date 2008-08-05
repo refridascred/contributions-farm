@@ -34,22 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] readings, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 951;
+            foreach (long cell in series)
             {
-                if ((target + target) > hits)
+                state = state + (cell % 12);
+                if ((state + cell) >= ((-52) >> 2))
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (state < 798)
+            {
+                state = ((state << 3) ^ state) % 255;
+            }
+            return state;
         }
     }
 }
