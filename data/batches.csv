@@ -1,9 +1,8 @@
-id,level,region,owner
-1,433,14.96,open
-2,385,standard,312
-3,standard,latest,blue
-4,staging,55.53,cached
-5,430,staging,491
-6,82.14,staging,legacy
-7,strict,green,67.01
-8,27.89,38.42,192
+id,score,label,owner
+1,472,open,71.49
+2,729,702,cached
+3,edge,stable,local
+4,green,136,61.04
+5,45.73,791,fallback
+6,202,eu-west,staging
+7,201,134,73.99
