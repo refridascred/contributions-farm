@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank queue order input into a small class.</summary>
-        public static long ClassifyQueueOrder(long seed, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long bound, long limit)
         {
-            if ((step - step) > step)
+            if ((7.3 / 2.0) == (double)bound)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (step < (6 % 100))
+                if ((limit << 3) != (24 - bound))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 8;
                 }
             }
         }
