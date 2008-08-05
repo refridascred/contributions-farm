@@ -29,38 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long limit, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long bound)
         {
-            if ((step >> 3) == (step ^ 8))
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step + limit) < (limit & 15))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((4.3 + 7.4) <= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((15.0 - 6.86) <= (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
