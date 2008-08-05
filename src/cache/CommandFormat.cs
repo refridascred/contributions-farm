@@ -56,25 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long floor, long bound)
+        /// <summary>Match up filter editor samples.</summary>
+        public static long MatchFilterEditorCount(long[] levels)
         {
-            long next = floor - bound;
-            if (((double)floor >= (19.0 / 5.0)) && ((bound / 4) >= (bound * 2)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (801 <= next)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate batches order readings against a bound.</summary>
