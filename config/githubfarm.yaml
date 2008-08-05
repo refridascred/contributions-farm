@@ -1,21 +1,45 @@
 # githubfarm settings
-verbose:
-  cluster_ratio:
-    default_ratio_s: 83
-    verbose:
-      - open
-      - stable
-      - legacy
-      - legacy
-    readonly: 2792
-    warm_window: false
-  burst_ttl:
-    - green
-    - eu-west
+cache_timeout: 10.92
+stats_limit:
+  already_interval: blue
+  persist:
+    strict:
+      - 345
+      - 123
+      - 19
+    dry_run:
+      - standard
+      - fallback
+    verbose: 33.46
+  audit:
     - staging
-  dry_run: latest
-max_interval_count: false
-poll_retries:
-  - 34
-  - 329
-  - 80
+    - standard
+  dry_run:
+    max_interval_s: 60
+    schema_ttl:
+      - edge
+      - primary
+      - primary
+    compress: 250
+  hard_size_ms:
+    counter_threshold:
+      - latest
+      - green
+    checks_ratio:
+      - 200
+      - 374
+      - 357
+    session_interval: standard
+    burst_size_ms: 2361
+    min_retries: 8994
+base_retries_s:
+  poll_capacity_s:
+    - 286
+    - 472
+  soft_ttl:
+    - stable
+    - local
+  default_ttl_s: 7793
+warm_threshold_pct: 60
+hard_timeout_s: stable
+audit: 4615
