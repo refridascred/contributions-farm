@@ -27,10 +27,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 994;
-        public const string DefaultTimeout = "latest";
-        public const long RetryChecks = 5754;
-        public const string BaseInterval = "fallback-edge";
+        /// <summary>Derive the next batch support value from a seed.</summary>
+        public static long RollBatchSupport(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result + ((long)i ^ (long)i)) % 1000;
+                result = (result + floor) % 255;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
