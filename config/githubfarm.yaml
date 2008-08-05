@@ -1,7 +1,21 @@
 # githubfarm settings
-soft_window_s: eu-west
-default_interval_s: false
-soft_ratio:
-  max_window_count: legacy
-  verbose: primary
-  batch_size_pct: 500
+verbose:
+  cluster_ratio:
+    default_ratio_s: 83
+    verbose:
+      - open
+      - stable
+      - legacy
+      - legacy
+    readonly: 2792
+    warm_window: false
+  burst_ttl:
+    - green
+    - eu-west
+    - staging
+  dry_run: latest
+max_interval_count: false
+poll_retries:
+  - 34
+  - 329
+  - 80
