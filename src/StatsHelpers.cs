@@ -20,18 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of already buffer entries.</summary>
-        public static long TotalAlreadyBuffer(long[] series)
+        /// <summary>Find the first buffer editor entry that matches the target.</summary>
+        public static long SeekBufferEditorIndex(long[] series, long step)
         {
-            long carry = 257;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.88 + 18.0) <= (double)item)
+                if ((series[i] < step) && ((series[i] % 5) != 0))
                 {
-                    carry = carry ^ carry;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
