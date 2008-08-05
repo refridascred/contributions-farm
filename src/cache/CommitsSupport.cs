@@ -57,15 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double ratio, double offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double rate = offset;
-            if (rate <= rate)
-            {
-                rate = rate - ratio;
-            }
-            return rate + (ratio - 4.0);
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
