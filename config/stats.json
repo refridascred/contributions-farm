@@ -1,6 +1,11 @@
 {
-  "audit": 14.46,
-  "counter_depth": 1024,
-  "retry_interval": 99,
-  "format_interval": 19.89
+  "default_ttl_pct": ["eu-west", "local", "blue", "edge"],
+  "metrics_delay": 2,
+  "burst_ratio_s": {
+    "audit": 71,
+    "verbose": "local",
+    "persist": "legacy",
+    "idle_timeout_ms": "staging"
+  },
+  "idle_depth": 21
 }
