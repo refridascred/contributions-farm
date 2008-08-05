@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] data, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((matches + 62) < value)
+                if (((count + reading) <= (count - reading)) && ((8 + reading) < reading))
                 {
-                    matches = (matches + 3) + offset;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
