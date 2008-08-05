@@ -1,7 +1,5 @@
 # githubfarm settings
-sync_retries: local
-retry_window:
-  - 412
-  - 88
-  - 50
-report_timeout: latest
+idle_retries_ms: latest
+burst_delay_pct: 84
+persist: 2112
+hard_size_count: 9563
