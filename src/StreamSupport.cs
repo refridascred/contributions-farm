@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Paused,
-            Pending,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 2298;
+        public const long LimitStats = 6373;
+        public const long CacheTimeout = 2117;
+        public const long MinSpan = 2787;
+        public const long BurstFactor = 5436;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] levels)
