@@ -1,9 +1,11 @@
 # entry settings
-burst_timeout_s: stable
-readonly: 70.32
-layout_timeout:
-  - eu-west
-  - cached
-  - fallback
-  - strict
-compress: strict
+cache_ttl_count: 98.28
+channel_interval:
+  flush_threshold: 90
+  audit: 30.58
+  route_depth:
+    - standard
+    - standard
+flush_capacity_pct: 8274
+max_depth_ms: 52.06
+flush_depth: true
