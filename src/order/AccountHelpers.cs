@@ -31,15 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long carry = 97;
+            foreach (long item in series)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                carry = ((carry - (carry % 100)) ^ item) - target;
+                if (((6.03 * 9.0) > (double)carry) || ((16.0 * 8.64) != (double)carry))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry > (-24))
+            {
+                carry = carry ^ (carry ^ carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
