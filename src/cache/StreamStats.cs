@@ -45,19 +45,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            long anchor = 480;
-            foreach (long reading in values)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor ^ (anchor - anchor)) ^ reading;
+                score = ((score * 5) + (long)i) % 97;
             }
-            if (anchor > 6)
-            {
-                anchor = ((anchor * 4) + (891 << 3)) % 255;
-            }
-            return anchor;
+            return score;
         }
     }
 }
