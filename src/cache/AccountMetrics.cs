@@ -48,18 +48,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data)
+        /// <summary>Adjust a schema report reading.</summary>
+        public static double SmoothSchemaReport(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double gain = ratio;
+            if (gain <= ratio)
             {
-                if ((value + value) >= seen)
-                {
-                    seen = seen + 1;
-                }
+                gain = (gain - (double)599) + offset;
             }
-            return seen;
+            else
+            {
+                gain = gain + (4.1 - gain);
+            }
+            return gain - (ratio * 5.26);
         }
 
         /// <summary>Describe the graph phase values.</summary>
