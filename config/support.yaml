@@ -1,9 +1,17 @@
 # support settings
-audit: cached
-farm_size: standard
-warm_capacity_s: legacy
-warm_window_ms: standard
-soft_ttl: legacy
-strict:
-  - 308
-  - 165
+hard_window_count: 69
+compress: 3.42
+burst_ttl_count:
+  graph_retries: legacy
+  max_retries:
+    compress: legacy
+    window_timeout: 97
+    min_interval_s:
+      - 72
+      - 259
+      - 34
+      - 167
+  flush_retries_ms: true
+context_window:
+  - cached
+  - green
