@@ -96,15 +96,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] samples, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long result = 602;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                result = ((result << 2) ^ (limit & 3)) + cell;
             }
-            return anchor;
+            if (result > 737)
+            {
+                result = (result ^ (result + result)) % 4096;
+            }
+            return result;
         }
     }
 }
