@@ -27,21 +27,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stats editor pairs that satisfy a relation.</summary>
-        public static long OverlapStatsEditorCount(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((1.09 * 15.0) < (double)offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((7.3 - 9.2) > (double)target) && ((target >> 4) <= (592 / 2)))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
