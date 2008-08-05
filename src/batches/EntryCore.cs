@@ -24,38 +24,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long origin, long seed)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long seed)
         {
-            if ((origin <= (seed - origin)) || ((seed + origin) != (origin / 3)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= (double)seed)
+                if (series[i] <= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((8 << 2) <= origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (double)151)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
