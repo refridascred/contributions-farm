@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "legacy";
+        public const long HardSpan = 1520;
+        public const long StepGithubfarm = 595;
+        public const long MaxGithubfarm = 625;
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double weight, double bias)
