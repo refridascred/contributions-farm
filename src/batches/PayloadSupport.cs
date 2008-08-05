@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Count the route metric entries that pass the check.</summary>
+        public static long TallyRouteMetricMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < (item + count))
                 {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + limit;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
