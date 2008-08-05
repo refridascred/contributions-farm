@@ -42,19 +42,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate batches order readings against a bound.</summary>
-        public static bool ValidateBatchesOrderRange(long[] levels, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Idle,
+            New,
+            Done,
         }
     }
 }
