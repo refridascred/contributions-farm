@@ -42,17 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] readings, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 3;
+            foreach (long value in values)
             {
-                if (readings[i] >= bound)
+                if (value >= (value << 2))
                 {
-                    return (long)i;
+                    state = (state - (value >> 2)) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a profile stats.</summary>
