@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "legacy-edge";
-        public const long WindowAccount = 1096;
-        public const double IdleAccount = 50.21;
-        public const long SoftAccount = 5475;
-        public const long HardScore = 3782;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
