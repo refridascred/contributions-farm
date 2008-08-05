@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] items, long bound)
         {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
