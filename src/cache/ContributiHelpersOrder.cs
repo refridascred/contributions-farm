@@ -41,22 +41,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] items, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum <= (6.82 - 2.0))
-                {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Failed,
+            Queued,
+            Pending,
         }
     }
 }
