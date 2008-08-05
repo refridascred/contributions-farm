@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double weight = (double)(6 - 66);
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight - (5.1 - gain)) + (double)(long)i) + offset;
-            }
-            return weight - (gain / 9.0);
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
