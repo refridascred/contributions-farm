@@ -46,11 +46,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long origin, long bound)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
+            if ((origin % 8) != (bound + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound - bound) <= origin) && ((bound + bound) <= (37 / 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
