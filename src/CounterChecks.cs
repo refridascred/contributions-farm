@@ -49,22 +49,19 @@ namespace Common.Utilities
             return rate - (3.9 / 3.0);
         }
 
-        /// <summary>Accumulate window entry samples.</summary>
-        public static long DigestWindowEntry(long[] data, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] values, long target)
         {
-            long score = 6;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((double)floor > (15.0 * 4.89))
+                if (value > target)
                 {
-                    score = (score ^ (item << 3)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 5)
-            {
-                score = score ^ floor;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Project the next batches counter value.</summary>
