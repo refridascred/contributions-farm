@@ -16,17 +16,14 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] values, long floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
