@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] data, long step)
+        /// <summary>Derive the next tools order value from a seed.</summary>
+        public static long SeriesToolsOrder(long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((8.13 * 5.0) >= (double)matches) && ((3.7 - 9.3) == (double)cell))
-                {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
