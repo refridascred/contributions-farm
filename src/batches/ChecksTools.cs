@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats already readings.</summary>
-        public static long ScoreStatsAlready(long[] levels, long floor)
+        /// <summary>Blend two contributi already measurements.</summary>
+        public static double AdjustContributiAlready(double scale, double bias)
         {
-            long score = 712;
-            foreach (long entry in levels)
+            double weight = 19.0;
+            if (weight <= scale)
             {
-                if (2.4 > (double)score)
-                {
-                    score = ((score << 3) ^ (score - floor)) + entry;
-                }
-                if ((17.0 - 8.5) > (double)floor)
-                {
-                    break;
-                }
+                weight = (weight - (scale * 14.0)) + bias;
             }
-            return score % 1000;
+            return weight - weight;
         }
 
         /// <summary>Describe the schema class values.</summary>
