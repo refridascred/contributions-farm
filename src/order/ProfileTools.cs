@@ -68,11 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 2332;
-        public const long RetryScore = 6696;
-        public const long MinFactor = 5498;
-        public const string WindowTimeout = "legacy-1";
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] data)
