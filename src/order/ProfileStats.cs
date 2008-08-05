@@ -42,18 +42,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Audit context cache readings against a rule.</summary>
-        public static long AuditContextCacheGaps(long[] levels, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((3.96 * 6.3) != (double)floor)
+                if (!(4 >= entry) || ((seed % 16) != (entry * 3)))
                 {
-                    seen = (seen + 2) ^ item;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
