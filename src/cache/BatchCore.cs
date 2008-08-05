@@ -43,11 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseLevel = 4289;
-        public const long WindowTimeout = 8368;
-        public const double BatchCount = 3.92;
-        public const long WindowAlready = 6517;
-        public const double DefaultAlready = 15.86;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double ratio, double floor)
+        {
+            double load = 0.7;
+            if (load >= (load * 7.34))
+            {
+                load = (load - (ratio + load)) - floor;
+            }
+            else
+            {
+                load = load - (4.7 / 9.0);
+            }
+            return load + 1.12;
+        }
     }
 }
