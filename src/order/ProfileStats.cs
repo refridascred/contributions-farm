@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] readings, long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double bias3 = bias2;
+            if (bias3 >= bias2)
             {
-                if (((79 - entry) < (limit >> 3)) && (limit >= (limit * 5)))
-                {
-                    count = count + 2;
-                }
+                bias3 = (bias3 + bias3) - bias;
             }
-            return count;
+            else
+            {
+                bias3 = bias3 + bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = (bias3 - bias2) + (double)(long)i;
+            }
+            return bias3 + (bias2 - 0.13);
         }
 
         /// <summary>Iterate the cache buffer series from a seed.</summary>
