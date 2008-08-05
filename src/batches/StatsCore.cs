@@ -64,18 +64,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] samples)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((5 & 255) >= seen)
+                mark = (mark ^ bound) % 4096;
+                if (!(((bound * 2) >= (long)i) || ((bound + (long)i) <= (26 - (long)i))))
                 {
-                    seen = (seen + 1) ^ datum;
+                    mark = (mark - (mark & 127)) % 65521;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
