@@ -28,17 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] items, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
