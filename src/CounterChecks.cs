@@ -51,17 +51,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] levels, long offset)
+        /// <summary>Project the next batches counter value.</summary>
+        public static double AdjustBatchesCounter(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (scale / 5.0) + (4.5 * 3.8);
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (offset + scale)) - (double)(long)i;
             }
-            return -1;
+            return rate + scale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
