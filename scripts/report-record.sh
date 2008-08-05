@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached; do
+RECORD_LIMIT=452
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy standard local open; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=433
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+mode="${1:-strict}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
