@@ -21,14 +21,12 @@ namespace Common.Utilities
         public const long SoftAccount = 5475;
         public const long HardScore = 3782;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Active,
-            Dropped,
-            New,
-            Ready,
-            Locked,
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many format counter samples are out of range.</summary>
