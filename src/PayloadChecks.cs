@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            Failed,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
