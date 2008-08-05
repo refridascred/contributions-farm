@@ -45,13 +45,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
+            Retry,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a metric info.</summary>
