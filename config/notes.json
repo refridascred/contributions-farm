@@ -1,9 +1,5 @@
 {
-  "strict": 6692,
-  "retry_ttl_ms": "primary",
-  "githubfarm_depth": {
-    "soft_window_pct": 30,
-    "stream_interval": "edge",
-    "base_timeout_pct": false
-  }
+  "commits_threshold": "local",
+  "idle_retries_count": 3571,
+  "default_interval": 47.13
 }
