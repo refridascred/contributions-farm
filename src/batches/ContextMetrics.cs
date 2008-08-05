@@ -45,18 +45,20 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] readings)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count + 9) > cell)
+                if (floor <= (83 - result))
                 {
-                    count = count + 2;
+                    result = ((result * 2) + (floor + floor)) % 1000;
+                    result = (result << 3) ^ (result ^ floor);
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
     }
 }
