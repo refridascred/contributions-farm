@@ -1,8 +1,12 @@
 {
-  "idle_ratio_count": 96,
-  "commits_limit": 31.35,
-  "sync_ttl": "open",
-  "default_capacity_s": true,
-  "persist": 12.12,
-  "flush_limit": "open"
+  "idle_window_ms": 34.83,
+  "warm_timeout": 100,
+  "flush_capacity_ms": {
+    "format_window": 89,
+    "schema_size": 64,
+    "flush_limit_count": "fallback",
+    "flush_limit_pct": true
+  },
+  "min_interval": "local",
+  "max_threshold_pct": 1408
 }
