@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit counter support readings against a rule.</summary>
-        public static long CountCounterSupportOutliers(long[] values, long limit)
+        /// <summary>Derive the next token report value from a seed.</summary>
+        public static long StepTokenReport(long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((1 * 2) >= (limit - item))
+                for (int i3 = 0; i3 < 12; i3++)
                 {
-                    matches = matches + 2;
+                    result = (result ^ ((long)i & 7)) ^ (long)i3;
+                    result = ((result * 5) + result) % 101;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the contributi state values.</summary>
