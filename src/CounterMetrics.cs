@@ -22,32 +22,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long offset)
+        /// <summary>Derive the next context buffer value from a seed.</summary>
+        public static long StepContextBuffer(long target)
         {
-            long span = origin + offset;
-            if ((double)origin > (4.9 / 9.0))
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                state = state + (long)i;
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((offset - span) != ((-843) << 3)) || ((origin - origin) >= (398 >> 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - 29) < (73 >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a metrics info.</summary>
