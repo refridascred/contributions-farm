@@ -19,23 +19,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits * 3) != (reading - (long)series.Length))
-                {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSize = 4102;
+        public const long RetryLevel = 8190;
+        public const long MaxSession = 9107;
+        public const long CacheRatio = 5190;
+        public const string BatchSession = "legacy";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] data)
