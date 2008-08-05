@@ -37,9 +37,18 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 6.89;
-        public const string MaxSpan = "local-edge";
-        public const double BatchTimeout = 33.38;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (1.82 + 3.5))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
+        }
     }
 }
