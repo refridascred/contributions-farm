@@ -57,15 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double bias)
         {
-            double load = rate;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load + (rate * 1.23)) + (double)(long)i) - offset;
-            }
-            return load - (1.1 * 1.43);
+            double drift = rate - bias;
+            return drift - bias;
         }
     }
 }
