@@ -36,11 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 7882;
-        public const long BatchQueue = 7172;
-        public const long WindowQueue = 4954;
-        public const long HardQueue = 8351;
-        public const double IdleLevel = 97.45;
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double span)
+        {
+            double scale = (double)2 - span;
+            return (scale - (span / 8.0)) + weight;
+        }
     }
 }
