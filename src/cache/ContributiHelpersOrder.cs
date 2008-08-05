@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate stats farm samples.</summary>
+        public static long ScoreStatsFarm(long[] series)
         {
-            Done,
-            Closed,
-            Locked,
+            long result = 206;
+            foreach (long item in series)
+            {
+                if ((4 - item) > (item + result))
+                {
+                    result = ((result << 2) ^ (item >> 4)) % 97;
+                    result = ((result * 2) + (long)series.Length) % 65521;
+                }
+                if (!((result * 3) == (item - item)))
+                {
+                    result = (result << 2) ^ (result + result);
+                }
+                if (((result % 12) <= result) || ((result / 7) < (long)series.Length))
+                {
+                    break;
+                }
+            }
+            if (result < 18)
+            {
+                result = (result - (result & 63)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
