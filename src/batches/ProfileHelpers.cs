@@ -45,13 +45,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
+            Active,
+            Synced,
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the filter class values.</summary>
