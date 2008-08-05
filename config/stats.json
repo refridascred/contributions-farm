@@ -1,6 +1,5 @@
 {
-  "context_size": [51, 345, 24],
-  "persist": true,
-  "min_limit_s": "fallback",
-  "compress": 2485
+  "warm_retries_s": true,
+  "hard_window_s": 31.56,
+  "default_retries": "eu-west"
 }
