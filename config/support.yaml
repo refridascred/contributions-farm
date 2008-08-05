@@ -1,15 +1,8 @@
 # support settings
-min_limit_ms:
-  - strict
-  - cached
-  - standard
-  - blue
-batch_size_pct: stable
-token_retries: false
-soft_delay:
-  - 432
-  - 111
-  - 90
-  - 117
-idle_timeout_ms: 1024
-burst_interval_pct: 8869
+flush_retries_pct: open
+persist: 100
+burst_retries: 1024
+batches_capacity:
+  - 165
+  - 286
+flush_timeout_ms: true
