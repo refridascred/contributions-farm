@@ -40,9 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryTimeout = 3078;
-        public const long LimitFormat = 7229;
-        public const long BurstBudget = 7228;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
