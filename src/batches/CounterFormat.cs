@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Count already support pairs that satisfy a relation.</summary>
+        public static long MatchAlreadySupportCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 14)
+                    if ((values[i] ^ values[j]) == 0)
                     {
                         seen = seen + 1;
                     }
