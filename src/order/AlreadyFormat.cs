@@ -26,19 +26,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long step)
         {
-            long carry = 710;
-            foreach (long reading in data)
+            if (!((double)step <= (double)bound))
             {
-                carry = ((carry * 5) + (reading + carry)) % 255;
+                return 2;
             }
-            if (carry < 519)
+            else
             {
-                carry = (carry + (carry + carry)) % 255;
+                if ((2.3 - 4.61) > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (40 > (bound * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)step < (1.0 + 11.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return carry % 1000;
         }
 
         /// <summary>Hold a layout record.</summary>
