@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate support farm readings against a bound.</summary>
-        public static bool ValidateSupportFarmRange(long[] readings, long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Ready,
+            Failed,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
