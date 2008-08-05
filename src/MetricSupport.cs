@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] samples, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
