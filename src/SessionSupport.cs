@@ -30,9 +30,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryBudget = 1654;
-        public const long MaxCount = 7203;
-        public const long BatchScore = 7611;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitSize = 111;
+        public const long LimitSpan = 8769;
+        public const long BatchTools = 4124;
     }
 }
