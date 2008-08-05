@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit stats notes readings against a rule.</summary>
-        public static long TallyStatsNotesOutliers(long[] readings)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] data)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)readings.Length == (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) ^ reading;
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
