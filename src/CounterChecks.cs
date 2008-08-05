@@ -68,22 +68,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate window entry samples.</summary>
-        public static long WeighWindowEntry(long[] values)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] levels, long offset)
         {
-            long total = 958;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total >> 3) < total)
+                if (levels[i] == offset)
                 {
-                    total = (total ^ value) % 4096;
-                }
-                else
-                {
-                    total = (total - (value & 31)) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
