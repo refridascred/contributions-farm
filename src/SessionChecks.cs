@@ -13,11 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next stream cluster value.</summary>
-        public static double BlendStreamCluster(double gain, double floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] data)
         {
-            double gain2 = 15.0;
-            return ((gain2 - (gain2 / 7.0)) + gain) + floor;
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((sample * 2) <= 2) || ((tally + tally) == (sample % 5)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
