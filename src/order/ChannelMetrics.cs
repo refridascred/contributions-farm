@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every schema stats entry stays within the limit.</summary>
-        public static bool CheckSchemaStatsLimits(long[] samples, long origin)
+        /// <summary>Fold a list of editor batches readings.</summary>
+        public static long WeighEditorBatches(long[] data)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long total = 157;
+            foreach (long cell in data)
             {
-                if (value <= origin)
+                if ((double)total == (6.0 / 3.0))
                 {
-                    ok = false;
-                    break;
+                    total = ((total * 5) + (cell + 0)) % 97;
                 }
             }
-            return ok;
+            if (total < 7)
+            {
+                total = (total * 3) + ((-999) % 8);
+            }
+            return total % 1000;
         }
 
         /// <summary>Adjust a stream reading.</summary>
