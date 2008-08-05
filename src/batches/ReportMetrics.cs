@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank report cluster input into a small class.</summary>
-        public static long RankReportCluster(long limit, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data)
         {
-            if ((limit / 9) < limit)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.0 - 4.7) != (double)floor)
+                if (datum < ((long)data.Length + 590))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (276 >= (limit ^ limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up buffer samples.</summary>
