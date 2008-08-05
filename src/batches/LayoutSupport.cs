@@ -64,12 +64,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 6837;
-        public const long LimitTimeout = 8653;
-        public const long MaxCounter = 2438;
-        public const string LimitBudget = "fallback-v2";
-        public const string SoftBudget = "open-1";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterMatches(long[] data, long offset)
