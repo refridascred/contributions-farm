@@ -1,7 +1,9 @@
-id,active,level,owner,rank
-1,fallback,57.24,24.35,cached
-2,open,40.21,349,909
-3,blue,191,217,stable
-4,23.49,cached,legacy,19.58
-5,979,91.79,488,62.44
-6,43.61,56.37,standard,764
+id,ratio,owner,label
+1,standard,cached,74.48
+2,68.32,49.94,37.01
+3,675,341,91
+4,938,standard,legacy
+5,492,153,85.31
+6,599,880,716
+7,72.32,cached,835
+8,eu-west,staging,21.3
