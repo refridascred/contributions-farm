@@ -28,15 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double weight, double offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] values, long seed)
         {
-            double bias = (double)20;
-            if (bias >= (double)35)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                bias = (bias - offset) + weight;
+                if (166 < (seed & 7))
+                {
+                    tally = (tally + 1) - datum;
+                }
             }
-            return bias - offset;
+            return tally;
         }
     }
 }
