@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] samples, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double weight = bias;
+            if (weight >= (weight / 2.0))
             {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight + (bias + 5.0)) + floor;
             }
-            return ready;
+            return weight + weight;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
