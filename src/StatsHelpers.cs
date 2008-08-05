@@ -25,18 +25,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] values)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((3.0 + 0.93) >= (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
