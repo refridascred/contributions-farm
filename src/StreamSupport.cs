@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] values, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)tally != (13.0 * 2.1)))
                 {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) + cell) + offset;
                 }
             }
             return tally;
