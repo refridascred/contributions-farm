@@ -33,12 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepWidth = "latest-v2";
+        public const long BaseSize = 155;
+        public const long IdleBuffer = 7666;
+        public const long SoftWidth = 9287;
 
         /// <summary>Look up the position of a channel context sample.</summary>
         public static long LocateChannelContextIndex(long[] data, long floor)
