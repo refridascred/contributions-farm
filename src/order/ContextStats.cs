@@ -68,26 +68,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long limit)
         {
-            long result = 65;
-            foreach (long cell in samples)
+            if (((double)limit != (11.0 - 5.5)) || ((416 - 7) <= (step % 64)))
             {
-                if ((result - 79) < (result + cell))
+                return 5;
+            }
+            else
+            {
+                if ((limit << 3) <= (14 << 3))
                 {
-                    result = ((result * 2) + (cell - result)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    result = (result - cell) % 1000;
+                    return 8;
                 }
             }
-            if (result < 11)
-            {
-                result = (result ^ (763 + 63)) % 97;
-            }
-            return result % 97;
         }
     }
 }
