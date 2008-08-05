@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const long BaseInterval = 6213;
         public const long MinCache = 4719;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "cached-edge";
-        public const long MaxInterval = 827;
-        public const long IdleSize = 7604;
-        public const double SoftDepth = 4.53;
-        public const long LimitProfile = 9956;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
