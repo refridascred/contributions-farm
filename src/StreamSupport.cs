@@ -29,18 +29,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the batch token entries that pass the check.</summary>
-        public static long MeasureBatchTokenHits(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((seed - 77) < (value / 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 7815;
+        public const double RetryAccount = 82.69;
+        public const long BurstInterval = 8273;
     }
 }
