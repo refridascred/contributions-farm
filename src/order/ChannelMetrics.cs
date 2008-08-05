@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double bias)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            double rate = weight;
+            if (rate >= rate)
+            {
+                rate = (rate + (weight + rate)) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + 6.66) + (double)(long)i;
+            }
+            return rate - (double)32;
         }
 
         /// <summary>Blend two layout stats measurements.</summary>
