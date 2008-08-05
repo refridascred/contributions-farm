@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheScore = 3824;
-        public const string WindowMetrics = "strict-v2";
-        public const long StepRatio = 6210;
-        public const long StepMetrics = 3965;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
