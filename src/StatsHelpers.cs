@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepRatio = 4097;
+        public const double DefaultLevel = 97.95;
+        public const string WindowPayload = "standard-1";
+        public const double LimitScore = 98.84;
 
         /// <summary>Digest a series of already buffer entries.</summary>
         public static long TotalAlreadyBuffer(long[] series)
