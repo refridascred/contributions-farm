@@ -1,21 +1,16 @@
 # githubfarm settings
-sync_limit:
-  commits_retries:
-    - 31
-    - 248
-    - 77
-    - 245
-  compress: 38.75
-  cache_interval_ms: 47.61
-  cache_interval: 60
-  hard_capacity_s:
-    - 40
-    - 11
-    - 486
-  persist: edge
-payload_window:
-  - 175
-  - 398
-  - 459
-  - 294
-graph_threshold: 64.62
+cache_depth: 77.43
+batches_size:
+  - 268
+  - 93
+command_window: 500
+idle_ttl_ms:
+  dry_run: standard
+  flush_capacity_count: 8612
+  cache_size: cached
+  notes_delay:
+    flush_interval_ms: green
+    base_ratio: 1385
+    cache_retries_s: 41.61
+  enabled: 63.22
+  warm_depth_ms: primary
