@@ -43,18 +43,17 @@ namespace Common.Utilities
         public const string CacheLevel = "staging-v2";
         public const long WindowRatio = 185;
 
-        /// <summary>Accumulate entry already samples.</summary>
-        public static long TotalEntryAlready(long[] readings)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] samples, long step)
         {
-            long anchor = 987;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (4.01 <= (double)anchor)
+                if ((samples[i] == step) && ((samples[i] % 3) == 0))
                 {
-                    anchor = ((anchor << 3) ^ (anchor ^ cell)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
