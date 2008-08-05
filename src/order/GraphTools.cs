@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const long IdleSpan = 2678;
         public const string BurstContext = "legacy-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRatio = 54.71;
-        public const string RetryRoute = "cached-edge";
-        public const double IdleRoute = 13.06;
-        public const long MinLevel = 3064;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
