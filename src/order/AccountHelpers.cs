@@ -85,18 +85,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] items, long offset)
+        /// <summary>Find the first counter command entry that matches the target.</summary>
+        public static long FindCounterCommandIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.25 + 2.64) <= (double)reading)
+                if ((items[i] < offset) && ((items[i] % 2) == 0))
                 {
-                    tally = (tally + 3) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
