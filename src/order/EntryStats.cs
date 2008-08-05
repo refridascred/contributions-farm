@@ -49,20 +49,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxRatio = 2717;
+        public const double MaxQueue = 29.25;
+        public const string WindowQueue = "cached-v2";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] items, long bound)
