@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double weight, double offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long seed)
         {
-            double load = weight;
-            if (load < (offset - offset))
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                load = load + (double)(-966);
+                if ((long)i > (13 - 24))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc ^ (7 / 7)) % 1000) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + 6.8;
+            return acc;
         }
 
         /// <summary>Match up stats samples.</summary>
