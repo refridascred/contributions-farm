@@ -31,21 +31,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 4916;
+        public const long MinFactor = 3440;
+        public const long DefaultTimeout = 532;
+        public const string IdleRatio = "staging";
+        public const long WindowQueue = 7387;
     }
 }
