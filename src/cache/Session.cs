@@ -29,19 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] readings, long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < floor)
+                if (samples[i] <= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Project the next farm value.</summary>
