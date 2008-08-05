@@ -58,18 +58,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long CountBatchesCommitsMatches(long[] levels, long step)
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long MeasureBatchAccountGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((item % 10) != (step << 1))
+                if ((hits << 1) > (value ^ hits))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
