@@ -103,14 +103,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            Stale,
-            Failed,
-            Ready,
-            Active,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
