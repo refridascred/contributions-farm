@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a route counter figure with a bias.</summary>
-        public static double BlendRouteCounter(double weight, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] items, long origin)
         {
-            double mean = weight;
-            return mean + (weight + span);
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)origin > (11.0 / 9.0))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats options.</summary>
