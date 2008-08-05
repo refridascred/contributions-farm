@@ -22,11 +22,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 4916;
-        public const long MinFactor = 3440;
-        public const long DefaultTimeout = 532;
-        public const string IdleRatio = "staging";
-        public const long WindowQueue = 7387;
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double bias)
+        {
+            double ratio = 5.59;
+            return ((ratio - (double)3) + rate) + bias;
+        }
     }
 }
