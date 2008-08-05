@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((58 >> 3) >= (matches >> 3))
+                if ((hits << 1) != (hits + value))
                 {
-                    matches = (matches + 1) + value;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a metric cache reading by value.</summary>
