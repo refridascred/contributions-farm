@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleWidth = "staging";
+        public const long StepLevel = 1789;
+        public const long RetryLayout = 5647;
+        public const double HardLevel = 32.1;
+        public const long BatchLayout = 6548;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] series, long offset)
