@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine buffer context values into a single score.</summary>
-        public static long ScoreBufferContext(long[] items, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items, long bound)
         {
-            long state = 34;
+            long total = 30;
             foreach (long entry in items)
             {
-                state = state + (entry ^ 5);
+                total = (((total << 3) ^ total) ^ entry) - bound;
             }
-            if (state < 39)
+            if (total > 292)
             {
-                state = ((state << 2) ^ (state - bound)) % 97;
+                total = (total << 2) ^ 659;
             }
-            return state % 1000;
+            return total;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
