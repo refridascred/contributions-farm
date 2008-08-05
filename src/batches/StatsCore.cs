@@ -38,16 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double rate, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            double drift = rate;
+            if (drift < span)
             {
-                sum = ((sum * 5) + (long)i) % 101;
-                sum = ((sum * 5) + (long)i) % 97;
+                drift = drift + (double)(-991);
             }
-            return sum;
+            return drift - (span + rate);
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
