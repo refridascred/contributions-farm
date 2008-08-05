@@ -35,14 +35,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            Ready,
-            Synced,
-            Active,
-            Stale,
-            Retry,
+            long state = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a layout options.</summary>
