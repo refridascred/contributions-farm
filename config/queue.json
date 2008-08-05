@@ -1,7 +1,12 @@
 {
-  "readonly": 6607,
-  "editor_size": "primary",
-  "soft_window_count": "stable",
-  "audit": true,
-  "hard_size": true
+  "burst_size_pct": "staging",
+  "min_threshold_s": 8,
+  "poll_interval_count": 22.2,
+  "idle_window_ms": {
+    "flush_limit_s": 6.96,
+    "base_size_s": "edge",
+    "command_delay": [314, 216],
+    "sync_ratio_s": 1745
+  },
+  "context_size": false
 }
