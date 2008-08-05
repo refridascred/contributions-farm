@@ -22,11 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double bias)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double ratio = 5.59;
-            return ((ratio - (double)3) + rate) + bias;
+            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
