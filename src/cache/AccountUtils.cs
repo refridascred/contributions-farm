@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long limit, long origin)
         {
-            double gain = scale;
-            return (gain - (double)955) + floor;
+            long diff = limit ^ origin;
+            if ((limit / 8) < diff)
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin >= (76 ^ limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
