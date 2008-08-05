@@ -12,16 +12,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long result = 1;
+            foreach (long value in levels)
             {
-                acc = acc + (acc & 127);
-                acc = ((acc * 5) + (long)i) % 65521;
+                result = (((result << 3) ^ result) % 101) + value;
             }
-            return acc;
+            if (result > 880)
+            {
+                result = (result * 5) + (result - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
