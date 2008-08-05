@@ -31,11 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 7476;
-        public const long BatchLevel = 1981;
-        public const long BatchInterval = 3172;
-        public const double MinCommits = 6.67;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double BlendMetric(double ratio, double floor)
