@@ -27,19 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format session entry stays within the limit.</summary>
-        public static bool CheckFormatSessionBounds(long[] series, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
