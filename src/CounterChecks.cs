@@ -19,21 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count layout report pairs that satisfy a relation.</summary>
-        public static long CompareLayoutReportCount(long[] readings)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Adjust a report reading.</summary>
