@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] items, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)origin > (11.0 / 9.0))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
