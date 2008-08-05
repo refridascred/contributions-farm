@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm record entries that pass the check.</summary>
-        public static long AuditGithubfarmRecordGaps(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long sum = 3;
+            foreach (long sample in readings)
             {
-                if ((8 + 7) >= matches)
-                {
-                    matches = (matches + 2) + entry;
-                }
+                sum = ((sum ^ (sum >> 5)) % 4096) + sample;
             }
-            return matches;
+            if (sum > 65)
+            {
+                sum = (sum << 2) ^ (origin - origin);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
