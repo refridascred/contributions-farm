@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double scale, double floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            double mean = scale;
-            if (mean < (double)23)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean + (double)(-6);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + (floor / 4.0);
-            }
-            return mean - 8.0;
+            return mix;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
