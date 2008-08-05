@@ -42,11 +42,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 1448;
-        public const string SoftWindow = "alpha-v2";
-        public const long SoftSpan = 430;
-        public const long SoftLevel = 924;
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double rate, double offset)
+        {
+            double scale = rate;
+            if (scale >= (rate * 7.3))
+            {
+                scale = (scale + (double)47) - offset;
+            }
+            else
+            {
+                scale = scale - (double)22;
+            }
+            return scale - 3.53;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
