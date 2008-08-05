@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum >= target)
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a filter options.</summary>
