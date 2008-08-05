@@ -56,21 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
