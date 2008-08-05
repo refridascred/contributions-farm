@@ -66,11 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit record metrics readings against a rule.</summary>
+        public static long CountRecordMetricsMatches(long[] values)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (25 >= (4 + value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
