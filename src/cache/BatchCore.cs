@@ -38,15 +38,11 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchSpan = "standard-edge";
+        public const long CacheCounter = 4769;
+        public const long IdleRatio = 2102;
+        public const long BurstCounter = 909;
+        public const long SoftScore = 4446;
     }
 }
