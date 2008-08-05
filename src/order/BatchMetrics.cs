@@ -93,15 +93,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepSpan = 7725;
+        public const string BaseCount = "primary-1";
+        public const long MaxEntry = 3705;
+        public const double HardEntry = 70.58;
+        public const long IdleEntry = 6347;
     }
 }
