@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Project the next stream cluster value.</summary>
+        public static double BlendStreamCluster(double gain, double floor)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Closed,
+            double gain2 = 15.0;
+            return ((gain2 - (gain2 / 7.0)) + gain) + floor;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
