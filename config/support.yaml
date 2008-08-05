@@ -1,7 +1,11 @@
 # support settings
-default_limit: 696
-hard_depth_pct: 5688
-compress: stable
-soft_size: 71.98
-enabled: 1024
-account_limit: true
+payload_size: fallback
+compress: 250
+flush_timeout_pct:
+  cluster_ratio: edge
+  default_timeout_count: 250
+  editor_interval: true
+  audit: 83.24
+checks_delay: 0.25
+poll_retries_ms: 67.57
+sync_ttl_pct: primary
