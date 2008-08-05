@@ -45,23 +45,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long target)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((999 << 1) != (target / 2))
+                carry = ((carry << 2) ^ target) % 1000;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    state = (state ^ (93 * 3)) % 65521;
+                    carry = (carry - (long)i) + (long)i2;
                 }
-                else
-                {
-                    state = ((state << 2) ^ (long)i) % 101;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
