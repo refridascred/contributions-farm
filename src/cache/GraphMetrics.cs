@@ -47,21 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Project the next batches already value.</summary>
+        public static double ScaleBatchesAlready(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)487 - bias;
+            if (ratio <= (bias - bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio + 15.0) - span;
             }
-            return tally;
+            return ratio - ratio;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
