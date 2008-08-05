@@ -27,11 +27,19 @@ namespace Common.Utilities
             return bias - (bias * 13.0);
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Validate already window readings against a bound.</summary>
+        public static bool ValidateAlreadyWindowRange(long[] items, long step)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate order samples.</summary>
