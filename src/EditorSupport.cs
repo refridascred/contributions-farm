@@ -54,12 +54,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
