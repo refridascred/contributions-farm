@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const double IdleStream = 16.59;
         public const double RetrySpan = 30.46;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
