@@ -13,11 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseScore = "open-1";
-        public const string StepContributi = "strict";
-        public const long BaseContributi = 463;
-        public const long DefaultDepth = 6756;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] data)
