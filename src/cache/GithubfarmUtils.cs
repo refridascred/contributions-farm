@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long result = 2;
-            foreach (long entry in series)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((-143) + (-467)) <= (result - result))
-                {
-                    result = (result - 340) + entry;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Rank token input into a small class.</summary>
