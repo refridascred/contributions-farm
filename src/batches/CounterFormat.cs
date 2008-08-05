@@ -38,11 +38,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long bound2)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long delta = bound - bound2;
+            if (13.0 > (double)delta)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound & 3) < 395)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound2 <= (double)(-6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
