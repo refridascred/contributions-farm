@@ -19,18 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value - value) == (hits % 64))
+                if (!((1.0 + 19.0) == (double)origin))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor ^ origin) % 65521;
                 }
+                else
+                {
+                    anchor = ((anchor * 2) + (origin + origin)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
