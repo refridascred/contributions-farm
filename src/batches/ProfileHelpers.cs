@@ -54,12 +54,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 1087;
-        public const long HardMetric = 4195;
-        public const long BurstMetric = 9647;
-        public const double RetryMetric = 45.36;
-        public const long BurstInterval = 4216;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Active,
+            Queued,
+            Locked,
+            New,
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyHits(long[] data)
