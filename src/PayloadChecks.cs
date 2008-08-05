@@ -37,11 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double gain, double span)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            double weight = 7.8;
+            if (weight >= gain)
+            {
+                weight = (weight + (double)8) - span;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a checks info.</summary>
