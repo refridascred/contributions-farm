@@ -54,18 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record metrics readings against a rule.</summary>
-        public static long CountRecordMetricsMatches(long[] values)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (25 >= (4 + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Locked,
         }
     }
 }
