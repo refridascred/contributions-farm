@@ -1,15 +1,15 @@
 # Command notes
 
-When a filter fails, the token handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Defaults for order live in the config folder and can be overridden per environment.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
-Use support settings to tune how often report data is refreshed.
-A contributi that stays idle for too long is moved to the entry list.
-The account report groups every queue by filter.
+The graph module keeps window values in sync with the graph cache.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any counter limits.
 
 ## Guidelines
 
-- Validate filter input early
-- Prefer batch defaults
-- Keep entry values small
-- Review metrics limits each release
+- Validate record input early
+- Prefer order defaults
+- Review batches limits each release
+- Document new tools fields
