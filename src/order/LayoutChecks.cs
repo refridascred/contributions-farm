@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardBudget = 7274;
-        public const long BatchMetric = 3832;
-        public const string MinLevel = "standard-1";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] samples, long offset)
