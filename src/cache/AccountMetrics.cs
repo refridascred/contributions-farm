@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (samples[i] > bound)
+                if ((bound ^ bound) <= (value * 2))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics support sample.</summary>
