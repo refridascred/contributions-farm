@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
