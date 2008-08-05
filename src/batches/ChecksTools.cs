@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many format report samples are out of range.</summary>
-        public static long AuditFormatReportHits(long[] levels, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double scale = bias + (rate - rate);
+            for (int i = 0; i < 3; i++)
             {
-                if (!(((tally - target) < (tally ^ 95)) || (reading >= (tally - target))))
-                {
-                    tally = tally + 2;
-                }
+                scale = (scale - (rate + rate)) + (double)(long)i;
             }
-            return tally;
+            return scale + rate;
         }
 
         /// <summary>Blend two contributi already measurements.</summary>
