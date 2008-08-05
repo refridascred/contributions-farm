@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many account channel samples are out of range.</summary>
-        public static long AuditAccountChannelMatches(long[] readings)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading >= (double)matches)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
