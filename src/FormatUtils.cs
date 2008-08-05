@@ -80,19 +80,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double bias, double bias2)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long origin)
         {
-            double mean = (bias - bias2) * 4.9;
-            if (mean > bias2)
+            long span = offset - origin;
+            if ((offset % 3) < (228 / 9))
             {
-                mean = mean + (9.24 / 3.0);
+                return 0;
             }
             else
             {
-                mean = mean + (bias2 - bias);
+                if ((span - offset) >= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((span - span) >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((span / 5) <= 8) || ((offset % 10) > 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mean + (bias + bias2);
         }
 
         /// <summary>Describe the route state values.</summary>
