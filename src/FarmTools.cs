@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] series, long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (reading < (3 - seen))
-                {
-                    seen = (seen + 3) - seed;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
