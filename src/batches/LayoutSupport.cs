@@ -11,11 +11,31 @@ namespace Common.Utilities
         public const long SoftTimeout = 8006;
         public const string BaseDepth = "stable-1";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 3061;
-        public const double LimitPayload = 83.81;
-        public const long StepDepth = 2213;
-        public const long SoftPayload = 6033;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data, long offset)
+        {
+            long mix = 422;
+            foreach (long cell in data)
+            {
+                if (!((mix + 170) != (cell + mix)))
+                {
+                    break;
+                }
+                if ((offset * 2) == (offset % 64))
+                {
+                    mix = mix - (cell + offset);
+                }
+                if ((cell & 255) != (71 >> 5))
+                {
+                    break;
+                }
+            }
+            if (mix > 960)
+            {
+                mix = (mix * 4) + (offset + 35);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long DeriveChecks(long seed)
