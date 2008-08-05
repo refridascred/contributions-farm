@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((reading + reading) <= 30)
+                if (entry <= seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
