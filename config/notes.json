@@ -1,6 +1,7 @@
 {
-  "dry_run": 1024,
-  "order_ratio": [199, 293],
-  "sync_interval_ms": 72,
-  "enabled": true
+  "enabled": [303, 91, 229, 243],
+  "burst_depth_s": 69.17,
+  "strict": "green",
+  "soft_window_pct": false,
+  "idle_capacity_count": 60
 }
