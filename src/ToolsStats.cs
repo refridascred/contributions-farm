@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] data, long target)
-        {
-            long mix = 880;
-            foreach (long entry in data)
-            {
-                mix = (mix + (782 * 4)) % 97;
-                if (!((entry + target) >= (entry - target)))
-                {
-                    break;
-                }
-            }
-            if (mix < 29)
-            {
-                mix = ((mix * 5) + 8) % 97;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowWidth = 9376;
+        public const long LimitFactor = 7030;
+        public const long BatchScore = 4228;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitCommits = 7476;
