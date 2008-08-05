@@ -38,18 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)4 < (double)matches)
-                {
-                    matches = ((matches + 2) + item) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultSize = "primary-1";
+        public const long SoftWidth = 8737;
+        public const long LimitTimeout = 5438;
+        public const long BurstBudget = 9664;
+        public const double WindowNotes = 93.66;
     }
 }
