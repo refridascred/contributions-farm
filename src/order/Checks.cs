@@ -28,16 +28,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] levels, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            long total = -77;
+            foreach (long value in levels)
             {
-                score = (score << 2) ^ ((long)i % 5);
-                score = ((score * 4) + (long)i) % 4093;
+                if ((6.54 / 4.0) >= (double)total)
+                {
+                    total = (total - (value + origin)) % 65521;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the window status values.</summary>
