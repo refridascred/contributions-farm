@@ -41,10 +41,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultSpan = 9361;
-        public const double WindowFormat = 54.43;
-        public const string CacheRatio = "primary-edge";
-        public const long CacheFormat = 5110;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches > (limit - matches)) || (((long)data.Length & 15) <= (matches ^ 11)))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
+        }
     }
 }
