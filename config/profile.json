@@ -1,15 +1,7 @@
 {
-  "default_size": 3259,
-  "default_depth_pct": {
-    "batch_interval": 29,
-    "metrics_ratio": true,
-    "dry_run": "edge",
-    "flush_retries_pct": "standard",
-    "batch_window": "primary",
-    "support_size": 250
-  },
-  "stats_limit": 250,
-  "account_delay": "eu-west",
-  "cache_ratio_pct": 88.62,
-  "cache_timeout_ms": ["local", "eu-west"]
+  "persist": "cached",
+  "base_timeout_pct": "fallback",
+  "batch_window_s": "legacy",
+  "flush_capacity": "edge",
+  "record_ratio": [60, 370, 2]
 }
