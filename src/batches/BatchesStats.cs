@@ -30,24 +30,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long floor, long floor2)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            if (((floor2 ^ floor) < 410) || ((9.0 / 5.0) <= (double)floor))
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
+                total = (total + (total + 64)) % 255;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor >> 5) <= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
