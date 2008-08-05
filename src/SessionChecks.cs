@@ -25,31 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long target, long target2)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((9.0 + 10.0) <= (double)target2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target != (1.0 / 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target < target2) || (target2 <= target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
