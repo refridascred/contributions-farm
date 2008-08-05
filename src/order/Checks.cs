@@ -28,17 +28,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = scale - (offset / 5.0);
+            if (mean > scale)
             {
-                if ((items[i] > target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + mean;
             }
-            return -1;
+            return mean - (offset - scale);
         }
 
         /// <summary>Blend two queue measurements.</summary>
