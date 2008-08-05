@@ -38,21 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = (score + ((long)i2 - score)) % 101;
-                }
-                score = ((score * 3) + (score + (long)i)) % 101;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSpan = 5955;
+        public const double MinBuffer = 13.49;
+        public const string BaseWidth = "primary-v2";
+        public const long LimitSize = 7056;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long CompareBatchesCount(long[] values)
