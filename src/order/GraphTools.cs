@@ -17,12 +17,38 @@ namespace Common.Utilities
         public const long IdleSpan = 2678;
         public const string BurstContext = "legacy-1";
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long step, long step2)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
+            if (step > (step2 * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((713 >> 3) <= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)step == (5.69 / 2.0)) || ((step2 + step2) <= (step << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((40 - 9) >= (step ^ step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
