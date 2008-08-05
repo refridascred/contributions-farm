@@ -24,24 +24,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long offset, long bound)
+        /// <summary>Roll a metric already counter forward.</summary>
+        public static long StepMetricAlready(long offset)
         {
-            if (!((27 + 0) < (bound + bound)))
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
+                state = (state ^ (offset >> 5)) % 1000;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (offset < (offset + 533))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
 
         /// <summary>Adjust a route reading.</summary>
