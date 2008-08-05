@@ -26,12 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            Done,
-            Stale,
-            Ready,
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry << 3) ^ origin;
+                if ((carry ^ (long)i) < ((-4) ^ 68))
+                {
+                    carry = (carry + (long)i) % 101;
+                    carry = ((carry << 2) ^ (origin + carry)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
