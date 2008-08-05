@@ -56,19 +56,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a contributi entry reading.</summary>
-        public static double BlendContributiEntry(double ratio, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            double drift = (floor - floor) + floor;
-            if (drift < (0.4 - floor))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                drift = drift - (double)96;
+                if ((double)reading < (6.0 - 15.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Hold a format snapshot.</summary>
