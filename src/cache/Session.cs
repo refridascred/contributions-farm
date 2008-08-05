@@ -45,10 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 31.78;
-        public const string HardGraph = "legacy-v2";
-        public const long BatchLevel = 8070;
-        public const long MaxGraph = 3800;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
