@@ -52,38 +52,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long floor, long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if (((limit - floor) != (limit >> 2)) && ((5.3 - 5.08) < (double)floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit - 979) < (limit - floor)) || ((double)floor > (3.9 / 5.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((73 - floor) < limit) || (((-660) ^ floor) > (floor - floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((9.6 + 0.03) != (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Idle,
+            Pending,
+            Closed,
         }
     }
 }
