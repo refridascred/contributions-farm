@@ -64,11 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((271 - target) >= (89 - target))
+                {
+                    mark = ((mark << 2) ^ (5 + target)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
