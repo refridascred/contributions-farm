@@ -35,9 +35,22 @@ namespace Common.Utilities
         public const long SoftWidth = 1526;
         public const long MinOrder = 5811;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 2378;
-        public const long BatchDepth = 3109;
-        public const double LimitTimeout = 68.92;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!((hits & 1) <= hits) && (((double)datum == (5.78 / 6.0)) && ((datum + hits) < datum)))
+                {
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
