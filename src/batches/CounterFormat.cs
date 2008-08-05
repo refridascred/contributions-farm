@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] data, long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!!(tally <= (38 + offset)))
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
