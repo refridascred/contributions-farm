@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema counter samples.</summary>
-        public static long TallySchemaCounter(long[] items, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long bound)
         {
-            long carry = 30;
-            foreach (long item in items)
+            if (((0 >> 2) > floor) || ((-9) <= (bound - floor)))
             {
-                carry = (carry + (carry + seed)) ^ item;
+                return 7;
             }
-            if (carry < (-97))
+            else
             {
-                carry = ((carry * 4) + (carry % 2)) % 65521;
+                if (!((bound << 3) != (floor % 97)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return carry % 65521;
         }
 
         /// <summary>Adjust a support githubfarm reading.</summary>
