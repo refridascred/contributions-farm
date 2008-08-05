@@ -14,19 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long result = 1;
+            foreach (long entry in levels)
             {
-                if (datum > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result ^ ((long)levels.Length & 3)) % 97) ^ entry;
             }
-            return flag;
+            if (result > 1)
+            {
+                result = ((result * 4) + (result << 3)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the account layout entries that pass the check.</summary>
