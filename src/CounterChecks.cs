@@ -81,21 +81,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix << 3) ^ (mix % 3)) ^ (long)i2;
-                    mix = mix ^ target;
-                }
-                mix = mix + (target + target);
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Idle,
+            Locked,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Accumulate window entry samples.</summary>
