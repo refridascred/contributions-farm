@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
