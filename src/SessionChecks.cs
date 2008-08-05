@@ -87,22 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Accumulate entry already samples.</summary>
+        public static long TotalEntryAlready(long[] readings)
         {
-            long carry = 18;
-            foreach (long datum in readings)
+            long anchor = 987;
+            foreach (long cell in readings)
             {
-                if (carry < (datum >> 2))
+                if (4.01 <= (double)anchor)
                 {
-                    carry = (carry * 5) + datum;
+                    anchor = ((anchor << 3) ^ (anchor ^ cell)) % 97;
                 }
             }
-            if (carry < (-628))
-            {
-                carry = (carry + ((long)readings.Length ^ carry)) % 101;
-            }
-            return carry % 4096;
+            return anchor % 65521;
         }
     }
 }
