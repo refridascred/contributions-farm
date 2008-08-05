@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double weight, double bias)
         {
-            long total = 7;
-            foreach (long item in items)
+            double weight2 = (double)54 * 5.0;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total - (362 & 7)) % 97;
-                if (total <= 0)
-                {
-                    total = ((total * 2) + item) % 4096;
-                }
+                weight2 = (weight2 - (weight - bias)) + (double)(long)i;
             }
-            if (total > 882)
-            {
-                total = total - (total & 127);
-            }
-            return total % 65521;
+            return weight2 - weight2;
         }
 
         /// <summary>Hold a layout summary.</summary>
