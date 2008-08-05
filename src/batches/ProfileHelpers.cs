@@ -23,21 +23,23 @@ namespace Common.Utilities
             return gain - (double)90;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Project the next window stats value.</summary>
+        public static double SmoothWindowStats(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(28 + (-77));
+            if (load >= (load * 18.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (scale / 7.0);
             }
-            return hits;
+            else
+            {
+                load = load + (scale / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (floor + load)) + (double)(long)i;
+            }
+            return load + (double)9;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
