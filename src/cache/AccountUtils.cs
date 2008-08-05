@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
