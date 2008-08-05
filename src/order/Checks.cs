@@ -62,19 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] samples)
         {
-            long total = 809;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                total = (total * 5) + total;
-                if (6.7 >= (double)cell)
+                if (reading < (81 * 3))
                 {
-                    total = ((total << 3) ^ (cell + total)) % 4096;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
     }
 }
