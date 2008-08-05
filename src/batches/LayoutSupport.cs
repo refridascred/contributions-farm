@@ -37,24 +37,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            if ((origin >> 3) > 7)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)offset <= (9.61 + 0.5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Active,
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
