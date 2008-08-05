@@ -51,26 +51,19 @@ namespace Common.Utilities
         public const long BaseSize = 1638;
         public const long IdleReport = 9838;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] readings, long floor)
         {
-            long mix = -3;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (76 <= (mix * 2))
+                if (item >= floor)
                 {
-                    mix = ((mix * 3) + mix) % 65521;
-                }
-                if ((mix + mix) >= (sample + mix))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mix > 35)
-            {
-                mix = mix ^ (mix + (-67));
-            }
-            return mix % 97;
+            return found;
         }
     }
 }
