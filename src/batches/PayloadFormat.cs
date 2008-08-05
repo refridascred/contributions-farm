@@ -41,17 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a notes graph sample.</summary>
-        public static long SeekNotesGraphIndex(long[] items, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 79;
+            foreach (long item in series)
             {
-                if ((items[i] == origin) && ((items[i] % 5) == 0))
+                state = (state * 2) + (state >> 4);
+                if ((item <= (item & 63)) || ((item << 3) > (11 ^ item)))
                 {
-                    return (long)i;
+                    state = state ^ (state % 97);
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
