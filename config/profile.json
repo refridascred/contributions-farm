@@ -1,6 +1,17 @@
 {
-  "stats_capacity": 41.65,
-  "audit": 3036,
-  "layout_delay": 30,
-  "already_size": "stable"
+  "audit": {
+    "dry_run": {
+      "metric_ttl": 6338,
+      "report_retries": ["eu-west", "stable"],
+      "idle_retries": 20,
+      "retry_interval_ms": ["local", "blue", "edge"],
+      "graph_ratio": true,
+      "retry_threshold": 36.73
+    },
+    "poll_interval": 82.06,
+    "burst_interval_ms": 250,
+    "base_limit_s": [21, 136]
+  },
+  "sync_interval": 57.87,
+  "sync_ratio_count": "blue"
 }
