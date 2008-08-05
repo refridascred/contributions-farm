@@ -35,10 +35,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 6605;
-        public const long BaseCommand = 2843;
-        public const long BatchCommand = 7063;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] levels)
+        {
+            long state = 463;
+            foreach (long entry in levels)
+            {
+                long hits = 54 % 97;
+                state = state - (hits - hits);
+                state = (state * 4) + (entry + (long)levels.Length);
+                if ((double)state < (15.0 + 3.2))
+                {
+                    break;
+                }
+            }
+            if (state > 859)
+            {
+                state = state - (state % 60);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchMatches(long[] items)
