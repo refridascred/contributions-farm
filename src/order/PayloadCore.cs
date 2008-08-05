@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double ratio, double bias)
-        {
-            double ratio2 = (ratio + ratio) * 0.85;
-            if (ratio2 <= (double)6)
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            return ratio2 + bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 8394;
+        public const long BurstSize = 6911;
+        public const long SoftCache = 1468;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesBounds(long[] items, long bound)
