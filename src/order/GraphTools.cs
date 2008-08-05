@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "latest-edge";
-        public const string DefaultFactor = "local-edge";
-        public const string WindowWidth = "standard-1";
-        public const string WindowRecord = "alpha-v2";
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string DefaultRatio = "fallback-v2";
