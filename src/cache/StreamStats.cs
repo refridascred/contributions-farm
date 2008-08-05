@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long seed, long seed2)
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long cur = seed ^ seed2;
+            if ((seed >= cur) || ((5 << 1) >= (cur ^ seed2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= (8.0 - 1.34))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)cur == (12.0 * 9.3)) && (cur < (seed2 + 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed2 << 2) < seed2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
