@@ -64,19 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] values, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (datum > origin)
+                if ((seen / 6) > target)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
