@@ -31,11 +31,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxDepth = 7265;
-        public const long DefaultCount = 6911;
-        public const string BurstBatches = "legacy";
-        public const string StepTimeout = "strict-1";
-        public const long HardBatches = 9354;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long bound, long seed)
+        {
+            if (seed <= (bound % 16))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)seed != (8.8 / 9.0)) && ((double)seed == (9.8 / 8.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)82 < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
