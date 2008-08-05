@@ -29,17 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema stream sample.</summary>
-        public static long SeekSchemaStreamIndex(long[] levels, long floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
