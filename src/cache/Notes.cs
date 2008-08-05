@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 5) >= (tally + 86))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "fallback-1";
+        public const long MaxBudget = 8402;
+        public const double SoftTimeout = 54.54;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinBudget = 7156;
