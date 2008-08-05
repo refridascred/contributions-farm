@@ -50,13 +50,18 @@ namespace Common.Utilities
         public const double LimitSpan = 88.25;
         public const long RetryRoute = 7634;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] readings)
         {
-            Retry,
-            Draft,
-            Active,
-            Queued,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample != (9.4 + 4.7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first queue commits entry that matches the target.</summary>
