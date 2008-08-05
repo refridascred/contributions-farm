@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    level INTEGER,
-    ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER
+    owner TEXT NOT NULL,
+    weight REAL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_ratio ON stream_events (ratio);
+CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
+
+INSERT INTO stream_events (label, owner, weight, state) VALUES ('local', 'open', 67.88, 'local');
