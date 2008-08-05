@@ -1,5 +1,7 @@
 {
-  "soft_retries": false,
-  "cluster_retries": "latest",
-  "default_threshold_pct": 4903
+  "audit": 2,
+  "burst_threshold": [53, 425, 10],
+  "soft_delay_s": "open",
+  "base_timeout": "cached",
+  "batch_window": "green"
 }
