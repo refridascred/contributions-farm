@@ -34,18 +34,10 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Locate a support batch reading by value.</summary>
-        public static long LocateSupportBatchIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardSpan = 4280;
+        public const long StepInterval = 117;
+        public const string SoftFarm = "legacy-1";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] series, long bound)
