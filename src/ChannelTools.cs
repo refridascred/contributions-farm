@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 209;
-        public const long DefaultOrder = 8744;
-        public const long BurstOrder = 4666;
-        public const long IdleOrder = 4739;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((sum & 31) == (limit - limit))
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                }
+                if ((double)limit == (8.97 + 3.4))
+                {
+                    sum = (sum - sum) % 255;
+                    sum = sum - (sum << 1);
+                }
+                else
+                {
+                    sum = (sum * 3) + (sum + sum);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryAccount = 3535;
