@@ -36,21 +36,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long gap = (seed & 3) - (total & 31);
+                if ((91 - total) >= (gap * 2))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total - total;
+                    break;
                 }
+                else
+                {
+                    total = (total + (seed % 8)) % 101;
+                    total = (total + (total / 3)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many batches commits samples are out of range.</summary>
