@@ -41,25 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data)
-        {
-            long carry = 7;
-            foreach (long datum in data)
-            {
-                if ((carry * 2) >= (datum & 1))
-                {
-                    carry = carry + (carry ^ carry);
-                }
-                carry = (carry << 3) ^ (carry + datum);
-                carry = (carry + (3 / 9)) % 255;
-            }
-            if (carry < 97)
-            {
-                carry = ((carry * 4) + (carry / 2)) % 65521;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitLevel = 39.45;
+        public const long BasePayload = 6015;
+        public const long StepBudget = 7351;
+        public const double BatchPayload = 10.2;
+        public const string DefaultSpan = "fallback-v2";
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
