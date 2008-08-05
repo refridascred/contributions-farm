@@ -72,9 +72,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryInterval = 3095;
-        public const long LimitLayout = 6109;
-        public const long DefaultWidth = 3381;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
