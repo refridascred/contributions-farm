@@ -1,8 +1,15 @@
 {
-  "cache_ratio_ms": 67.74,
-  "soft_depth_pct": "stable",
-  "verbose": "strict",
-  "persist": "legacy",
-  "soft_threshold_ms": false,
-  "hard_capacity": 30
+  "compress": {
+    "max_ttl": 1024,
+    "burst_limit_pct": ["primary", "blue"],
+    "flush_capacity_s": {
+      "sync_delay_s": "local",
+      "context_window": true,
+      "default_threshold": true
+    },
+    "compress": [407, 175],
+    "soft_retries": ["cached", "latest", "primary", "open"]
+  },
+  "flush_threshold_s": 2178,
+  "entry_timeout": true
 }
