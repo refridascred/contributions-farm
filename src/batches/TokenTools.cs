@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((mark > (mark >> 3)) && (((long)i << 3) >= (0 >> 2)))
-                {
-                    mark = mark ^ (step ^ mark);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
