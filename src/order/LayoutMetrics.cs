@@ -13,19 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] items, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (sample <= bound)
+                if ((sample % 12) != (count >> 3))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
