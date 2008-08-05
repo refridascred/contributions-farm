@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] data, long floor)
         {
-            Closed,
-            Ready,
-            Stale,
-            Dropped,
-            Synced,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((2.62 * 0.6) >= (double)floor)
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
