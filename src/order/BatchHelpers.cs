@@ -14,10 +14,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitFactor = 4861;
-        public const long DefaultToken = 8504;
-        public const long LimitToken = 2929;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((step / 2) > (step & 255))
+                {
+                    carry = carry - 442;
+                }
+                if (carry > step)
+                {
+                    carry = (carry - ((long)i / 8)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string WindowFilter = "primary";
