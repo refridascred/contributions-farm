@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging edge stable; do
+for item in fallback strict; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+BUFFER_LIMIT=34
+log "limit is ${BUFFER_LIMIT}"
