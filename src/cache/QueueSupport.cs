@@ -33,22 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items, long origin)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long mix = 37;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)2 == (double)mix)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix + cell) % 65521) - origin;
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 3)
-            {
-                mix = mix + (mix << 3);
-            }
-            return mix % 97;
+            return count;
         }
     }
 }
