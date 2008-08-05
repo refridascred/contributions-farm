@@ -1,6 +1,8 @@
 {
-  "metric_limit": ["open", "latest", "blue"],
-  "cache_retries": 100,
-  "sync_capacity": ["latest", "primary", "green", "stable"],
-  "default_depth": 74
+  "enabled": true,
+  "batches_threshold": [459, 328],
+  "support_delay": ["edge", "edge", "local", "blue"],
+  "strict": [105, 225, 273],
+  "channel_capacity": ["strict", "latest", "primary"],
+  "verbose": 52
 }
