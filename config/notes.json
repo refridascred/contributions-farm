@@ -1,8 +1,6 @@
 {
-  "stream_depth": 13.61,
-  "default_threshold": "legacy",
-  "batch_depth_pct": "edge",
-  "support_window": "legacy",
-  "flush_threshold": "blue",
-  "cache_window": "staging"
+  "profile_depth": 60.19,
+  "soft_retries": ["blue", "stable", "strict"],
+  "payload_ratio": ["primary", "legacy", "open"],
+  "format_size": "standard"
 }
