@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Look up the position of a schema record sample.</summary>
+        public static long LocateSchemaRecordIndex(long[] data, long floor)
         {
-            Pending,
-            Synced,
-            Ready,
-            Queued,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
