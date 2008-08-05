@@ -1,7 +1,12 @@
 {
-  "audit": 2,
-  "burst_threshold": [53, 425, 10],
-  "soft_delay_s": "open",
-  "base_timeout": "cached",
-  "batch_window": "green"
+  "soft_ttl_pct": 49.1,
+  "persist": "staging",
+  "hard_timeout_pct": {
+    "sync_size_count": [384, 123],
+    "sync_capacity_s": 31,
+    "max_delay_s": "eu-west"
+  },
+  "contributi_delay": 147,
+  "default_capacity_ms": 48.45,
+  "burst_capacity_count": 100
 }
