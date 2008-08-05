@@ -57,18 +57,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] items)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((item * 5) != (matches % 60))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
