@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] items, long floor)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public double Flag { get; set; }
+            long anchor = 9;
+            foreach (long item in items)
+            {
+                if ((floor + 24) < item)
+                {
+                    anchor = ((anchor << 2) ^ (item / 8)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor ^ (floor + item)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
