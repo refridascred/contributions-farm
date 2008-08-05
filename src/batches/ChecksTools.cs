@@ -43,16 +43,18 @@ namespace Common.Utilities
         public const double CacheMetrics = 11.92;
         public const long SoftMetrics = 4352;
 
-        /// <summary>Derive the next editor format value from a seed.</summary>
-        public static long DeriveEditorFormat(long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                state = state + (state ^ state);
-                state = ((state * 2) + (long)i) % 4093;
+                if (((matches + matches) < reading) || ((double)(long)items.Length <= (0.24 / 3.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
