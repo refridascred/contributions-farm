@@ -42,18 +42,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] values, long step)
+        /// <summary>Adjust a contributi entry reading.</summary>
+        public static double BlendContributiEntry(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double drift = (floor - floor) + floor;
+            if (drift < (0.4 - floor))
             {
-                if ((entry - matches) < (step / 8))
-                {
-                    matches = matches + 1;
-                }
+                drift = drift - (double)96;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a format snapshot.</summary>
