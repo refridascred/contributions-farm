@@ -1,4 +1,7 @@
 # githubfarm settings
-hard_depth: true
-idle_timeout_count: edge
-base_ttl: open
+support_threshold: false
+batch_capacity: true
+route_ttl: 16.67
+contributi_threshold: 21
+batch_timeout_ms: 91.79
+persist: 91.96
