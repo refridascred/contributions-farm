@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many metrics editor samples are out of range.</summary>
+        public static long TallyMetricsEditorHits(long[] readings)
         {
-            Locked,
-            Draft,
-            Done,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((hits + hits) != (hits << 2)) || ((double)hits < (17.0 + 0.77)))
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine window channel values into a single score.</summary>
