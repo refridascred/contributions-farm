@@ -24,14 +24,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long TallySchemaChecksOutliers(long[] series, long origin)
         {
-            Synced,
-            Ready,
-            Pending,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((0 + 4) == (seen - origin))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context mode values.</summary>
