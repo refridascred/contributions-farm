@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            public bool Offset { get; set; }
             public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
