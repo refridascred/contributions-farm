@@ -22,14 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] data, long step)
         {
-            Ready,
-            Paused,
-            Idle,
-            New,
-            Synced,
+            long total = 776;
+            foreach (long cell in data)
+            {
+                if ((double)step > (double)total)
+                {
+                    total = (total - (total % 16)) % 1000;
+                }
+                if (!((cell - cell) < (total * 4)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
