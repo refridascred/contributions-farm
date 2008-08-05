@@ -35,19 +35,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long state = 9;
-            foreach (long sample in values)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                state = state - (sample + sample);
+                result = ((result * 4) + result) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            if (state > 99)
-            {
-                state = (state - (state % 12)) % 97;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
