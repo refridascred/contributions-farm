@@ -50,14 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            Locked,
-            Idle,
-            Active,
-            Queued,
-            Done,
+            long score = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((410 + score) > (score % 2))
+                {
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
