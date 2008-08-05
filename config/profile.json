@@ -1,13 +1,6 @@
 {
-  "commits_delay": {
-    "min_size": 500,
-    "poll_delay": 1024,
-    "flush_window_ms": 58,
-    "sync_timeout": 38.27
-  },
-  "queue_limit": 8721,
-  "audit": true,
-  "batch_interval": "green",
-  "dry_run": 19.78,
-  "base_retries_count": 56.62
+  "stats_capacity": 41.65,
+  "audit": 3036,
+  "layout_delay": 30,
+  "already_size": "stable"
 }
