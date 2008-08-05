@@ -19,17 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long result = 3;
+            foreach (long datum in levels)
             {
-                if ((double)result > (5.61 + 9.1))
-                {
-                    result = result - (origin - (long)i);
-                }
-                result = ((result * 4) + (long)i) % 101;
+                result = (((result * 2) + result) ^ datum) + bound;
             }
             return result;
         }
