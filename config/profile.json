@@ -1,17 +1,15 @@
 {
-  "audit": {
-    "dry_run": {
-      "metric_ttl": 6338,
-      "report_retries": ["eu-west", "stable"],
-      "idle_retries": 20,
-      "retry_interval_ms": ["local", "blue", "edge"],
-      "graph_ratio": true,
-      "retry_threshold": 36.73
-    },
-    "poll_interval": 82.06,
-    "burst_interval_ms": 250,
-    "base_limit_s": [21, 136]
+  "default_size": 3259,
+  "default_depth_pct": {
+    "batch_interval": 29,
+    "metrics_ratio": true,
+    "dry_run": "edge",
+    "flush_retries_pct": "standard",
+    "batch_window": "primary",
+    "support_size": 250
   },
-  "sync_interval": 57.87,
-  "sync_ratio_count": "blue"
+  "stats_limit": 250,
+  "account_delay": "eu-west",
+  "cache_ratio_pct": 88.62,
+  "cache_timeout_ms": ["local", "eu-west"]
 }
