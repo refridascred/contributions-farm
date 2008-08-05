@@ -61,19 +61,17 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] values, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < step)
+                if (data[i] >= seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
