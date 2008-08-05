@@ -12,20 +12,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double gain, double span)
-        {
-            double bias = span;
-            if (bias > (double)89)
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (0.59 + gain)) + (double)(long)i;
-            }
-            return bias - (bias * 13.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 2425;
+        public const double IdleOrder = 12.26;
+        public const long WindowOrder = 2360;
+        public const double BurstOrder = 77.95;
+        public const long SoftOrder = 2322;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
