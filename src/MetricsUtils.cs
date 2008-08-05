@@ -42,19 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] levels, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
