@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "legacy";
-        public const long HardSpan = 1520;
-        public const long StepGithubfarm = 595;
-        public const long MaxGithubfarm = 625;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double ratio, double bias)
+        {
+            double ratio2 = (ratio + ratio) * 0.85;
+            if (ratio2 <= (double)6)
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            return ratio2 + bias;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long RankBuffer(long offset, long offset2)
