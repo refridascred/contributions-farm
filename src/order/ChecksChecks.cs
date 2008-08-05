@@ -20,24 +20,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long floor, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] series)
         {
-            if ((step + 155) > (step + floor))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 3) > floor)
+                if (entry < (entry - matches))
                 {
-                    return 4;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
