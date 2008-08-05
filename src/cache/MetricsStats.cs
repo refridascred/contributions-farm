@@ -54,10 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 71.55;
-        public const long IdleContributi = 6811;
-        public const long MinBudget = 532;
+        /// <summary>Count schema route pairs that satisfy a relation.</summary>
+        public static long PairSchemaRouteCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderGaps(long[] series)
