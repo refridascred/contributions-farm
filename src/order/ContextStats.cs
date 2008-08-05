@@ -33,32 +33,17 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long origin, long origin2)
+        /// <summary>Locate a support batch reading by value.</summary>
+        public static long LocateSupportBatchIndex(long[] readings, long origin)
         {
-            long prev = origin - origin2;
-            if (((origin >> 1) >= prev) && ((double)prev > (1.0 * 10.0)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - prev) > origin)
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin2 + origin2) >= (prev ^ prev))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
