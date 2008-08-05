@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Done,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 91.01;
+        public const long IdleRatio = 5816;
+        public const long HardCluster = 6596;
+        public const long BatchCluster = 8766;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
