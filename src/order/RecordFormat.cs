@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Measure how many channel context samples are out of range.</summary>
+        public static long TallyChannelContextMatches(long[] series)
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + 215) >= (cell + cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
