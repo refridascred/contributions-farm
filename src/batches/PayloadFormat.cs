@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items, long bound)
+        /// <summary>Look up the position of a layout report sample.</summary>
+        public static long LocateLayoutReportIndex(long[] data, long seed)
         {
-            long total = 30;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total << 3) ^ total) ^ entry) - bound;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 292)
-            {
-                total = (total << 2) ^ 659;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
