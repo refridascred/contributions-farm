@@ -27,15 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double ratio, double offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double ratio2 = 8.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (((ratio2 - (double)361) + (double)(long)i) + ratio) - offset;
-            }
-            return ratio2 + 6.8;
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
