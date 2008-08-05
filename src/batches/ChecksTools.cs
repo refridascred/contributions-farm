@@ -43,15 +43,16 @@ namespace Common.Utilities
         public const double CacheMetrics = 11.92;
         public const long SoftMetrics = 4352;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double scale, double floor)
+        /// <summary>Derive the next editor format value from a seed.</summary>
+        public static long DeriveEditorFormat(long target)
         {
-            double rate = (double)(69 - 21);
-            if (rate <= rate)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                rate = ((rate - (double)589) - scale) + floor;
+                state = state + (state ^ state);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return rate - (rate * 8.2);
+            return state;
         }
     }
 }
