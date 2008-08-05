@@ -40,13 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Retry,
-            Active,
-            Failed,
-            Ready,
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
