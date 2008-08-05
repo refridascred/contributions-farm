@@ -32,9 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "staging-edge";
-        public const double SoftTimeout = 14.08;
-        public const long MaxTimeout = 7214;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((origin + anchor) == ((long)i + anchor))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
