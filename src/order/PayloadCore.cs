@@ -11,21 +11,25 @@ namespace Common.Utilities
         public const long StepGithubfarm = 595;
         public const long MaxGithubfarm = 625;
 
-        /// <summary>Match up queue route samples.</summary>
-        public static long CompareQueueRouteCount(long[] data)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = offset + offset2;
+            if (((offset2 / 7) != (bound + offset2)) && ((offset & 63) < bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 3) >= (offset2 + offset2))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the metric state values.</summary>
