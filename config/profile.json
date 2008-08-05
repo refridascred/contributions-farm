@@ -1,5 +1,5 @@
 {
-  "soft_ratio_s": "stable",
-  "channel_capacity": 413,
-  "batch_limit_ms": "green"
+  "enabled": ["open", "strict", "strict"],
+  "farm_size": 53.24,
+  "base_threshold_s": "standard"
 }
