@@ -42,23 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double ratio, double floor)
         {
-            long carry = 920;
-            foreach (long entry in values)
+            double rate = (9.5 * 18.0) * 18.0;
+            if (rate > 5.1)
             {
-                carry = (carry * 3) + entry;
-                if (((carry + entry) >= (carry % 5)) || ((carry % 97) <= (entry - carry)))
-                {
-                    break;
-                }
+                rate = rate - ratio;
             }
-            if (carry < 5)
+            for (int i = 0; i < 3; i++)
             {
-                carry = (carry ^ (carry - carry)) % 4096;
+                rate = (rate - (floor - rate)) + (double)(long)i;
             }
-            return carry % 65521;
+            return rate - rate;
         }
     }
 }
