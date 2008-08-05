@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long score = 579;
-            foreach (long cell in readings)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score - score) + cell;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (score > 176)
-            {
-                score = (score - score) % 255;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Fold a list of already schema readings.</summary>
