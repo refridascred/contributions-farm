@@ -51,23 +51,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double bias, double offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long floor, long limit)
         {
-            double bias2 = offset;
-            if (bias2 > (bias * 10.0))
+            if (((limit - floor) != (limit >> 2)) && ((5.3 - 5.08) < (double)floor))
             {
-                bias2 = bias2 + (double)20;
+                return 8;
             }
             else
             {
-                bias2 = bias2 - (double)5;
+                if (((limit - 979) < (limit - floor)) || ((double)floor > (3.9 / 5.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((73 - floor) < limit) || (((-660) ^ floor) > (floor - floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((9.6 + 0.03) != (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - (bias2 + bias)) - (double)(long)i;
-            }
-            return bias2 + (bias2 - bias2);
         }
     }
 }
