@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            long mark = 2;
-            foreach (long reading in series)
+            double mean = scale;
+            if (mean > (double)1)
             {
-                if ((mark - mark) == (reading - (long)series.Length))
-                {
-                    mark = (mark ^ (reading & 1)) % 1000;
-                }
+                mean = mean - (1.0 - mean);
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean + mean)) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
