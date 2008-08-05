@@ -1,12 +1,8 @@
 {
-  "soft_ttl_pct": 49.1,
-  "persist": "staging",
-  "hard_timeout_pct": {
-    "sync_size_count": [384, 123],
-    "sync_capacity_s": 31,
-    "max_delay_s": "eu-west"
-  },
-  "contributi_delay": 147,
-  "default_capacity_ms": 48.45,
-  "burst_capacity_count": 100
+  "context_capacity": "latest",
+  "sync_ttl_s": "staging",
+  "soft_limit": "open",
+  "retry_interval": "staging",
+  "route_depth": "strict",
+  "payload_delay": "strict"
 }
