@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many format report samples are out of range.</summary>
+        public static long AuditFormatReportHits(long[] levels, long target)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Closed,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((tally - target) < (tally ^ 95)) || (reading >= (tally - target))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two contributi already measurements.</summary>
