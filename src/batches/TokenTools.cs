@@ -35,13 +35,28 @@ namespace Common.Utilities
             return bias2 + (double)0;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels, long floor)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 4;
+            foreach (long datum in levels)
+            {
+                if ((long)levels.Length >= mark)
+                {
+                    mark = (mark * 2) + (mark & 255);
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark * 5) + mark) % 101;
+                    mark = (mark << 2) ^ (3 % 5);
+                }
+                if (datum < (floor + datum))
+                {
+                    mark = (mark * 2) + (floor & 63);
+                }
+            }
+            return mark;
         }
     }
 }
