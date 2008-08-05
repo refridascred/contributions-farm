@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Paused,
-            Retry,
-            Closed,
-            Active,
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the context filter series from a seed.</summary>
