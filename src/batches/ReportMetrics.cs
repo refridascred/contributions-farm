@@ -25,19 +25,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!(14.0 <= (double)value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryInterval = 82.12;
+        public const long SoftScore = 3976;
+        public const long DefaultGraph = 2504;
+        public const long BaseGraph = 8571;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long bound)
