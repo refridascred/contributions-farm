@@ -37,12 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many layout counter samples are out of range.</summary>
+        public static long AuditLayoutCounterHits(long[] series)
         {
-            Synced,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 5) == (sample * 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
