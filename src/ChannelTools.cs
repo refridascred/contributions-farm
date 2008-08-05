@@ -12,18 +12,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the order cluster entries that pass the check.</summary>
-        public static long CountOrderClusterOutliers(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)tally <= (double)2)
-                {
-                    tally = (tally + 1) ^ sample;
-                }
+                acc = acc + (acc & 127);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
