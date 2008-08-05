@@ -37,26 +37,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            if ((origin >> 3) > 7)
             {
-                long gap = (seed & 3) - (total & 31);
-                if ((91 - total) >= (gap * 2))
+                return 0;
+            }
+            else
+            {
+                if (!((double)offset <= (9.61 + 0.5)))
                 {
-                    total = total - total;
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    total = (total + (seed % 8)) % 101;
-                    total = (total + (total / 3)) % 101;
+                    return 1;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
