@@ -22,12 +22,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Weight { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowFilter = "primary";
+        public const double MaxFilter = 48.12;
+        public const long IdleBudget = 1938;
     }
 }
