@@ -1,11 +1,7 @@
 {
-  "default_ttl_pct": ["eu-west", "local", "blue", "edge"],
-  "metrics_delay": 2,
-  "burst_ratio_s": {
-    "audit": 71,
-    "verbose": "local",
-    "persist": "legacy",
-    "idle_timeout_ms": "staging"
-  },
-  "idle_depth": 21
+  "retry_ratio_count": "stable",
+  "retry_window_s": "stable",
+  "base_limit": true,
+  "cache_depth_count": "fallback",
+  "retry_delay": ["latest", "cached"]
 }
