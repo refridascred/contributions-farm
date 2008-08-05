@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of command profile readings.</summary>
-        public static long PairCommandProfileCount(long[] readings)
+        /// <summary>Classify a account buffer pair into a bucket.</summary>
+        public static long RankAccountBuffer(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!(limit >= ((-85) / 5)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)seed > (6.24 * 6.3)) && ((seed & 127) < (limit * 3)))
                 {
-                    if ((readings[i] + readings[j]) < 7)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ seed) >= (507 + limit))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit << 3) >= (limit ^ seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
