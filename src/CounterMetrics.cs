@@ -28,12 +28,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Locate a token context reading by value.</summary>
+        public static long LocateTokenContextIndex(long[] items, long step)
         {
-            Paused,
-            Done,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
