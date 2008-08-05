@@ -86,19 +86,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double bias, double span)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            double rate = (double)(-775) * 4.36;
-            if (rate > (rate - rate))
+            long mark = 64;
+            foreach (long cell in levels)
             {
-                rate = rate + span;
+                if ((cell % 64) == (387 / 5))
+                {
+                    mark = mark - ((-71) - (long)levels.Length);
+                }
+                else
+                {
+                    mark = (mark ^ 36) % 1000;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (bias * 11.0)) + (double)(long)i;
-            }
-            return rate - (rate - span);
+            return mark % 65521;
         }
     }
 }
