@@ -53,12 +53,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "cached-1";
-        public const long HardSize = 984;
-        public const long RetrySpan = 3097;
-        public const long MinFilter = 488;
-        public const string IdleFilter = "staging";
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double rate, double offset)
+        {
+            double scale = offset;
+            if (scale < (double)81)
+            {
+                scale = (scale - (offset / 4.0)) + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale - offset;
+        }
 
         /// <summary>Derive the next batches counter value from a seed.</summary>
         public static long DeriveBatchesCounter(long offset)
