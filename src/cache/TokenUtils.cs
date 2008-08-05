@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] readings, long limit)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] levels)
         {
-            long mark = -47;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark << 2) ^ (limit + limit)) ^ cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark > 0)
-            {
-                mark = (mark - (mark ^ mark)) % 97;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Locate a checks channel reading by value.</summary>
