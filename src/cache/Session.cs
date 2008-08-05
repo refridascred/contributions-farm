@@ -38,21 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinInterval = 1187;
+        public const double MaxBatches = 33.47;
+        public const string IdleRatio = "legacy-1";
+        public const long BatchSize = 7621;
+        public const long MaxCount = 6275;
     }
 }
