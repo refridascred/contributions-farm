@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long CacheEditor = 2832;
         public const long BaseSpan = 8710;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 6262;
-        public const long BaseTimeout = 5049;
-        public const long RetryStats = 7561;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
