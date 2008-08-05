@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank buffer counter input into a small class.</summary>
-        public static long RankBufferCounter(long seed, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if ((bound + seed) > (bound + (-37)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + seed) > (bound + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) >= (1 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
