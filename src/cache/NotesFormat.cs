@@ -25,19 +25,17 @@ namespace Common.Utilities
             return mean + (weight + span);
         }
 
-        /// <summary>Fold a list of editor session readings.</summary>
-        public static long DigestEditorSession(long[] items)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] readings, long offset)
         {
-            long carry = 688;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (readings[i] <= offset)
                 {
-                    carry = (((carry << 3) ^ cell) % 255) - (long)i;
+                    return (long)i;
                 }
-                carry = ((carry << 2) ^ (cell / 4)) % 101;
             }
-            return carry % 4096;
+            return -1;
         }
     }
 }
