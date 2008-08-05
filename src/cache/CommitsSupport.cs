@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of route cluster readings.</summary>
-        public static long TallyRouteCluster(long[] series)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] series, long bound)
         {
-            long carry = 653;
+            bool valid = true;
             foreach (long reading in series)
             {
-                carry = (carry + (0 >> 4)) + reading;
+                if (reading > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
