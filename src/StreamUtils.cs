@@ -57,24 +57,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double weight, double floor)
         {
-            if ((double)offset < 5.43)
+            double bias = weight + 2.91;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                bias = ((bias + (double)31) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((double)offset > (double)1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return bias - (double)805;
         }
 
         /// <summary>Hold a stats options.</summary>
