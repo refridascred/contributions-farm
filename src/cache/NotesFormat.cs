@@ -36,12 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= floor)
+                if (series[i] <= bound)
                 {
                     return (long)i;
                 }
