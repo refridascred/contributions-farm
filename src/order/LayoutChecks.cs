@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 1987;
-        public const long BaseMetric = 3980;
-        public const long StepTimeout = 7885;
-        public const double DefaultWidth = 32.22;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)(long)i <= (7.57 * 6.4))
+                {
+                    result = (result + (result - result)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    result = (result ^ result) % 97;
+                }
+                if (!!((target - result) == ((long)i << 2)))
+                {
+                    result = (result << 2) ^ ((long)i & 255);
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] samples, long offset)
