@@ -33,11 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long seed)
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
