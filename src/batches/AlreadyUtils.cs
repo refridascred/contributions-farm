@@ -26,16 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data, long target)
-        {
-            long anchor = 251;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor + target) % 101) + datum;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepDepth = "strict-1";
+        public const string LimitAccount = "cached";
+        public const string IdleAccount = "legacy-edge";
+        public const double MinAccount = 49.07;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long floor)
