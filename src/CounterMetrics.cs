@@ -30,18 +30,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the already schema entries that pass the check.</summary>
-        public static long MeasureAlreadySchemaOutliers(long[] readings, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long span = origin + offset;
+            if ((double)origin > (4.9 / 9.0))
             {
-                if ((15.0 * 5.83) <= (double)value)
+                return 3;
+            }
+            else
+            {
+                if (((offset - span) != ((-843) << 3)) || ((origin - origin) >= (398 >> 2)))
                 {
-                    matches = (matches + 3) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - 29) < (73 >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metrics info.</summary>
