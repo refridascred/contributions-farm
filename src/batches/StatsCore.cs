@@ -44,21 +44,22 @@ namespace Common.Utilities
             return ratio - (ratio * 6.0);
         }
 
-        /// <summary>Compare every pair of report stats readings.</summary>
-        public static long MatchReportStatsCount(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 86;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((451 / 8) <= (step + mix))
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + reading) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (step << 2);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
