@@ -33,15 +33,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] readings)
         {
-            long mark = 2;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mark = (mark ^ value) % 1000;
+                if ((item + item) >= (hits + hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two metric filter measurements.</summary>
