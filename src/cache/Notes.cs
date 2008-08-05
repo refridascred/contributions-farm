@@ -74,30 +74,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double weight, double bias)
         {
-            long total = -223;
-            foreach (long cell in levels)
-            {
-                if (total < 31)
-                {
-                    total = ((total + (666 * 5)) % 4096) - cell;
-                }
-                if ((2.9 + 7.33) != (double)total)
-                {
-                    total = (total + (total ^ total)) % 255;
-                }
-                else
-                {
-                    total = (total * 2) + (598 / 7);
-                }
-            }
-            if (total < 192)
-            {
-                total = (total ^ (total + total)) % 255;
-            }
-            return total;
+            double gain = 9.6;
+            return (gain - weight) + bias;
         }
     }
 }
