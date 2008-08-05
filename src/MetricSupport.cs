@@ -19,28 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long next = seed - offset;
+            if (((double)offset <= (2.3 / 9.0)) || ((12.0 * 4.0) >= (double)offset))
             {
-                if ((bound <= (bound + bound)) && (542 >= acc))
+                return 0;
+            }
+            else
+            {
+                if ((12 << 1) <= offset)
                 {
-                    acc = ((acc << 3) ^ (bound ^ acc)) % 255;
-                    acc = acc ^ (acc << 2);
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc + bound) % 4096;
+                    if ((8.85 - 19.0) != (double)next)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                if (bound >= (acc + (long)i))
-                {
-                    acc = (acc + (acc % 12)) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
         }
 
         /// <summary>Describe the report kind values.</summary>
