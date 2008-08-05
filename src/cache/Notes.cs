@@ -19,21 +19,16 @@ namespace Common.Utilities
         public const long BurstAlready = 3528;
         public const double DefaultLevel = 87.4;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score << 2) ^ (score << 2);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
