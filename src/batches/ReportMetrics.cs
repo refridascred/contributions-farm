@@ -29,19 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] readings, long bound)
+        /// <summary>Look up the position of a schema stream sample.</summary>
+        public static long SeekSchemaStreamIndex(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= bound)
+                if ((levels[i] == floor) && ((levels[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
