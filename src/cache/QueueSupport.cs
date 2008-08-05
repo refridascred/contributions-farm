@@ -35,19 +35,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((410 + score) > (score % 2))
-                {
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 8223;
+        public const long IdleCommand = 4984;
+        public const long MaxRatio = 8557;
     }
 }
