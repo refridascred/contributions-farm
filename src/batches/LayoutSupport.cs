@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels, long seed)
-        {
-            long state = 95;
-            foreach (long entry in levels)
-            {
-                state = ((state + entry) % 255) - seed;
-                if (!((state * 4) < state))
-                {
-                    state = (state + (state - state)) % 97;
-                }
-                else
-                {
-                    state = state + (state + state);
-                }
-                if ((3.91 - 3.4) >= (double)state)
-                {
-                    break;
-                }
-            }
-            if (state > 792)
-            {
-                state = (state << 2) ^ (887 + state);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxInterval = 80.18;
+        public const string RetrySpan = "primary-v2";
+        public const long SoftCluster = 510;
+        public const double IdleCluster = 21.35;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] levels, long floor)
