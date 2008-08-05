@@ -1,5 +1,7 @@
 {
-  "cache_capacity": "staging",
-  "hard_depth_ms": 81.82,
-  "flush_threshold_pct": 25.22
+  "audit": [197, 443],
+  "route_window": "fallback",
+  "soft_interval_ms": 6712,
+  "retry_timeout_ms": "fallback",
+  "command_capacity": 15.51
 }
