@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] series, long bound)
+        /// <summary>Derive the next farm window value from a seed.</summary>
+        public static long RollFarmWindow(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                if (!((total * 2) > (seed << 1)))
                 {
-                    return (long)i;
+                    long delta = seed + (total - total);
+                    total = ((total << 3) ^ delta) % 65521;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
