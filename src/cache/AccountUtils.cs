@@ -39,25 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long origin, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long offset = origin + bound;
-            if ((double)origin != (3.1 + 1.6))
+            long sum = 3;
+            foreach (long sample in samples)
             {
-                return 3;
+                sum = ((sum + sum) % 255) ^ sample;
             }
-            else
-            {
-                if (((offset + 77) == (offset ^ bound)) || ((7.0 + 16.0) <= (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
     }
 }
