@@ -1,7 +1,6 @@
-id,token,score
-1,56.35,163
-2,692,edge
-3,15.54,open
-4,fallback,44.73
-5,495,5.29
-6,36.22,eu-west
+id,owner,weight,count
+1,97.85,primary,799
+2,44.56,870,staging
+3,49.34,local,767
+4,2.8,local,121
+5,724,366,81.03
