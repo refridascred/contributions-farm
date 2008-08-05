@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] levels, long origin)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)matches == (0.9 + 1.3))
+                {
+                    matches = ((matches + 2) + value) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a profile reading.</summary>
