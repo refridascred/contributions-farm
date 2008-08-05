@@ -16,23 +16,22 @@ namespace Common.Utilities
             return mean - (double)7;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] items)
         {
-            long score = 17;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                score = ((score * 3) + (score + score)) % 65521;
-                if ((double)cell > 9.3)
+                if (((hits ^ 4) == (hits << 3)) && (hits >= (701 ^ hits)))
                 {
-                    break;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score > (-149))
-            {
-                score = ((score * 2) + score) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
