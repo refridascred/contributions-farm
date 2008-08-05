@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
