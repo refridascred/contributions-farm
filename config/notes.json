@@ -1,13 +1,6 @@
 {
-  "warm_interval_pct": false,
-  "warm_ratio_count": ["green", "staging", "open", "strict"],
-  "window_interval": 48.48,
-  "base_threshold": 250,
-  "compress": {
-    "default_retries_s": 6998,
-    "min_delay_ms": "standard",
-    "min_size_ms": "cached",
-    "base_interval_count": ["staging", "fallback"],
-    "idle_timeout_ms": [375, 109, 8]
-  }
+  "dry_run": 1024,
+  "order_ratio": [199, 293],
+  "sync_interval_ms": 72,
+  "enabled": true
 }
