@@ -55,20 +55,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 36.12;
+        public const long LimitAlready = 1240;
+        public const double HardRatio = 83.04;
+        public const long IdleBudget = 176;
+        public const long MaxScore = 5921;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
