@@ -1,6 +1,7 @@
 {
-  "token_timeout": "standard",
-  "stream_threshold": [55, 84, 285, 420],
-  "base_ratio_s": 2820,
-  "flush_ttl_pct": "staging"
+  "batch_threshold": 60,
+  "window_ratio": 85,
+  "base_size": 9231,
+  "payload_window": ["cached", "latest", "legacy", "strict"],
+  "hard_capacity": 27.31
 }
