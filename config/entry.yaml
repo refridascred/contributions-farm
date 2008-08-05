@@ -1,15 +1,26 @@
 # entry settings
-compress:
-  - 201
-  - 173
-  - 423
-  - 83
-burst_ttl:
-  - 157
-  - 382
-  - 400
-  - 483
-batch_depth_pct: staging
-session_timeout: strict
-default_capacity_count: 250
-warm_capacity: 4133
+max_size_ms: edge
+base_threshold_pct: 8397
+readonly: green
+warm_limit: 1024
+batch_retries:
+  default_ratio_ms:
+    min_window: stable
+    idle_depth:
+      - standard
+      - cached
+    cache_size_s: 17.32
+    batch_interval_pct:
+      - strict
+      - green
+      - eu-west
+  base_threshold_s:
+    - 347
+    - 271
+    - 392
+    - 212
+  max_depth: 250
+  sync_depth_pct: standard
+  token_ttl: 68.66
+  contributi_window: staging
+retry_ttl_s: stable
