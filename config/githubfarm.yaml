@@ -1,15 +1,4 @@
 # githubfarm settings
-default_ratio_pct: true
-report_ratio: 74
-soft_threshold_count: 349
-max_depth_s:
-  - open
-  - cached
-  - primary
-cache_depth: staging
-already_ratio:
-  tools_size:
-    - 68
-    - 312
-  batches_timeout: standard
-  readonly: latest
+context_limit: 6488
+base_retries_count: cached
+poll_limit_pct: open
