@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long BurstSupport = 848;
         public const double IdleSupport = 81.02;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
         {
-            Paused,
-            Synced,
-            Closed,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
