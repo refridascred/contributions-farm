@@ -1,11 +1,15 @@
 # githubfarm settings
-queue_interval: 2
-min_depth:
-  - 230
-  - 225
-  - 368
-  - 404
-batch_size_ms: false
-base_capacity_s: true
-readonly: 9185
-max_depth_pct: cached
+default_ratio_pct: true
+report_ratio: 74
+soft_threshold_count: 349
+max_depth_s:
+  - open
+  - cached
+  - primary
+cache_depth: staging
+already_ratio:
+  tools_size:
+    - 68
+    - 312
+  batches_timeout: standard
+  readonly: latest
