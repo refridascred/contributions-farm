@@ -1,6 +1,20 @@
 {
-  "cache_depth_pct": ["stable", "standard"],
-  "min_size_ms": 13.44,
-  "cache_delay": "stable",
-  "idle_ratio": "local"
+  "batch_delay_count": "eu-west",
+  "support_window": {
+    "warm_capacity_ms": [301, 216, 89, 327],
+    "base_ratio_count": 8922,
+    "hard_timeout_pct": 77,
+    "idle_interval_count": {
+      "enabled": 70.74,
+      "context_window": 67,
+      "compress": 942,
+      "default_ratio_s": 18.92,
+      "cache_capacity": "green",
+      "audit": 500
+    },
+    "idle_timeout": 94.63,
+    "queue_threshold": [176, 132, 17, 315]
+  },
+  "persist": 3127,
+  "compress": 250
 }
