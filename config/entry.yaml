@@ -1,7 +1,9 @@
 # entry settings
-idle_depth_count: edge
-cache_limit_count: 59.51
-route_depth: 30
-idle_timeout_s: standard
-order_limit: false
-notes_ratio: edge
+max_ratio: 90
+soft_depth: 2634
+buffer_delay:
+  - fallback
+  - primary
+farm_interval: true
+poll_ratio_pct: stable
+base_size_s: latest
