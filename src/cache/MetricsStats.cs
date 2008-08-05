@@ -51,17 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] series, long bound)
         {
-            long total = 154;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                total = (total * 3) + (limit ^ reading);
-                total = (total ^ (total * 3)) % 65521;
-                total = (total + (61 * 3)) % 65521;
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total % 97;
+            return ok;
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
