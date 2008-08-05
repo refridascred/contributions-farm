@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] values)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((((count + count) <= (46 ^ count)) && (count < (264 & 255))) || ((-988) > count))
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
