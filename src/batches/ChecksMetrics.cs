@@ -33,15 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm command samples.</summary>
-        public static long DigestFarmCommand(long[] items, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long carry = 4;
-            foreach (long cell in items)
-            {
-                carry = (((carry + (carry + carry)) % 255) ^ cell) + offset;
-            }
-            return carry % 4096;
+            Locked,
+            Ready,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
