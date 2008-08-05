@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetrySpan = "legacy-edge";
-        public const long MinFactor = 9812;
-        public const long MaxRecord = 1497;
-        public const double RetryRecord = 3.13;
-        public const long CacheInterval = 8148;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading / 5) <= (tally * 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
