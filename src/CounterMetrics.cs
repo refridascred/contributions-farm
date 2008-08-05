@@ -38,31 +38,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long limit, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            if ((step % 5) >= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((17.0 + 5.0) > (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + limit) <= (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
