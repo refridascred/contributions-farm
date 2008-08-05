@@ -30,12 +30,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long floor, long seed)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
+            long cur = floor ^ seed;
+            if ((double)seed < (20.0 / 9.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed << 2) < (cur + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
