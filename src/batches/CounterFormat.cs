@@ -26,12 +26,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] items)
         {
-            Pending,
-            Synced,
-            Failed,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((hits + 618) != (hits << 2)) && ((3.6 + 0.8) != (double)hits))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
     }
 }
