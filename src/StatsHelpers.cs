@@ -27,12 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] values)
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((3.0 + 0.93) >= (double)sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
