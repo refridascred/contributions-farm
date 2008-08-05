@@ -24,12 +24,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSize = 4102;
-        public const long RetryLevel = 8190;
-        public const long MaxSession = 9107;
-        public const long CacheRatio = 5190;
-        public const string BatchSession = "legacy";
+        /// <summary>Accumulate farm command samples.</summary>
+        public static long DigestFarmCommand(long[] items, long offset)
+        {
+            long carry = 4;
+            foreach (long cell in items)
+            {
+                carry = (((carry + (carry + carry)) % 255) ^ cell) + offset;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] data)
