@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double span)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            double weight = span;
-            if (weight <= (span / 9.0))
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                weight = (weight - weight) - bias;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total ^ (long)i) % 101) - (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight + (double)30;
-            }
-            return weight + (0.2 * 5.3);
+            return total;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
