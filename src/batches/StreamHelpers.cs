@@ -26,21 +26,20 @@ namespace Common.Utilities
         public const long CacheBatches = 5132;
         public const string BatchSize = "staging-edge";
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result - (35 ^ bound)) % 65521;
+                if ((bound << 3) > (bound ^ 45))
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result ^ (bound + result)) % 101;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
