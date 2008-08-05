@@ -29,12 +29,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] values, long offset)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
