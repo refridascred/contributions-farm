@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 5) + (608 - mix)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
