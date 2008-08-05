@@ -37,21 +37,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of metric entry readings.</summary>
-        public static long OverlapMetricEntryCount(long[] series)
+        /// <summary>Digest a series of metric farm entries.</summary>
+        public static long WeighMetricFarm(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 88;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((value % 97) >= (mark + mark)) && (mark > (mark ^ mark)))
                 {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark << 3) ^ value;
+                }
+                mark = mark ^ (130 & 127);
+                if (!((2.5 - 5.7) == (double)value))
+                {
+                    mark = ((mark << 3) ^ (value << 1)) % 101;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Accumulate counter samples.</summary>
