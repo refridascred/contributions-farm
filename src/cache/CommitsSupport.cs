@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const string BaseDepth = "primary";
         public const long RetryRecord = 2837;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Failed,
-            Done,
-            Draft,
+            Synced,
+            Queued,
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
