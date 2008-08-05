@@ -44,11 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Retry,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Match up tools filter samples.</summary>
