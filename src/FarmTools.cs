@@ -26,19 +26,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] levels, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((origin + anchor) == ((long)i + anchor))
+                if ((limit + 8) > (datum * 3))
                 {
-                    continue;
+                    matches = matches + 2;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
     }
 }
