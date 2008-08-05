@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of farm batch entries.</summary>
-        public static long TallyFarmBatch(long[] series)
-        {
-            long acc = -602;
-            foreach (long item in series)
-            {
-                acc = (acc + (acc - acc)) + item;
-                if (acc > (-321))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 548;
+        public const long BatchSupport = 780;
+        public const string MaxSupport = "latest";
+        public const long BurstSupport = 848;
+        public const double IdleSupport = 81.02;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ProjectChecks(double scale, double offset)
