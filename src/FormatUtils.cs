@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] levels, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if (!((floor % 24) >= (offset + floor)))
             {
-                if (sample <= origin)
+                return 3;
+            }
+            else
+            {
+                if (((offset >> 2) > (floor % 5)) || ((offset / 6) > (offset >> 4)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the account class values.</summary>
