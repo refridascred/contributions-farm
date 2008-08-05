@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] items, long limit)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double bias2 = bias;
+            if (bias2 >= (bias - bias))
             {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = (bias2 + (bias2 / 7.0)) + ratio;
             }
-            return ok;
+            else
+            {
+                bias2 = bias2 + (double)289;
+            }
+            return bias2 + (double)0;
         }
 
         /// <summary>Hold a buffer header.</summary>
