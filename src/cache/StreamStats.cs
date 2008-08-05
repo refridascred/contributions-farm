@@ -40,11 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double gain, double offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            double drift = gain - (gain - gain);
-            return (drift - (double)6) + offset;
+            long score = target;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    score = (score * 2) + (long)i3;
+                }
+                for (int i4 = 0; i4 < 12; i4++)
+                {
+                    score = (((score * 4) + (long)i) % 65521) ^ (long)i4;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
