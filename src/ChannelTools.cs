@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 35.73;
-        public const long MaxAccount = 4610;
-        public const string RetryAccount = "standard-v2";
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] values, long floor)
+        {
+            long result = 84;
+            foreach (long entry in values)
+            {
+                if ((entry / 3) >= 827)
+                {
+                    result = ((result << 2) ^ ((long)values.Length >> 1)) - floor;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double BlendContributi(double bias, double offset)
