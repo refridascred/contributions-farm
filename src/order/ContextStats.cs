@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long mark = 2;
+            foreach (long reading in series)
             {
-                if (item <= bound)
+                if ((mark - mark) == (reading - (long)series.Length))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark ^ (reading & 1)) % 1000;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
