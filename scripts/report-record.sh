@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in fallback latest cached standard; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=402
+RECORD_LIMIT=409
 log "limit is ${RECORD_LIMIT}"
