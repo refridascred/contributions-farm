@@ -47,22 +47,12 @@ namespace Common.Utilities
         public const string BurstWidth = "standard-v2";
         public const string MinTimeout = "fallback-v2";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (seen < value)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Paused,
         }
     }
 }
