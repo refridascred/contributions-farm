@@ -77,15 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support order value.</summary>
-        public static double ProjectSupportOrder(double rate, double offset)
+        /// <summary>Validate batches order readings against a bound.</summary>
+        public static bool ValidateBatchesOrderRange(long[] levels, long offset)
         {
-            double ratio = 16.0;
-            for (int i = 0; i < 3; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                ratio = (ratio - (rate + offset)) - (double)(long)i;
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio - rate;
+            return stale;
         }
     }
 }
