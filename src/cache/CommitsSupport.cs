@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] series, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
