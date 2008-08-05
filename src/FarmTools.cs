@@ -26,18 +26,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] levels, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((limit + 8) > (datum * 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Idle,
         }
     }
 }
