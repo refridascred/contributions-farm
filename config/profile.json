@@ -1,16 +1,5 @@
 {
-  "persist": {
-    "warm_capacity_s": {
-      "flush_depth_s": "staging",
-      "poll_capacity_count": 77,
-      "audit": 250,
-      "warm_ratio_pct": "fallback"
-    },
-    "retry_ttl_s": "cached",
-    "batch_delay": "fallback"
-  },
-  "stream_ttl": 30.18,
-  "tools_retries": false,
-  "batch_depth": 51,
-  "profile_interval": 33
+  "retry_window_pct": 22,
+  "verbose": false,
+  "batch_depth_s": "local"
 }
