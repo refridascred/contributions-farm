@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] data)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 5) >= (tally + 86))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
