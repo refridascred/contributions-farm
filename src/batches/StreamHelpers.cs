@@ -49,12 +49,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 68.09;
-        public const string CacheMetrics = "alpha-v2";
-        public const long MinMetrics = 3492;
-        public const long WindowMetrics = 243;
-        public const long LimitWidth = 2943;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Locked,
+            Done,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long WindowSpan = 8824;
