@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every already counter entry stays within the limit.</summary>
-        public static bool GuardAlreadyCounterLimits(long[] values, long floor)
+        /// <summary>Compare every pair of command profile readings.</summary>
+        public static long PairCommandProfileCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
