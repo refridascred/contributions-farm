@@ -39,13 +39,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Validate format cache readings against a bound.</summary>
+        public static bool CheckFormatCacheLimits(long[] series, long step)
         {
-            Done,
-            Locked,
-            Closed,
-            Pending,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
