@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first report farm entry that matches the target.</summary>
-        public static long SeekReportFarmIndex(long[] series, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = (double)(708 + 257);
+            if (rate2 < (double)(-97))
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 + (offset + rate);
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - 2.0) - (double)(long)i;
+            }
+            return rate2 + (3.0 / 5.0);
         }
 
         /// <summary>Rank token input into a small class.</summary>
