@@ -37,13 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Idle,
-            Active,
-            New,
-            Paused,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
