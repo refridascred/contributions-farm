@@ -1,6 +1,19 @@
 {
-  "verbose": 250,
-  "audit": 16,
-  "readonly": "primary",
-  "warm_timeout_count": 500
+  "persist": {
+    "default_depth_pct": "staging",
+    "sync_ttl_s": {
+      "min_retries": 77.6,
+      "min_limit_ms": 75.98,
+      "sync_ttl_s": true
+    },
+    "audit": {
+      "warm_ratio_ms": "primary",
+      "readonly": 64.79,
+      "batch_ratio": 68,
+      "token_capacity": "green",
+      "audit": true
+    }
+  },
+  "base_window": 9581,
+  "hard_window": 5789
 }
