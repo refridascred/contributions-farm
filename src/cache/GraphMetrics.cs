@@ -59,18 +59,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] data, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((cell + 14) == (limit & 255))
+                if (!((tally >> 2) > (tally % 16)))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
