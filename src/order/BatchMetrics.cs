@@ -58,20 +58,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "stable-v2";
+        public const double MinBuffer = 87.77;
+        public const long LimitBuffer = 6803;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
