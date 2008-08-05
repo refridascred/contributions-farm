@@ -33,18 +33,12 @@ namespace Common.Utilities
             return gain - (double)90;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] levels, long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((tally + value) > (step + step)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
