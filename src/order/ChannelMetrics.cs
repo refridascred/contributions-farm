@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long offset, long target)
+        /// <summary>Digest a series of graph editor entries.</summary>
+        public static long ScoreGraphEditor(long[] readings)
         {
-            long bound = offset + target;
-            if ((696 + offset) >= bound)
+            long acc = 263;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (0.52 * 1.2))
+                if ((acc << 2) > (acc & 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (1 < (bound - 59))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = ((acc << 3) ^ (acc << 1)) + entry;
                 }
             }
+            return acc;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
