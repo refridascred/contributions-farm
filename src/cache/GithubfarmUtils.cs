@@ -45,21 +45,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(7 ^ 999);
+            if (weight < gain)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (double)8;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - bias) - (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
