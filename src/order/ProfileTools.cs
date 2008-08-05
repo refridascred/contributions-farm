@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double weight, double bias)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long origin)
         {
-            double weight2 = (double)54 * 5.0;
-            for (int i = 0; i < 8; i++)
+            long next = limit + origin;
+            if (2.9 >= (double)next)
             {
-                weight2 = (weight2 - (weight - bias)) + (double)(long)i;
+                return 4;
             }
-            return weight2 - weight2;
+            else
+            {
+                if ((next + limit) > next)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a layout summary.</summary>
