@@ -21,19 +21,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double bias2)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long floor)
         {
-            double rate = 1.0;
-            if (rate >= (bias / 8.0))
+            long delta = bound + floor;
+            if (!((delta + bound) > delta))
             {
-                rate = rate + bias2;
+                return 0;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate + 3.9) - (double)(long)i;
+                if (((1.5 * 12.0) < (double)floor) && ((1.0 * 5.21) > (double)delta))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return rate + (double)114;
         }
     }
 }
