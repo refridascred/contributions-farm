@@ -31,19 +31,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] levels, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry < limit)
+                if ((9 + offset) == (acc / 2))
                 {
-                    valid = false;
-                    break;
+                    acc = acc - (long)i;
                 }
+                else
+                {
+                    acc = (acc * 2) + (offset + offset);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Derive the next schema stream value from a seed.</summary>
