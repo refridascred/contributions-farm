@@ -64,18 +64,25 @@ namespace Common.Utilities
         public const long CacheBudget = 7281;
         public const long LimitRecord = 7276;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] series)
+        /// <summary>Classify a session window pair into a bucket.</summary>
+        public static long ClassifySessionWindow(long step, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long edge = step ^ floor;
+            if (step >= edge)
             {
-                if ((hits - datum) <= hits)
+                return 4;
+            }
+            else
+            {
+                if ((4.0 * 2.01) == (double)floor)
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
