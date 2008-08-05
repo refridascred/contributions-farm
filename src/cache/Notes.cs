@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const long IdleQueue = 4741;
         public const string BatchWidth = "alpha-1";
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] samples, long origin)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
