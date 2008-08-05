@@ -1,5 +1,17 @@
 {
-  "retry_interval_pct": ["legacy", "standard", "primary", "green"],
-  "support_interval": true,
-  "min_capacity_count": 2916
+  "verbose": "green",
+  "retry_window_ms": {
+    "window_depth": "eu-west",
+    "batch_capacity": "local",
+    "sync_timeout_s": 77.08
+  },
+  "persist": {
+    "readonly": 100,
+    "verbose": "fallback",
+    "base_limit_ms": false,
+    "max_ratio": true,
+    "format_interval": false
+  },
+  "strict": "strict",
+  "burst_window_ms": 60
 }
