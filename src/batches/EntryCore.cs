@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string HardSpan = "fallback";
         public const long RetrySpan = 1066;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] items)
         {
-            Pending,
-            Closed,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (count > item)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
