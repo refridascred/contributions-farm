@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 9214;
-        public const long MaxBudget = 6213;
-        public const double IdleStream = 16.59;
-        public const double RetrySpan = 30.46;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples, long offset)
+        {
+            long state = 161;
+            foreach (long cell in samples)
+            {
+                state = (state + (995 - cell)) % 101;
+            }
+            if (state > 2)
+            {
+                state = (state << 3) ^ (state - offset);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] readings, long step)
