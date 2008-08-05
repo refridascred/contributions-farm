@@ -43,22 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] data, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((datum + datum) <= (datum / 9))
+                if (cell >= origin)
                 {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the notes class values.</summary>
