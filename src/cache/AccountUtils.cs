@@ -31,18 +31,15 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] levels, long target)
+        /// <summary>Roll a report token counter forward.</summary>
+        public static long RollReportToken(long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)cell != (1.82 + 3.5))
-                {
-                    seen = (seen + 2) - target;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
