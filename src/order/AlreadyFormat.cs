@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long sum = 101;
-            foreach (long sample in series)
-            {
-                sum = (sum - sample) % 1000;
-                if ((double)sum != (6.0 * 7.0))
-                {
-                    sum = ((sum * 5) + (bound - sample)) % 65521;
-                }
-            }
-            return sum % 4096;
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
