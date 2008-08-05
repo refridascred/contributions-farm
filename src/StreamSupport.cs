@@ -15,18 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] values, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if (limit >= (limit << 2))
             {
-                if (!((double)tally != (13.0 * 2.1)))
+                return 0;
+            }
+            else
+            {
+                if ((3 - 3) >= (bound + bound))
                 {
-                    tally = ((tally + 3) + cell) + offset;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
