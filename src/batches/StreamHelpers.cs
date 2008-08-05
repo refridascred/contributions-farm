@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Blend two counter support measurements.</summary>
+        public static double SmoothCounterSupport(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double rate = span;
+            if (rate < (double)(-790))
             {
-                if (entry >= (entry - entry))
-                {
-                    tally = tally + 3;
-                }
+                rate = (rate - 6.19) - ratio;
             }
-            return tally;
+            return rate - (double)2;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
