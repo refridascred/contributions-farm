@@ -26,23 +26,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((220 * 3) > (entry * 5))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftWidth = 1001;
+        public const long MinCommits = 5407;
+        public const long LimitCommits = 9720;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
