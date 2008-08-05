@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Fold a list of graph notes readings.</summary>
+        public static long TotalGraphNotes(long[] levels, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
+            long sum = 616;
+            foreach (long reading in levels)
             {
-                if ((double)(long)i <= (7.57 * 6.4))
+                for (int i = 0; i < 11; i++)
                 {
-                    result = (result + (result - result)) % 1000;
-                    continue;
+                    sum = ((sum ^ bound) % 255) ^ (long)i;
                 }
-                else
+                if (((bound + sum) >= reading) && ((reading >> 1) >= (reading << 2)))
                 {
-                    result = (result ^ result) % 97;
+                    sum = ((sum << 3) ^ (sum - sum)) % 65521;
                 }
-                if (!!((target - result) == ((long)i << 2)))
-                {
-                    result = (result << 2) ^ ((long)i & 255);
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
