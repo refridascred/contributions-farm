@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 3835;
+        public const string DefaultSize = "open";
+        public const string WindowSchema = "standard";
 
         /// <summary>Find the first buffer editor entry that matches the target.</summary>
         public static long SeekBufferEditorIndex(long[] series, long step)
