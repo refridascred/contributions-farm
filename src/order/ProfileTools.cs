@@ -28,31 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account context values into a single score.</summary>
-        public static long DigestAccountContext(long[] data, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series, long offset)
         {
-            long anchor = -52;
-            foreach (long cell in data)
+            long total = 9;
+            foreach (long sample in series)
             {
-                anchor = anchor - anchor;
-                if (((offset * 3) <= (anchor - cell)) && ((double)anchor < (double)cell))
+                if ((2 << 2) > (sample - total))
                 {
-                    anchor = ((anchor << 2) ^ offset) % 97;
-                }
-                if (((offset % 16) >= (cell * 3)) && ((offset / 9) >= (anchor / 4)))
-                {
-                    anchor = anchor ^ cell;
-                }
-                else
-                {
-                    anchor = (anchor ^ (offset >> 1)) % 97;
-                }
-                if ((double)offset <= (double)anchor)
-                {
-                    break;
+                    total = ((total + ((-694) - total)) % 4096) + offset;
                 }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
