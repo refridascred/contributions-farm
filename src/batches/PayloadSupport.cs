@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 2985;
+        public const long BurstWindow = 5310;
+        public const string BaseWidth = "standard-edge";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
