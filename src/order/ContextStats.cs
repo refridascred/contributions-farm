@@ -30,19 +30,16 @@ namespace Common.Utilities
         public const long StepInterval = 117;
         public const string SoftFarm = "legacy-1";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] series, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + ((-6) & 1)) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return found;
+            return acc;
         }
     }
 }
