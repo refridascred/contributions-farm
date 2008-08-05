@@ -62,38 +62,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long step, long target)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            if ((double)step < 4.0)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)step <= (8.55 * 7.33)) || ((step + target) >= (4 & 31)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target & 15) >= (target % 2)))
+                    if ((items[i] + items[j]) > 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target << 1) != (target * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
