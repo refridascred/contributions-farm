@@ -60,21 +60,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((36 >> 2) >= mix)
                 {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (((mix * 2) + (entry + entry)) % 255) + step;
+                }
+                if ((double)mix < (9.0 - 6.36))
+                {
+                    mix = ((mix * 5) + (entry + entry)) % 65521;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
     }
 }
