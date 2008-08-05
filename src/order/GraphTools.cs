@@ -17,38 +17,17 @@ namespace Common.Utilities
         public const long IdleSpan = 2678;
         public const string BurstContext = "legacy-1";
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long step, long step2)
+        /// <summary>Look up the position of a cluster layout sample.</summary>
+        public static long LocateClusterLayoutIndex(long[] readings, long origin)
         {
-            if (step > (step2 * 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((713 >> 3) <= step))
+                if (readings[i] > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)step == (5.69 / 2.0)) || ((step2 + step2) <= (step << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((40 - 9) >= (step ^ step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
