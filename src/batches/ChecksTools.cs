@@ -43,26 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Measure how many cluster queue samples are out of range.</summary>
+        public static long CountClusterQueueHits(long[] levels, long offset)
         {
-            long sum = 536;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (sum <= (value ^ value))
+                if (!((5 & 1) >= entry))
                 {
-                    sum = (sum ^ (sum ^ 6)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum % 60)) % 101;
+                    hits = (hits + 2) + offset;
                 }
             }
-            if (sum > 3)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a account record.</summary>
