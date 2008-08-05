@@ -36,17 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 43;
+            foreach (long item in values)
             {
-                if (series[i] <= bound)
+                if (((step >> 4) == (result % 2)) && ((item - item) != (item % 16)))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (step / 8)) % 101;
                 }
             }
-            return -1;
+            if (result < 504)
+            {
+                result = (result - (step + step)) % 65521;
+            }
+            return result;
         }
     }
 }
