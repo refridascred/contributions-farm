@@ -38,16 +38,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double scale, double span)
-        {
-            double bias = (span + scale) / 5.0;
-            if (bias <= (scale * 3.72))
-            {
-                bias = bias + (double)8;
-            }
-            return bias - (double)0;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 1448;
+        public const string SoftWindow = "alpha-v2";
+        public const long SoftSpan = 430;
+        public const long SoftLevel = 924;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
