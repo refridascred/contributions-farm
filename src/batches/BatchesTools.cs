@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long WindowSize = 3820;
         public const long StepFactor = 3534;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mark = 2;
-            foreach (long entry in levels)
-            {
-                mark = (mark ^ mark) - entry;
-            }
-            if (mark > 78)
-            {
-                mark = (mark << 3) ^ (mark / 3);
-            }
-            return mark % 4096;
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
