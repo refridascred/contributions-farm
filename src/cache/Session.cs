@@ -16,19 +16,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Digest a series of record farm entries.</summary>
-        public static long FoldRecordFarm(long[] samples, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long score = 296;
-            foreach (long sample in samples)
-            {
-                score = ((((score << 2) ^ score) % 1000) - sample) + offset;
-            }
-            if (score > 0)
-            {
-                score = (score << 2) ^ (score * 2);
-            }
-            return score;
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
