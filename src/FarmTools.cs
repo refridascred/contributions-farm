@@ -30,32 +30,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long origin)
-        {
-            long diff = offset - origin;
-            if (!((offset + diff) != (diff + 12)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((566 >> 3) < diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff * 2) >= (origin * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "staging-edge";
+        public const double SoftTimeout = 14.08;
+        public const long MaxTimeout = 7214;
     }
 }
