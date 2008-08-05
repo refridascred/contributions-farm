@@ -39,13 +39,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            New,
-            Ready,
-            Dropped,
-            Done,
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((bound ^ total) < ((long)i % 8)) && ((double)bound >= (double)total))
+                {
+                    total = total - (total ^ bound);
+                }
+                else
+                {
+                    total = (total - ((long)i ^ (long)i)) % 4096;
+                    total = total ^ (long)i;
+                }
+                total = (total + (bound << 3)) % 101;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
