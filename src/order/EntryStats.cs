@@ -59,26 +59,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long anchor = 33;
-            foreach (long entry in readings)
-            {
-                if (entry <= (entry + anchor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + (-69))) % 101;
-                }
-                if ((entry < (anchor * 3)) || ((anchor + entry) >= (anchor / 5)))
-                {
-                    anchor = (anchor - (anchor / 7)) % 65521;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = ((anchor * 4) + anchor) % 4096;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
