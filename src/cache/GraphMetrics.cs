@@ -30,25 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            long step2 = step - bound;
-            if (((5.7 + 4.0) == (double)bound) || ((step + 701) <= (step2 + step2)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 - step2) > (step + bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a cache already figure with a bias.</summary>
