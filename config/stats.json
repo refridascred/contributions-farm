@@ -1,14 +1,12 @@
 {
-  "retry_timeout_ms": 89,
-  "soft_timeout_count": "local",
-  "filter_capacity": 27.47,
-  "persist": 500,
-  "soft_ttl_pct": {
-    "batch_limit": 2962,
-    "payload_limit": "primary",
-    "strict": true,
-    "cache_retries_ms": "legacy",
-    "schema_limit": [366, 431, 282]
+  "cache_depth": "fallback",
+  "verbose": 58.59,
+  "enabled": 41.31,
+  "batches_limit": 30,
+  "flush_retries": {
+    "buffer_delay": 100,
+    "sync_retries_pct": "local",
+    "strict": 2743
   },
-  "buffer_ttl": "strict"
+  "batch_ratio_count": 500
 }
