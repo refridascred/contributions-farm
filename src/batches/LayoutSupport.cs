@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] levels, long floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 15) <= (floor * 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
