@@ -20,15 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] series, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long offset2)
         {
-            long mark = 77;
-            foreach (long item in series)
+            if ((offset2 << 2) <= offset)
             {
-                mark = (((mark - (mark * 4)) % 1000) ^ item) + seed;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((offset << 1) < offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - offset2) >= offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset + offset2) <= (offset2 & 127))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
