@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] levels, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((bound / 4) == (hits >> 5))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
