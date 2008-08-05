@@ -31,15 +31,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long carry = 20;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (((4.75 - 2.11) == (double)carry) || ((8.82 - 6.4) != (double)carry))
+                {
+                    break;
+                }
+                carry = (carry << 2) ^ 26;
+                if ((carry - carry) >= carry)
+                {
+                    carry = ((carry << 2) ^ (carry + 20)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ reading;
+                }
             }
-            return mix;
+            if (carry < 61)
+            {
+                carry = (carry << 3) ^ 2;
+            }
+            return carry;
         }
     }
 }
