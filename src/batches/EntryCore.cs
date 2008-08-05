@@ -29,21 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((7.3 + 2.82) < (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((double)step <= (14.0 + 3.5)) && ((step + step) == (floor ^ step)))
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
