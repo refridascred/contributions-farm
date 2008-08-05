@@ -56,12 +56,20 @@ namespace Common.Utilities
             return rate - (3.9 / 3.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinCount = 5152;
-        public const long SoftEntry = 6227;
-        public const long RetryEntry = 2789;
-        public const double DefaultScore = 86.95;
-        public const long MaxRatio = 7763;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next batches counter value.</summary>
         public static double AdjustBatchesCounter(double scale, double offset)
