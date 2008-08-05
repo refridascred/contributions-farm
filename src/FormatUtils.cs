@@ -20,38 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long offset, long offset2)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if ((offset2 << 2) <= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 1) < offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - offset2) >= offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset + offset2) <= (offset2 & 127))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
