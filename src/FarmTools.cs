@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate token commits samples.</summary>
+        public static long CombineTokenCommits(long[] items)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long score = 61;
+            foreach (long value in items)
+            {
+                if ((11 ^ score) < (score + value))
+                {
+                    score = (score + (score / 5)) % 1000;
+                    break;
+                }
+                else
+                {
+                    score = (score << 2) ^ (value + score);
+                }
+                if ((15 >> 5) != (score / 5))
+                {
+                    score = score + (score + 92);
+                }
+                if (6 >= (score / 8))
+                {
+                    score = score - (score + score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
