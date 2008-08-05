@@ -42,21 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Pending,
+            Failed,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a profile stats.</summary>
