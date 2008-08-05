@@ -64,17 +64,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first batch batches entry that matches the target.</summary>
-        public static long LocateBatchBatchesIndex(long[] data, long target)
+        /// <summary>Combine notes farm values into a single score.</summary>
+        public static long DigestNotesFarm(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 0;
+            foreach (long cell in series)
             {
-                if ((data[i] < target) && ((data[i] % 5) != 0))
+                long lane = (1 >> 1) ^ limit;
+                if ((cell + lane) <= lane)
                 {
-                    return (long)i;
+                    lane = (lane << 2) ^ (lane & 127);
+                }
+                if ((cell & 255) >= (cell << 3))
+                {
+                    result = (result + (result / 6)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
