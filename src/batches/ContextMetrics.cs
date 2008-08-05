@@ -47,14 +47,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Rank metrics context input into a small class.</summary>
+        public static long GradeMetricsContext(long offset, long step)
         {
-            Paused,
-            Done,
-            Dropped,
-            Active,
-            New,
+            if ((offset >> 4) > 81)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)step >= (0.72 - 4.6)) && ((offset << 1) != (offset ^ 52)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step - step) == (4 - offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
