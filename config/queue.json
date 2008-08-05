@@ -1,7 +1,6 @@
 {
-  "idle_window_pct": 20.99,
-  "default_delay_ms": [273, 36, 278],
-  "soft_window_count": false,
-  "record_threshold": true,
-  "idle_depth_ms": "legacy"
+  "burst_limit_pct": ["strict", "legacy", "latest"],
+  "base_timeout": 33.95,
+  "retry_size": 49,
+  "burst_delay_pct": 1311
 }
