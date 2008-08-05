@@ -64,22 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long state = 0;
-            foreach (long value in data)
-            {
-                if (((7 ^ value) != (value + state)) || ((double)state > 7.35))
-                {
-                    state = (state - (value * 3)) % 97;
-                }
-                else
-                {
-                    state = (state + 341) % 101;
-                }
-            }
-            return state;
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
