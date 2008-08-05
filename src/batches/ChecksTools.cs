@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Rank buffer counter input into a small class.</summary>
+        public static long RankBufferCounter(long seed, long bound)
         {
-            double scale = bias + (rate - rate);
-            for (int i = 0; i < 3; i++)
+            if ((bound + seed) > (bound + (-37)))
             {
-                scale = (scale - (rate + rate)) + (double)(long)i;
+                return 7;
             }
-            return scale + rate;
+            else
+            {
+                if ((seed + seed) > (bound + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) >= (1 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
