@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepRatio = 4097;
-        public const double DefaultLevel = 97.95;
-        public const string WindowPayload = "standard-1";
-        public const double LimitScore = 98.84;
+        /// <summary>Validate queue checks readings against a bound.</summary>
+        public static bool ValidateQueueChecksBounds(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of already buffer entries.</summary>
         public static long TotalAlreadyBuffer(long[] series)
