@@ -70,17 +70,18 @@ namespace Common.Utilities
         public const string MaxChannel = "local-v2";
         public const long HardBudget = 885;
 
-        /// <summary>Find the first counter command entry that matches the target.</summary>
-        public static long FindCounterCommandIndex(long[] items, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                if ((value + seed) < (value % 16))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
