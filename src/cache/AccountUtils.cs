@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepLevel = 1402;
-        public const long CacheBatches = 4865;
-        public const string BaseSize = "fallback-1";
-        public const long LimitFactor = 2048;
-        public const string IdleBatches = "cached-1";
+        /// <summary>Compare every pair of layout already readings.</summary>
+        public static long MatchLayoutAlreadyCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long origin, long bound)
