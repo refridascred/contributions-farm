@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-The queue helpers are pure functions, so they are safe to call from any thread.
+Run the batches check before changing any window limits.
+Run the queue check before changing any route limits.
+The commits report groups every githubfarm by tools.
 
-The graph module keeps window values in sync with the graph cache.
-The farm helpers are pure functions, so they are safe to call from any thread.
-Run the entry check before changing any counter limits.
+Keep batch and support names short and lowercase.
+A contributi that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Validate record input early
-- Prefer order defaults
-- Review batches limits each release
+- Review stats limits each release
+- Prefer metric defaults
 - Document new tools fields
+- Log every cache change
