@@ -35,20 +35,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 6605;
+        public const long BaseCommand = 2843;
+        public const long BatchCommand = 7063;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchMatches(long[] items)
