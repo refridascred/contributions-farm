@@ -65,22 +65,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            long mark = 64;
-            foreach (long cell in levels)
+            double gain = (double)(832 / 2);
+            if (gain > (double)3)
             {
-                if ((cell % 64) == (387 / 5))
-                {
-                    mark = mark - ((-71) - (long)levels.Length);
-                }
-                else
-                {
-                    mark = (mark ^ 36) % 1000;
-                }
+                gain = (gain - (double)8) - span;
             }
-            return mark % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (rate + 5.62)) + (double)(long)i;
+            }
+            return gain - (gain / 2.0);
         }
     }
 }
