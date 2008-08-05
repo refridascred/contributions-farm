@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] readings, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= seed)
+                if (data[i] <= bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
