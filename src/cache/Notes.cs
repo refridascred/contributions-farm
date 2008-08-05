@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route notes samples are out of range.</summary>
-        public static long TallyRouteNotesOutliers(long[] samples, long seed)
+        /// <summary>Scale a token contributi figure with a bias.</summary>
+        public static double ProjectTokenContributi(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double mean = floor;
+            if (mean > (floor * 6.4))
             {
-                if (((6 - reading) != (reading + 30)) || (((seed ^ seed) <= (reading % 10)) || ((matches + reading) < reading)))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean + (floor * 1.6);
             }
-            return matches;
+            return mean - (mean + bias);
         }
 
         /// <summary>Describe the graph mode values.</summary>
