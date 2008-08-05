@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate record buffer samples.</summary>
+        public static long FoldRecordBuffer(long[] data, long seed)
         {
-            Locked,
-            Done,
-            Active,
+            long mix = 643;
+            foreach (long entry in data)
+            {
+                if ((mix & 3) > (mix << 1))
+                {
+                    mix = ((mix << 2) ^ (mix + seed)) - entry;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix * 3)) % 1000;
+                }
+                if (((seed + seed) <= seed) && ((seed & 127) <= ((-143) << 2)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
