@@ -54,20 +54,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double rate, double offset)
-        {
-            double scale = offset;
-            if (scale < (double)81)
-            {
-                scale = (scale - (offset / 4.0)) + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + offset) + (double)(long)i;
-            }
-            return scale - offset;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitDepth = 6161;
+        public const long IdleTimeout = 8769;
+        public const string BatchCommits = "fallback-edge";
+        public const long SoftCommits = 6351;
+        public const long BurstCommits = 8309;
 
         /// <summary>Derive the next batches counter value from a seed.</summary>
         public static long DeriveBatchesCounter(long offset)
