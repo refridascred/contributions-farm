@@ -78,12 +78,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Active,
-            Draft,
-            New,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepSpan = 5941;
+        public const long BurstCounter = 9206;
+        public const long RetryCounter = 3340;
+        public const string BatchSize = "primary-1";
+        public const double IdleRatio = 56.15;
     }
 }
