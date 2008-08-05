@@ -1,6 +1,8 @@
 {
-  "readonly": "staging",
-  "sync_size": 83,
-  "min_ratio": 32,
-  "audit": false
+  "dry_run": 17,
+  "poll_interval": 513,
+  "retry_delay_s": 85.54,
+  "batches_timeout": 68,
+  "default_window": "blue",
+  "readonly": [291, 431]
 }
