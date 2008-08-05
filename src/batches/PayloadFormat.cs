@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Combine buffer context values into a single score.</summary>
+        public static long ScoreBufferContext(long[] items, long bound)
         {
-            double ratio = weight;
-            if (ratio >= (double)26)
+            long state = 34;
+            foreach (long entry in items)
             {
-                ratio = ratio - (weight / 8.0);
+                state = state + (entry ^ 5);
             }
-            else
+            if (state < 39)
             {
-                ratio = ratio + (ratio - ratio);
+                state = ((state << 2) ^ (state - bound)) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio - (double)0;
+            return state % 1000;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
