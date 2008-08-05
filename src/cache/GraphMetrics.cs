@@ -47,15 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches already value.</summary>
-        public static double ScaleBatchesAlready(double bias, double span)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double ratio = (double)487 - bias;
-            if (ratio <= (bias - bias))
-            {
-                ratio = (ratio + 15.0) - span;
-            }
-            return ratio - ratio;
+            Retry,
+            Dropped,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
