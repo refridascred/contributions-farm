@@ -1,7 +1,10 @@
 {
-  "strict": ["eu-west", "green"],
-  "cache_delay": [278, 412],
-  "contributi_delay": 56.01,
-  "idle_ttl_s": 1,
-  "cluster_timeout": 9389
+  "strict": 98.44,
+  "githubfarm_ratio": 500,
+  "batch_capacity_count": {
+    "buffer_limit": ["strict", "cached", "green", "strict"],
+    "min_limit": "strict",
+    "batch_timeout_pct": true,
+    "graph_size": 9631
+  }
 }
