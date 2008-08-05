@@ -19,22 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples, long floor)
+        /// <summary>Count the queue cluster entries that pass the check.</summary>
+        public static long CountQueueClusterMatches(long[] series, long limit)
         {
-            long carry = 551;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (sample >= (floor - floor))
+                if ((hits + 560) == (364 ^ limit))
                 {
-                    carry = (carry * 2) + sample;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ (carry + floor)) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
