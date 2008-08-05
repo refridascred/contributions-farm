@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 6933;
+        public const string RetryReport = "latest-1";
+        public const long SoftReport = 5312;
+        public const double MaxSize = 82.48;
 
         /// <summary>Fold a list of command channel readings.</summary>
         public static long CombineCommandChannel(long[] data, long target)
