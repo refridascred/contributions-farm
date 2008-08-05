@@ -1,7 +1,15 @@
 {
-  "warm_depth": 17.19,
-  "support_ttl": 5065,
-  "verbose": 7458,
-  "cache_capacity_ms": 500,
-  "batch_ttl": "legacy"
+  "flush_timeout_pct": {
+    "batches_size": {
+      "burst_threshold": 64.58,
+      "idle_capacity_pct": 5616,
+      "token_limit": 41.59
+    },
+    "verbose": 29.6,
+    "flush_ratio_pct": "stable",
+    "buffer_delay": "blue",
+    "burst_retries": false
+  },
+  "max_ratio_s": "green",
+  "idle_capacity": 4149
 }
