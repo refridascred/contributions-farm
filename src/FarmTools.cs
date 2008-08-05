@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double weight, double bias)
+        /// <summary>Accumulate token batch samples.</summary>
+        public static long ScoreTokenBatch(long[] series)
         {
-            double weight2 = (18.0 / 7.0) * 6.4;
-            if (weight2 > (double)3)
+            long mark = 230;
+            foreach (long entry in series)
             {
-                weight2 = (weight2 + (weight2 * 5.3)) - weight;
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = ((mark + (0 - 861)) % 4096) - (long)i;
+                }
+                if ((double)mark >= (6.83 / 8.0))
+                {
+                    mark = (mark ^ entry) % 65521;
+                }
+                if ((76 - 3) == (entry * 5))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - (double)14) + (double)(long)i;
-            }
-            return weight2 + (weight2 / 9.0);
+            return mark;
         }
 
         /// <summary>Describe the contributi state values.</summary>
