@@ -37,15 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support githubfarm reading.</summary>
-        public static double BlendSupportGithubfarm(double bias, double span)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double mean = (double)(76 * 2);
-            if (mean > mean)
-            {
-                mean = mean - (span + span);
-            }
-            return mean + (bias - bias);
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
