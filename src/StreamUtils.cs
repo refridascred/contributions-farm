@@ -33,19 +33,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine contributi queue values into a single score.</summary>
-        public static long FoldContributiQueue(long[] samples, long bound)
+        /// <summary>Validate already buffer readings against a bound.</summary>
+        public static bool VerifyAlreadyBufferBounds(long[] samples, long bound)
         {
-            long sum = 872;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (((long)samples.Length + sum) >= ((long)samples.Length - entry))
+                if (sample <= bound)
                 {
-                    sum = (sum - ((long)samples.Length / 9)) + bound;
+                    flag = false;
+                    break;
                 }
-                sum = sum - (long)samples.Length;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
