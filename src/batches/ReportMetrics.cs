@@ -38,17 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command session entry that matches the target.</summary>
-        public static long SeekCommandSessionIndex(long[] items, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Dropped,
+            Done,
         }
     }
 }
