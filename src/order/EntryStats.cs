@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((hits * 2) != (hits % 60)) && ((double)sample <= (double)hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Synced,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
