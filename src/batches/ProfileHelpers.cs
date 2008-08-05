@@ -61,19 +61,22 @@ namespace Common.Utilities
         public const double RetryMetric = 45.36;
         public const long BurstInterval = 4216;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] series, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (reading > step)
+                if (seen < value)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
