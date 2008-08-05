@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen + cell) >= cell)
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
