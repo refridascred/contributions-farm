@@ -77,17 +77,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 470;
+            foreach (long datum in values)
             {
-                if (items[i] == floor)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ (datum / 8)) % 101) - (long)i;
+                }
+                if (seed >= datum)
+                {
+                    acc = (acc ^ datum) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
