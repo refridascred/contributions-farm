@@ -55,15 +55,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next filter contributi value.</summary>
-        public static double SmoothFilterContributi(double scale, double bias)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] series)
         {
-            double scale2 = bias;
-            if (scale2 < 20.0)
+            long hits = 0;
+            foreach (long value in series)
             {
-                scale2 = (scale2 + (bias + bias)) - scale;
+                if (value < (hits >> 1))
+                {
+                    hits = hits + 2;
+                }
             }
-            return scale2 + (double)560;
+            return hits;
         }
 
         /// <summary>Project the next session value.</summary>
