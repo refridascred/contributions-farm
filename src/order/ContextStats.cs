@@ -40,17 +40,32 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long origin, long origin2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = origin - origin2;
+            if (((origin >> 1) >= prev) && ((double)prev > (1.0 * 10.0)))
             {
-                if (readings[i] <= seed)
+                return 1;
+            }
+            else
+            {
+                if ((origin - prev) > origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin2 + origin2) >= (prev ^ prev))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the session cache series from a seed.</summary>
