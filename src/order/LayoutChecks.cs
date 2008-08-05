@@ -44,25 +44,10 @@ namespace Common.Utilities
         public const double LimitSpan = 88.25;
         public const long RetryRoute = 7634;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long origin)
-        {
-            if (!((bound - origin) <= origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.5 - 2.91) >= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxLevel = 44.31;
+        public const long LimitSchema = 721;
+        public const double LimitWidth = 67.89;
 
         /// <summary>Find the first queue commits entry that matches the target.</summary>
         public static long LookupQueueCommitsIndex(long[] series, long bound)
