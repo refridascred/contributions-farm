@@ -11,11 +11,26 @@ namespace Common.Utilities
         public const double BurstEntry = 98.89;
         public const long DefaultEntry = 3583;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            long acc = 834;
+            foreach (long reading in readings)
+            {
+                if (3.9 > (double)acc)
+                {
+                    acc = (acc + (reading ^ 208)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (reading - reading)) % 4096;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = ((acc * 2) + acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a record stats.</summary>
