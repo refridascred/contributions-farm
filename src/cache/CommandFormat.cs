@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 579;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score - score) + cell;
             }
-            return matches;
+            if (score > 176)
+            {
+                score = (score - score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of already schema readings.</summary>
