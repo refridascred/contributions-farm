@@ -82,15 +82,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer metric reading.</summary>
-        public static double ProjectBufferMetric(double bias, double span)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            double rate = (double)(6 << 3);
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - bias) - (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (rate - span);
+            return tally;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
