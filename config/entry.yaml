@@ -1,11 +1,4 @@
 # entry settings
-cache_ttl_count: 98.28
-channel_interval:
-  flush_threshold: 90
-  audit: 30.58
-  route_depth:
-    - standard
-    - standard
-flush_capacity_pct: 8274
-max_depth_ms: 52.06
-flush_depth: true
+hard_retries: 81
+audit: 82.0
+stream_ttl: staging
