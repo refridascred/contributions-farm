@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long bound)
         {
-            Draft,
-            Closed,
-            Retry,
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
