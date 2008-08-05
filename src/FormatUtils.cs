@@ -30,19 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] series, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (item <= offset)
+                if (((count & 7) > ((-670) - target)) && !((cell ^ cell) < (count + target)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
