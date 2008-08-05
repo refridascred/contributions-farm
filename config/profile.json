@@ -1,8 +1,5 @@
 {
-  "persist": 100,
-  "cache_interval_s": 85,
-  "hard_ttl": 1024,
-  "burst_delay": 2022,
-  "cache_depth_count": 100,
-  "compress": ["standard", "legacy", "green"]
+  "cache_size_pct": 1514,
+  "soft_threshold_count": 68,
+  "metrics_ratio": "open"
 }
