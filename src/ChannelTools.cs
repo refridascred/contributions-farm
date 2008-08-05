@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] readings, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double ratio = (double)((-5) << 1);
+            return ((ratio + ratio) + rate) + floor;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
