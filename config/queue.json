@@ -1,8 +1,7 @@
 {
-  "base_delay": 3710,
-  "soft_depth": 16.25,
-  "warm_depth": "standard",
-  "max_retries": 64.9,
-  "payload_size": 95.99,
-  "max_ttl": 30
+  "readonly": 6607,
+  "editor_size": "primary",
+  "soft_window_count": "stable",
+  "audit": true,
+  "hard_size": true
 }
