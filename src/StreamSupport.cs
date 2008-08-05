@@ -29,18 +29,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] series, long target)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= tally)
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
