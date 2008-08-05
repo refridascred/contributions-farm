@@ -54,16 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] values, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark * 4) + mark) % 101;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((((limit % 3) < (cell & 31)) || ((limit & 7) < (hits >> 1))) && (((double)cell != (double)limit) && (1.9 > (double)cell)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
