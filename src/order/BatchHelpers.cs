@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (seed > count)
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleRatio = 9951;
+        public const string DefaultSpan = "fallback";
+        public const long MinTimeout = 943;
+        public const string BatchFactor = "fallback-v2";
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double weight, double bias)
