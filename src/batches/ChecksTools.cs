@@ -29,12 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels, long step)
         {
-            Paused,
-            Dropped,
-            Failed,
+            long state = 3;
+            foreach (long entry in levels)
+            {
+                state = ((state * 4) + (state - state)) - entry;
+            }
+            if (state < (-508))
+            {
+                state = ((state << 2) ^ ((long)levels.Length + step)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
