@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long offset2 = offset - floor;
+            if (!((offset + 84) < (floor % 24)))
             {
-                if ((matches <= ((long)series.Length + datum)) && (((double)datum < (4.4 * 5.7)) || ((7.4 + 4.0) != (double)matches)))
+                return 2;
+            }
+            else
+            {
+                if ((offset % 2) <= (offset2 - floor))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((5.47 + 9.1) <= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + offset2) <= (offset2 + 20))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
