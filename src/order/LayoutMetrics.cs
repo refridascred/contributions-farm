@@ -28,21 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record session readings.</summary>
-        public static long ScoreRecordSession(long[] levels, long target)
+        /// <summary>Iterate the stream buffer series from a seed.</summary>
+        public static long SeriesStreamBuffer(long limit)
         {
-            long sum = -939;
-            foreach (long sample in levels)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                sum = sum - (8 + 62);
-                sum = (sum - (target ^ target)) % 65521;
-                sum = (sum - (sample + sample)) % 1000;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = ((mix ^ (71 - 19)) % 4096) ^ (long)i2;
+                }
+                mix = (mix << 3) ^ (long)i;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (sum > 270)
-            {
-                sum = (sum - target) % 97;
-            }
-            return sum;
+            return mix;
         }
     }
 }
