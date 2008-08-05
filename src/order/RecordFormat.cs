@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftWidth = 8678;
-        public const double RetryWidth = 27.43;
-        public const double BatchBatches = 45.1;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 9856;
+        public const string LimitQueue = "stable-edge";
+        public const long RetryQueue = 5211;
+        public const long RetryCount = 4591;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long target)
