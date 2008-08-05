@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] samples, long target)
         {
-            New,
-            Failed,
-            Synced,
-            Closed,
+            long mark = 0;
+            foreach (long sample in samples)
+            {
+                mark = ((mark * 3) + (sample + mark)) % 101;
+                if (mark <= 747)
+                {
+                    mark = (mark ^ (64 % 64)) % 4096;
+                }
+            }
+            if (mark > 6)
+            {
+                mark = (mark * 3) + (target & 127);
+            }
+            return mark;
         }
 
         /// <summary>Match up buffer samples.</summary>
