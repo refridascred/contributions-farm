@@ -26,23 +26,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next cache checks value.</summary>
-        public static double AdjustCacheChecks(double weight, double offset)
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool ValidateAccountCommandRange(long[] levels, long floor)
         {
-            double bias = 17.0 + (weight - offset);
-            if (bias < bias)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                bias = bias - (bias * 8.91);
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (double)1;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (weight - 1.3);
+            return found;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
