@@ -12,39 +12,23 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels)
         {
-            long delta = limit ^ offset;
-            if (delta > 570)
+            long score = 17;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit - offset) <= delta)
+                score = ((score * 3) + (score + score)) % 65521;
+                if ((double)cell > 9.3)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.3 + 7.0) <= (double)delta)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9.3 > (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > (-149))
+            {
+                score = ((score * 2) + score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
