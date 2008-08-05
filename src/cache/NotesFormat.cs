@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many record command samples are out of range.</summary>
-        public static long TallyRecordCommandHits(long[] series, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((138 % 3) > cell) && ((6.79 + 9.0) < (double)cell)) && (hits >= ((long)series.Length - hits)))
+                if (items[i] > seed)
                 {
-                    hits = (hits + 2) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
