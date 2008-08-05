@@ -14,15 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a layout stats counter forward.</summary>
-        public static long IterateLayoutStats(long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] values, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((values[i] > step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
