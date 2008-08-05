@@ -33,18 +33,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item + item) >= (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two metric filter measurements.</summary>
