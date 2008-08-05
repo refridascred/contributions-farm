@@ -72,12 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
+        public static double ProjectClusterGithubfarm(double rate, double floor)
         {
-            Synced,
-            Ready,
-            Locked,
+            double bias = (floor * 1.62) / 2.0;
+            return (bias + (floor + floor)) + rate;
         }
     }
 }
