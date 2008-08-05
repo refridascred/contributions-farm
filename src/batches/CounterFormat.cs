@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate support graph readings against a bound.</summary>
-        public static bool GuardSupportGraphBounds(long[] values, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] values, long limit)
         {
-            bool valid = true;
+            bool ready = true;
             foreach (long reading in values)
             {
-                if (reading > bound)
+                if (reading >= limit)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Accumulate channel samples.</summary>
