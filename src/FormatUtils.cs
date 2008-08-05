@@ -95,15 +95,14 @@ namespace Common.Utilities
             return mean + (bias + bias2);
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Stale,
+            Failed,
+            Ready,
+            Active,
+            Dropped,
         }
     }
 }
