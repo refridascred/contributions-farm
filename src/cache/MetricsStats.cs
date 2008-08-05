@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const long IdleEditor = 7314;
         public const double DefaultRatio = 1.8;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 8868;
-        public const long MinQueue = 424;
-        public const string BurstQueue = "latest";
-        public const long BaseWidth = 1918;
-        public const string RetryQueue = "stable-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "fallback-edge";
+        public const long MaxSize = 7279;
+        public const long IdleSpan = 956;
+        public const long StepProfile = 1908;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderGaps(long[] series)
