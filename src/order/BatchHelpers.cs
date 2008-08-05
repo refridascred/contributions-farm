@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!((double)value >= 5.52))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every record editor entry stays within the limit.</summary>
