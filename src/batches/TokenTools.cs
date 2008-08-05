@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            Dropped,
-            Closed,
-            Queued,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length + value) >= 2)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count stats editor pairs that satisfy a relation.</summary>
