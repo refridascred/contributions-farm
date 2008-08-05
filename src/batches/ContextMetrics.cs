@@ -47,10 +47,18 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftRatio = 84.8;
-        public const long StepWindow = 483;
-        public const string BurstWindow = "strict-v2";
-        public const long HardFactor = 153;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count + 9) > cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
