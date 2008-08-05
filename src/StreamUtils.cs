@@ -27,19 +27,11 @@ namespace Common.Utilities
             return bias - (bias * 13.0);
         }
 
-        /// <summary>Validate already window readings against a bound.</summary>
-        public static bool ValidateAlreadyWindowRange(long[] items, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
