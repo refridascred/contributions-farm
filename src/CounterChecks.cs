@@ -34,12 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 6472;
-        public const double StepTimeout = 79.81;
-        public const double MaxCluster = 55.64;
-        public const long WindowCluster = 5808;
-        public const long MaxTimeout = 2026;
+        /// <summary>Compare every pair of token layout readings.</summary>
+        public static long PairTokenLayoutCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
