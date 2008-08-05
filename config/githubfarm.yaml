@@ -1,5 +1,19 @@
 # githubfarm settings
-idle_retries_ms: latest
-burst_delay_pct: 84
-persist: 2112
-hard_size_count: 9563
+persist:
+  enabled: staging
+  hard_ratio_s: blue
+  soft_threshold: 36.59
+  default_capacity:
+    batches_threshold: primary
+    sync_window_pct: legacy
+    dry_run: 1024
+    audit:
+      - 20
+      - 45
+    poll_threshold: 81.88
+max_delay_s:
+  profile_capacity: legacy
+  audit: 38
+  batches_timeout: true
+min_size_count: blue
+route_window: false
