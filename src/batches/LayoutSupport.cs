@@ -60,22 +60,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] series, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] levels, long bound)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((36 >> 2) >= mix)
+                if (bound >= (bound >> 4))
                 {
-                    mix = (((mix * 2) + (entry + entry)) % 255) + step;
-                }
-                if ((double)mix < (9.0 - 6.36))
-                {
-                    mix = ((mix * 5) + (entry + entry)) % 65521;
+                    matches = (matches + 3) + item;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
     }
 }
