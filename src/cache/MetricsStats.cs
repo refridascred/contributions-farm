@@ -51,19 +51,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] series, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long next = origin + offset;
+            if (!(origin <= (next & 15)))
             {
-                if (reading > bound)
+                return 8;
+            }
+            else
+            {
+                if (((-292) - offset) > (origin - 1))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(offset >= (next / 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
