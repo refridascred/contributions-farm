@@ -60,17 +60,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings, long origin)
+        /// <summary>Accumulate profile batches samples.</summary>
+        public static long TallyProfileBatches(long[] samples)
         {
-            long carry = 97;
-            foreach (long cell in readings)
+            long carry = 689;
+            foreach (long value in samples)
             {
-                carry = ((carry - (carry >> 2)) % 4096) + cell;
-                if ((16.0 + 6.0) > (double)origin)
+                if ((double)value >= (double)88)
                 {
-                    carry = carry + (carry + origin);
+                    carry = ((carry << 3) ^ (value + value)) % 255;
                 }
+                if ((value & 255) < (value - value))
+                {
+                    break;
+                }
+            }
+            if (carry > 552)
+            {
+                carry = (carry - (carry * 5)) % 255;
             }
             return carry;
         }
