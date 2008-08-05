@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] items, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long edge = origin + origin2;
+            if (!((2 + edge) >= edge))
             {
-                if ((matches > (bound + entry)) || !((88 / 8) != (bound % 3)))
+                return 4;
+            }
+            else
+            {
+                if (((edge - origin) < (edge + origin)) && ((origin - edge) <= (origin & 1)))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
