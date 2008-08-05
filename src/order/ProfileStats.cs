@@ -30,16 +30,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cluster tools samples.</summary>
-        public static long WeighClusterTools(long[] data, long floor)
-        {
-            long total = -90;
-            foreach (long datum in data)
-            {
-                total = ((total + (datum + datum)) % 101) + floor;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftSize = 74.71;
+        public const long BatchWindow = 8786;
+        public const string IdleRatio = "open-1";
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long PairFarmCount(long[] items)
