@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] items, long step)
         {
-            Queued,
-            Failed,
-            Active,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
