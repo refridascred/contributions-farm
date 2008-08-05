@@ -109,10 +109,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowSize = 4243;
-        public const double RetryFarm = 47.46;
-        public const string MaxBudget = "alpha-1";
-        public const long WindowInterval = 1563;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 1958;
+        public const long BurstStats = 6615;
+        public const string WindowStats = "stable-1";
+        public const long MinStats = 1545;
     }
 }
