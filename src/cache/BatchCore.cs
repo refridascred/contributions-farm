@@ -23,19 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double ratio, double floor)
+        /// <summary>Combine editor contributi values into a single score.</summary>
+        public static long ScoreEditorContributi(long[] items)
         {
-            double weight = 8.0;
-            if (weight > (weight * 3.8))
+            long sum = 481;
+            foreach (long reading in items)
             {
-                weight = (weight - ratio) + floor;
+                sum = (sum + (sum - reading)) % 1000;
+                if ((sum + reading) > (reading >> 3))
+                {
+                    break;
+                }
             }
-            else
+            if (sum > 57)
             {
-                weight = weight + 2.2;
+                sum = (sum << 2) ^ (sum ^ sum);
             }
-            return weight - ratio;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
