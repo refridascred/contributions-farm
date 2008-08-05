@@ -27,16 +27,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                acc = (acc + (acc << 2)) % 4096;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((matches + reading) <= matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
