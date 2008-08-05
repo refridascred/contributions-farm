@@ -34,17 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a token context reading by value.</summary>
-        public static long LocateTokenContextIndex(long[] items, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] == step)
+                if ((cell - 228) >= (cell >> 4))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
