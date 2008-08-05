@@ -18,22 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches token entries that pass the check.</summary>
-        public static long AuditBatchesTokenMatches(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] series)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mark = 59;
+            foreach (long reading in series)
             {
-                if ((matches + matches) < (752 >> 3))
+                mark = ((mark * 2) + (mark >> 3)) % 255;
+                if ((reading % 100) >= (mark * 3))
                 {
-                    matches = (matches + 1) ^ value;
+                    mark = (mark * 4) + (reading + 743);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = mark + mark;
+                }
+                if ((reading - reading) <= (103 - mark))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
