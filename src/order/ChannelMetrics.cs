@@ -23,19 +23,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double bias)
+        /// <summary>Compare every pair of route stats readings.</summary>
+        public static long MatchRouteStatsCount(long[] levels)
         {
-            double rate = weight;
-            if (rate >= rate)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (weight + rate)) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + 6.66) + (double)(long)i;
-            }
-            return rate - (double)32;
+            return matches;
         }
 
         /// <summary>Hold a batches info.</summary>
