@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double rate, double floor)
+        /// <summary>Blend two filter githubfarm measurements.</summary>
+        public static double AdjustFilterGithubfarm(double rate, double span)
         {
-            double mean = floor / 4.0;
-            if (mean <= (8.64 / 8.0))
+            double drift = (double)82 - (rate - rate);
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean + floor;
+                drift = ((drift + drift) - (double)(long)i) - span;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - rate) + (double)(long)i;
-            }
-            return mean - (double)9;
+            return drift - rate;
         }
 
         /// <summary>Hold a window info.</summary>
