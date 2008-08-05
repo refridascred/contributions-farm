@@ -51,13 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] levels, long step)
         {
-            Closed,
-            Synced,
-            Idle,
-            New,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
