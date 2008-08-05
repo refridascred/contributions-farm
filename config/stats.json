@@ -1,7 +1,10 @@
 {
-  "readonly": false,
-  "stats_interval": 22.74,
-  "idle_capacity": "edge",
-  "persist": [277, 427, 46, 321],
-  "soft_window": "eu-west"
+  "stream_ratio": {
+    "verbose": 8169,
+    "enabled": 1,
+    "channel_size": ["edge", "open", "latest"]
+  },
+  "flush_depth_ms": 32,
+  "account_ttl": true,
+  "batch_capacity_s": 4443
 }
