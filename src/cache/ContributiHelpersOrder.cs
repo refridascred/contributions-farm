@@ -24,17 +24,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] data, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 0;
+            foreach (long item in readings)
             {
-                if (data[i] == bound)
+                mix = (mix ^ (mix & 15)) + origin;
+                mix = mix ^ (item << 3);
+                if (!((mix - mix) >= mix))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + (mix % 7)) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 2) + item;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
