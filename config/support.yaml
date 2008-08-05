@@ -1,7 +1,7 @@
 # support settings
-retry_delay_count: eu-west
-compress: false
-readonly: 96.36
-cache_ttl_ms: staging
-batch_depth_s: false
-sync_interval_s: 68.06
+default_limit: 696
+hard_depth_pct: 5688
+compress: stable
+soft_size: 71.98
+enabled: 1024
+account_limit: true
