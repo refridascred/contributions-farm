@@ -45,15 +45,21 @@ namespace Common.Utilities
             return bias + (weight - 1.3);
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            double ratio = weight;
-            if (ratio > (weight / 2.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - (ratio * 5.69)) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + ratio;
+            return matches;
         }
     }
 }
