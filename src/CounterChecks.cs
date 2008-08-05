@@ -60,13 +60,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            long mix = target;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = ((mix << 3) ^ (mix % 3)) ^ (long)i2;
+                    mix = mix ^ target;
+                }
+                mix = mix + (target + target);
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate checks order samples.</summary>
