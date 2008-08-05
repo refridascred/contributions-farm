@@ -30,11 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double span)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double rate, double offset)
         {
-            double scale = (double)2 - span;
-            return (scale - (span / 8.0)) + weight;
+            double rate2 = offset / 7.0;
+            if (rate2 > 3.0)
+            {
+                rate2 = (rate2 - 6.5) + rate;
+            }
+            return rate2 - rate2;
         }
     }
 }
