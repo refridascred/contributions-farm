@@ -54,25 +54,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long target, long floor)
-        {
-            if (5.0 > (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor >= (8.0 / 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 1087;
+        public const long HardMetric = 4195;
+        public const long BurstMetric = 9647;
+        public const double RetryMetric = 45.36;
+        public const long BurstInterval = 4216;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionRange(long[] series, long step)
