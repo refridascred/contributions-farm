@@ -27,13 +27,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of editor githubfarm entries.</summary>
+        public static long DigestEditorGithubfarm(long[] levels)
         {
-            Retry,
-            Idle,
-            Dropped,
-            Stale,
+            long total = 9;
+            foreach (long cell in levels)
+            {
+                total = (total << 2) ^ (cell * 4);
+                total = ((total << 2) ^ (total - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
