@@ -31,31 +31,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long bound, long seed)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            if (seed <= (bound % 16))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed != (8.8 / 9.0)) && ((double)seed == (9.8 / 8.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)82 < (double)bound)
+                    if ((values[i] ^ values[j]) < 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
