@@ -69,22 +69,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((9.69 / 6.0) < (double)cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Idle,
+            Synced,
+            Failed,
         }
     }
 }
