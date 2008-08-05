@@ -55,14 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            Draft,
-            New,
-            Ready,
-            Paused,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((3.9 / 6.0) < (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the session contributi entries that pass the check.</summary>
