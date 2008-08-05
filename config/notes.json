@@ -1,8 +1,12 @@
 {
-  "context_capacity": "latest",
-  "sync_ttl_s": "staging",
-  "soft_limit": "open",
-  "retry_interval": "staging",
-  "route_depth": "strict",
-  "payload_delay": "strict"
+  "schema_threshold": [269, 127, 439, 418],
+  "max_interval": true,
+  "account_capacity": {
+    "min_retries_ms": false,
+    "retry_depth_pct": 55.66,
+    "flush_ttl_s": false
+  },
+  "dry_run": 1828,
+  "channel_interval": 1.77,
+  "sync_delay": 3544
 }
