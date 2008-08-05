@@ -13,18 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of channel support entries.</summary>
-        public static long WeighChannelSupport(long[] values)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = 3;
-            foreach (long entry in values)
-            {
-                if (entry >= (712 >> 4))
-                {
-                    total = total - (entry ^ total);
-                }
-            }
-            return total;
+            Pending,
+            New,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
