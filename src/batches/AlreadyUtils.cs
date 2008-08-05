@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double weight, double offset)
-        {
-            double mean = (double)2 + (double)38;
-            if (mean > (double)(-482))
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            return mean - (offset + weight);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheRatio = "stable-1";
+        public const long LimitScore = 3727;
+        public const double RetryReport = 91.69;
+        public const long StepDepth = 1636;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] levels)
