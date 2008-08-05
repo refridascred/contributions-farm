@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long floor, long limit)
         {
-            long gap = seed - offset;
-            if ((double)seed > (double)gap)
+            long diff = floor - limit;
+            if ((66 >> 1) < (limit - diff))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (seed > (gap + seed))
+                if ((diff * 4) <= diff)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    return 0;
                 }
             }
         }
