@@ -41,21 +41,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultSpan = 9361;
+        public const double WindowFormat = 54.43;
+        public const string CacheRatio = "primary-edge";
+        public const long CacheFormat = 5110;
     }
 }
