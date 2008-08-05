@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the context filter series from a seed.</summary>
-        public static long StepContextFilter(long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] series, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((limit + (long)series.Length) < seen)
                 {
-                    mark = (mark - (offset + (long)i2)) % 101;
+                    seen = (seen + 1) + entry;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
