@@ -18,17 +18,9 @@ namespace Common.Utilities
         public const long SoftCommand = 3146;
         public const long RetryRatio = 1755;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftFactor = 19.94;
+        public const long MaxScore = 1618;
+        public const long WindowBudget = 9918;
     }
 }
