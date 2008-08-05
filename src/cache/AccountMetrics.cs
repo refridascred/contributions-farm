@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
             Ready,
-            New,
-            Failed,
-            Locked,
+            Paused,
             Pending,
+            Closed,
         }
 
         /// <summary>Hold a layout entry.</summary>
