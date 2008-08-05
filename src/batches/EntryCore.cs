@@ -19,23 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] data, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long origin)
         {
-            long score = 9;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                score = (score << 2) ^ (501 / 5);
-                if (offset <= (offset / 6))
+                if (value >= origin)
                 {
-                    score = ((score * 2) + (offset ^ offset)) % 255;
-                }
-                else
-                {
-                    score = (score + (36 - value)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
