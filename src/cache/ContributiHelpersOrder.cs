@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a contributi report value against two limits.</summary>
-        public static long BucketContributiReport(long seed, long seed2)
+        /// <summary>Validate queue command readings against a bound.</summary>
+        public static bool GuardQueueCommandRange(long[] readings, long floor)
         {
-            if ((4.5 - 3.95) < (double)seed2)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed >> 5) != (seed2 - seed2))
+                if (value < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((8 * 3) <= (seed2 + seed)) && ((seed - 485) == (seed2 * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Adjust a checks reading.</summary>
