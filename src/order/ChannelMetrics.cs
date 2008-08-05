@@ -28,13 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Locked,
-            Paused,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultLevel = 4929;
+        public const string MaxWidth = "stable-1";
+        public const long IdleLevel = 6972;
+        public const long HardFactor = 7137;
+        public const long MinFilter = 5587;
     }
 }
