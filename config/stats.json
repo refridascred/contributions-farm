@@ -1,6 +1,8 @@
 {
-  "hard_limit_s": 2719,
-  "stats_capacity": 80.82,
-  "soft_threshold_count": 30,
-  "tools_ratio": 0.93
+  "commits_ttl": 100,
+  "enabled": "standard",
+  "batch_size": 100,
+  "readonly": "green",
+  "base_retries_ms": [75, 117],
+  "cache_limit_s": "blue"
 }
