@@ -27,15 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (acc - (acc >> 1)) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    acc = ((acc ^ (963 >> 4)) % 4096) - (long)i3;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
