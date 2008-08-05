@@ -25,18 +25,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 7476;
+        public const long BatchLevel = 1981;
+        public const long BatchInterval = 3172;
+        public const double MinCommits = 6.67;
 
         /// <summary>Fold a list of session record readings.</summary>
         public static long TallySessionRecord(long[] readings)
