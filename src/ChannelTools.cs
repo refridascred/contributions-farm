@@ -26,21 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultTimeout = 28.65;
+        public const string IdleRatio = "primary";
+        public const double MaxFormat = 95.59;
+        public const long BaseLevel = 5256;
     }
 }
