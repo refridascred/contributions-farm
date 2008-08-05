@@ -38,14 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            Ready,
-            Pending,
-            Failed,
-            Locked,
-            Draft,
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
