@@ -1,6 +1,11 @@
 {
-  "poll_limit_s": 56,
-  "compress": true,
-  "persist": "stable",
-  "report_depth": "open"
+  "farm_delay": 30,
+  "retry_retries_ms": {
+    "max_threshold": 500,
+    "account_ttl": "latest",
+    "compress": ["staging", "stable", "staging", "fallback"]
+  },
+  "batch_interval": "cached",
+  "audit": 500,
+  "strict": 67.13
 }
