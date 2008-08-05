@@ -29,18 +29,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the account layout entries that pass the check.</summary>
-        public static long AuditAccountLayoutGaps(long[] readings)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)hits >= (0.6 * 2.5)) && (hits <= (4 - value))) || ((value + value) < 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
