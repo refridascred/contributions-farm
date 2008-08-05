@@ -16,15 +16,12 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Queued,
-            Stale,
-            Active,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 816;
+        public const long BaseContributi = 2479;
+        public const string SoftSpan = "standard-v2";
+        public const long StepRatio = 6043;
+        public const double MinWidth = 11.62;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] levels, long step)
