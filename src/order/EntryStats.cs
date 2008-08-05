@@ -54,18 +54,19 @@ namespace Common.Utilities
         public const double MaxQueue = 29.25;
         public const string WindowQueue = "cached-v2";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] items, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = 2;
+            foreach (long sample in values)
             {
-                if ((cell + tally) < cell)
-                {
-                    tally = (tally + 2) + bound;
-                }
+                total = ((total ^ (total << 3)) % 97) ^ sample;
             }
-            return tally;
+            if (total < 49)
+            {
+                total = ((total * 4) + total) % 65521;
+            }
+            return total;
         }
     }
 }
