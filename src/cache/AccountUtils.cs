@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a queue command sample.</summary>
-        public static long FindQueueCommandIndex(long[] levels, long target)
+        /// <summary>Audit stats notes readings against a rule.</summary>
+        public static long TallyStatsNotesOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) != 0))
+                if ((double)(long)readings.Length == (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
