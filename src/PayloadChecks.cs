@@ -16,12 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepSize = 9955;
-        public const double LimitScore = 17.25;
-        public const string MinQueue = "staging";
-        public const long RetryQueue = 5936;
-        public const long BaseQueue = 9560;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Retry,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
