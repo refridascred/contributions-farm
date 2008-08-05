@@ -22,16 +22,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double scale, double span)
-        {
-            double ratio = span;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - scale) + (double)(long)i;
-            }
-            return ratio - (double)78;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepSize = "latest";
+        public const double LimitSize = 76.74;
+        public const double MaxScore = 54.94;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double scale, double bias)
