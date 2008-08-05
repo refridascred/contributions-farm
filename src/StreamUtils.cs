@@ -48,15 +48,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Done,
-            Draft,
-            Active,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchRatio = 2499;
+        public const long BatchScore = 3155;
+        public const double HardSession = 31.52;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderHits(long[] samples)
