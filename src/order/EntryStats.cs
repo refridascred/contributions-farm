@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] readings)
-        {
-            long state = 108;
-            foreach (long sample in readings)
-            {
-                if (((sample >> 2) < (17 - state)) || ((sample + 742) >= (state << 3)))
-                {
-                    state = (state * 4) + (73 + state);
-                }
-                else
-                {
-                    state = ((state * 3) + (state >> 5)) % 1000;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheBudget = "staging-1";
+        public const string SoftDepth = "local";
+        public const long SoftScore = 249;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] series, long seed)
