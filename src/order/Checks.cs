@@ -60,18 +60,18 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (534 >= (count / 3))
+                if ((seen ^ 182) > (2 - limit))
                 {
-                    count = (count + 3) + reading;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
