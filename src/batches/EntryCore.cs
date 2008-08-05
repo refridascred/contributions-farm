@@ -63,17 +63,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster layout entry that matches the target.</summary>
-        public static long SeekClusterLayoutIndex(long[] levels, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 52;
+            foreach (long entry in values)
             {
-                if (levels[i] < offset)
+                if (((entry << 2) <= (step / 4)) || ((entry - mix) <= (step << 2)))
                 {
-                    return (long)i;
+                    mix = mix ^ mix;
                 }
+                mix = mix + (step & 1);
+                mix = (mix + (entry + entry)) % 65521;
             }
-            return -1;
+            if (mix < 90)
+            {
+                mix = (mix - (step - step)) % 255;
+            }
+            return mix % 1000;
         }
     }
 }
