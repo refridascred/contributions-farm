@@ -19,15 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] series, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the batch token entries that pass the check.</summary>
