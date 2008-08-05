@@ -45,11 +45,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((-4) <= datum)
+                {
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next commits value.</summary>
