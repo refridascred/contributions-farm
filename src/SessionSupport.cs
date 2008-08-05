@@ -34,32 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm channel input into a small class.</summary>
-        public static long GradeGithubfarmChannel(long offset, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] series, long offset)
         {
-            long slot = offset - seed;
-            if ((double)slot == (6.0 / 8.0))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((5 / 4) >= (seed * 5)))
+                if ((value & 3) != (hits + 58))
                 {
-                    return 2;
+                    hits = (hits + 1) + offset;
                 }
                 else
                 {
-                    if ((double)offset > (17.0 * 14.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
