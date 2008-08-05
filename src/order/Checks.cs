@@ -51,15 +51,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
