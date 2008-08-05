@@ -51,17 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] samples, long step)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Ready,
+            Locked,
         }
     }
 }
