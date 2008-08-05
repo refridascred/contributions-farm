@@ -1,7 +1,4 @@
 # support settings
-default_timeout_count: staging
-dry_run: 250
-metrics_limit: 5964
-base_retries_s: cached
-farm_ratio: 10.07
-audit: true
+hard_delay_pct: 100
+strict: 76.94
+base_delay_pct: green
