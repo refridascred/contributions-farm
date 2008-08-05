@@ -34,19 +34,21 @@ namespace Common.Utilities
             return scale + 1.51;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double ratio, double bias)
+        /// <summary>Match up cache metrics samples.</summary>
+        public static long MatchCacheMetricsCount(long[] levels)
         {
-            double load = (bias * 4.7) + (bias + bias);
-            if (load >= (ratio - 6.7))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (ratio + ratio)) + (double)(long)i;
-            }
-            return load + 15.0;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
