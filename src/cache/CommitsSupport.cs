@@ -49,19 +49,14 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] readings, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Failed,
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a format snapshot.</summary>
