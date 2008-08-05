@@ -12,20 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "open-1";
+        public const long WindowStats = 6088;
+        public const double MinWidth = 31.75;
+        public const long SoftStats = 8198;
+        public const double DefaultStats = 57.8;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
