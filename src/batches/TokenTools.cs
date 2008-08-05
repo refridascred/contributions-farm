@@ -47,12 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 5495;
+        public const long BatchStats = 3356;
+        public const long RetryStats = 8585;
     }
 }
