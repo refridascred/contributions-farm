@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a layout report sample.</summary>
-        public static long LocateLayoutReportIndex(long[] data, long seed)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
