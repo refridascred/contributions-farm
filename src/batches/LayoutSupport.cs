@@ -66,18 +66,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] levels, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (bound >= (bound >> 4))
+                if ((offset & 3) <= cell)
                 {
-                    matches = (matches + 3) + item;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
