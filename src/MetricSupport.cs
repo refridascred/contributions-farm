@@ -26,19 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route stats samples.</summary>
-        public static long DigestRouteStats(long[] readings)
-        {
-            long mark = -95;
-            foreach (long sample in readings)
-            {
-                if ((5.7 + 9.77) <= (double)mark)
-                {
-                    mark = mark ^ (sample & 31);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchSize = "local-v2";
+        public const long SoftGithubfarm = 8818;
+        public const long DefaultGithubfarm = 8531;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] data)
