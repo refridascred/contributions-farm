@@ -57,12 +57,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value + value) >= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the graph phase values.</summary>
