@@ -74,12 +74,26 @@ namespace Common.Utilities
         public const long MinFactor = 5498;
         public const string WindowTimeout = "legacy-1";
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] data)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = -3;
+            foreach (long sample in data)
+            {
+                if (76 <= (mix * 2))
+                {
+                    mix = ((mix * 3) + mix) % 65521;
+                }
+                if ((mix + mix) >= (sample + mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 35)
+            {
+                mix = mix ^ (mix + (-67));
+            }
+            return mix % 97;
         }
     }
 }
