@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] items, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (!((319 >> 1) >= carry))
+                if ((838 << 1) <= (entry - (long)items.Length))
                 {
-                    carry = ((carry * 2) + carry) % 4096;
-                    carry = carry - carry;
-                    continue;
+                    seen = (seen + 3) + seed;
                 }
-                carry = (carry ^ (target * 3)) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Accumulate order samples.</summary>
