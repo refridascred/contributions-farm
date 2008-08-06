@@ -28,10 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 1929;
-        public const string MaxBuffer = "local-1";
-        public const long CacheBuffer = 8811;
-        public const double RetryBuffer = 80.32;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
