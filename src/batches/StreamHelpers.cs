@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long BurstReport = 8230;
         public const long LimitReport = 7181;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepWidth = "local-1";
-        public const string BaseMetrics = "local-edge";
-        public const string WindowLevel = "alpha";
-        public const double WindowInterval = 46.44;
-        public const long WindowMetrics = 5319;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MaxFactor = "fallback-v2";
