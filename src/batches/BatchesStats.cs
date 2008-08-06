@@ -59,13 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Audit farm cache readings against a rule.</summary>
+        public static long TallyFarmCacheGaps(long[] values)
         {
-            Active,
-            Paused,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((670 - value) < value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
