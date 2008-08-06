@@ -14,19 +14,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate notes graph readings against a bound.</summary>
-        public static bool VerifyNotesGraphBounds(long[] data, long step)
+        /// <summary>Combine editor buffer values into a single score.</summary>
+        public static long TotalEditorBuffer(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long state = 513;
+            foreach (long value in levels)
             {
-                if (reading != step)
+                if ((7.0 / 8.0) != (double)state)
                 {
-                    stale = false;
-                    break;
+                    state = (((state * 3) + (limit >> 4)) % 255) ^ value;
+                }
+                else
+                {
+                    state = (state ^ (state % 5)) % 1000;
                 }
             }
-            return stale;
+            if (state < 447)
+            {
+                state = state - (state - 842);
+            }
+            return state;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
