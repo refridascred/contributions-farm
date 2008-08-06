@@ -36,17 +36,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] samples, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (samples[i] < floor)
+                if (item >= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
