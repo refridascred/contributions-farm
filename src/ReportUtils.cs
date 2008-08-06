@@ -20,10 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultInterval = 3624;
-        public const string BaseAccount = "standard-v2";
-        public const long HardAccount = 5203;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
