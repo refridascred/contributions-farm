@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Paused,
-            Active,
-            Draft,
-            Dropped,
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
