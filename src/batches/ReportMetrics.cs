@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two context route measurements.</summary>
-        public static double BlendContextRoute(double scale, double span)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] data)
         {
-            double drift = span * 6.0;
-            if (drift > (double)1)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                drift = (drift - 1.59) - scale;
+                if ((4.11 * 19.0) > (double)hits)
+                {
+                    hits = (hits + 1) ^ reading;
+                }
             }
-            return drift - (span + span);
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
