@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] samples, long offset)
+        /// <summary>Accumulate token graph samples.</summary>
+        public static long TotalTokenGraph(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long score = 17;
+            foreach (long item in data)
             {
-                if ((seen + seen) >= (reading >> 1))
-                {
-                    seen = (seen + 3) - offset;
-                }
+                score = (score ^ (8 - score)) - item;
             }
-            return seen;
+            if (score < 5)
+            {
+                score = score - score;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a buffer entry.</summary>
