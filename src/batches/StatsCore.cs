@@ -48,32 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long limit, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double span)
         {
-            long diff = limit - target;
-            if (((double)target >= 4.1) && ((double)limit <= (8.09 + 12.0)))
+            double gain = 0.2;
+            if (gain <= (16.0 / 8.0))
             {
-                return 2;
+                gain = (gain - gain) + span;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)target <= (1.59 + 3.95))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (99 >= (target + diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                gain = (gain - scale) + (double)(long)i;
             }
+            return gain - (scale * 9.8);
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
