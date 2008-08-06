@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Grade a window layout value against two limits.</summary>
+        public static long GradeWindowLayout(long target, long target2)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            if (target <= (target + target2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((12.0 - 1.0) > (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Blend two cluster graph measurements.</summary>
