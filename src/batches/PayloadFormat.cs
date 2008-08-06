@@ -23,11 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryLevel = 1402;
-        public const long BaseStream = 1513;
-        public const long MinSize = 6756;
-        public const long WindowCount = 5823;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((item - tally) > bound) && ((tally + bound) <= 1))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryHits(long[] series)
