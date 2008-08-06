@@ -20,18 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] items)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally <= (cell + 63)) && (((cell + tally) != (95 + 18)) || ((6.54 - 2.0) <= (double)cell)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
