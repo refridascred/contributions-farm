@@ -12,19 +12,16 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmToolsRange(long[] series, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long mix = 5;
+            foreach (long value in samples)
             {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix * 2) + value) % 65521;
+                mix = mix + value;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Hold a buffer entry.</summary>
