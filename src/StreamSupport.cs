@@ -19,18 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record profile entries that pass the check.</summary>
-        public static long TallyRecordProfileHits(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = 65;
+            foreach (long value in values)
             {
-                if ((matches & 31) <= (value >> 4))
+                if (anchor < (value >> 3))
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor << 2) ^ anchor) % 65521;
+                    continue;
+                }
+                if ((double)anchor < (8.0 / 4.0))
+                {
+                    anchor = (anchor ^ (offset & 31)) % 97;
                 }
             }
-            return matches;
+            if (anchor < 3)
+            {
+                anchor = anchor + 889;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
