@@ -19,10 +19,14 @@ namespace Common.Utilities
         public const long BatchInterval = 1599;
         public const double DefaultLevel = 70.75;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSize = 222;
-        public const long LimitBudget = 4908;
-        public const long CacheBuffer = 8906;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Count the notes batch entries that pass the check.</summary>
         public static long TallyNotesBatchMatches(long[] data)
