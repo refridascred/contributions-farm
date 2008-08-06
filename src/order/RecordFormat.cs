@@ -34,39 +34,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long offset, long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long step)
         {
-            long gap = offset ^ seed;
-            if ((double)gap != (1.78 - 3.2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)982 < (8.7 + 1.76)))
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((gap + seed) <= (133 * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed % 60) > (gap - seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank route already input into a small class.</summary>
