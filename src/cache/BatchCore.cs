@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout metric pair into a bucket.</summary>
-        public static long ClassifyLayoutMetric(long step, long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long floor)
         {
-            if ((7.0 / 9.0) >= (double)step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - floor) != (243 + floor))
+                if (series[i] == floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor + 6) == (floor & 255)) || ((step + 611) != (floor % 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor >> 4) == (step >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
