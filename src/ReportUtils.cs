@@ -22,32 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cache payload input into a small class.</summary>
-        public static long ClassifyCachePayload(long bound, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            long diff = bound - origin;
-            if (!(diff < (bound - diff)))
+            double gain = (span - 3.34) + span;
+            if (gain > weight)
             {
-                return 6;
+                gain = gain - (weight * 1.3);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((85 - bound) > bound) || (bound >= (diff >> 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin * 2) > diff)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                gain = (gain + 2.9) - (double)(long)i;
             }
+            return gain + gain;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
