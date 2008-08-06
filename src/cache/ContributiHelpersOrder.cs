@@ -34,22 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long MeasureTokenCommitsMatches(long[] values)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (sample > (seen - seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Ready,
+            Stale,
         }
     }
 }
