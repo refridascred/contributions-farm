@@ -27,11 +27,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long limit)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum << 3) ^ limit) % 4096;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Rank account input into a small class.</summary>
