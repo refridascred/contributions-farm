@@ -44,32 +44,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long target2)
-        {
-            long offset = target + target2;
-            if ((6.0 + 3.32) >= (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (81 > (target2 * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target2 > (target2 - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "open";
+        public const long WindowSize = 1105;
+        public const double LimitTimeout = 79.54;
     }
 }
