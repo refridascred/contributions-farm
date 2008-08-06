@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            Queued,
-            Failed,
-            Done,
-            Synced,
-            Paused,
+            long total = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((double)step != (double)1) || (total < step))
+                {
+                    total = total - (total + total);
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every schema checks entry stays within the limit.</summary>
