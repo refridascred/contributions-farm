@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] items, long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((838 << 1) <= (entry - (long)items.Length))
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate order samples.</summary>
