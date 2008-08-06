@@ -40,13 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Pending,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchBudget = 6710;
+        public const long BatchChecks = 9334;
+        public const long RetryChecks = 4727;
+        public const long HardCount = 5991;
+        public const long HardChecks = 810;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordLimits(long[] data, long bound)
