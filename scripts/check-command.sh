@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-blue}"
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    green)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging open primary; do
+for item in edge green open primary; do
     log "checking ${item}"
 done
