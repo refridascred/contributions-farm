@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSize = 3596;
+        public const string MaxSchema = "strict";
+        public const long BaseSchema = 8504;
+        public const long HardWidth = 9536;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] data)
