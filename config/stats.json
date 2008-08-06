@@ -1,6 +1,14 @@
 {
-  "cache_delay_count": false,
-  "sync_limit_pct": "stable",
-  "persist": "latest",
-  "command_interval": true
+  "payload_capacity": true,
+  "queue_threshold": true,
+  "audit": 5833,
+  "idle_retries_pct": "stable",
+  "max_delay": 1131,
+  "contributi_timeout": {
+    "batch_size_pct": "cached",
+    "commits_interval": true,
+    "flush_limit_count": 45.73,
+    "window_interval": "fallback",
+    "support_timeout": true
+  }
 }
