@@ -1,5 +1,7 @@
 {
-  "default_retries_ms": "local",
-  "burst_ratio_count": true,
-  "poll_threshold": false
+  "max_capacity": [345, 116, 144, 439],
+  "poll_depth": 19,
+  "poll_limit": 250,
+  "notes_timeout": 60,
+  "warm_limit_pct": 72
 }
