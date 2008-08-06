@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next editor layout value.</summary>
-        public static double ProjectEditorLayout(double weight, double span)
+        /// <summary>Grade a tools batches value against two limits.</summary>
+        public static long ClassifyToolsBatches(long step, long origin)
         {
-            double weight2 = weight + (weight * 3.09);
-            if (weight2 >= (span - weight2))
+            if ((double)step > (0.3 - 1.56))
             {
-                weight2 = weight2 - 4.0;
+                return 3;
             }
             else
             {
-                weight2 = weight2 + (weight2 / 3.0);
+                if ((step + origin) < (step & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8.0 - 9.41) == (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + 4.4) - (double)(long)i;
-            }
-            return weight2 - (weight2 / 3.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
