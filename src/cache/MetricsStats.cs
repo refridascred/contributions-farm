@@ -29,32 +29,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a cluster contributi value against two limits.</summary>
-        public static long GradeClusterContributi(long floor, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long delta = floor - step;
-            if ((floor / 2) == (step / 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((166 ^ step) > (floor + step)) || ((double)delta >= (double)29))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor ^ step) <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
