@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            long carry = 787;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = (carry + reading) - (long)i;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = ((carry + (carry - carry)) % 97) - (long)i2;
+                }
+                carry = carry - (27 ^ carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the channel mode values.</summary>
