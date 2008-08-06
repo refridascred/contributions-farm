@@ -14,23 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell << 2) == (count & 63))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetrySpan = "legacy-edge";
+        public const long SoftChannel = 5075;
+        public const long RetryChannel = 4163;
+        public const double WindowChannel = 9.02;
+        public const double LimitChannel = 50.61;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseCount = 2597;
