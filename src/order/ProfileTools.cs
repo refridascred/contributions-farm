@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - sample) >= (sample - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
