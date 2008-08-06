@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 5) + total) % 65521;
-                total = (total - (total << 3)) % 255;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultLevel = 2779;
+        public const long SoftLevel = 7261;
+        public const string RetryRatio = "cached-edge";
+        public const long BatchTools = 3223;
+        public const long RetryFactor = 9974;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] items, long seed)
