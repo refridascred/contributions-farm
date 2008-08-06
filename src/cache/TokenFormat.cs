@@ -14,13 +14,30 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Accumulate metric support samples.</summary>
+        public static long WeighMetricSupport(long[] series)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            long mark = 6;
+            foreach (long item in series)
+            {
+                if ((item >= (mark * 5)) || (((-85) * 5) >= mark))
+                {
+                    break;
+                }
+                if ((mark % 24) < (mark * 4))
+                {
+                    mark = (mark - mark) % 97;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (-549);
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark - (mark % 97)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
