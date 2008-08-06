@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate contributi profile samples.</summary>
-        public static long FoldContributiProfile(long[] values, long origin)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            long state = 4;
-            foreach (long cell in values)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((7.8 + 14.0) > (double)origin)
-                {
-                    state = state - (state << 1);
-                }
-                else
-                {
-                    state = state + (cell & 31);
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (state > 5)
-            {
-                state = state ^ (state % 2);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
