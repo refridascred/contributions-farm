@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] items)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + count) != (17 ^ count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a support options.</summary>
