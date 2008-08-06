@@ -44,18 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] items, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (offset > (hits << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) ^ cell;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
