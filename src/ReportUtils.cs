@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate payload githubfarm readings against a bound.</summary>
-        public static bool VerifyPayloadGithubfarmLimits(long[] items, long seed)
+        /// <summary>Check that every order record entry stays within the limit.</summary>
+        public static bool CheckOrderRecordLimits(long[] series, long target)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (datum <= seed)
+                if (sample > target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Combine command values into a single score.</summary>
