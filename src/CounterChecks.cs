@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double gain, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels, long offset)
         {
-            double rate = 8.6;
-            if (rate >= span)
+            long sum = -87;
+            foreach (long sample in levels)
             {
-                rate = rate + 2.11;
+                if (!((5.85 * 1.7) < (double)sample))
+                {
+                    sum = (((sum * 3) + ((-75) << 1)) % 101) - offset;
+                }
+                else
+                {
+                    sum = (sum + (sample / 4)) % 97;
+                }
             }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate - (3.9 / 3.0);
+            return sum;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
