@@ -1,5 +1,19 @@
 {
-  "audit": "primary",
-  "filter_threshold": 58.2,
-  "idle_timeout_s": "cached"
+  "order_window": 30.14,
+  "max_ratio_pct": 86.81,
+  "enabled": false,
+  "max_interval_pct": 67.31,
+  "sync_size_count": {
+    "warm_timeout_count": {
+      "burst_retries_pct": true,
+      "contributi_interval": 65.27,
+      "idle_capacity": "staging",
+      "stream_interval": 500
+    },
+    "base_limit_ms": 66.99,
+    "audit": 95.0,
+    "burst_window_ms": [492, 282, 187],
+    "checks_window": false,
+    "compress": "standard"
+  }
 }
