@@ -29,11 +29,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "open";
-        public const long BatchStream = 8460;
-        public const double LimitStream = 43.06;
-        public const string DefaultStream = "latest";
-        public const long MaxStream = 7503;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!((3.6 - 8.1) <= (double)value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
