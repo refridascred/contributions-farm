@@ -12,18 +12,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] readings, long origin)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum << 2) == (datum >> 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + origin;
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
