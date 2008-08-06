@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -65;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((bound >> 3) > bound) && ((sample % 100) != (mark & 1)))
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - bound) % 255;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate channel command samples.</summary>
