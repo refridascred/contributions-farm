@@ -12,19 +12,27 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a token layout figure with a bias.</summary>
-        public static double SmoothTokenLayout(double ratio, double span)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] levels, long limit)
         {
-            double mean = 8.5;
-            if (mean < mean)
+            long state = 804;
+            foreach (long value in levels)
             {
-                mean = ((mean + (mean - mean)) + ratio) - span;
+                state = (state + (state - (-8))) % 255;
+                if ((value >> 3) > (23 + state))
+                {
+                    state = state - (113 ^ state);
+                }
+                if ((3 + (long)levels.Length) < (limit + state))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (state > 8)
             {
-                mean = (mean + (2.0 + mean)) + (double)(long)i;
+                state = (state + (limit - 143)) % 65521;
             }
-            return mean + (15.0 - 7.54);
+            return state % 1000;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
