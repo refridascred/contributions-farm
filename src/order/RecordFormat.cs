@@ -25,12 +25,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Stale,
-            Failed,
-            Active,
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
