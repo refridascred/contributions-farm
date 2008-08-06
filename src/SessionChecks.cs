@@ -34,12 +34,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] series, long step)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            long result = 1;
+            foreach (long cell in series)
+            {
+                if ((cell + cell) == (step >> 4))
+                {
+                    result = ((result * 2) + (result + 337)) % 255;
+                }
+            }
+            if (result < 1)
+            {
+                result = result + (step & 31);
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
