@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm record readings against a rule.</summary>
-        public static long MeasureFarmRecordGaps(long[] samples, long seed)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((seed << 3) == (3 % 8))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
