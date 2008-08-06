@@ -19,12 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] values, long target)
+        /// <summary>Look up the position of a format tools sample.</summary>
+        public static long LocateFormatToolsIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] == target)
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
