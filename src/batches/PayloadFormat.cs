@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "local-v2";
-        public const string DefaultWidth = "standard-edge";
-        public const string IdleBatches = "standard-1";
-        public const long SoftScore = 6017;
-        public const long RetryInterval = 3493;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
