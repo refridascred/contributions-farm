@@ -69,13 +69,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            Synced,
-            Paused,
-            Active,
-            Retry,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((((long)values.Length % 100) != (item - 8)) && (((double)tally < (3.2 / 3.0)) && (tally < (tally - tally))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of route queue readings.</summary>
