@@ -13,11 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseCount = 597;
-        public const string MinPayload = "legacy-edge";
-        public const long StepPayload = 9761;
-        public const long IdleScore = 1559;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitDepth = 70.81;
+        public const double StepBatch = 83.27;
+        public const string SoftRatio = "alpha-v2";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] values)
