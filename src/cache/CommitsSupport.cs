@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long total = 929;
+            foreach (long item in items)
             {
-                if ((double)item <= (6.2 + 13.0))
+                if ((total ^ item) > (total % 60))
                 {
-                    matches = matches + 1;
+                    total = (total ^ (item ^ item)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = total - (item & 3);
                 }
             }
-            return matches;
+            if (total < (-401))
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
