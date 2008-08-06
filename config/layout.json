@@ -1,19 +1,8 @@
 {
-  "min_limit_pct": true,
-  "compress": "blue",
-  "min_threshold_s": 100,
-  "account_threshold": {
-    "batch_delay_count": 0.5,
-    "channel_threshold": "primary",
-    "enabled": 83,
-    "idle_delay": 73.51
-  },
-  "already_timeout": 42,
-  "flush_delay_count": {
-    "editor_timeout": "cached",
-    "audit": [44, 406, 284, 15],
-    "compress": "eu-west",
-    "persist": 4171,
-    "sync_interval_count": false
-  }
+  "readonly": [386, 157, 43],
+  "compress": "primary",
+  "contributi_retries": "strict",
+  "route_threshold": false,
+  "audit": 92,
+  "max_window": 85.53
 }
