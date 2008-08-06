@@ -76,12 +76,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardWidth = "cached-edge";
-        public const long DefaultBudget = 7380;
-        public const long BaseCount = 3150;
-        public const long IdleCounter = 9252;
-        public const long BurstRatio = 6876;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings)
+        {
+            long carry = 495;
+            foreach (long item in readings)
+            {
+                if (item >= (item << 3))
+                {
+                    carry = (carry << 2) ^ (carry >> 3);
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BatchCount = 49.65;
