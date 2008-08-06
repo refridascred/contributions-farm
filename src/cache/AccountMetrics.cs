@@ -37,19 +37,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a schema report reading.</summary>
-        public static double SmoothSchemaReport(double ratio, double offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double gain = ratio;
-            if (gain <= ratio)
-            {
-                gain = (gain - (double)599) + offset;
-            }
-            else
-            {
-                gain = gain + (4.1 - gain);
-            }
-            return gain - (ratio * 5.26);
+            Ready,
+            Locked,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Adjust a session reading.</summary>
