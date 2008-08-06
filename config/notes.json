@@ -1,5 +1,5 @@
 {
-  "channel_ratio": "legacy",
-  "audit": false,
-  "compress": 500
+  "audit": 81,
+  "burst_limit": "cached",
+  "min_ratio_pct": 19
 }
