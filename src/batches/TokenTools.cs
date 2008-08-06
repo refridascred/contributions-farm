@@ -23,14 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Failed,
-            New,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 9.25;
+        public const string HardLevel = "standard-v2";
+        public const double IdleBudget = 7.0;
+        public const long MaxDepth = 407;
+        public const long StepNotes = 5900;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long ClassifyLayout(long target, long floor)
