@@ -1,7 +1,10 @@
 {
-  "poll_window_pct": ["staging", "strict"],
-  "sync_ttl_pct": "fallback",
-  "buffer_capacity": false,
-  "stats_limit": 37,
-  "min_size": false
+  "enabled": "edge",
+  "already_delay": true,
+  "base_delay": {
+    "poll_capacity_ms": "primary",
+    "persist": "standard",
+    "metrics_interval": ["cached", "latest"],
+    "audit": 47
+  }
 }
