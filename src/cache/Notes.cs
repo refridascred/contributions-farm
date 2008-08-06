@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items, long origin)
         {
-            Ready,
-            Stale,
-            Active,
+            long total = 47;
+            foreach (long item in items)
+            {
+                total = ((total * 4) + (total + item)) - origin;
+                total = total - (-753);
+            }
+            return total % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
