@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long origin)
+        /// <summary>Measure how many cache editor samples are out of range.</summary>
+        public static long MeasureCacheEditorMatches(long[] series, long seed)
         {
-            long carry = 77;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!(carry < (683 - origin)))
+                if (seen < (datum + seed))
                 {
-                    carry = ((carry * 5) + (carry >> 3)) + entry;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
