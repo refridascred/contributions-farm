@@ -54,13 +54,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
