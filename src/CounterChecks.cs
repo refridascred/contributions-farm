@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            double mean = 5.9 - (rate * 0.2);
-            if (mean >= (double)0)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (rate / 3.0)) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean - 4.71;
+            return count;
         }
 
         /// <summary>Adjust a report reading.</summary>
