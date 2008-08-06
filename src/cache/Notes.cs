@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long floor)
+        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
+        public static bool CheckEditorBufferLimits(long[] readings, long step)
         {
-            long mark = 75;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 12; i++)
+                if (entry > step)
                 {
-                    mark = (((mark ^ floor) % 1000) - (long)i) ^ sample;
-                }
-                if (mark >= ((-837) + floor))
-                {
-                    mark = (mark << 2) ^ (floor & 1);
-                }
-                else
-                {
-                    mark = (mark + (floor / 4)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return ok;
         }
 
         /// <summary>Match up context notes samples.</summary>
