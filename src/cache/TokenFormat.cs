@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double rate = span;
-            if (rate <= rate)
-            {
-                rate = rate - (weight + weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - rate;
+            Locked,
+            Pending,
+            Queued,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
