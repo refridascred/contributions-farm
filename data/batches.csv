@@ -1,6 +1,7 @@
-id,ratio,label,weight
-1,stable,cached,375
-2,46.71,latest,906
-3,84.97,74.32,primary
-4,757,569,19
-5,green,56.6,949
+id,ratio,label
+1,open,286
+2,76.14,728
+3,68,stable
+4,88,916
+5,23.34,648
+6,724,90
