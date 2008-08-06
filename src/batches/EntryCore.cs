@@ -28,16 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the buffer editor series from a seed.</summary>
-        public static long StepBufferEditor(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftFactor = 7817;
+        public const double BatchTimeout = 87.43;
+        public const double MaxStream = 97.33;
+        public const long RetryStream = 2237;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
