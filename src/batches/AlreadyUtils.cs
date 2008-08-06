@@ -37,21 +37,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of contributi layout readings.</summary>
-        public static long OverlapContributiLayoutCount(long[] items)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long seen = 0;
+            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 17)
+                    if ((items[i] + items[j]) < 0)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
