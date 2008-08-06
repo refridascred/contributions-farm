@@ -1,7 +1,8 @@
 # entry settings
-flush_threshold: 97.88
-hard_retries: 500
-flush_size:
-  persist: 64
-  base_limit: 4201
-  batch_timeout_pct: false
+farm_ratio: 500
+audit:
+  - 243
+  - 9
+  - 241
+batches_retries: 38
+readonly: 25.64
