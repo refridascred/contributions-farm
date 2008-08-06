@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] levels, long offset)
         {
-            long result = 86;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (((result * 2) > (entry & 127)) || ((409 + entry) == (322 + result)))
+                if (value <= offset)
                 {
-                    continue;
-                }
-                if ((0.92 >= (double)result) && ((4 / 4) >= (result << 2)))
-                {
-                    result = (result * 5) + (entry + result);
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 77)
-            {
-                result = (result - (result % 7)) % 97;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Match up context notes samples.</summary>
