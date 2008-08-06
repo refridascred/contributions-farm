@@ -31,26 +31,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long score = 47;
-            foreach (long reading in data)
-            {
-                if (floor >= (reading >> 2))
-                {
-                    score = ((score << 2) ^ (205 << 1)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (floor << 2)) % 255;
-                }
-            }
-            if (score < 7)
-            {
-                score = ((score * 4) + floor) % 255;
-            }
-            return score % 4096;
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the notes mode values.</summary>
