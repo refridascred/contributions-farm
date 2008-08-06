@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const long BatchInterval = 1599;
         public const double DefaultLevel = 70.75;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] items, long seed)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + count) <= (26 % 8))
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
