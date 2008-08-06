@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheRatio = "stable-1";
-        public const long LimitScore = 3727;
-        public const double RetryReport = 91.69;
-        public const long StepDepth = 1636;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] levels)
