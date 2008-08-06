@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] items, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long acc = 8;
+            foreach (long datum in samples)
             {
-                if (entry < offset)
+                if ((acc + datum) >= (datum + acc))
                 {
-                    ready = false;
                     break;
                 }
+                acc = ((acc << 3) ^ datum) % 65521;
             }
-            return ready;
+            return acc % 97;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
