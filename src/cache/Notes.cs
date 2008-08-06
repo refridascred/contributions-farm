@@ -19,19 +19,10 @@ namespace Common.Utilities
         public const long BatchInterval = 1599;
         public const double DefaultLevel = 70.75;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + count) <= (26 % 8))
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSize = 222;
+        public const long LimitBudget = 4908;
+        public const long CacheBuffer = 8906;
 
         /// <summary>Count the notes batch entries that pass the check.</summary>
         public static long TallyNotesBatchMatches(long[] data)
