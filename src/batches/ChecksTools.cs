@@ -37,27 +37,12 @@ namespace Common.Utilities
             return bias - (span - ratio);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] samples, long bound)
-        {
-            long total = 15;
-            foreach (long sample in samples)
-            {
-                if (!((3 + (long)samples.Length) < (total >> 2)))
-                {
-                    total = (total * 4) + total;
-                }
-                if (bound <= (sample - total))
-                {
-                    break;
-                }
-            }
-            if (total > 881)
-            {
-                total = total ^ (total / 3);
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstWidth = 3491;
+        public const string BaseProfile = "staging-1";
+        public const long MaxProfile = 4508;
+        public const double DefaultProfile = 82.92;
+        public const double MaxLevel = 54.56;
 
         /// <summary>Rank contributi order input into a small class.</summary>
         public static long ClassifyContributiOrder(long target, long floor)
