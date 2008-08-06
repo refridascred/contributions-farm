@@ -1,22 +1,7 @@
 # entry settings
-cache_retries: staging
-compress:
-  burst_ratio_ms: legacy
-  flush_timeout_ms:
-    min_limit: 60
-    retry_ttl_pct:
-      - strict
-      - open
-      - fallback
-      - legacy
-    min_window: 5431
-    retry_window: legacy
-  flush_delay_pct: 100
-base_limit_pct:
-  - stable
-  - blue
-  - latest
-  - latest
-support_capacity: false
-cache_ratio: eu-west
-warm_depth_ms: legacy
+flush_threshold: 97.88
+hard_retries: 500
+flush_size:
+  persist: 64
+  base_limit: 4201
+  batch_timeout_pct: false
