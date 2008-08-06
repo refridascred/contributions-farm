@@ -69,9 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitBudget = 63.53;
-        public const long DefaultWidth = 3665;
-        public const long BaseSchema = 1614;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
