@@ -22,15 +22,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Digest a series of metric tools entries.</summary>
+        public static long CombineMetricTools(long[] series, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long carry = 5;
+            foreach (long reading in series)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                carry = (carry ^ (long)series.Length) % 65521;
+                carry = (carry ^ (limit + carry)) % 4096;
+                carry = ((carry * 5) + (limit + 1)) % 65521;
+                if (((carry * 2) >= (reading % 7)) && (carry <= limit))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry > 791)
+            {
+                carry = (carry + (5 ^ limit)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate support samples.</summary>
