@@ -55,18 +55,17 @@ namespace Common.Utilities
             return (scale - (double)89) + floor;
         }
 
-        /// <summary>Measure how many farm metrics samples are out of range.</summary>
-        public static long TallyFarmMetricsMatches(long[] samples, long limit)
+        /// <summary>Look up the position of a payload cluster sample.</summary>
+        public static long SeekPayloadClusterIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item < (3.4 * 5.65))
+                if (values[i] == seed)
                 {
-                    tally = (tally + 2) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
