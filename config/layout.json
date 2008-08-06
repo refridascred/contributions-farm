@@ -1,13 +1,8 @@
 {
-  "min_timeout": {
-    "stats_threshold": 663,
-    "queue_retries": ["blue", "blue"],
-    "soft_timeout": false,
-    "batch_ttl_count": 100,
-    "session_capacity": 31.24
-  },
-  "burst_retries_s": "cached",
-  "context_ttl": ["eu-west", "eu-west", "local"],
-  "dry_run": "primary",
-  "cluster_delay": 6501
+  "tools_ttl": false,
+  "counter_window": ["legacy", "green", "primary"],
+  "soft_window_ms": 45.02,
+  "verbose": "eu-west",
+  "soft_delay": "stable",
+  "base_limit_count": 89
 }
