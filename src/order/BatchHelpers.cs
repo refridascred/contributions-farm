@@ -23,19 +23,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double scale, double offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double load = (double)(8 - 3);
-            if (load <= (offset * 15.0))
-            {
-                load = load - 1.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + scale;
+            Done,
+            Draft,
+            Ready,
+            Paused,
         }
     }
 }
