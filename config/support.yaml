@@ -1,7 +1,6 @@
 # support settings
-contributi_retries:
-  - 415
-  - 110
-  - 211
-batch_size: 97.28
-max_timeout_s: 26.44
+flush_ratio_pct: true
+flush_retries_count: 98.77
+warm_interval_count: false
+batch_interval_s: fallback
+batch_retries_s: strict
