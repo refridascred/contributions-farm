@@ -76,13 +76,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "latest";
+        public const string IdleGraph = "alpha-v2";
+        public const double WindowGraph = 71.81;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BatchCount = 49.65;
