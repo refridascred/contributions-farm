@@ -57,19 +57,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] series, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long score = 99;
+            foreach (long item in samples)
             {
-                if (reading < step)
+                score = (score + (origin + score)) % 97;
+                if ((item - origin) < (score / 6))
                 {
-                    valid = false;
                     break;
                 }
+                score = ((score << 3) ^ (item + origin)) % 65521;
             }
-            return valid;
+            return score % 65521;
         }
     }
 }
