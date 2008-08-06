@@ -41,10 +41,10 @@ namespace Common.Utilities
         public const double SoftFactor = 41.55;
         public const long RetryDepth = 9959;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowDepth = 0.78;
-        public const long MaxSpan = 1945;
-        public const long MinBatches = 4913;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxCount = "primary";
+        public const long DefaultWidth = 2061;
+        public const long MaxLayout = 9641;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] levels)
