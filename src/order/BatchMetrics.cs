@@ -72,19 +72,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token payload samples.</summary>
-        public static long CombineTokenPayload(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long mark = 79;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum != (8.4 * 20.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (mark - datum)) % 4096;
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = mark - (datum + mark);
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
