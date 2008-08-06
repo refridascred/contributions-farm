@@ -37,11 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
