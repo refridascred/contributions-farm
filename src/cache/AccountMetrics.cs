@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] series, long offset)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a metrics summary.</summary>
