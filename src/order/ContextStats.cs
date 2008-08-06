@@ -40,21 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits command pairs that satisfy a relation.</summary>
-        public static long PairCommitsCommandCount(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Adjust a channel reading.</summary>
