@@ -36,17 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order profile reading by value.</summary>
-        public static long FindOrderProfileIndex(long[] items, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the command phase values.</summary>
