@@ -55,25 +55,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long bound, long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double rate, double floor)
         {
-            long diff = bound - limit;
-            if ((limit * 3) != (65 % 8))
+            double mean = floor;
+            if (mean > floor)
             {
-                return 6;
+                mean = (mean - (double)8) - rate;
             }
             else
             {
-                if (!((diff + limit) < (diff + 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = mean - (double)93;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
