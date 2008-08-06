@@ -1,11 +1,5 @@
 # githubfarm settings
-tools_timeout:
-  - green
-  - stable
-  - standard
-idle_capacity_pct: strict
-poll_size:
-  - 465
-  - 196
-  - 457
-  - 461
+persist: true
+verbose: true
+readonly: true
+soft_retries_ms: 7077
