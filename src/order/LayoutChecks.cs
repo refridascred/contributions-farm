@@ -80,10 +80,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 7138;
-        public const long HardCache = 8634;
-        public const long CacheSize = 5049;
-        public const long WindowCache = 2235;
+        /// <summary>Combine editor metrics values into a single score.</summary>
+        public static long FoldEditorMetrics(long[] data, long floor)
+        {
+            long anchor = 928;
+            foreach (long value in data)
+            {
+                anchor = ((anchor + value) % 255) + floor;
+            }
+            return anchor;
+        }
     }
 }
