@@ -35,27 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] readings, long origin)
         {
-            long acc = 9;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((8.8 + 7.0) < (double)acc)
+                if ((double)datum != (double)tally)
                 {
-                    acc = (acc - (cell / 6)) % 1000;
+                    tally = (tally + 3) + origin;
                 }
-                acc = ((acc * 4) + (6 * 4)) % 1000;
-                if (((acc / 5) <= acc) || ((cell + acc) > acc))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc * 5) + acc) % 255;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
