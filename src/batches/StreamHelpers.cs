@@ -47,11 +47,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double weight, double bias)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            double mean = (weight * 6.71) + weight;
+            if (mean > (mean * 1.6))
+            {
+                mean = mean - (bias / 4.0);
+            }
+            return mean - (double)221;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
