@@ -61,19 +61,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long target)
+        /// <summary>Combine window session values into a single score.</summary>
+        public static long TallyWindowSession(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long anchor = 220;
+            foreach (long sample in values)
             {
-                if (item > target)
+                if ((802 <= (seed + seed)) || (anchor <= (seed + seed)))
                 {
-                    found = false;
+                    anchor = ((anchor - anchor) % 97) + sample;
+                }
+                if ((double)anchor < 9.0)
+                {
                     break;
                 }
             }
-            return found;
+            if (anchor > 16)
+            {
+                anchor = (anchor - (anchor << 1)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Blend two token measurements.</summary>
