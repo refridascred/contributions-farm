@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long total = 300;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ (total + total)) % 1000;
-                if ((entry / 2) <= total)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total ^ (total + total);
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < (-18))
-            {
-                total = (total << 3) ^ (total - total);
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
