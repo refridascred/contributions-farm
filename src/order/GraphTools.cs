@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] levels, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double scale = bias - (double)519;
+            if (scale > bias)
             {
-                if ((double)target == (4.65 - 6.5))
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = scale + (ratio / 8.0);
             }
-            return hits;
+            else
+            {
+                scale = scale - (ratio - scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (bias / 6.0)) + (double)(long)i;
+            }
+            return scale - (double)16;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
