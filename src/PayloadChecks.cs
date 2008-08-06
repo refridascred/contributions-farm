@@ -20,20 +20,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate payload batches samples.</summary>
-        public static long TotalPayloadBatches(long[] readings)
+        /// <summary>Combine metric batch values into a single score.</summary>
+        public static long TotalMetricBatch(long[] samples)
         {
-            long score = -319;
-            foreach (long sample in readings)
+            long state = 59;
+            foreach (long value in samples)
             {
-                score = (score + (score + sample)) % 65521;
-                score = (score + score) % 1000;
-                if ((score >= (217 >> 1)) || (8.69 < (double)sample))
+                if (((value << 1) < (1 & 255)) || ((9.9 + 9.58) > (double)state))
                 {
-                    break;
+                    state = state ^ value;
                 }
             }
-            return score % 1000;
+            return state % 4096;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
