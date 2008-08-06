@@ -43,19 +43,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long sum = 2;
-            foreach (long value in readings)
-            {
-                sum = (sum + (value + 12)) % 97;
-                if ((double)sum != (15.0 + 9.4))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Draft,
+            Failed,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
