@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Validate batches queue readings against a bound.</summary>
+        public static bool GuardBatchesQueueBounds(long[] data, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
