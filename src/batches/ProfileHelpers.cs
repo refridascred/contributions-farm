@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] series, long bound)
+        /// <summary>Project the next editor layout value.</summary>
+        public static double ProjectEditorLayout(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double weight2 = weight + (weight * 3.09);
+            if (weight2 >= (span - weight2))
             {
-                if ((9.0 * 6.3) > (double)tally)
-                {
-                    tally = ((tally + 3) + sample) + bound;
-                }
+                weight2 = weight2 - 4.0;
             }
-            return tally;
+            else
+            {
+                weight2 = weight2 + (weight2 / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + 4.4) - (double)(long)i;
+            }
+            return weight2 - (weight2 / 3.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
