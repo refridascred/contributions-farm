@@ -1,8 +1,4 @@
 # support settings
-notes_timeout:
-  - 16
-  - 279
-compress: 7.8
-entry_delay: 88.36
-readonly: legacy
-audit: staging
+cluster_capacity: true
+poll_window_count: 4525
+max_size: cached
