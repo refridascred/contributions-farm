@@ -1,12 +1,15 @@
 # Command notes
 
-The cache module keeps record values in sync with the githubfarm cache.
-Use schema settings to tune how often command data is refreshed.
-A githubfarm that stays idle for too long is moved to the entry list.
+The layout helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the metrics list.
+
+Each farm is validated before it reaches the cluster queue.
+Run the cluster check before changing any command limits.
+A token that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Document new window fields
-- Keep buffer values small
-- Validate format input early
-- Log every cache change
+- Review counter limits each release
+- Document new payload fields
+- Keep account values small
+- Validate batches input early
