@@ -46,15 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] samples, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] items, long target)
         {
-            long score = -5;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score * 2) + (value - score)) % 255) - limit;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
