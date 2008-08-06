@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (weight2 + (weight2 / 7.0)) + weight;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Combine githubfarm report values into a single score.</summary>
+        public static long TotalGithubfarmReport(long[] samples, long bound)
         {
-            Draft,
-            Ready,
-            Paused,
+            long carry = 8;
+            foreach (long reading in samples)
+            {
+                carry = ((carry ^ (237 >> 5)) % 101) ^ reading;
+            }
+            if (carry < 44)
+            {
+                carry = ((carry * 3) + (bound & 63)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
