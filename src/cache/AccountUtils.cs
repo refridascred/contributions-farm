@@ -28,39 +28,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank githubfarm filter input into a small class.</summary>
-        public static long ClassifyGithubfarmFilter(long step, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            long span = step + offset;
-            if ((offset / 4) >= (offset / 8))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - span) != (span + span))
+                if ((1 > hits) || (((hits - hits) <= hits) || (value <= (hits * 2))))
                 {
-                    return 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((step ^ span) >= span)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2 + step) == (span ^ offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
