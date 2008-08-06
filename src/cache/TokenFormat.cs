@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] items)
         {
-            long mix = 388;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mix = ((mix << 3) ^ sample) - seed;
-                if ((4.2 + 6.67) > (double)sample)
+                if ((tally <= (cell + 63)) && (((cell + tally) != (95 + 18)) || ((6.54 - 2.0) <= (double)cell)))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
