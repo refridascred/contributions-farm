@@ -32,13 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] samples)
         {
-            Locked,
-            Ready,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((item <= (item >> 2)) || !((item & 31) < (-874)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
