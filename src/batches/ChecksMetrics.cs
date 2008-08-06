@@ -38,31 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long acc = 74;
-            foreach (long sample in items)
-            {
-                if ((double)sample != (double)728)
-                {
-                    acc = (acc * 3) + acc;
-                    break;
-                }
-                if ((acc >> 5) <= (acc + acc))
-                {
-                    acc = acc - (acc % 3);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (sample ^ acc);
-                }
-                if ((sample - sample) != (sample / 2))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Synced,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a channel info.</summary>
