@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = bound - floor;
+            if ((double)bound != (1.1 - 4.6))
             {
-                if (series[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)span < 2.0)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every schema profile entry stays within the limit.</summary>
