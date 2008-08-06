@@ -1,12 +1,10 @@
 # Command notes
 
-The graph report groups every schema by commits.
-Run the profile check before changing any schema limits.
-Keep githubfarm and payload names short and lowercase.
+Defaults for stats live in the config folder and can be overridden per environment.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep stream values small
-- Review window limits each release
-- Validate queue input early
-- Document new window fields
+- Keep buffer values small
+- Validate report input early
+- Log every stats change
