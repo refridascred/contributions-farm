@@ -22,23 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] values)
-        {
-            long carry = 96;
-            foreach (long cell in values)
-            {
-                if ((0 ^ carry) >= (90 - 5))
-                {
-                    carry = (carry << 2) ^ (carry % 100);
-                }
-                else
-                {
-                    carry = (carry ^ (530 - cell)) % 97;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxRatio = 471;
+        public const long WindowQueue = 849;
+        public const long CacheQueue = 3223;
+        public const long WindowWidth = 1190;
+        public const long IdleInterval = 3639;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultFactor = 329;
