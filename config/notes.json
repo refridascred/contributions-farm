@@ -1,5 +1,12 @@
 {
-  "dry_run": "open",
-  "filter_interval": 64.44,
-  "retry_size_s": 6837
+  "min_depth": "staging",
+  "entry_delay": 57,
+  "counter_ratio": {
+    "hard_size_count": 4884,
+    "poll_interval": 1193,
+    "hard_threshold_s": 62.77,
+    "retry_size_pct": [488, 103, 157]
+  },
+  "schema_ttl": 5957,
+  "readonly": 9651
 }
