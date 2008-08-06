@@ -1,16 +1,10 @@
 {
-  "window_threshold": "strict",
-  "flush_ratio": 52,
-  "soft_timeout": {
-    "hard_delay_pct": "primary",
-    "readonly": 35.39,
-    "strict": 18.35,
-    "idle_window_s": {
-      "strict": 35,
-      "batch_limit_count": 250,
-      "retry_interval": 795,
-      "readonly": true
-    },
-    "profile_retries": true
-  }
+  "audit": {
+    "max_depth_ms": [447, 307, 288],
+    "counter_retries": false,
+    "format_ttl": 250,
+    "poll_size_s": [497, 429, 365, 334]
+  },
+  "min_threshold": "open",
+  "default_ratio_s": "local"
 }
