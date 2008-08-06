@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Paused,
-            Stale,
-            Pending,
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
