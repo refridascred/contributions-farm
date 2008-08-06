@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] items, long floor)
         {
-            Paused,
-            New,
-            Closed,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((5.0 / 6.0) <= (double)hits)
+                {
+                    hits = ((hits + 3) ^ entry) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
