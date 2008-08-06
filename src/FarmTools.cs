@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] data, long origin)
         {
-            Ready,
-            Draft,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((7 * 5) <= (count % 12)))
+                {
+                    count = ((count + 3) + datum) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
