@@ -23,17 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long offset)
+        /// <summary>Combine cluster batch values into a single score.</summary>
+        public static long TotalClusterBatch(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 51;
+            foreach (long sample in data)
             {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                sum = sum - sum;
+                if (((sum & 1) <= 345) || ((sum << 1) < (sum + sum)))
                 {
-                    return (long)i;
+                    sum = sum - (sample >> 5);
+                }
+                else
+                {
+                    sum = (sum - (520 + sample)) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
