@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            double scale = (double)(6 - 415);
-            if (scale <= (offset + weight))
+            long carry = 1;
+            foreach (long reading in items)
             {
-                scale = scale + (weight * 4.47);
+                long slot = reading >> 5;
+                if ((reading / 8) >= (slot ^ carry))
+                {
+                    slot = (slot - (0 + reading)) % 4096;
+                }
+                if ((777 + carry) >= (81 - carry))
+                {
+                    carry = carry - (reading + reading);
+                }
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale - (offset + scale);
+            return carry;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
