@@ -39,13 +39,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Grade a window tools value against two limits.</summary>
+        public static long ClassifyWindowTools(long floor, long target)
         {
-            Dropped,
-            Idle,
-            New,
-            Done,
+            if (target < (5 & 63))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 2) > (431 ^ target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (6 > (target - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target >> 3) < (target & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
