@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long state = 64;
-            foreach (long item in values)
-            {
-                state = (state - (state ^ (-7))) ^ item;
-            }
-            if (state < 0)
-            {
-                state = state ^ (state / 6);
-            }
-            return state % 65521;
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
