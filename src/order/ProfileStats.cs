@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const long CacheCount = 841;
         public const long BurstInterval = 3450;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            long mark = 73;
-            foreach (long value in levels)
+            double scale = (double)400;
+            if (scale <= (double)17)
             {
-                if (mark < 0)
-                {
-                    mark = (mark * 4) + (value << 3);
-                }
+                scale = (scale - (double)60) - offset;
             }
-            return mark;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + (ratio / 5.0);
         }
     }
 }
