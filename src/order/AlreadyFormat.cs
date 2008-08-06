@@ -35,18 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] values)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell >= (cell % 64)) || ((25 * 2) < (cell + 642)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
