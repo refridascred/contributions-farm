@@ -1,12 +1,14 @@
 {
-  "min_depth": "staging",
-  "entry_delay": 57,
-  "counter_ratio": {
-    "hard_size_count": 4884,
-    "poll_interval": 1193,
-    "hard_threshold_s": 62.77,
-    "retry_size_pct": [488, 103, 157]
+  "profile_delay": 250,
+  "farm_size": 32,
+  "verbose": 9999,
+  "strict": {
+    "compress": "eu-west",
+    "default_interval_pct": "edge",
+    "default_delay": false,
+    "batch_interval": true,
+    "default_size_count": "open"
   },
-  "schema_ttl": 5957,
-  "readonly": 9651
+  "metric_interval": 12,
+  "idle_depth_ms": 54.57
 }
