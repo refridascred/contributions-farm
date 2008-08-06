@@ -33,19 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "open";
+        public const long BatchStream = 8460;
+        public const double LimitStream = 43.06;
+        public const string DefaultStream = "latest";
+        public const long MaxStream = 7503;
     }
 }
