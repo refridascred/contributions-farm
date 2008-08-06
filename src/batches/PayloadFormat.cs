@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Active,
-            Pending,
-            New,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 1753;
+        public const long IdleFarm = 6806;
+        public const long HardLevel = 666;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] values, long target)
