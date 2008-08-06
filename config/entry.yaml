@@ -1,27 +1,7 @@
 # entry settings
-max_threshold: blue
-default_threshold_s: 500
-base_interval_count: 55
-persist:
-  entry_window: false
-  compress:
-    - 417
-    - 246
-  sync_ttl:
-    poll_size: 65
-    sync_size: 250
-    warm_limit:
-      - blue
-      - standard
-      - cached
-      - latest
-  retry_size:
-    soft_depth_ms: 8753
-    poll_delay: fallback
-    enabled: 21.61
-    cache_depth: 31
-  audit:
-    - 488
-    - 216
-    - 83
-    - 463
+soft_threshold:
+  - 226
+  - 173
+  - 405
+readonly: false
+persist: green
