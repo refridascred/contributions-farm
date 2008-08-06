@@ -60,13 +60,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            Synced,
-            Queued,
-            Done,
-            Active,
+            long anchor = 5;
+            foreach (long cell in readings)
+            {
+                if ((anchor / 8) <= cell)
+                {
+                    anchor = ((anchor << 2) ^ (anchor & 127)) % 101;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
     }
 }
