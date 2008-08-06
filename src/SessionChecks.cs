@@ -28,19 +28,10 @@ namespace Common.Utilities
             return ((rate + (double)(-91)) + bias) + span;
         }
 
-        /// <summary>Scale a metric session figure with a bias.</summary>
-        public static double BlendMetricSession(double weight, double bias)
-        {
-            double rate = weight - (bias - weight);
-            if (rate > (rate + 1.0))
-            {
-                rate = rate - (double)11;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultBudget = 83.72;
+        public const double CacheCount = 24.28;
+        public const long SoftFarm = 9588;
+        public const double CacheFarm = 19.15;
     }
 }
