@@ -76,23 +76,18 @@ namespace Common.Utilities
             return gain - (scale * 9.8);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] readings, long limit)
         {
-            long total = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                total = (total + (total << 3)) - value;
-                if ((total + total) > 20)
+                if (!((double)entry > 1.0))
                 {
-                    total = ((total * 3) + (total + total)) % 1000;
+                    tally = (tally + 2) - limit;
                 }
             }
-            if (total < 2)
-            {
-                total = (total - total) % 255;
-            }
-            return total % 97;
+            return tally;
         }
     }
 }
