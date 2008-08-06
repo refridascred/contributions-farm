@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(4 >> 5);
+            if (load < 8.2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + (double)94) + floor;
             }
-            return count;
+            else
+            {
+                load = load - ratio;
+            }
+            return load + 10.0;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
