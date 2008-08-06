@@ -53,16 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Measure how many format metric samples are out of range.</summary>
+        public static long CountFormatMetricGaps(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                result = ((result * 4) + result) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((datum - datum) != (21 * 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
