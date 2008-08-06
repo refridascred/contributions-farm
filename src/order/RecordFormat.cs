@@ -56,19 +56,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route report entry stays within the limit.</summary>
-        public static bool VerifyRouteReportRange(long[] levels, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry <= limit)
+                result = result - (938 ^ bound);
+                if ((result * 5) > (result & 63))
                 {
-                    stale = false;
                     break;
                 }
+                else
+                {
+                    result = result + (result << 3);
+                }
+                result = (result - ((long)i % 5)) % 4096;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
     }
 }
