@@ -42,21 +42,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = floor - origin;
+            if (((39 + span) >= origin) && (span >= origin))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin - span) > (859 * 2))
                 {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
