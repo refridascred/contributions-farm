@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the session schema series from a seed.</summary>
-        public static long RollSessionSchema(long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            double scale = (double)(6 - 415);
+            if (scale <= (offset + weight))
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                scale = scale + (weight * 4.47);
             }
-            return mix;
+            else
+            {
+                scale = scale - weight;
+            }
+            return scale - (offset + scale);
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
