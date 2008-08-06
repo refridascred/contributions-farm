@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Combine graph schema values into a single score.</summary>
+        public static long FoldGraphSchema(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = 6;
+            foreach (long cell in series)
             {
-                if ((item <= (item >> 2)) || !((item & 31) < (-874)))
+                if (((cell ^ cell) <= cell) || ((sum & 31) <= (cell + cell)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = (sum - (cell - sum)) % 255;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
