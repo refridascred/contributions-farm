@@ -15,11 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryRatio = 9595;
-        public const double BatchEntry = 67.12;
-        public const double IdleEntry = 52.39;
-        public const string MaxEntry = "standard-v2";
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiRange(long[] data, long offset)
