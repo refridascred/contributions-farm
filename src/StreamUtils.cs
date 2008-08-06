@@ -58,24 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long origin2)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] samples)
         {
-            if (origin2 < (origin * 4))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((815 + origin2) >= (origin - 411))
+                if (!((double)seen != (7.18 * 0.7)))
                 {
-                    return 8;
+                    seen = (seen + 1) + reading;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the entry level values.</summary>
