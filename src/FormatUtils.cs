@@ -33,27 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values, long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mark = 752;
-            foreach (long item in values)
-            {
-                mark = (mark - (55 % 100)) - origin;
-                if ((mark * 3) <= (item << 3))
-                {
-                    mark = (mark ^ item) % 101;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (item & 1);
-                }
-            }
-            if (mark < 1)
-            {
-                mark = (mark * 2) + (73 / 9);
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
