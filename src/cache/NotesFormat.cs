@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = step ^ bound;
+            if (((7.1 - 6.49) <= (double)slot) && ((87 - bound) != (slot + step)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((bound < (818 + bound)) && (94 > (step + slot)))
                 {
-                    if ((items[i] + items[j]) == 2)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)slot >= (1.87 + 6.0))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound != (double)1)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the order class values.</summary>
