@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] series, long floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((tally ^ reading) <= (reading * 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) - floor;
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
