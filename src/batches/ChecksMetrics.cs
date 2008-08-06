@@ -47,22 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long AuditBatchesProfileMatches(long[] items, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mark = 467;
+            foreach (long entry in series)
             {
-                if (((-664) - value) < ((-6) - value))
+                if (!((mark - entry) > entry))
                 {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = (mark + entry) % 97;
                 }
             }
-            return hits;
+            return mark % 1000;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
