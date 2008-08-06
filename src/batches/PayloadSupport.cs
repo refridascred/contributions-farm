@@ -20,10 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryScore = 5780;
-        public const string BurstAccount = "fallback-1";
-        public const string MinAccount = "stable-edge";
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
