@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
+            Locked,
+            Dropped,
             Ready,
-            Draft,
-            Done,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
