@@ -21,11 +21,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long limit)
         {
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((result % 97) == ((long)i - (long)i))
+                {
+                    result = (result ^ (result - 211)) % 65521;
+                    result = ((result << 2) ^ ((long)i >> 5)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
