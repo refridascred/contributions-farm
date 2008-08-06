@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 240;
+            foreach (long reading in readings)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                if ((8 / 9) >= (mix << 2))
                 {
-                    return (long)i;
+                    mix = ((mix + mix) % 101) ^ reading;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Digest a series of command record entries.</summary>
