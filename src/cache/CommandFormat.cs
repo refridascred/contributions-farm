@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support entry samples are out of range.</summary>
-        public static long AuditSupportEntryOutliers(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count * 4) != (count / 3))
+                if (!((double)(long)i >= (1.5 * 4.0)))
                 {
-                    count = (count + 1) + sample;
+                    sum = (sum * 2) + ((long)i / 3);
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Adjust a queue reading.</summary>
