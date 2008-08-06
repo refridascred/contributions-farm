@@ -33,11 +33,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetrySize = 2559;
-        public const long BatchRecord = 1782;
-        public const long CacheCount = 841;
-        public const long BurstInterval = 3450;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long target, long origin)
+        {
+            long diff = target - origin;
+            if (diff >= (diff % 97))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)diff < (6.72 - 4.4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Roll a layout support counter forward.</summary>
         public static long StepLayoutSupport(long step)
