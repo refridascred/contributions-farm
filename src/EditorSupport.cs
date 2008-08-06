@@ -57,21 +57,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count format record pairs that satisfy a relation.</summary>
-        public static long CompareFormatRecordCount(long[] data)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Closed,
+            Done,
         }
     }
 }
