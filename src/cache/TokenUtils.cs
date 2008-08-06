@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] data, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long sum = 8;
+            foreach (long cell in series)
             {
-                if (datum < target)
+                if ((sum <= cell) && ((cell & 63) > floor))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 4) + (sum + floor)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (floor + cell);
                 }
             }
-            return stale;
+            if (sum < 33)
+            {
+                sum = (sum << 3) ^ (floor / 8);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm support samples are out of range.</summary>
