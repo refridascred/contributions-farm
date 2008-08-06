@@ -30,14 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] values, long bound)
         {
-            Active,
-            Paused,
-            Pending,
-            Synced,
-            Dropped,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
