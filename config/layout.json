@@ -1,7 +1,7 @@
 {
-  "burst_timeout_s": 26.98,
-  "soft_ttl_ms": false,
-  "default_retries": ["eu-west", "primary", "green"],
-  "retry_size": "edge",
-  "warm_threshold_pct": 60
+  "soft_interval_count": ["local", "local", "fallback", "local"],
+  "session_size": "stable",
+  "filter_delay": "legacy",
+  "batch_window": [474, 227, 69],
+  "hard_delay_s": ["cached", "fallback", "standard"]
 }
