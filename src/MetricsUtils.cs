@@ -27,12 +27,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long seed, long origin)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            if ((origin / 3) >= (origin & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((seed >> 2) != (origin - seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 1) <= (seed + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + origin) < (60 + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
