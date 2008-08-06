@@ -27,21 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer batches readings.</summary>
-        public static long FoldBufferBatches(long[] levels)
-        {
-            long sum = 765;
-            foreach (long datum in levels)
-            {
-                sum = sum - 30;
-                sum = ((sum << 2) ^ (4 - datum)) % 255;
-            }
-            if (sum < 293)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryLevel = 1402;
+        public const long BaseStream = 1513;
+        public const long MinSize = 6756;
+        public const long WindowCount = 5823;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryHits(long[] series)
