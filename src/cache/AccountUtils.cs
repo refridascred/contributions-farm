@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public bool Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
