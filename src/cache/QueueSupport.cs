@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count batches token pairs that satisfy a relation.</summary>
-        public static long PairBatchesTokenCount(long[] series)
+        /// <summary>Count the metric batches entries that pass the check.</summary>
+        public static long AuditMetricBatchesGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((tally - 123) > (datum % 64)) || ((tally ^ tally) <= (5 >> 3))))
                 {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next batch value.</summary>
