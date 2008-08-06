@@ -22,16 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Accumulate channel command samples.</summary>
+        public static long TotalChannelCommand(long[] readings, long step)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long score = 6;
+            foreach (long value in readings)
             {
-                score = (score * 2) + target;
-                score = ((score * 2) + (long)i) % 1000;
+                if ((score + step) > 9)
+                {
+                    score = score - score;
+                }
+                if ((value - score) != (score * 3))
+                {
+                    score = ((score * 4) + (733 * 3)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 3) + (step % 16)) % 255;
+                }
             }
-            return score;
+            return score % 65521;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
