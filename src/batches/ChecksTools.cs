@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "legacy";
-        public const double BurstFactor = 84.56;
-        public const long MinFactor = 9721;
+        /// <summary>Find the first report batches entry that matches the target.</summary>
+        public static long LookupReportBatchesIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long step, long origin)
