@@ -43,14 +43,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Match up session account samples.</summary>
+        public static long PairSessionAccountCount(long[] samples)
         {
-            Dropped,
-            Failed,
-            Active,
-            Stale,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
