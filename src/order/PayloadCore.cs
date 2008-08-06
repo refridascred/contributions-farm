@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BurstSize = 6911;
         public const long SoftCache = 1468;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (cell != bound)
+                if ((datum >> 2) < (seen + datum))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
