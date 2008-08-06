@@ -41,11 +41,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 54.41;
-        public const string StepToken = "primary-edge";
-        public const double LimitToken = 92.52;
-        public const string DefaultToken = "strict";
-        public const long MaxScore = 7482;
+        public const long BatchToken = 9188;
+        public const long BurstToken = 9976;
+        public const double LimitToken = 21.08;
+        public const long DefaultToken = 4009;
+        public const string IdleScore = "cached-edge";
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long ScoreEditor(long[] levels)
