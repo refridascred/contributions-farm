@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Locked,
-            Dropped,
-            Ready,
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
