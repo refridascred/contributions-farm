@@ -31,26 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long state = 41;
-            foreach (long datum in series)
-            {
-                if (((4.73 + 10.0) != (double)step) && (((long)series.Length - 1) != (3 % 8)))
-                {
-                    break;
-                }
-                if ((861 + datum) >= 444)
-                {
-                    state = (state ^ (datum >> 1)) % 1000;
-                }
-            }
-            if (state < 4)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            Locked,
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Match up counter samples.</summary>
