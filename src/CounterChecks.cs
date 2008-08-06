@@ -75,21 +75,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(498 - 47);
+            if (drift > (span * 2.73))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + drift) - weight;
             }
-            return seen;
+            return drift - drift;
         }
     }
 }
