@@ -16,12 +16,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepSize = "alpha";
-        public const string IdleGraph = "latest-v2";
-        public const string IdleScore = "open";
-        public const string MinGraph = "latest-v2";
-        public const long CacheDepth = 4357;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings, long offset)
+        {
+            long mix = 35;
+            foreach (long sample in readings)
+            {
+                mix = (mix + (mix + offset)) ^ sample;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
