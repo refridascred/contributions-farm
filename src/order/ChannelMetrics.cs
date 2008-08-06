@@ -25,13 +25,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc - 491) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
