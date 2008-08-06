@@ -13,31 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long origin, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] items, long floor)
         {
-            if ((double)origin > (double)offset)
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.56 * 1.0) <= (double)offset)
+                if ((5 ^ 593) < (matches + (-6)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + 101) == (origin + 73))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = ((matches + 2) ^ item) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
