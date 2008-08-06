@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long total = -9;
-            foreach (long entry in items)
-            {
-                total = ((total << 2) ^ total) ^ entry;
-            }
-            return total;
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
