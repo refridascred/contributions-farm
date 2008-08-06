@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Fold a list of profile metric readings.</summary>
+        public static long TotalProfileMetric(long[] levels, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long mix = 399;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (floor <= (datum << 2))
+                {
+                    mix = ((mix * 3) + (datum % 64)) % 97;
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
