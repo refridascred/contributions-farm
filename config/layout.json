@@ -1,15 +1,5 @@
 {
-  "burst_timeout_ms": {
-    "metric_threshold": 80.89,
-    "payload_interval": "latest",
-    "cache_retries_ms": "cached",
-    "commits_size": false,
-    "metric_limit": {
-      "idle_window_s": "green",
-      "entry_interval": "legacy",
-      "dry_run": "legacy"
-    }
-  },
-  "soft_delay_s": "primary",
-  "hard_ratio_s": 22.77
+  "readonly": true,
+  "flush_window_count": "latest",
+  "burst_delay": 250
 }
