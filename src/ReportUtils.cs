@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every entry report entry stays within the limit.</summary>
+        public static bool GuardEntryReportRange(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every order record entry stays within the limit.</summary>
