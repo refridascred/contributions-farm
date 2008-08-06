@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data, long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long mix = -823;
-            foreach (long item in data)
-            {
-                if ((mix ^ seed) == (9 / 2))
-                {
-                    mix = ((mix * 5) + mix) % 65521;
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-                if ((item % 5) == (item - mix))
-                {
-                    break;
-                }
-            }
-            if (mix > 324)
-            {
-                mix = ((mix << 3) ^ (seed + mix)) % 255;
-            }
-            return mix;
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
