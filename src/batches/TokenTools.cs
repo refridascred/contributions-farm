@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long seed)
+        /// <summary>Validate already notes readings against a bound.</summary>
+        public static bool GuardAlreadyNotesBounds(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                if (item != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
