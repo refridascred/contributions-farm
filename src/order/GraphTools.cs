@@ -55,13 +55,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] values, long step)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((9.4 + 9.53) != (double)step)
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up commits samples.</summary>
