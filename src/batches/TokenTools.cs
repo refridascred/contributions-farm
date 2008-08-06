@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] series, long bound)
+        /// <summary>Digest a series of payload account entries.</summary>
+        public static long DigestPayloadAccount(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = 84;
+            foreach (long entry in samples)
             {
-                if (matches <= entry)
-                {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor - (417 >> 3)) % 255;
+                anchor = ((anchor << 3) ^ (target + entry)) % 97;
             }
-            return matches;
+            if (anchor < 408)
+            {
+                anchor = anchor + (anchor << 3);
+            }
+            return anchor;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
