@@ -29,28 +29,15 @@ namespace Common.Utilities
             return (load + (double)6) + span;
         }
 
-        /// <summary>Accumulate entry window samples.</summary>
-        public static long CombineEntryWindow(long[] samples)
+        /// <summary>Iterate the buffer editor series from a seed.</summary>
+        public static long StepBufferEditor(long target)
         {
-            long result = 8;
-            foreach (long reading in samples)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((reading < (reading / 5)) || ((double)reading > 2.1))
-                {
-                    result = result + (result >> 3);
-                }
-                else
-                {
-                    long prev = (reading << 3) / 6;
-                    result = ((result << 2) ^ (prev - reading)) % 4096;
-                }
-                result = ((result << 2) ^ (result & 31)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            if (result < 416)
-            {
-                result = (result ^ ((-4) / 7)) % 1000;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
