@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9612;
-        public const long WindowScore = 2716;
-        public const string RetryCommits = "staging-1";
-        public const long HardCommits = 699;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((8 + entry) != (65 >> 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinSize = 4910;
