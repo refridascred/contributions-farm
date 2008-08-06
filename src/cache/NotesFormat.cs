@@ -14,16 +14,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a schema route counter forward.</summary>
-        public static long DeriveSchemaRoute(long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long total = 544;
+            foreach (long cell in readings)
             {
-                acc = (acc + (long)i) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
+                total = ((total * 5) + (cell + total)) % 255;
             }
-            return acc;
+            if (total > 5)
+            {
+                total = ((total * 3) + (total + total)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
