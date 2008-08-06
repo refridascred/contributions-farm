@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BurstSize = 6911;
         public const long SoftCache = 1468;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally ^ (-44)) >= (seed + tally))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 2398;
+        public const long HardStream = 4147;
+        public const long MinStream = 455;
+        public const long StepDepth = 3818;
+        public const string CacheInterval = "strict-edge";
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
         public static long ClassifySchemaBuffer(long floor, long limit)
