@@ -1,11 +1,15 @@
 # Command notes
 
-Use session settings to tune how often window data is refreshed.
-Keep batch and editor names short and lowercase.
-Keep already and checks names short and lowercase.
+When a route fails, the cluster handler retries a few times before giving up.
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep cache and stats names short and lowercase.
+
+Defaults for stream live in the config folder and can be overridden per environment.
+A channel that stays idle for too long is moved to the notes list.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every entry change
-- Review command limits each release
-- Document new session fields
+- Prefer farm defaults
+- Review graph limits each release
+- Log every githubfarm change
