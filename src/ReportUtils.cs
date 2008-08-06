@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] values, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Check that every order record entry stays within the limit.</summary>
