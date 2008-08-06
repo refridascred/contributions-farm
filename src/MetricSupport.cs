@@ -20,16 +20,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = mark + bound;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Failed,
+            Draft,
+            Queued,
         }
     }
 }
