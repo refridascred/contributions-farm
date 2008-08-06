@@ -1,8 +1,5 @@
 {
-  "soft_interval_count": 56.7,
-  "warm_size_pct": 47.09,
-  "order_depth": 68.89,
-  "payload_window": 89.42,
-  "strict": 250,
-  "batch_interval_s": "edge"
+  "hard_threshold_count": true,
+  "min_threshold_count": "latest",
+  "counter_size": "green"
 }
