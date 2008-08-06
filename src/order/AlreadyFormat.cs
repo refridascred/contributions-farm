@@ -74,32 +74,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long bound, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long edge = bound - step;
-            if (bound <= (edge & 63))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (0 >= (bound / 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((20 ^ step) <= step)
+                    if ((readings[i] ^ readings[j]) > 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
