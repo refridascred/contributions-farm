@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            double bias = rate + offset;
-            if (bias >= bias)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (offset - bias);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (rate - offset);
-            }
-            return bias - (offset / 3.0);
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
