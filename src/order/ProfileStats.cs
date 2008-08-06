@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Count the counter metrics entries that pass the check.</summary>
+        public static long TallyCounterMetricsMatches(long[] data)
         {
-            long acc = 4;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                acc = acc ^ (item + 42);
+                if ((((sample ^ seen) < sample) && ((4 - (-6)) <= seen)) || ((488 % 2) > (sample * 4)))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (acc > 6)
-            {
-                acc = acc ^ (acc % 60);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Find the first stats profile entry that matches the target.</summary>
