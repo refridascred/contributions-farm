@@ -54,13 +54,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultLevel = 2247;
+        public const long MinLevel = 6600;
+        public const double CacheFactor = 72.45;
     }
 }
