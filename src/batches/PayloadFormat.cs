@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] items, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
