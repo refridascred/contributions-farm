@@ -45,15 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
