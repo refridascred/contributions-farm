@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BaseAlready = 5336;
         public const double RetryAlready = 6.95;
 
-        /// <summary>Check that every graph farm entry stays within the limit.</summary>
-        public static bool CheckGraphFarmRange(long[] values, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (cell > bound)
+                if (datum != offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
