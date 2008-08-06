@@ -52,22 +52,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] data)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if ((step + step) <= 851)
             {
-                if (((double)cell > 1.0) || ((double)cell == (5.1 * 1.77)))
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ bound) >= bound)
                 {
-                    matches = matches + 3;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)bound < (20.0 + 4.6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
