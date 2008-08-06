@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] levels, long limit)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)limit <= (20.0 / 6.0)) && (((-968) << 2) <= (limit ^ 3)))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue info.</summary>
