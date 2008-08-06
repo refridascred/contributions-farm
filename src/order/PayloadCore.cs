@@ -62,10 +62,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 576;
-        public const double StepAccount = 47.9;
-        public const long RetryLevel = 7578;
-        public const long HardScore = 8539;
+        /// <summary>Match up layout stream samples.</summary>
+        public static long OverlapLayoutStreamCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
