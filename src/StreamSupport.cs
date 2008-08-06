@@ -25,20 +25,19 @@ namespace Common.Utilities
         public const long LimitContributi = 4912;
         public const long HardRatio = 4653;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] items, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((double)floor >= (4.0 + 6.0))
+                if (entry != step)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor << 3) ^ (floor - (long)i)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return ok;
         }
     }
 }
