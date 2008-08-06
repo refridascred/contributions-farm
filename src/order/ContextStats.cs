@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] readings, long seed)
-        {
-            long result = 0;
-            foreach (long cell in readings)
-            {
-                result = (((result - 984) % 65521) + cell) + seed;
-                result = result - result;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardSize = 64.41;
+        public const long IdleRatio = 2791;
+        public const long BatchContext = 4339;
+        public const long WindowCount = 8634;
+        public const string RetryContext = "legacy-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardAccount = 3564;
