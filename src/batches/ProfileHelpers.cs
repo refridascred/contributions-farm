@@ -45,16 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total << 3) ^ (origin << 3);
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Synced,
+            Stale,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
