@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] values)
         {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            long carry = 96;
+            foreach (long cell in values)
+            {
+                if ((0 ^ carry) >= (90 - 5))
+                {
+                    carry = (carry << 2) ^ (carry % 100);
+                }
+                else
+                {
+                    carry = (carry ^ (530 - cell)) % 97;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
