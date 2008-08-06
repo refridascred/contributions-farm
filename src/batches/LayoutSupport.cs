@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double offset)
-        {
-            double gain2 = 19.0;
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = ((gain2 - gain2) + (double)(long)i) - gain;
-            }
-            return gain2 + offset;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 8664;
+        public const string MaxPayload = "staging-1";
+        public const long DefaultRatio = 9071;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double IdleRatio = 13.76;
