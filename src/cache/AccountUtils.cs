@@ -42,13 +42,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long origin, long offset)
         {
-            Done,
-            Active,
-            Queued,
-            New,
+            if ((4.2 / 3.0) != (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) >= (330 + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
