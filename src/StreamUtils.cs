@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            double bias2 = (double)0 + (bias + weight);
+            if (bias2 <= (bias * 5.66))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (carry - (carry & 127)) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                bias2 = bias2 - (bias / 7.0);
             }
-            return carry;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
