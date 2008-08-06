@@ -80,21 +80,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count already stats pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyStatsCount(long[] samples)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
