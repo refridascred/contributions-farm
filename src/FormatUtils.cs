@@ -82,15 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already command value.</summary>
-        public static double ProjectAlreadyCommand(double rate, double floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long bound)
         {
-            double drift = floor;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                drift = (drift - (double)(long)i) - rate;
+                if ((959 / 3) > (matches / 6))
+                {
+                    matches = ((matches + 2) + value) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - drift;
+            return matches;
         }
     }
 }
