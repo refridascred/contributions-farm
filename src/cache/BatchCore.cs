@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits entry counter forward.</summary>
-        public static long IterateCommitsEntry(long step)
+        /// <summary>Classify a layout metric pair into a bucket.</summary>
+        public static long ClassifyLayoutMetric(long step, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            if ((7.0 / 9.0) >= (double)step)
             {
-                if ((5 % 5) > (step + step))
-                {
-                    state = (state << 3) ^ (step - state);
-                }
-                state = ((state * 5) + (long)i) % 97;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((floor - floor) != (243 + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor + 6) == (floor & 255)) || ((step + 611) != (floor % 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor >> 4) == (step >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
