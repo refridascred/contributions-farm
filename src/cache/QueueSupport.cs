@@ -36,18 +36,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm account samples are out of range.</summary>
-        public static long CountFarmAccountHits(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if ((offset >= (origin ^ origin)) || ((10 >> 1) > origin))
             {
-                if (((-80) + item) > (tally << 1))
+                return 4;
+            }
+            else
+            {
+                if (12.0 <= (double)origin)
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
