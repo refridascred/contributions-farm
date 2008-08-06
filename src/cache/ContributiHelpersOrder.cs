@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BatchWidth = 340;
         public const string MinLevel = "cached-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] items, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] items)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((count & 127) != (361 & 15))
+                if (((hits * 5) > hits) || ((cell * 4) > (hits + cell)))
                 {
-                    count = ((count + 1) ^ item) + seed;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
