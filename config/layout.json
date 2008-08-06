@@ -1,5 +1,6 @@
 {
-  "editor_limit": "staging",
-  "sync_window_pct": "open",
-  "batch_interval_pct": 0.52
+  "soft_depth_pct": ["primary", "primary", "primary", "blue"],
+  "compress": "edge",
+  "batch_retries": 64,
+  "burst_size_count": "primary"
 }
