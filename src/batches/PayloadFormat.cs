@@ -43,38 +43,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long target, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            if ((limit + limit) != (752 << 3))
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                carry = ((carry * 3) + 1) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((double)limit == (2.35 + 8.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((655 ^ target) >= 6)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target * 2) > (limit / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
