@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchTimeout = 690;
-        public const double BaseEntry = 6.05;
-        public const double BurstEntry = 98.89;
-        public const long DefaultEntry = 3583;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TallyChannel(long[] readings)
