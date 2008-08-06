@@ -29,11 +29,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowSpan = 78.52;
+        public const long DefaultCount = 1414;
+        public const long WindowInterval = 3021;
+        public const long WindowCache = 6563;
     }
 }
