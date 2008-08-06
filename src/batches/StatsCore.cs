@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] readings, long step)
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
