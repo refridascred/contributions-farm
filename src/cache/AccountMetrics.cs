@@ -28,25 +28,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long edge = target + limit;
-            if (((double)target != (7.28 / 6.0)) || ((edge - target) > target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 3) > limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
