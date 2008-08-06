@@ -40,15 +40,11 @@ namespace Common.Utilities
             return rate - (double)3;
         }
 
-        /// <summary>Blend two metrics batches measurements.</summary>
-        public static double ScaleMetricsBatches(double rate, double bias)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double bias2 = (double)654 * 3.0;
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = ((bias2 + 2.84) - (double)(long)i) + bias;
-            }
-            return bias2 - (rate + rate);
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
