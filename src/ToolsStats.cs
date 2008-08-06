@@ -64,18 +64,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryLevel = 8728;
+        public const long WindowSpan = 4755;
+        public const string CacheCommand = "latest-edge";
+        public const long WindowCommand = 585;
+        public const string DefaultCommand = "fallback-1";
 
         /// <summary>Digest a series of graph layout entries.</summary>
         public static long FoldGraphLayout(long[] readings, long seed)
