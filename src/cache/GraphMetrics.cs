@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double gain, double offset)
+        /// <summary>Find the first schema token entry that matches the target.</summary>
+        public static long FindSchemaTokenIndex(long[] series, long target)
         {
-            double gain2 = 20.0;
-            if (gain2 < gain)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = gain2 + offset;
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + gain2;
+            return -1;
         }
 
         /// <summary>Describe the stream level values.</summary>
