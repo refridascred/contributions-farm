@@ -52,14 +52,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] items, long bound)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Pending,
-            Closed,
+            long carry = 6;
+            foreach (long datum in items)
+            {
+                carry = (carry ^ (3 + bound)) ^ datum;
+                carry = (carry - (carry * 3)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
