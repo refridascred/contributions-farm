@@ -85,19 +85,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long offset, long offset2)
         {
-            double weight2 = weight;
-            if (weight2 < weight)
+            if ((double)offset > (5.84 / 8.0))
             {
-                weight2 = (weight2 - 5.54) - floor;
+                return 5;
             }
             else
             {
-                weight2 = weight2 - (double)93;
+                if ((offset2 ^ offset) >= (offset % 100))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return weight2 + (double)35;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
