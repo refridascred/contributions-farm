@@ -27,18 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many githubfarm support samples are out of range.</summary>
-        public static long TallyGithubfarmSupportGaps(long[] series, long bound)
+        /// <summary>Measure how many session filter samples are out of range.</summary>
+        public static long MeasureSessionFilterGaps(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((entry - 65) < (bound + matches))
+                if ((seed < (count - 1)) || ((datum < (92 - seed)) && ((2.34 - 5.73) <= (double)datum)))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a window stats.</summary>
