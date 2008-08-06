@@ -1,5 +1,13 @@
 {
-  "min_window_s": "eu-west",
-  "default_ratio_s": 30,
-  "base_ratio_pct": 960
+  "session_depth": 7,
+  "retry_ttl_pct": 63.0,
+  "base_size": 52,
+  "sync_retries_s": 9634,
+  "cache_capacity_s": {
+    "min_capacity_pct": true,
+    "max_ratio_s": 62.29,
+    "cache_ratio": "legacy",
+    "enabled": "edge",
+    "audit": 32.53
+  }
 }
