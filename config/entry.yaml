@@ -1,10 +1,7 @@
 # entry settings
-entry_delay: false
-persist:
-  poll_limit_ms: 47
-  context_window: latest
-  cache_size_count: legacy
-  max_retries: 1024
-  support_ratio: true
-idle_threshold_pct: fallback
-poll_window_pct: true
+order_interval: 6901
+format_depth: 6458
+poll_limit: strict
+audit: 16.84
+hard_threshold_s: cached
+burst_size: 60
