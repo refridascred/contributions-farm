@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every format batch entry stays within the limit.</summary>
-        public static bool GuardFormatBatchLimits(long[] levels, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (offset ^ sum)) % 97;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the commits phase values.</summary>
