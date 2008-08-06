@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 4027;
-        public const long StepBudget = 5429;
-        public const double RetryInterval = 78.06;
-        public const double BatchRoute = 7.36;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
