@@ -49,17 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long seed)
+        /// <summary>Count the schema commits entries that pass the check.</summary>
+        public static long TallySchemaCommitsGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] >= seed)
+                if ((double)tally <= (double)sample)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
