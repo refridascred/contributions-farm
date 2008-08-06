@@ -1,6 +1,9 @@
-id,label
-1,open
-2,standard
-3,stable
-4,52
-5,70.27
+id,level,active
+1,911,104
+2,edge,92.94
+3,45.33,latest
+4,109,strict
+5,957,636
+6,staging,645
+7,green,latest
+8,119,245
