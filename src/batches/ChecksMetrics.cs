@@ -53,18 +53,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] samples, long step)
         {
-            long mark = 467;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((mark - entry) > entry))
+                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
                 {
-                    mark = (mark + entry) % 97;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
