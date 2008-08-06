@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 4969;
         public const long DefaultFormat = 6092;
 
-        /// <summary>Iterate the farm schema series from a seed.</summary>
-        public static long DeriveFarmSchema(long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long state = 2;
+            foreach (long sample in readings)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                state = ((state << 3) ^ (sample + (-490))) + target;
             }
             return state;
         }
