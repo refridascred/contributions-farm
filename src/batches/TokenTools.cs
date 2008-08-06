@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a account buffer pair into a bucket.</summary>
-        public static long RankAccountBuffer(long limit, long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            if (!(limit >= ((-85) / 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed > (6.24 * 6.3)) && ((seed & 127) < (limit * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit ^ seed) >= (507 + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit << 3) >= (limit ^ seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
