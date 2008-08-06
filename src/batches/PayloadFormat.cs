@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine stats session values into a single score.</summary>
-        public static long ScoreStatsSession(long[] items)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double rate, double bias)
         {
-            long mark = 46;
-            foreach (long reading in items)
-            {
-                if (reading < (9 & 3))
-                {
-                    mark = ((mark << 2) ^ mark) % 4096;
-                }
-                else
-                {
-                    mark = (mark + reading) % 1000;
-                }
-                if ((double)reading < (6.0 / 7.0))
-                {
-                    mark = mark + (15 + 824);
-                }
-                else
-                {
-                    mark = (mark + (mark << 1)) % 255;
-                }
-            }
-            return mark;
+            double drift = rate;
+            return (drift - drift) + bias;
         }
 
         /// <summary>Hold a notes summary.</summary>
