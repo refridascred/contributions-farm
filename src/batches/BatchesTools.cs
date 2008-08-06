@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Roll a batches cluster counter forward.</summary>
+        public static long SeriesBatchesCluster(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
