@@ -20,31 +20,21 @@ namespace Common.Utilities
             return ratio2 - 5.1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long step, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long offset)
         {
-            if ((target - step) >= (73 % 5))
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target - target) <= step) || ((step % 8) >= (step ^ step)))
+                carry = carry - (offset / 6);
+                if ((double)offset == (4.71 / 6.0))
                 {
-                    return 5;
+                    carry = (carry ^ (1 * 3)) % 101;
                 }
-                else
-                {
-                    if ((double)target <= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                carry = (carry - carry) % 101;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
