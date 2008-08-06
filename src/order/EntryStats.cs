@@ -26,18 +26,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the schema batch entries that pass the check.</summary>
-        public static long CountSchemaBatchMatches(long[] samples)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double gain = floor;
+            if (gain < floor)
             {
-                if ((item / 5) < (hits >> 5))
-                {
-                    hits = hits + 2;
-                }
+                gain = gain + (bias * 2.69);
             }
-            return hits;
+            else
+            {
+                gain = gain - floor;
+            }
+            return gain + (gain / 3.0);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
