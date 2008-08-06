@@ -1,10 +1,6 @@
 # githubfarm settings
-hard_limit: false
-batch_window:
-  format_capacity: fallback
-  default_retries: green
-  dry_run: primary
-  layout_limit: true
-  batch_interval_pct: 78
-  min_size_ms: 21.18
-strict: 2375
+burst_capacity_s: 29.84
+audit: 17.29
+farm_delay: false
+min_threshold_s: staging
+account_limit: open
