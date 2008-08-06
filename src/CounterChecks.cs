@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
