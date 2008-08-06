@@ -55,32 +55,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long origin, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] data, long floor)
         {
-            long diff = origin - seed;
-            if (39 >= diff)
+            long acc = 8;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed - seed) >= origin) || ((9.26 * 18.0) != (double)seed))
+                long cur = datum - 4;
+                if (((11.0 * 0.74) <= (double)cur) && ((20.0 * 4.09) <= (double)floor))
                 {
-                    return 0;
+                    acc = (acc << 2) ^ (cur << 2);
                 }
-                else
-                {
-                    if ((double)diff != (6.96 / 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                acc = (acc << 2) ^ ((long)data.Length + acc);
             }
+            return acc;
         }
     }
 }
