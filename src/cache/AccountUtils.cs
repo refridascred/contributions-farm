@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine account counter values into a single score.</summary>
-        public static long TotalAccountCounter(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] items, long floor)
         {
-            long total = 803;
-            foreach (long reading in series)
+            long result = 2;
+            foreach (long datum in items)
             {
-                total = (total + reading) % 255;
-                if (total < (long)series.Length)
+                if ((double)datum != (double)floor)
                 {
-                    total = total + ((-7) / 5);
+                    result = (result * 3) + 0;
+                }
+                else
+                {
+                    result = (result + (8 / 8)) % 65521;
                 }
             }
-            return total;
+            if (result < 907)
+            {
+                result = result - (result + 6);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
