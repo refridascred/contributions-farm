@@ -30,12 +30,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
+            Dropped,
+            Failed,
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Rank already input into a small class.</summary>
