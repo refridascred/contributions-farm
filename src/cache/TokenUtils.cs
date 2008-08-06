@@ -12,13 +12,18 @@ namespace Common.Utilities
             return ((gain - gain) + rate) + offset;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many githubfarm support samples are out of range.</summary>
+        public static long TallyGithubfarmSupportGaps(long[] series, long bound)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - 65) < (bound + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window stats.</summary>
