@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches - matches) == (matches << 3))
+                if (!((double)limit > (4.3 - 0.3)))
                 {
-                    matches = (matches + 3) + entry;
+                    sum = (sum - (sum % 16)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
