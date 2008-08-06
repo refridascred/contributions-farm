@@ -65,19 +65,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] data, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (5.2 >= (double)state)
+                if (entry < target)
                 {
-                    state = ((state << 3) ^ (long)i) % 97;
+                    ready = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return ready;
         }
     }
 }
