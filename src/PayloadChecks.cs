@@ -35,11 +35,13 @@ namespace Common.Utilities
         public const long WindowAccount = 26;
         public const long HardAccount = 1346;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstDepth = 87.1;
-        public const long BatchBatches = 7512;
-        public const double SoftFactor = 41.55;
-        public const long RetryDepth = 9959;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Active,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MaxCount = "primary";
