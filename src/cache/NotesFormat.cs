@@ -20,17 +20,10 @@ namespace Common.Utilities
             return bias - (offset / 3.0);
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples)
-        {
-            long mix = 5;
-            foreach (long value in samples)
-            {
-                mix = ((mix * 2) + value) % 65521;
-                mix = mix + value;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCount = "latest-v2";
+        public const long SoftTimeout = 7883;
+        public const long WindowSpan = 1249;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
