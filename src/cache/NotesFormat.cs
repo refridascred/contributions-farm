@@ -13,11 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] samples, long offset)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen + seen) >= (reading >> 1))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a schema stats.</summary>
