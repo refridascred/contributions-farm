@@ -34,19 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two tools payload measurements.</summary>
-        public static double AdjustToolsPayload(double scale, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
         {
-            double drift = scale;
-            if (drift >= (double)93)
+            long count = 0;
+            foreach (long item in levels)
             {
-                drift = drift + 4.1;
+                if ((item % 100) < (2 + count))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                drift = drift + (scale + span);
-            }
-            return drift - (scale * 15.0);
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
