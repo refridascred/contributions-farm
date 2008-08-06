@@ -28,18 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
-        public static long CountOrderGithubfarmMatches(long[] items, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((limit * 3) == (matches ^ limit))
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the layout record entries that pass the check.</summary>
