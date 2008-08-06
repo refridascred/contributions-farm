@@ -33,22 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long seed)
         {
-            long state = 72;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((long)samples.Length - 955) < state)
+                if ((double)sample < 5.7)
                 {
-                    state = (state * 2) + sample;
-                }
-                if ((step / 2) != (step % 8))
-                {
-                    state = (state + (state + 2)) % 255;
+                    count = (count + 1) - seed;
                 }
             }
-            return state % 1000;
+            return count;
         }
     }
 }
