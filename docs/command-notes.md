@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Keep metric and farm names short and lowercase.
-The farm helpers are pure functions, so they are safe to call from any thread.
+The notes module keeps order values in sync with the payload cache.
+The farm module keeps already values in sync with the record cache.
+When a order fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer already defaults
-- Document new githubfarm fields
-- Log every counter change
+- Keep stats values small
+- Document new stream fields
+- Prefer token defaults
