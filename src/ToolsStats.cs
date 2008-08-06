@@ -43,12 +43,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Blend two tools payload measurements.</summary>
+        public static double AdjustToolsPayload(double scale, double span)
         {
-            Failed,
-            Pending,
-            Idle,
+            double drift = scale;
+            if (drift >= (double)93)
+            {
+                drift = drift + 4.1;
+            }
+            else
+            {
+                drift = drift + (scale + span);
+            }
+            return drift - (scale * 15.0);
         }
 
         /// <summary>Hold a support summary.</summary>
