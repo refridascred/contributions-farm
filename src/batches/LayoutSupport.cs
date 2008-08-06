@@ -32,19 +32,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] items, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (item <= seed)
+                if ((sample - (-3)) < 5)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Accumulate metric cluster samples.</summary>
