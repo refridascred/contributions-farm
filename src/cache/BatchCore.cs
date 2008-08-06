@@ -69,12 +69,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            Failed,
+            Ready,
+            Done,
+            Synced,
+            Retry,
         }
     }
 }
