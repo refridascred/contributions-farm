@@ -1,31 +1,30 @@
 # support settings
-hard_capacity_s:
-  - 432
-  - 62
-default_ttl_s: 3556
-retry_delay_pct:
-  audit:
-    - legacy
-    - legacy
-    - fallback
-    - green
-  readonly: eu-west
-  graph_depth: blue
-counter_retries:
-  default_interval_count: true
-  report_window:
-    tools_ratio:
-      - latest
-      - green
-    soft_delay_count: 71.95
-    compress: edge
-  enabled: 500
-  poll_ttl:
-    - 76
-    - 470
-    - 368
-    - 284
-  burst_ratio_pct: 60
-  poll_limit_s: 86.49
-poll_size_ms: false
-buffer_timeout: false
+dry_run: 51
+hard_interval:
+  - cached
+  - edge
+  - stable
+  - fallback
+window_ttl: 27
+batch_depth_ms:
+  retry_delay:
+    - 300
+    - 398
+  retry_ttl_s:
+    already_delay: edge
+    sync_timeout_count: latest
+    idle_window_pct: false
+    retry_capacity_pct: 1024
+  sync_retries_ms: true
+  batch_size:
+    cluster_ratio:
+      - fallback
+      - eu-west
+      - strict
+    retry_ratio_s:
+      - staging
+      - staging
+    soft_capacity_pct:
+      - cached
+      - cached
+    dry_run: legacy
