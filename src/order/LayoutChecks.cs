@@ -42,21 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Combine queue metrics values into a single score.</summary>
+        public static long CombineQueueMetrics(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 262;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading >= (reading * 3))
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 2) ^ (floor * 4);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
