@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data)
         {
-            Stale,
-            Synced,
-            Draft,
-            Failed,
-            Active,
+            long acc = 60;
+            foreach (long reading in data)
+            {
+                acc = ((acc * 5) + (acc * 2)) ^ reading;
+            }
+            return acc;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
