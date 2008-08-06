@@ -34,14 +34,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate contributi payload readings against a bound.</summary>
+        public static bool ValidateContributiPayloadBounds(long[] items, long origin)
         {
-            Pending,
-            Done,
-            Dropped,
-            Queued,
-            New,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
