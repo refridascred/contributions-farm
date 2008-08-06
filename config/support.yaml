@@ -1,17 +1,8 @@
 # support settings
-flush_interval_s: local
-retry_ratio_s: green
-base_depth_s:
-  sync_timeout: 0.42
-  max_capacity_ms:
-    - 454
-    - 235
-  batch_size: edge
-  audit: 100
-flush_threshold_count:
-  cache_capacity_pct: true
-  cache_retries_s: blue
-  hard_depth_pct: false
-  retry_interval_ms: true
-  flush_depth_count: open
-  sync_threshold_count: 30
+dry_run: 8782
+max_threshold_pct: local
+window_capacity:
+  - local
+  - green
+  - primary
+  - edge
