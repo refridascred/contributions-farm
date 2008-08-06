@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const double StepFilter = 41.41;
         public const long MaxFilter = 911;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Ready,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
