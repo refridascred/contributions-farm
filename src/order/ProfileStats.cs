@@ -23,23 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Match up queue account samples.</summary>
+        public static long MatchQueueAccountCount(long[] values)
         {
-            double bias3 = bias2;
-            if (bias3 >= bias2)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias3 = (bias3 + bias3) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias3 = bias3 + bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = (bias3 - bias2) + (double)(long)i;
-            }
-            return bias3 + (bias2 - 0.13);
+            return tally;
         }
 
         /// <summary>Iterate the cache buffer series from a seed.</summary>
