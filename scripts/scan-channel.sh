@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=26
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-edge}"
 case "${mode}" in
-    edge)
+    eu-west)
         log "fast path"
         ;;
     *)
