@@ -1,15 +1,5 @@
 {
-  "soft_ratio_pct": 85.95,
-  "flush_threshold_s": 2697,
-  "base_ratio_s": {
-    "channel_retries": 1024,
-    "retry_ttl_ms": 61.17,
-    "flush_delay": true,
-    "default_delay_count": {
-      "flush_retries_count": 100,
-      "profile_window": false,
-      "burst_window_pct": 63.14,
-      "burst_size_count": "stable"
-    }
-  }
+  "compress": [289, 434, 192, 427],
+  "profile_delay": [334, 330, 179, 343],
+  "burst_window_s": false
 }
