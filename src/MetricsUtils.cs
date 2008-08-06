@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
         {
-            long score = 7;
-            foreach (long cell in series)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (7 < (5 - score))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    score = ((score * 2) + (cell / 8)) % 255;
+                    acc = (((acc * 2) + (83 - acc)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    score = ((score << 2) ^ (cell ^ cell)) % 65521;
-                }
-                if ((cell * 5) <= score)
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
