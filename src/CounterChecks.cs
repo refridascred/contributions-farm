@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
