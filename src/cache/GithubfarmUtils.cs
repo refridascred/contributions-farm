@@ -38,22 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm farm samples.</summary>
-        public static long CombineGithubfarmFarm(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] readings, long bound)
         {
-            long anchor = 931;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((8.2 / 5.0) == (double)anchor)
+                if (!((count + (-19)) >= sample))
                 {
-                    anchor = ((anchor ^ (anchor >> 5)) % 255) - cell;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 4)) % 65521;
+                    count = (count + 3) + bound;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
