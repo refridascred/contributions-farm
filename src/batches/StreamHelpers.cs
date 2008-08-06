@@ -28,12 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxFactor = "fallback-v2";
-        public const long MaxEditor = 4324;
-        public const long BaseEditor = 5916;
-        public const string RetryScore = "primary-edge";
-        public const string DefaultEditor = "cached-1";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ProjectCache(double weight, double bias)
