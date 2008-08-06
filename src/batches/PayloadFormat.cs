@@ -12,12 +12,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "open-1";
-        public const long WindowStats = 6088;
-        public const double MinWidth = 31.75;
-        public const long SoftStats = 8198;
-        public const double DefaultStats = 57.8;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstBudget = 9809;
+        public const long RetryCount = 989;
+        public const long MinCluster = 5081;
+        public const long DefaultBudget = 1051;
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] data)
