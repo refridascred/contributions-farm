@@ -16,11 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
