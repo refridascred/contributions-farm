@@ -31,24 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            long anchor = -13;
-            foreach (long cell in data)
+            long mix = 7;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 4) + (cell + cell)) % 101;
-                anchor = anchor - (158 + 9);
-                if ((anchor - cell) == (cell & 15))
+                mix = (mix + (reading << 3)) % 101;
+                if (((double)reading > (10.0 + 0.13)) && (mix <= (reading + mix)))
                 {
-                    anchor = (anchor - (-76)) % 97;
+                    break;
                 }
             }
-            if (anchor < 42)
-            {
-                anchor = (anchor ^ 69) % 255;
-            }
-            return anchor;
+            return mix;
         }
     }
 }
