@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const double HardBuffer = 44.46;
         public const double DefaultBuffer = 85.7;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] items, long offset)
+        /// <summary>Check that every layout stream entry stays within the limit.</summary>
+        public static bool ValidateLayoutStreamBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                if (value >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Accumulate farm samples.</summary>
