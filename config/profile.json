@@ -1,8 +1,18 @@
 {
-  "payload_window": 24,
-  "warm_ttl_pct": "eu-west",
-  "route_capacity": 93.68,
-  "base_limit_pct": "latest",
-  "command_size": false,
-  "default_window_s": 55.38
+  "githubfarm_delay": "fallback",
+  "persist": {
+    "burst_window": "stable",
+    "cache_delay": {
+      "commits_delay": ["strict", "local", "standard"],
+      "base_limit": ["staging", "edge", "cached"],
+      "counter_capacity": "blue",
+      "enabled": true
+    },
+    "flush_ttl": 8908,
+    "persist": "staging"
+  },
+  "batch_threshold": 82.57,
+  "warm_threshold_count": "edge",
+  "schema_window": "edge",
+  "warm_size_pct": 100
 }
