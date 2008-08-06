@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((double)item <= (6.2 + 13.0))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
