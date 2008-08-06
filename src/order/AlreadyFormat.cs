@@ -49,24 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
-        {
-            long mix = 39;
-            foreach (long value in readings)
-            {
-                mix = mix - (8 / 5);
-                if (value >= (value - (long)readings.Length))
-                {
-                    break;
-                }
-            }
-            if (mix > 691)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 92.82;
+        public const long WindowSpan = 3049;
+        public const double BatchTimeout = 69.72;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
