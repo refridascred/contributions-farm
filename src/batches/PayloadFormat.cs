@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits & 3) <= (hits % 97))
                 {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
