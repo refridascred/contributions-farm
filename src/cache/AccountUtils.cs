@@ -28,22 +28,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((1 > hits) || (((hits - hits) <= hits) || (value <= (hits * 2))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 5342;
+        public const double MinWidth = 39.41;
+        public const long HardBudget = 3232;
+        public const string DefaultWidth = "cached-edge";
     }
 }
