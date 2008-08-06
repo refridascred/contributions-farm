@@ -20,23 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate githubfarm entry samples.</summary>
-        public static long TotalGithubfarmEntry(long[] readings, long limit)
-        {
-            long mix = 3;
-            foreach (long cell in readings)
-            {
-                if (((mix + mix) <= (limit + limit)) || ((cell + cell) <= (mix - (-1))))
-                {
-                    mix = ((mix * 4) + (cell + mix)) % 101;
-                }
-                if ((double)cell <= (2.1 + 12.0))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultInterval = 3624;
+        public const string BaseAccount = "standard-v2";
+        public const long HardAccount = 5203;
 
         /// <summary>Measure how many window cluster samples are out of range.</summary>
         public static long AuditWindowClusterMatches(long[] values)
