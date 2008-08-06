@@ -37,32 +37,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            long next = origin + offset;
-            if (!(origin <= (next & 15)))
+            long mix = 5;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-292) - offset) > (origin - 1))
+                if ((mix << 3) <= (cell + mix))
                 {
-                    return 4;
+                    mix = mix + cell;
+                    mix = ((mix * 4) + (mix % 100)) % 4096;
                 }
                 else
                 {
-                    if (!(offset >= (next / 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (mix + (mix - cell)) % 65521;
+                    mix = (mix - (mix ^ 731)) % 4096;
                 }
+                mix = (mix + (mix << 3)) % 65521;
             }
+            return mix % 97;
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
