@@ -14,19 +14,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] data, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            long score = -802;
-            foreach (long value in data)
+            long anchor = 46;
+            foreach (long value in levels)
             {
-                score = ((score * 2) + (value ^ value)) % 1000;
-                if (!((value + score) != (limit / 2)))
+                if ((double)value != (double)(long)levels.Length)
                 {
-                    score = ((score * 4) + value) % 255;
+                    anchor = (anchor + 176) % 65521;
+                }
+                if (((anchor - anchor) != (value - 29)) || ((double)anchor < (2.5 + 5.3)))
+                {
+                    break;
                 }
             }
-            return score % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Blend two report route measurements.</summary>
