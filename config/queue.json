@@ -1,12 +1,16 @@
 {
-  "strict": 37,
-  "hard_size_ms": 63,
-  "record_retries": true,
-  "compress": "open",
-  "hard_ratio_s": {
-    "cache_depth_s": "standard",
-    "hard_threshold": "green",
-    "max_limit_count": "blue"
-  },
-  "soft_capacity_count": 74.9
+  "window_threshold": "strict",
+  "flush_ratio": 52,
+  "soft_timeout": {
+    "hard_delay_pct": "primary",
+    "readonly": 35.39,
+    "strict": 18.35,
+    "idle_window_s": {
+      "strict": 35,
+      "batch_limit_count": 250,
+      "retry_interval": 795,
+      "readonly": true
+    },
+    "profile_retries": true
+  }
 }
