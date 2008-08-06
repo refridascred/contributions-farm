@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryScore = 5780;
+        public const string BurstAccount = "fallback-1";
+        public const string MinAccount = "stable-edge";
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
