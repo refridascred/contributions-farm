@@ -38,19 +38,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] levels, long origin)
-        {
-            long total = -77;
-            foreach (long value in levels)
-            {
-                if ((6.54 / 4.0) >= (double)total)
-                {
-                    total = (total - (value + origin)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultFactor = 329;
+        public const double BaseEntry = 14.35;
+        public const long MaxSize = 6861;
+        public const long DefaultEntry = 565;
 
         /// <summary>Blend two format queue measurements.</summary>
         public static double ProjectFormatQueue(double weight, double offset)
