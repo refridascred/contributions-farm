@@ -66,17 +66,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long origin)
         {
-            long result = 7;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (((result * 5) + ((long)values.Length << 1)) % 65521) ^ entry;
-                result = result + (result + result);
-                result = ((result * 3) + (result << 3)) % 1000;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
