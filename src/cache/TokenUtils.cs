@@ -44,11 +44,39 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long target)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long delta = origin - target;
+            if ((target / 8) < (12 >> 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((delta << 3) == (origin - 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 4) <= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin <= (delta - delta))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
