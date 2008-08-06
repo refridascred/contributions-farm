@@ -23,32 +23,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long target, long origin)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long edge = target - origin;
-            if ((double)target != (0.53 - 1.85))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target - origin) > (271 + edge))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target + target) > edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Active,
+            New,
+            Failed,
         }
     }
 }
