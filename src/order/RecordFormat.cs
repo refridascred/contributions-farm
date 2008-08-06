@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long BaseRoute = 9694;
         public const long CacheLevel = 1313;
 
-        /// <summary>Validate batches queue readings against a bound.</summary>
-        public static bool GuardBatchesQueueBounds(long[] data, long seed)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double bias, double span)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double weight = span;
+            for (int i = 0; i < 2; i++)
             {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = ((weight + 3.9) - (double)(long)i) + bias;
             }
-            return ready;
+            return weight - 2.3;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
