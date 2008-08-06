@@ -44,22 +44,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values, long step)
+        /// <summary>Measure how many record commits samples are out of range.</summary>
+        public static long MeasureRecordCommitsOutliers(long[] values)
         {
-            long mix = 86;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((451 / 8) <= (step + mix))
+                if ((datum + datum) <= (datum + seen))
                 {
-                    mix = (mix + reading) % 97;
-                }
-                else
-                {
-                    mix = mix ^ (step << 2);
+                    seen = seen + 3;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Rank window input into a small class.</summary>
