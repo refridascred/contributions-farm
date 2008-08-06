@@ -27,13 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count the queue batches entries that pass the check.</summary>
+        public static long AuditQueueBatchesHits(long[] values)
         {
-            Locked,
-            New,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)count > (2.8 - 18.0))
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a editor route counter forward.</summary>
