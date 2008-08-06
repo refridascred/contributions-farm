@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)tally <= (1.0 / 8.0)) && ((tally - cell) >= cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
