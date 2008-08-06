@@ -1,44 +1,13 @@
 # githubfarm settings
-base_timeout: true
-command_ttl:
-  batch_timeout_pct:
-    cache_limit_s: 47
-    cache_depth_count: 6885
-    strict:
-      - 226
-      - 273
-    max_window_count: stable
-    stats_size: cached
-    report_delay: local
-  batch_ttl: open
-  burst_capacity: 29
-  dry_run:
-    retry_threshold: true
-    idle_depth: 250
-    max_capacity_count:
-      - 235
-      - 439
-      - 476
-    burst_timeout_s: cached
-    compress: blue
-  strict: 49
-  buffer_retries: 35
-commits_interval:
-  idle_ratio: 64
-  retry_delay_ms: 1024
-  token_limit:
-    flush_ttl_ms: 250
-    poll_ttl_ms: eu-west
-    compress: 84
-    soft_depth_pct:
-      - 277
-      - 27
-      - 178
-      - 103
-    base_ttl_count: true
-    flush_timeout_s: 68.71
-cache_ratio:
-  - 203
-  - 105
-  - 481
-flush_capacity_ms: false
+audit:
+  channel_capacity: 23.67
+  contributi_ratio:
+    - 206
+    - 347
+    - 495
+    - 473
+  contributi_retries: 4496
+  enabled: eu-west
+channel_ttl: 3560
+account_interval: 80.51
+record_delay: blue
