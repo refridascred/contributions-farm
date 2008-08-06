@@ -65,36 +65,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long seed)
+        /// <summary>Rank contributi order input into a small class.</summary>
+        public static long ClassifyContributiOrder(long target, long floor)
         {
-            long bound2 = bound ^ seed;
-            if (1 >= seed)
+            if (((floor + target) != (target * 2)) || ((target << 2) >= (target % 7)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (((bound2 / 5) >= (seed >> 3)) || (bound >= (bound << 2)))
+                if (9.19 <= (double)target)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (106 > (seed << 2))
+                    if (!(floor < (target - floor)))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        if (((seed + 1) < bound) && ((seed * 4) < (bound2 / 7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 7;
                     }
                 }
             }
