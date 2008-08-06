@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((hits - sample) >= (sample ^ sample))
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a entry summary.</summary>
