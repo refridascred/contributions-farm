@@ -89,11 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstBudget = 3976;
-        public const string DefaultFormat = "local-v2";
-        public const string StepDepth = "stable";
-        public const string WindowRatio = "open-1";
-        public const string MinRatio = "strict-v2";
+        /// <summary>Digest a series of graph layout entries.</summary>
+        public static long FoldGraphLayout(long[] readings, long seed)
+        {
+            long sum = 0;
+            foreach (long sample in readings)
+            {
+                sum = ((((sum * 5) + (sum - sum)) % 65521) + sample) + seed;
+            }
+            return sum;
+        }
     }
 }
