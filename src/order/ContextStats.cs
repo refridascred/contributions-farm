@@ -24,19 +24,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (hits >= (hits + 5))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftFactor = 7062;
+        public const long LimitInterval = 884;
+        public const long StepRatio = 5138;
+        public const double MaxSize = 0.7;
+        public const long StepOrder = 7773;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
