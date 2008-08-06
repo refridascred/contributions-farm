@@ -44,12 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] items, long limit)
         {
-            Active,
-            Locked,
-            Queued,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two metric filter measurements.</summary>
