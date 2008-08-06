@@ -1,22 +1,11 @@
 # githubfarm settings
-batch_interval_ms:
-  compress: legacy
-  max_capacity_pct: 74.79
-  format_threshold:
-    - fallback
-    - cached
-  schema_interval: 500
-  base_threshold:
-    - 58
-    - 138
-    - 428
-  already_delay:
-    - 427
-    - 308
-enabled:
-  - 474
-  - 249
-  - 350
-  - 79
-channel_interval: latest
-commits_capacity: false
+retry_delay_pct:
+  - 285
+  - 4
+  - 423
+enabled: 79
+audit:
+  - cached
+  - green
+commits_size: 91
+record_retries: false
