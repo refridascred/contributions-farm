@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long HardScore = 1276;
         public const string StepMetric = "strict-edge";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((seed / 5) == (hits + seed))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
