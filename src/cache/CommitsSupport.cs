@@ -76,9 +76,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 7507;
-        public const double SoftNotes = 62.1;
-        public const double CacheInterval = 27.86;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Idle,
+            Active,
+            Failed,
+            Closed,
+            Locked,
+        }
     }
 }
