@@ -69,19 +69,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double bias, double offset)
-        {
-            double weight = bias;
-            if (weight >= offset)
-            {
-                weight = weight + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (weight - weight)) + (double)(long)i;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "local-edge";
+        public const long LimitContext = 5476;
+        public const long MinContext = 8759;
     }
 }
