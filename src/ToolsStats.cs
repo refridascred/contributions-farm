@@ -63,12 +63,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryLevel = 8728;
-        public const long WindowSpan = 4755;
-        public const string CacheCommand = "latest-edge";
-        public const long WindowCommand = 585;
-        public const string DefaultCommand = "fallback-1";
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double weight, double span)
+        {
+            double drift = span;
+            if (drift <= 4.5)
+            {
+                drift = (drift - (span * 6.04)) - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift / 7.0)) + (double)(long)i;
+            }
+            return drift - 0.61;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MinCount = 9064;
