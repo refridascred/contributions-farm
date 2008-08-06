@@ -1,13 +1,6 @@
 {
-  "burst_ratio_s": "primary",
-  "warm_limit_count": true,
-  "metrics_threshold": 76.98,
-  "already_size": {
-    "dry_run": ["staging", "blue"],
-    "min_threshold_count": "blue",
-    "poll_capacity": 21,
-    "default_capacity_count": "eu-west",
-    "schema_timeout": 67.08
-  },
-  "base_ttl_count": 75.92
+  "cache_delay_count": false,
+  "sync_limit_pct": "stable",
+  "persist": "latest",
+  "command_interval": true
 }
