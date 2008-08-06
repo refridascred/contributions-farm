@@ -65,21 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stream notes samples.</summary>
-        public static long MatchStreamNotesCount(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < step)
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
