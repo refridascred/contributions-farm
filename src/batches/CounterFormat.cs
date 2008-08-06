@@ -19,18 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if (target >= (seed + target))
             {
-                if (!(seen <= (datum - seen)))
+                return 5;
+            }
+            else
+            {
+                if ((double)target == (6.0 / 6.0))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (1 <= (target - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((target * 2) >= (seed % 97)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the stats mode values.</summary>
