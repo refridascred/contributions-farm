@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double HardAlready = 37.73;
         public const long CacheFactor = 2631;
 
-        /// <summary>Digest a series of support batches entries.</summary>
-        public static long WeighSupportBatches(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long carry = 46;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (carry + ((-502) - carry)) - datum;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (carry > 9)
-            {
-                carry = carry ^ (carry << 1);
-            }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
