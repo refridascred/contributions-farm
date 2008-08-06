@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstWidth = "open-v2";
+        public const string DefaultFarm = "primary";
+        public const long BurstFarm = 6211;
+        public const long BatchScore = 6744;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
