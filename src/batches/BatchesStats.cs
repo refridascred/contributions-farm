@@ -20,19 +20,14 @@ namespace Common.Utilities
             return (bias2 + (double)387) + span;
         }
 
-        /// <summary>Check that every contributi tools entry stays within the limit.</summary>
-        public static bool ValidateContributiToolsRange(long[] series, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            New,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
