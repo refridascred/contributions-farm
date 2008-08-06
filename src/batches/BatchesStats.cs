@@ -44,16 +44,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph batch readings.</summary>
-        public static long WeighGraphBatch(long[] samples, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long step)
         {
-            long mark = 5;
-            foreach (long value in samples)
+            long step2 = target + step;
+            if ((7.0 * 14.0) < (double)step2)
             {
-                mark = (mark + seed) ^ value;
-                mark = (mark << 2) ^ (seed + mark);
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((target + step2) >= (30 - 55))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.0 + 13.0) > (double)step2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (3.6 <= (double)step2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
