@@ -64,19 +64,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double floor)
-        {
-            double gain2 = gain;
-            if (gain2 >= (gain / 9.0))
-            {
-                gain2 = (gain2 + 10.0) + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = gain2 + (double)(long)i;
-            }
-            return gain2 - (double)(-501);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftCount = 8851;
+        public const string BaseLevel = "local-edge";
+        public const string BatchLevel = "legacy-1";
+        public const long DefaultSession = 350;
+        public const double CacheSession = 20.51;
     }
 }
