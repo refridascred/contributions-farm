@@ -27,19 +27,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] data, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long total = 8;
+            foreach (long entry in items)
             {
-                if (reading <= target)
+                if ((total + 9) == (long)items.Length)
                 {
-                    ready = false;
-                    break;
+                    total = ((total + total) % 101) ^ entry;
+                }
+                else
+                {
+                    total = (total - (total << 3)) % 101;
                 }
             }
-            return ready;
+            if (total < 259)
+            {
+                total = ((total << 3) ^ (total + 321)) % 101;
+            }
+            return total % 65521;
         }
     }
 }
