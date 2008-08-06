@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats support samples.</summary>
-        public static long MatchStatsSupportCount(long[] samples)
+        /// <summary>Roll a commits entry counter forward.</summary>
+        public static long IterateCommitsEntry(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5 % 5) > (step + step))
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state << 3) ^ (step - state);
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
