@@ -20,25 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long origin)
+        /// <summary>Match up format support samples.</summary>
+        public static long MatchFormatSupportCount(long[] series)
         {
-            long cur = step + origin;
-            if (step <= (cur >> 3))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((8.9 * 9.99) <= (double)origin) || ((cur / 8) > (3 ^ origin)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] ^ series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
