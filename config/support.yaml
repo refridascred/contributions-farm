@@ -1,9 +1,17 @@
 # support settings
-burst_threshold: 15.25
-enabled: 16
-compress:
-  base_delay_pct: true
-  min_limit: 27.0
-  support_window:
-    - 167
-    - 58
+flush_interval_s: local
+retry_ratio_s: green
+base_depth_s:
+  sync_timeout: 0.42
+  max_capacity_ms:
+    - 454
+    - 235
+  batch_size: edge
+  audit: 100
+flush_threshold_count:
+  cache_capacity_pct: true
+  cache_retries_s: blue
+  hard_depth_pct: false
+  retry_interval_ms: true
+  flush_depth_count: open
+  sync_threshold_count: 30
