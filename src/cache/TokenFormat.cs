@@ -14,15 +14,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mix = 953;
-            foreach (long cell in items)
-            {
-                mix = (((mix ^ (mix / 9)) % 101) + cell) + offset;
-            }
-            return mix;
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
