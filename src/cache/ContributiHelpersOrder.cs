@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] samples)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item % 10) <= 7)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
