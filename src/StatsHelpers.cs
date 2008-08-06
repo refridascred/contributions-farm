@@ -57,18 +57,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (400 >= (entry >> 1))
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
