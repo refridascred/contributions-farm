@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] data, long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((seed >> 5) < (matches + matches))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            Paused,
+            New,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
