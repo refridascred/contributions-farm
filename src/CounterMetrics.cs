@@ -35,11 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long acc = 23;
+            foreach (long datum in readings)
+            {
+                if (datum > (acc + datum))
+                {
+                    acc = (acc + datum) % 1000;
+                }
+            }
+            return acc % 65521;
         }
     }
 }
