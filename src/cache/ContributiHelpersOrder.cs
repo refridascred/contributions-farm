@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 8817;
+        public const long MaxQueue = 6706;
+        public const long BatchWidth = 340;
+        public const string MinLevel = "cached-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteMatches(long[] items, long seed)
