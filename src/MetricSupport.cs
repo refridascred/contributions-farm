@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long offset)
+        /// <summary>Rank profile batch input into a small class.</summary>
+        public static long BucketProfileBatch(long target, long step)
         {
-            if (!((offset * 5) == (offset / 5)))
+            if (step <= (target / 7))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (!((offset * 3) != (offset >> 2)))
+                if ((double)target > 8.71)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 1;
+                    return 6;
                 }
             }
         }
