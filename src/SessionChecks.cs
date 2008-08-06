@@ -42,38 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long origin, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] levels, long limit)
         {
-            if ((floor <= (floor + 13)) && ((5.4 - 2.9) >= (double)origin))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(7 < (floor - origin)))
+                if ((matches >> 2) < (datum >> 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin & 31) >= (origin + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((floor + floor) > origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 2) + limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
