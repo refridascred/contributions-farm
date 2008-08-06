@@ -42,10 +42,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 5286;
-        public const string WindowRatio = "cached-v2";
-        public const double DefaultOrder = 41.01;
-        public const long CacheCount = 69;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum * 2) == (tally / 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
