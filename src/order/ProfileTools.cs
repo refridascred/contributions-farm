@@ -66,19 +66,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] readings, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (item >= floor)
+                if (((double)hits >= 6.68) && ((datum - 82) == (hits * 5)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) - offset;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
