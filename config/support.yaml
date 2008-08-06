@@ -1,12 +1,9 @@
 # support settings
-sync_limit_count:
-  warm_ratio_ms:
-    - 136
-    - 150
-    - 319
-  compress: 1799
-  sync_threshold_s: 44
-  cache_interval: blue
-  strict: edge
-default_size_s: blue
-readonly: 1024
+soft_ttl_ms: 250
+readonly: primary
+soft_size_s:
+  - legacy
+  - open
+  - open
+  - open
+batch_limit: 30
