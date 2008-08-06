@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleScore = 71.49;
-        public const long StepGraph = 1769;
-        public const double BurstScore = 39.21;
-        public const double CacheGraph = 94.23;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] samples, long offset)
