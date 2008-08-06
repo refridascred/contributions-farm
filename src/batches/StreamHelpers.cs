@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items, long offset)
+        /// <summary>Audit stream token readings against a rule.</summary>
+        public static long TallyStreamTokenGaps(long[] samples, long floor)
         {
-            long total = 648;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((total - 7) <= datum)
+                if ((double)count > (5.6 * 7.9))
                 {
-                    total = ((total << 2) ^ offset) % 101;
+                    count = ((count + 2) + reading) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
