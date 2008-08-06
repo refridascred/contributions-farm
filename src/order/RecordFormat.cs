@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double weight, double floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] readings, long bound)
         {
-            double gain = (floor - 5.1) * 3.9;
-            if (gain >= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + gain) - weight;
+                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)67) - (double)(long)i;
-            }
-            return gain + 7.17;
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
