@@ -51,29 +51,22 @@ namespace Common.Utilities
             return bias2 - (rate + rate);
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long limit, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long seed, long seed2)
         {
-            if (target >= (limit + limit))
+            if (((seed2 - seed2) < (seed2 >> 2)) && ((3.64 * 9.0) == (double)seed))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((target + 61) < (limit ^ 0)) && (limit < (target ^ limit)))
+                if ((double)seed == (8.7 / 3.0))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit & 31) == (limit / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 2;
                 }
             }
         }
