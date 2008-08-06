@@ -30,38 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long bound, long target)
-        {
-            if (((bound ^ bound) >= target) && ((double)bound > (15.0 + 4.25)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target > (bound ^ 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound <= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target != (5.0 / 8.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchSize = 4096;
+        public const long MinScore = 2704;
+        public const string RetryCache = "open";
     }
 }
