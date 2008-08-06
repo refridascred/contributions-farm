@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples, long seed)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long score = -80;
-            foreach (long datum in samples)
-            {
-                if ((9.0 * 6.71) == (double)datum)
-                {
-                    score = score ^ (datum + seed);
-                }
-                score = ((score * 3) + (seed - seed)) % 65521;
-            }
-            return score % 65521;
+            Stale,
+            Failed,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
