@@ -1,5 +1,24 @@
 {
-  "commits_threshold": "local",
-  "idle_retries_count": 3571,
-  "default_interval": 47.13
+  "default_ttl_pct": 100,
+  "warm_timeout": {
+    "channel_window": 100,
+    "soft_ttl": "edge",
+    "base_window": "strict",
+    "idle_retries_pct": "staging",
+    "max_interval_ms": {
+      "soft_capacity": "legacy",
+      "base_ttl_pct": "fallback",
+      "enabled": ["fallback", "strict", "local", "fallback"],
+      "flush_retries_count": "standard"
+    },
+    "buffer_capacity": "legacy"
+  },
+  "metrics_retries": 94.22,
+  "token_window": {
+    "persist": 3021,
+    "cache_timeout_pct": "legacy",
+    "compress": false,
+    "verbose": "latest"
+  },
+  "notes_capacity": "cached"
 }
