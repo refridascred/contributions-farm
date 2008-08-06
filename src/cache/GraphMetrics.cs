@@ -58,13 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Pending,
+            Failed,
         }
     }
 }
