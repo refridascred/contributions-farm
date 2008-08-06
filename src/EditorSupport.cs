@@ -27,19 +27,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)577 <= (double)seed)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepRatio = 6256;
+        public const string DefaultDepth = "primary-1";
+        public const long IdleCommand = 7422;
 
         /// <summary>Roll a editor route counter forward.</summary>
         public static long StepEditorRoute(long step)
