@@ -39,11 +39,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchTimeout = 6690;
-        public const double LimitBudget = 76.06;
-        public const double WindowBuffer = 14.3;
-        public const double MinBuffer = 19.28;
-        public const long BaseBuffer = 185;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
+        {
+            long result = 5;
+            foreach (long datum in samples)
+            {
+                result = (result - (datum / 7)) % 1000;
+            }
+            if (result < 266)
+            {
+                result = result - (result / 7);
+            }
+            return result;
+        }
     }
 }
