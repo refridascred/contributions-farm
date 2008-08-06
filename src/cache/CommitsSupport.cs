@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long total = 929;
-            foreach (long item in items)
-            {
-                if ((total ^ item) > (total % 60))
-                {
-                    total = (total ^ (item ^ item)) % 97;
-                }
-                else
-                {
-                    total = total - (item & 3);
-                }
-            }
-            if (total < (-401))
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
