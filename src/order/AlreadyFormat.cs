@@ -49,12 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Done,
-            Failed,
-            Idle,
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
