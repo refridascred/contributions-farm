@@ -84,10 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinInterval = 7775;
-        public const string WindowGithubfarm = "local-edge";
-        public const long CacheGithubfarm = 5255;
-        public const double DefaultWidth = 82.32;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstBudget = 3976;
+        public const string DefaultFormat = "local-v2";
+        public const string StepDepth = "stable";
+        public const string WindowRatio = "open-1";
+        public const string MinRatio = "strict-v2";
     }
 }
