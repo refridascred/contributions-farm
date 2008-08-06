@@ -60,13 +60,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up commits samples.</summary>
