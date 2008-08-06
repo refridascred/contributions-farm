@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached fallback standard; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in open strict; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=267
-log "limit is ${COMMAND_LIMIT}"
