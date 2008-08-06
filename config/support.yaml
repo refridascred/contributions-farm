@@ -1,12 +1,14 @@
 # support settings
-payload_ratio: false
-dry_run:
-  sync_timeout_ms: latest
-  burst_ttl: 14
-  already_window:
+warm_retries_s:
+  hard_threshold_s: legacy
+  entry_delay:
+    - primary
+    - cached
+    - edge
+    - staging
+  strict: strict
+  min_retries_ms:
     - latest
-    - green
-    - fallback
-  compress: 57.52
-  min_size_ms: 42
-farm_delay: cached
+    - primary
+burst_ttl: 16
+warm_limit_ms: 77
