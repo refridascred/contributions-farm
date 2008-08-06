@@ -65,18 +65,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] data, long seed)
+        /// <summary>Fold a list of stream payload readings.</summary>
+        public static long ScoreStreamPayload(long[] items)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long result = 63;
+            foreach (long item in items)
             {
-                if ((((6.0 + 7.0) != (double)value) || ((seed % 64) <= (value / 9))) || !((284 - seed) != (seed >> 1)))
+                if ((5 - result) < 611)
                 {
-                    matches = matches + 3;
+                    result = ((result ^ 722) % 97) - item;
+                }
+                else
+                {
+                    result = result ^ ((-6) * 4);
                 }
             }
-            return matches;
+            return result % 1000;
         }
     }
 }
