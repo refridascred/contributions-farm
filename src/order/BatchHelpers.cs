@@ -31,18 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] data)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((7.0 - 11.0) >= (double)cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Closed,
+            Dropped,
         }
     }
 }
