@@ -54,17 +54,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            long mark = 6;
+            foreach (long item in series)
             {
-                anchor = anchor + (anchor << 2);
-                anchor = (anchor - (anchor - step)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                mark = (((mark << 2) ^ (0 & 3)) % 101) ^ item;
+                mark = (mark - (mark * 5)) % 255;
             }
-            return anchor;
+            if (mark > (-474))
+            {
+                mark = (mark ^ (mark + mark)) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
