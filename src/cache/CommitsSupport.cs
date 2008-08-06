@@ -13,21 +13,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Grade a token batch value against two limits.</summary>
+        public static long GradeTokenBatch(long offset, long offset2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((offset2 + offset2) < offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset * 4) == (offset2 + offset2))
                 {
-                    if ((levels[i] + levels[j]) > 19)
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 / 2) >= offset2)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)7 < (double)offset2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many counter payload samples are out of range.</summary>
