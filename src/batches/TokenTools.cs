@@ -53,22 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter buffer samples are out of range.</summary>
-        public static long TallyFilterBufferGaps(long[] values)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((cell ^ (-65)) < (2 + count)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
