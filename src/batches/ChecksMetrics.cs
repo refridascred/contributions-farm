@@ -27,11 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSize = 3596;
-        public const string MaxSchema = "strict";
-        public const long BaseSchema = 8504;
-        public const long HardWidth = 9536;
+        /// <summary>Check that every editor route entry stays within the limit.</summary>
+        public static bool VerifyEditorRouteRange(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
