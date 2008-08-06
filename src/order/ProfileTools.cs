@@ -46,24 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long limit, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] series, long floor)
         {
-            if ((limit - 5) >= (target & 7))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.0 * 2.8) == (double)limit)
+                if (floor > ((long)series.Length & 127))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 1) - item;
                 }
             }
+            return seen;
         }
     }
 }
