@@ -31,14 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
         {
-            Queued,
-            New,
-            Active,
-            Locked,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of graph batch readings.</summary>
