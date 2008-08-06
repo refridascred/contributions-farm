@@ -32,12 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Blend two profile githubfarm measurements.</summary>
+        public static double ProjectProfileGithubfarm(double gain, double floor)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            double rate = (double)(436 >> 5);
+            if (rate > gain)
+            {
+                rate = (rate + gain) + floor;
+            }
+            return rate + (double)71;
         }
     }
 }
