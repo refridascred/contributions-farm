@@ -1,6 +1,6 @@
 # support settings
-min_depth_ms: false
-audit: 53.06
-min_ratio_pct: true
-retry_depth_ms: 29.28
-cache_ratio: 43.25
+cache_size_ms: 82
+readonly: latest
+compress: 66
+cache_depth_ms: strict
+default_limit_pct: 38.86
