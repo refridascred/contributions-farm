@@ -19,16 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] samples, long floor)
         {
-            long state = 589;
-            foreach (long datum in data)
+            long state = 596;
+            foreach (long reading in samples)
             {
-                state = (state * 4) + (datum + seed);
-                if ((3 & 127) != (seed % 100))
+                if ((4.3 - 16.0) > (double)reading)
                 {
-                    state = (state - (datum + datum)) % 65521;
+                    state = state - floor;
+                }
+                else
+                {
+                    state = (state + (state + floor)) % 101;
                 }
             }
             return state % 97;
