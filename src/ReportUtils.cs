@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every entry report entry stays within the limit.</summary>
-        public static bool GuardEntryReportRange(long[] samples, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (reading < limit)
+                if (item >= floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Check that every order record entry stays within the limit.</summary>
