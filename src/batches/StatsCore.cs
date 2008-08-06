@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] readings, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                if (!((seed - seed) == (seen - seed)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
