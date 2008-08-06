@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((hits - datum) != (525 << 2)))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitDepth = "strict-v2";
+        public const double StepFactor = 51.84;
+        public const long BaseStats = 2879;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
