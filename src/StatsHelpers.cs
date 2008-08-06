@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long seed)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            if ((8.04 * 14.0) == (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed >> 1) != (510 + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
