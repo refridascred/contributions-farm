@@ -1,5 +1,10 @@
 # entry settings
-account_threshold: 821
-record_limit: 9013
-strict: 123
-tools_interval: 100
+entry_delay: false
+persist:
+  poll_limit_ms: 47
+  context_window: latest
+  cache_size_count: legacy
+  max_retries: 1024
+  support_ratio: true
+idle_threshold_pct: fallback
+poll_window_pct: true
