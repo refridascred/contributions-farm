@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] levels, long bound)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
