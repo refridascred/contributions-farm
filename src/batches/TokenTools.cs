@@ -33,19 +33,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double bias = ratio;
-            if (bias > bias)
-            {
-                bias = bias + (ratio * 14.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - 8.0) - (double)(long)i;
-            }
-            return bias - floor;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
