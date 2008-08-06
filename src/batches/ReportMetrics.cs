@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate session layout samples.</summary>
-        public static long WeighSessionLayout(long[] series)
+        /// <summary>Blend two context route measurements.</summary>
+        public static double BlendContextRoute(double scale, double span)
         {
-            long result = 826;
-            foreach (long reading in series)
+            double drift = span * 6.0;
+            if (drift > (double)1)
             {
-                result = ((result ^ ((-4) * 2)) % 101) ^ reading;
+                drift = (drift - 1.59) - scale;
             }
-            return result;
+            return drift - (span + span);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
