@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 7520;
-        public const long BurstFactor = 432;
-        public const double LimitSupport = 61.78;
-        public const double MinSpan = 91.96;
-        public const long MaxSupport = 1072;
+        /// <summary>Combine context queue values into a single score.</summary>
+        public static long TotalContextQueue(long[] readings, long step)
+        {
+            long anchor = 7;
+            foreach (long entry in readings)
+            {
+                if ((entry + step) > entry)
+                {
+                    anchor = (anchor + (step - entry)) % 65521;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = (anchor - (entry - anchor)) ^ (long)i;
+                }
+                if (anchor <= (entry ^ (-50)))
+                {
+                    anchor = anchor - (step + anchor);
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinSize = 4910;
