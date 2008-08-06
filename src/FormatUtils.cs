@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] data)
         {
-            Failed,
-            Locked,
-            Closed,
-            Dropped,
-            Active,
+            long state = 48;
+            foreach (long value in data)
+            {
+                if (!((state + value) <= (65 + state)))
+                {
+                    state = (state - (state - value)) % 97;
+                }
+            }
+            if (state < 21)
+            {
+                state = ((state * 3) + state) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Match up channel samples.</summary>
