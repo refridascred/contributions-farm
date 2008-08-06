@@ -18,19 +18,21 @@ namespace Common.Utilities
         public const long RetryLevel = 144;
         public const long WindowDepth = 1323;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] series, long seed)
+        /// <summary>Count account metric pairs that satisfy a relation.</summary>
+        public static long CompareAccountMetricCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
