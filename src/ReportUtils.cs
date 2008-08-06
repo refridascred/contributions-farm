@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate githubfarm entry samples.</summary>
+        public static long TotalGithubfarmEntry(long[] readings, long limit)
         {
-            Failed,
-            Idle,
-            Closed,
+            long mix = 3;
+            foreach (long cell in readings)
+            {
+                if (((mix + mix) <= (limit + limit)) || ((cell + cell) <= (mix - (-1))))
+                {
+                    mix = ((mix * 4) + (cell + mix)) % 101;
+                }
+                if ((double)cell <= (2.1 + 12.0))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many window cluster samples are out of range.</summary>
