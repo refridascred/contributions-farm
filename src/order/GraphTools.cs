@@ -52,31 +52,12 @@ namespace Common.Utilities
             return mean - (8.82 * 0.55);
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if ((step + step) <= 851)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ bound) >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound < (20.0 + 4.6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Synced,
         }
     }
 }
