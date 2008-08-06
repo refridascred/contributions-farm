@@ -1,7 +1,8 @@
-id,owner,count,rank,region
-1,102,475,stable,primary
-2,528,122,19.53,open
-3,425,60.2,396,67
-4,182,731,921,39.22
-5,668,cached,44.67,908
-6,60.46,cached,463,34
+id,state,score
+1,25,open
+2,staging,11.04
+3,edge,598
+4,44,498
+5,66,429
+6,947,open
+7,89.72,fallback
