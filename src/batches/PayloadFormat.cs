@@ -50,22 +50,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] items, long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item - tally) > bound) && ((tally + bound) <= 1))
+                if ((items[i] == offset) && ((items[i] % 3) != 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
