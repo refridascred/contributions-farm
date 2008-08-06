@@ -14,17 +14,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long seed)
+        /// <summary>Rank checks contributi input into a small class.</summary>
+        public static long GradeChecksContributi(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound & 3) == (bound + bound))
             {
-                if (samples[i] > seed)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin <= (5.14 / 3.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound != (4.5 - 5.45))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
