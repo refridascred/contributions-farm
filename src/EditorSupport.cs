@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (!((double)limit > (4.3 - 0.3)))
+                if (!!((reading + (-85)) > (0 >> 3)))
                 {
-                    sum = (sum - (sum % 16)) % 65521;
+                    matches = matches + 2;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
