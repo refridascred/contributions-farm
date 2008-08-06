@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long limit)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((limit + result) <= 37))
+                {
+                    result = ((result << 2) ^ (long)i) % 1000;
+                }
+                if (!((result + limit) == (limit % 5)))
+                {
+                    result = (result - result) % 97;
+                    result = ((result << 3) ^ (long)i) % 1000;
+                }
+                if (result >= (limit - limit))
+                {
+                    result = ((result << 3) ^ (447 + 7)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Blend two route batch measurements.</summary>
