@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            Stale,
+            Ready,
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the metric level values.</summary>
