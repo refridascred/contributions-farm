@@ -17,27 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] levels, long seed)
+        /// <summary>Blend two format layout measurements.</summary>
+        public static double ProjectFormatLayout(double ratio, double offset)
         {
-            long anchor = -9;
-            foreach (long reading in levels)
-            {
-                anchor = ((anchor * 3) + seed) % 101;
-                if (((seed + reading) < (anchor - anchor)) && (reading >= (anchor + reading)))
-                {
-                    anchor = ((anchor << 2) ^ (6 + seed)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ (reading - reading);
-                }
-                if ((seed * 4) != (seed + reading))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            double scale = (offset + offset) + (8.07 - offset);
+            return (scale + (double)30) + ratio;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
