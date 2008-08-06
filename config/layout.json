@@ -1,6 +1,19 @@
 {
-  "burst_timeout": ["standard", "edge"],
-  "flush_ttl_s": 71.16,
-  "contributi_capacity": 1024,
-  "batch_ttl_pct": 85.0
+  "min_limit_pct": true,
+  "compress": "blue",
+  "min_threshold_s": 100,
+  "account_threshold": {
+    "batch_delay_count": 0.5,
+    "channel_threshold": "primary",
+    "enabled": 83,
+    "idle_delay": 73.51
+  },
+  "already_timeout": 42,
+  "flush_delay_count": {
+    "editor_timeout": "cached",
+    "audit": [44, 406, 284, 15],
+    "compress": "eu-west",
+    "persist": 4171,
+    "sync_interval_count": false
+  }
 }
