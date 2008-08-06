@@ -1,10 +1,13 @@
 {
-  "sync_ratio_ms": true,
-  "sync_limit_count": 60,
-  "profile_capacity": {
-    "editor_capacity": 30,
-    "sync_capacity": "legacy",
-    "graph_depth": "stable"
+  "flush_threshold_s": [46, 496, 73],
+  "burst_limit": [346, 219, 151],
+  "batch_limit": 250,
+  "audit": ["strict", "eu-west"],
+  "burst_depth_count": {
+    "schema_ratio": 8439,
+    "hard_limit_count": "open",
+    "queue_ttl": [245, 421],
+    "sync_depth": 1024
   },
-  "idle_timeout": true
+  "enabled": 87.5
 }
