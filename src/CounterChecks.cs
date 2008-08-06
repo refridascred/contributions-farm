@@ -51,19 +51,22 @@ namespace Common.Utilities
             return rate - (3.9 / 3.0);
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] levels, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mark = 5;
+            foreach (long datum in data)
             {
-                if (reading <= target)
+                if ((mark + datum) > datum)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + (mark ^ 1)) % 101;
                 }
             }
-            return ok;
+            if (mark < 71)
+            {
+                mark = ((mark * 2) + mark) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the tools status values.</summary>
