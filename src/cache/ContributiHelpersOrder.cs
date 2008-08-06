@@ -20,23 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double bias)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] samples)
         {
-            double scale = ratio / 5.0;
-            if (scale >= scale)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                scale = scale + (bias - 2.3);
+                if ((item % 10) <= 7)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                scale = scale - (bias / 5.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale + (scale - bias);
+            return seen;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
