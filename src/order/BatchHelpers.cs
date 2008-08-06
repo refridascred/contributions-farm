@@ -43,19 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double scale, double offset)
         {
-            long mix = 7;
-            foreach (long reading in samples)
+            double load = (double)(8 - 3);
+            if (load <= (offset * 15.0))
             {
-                mix = (mix + (reading << 3)) % 101;
-                if (((double)reading > (10.0 + 0.13)) && (mix <= (reading + mix)))
-                {
-                    break;
-                }
+                load = load - 1.0;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + scale;
         }
     }
 }
