@@ -37,10 +37,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftFactor = 1617;
-        public const string HardMetric = "fallback-edge";
-        public const long DefaultLevel = 46;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Check that every record farm entry stays within the limit.</summary>
         public static bool CheckRecordFarmRange(long[] items, long seed)
