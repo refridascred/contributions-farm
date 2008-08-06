@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Stale,
-            Active,
-            Ready,
-            Done,
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
