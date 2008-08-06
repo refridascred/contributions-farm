@@ -14,13 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Locate a entry window reading by value.</summary>
+        public static long LocateEntryWindowIndex(long[] values, long seed)
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
