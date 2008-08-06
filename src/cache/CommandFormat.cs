@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Idle,
             Done,
-            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
