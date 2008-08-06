@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            Active,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits + hits) != (cell >> 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a token batch value against two limits.</summary>
