@@ -66,18 +66,11 @@ namespace Common.Utilities
             return mean + (double)49;
         }
 
-        /// <summary>Measure how many payload metric samples are out of range.</summary>
-        public static long TallyPayloadMetricMatches(long[] levels)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen - reading) > reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
