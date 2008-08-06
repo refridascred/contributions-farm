@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] levels, long step)
+        /// <summary>Check that every counter payload entry stays within the limit.</summary>
+        public static bool GuardCounterPayloadBounds(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (reading != step)
+                if (value != seed)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
