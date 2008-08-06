@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the schema already entries that pass the check.</summary>
-        public static long MeasureSchemaAlreadyGaps(long[] readings)
+        /// <summary>Validate session token readings against a bound.</summary>
+        public static bool CheckSessionTokenRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((sample <= (hits / 4)) && (((-728) - hits) >= (hits + sample)))
+                if (entry > step)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a queue info.</summary>
