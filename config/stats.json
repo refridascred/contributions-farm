@@ -1,15 +1,6 @@
 {
-  "report_delay": 6271,
-  "default_window_ms": 24,
-  "retry_retries_count": {
-    "default_threshold": {
-      "layout_ratio": "strict",
-      "sync_window_s": "staging",
-      "verbose": 5015
-    },
-    "tools_threshold": "primary",
-    "cache_retries": false
-  },
-  "default_timeout_ms": false,
-  "stream_delay": true
+  "flush_limit_pct": 24.54,
+  "readonly": "legacy",
+  "tools_ratio": 96.13,
+  "default_retries": ["local", "standard", "primary"]
 }
