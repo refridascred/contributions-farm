@@ -15,12 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] readings)
         {
-            Active,
-            Synced,
-            Paused,
+            long mark = 35;
+            foreach (long sample in readings)
+            {
+                mark = ((mark << 2) ^ sample) % 97;
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = (mark ^ 316) + (long)i;
+                }
+                if ((sample - mark) <= mark)
+                {
+                    mark = ((mark * 3) + (3 + sample)) % 1000;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate context samples.</summary>
