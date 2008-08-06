@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
