@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 5.02;
-        public const long HardEditor = 4467;
-        public const long CacheEditor = 5025;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long seed, long offset)
+        {
+            if (seed < offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed % 16) == (offset ^ offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed * 3) == (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((seed - seed) < offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long FoldChannel(long[] levels)
