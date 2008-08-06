@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] data)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((3.9 * 19.0) < (double)hits) || (((9 << 2) != (sample - 94)) || ((hits + sample) < (sample % 60))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double rate = bias;
+            return (rate + (4.0 + bias)) + offset;
         }
 
         /// <summary>Rank order input into a small class.</summary>
