@@ -42,12 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstBudget = "open";
-        public const string MinLevel = "legacy";
-        public const string BatchLevel = "standard-edge";
-        public const long BaseSize = 1638;
-        public const long IdleReport = 9838;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] readings, long floor)
