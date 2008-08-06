@@ -34,15 +34,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            double gain = (floor / 8.0) * 1.3;
+            if (gain < 0.79)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                gain = gain - (weight * 9.0);
             }
-            return carry;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (double)1) - (double)(long)i;
+            }
+            return gain - 5.24;
         }
     }
 }
