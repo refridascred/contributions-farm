@@ -34,12 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values)
         {
-            Stale,
-            Draft,
-            Ready,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell >> 3) == (690 + cell)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
