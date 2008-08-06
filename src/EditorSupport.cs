@@ -53,12 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitDepth = 6161;
-        public const long IdleTimeout = 8769;
-        public const string BatchCommits = "fallback-edge";
-        public const long SoftCommits = 6351;
-        public const long BurstCommits = 8309;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next batches counter value from a seed.</summary>
         public static long DeriveBatchesCounter(long offset)
