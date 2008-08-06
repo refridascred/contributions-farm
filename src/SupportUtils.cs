@@ -24,18 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] samples, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
         {
-            long mix = -91;
-            foreach (long item in samples)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item - (long)samples.Length) < (mix ^ (long)samples.Length))
-                {
-                    mix = (mix - (item << 3)) + limit;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
