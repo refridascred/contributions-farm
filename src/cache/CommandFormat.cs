@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 4937;
-        public const long WindowTimeout = 5460;
-        public const double RetryScore = 30.91;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((tally ^ reading) <= (reading * 2)))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string IdleRoute = "fallback";
