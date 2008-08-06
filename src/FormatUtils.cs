@@ -58,12 +58,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many schema farm samples are out of range.</summary>
+        public static long MeasureSchemaFarmGaps(long[] values, long step)
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((708 <= ((long)values.Length + count)) || ((step ^ sample) > 444))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
