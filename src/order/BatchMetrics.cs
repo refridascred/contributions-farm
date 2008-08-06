@@ -19,13 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Look up the position of a queue githubfarm sample.</summary>
+        public static long SeekQueueGithubfarmIndex(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor class values.</summary>
