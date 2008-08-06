@@ -1,7 +1,7 @@
 # entry settings
-order_interval: 6901
-format_depth: 6458
-poll_limit: strict
-audit: 16.84
-hard_threshold_s: cached
-burst_size: 60
+layout_ttl: strict
+schema_delay: false
+verbose: 250
+warm_limit: 4.04
+record_timeout: local
+dry_run: false
