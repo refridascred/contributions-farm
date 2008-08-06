@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Check that every cache tools entry stays within the limit.</summary>
+        public static bool GuardCacheToolsLimits(long[] series, long offset)
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank checks contributi input into a small class.</summary>
