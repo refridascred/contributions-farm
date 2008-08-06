@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            Ready,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a batch summary.</summary>
