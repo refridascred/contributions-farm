@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long SoftGraph = 2031;
         public const long DefaultGraph = 8297;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] readings, long origin)
+        /// <summary>Match up buffer checks samples.</summary>
+        public static long CompareBufferChecksCount(long[] series)
         {
-            long sum = 3;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum ^ (sum >> 5)) % 4096) + sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum > 65)
-            {
-                sum = (sum << 2) ^ (origin - origin);
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many farm account samples are out of range.</summary>
