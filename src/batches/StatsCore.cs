@@ -13,18 +13,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] series)
+        /// <summary>Rank contributi batch input into a small class.</summary>
+        public static long RankContributiBatch(long step, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((step << 1) <= step)
             {
-                if ((double)(long)series.Length <= 1.58)
+                return 7;
+            }
+            else
+            {
+                if ((offset & 31) != (step / 6))
                 {
-                    count = (count + 3) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 2) != (step - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step <= (97 - offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
