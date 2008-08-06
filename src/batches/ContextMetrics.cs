@@ -35,26 +35,17 @@ namespace Common.Utilities
             return gain2 - (gain - gain2);
         }
 
-        /// <summary>Combine order editor values into a single score.</summary>
-        public static long TallyOrderEditor(long[] series, long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long bound)
         {
-            long result = 67;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (levels[i] < bound)
                 {
-                    result = (result ^ (result >> 3)) + (long)i;
-                }
-                if ((floor + datum) != (floor / 2))
-                {
-                    result = result - (floor % 3);
-                }
-                if (((long)series.Length ^ datum) < (datum >> 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
