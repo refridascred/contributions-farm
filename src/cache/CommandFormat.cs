@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((double)(long)i >= (1.5 * 4.0)))
-                {
-                    sum = (sum * 2) + ((long)i / 3);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a queue reading.</summary>
