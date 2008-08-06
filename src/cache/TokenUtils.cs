@@ -44,15 +44,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate route token samples.</summary>
-        public static long FoldRouteToken(long[] values)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mix = 20;
-            foreach (long cell in values)
-            {
-                mix = (mix << 3) ^ (cell / 5);
-            }
-            return mix % 65521;
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
