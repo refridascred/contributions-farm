@@ -52,18 +52,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit entry channel readings against a rule.</summary>
-        public static long TallyEntryChannelHits(long[] series, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long target, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if (((7.5 / 6.0) == (double)limit) || (1.9 < (double)limit))
             {
-                if ((530 & 1) == (matches >> 4))
+                return 1;
+            }
+            else
+            {
+                if ((target & 127) <= (target / 6))
                 {
-                    matches = ((matches + 2) ^ sample) - limit;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
