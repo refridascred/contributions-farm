@@ -28,22 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record report samples.</summary>
-        public static long TallyRecordReport(long[] levels)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long total = 160;
-            foreach (long item in levels)
-            {
-                if ((long)levels.Length >= (total / 6))
-                {
-                    total = (total + (736 << 3)) % 255;
-                }
-                else
-                {
-                    total = total ^ (total + item);
-                }
-            }
-            return total % 4096;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
