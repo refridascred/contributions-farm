@@ -35,19 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (entry < limit)
+                if (!((sample + sample) < (sample ^ count)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Blend two metric filter measurements.</summary>
