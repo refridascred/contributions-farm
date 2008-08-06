@@ -1,6 +1,8 @@
 {
-  "batch_limit_pct": "eu-west",
-  "verbose": "latest",
-  "base_ratio_s": false,
-  "max_window_s": 8.37
+  "base_ttl_pct": [272, 52, 467, 208],
+  "default_window": "stable",
+  "hard_delay_pct": [497, 287, 320, 215],
+  "burst_delay_pct": "latest",
+  "audit": "latest",
+  "retry_depth_count": 6205
 }
