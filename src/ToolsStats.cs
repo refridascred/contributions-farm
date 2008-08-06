@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] levels, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double offset)
         {
-            long carry = -346;
-            foreach (long item in levels)
-            {
-                if ((5.14 + 5.0) > (double)item)
-                {
-                    carry = carry - (step - step);
-                }
-            }
-            if (carry > 772)
-            {
-                carry = (carry ^ (step * 5)) % 65521;
-            }
-            return carry;
+            double weight2 = (offset + offset) - (double)(-176);
+            return (weight2 + (weight2 / 7.0)) + weight;
         }
 
         /// <summary>Describe the stats level values.</summary>
