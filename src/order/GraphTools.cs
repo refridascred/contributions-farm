@@ -55,26 +55,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of payload route entries.</summary>
-        public static long TallyPayloadRoute(long[] values, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] data)
         {
-            long mix = 56;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((mix & 7) == (sample & 255)) && ((limit ^ mix) < 9))
+                if (((double)cell > 1.0) || ((double)cell == (5.1 * 1.77)))
                 {
-                    mix = (mix ^ (mix ^ limit)) % 101;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    mix = (mix * 3) + (mix ^ mix);
+                    matches = matches - 1;
                 }
             }
-            if (mix < 9)
-            {
-                mix = ((mix * 3) + (mix % 16)) % 1000;
-            }
-            return mix;
+            return matches;
         }
     }
 }
