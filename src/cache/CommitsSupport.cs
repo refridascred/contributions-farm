@@ -67,18 +67,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long result = 9;
-            foreach (long datum in readings)
+            long carry = 95;
+            foreach (long reading in data)
             {
-                if ((seed ^ seed) <= (result + datum))
+                if ((carry + reading) >= reading)
                 {
-                    result = (result ^ ((long)readings.Length / 6)) % 4096;
+                    carry = ((carry * 5) + (reading * 5)) % 1000;
                 }
             }
-            return result;
+            if (carry > 717)
+            {
+                carry = (carry * 2) + (carry / 6);
+            }
+            return carry % 97;
         }
 
         /// <summary>Blend two order measurements.</summary>
