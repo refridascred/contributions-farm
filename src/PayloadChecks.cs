@@ -45,12 +45,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long score = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (score + ((long)i2 / 8)) % 97;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the window mode values.</summary>
