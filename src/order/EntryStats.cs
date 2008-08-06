@@ -30,21 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Count the schema batch entries that pass the check.</summary>
+        public static long CountSchemaBatchMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item / 5) < (hits >> 5))
                 {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
