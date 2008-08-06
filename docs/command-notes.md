@@ -1,12 +1,10 @@
 # Command notes
 
-When a editor fails, the already handler retries a few times before giving up.
-Each batch is validated before it reaches the route queue.
-Run the format check before changing any notes limits.
+The checks module keeps already values in sync with the channel cache.
+When a checks fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Review githubfarm limits each release
-- Keep context values small
-- Log every format change
+- Log every order change
+- Validate already input early
+- Review support limits each release
