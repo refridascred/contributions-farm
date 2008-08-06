@@ -69,11 +69,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] values, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            long result = 627;
+            foreach (long entry in values)
+            {
+                result = (((result * 2) + result) % 255) ^ entry;
+            }
+            if (result < 0)
+            {
+                result = (result ^ (seed + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a support snapshot.</summary>
