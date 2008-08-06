@@ -57,19 +57,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine notes commits values into a single score.</summary>
-        public static long ScoreNotesCommits(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long total = 26;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 2) ^ (55 + item);
-                if ((double)total < (8.06 + 11.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
