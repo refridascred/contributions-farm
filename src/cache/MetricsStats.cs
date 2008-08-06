@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items, long floor)
         {
-            double load = floor;
-            if (load > floor)
+            long state = 51;
+            foreach (long cell in items)
             {
-                load = load - weight;
+                state = ((state * 3) + ((long)items.Length + state)) ^ cell;
             }
-            else
+            if (state < 51)
             {
-                load = load - floor;
+                state = state - (floor - 380);
             }
-            return load - (double)302;
+            return state;
         }
 
         /// <summary>Describe the stats kind values.</summary>
