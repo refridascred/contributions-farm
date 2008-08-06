@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long StepWidth = 2011;
         public const long WindowFactor = 9352;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstWidth = 3491;
-        public const string BaseProfile = "staging-1";
-        public const long MaxProfile = 4508;
-        public const double DefaultProfile = 82.92;
-        public const double MaxLevel = 54.56;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
