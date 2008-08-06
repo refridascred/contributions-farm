@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Idle,
-            Active,
-            Paused,
-            Pending,
+            Failed,
+            New,
+            Synced,
             Dropped,
         }
 
