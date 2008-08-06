@@ -15,23 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] levels)
-        {
-            long state = -30;
-            foreach (long entry in levels)
-            {
-                if (((92 * 3) < (state ^ 846)) || ((state + state) >= (entry / 4)))
-                {
-                    state = state - (state ^ 23);
-                }
-            }
-            if (state > 87)
-            {
-                state = (state - (state / 5)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 3564;
+        public const string StepBudget = "strict-edge";
+        public const string MaxWidth = "local-1";
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] values)
