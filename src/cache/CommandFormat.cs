@@ -48,38 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window commits input into a small class.</summary>
-        public static long RankWindowCommits(long offset, long bound)
+        /// <summary>Measure how many support entry samples are out of range.</summary>
+        public static long AuditSupportEntryOutliers(long[] items)
         {
-            if (!((offset + offset) >= (5 >> 5)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 3) < (bound % 16))
+                if ((count * 4) != (count / 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - bound) > (bound & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(offset <= bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 1) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a queue reading.</summary>
