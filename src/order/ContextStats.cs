@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of stream entry entries.</summary>
+        public static long ScoreStreamEntry(long[] series)
         {
-            Queued,
-            Closed,
-            Pending,
-            Draft,
-            Failed,
+            long mark = 4;
+            foreach (long datum in series)
+            {
+                if (mark >= (datum + mark))
+                {
+                    mark = mark - (datum >> 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
