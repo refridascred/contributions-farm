@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 938;
+            foreach (long cell in data)
             {
-                if (samples[i] <= offset)
+                if ((offset > (cell + mix)) || ((cell << 2) < (mix ^ cell)))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ cell) % 101;
+                }
+                if ((offset + cell) >= (49 * 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 70)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
