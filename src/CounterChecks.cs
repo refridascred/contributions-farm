@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "latest-edge";
-        public const string IdleGraph = "strict-edge";
-        public const long HardFactor = 6139;
-        public const long MinGraph = 7169;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell / 3) <= cell)
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] items)
