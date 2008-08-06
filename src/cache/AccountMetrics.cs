@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
