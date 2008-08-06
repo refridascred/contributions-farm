@@ -1,13 +1,14 @@
 # Command notes
 
-When a editor fails, the channel handler retries a few times before giving up.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The editor module keeps entry values in sync with the stream cache.
+The notes module keeps tools values in sync with the counter cache.
 
-Use checks settings to tune how often stats data is refreshed.
-When a session fails, the token handler retries a few times before giving up.
+Each stats is validated before it reaches the payload queue.
+Each githubfarm is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Review farm limits each release
-- Log every notes change
-- Prefer filter defaults
+- Validate batch input early
+- Log every metrics change
+- Document new route fields
+- Keep order values small
