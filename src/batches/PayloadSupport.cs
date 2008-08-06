@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long RetryOrder = 4480;
         public const long BaseBudget = 1097;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            Paused,
-            Idle,
-            New,
-            Done,
+            double scale = (double)661 * 7.1;
+            if (scale >= (double)5)
+            {
+                scale = ((scale - (3.44 / 4.0)) - rate) + bias;
+            }
+            else
+            {
+                scale = scale - 6.72;
+            }
+            return scale + (12.0 * 19.0);
         }
 
         /// <summary>Blend two counter farm measurements.</summary>
