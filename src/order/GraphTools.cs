@@ -18,21 +18,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up channel notes samples.</summary>
-        public static long MatchChannelNotesCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)entry != (7.14 * 8.23))
                 {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
