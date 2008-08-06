@@ -21,32 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long origin)
-        {
-            if (((origin ^ seed) != (seed >> 4)) && ((origin - seed) < (seed / 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (6.32 + 17.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 2) > (seed + 44))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 5329;
+        public const string SoftCounter = "stable-edge";
+        public const long StepRatio = 1775;
+        public const string MinCounter = "alpha-v2";
+        public const long DefaultLevel = 5659;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long ClassifyLayout(long target, long floor)
