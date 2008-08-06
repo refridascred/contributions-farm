@@ -34,13 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            New,
-            Done,
-            Ready,
-            Stale,
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
