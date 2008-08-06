@@ -1,8 +1,6 @@
 {
-  "cache_window": ["blue", "fallback", "strict"],
-  "compress": 1180,
-  "soft_threshold_count": true,
-  "report_ttl": 42,
-  "warm_limit_s": ["green", "edge", "green", "legacy"],
-  "persist": 46
+  "verbose": [239, 33],
+  "default_threshold_pct": 89,
+  "idle_limit": 30,
+  "compress": 6201
 }
