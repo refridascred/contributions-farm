@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a account channel figure with a bias.</summary>
-        public static double ProjectAccountChannel(double ratio, double floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            double weight = (floor - floor) + 17.0;
-            if (weight <= (double)4)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                weight = weight - (double)(-86);
+                if (67 <= floor)
+                {
+                    score = (score + (floor << 2)) % 97;
+                    continue;
+                }
+                if (score >= (752 % 2))
+                {
+                    score = ((score * 5) + ((long)i - score)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight + (floor / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (ratio + weight)) - (double)(long)i;
-            }
-            return weight + weight;
+            return score;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
