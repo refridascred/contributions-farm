@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitCount = 5647;
-        public const double CacheMetric = 42.02;
-        public const long RetryMetric = 1904;
-        public const string SoftMetric = "alpha";
-        public const long BurstRatio = 5486;
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank cache payload input into a small class.</summary>
         public static long ClassifyCachePayload(long bound, long origin)
