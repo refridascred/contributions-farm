@@ -1,8 +1,11 @@
 {
-  "commits_retries": 60,
-  "cluster_window": 98.39,
-  "default_window": "primary",
-  "soft_depth": false,
-  "channel_timeout": false,
-  "retry_ratio": 63.12
+  "cache_ratio_count": {
+    "max_ttl_pct": "fallback",
+    "persist": 58,
+    "retry_window_pct": 55
+  },
+  "dry_run": 60,
+  "base_retries": 250,
+  "githubfarm_limit": 7087,
+  "enabled": [290, 393]
 }
