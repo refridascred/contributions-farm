@@ -67,14 +67,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            Stale,
-            Paused,
-            Retry,
-            Ready,
-            Draft,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((matches - matches) != (sample + matches)) || !((matches / 3) >= (sample & 15)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window kind values.</summary>
