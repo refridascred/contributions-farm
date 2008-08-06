@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const string BurstRatio = "open";
         public const long SoftSchema = 6858;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] series, long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
