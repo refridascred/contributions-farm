@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (cell > 77)
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 8091;
+        public const double RetryWidth = 94.31;
+        public const long DefaultLevel = 6917;
+        public const double BaseSpan = 97.74;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstTimeout = 2528;
