@@ -15,18 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] data, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (((reading * 5) == (matches >> 3)) || ((reading + offset) >= (matches + reading)))
+                if (entry != bound)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
