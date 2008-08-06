@@ -36,16 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Iterate the profile route series from a seed.</summary>
+        public static long SeriesProfileRoute(long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum << 3) ^ limit) % 4096;
-                sum = ((sum * 3) + (long)i) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total + (bound << 1)) % 97) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    total = ((total - (534 + bound)) % 1000) ^ (long)i3;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Rank account input into a small class.</summary>
