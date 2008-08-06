@@ -22,17 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
