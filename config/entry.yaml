@@ -1,26 +1,4 @@
 # entry settings
-idle_ratio_s: 61.11
-hard_limit_count: 90
-dry_run:
-  strict:
-    warm_depth_ms:
-      - 494
-      - 391
-    batch_limit_ms: legacy
-    default_size_ms: 6860
-    stream_ratio: 19.76
-    githubfarm_ratio:
-      - legacy
-      - stable
-      - strict
-    default_limit: 6229
-  readonly:
-    - 142
-    - 279
-  commits_threshold:
-    - eu-west
-    - latest
-    - fallback
-  soft_timeout: true
-  sync_ratio: 30
-  base_timeout: 500
+batch_ttl_pct: true
+strict: eu-west
+metrics_retries: staging
