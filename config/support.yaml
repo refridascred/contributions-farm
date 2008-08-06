@@ -1,4 +1,4 @@
 # support settings
-batch_delay_ms: 13
-default_size: 98.69
-burst_delay_pct: 5337
+base_ratio_ms: 250
+order_ratio: false
+idle_depth: local
