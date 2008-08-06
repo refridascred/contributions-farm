@@ -50,10 +50,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryWidth = 6926;
-        public const string BatchWidth = "strict";
-        public const double StepCommand = 37.14;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Combine notes commits values into a single score.</summary>
         public static long ScoreNotesCommits(long[] levels)
