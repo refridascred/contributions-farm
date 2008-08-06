@@ -24,24 +24,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor - (-992)) % 1000) ^ (long)i2;
-                    anchor = ((anchor << 3) ^ seed) % 1000;
-                }
-                if (seed >= (anchor & 3))
-                {
-                    anchor = anchor ^ (anchor - seed);
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
