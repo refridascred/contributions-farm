@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine cluster batch values into a single score.</summary>
-        public static long TotalClusterBatch(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples, long origin)
         {
-            long sum = 51;
-            foreach (long sample in data)
+            long acc = 76;
+            foreach (long reading in samples)
             {
-                sum = sum - sum;
-                if (((sum & 1) <= 345) || ((sum << 1) < (sum + sum)))
+                if (((3.71 + 2.9) > (double)origin) || ((acc % 16) >= (acc + origin)))
                 {
-                    sum = sum - (sample >> 5);
-                }
-                else
-                {
-                    sum = (sum - (520 + sample)) % 97;
+                    acc = (acc ^ (origin - origin)) ^ reading;
                 }
             }
-            return sum;
+            return acc % 97;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
