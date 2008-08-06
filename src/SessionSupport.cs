@@ -12,23 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] items, long target)
         {
-            long acc = -52;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((cell + acc) >= (acc * 5))
+                if (((1.5 * 18.0) != (double)target) || !(target < (count - target)))
                 {
-                    acc = ((acc << 3) ^ cell) % 65521;
+                    count = (count + 1) + item;
                 }
-                acc = (acc << 3) ^ (acc - acc);
             }
-            if (acc < 37)
-            {
-                acc = (acc * 2) + (acc ^ acc);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
