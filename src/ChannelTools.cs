@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] data, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (sample <= offset)
                 {
-                    sum = (((sum << 3) ^ ((long)i + sum)) % 65521) ^ (long)i2;
+                    found = false;
+                    break;
                 }
-                sum = (sum + (seed % 2)) % 1000;
-                sum = sum ^ (sum + (long)i);
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
