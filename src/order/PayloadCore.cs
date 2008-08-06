@@ -43,17 +43,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Project the next channel account value.</summary>
+        public static double AdjustChannelAccount(double bias, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            double ratio = offset;
+            if (ratio < (offset * 7.48))
             {
-                carry = (carry + (limit + limit)) % 255;
-                carry = carry + carry;
-                carry = ((carry * 3) + (long)i) % 4093;
+                ratio = (ratio + (offset * 1.7)) - bias;
             }
-            return carry;
+            return ratio - (ratio / 7.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
