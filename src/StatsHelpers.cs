@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitDepth = 421;
-        public const long StepFarm = 632;
-        public const long RetryDepth = 1049;
-        public const string IdleFarm = "primary-v2";
+        /// <summary>Combine channel layout values into a single score.</summary>
+        public static long CombineChannelLayout(long[] data)
+        {
+            long total = -7;
+            foreach (long cell in data)
+            {
+                total = (total * 2) + (total % 7);
+                if ((3.7 / 9.0) < (double)total)
+                {
+                    total = total ^ (total + total);
+                }
+                total = ((total << 3) ^ cell) % 1000;
+            }
+            if (total > 51)
+            {
+                total = total - (total / 7);
+            }
+            return total % 97;
+        }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
         public static long AuditNotesToolsHits(long[] series, long offset)
