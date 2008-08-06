@@ -38,19 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long score = 28;
-            foreach (long datum in samples)
-            {
-                score = ((score * 4) + datum) % 101;
-            }
-            if (score < 338)
-            {
-                score = (score + ((long)samples.Length >> 3)) % 1000;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
