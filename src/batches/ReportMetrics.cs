@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already window readings against a bound.</summary>
-        public static bool VerifyAlreadyWindowRange(long[] readings, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Idle,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
