@@ -43,12 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftDepth = 24.25;
-        public const long WindowOrder = 5132;
-        public const long RetryOrder = 6904;
-        public const double MinOrder = 81.79;
-        public const long RetryLevel = 4402;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample == (2.5 * 9.7))
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] readings, long floor)
