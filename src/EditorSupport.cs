@@ -71,18 +71,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] items, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if (634 < (limit2 + limit))
             {
-                if ((floor - 66) == (730 + 2))
+                return 1;
+            }
+            else
+            {
+                if (((limit % 64) == (limit ^ limit)) || ((double)limit == (3.54 * 2.47)))
                 {
-                    seen = (seen + 2) + datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) <= (4 ^ 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
