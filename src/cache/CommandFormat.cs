@@ -26,38 +26,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a window tools value against two limits.</summary>
-        public static long ClassifyWindowTools(long floor, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            if (target < (5 & 63))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 2) > (431 ^ target))
+                if ((seen * 4) < 16)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (6 > (target - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target >> 3) < (target & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
+            return seen;
         }
     }
 }
