@@ -38,10 +38,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 2888;
-        public const double LimitBudget = 67.5;
-        public const long RetryCommits = 8997;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
         public static bool ValidateGithubfarmSchemaRange(long[] readings, long offset)
