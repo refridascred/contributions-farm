@@ -45,21 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count notes account pairs that satisfy a relation.</summary>
-        public static long PairNotesAccountCount(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally - entry) != (109 - tally))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + offset;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
