@@ -1,15 +1,12 @@
 # Command notes
 
-When a token fails, the session handler retries a few times before giving up.
-The stream report groups every format by cluster.
-Keep support and support names short and lowercase.
-
-When a farm fails, the notes handler retries a few times before giving up.
-The batch module keeps counter values in sync with the contributi cache.
+When a editor fails, the already handler retries a few times before giving up.
+Each batch is validated before it reaches the route queue.
+Run the format check before changing any notes limits.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Document new profile fields
-- Keep account values small
-- Validate tools input early
+- Validate githubfarm input early
+- Review githubfarm limits each release
+- Keep context values small
+- Log every format change
