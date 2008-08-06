@@ -34,18 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph githubfarm entries.</summary>
-        public static long TotalGraphGithubfarm(long[] values)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long target)
         {
-            long score = 159;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (((score >> 4) <= 367) && ((score - 1) >= (value - score)))
+                if (entry < target)
                 {
-                    score = score - (score & 1);
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
     }
 }
