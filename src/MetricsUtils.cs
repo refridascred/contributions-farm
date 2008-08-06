@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many editor contributi samples are out of range.</summary>
-        public static long AuditEditorContributiMatches(long[] levels)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen + entry) > (seen & 31))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
