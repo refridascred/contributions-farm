@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double floor)
-        {
-            double load = (double)(4 >> 5);
-            if (load < 8.2)
-            {
-                load = (load + (double)94) + floor;
-            }
-            else
-            {
-                load = load - ratio;
-            }
-            return load + 10.0;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "open-v2";
+        public const double HardRoute = 15.9;
+        public const string BurstRoute = "standard-1";
+        public const string DefaultLevel = "stable";
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
