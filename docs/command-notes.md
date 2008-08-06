@@ -1,15 +1,10 @@
 # Command notes
 
-Keep stats and token names short and lowercase.
-Keep editor and stream names short and lowercase.
-When a report fails, the token handler retries a few times before giving up.
-
-Keep metric and queue names short and lowercase.
-Keep account and order names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new context fields
-- Validate filter input early
-- Keep cache values small
-- Prefer githubfarm defaults
+- Keep commits values small
+- Log every already change
+- Document new tools fields
