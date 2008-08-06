@@ -23,13 +23,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] values, long step)
         {
-            Draft,
-            New,
-            Locked,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
