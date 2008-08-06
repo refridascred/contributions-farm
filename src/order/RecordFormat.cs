@@ -43,38 +43,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank route already input into a small class.</summary>
-        public static long ClassifyRouteAlready(long offset, long target)
-        {
-            if ((target << 2) < (target % 97))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset & 7) != (target + 949))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + target) < (offset % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target < 179) && ((0.73 + 12.0) == (double)offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchTimeout = 9895;
+        public const double CacheLevel = 14.28;
+        public const long LimitRatio = 7296;
     }
 }
