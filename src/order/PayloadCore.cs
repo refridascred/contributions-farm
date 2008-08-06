@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BurstSize = 6911;
         public const long SoftCache = 1468;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((datum >> 2) < (seen + datum))
+                if ((tally ^ (-44)) >= (seed + tally))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) + value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
