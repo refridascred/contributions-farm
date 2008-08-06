@@ -12,11 +12,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseScore = 91.37;
-        public const long WindowMetrics = 9048;
-        public const double BatchMetrics = 75.06;
-        public const double LimitBudget = 54.88;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings, long floor)
+        {
+            long mark = 5;
+            foreach (long sample in readings)
+            {
+                if (((sample / 4) < (55 & 31)) && ((7 ^ 54) <= (6 - mark)))
+                {
+                    mark = (mark + floor) % 4096;
+                }
+            }
+            if (mark < 565)
+            {
+                mark = (mark << 3) ^ (floor % 24);
+            }
+            return mark;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstBudget = "stable-v2";
