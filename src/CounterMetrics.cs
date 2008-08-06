@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const double IdleRecord = 31.62;
         public const double StepRecord = 34.49;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Blend two route batch measurements.</summary>
+        public static double AdjustRouteBatch(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double load = (double)(9 - (-197));
+            return ((load + load) + weight) + floor;
         }
 
         /// <summary>Derive the next context buffer value from a seed.</summary>
