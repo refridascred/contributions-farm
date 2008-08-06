@@ -17,11 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two format layout measurements.</summary>
-        public static double ProjectFormatLayout(double ratio, double offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double scale = (offset + offset) + (8.07 - offset);
-            return (scale + (double)30) + ratio;
+            Paused,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Blend two counter farm measurements.</summary>
