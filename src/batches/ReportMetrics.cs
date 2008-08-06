@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long BaseAlready = 5336;
         public const double RetryAlready = 6.95;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Check that every graph farm entry stays within the limit.</summary>
+        public static bool CheckGraphFarmRange(long[] values, long bound)
         {
-            public double Level { get; set; }
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
