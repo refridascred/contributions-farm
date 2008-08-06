@@ -1,7 +1,15 @@
 # githubfarm settings
-batch_depth_count: false
-enabled: 6304
-poll_timeout: 250
-metric_timeout: edge
-burst_threshold: 19.28
-base_limit: true
+base_threshold: 100
+commits_size:
+  - 78
+  - 277
+  - 381
+  - 211
+commits_retries:
+  farm_limit: 30
+  sync_size_pct: fallback
+  idle_depth_ms:
+    warm_retries_ms: true
+    token_retries: true
+    command_threshold: 500
+    audit: fallback
