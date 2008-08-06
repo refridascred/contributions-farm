@@ -25,19 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (origin < (origin + 18))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepSize = "alpha";
+        public const string IdleGraph = "latest-v2";
+        public const string IdleScore = "open";
+        public const string MinGraph = "latest-v2";
+        public const long CacheDepth = 4357;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
