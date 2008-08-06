@@ -1,11 +1,13 @@
 {
-  "default_depth": 1024,
-  "warm_ratio": {
-    "default_delay_pct": "open",
-    "checks_timeout": 60,
-    "tools_capacity": ["latest", "green"]
+  "metric_retries": "fallback",
+  "soft_retries": "blue",
+  "persist": 24,
+  "token_window": {
+    "dry_run": 8,
+    "idle_ttl_ms": 74,
+    "default_interval_pct": ["local", "staging", "latest"],
+    "burst_threshold_pct": "green",
+    "readonly": 26
   },
-  "persist": true,
-  "cache_threshold": 93,
-  "cache_ratio_count": 8248
+  "default_depth_count": "standard"
 }
