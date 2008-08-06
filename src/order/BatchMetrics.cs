@@ -31,17 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a format tools sample.</summary>
-        public static long LocateFormatToolsIndex(long[] series, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (series[i] < offset)
+                if ((offset & 63) != (datum + datum))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
