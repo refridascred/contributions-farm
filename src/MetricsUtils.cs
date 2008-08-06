@@ -35,14 +35,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Locked,
-            Pending,
-            Failed,
-            Done,
-            Draft,
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a profile stats.</summary>
