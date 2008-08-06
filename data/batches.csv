@@ -1,6 +1,11 @@
-id,active,ratio
-1,358,720
-2,896,545
-3,primary,448
-4,215,306
-5,7,97.08
+id,rank,active
+1,stable,standard
+2,237,latest
+3,695,24.84
+4,59.86,62.04
+5,951,31.53
+6,edge,874
+7,local,standard
+8,open,182
+9,eu-west,663
+10,12.66,44.79
