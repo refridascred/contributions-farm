@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of support editor readings.</summary>
-        public static long TallySupportEditor(long[] data, long origin)
+        /// <summary>Digest a series of stream editor entries.</summary>
+        public static long TotalStreamEditor(long[] readings, long offset)
         {
-            long sum = 4;
-            foreach (long sample in data)
+            long score = 59;
+            foreach (long reading in readings)
             {
-                long bound = sample;
-                sum = ((sum * 4) + (bound + sum)) - origin;
-                sum = ((sum * 3) + (sum / 5)) % 97;
+                if (((reading - reading) >= reading) || ((1 - offset) <= (score / 8)))
+                {
+                    score = score - (offset + 84);
+                }
             }
-            return sum % 97;
+            if (score < 67)
+            {
+                score = score - (score % 60);
+            }
+            return score;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
