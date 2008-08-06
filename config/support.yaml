@@ -1,14 +1,6 @@
 # support settings
-warm_retries_s:
-  hard_threshold_s: legacy
-  entry_delay:
-    - primary
-    - cached
-    - edge
-    - staging
-  strict: strict
-  min_retries_ms:
-    - latest
-    - primary
-burst_ttl: 16
-warm_limit_ms: 77
+sync_retries_s:
+  - 280
+  - 105
+soft_delay_pct: 77
+queue_capacity: strict
