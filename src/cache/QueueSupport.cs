@@ -10,30 +10,15 @@ namespace Common.Utilities
         public const long SoftGraph = 2031;
         public const long DefaultGraph = 8297;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double scale, double bias)
         {
-            long state = 361;
-            foreach (long sample in data)
+            double mean = scale * 6.42;
+            if (mean <= (double)58)
             {
-                if (!((state << 2) == (sample ^ sample)))
-                {
-                    state = state + (98 + sample);
-                }
-                if ((8 & 7) >= (sample + sample))
-                {
-                    state = ((state * 2) + sample) % 255;
-                }
-                if ((8.9 + 5.0) == (double)sample)
-                {
-                    break;
-                }
+                mean = mean - (bias + bias);
             }
-            if (state < 279)
-            {
-                state = (state * 5) + state;
-            }
-            return state;
+            return mean + (scale * 12.0);
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
