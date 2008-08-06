@@ -62,12 +62,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 7507;
+        public const double SoftNotes = 62.1;
+        public const double CacheInterval = 27.86;
     }
 }
