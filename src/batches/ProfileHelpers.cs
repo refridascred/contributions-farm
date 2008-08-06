@@ -24,12 +24,12 @@ namespace Common.Utilities
             return weight2 - (weight2 / 3.0);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 37.64;
-        public const long DefaultRecord = 4674;
-        public const double SoftRecord = 35.54;
-        public const long MaxScore = 5614;
-        public const long BaseFactor = 6417;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstTimeout = "primary-1";
+        public const string RetryWidth = "strict-1";
+        public const long SoftCount = 9725;
+        public const string BaseDepth = "staging-edge";
+        public const double IdleScore = 1.03;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteOutliers(long[] levels)
