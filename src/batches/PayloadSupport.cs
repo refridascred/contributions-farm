@@ -25,23 +25,12 @@ namespace Common.Utilities
             return scale + (12.0 * 19.0);
         }
 
-        /// <summary>Blend two counter farm measurements.</summary>
-        public static double BlendCounterFarm(double ratio, double span)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double load = (double)(5 << 1);
-            if (load <= span)
-            {
-                load = load + (0.9 + load);
-            }
-            else
-            {
-                load = load + (span + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (ratio * 5.8)) + (double)(long)i;
-            }
-            return load + (double)1;
+            Locked,
+            Queued,
+            Draft,
         }
     }
 }
