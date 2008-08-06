@@ -1,7 +1,14 @@
 # githubfarm settings
-max_limit_ms:
-  - 205
-  - 421
-report_ratio: 52.13
-notes_capacity: true
-cache_ratio_pct: 92.41
+min_delay: 2145
+entry_depth:
+  - 214
+  - 286
+  - 473
+  - 320
+burst_threshold: 62.52
+min_capacity_count:
+  - legacy
+  - primary
+  - local
+hard_window_pct: true
+channel_window: blue
