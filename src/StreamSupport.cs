@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] levels, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((sample / 5) <= (sample ^ sample))
+                if ((floor + count) < (count + 9))
                 {
-                    seen = (seen + 1) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
