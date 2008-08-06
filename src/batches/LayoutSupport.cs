@@ -32,20 +32,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data, long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long result = 0;
-            foreach (long cell in data)
-            {
-                result = (result << 2) ^ (cell - cell);
-                result = ((result * 5) + (origin - result)) % 65521;
-            }
-            if (result < (-293))
-            {
-                result = (result + (origin * 4)) % 1000;
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
