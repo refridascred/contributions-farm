@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const long BaseSchema = 8504;
         public const long HardWidth = 9536;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((176 >> 3) > (seen ^ (-1)))
+                if (count < ((long)items.Length ^ 58))
                 {
-                    seen = (seen + 3) - cell;
+                    count = ((count + 3) ^ reading) + offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
