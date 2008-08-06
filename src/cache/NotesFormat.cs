@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token graph samples.</summary>
-        public static long TotalTokenGraph(long[] data)
+        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmToolsRange(long[] series, long origin)
         {
-            long score = 17;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                score = (score ^ (8 - score)) - item;
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (score < 5)
-            {
-                score = score - score;
-            }
-            return score % 97;
+            return stale;
         }
 
         /// <summary>Hold a buffer entry.</summary>
