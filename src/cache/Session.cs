@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const long BaseBudget = 8219;
         public const long MaxLevel = 9805;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] values)
         {
-            long carry = 787;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 3; i++)
+                if (((double)tally <= (1.0 / 8.0)) && ((tally - cell) >= cell))
                 {
-                    carry = (carry + reading) - (long)i;
+                    tally = tally + 3;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
+                else
                 {
-                    carry = ((carry + (carry - carry)) % 97) - (long)i2;
+                    tally = tally - 1;
                 }
-                carry = carry - (27 ^ carry);
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
