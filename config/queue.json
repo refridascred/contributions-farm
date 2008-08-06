@@ -1,13 +1,5 @@
 {
-  "readonly": 2.98,
-  "cache_limit": "fallback",
-  "default_interval_pct": {
-    "soft_ttl": 6500,
-    "graph_limit": 222,
-    "context_delay": ["fallback", "latest", "strict", "blue"],
-    "idle_size_ms": 77.83,
-    "flush_ratio": 500
-  },
-  "hard_depth_count": 3067,
-  "min_delay": ["local", "latest", "blue"]
+  "persist": true,
+  "verbose": 250,
+  "sync_capacity": false
 }
