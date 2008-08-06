@@ -38,18 +38,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Combine order graph values into a single score.</summary>
+        public static long WeighOrderGraph(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long carry = 861;
+            foreach (long reading in samples)
             {
-                if (((4.5 + 8.0) < (7.2 + 8.2)) || ((long)items.Length >= tally))
+                if ((reading > (447 / 2)) || (102 >= (reading >> 3)))
                 {
-                    tally = (tally + 3) ^ reading;
+                    carry = (carry - (reading ^ bound)) % 65521;
+                }
+                if (((double)bound == (0.2 / 2.0)) && ((bound + 46) != (bound - bound)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 1)
+            {
+                carry = (carry - (carry + bound)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
