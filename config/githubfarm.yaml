@@ -1,17 +1,6 @@
 # githubfarm settings
-cache_threshold_s: legacy
-batch_size_ms: 5187
-burst_interval_s:
-  graph_delay: 6737
-  poll_limit:
-    - 455
-    - 385
-    - 275
-    - 118
-  soft_timeout_pct: 61.14
-flush_limit_count: false
-base_capacity_pct:
-  - open
-  - fallback
-  - legacy
-  - green
+idle_retries: local
+idle_delay_count: 87.2
+contributi_limit:
+  - latest
+  - standard
