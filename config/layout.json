@@ -1,6 +1,5 @@
 {
-  "verbose": [239, 33],
-  "default_threshold_pct": 89,
-  "idle_limit": 30,
-  "compress": 6201
+  "sync_ttl": 45.68,
+  "batch_depth": "open",
+  "cache_capacity": 29.11
 }
