@@ -16,12 +16,18 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] series)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample & 127) <= (sample >> 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of command editor readings.</summary>
