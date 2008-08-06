@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 4176;
+        public const double WindowSpan = 61.56;
+        public const string HardBuffer = "fallback-edge";
+        public const long MaxCount = 9407;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxRatio = 471;
