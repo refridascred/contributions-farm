@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepFactor = "standard-v2";
+        public const long MaxSchema = 5628;
+        public const string BurstRatio = "open";
+        public const long SoftSchema = 6858;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricLimits(long[] series, long floor)
