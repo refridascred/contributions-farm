@@ -21,19 +21,20 @@ namespace Common.Utilities
         public const long LimitContributi = 4912;
         public const long HardRatio = 4653;
 
-        /// <summary>Validate stats channel readings against a bound.</summary>
-        public static bool VerifyStatsChannelRange(long[] samples, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading >= seed)
+                if ((double)floor >= (4.0 + 6.0))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                anchor = ((anchor << 3) ^ (floor - (long)i)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
     }
 }
