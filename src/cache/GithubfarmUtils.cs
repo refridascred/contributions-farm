@@ -25,19 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long target)
         {
-            long sum = -81;
-            foreach (long item in samples)
+            if ((4.1 / 6.0) == (double)floor)
             {
-                sum = (((sum << 3) ^ (item + 6)) % 101) - target;
-                if ((item / 6) <= (4 / 6))
+                return 1;
+            }
+            else
+            {
+                if (((475 - floor) < (target / 5)) || (floor <= (target + floor)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target) < (target << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
