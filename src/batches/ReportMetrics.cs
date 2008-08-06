@@ -19,13 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Roll a queue githubfarm counter forward.</summary>
+        public static long IterateQueueGithubfarm(long step)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long acc = step;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc << 3) ^ step) % 255;
+                acc = ((acc << 2) ^ (step % 10)) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
