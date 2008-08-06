@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] readings, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((reading + target) != (count + reading))
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
