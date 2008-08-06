@@ -1,14 +1,7 @@
 {
-  "soft_interval": 77,
-  "enabled": {
-    "persist": false,
-    "poll_interval_s": 14,
-    "buffer_window": 82.94,
-    "batch_ratio_s": 21,
-    "sync_size": "legacy"
-  },
-  "retry_delay": ["open", "standard", "local"],
-  "flush_depth": "green",
-  "verbose": 100,
-  "strict": 41.8
+  "tools_interval": [197, 430],
+  "flush_window_ms": true,
+  "schema_ratio": 250,
+  "compress": "stable",
+  "audit": 4598
 }
