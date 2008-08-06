@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a record checks sample.</summary>
-        public static long LookupRecordChecksIndex(long[] readings, long origin)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (gain / 6.0) - gain;
+            return scale - span;
         }
 
         /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
