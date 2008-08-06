@@ -41,12 +41,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Look up the position of a layout session sample.</summary>
+        public static long LocateLayoutSessionIndex(long[] items, long origin)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a stream reading.</summary>
