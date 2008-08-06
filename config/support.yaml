@@ -1,6 +1,9 @@
 # support settings
-cache_size_ms: 82
-readonly: latest
-compress: 66
-cache_depth_ms: strict
-default_limit_pct: 38.86
+max_interval_ms: legacy
+hard_retries_ms: true
+burst_ratio_ms: fallback
+dry_run: legacy
+retry_depth:
+  - 218
+  - 314
+  - 333
