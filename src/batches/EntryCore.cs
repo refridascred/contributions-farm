@@ -35,18 +35,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] values)
+        /// <summary>Classify a format session pair into a bucket.</summary>
+        public static long SortFormatSession(long origin, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if (origin < (origin * 4))
             {
-                if (!((sample + sample) < (sample ^ count)))
+                return 2;
+            }
+            else
+            {
+                if (origin <= (origin << 1))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset >= 5.69)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5.25 * 0.9) >= (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two metric filter measurements.</summary>
