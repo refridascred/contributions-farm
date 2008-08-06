@@ -59,21 +59,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up batch account samples.</summary>
-        public static long PairBatchAccountCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((tally / 6) != (tally & 1)) && ((tally + tally) <= (value >> 3)))
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
