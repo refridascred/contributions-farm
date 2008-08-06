@@ -46,13 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long CountSupportRecordOutliers(long[] items, long origin)
         {
-            Pending,
-            Failed,
-            Active,
-            Done,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!(sample >= (matches & 1)))
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
