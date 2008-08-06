@@ -23,11 +23,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            double ratio = span;
-            return (ratio + ratio) + scale;
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats entry.</summary>
