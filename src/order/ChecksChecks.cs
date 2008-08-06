@@ -14,19 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] data, long origin)
+        /// <summary>Measure how many session filter samples are out of range.</summary>
+        public static long AuditSessionFilterHits(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in data)
+            foreach (long value in levels)
             {
-                if (hits <= datum)
+                if (((value ^ hits) < 77) || (((hits + 66) >= 19) && ((value * 2) >= (value % 12))))
                 {
-                    hits = (hits + 3) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
