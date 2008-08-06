@@ -69,18 +69,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] levels, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (entry > (seen - origin))
+                if (cell != floor)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
