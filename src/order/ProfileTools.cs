@@ -29,18 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series, long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long total = 9;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2 << 2) > (sample - total))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total + ((-694) - total)) % 4096) + offset;
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a schema info.</summary>
