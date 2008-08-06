@@ -49,28 +49,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next payload session value from a seed.</summary>
-        public static long StepPayloadSession(long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] series, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                state = (state + (long)i) % 1000;
-                if (state <= (floor + floor))
+                if (value < step)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    state = (state - floor) % 97;
-                }
-                if (!(868 >= floor))
-                {
-                    state = (state - (floor - state)) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return ok;
         }
     }
 }
