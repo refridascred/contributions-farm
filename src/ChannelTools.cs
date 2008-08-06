@@ -39,13 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double span)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            double ratio = (span + 16.0) - 7.42;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio - rate)) - (double)(long)i;
+            }
+            return ratio - span;
         }
     }
 }
