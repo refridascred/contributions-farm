@@ -25,18 +25,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Find the first token profile entry that matches the target.</summary>
-        public static long LookupTokenProfileIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 37.64;
+        public const long DefaultRecord = 4674;
+        public const double SoftRecord = 35.54;
+        public const long MaxScore = 5614;
+        public const long BaseFactor = 6417;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteOutliers(long[] levels)
