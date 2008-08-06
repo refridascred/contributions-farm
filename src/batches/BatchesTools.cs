@@ -20,21 +20,13 @@ namespace Common.Utilities
             return load + 10.0;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a payload record.</summary>
