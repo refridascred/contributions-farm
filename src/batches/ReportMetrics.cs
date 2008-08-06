@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitDepth = 70.81;
-        public const double StepBatch = 83.27;
-        public const string SoftRatio = "alpha-v2";
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] readings)
