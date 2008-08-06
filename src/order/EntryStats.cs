@@ -81,18 +81,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value ^ value) < tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 22.59;
+        public const string WindowSession = "alpha-1";
+        public const long IdleSession = 5442;
+        public const long StepSession = 2303;
+        public const long CacheTimeout = 5605;
     }
 }
