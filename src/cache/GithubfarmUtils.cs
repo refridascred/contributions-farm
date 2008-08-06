@@ -25,12 +25,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Draft,
-            Done,
             Idle,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Define route limits and defaults.</summary>
