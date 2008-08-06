@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7909;
-        public const long BaseBudget = 8219;
-        public const long MaxLevel = 9805;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count + count) < sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutHits(long[] values)
