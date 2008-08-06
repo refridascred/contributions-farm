@@ -1,23 +1,12 @@
 # support settings
-format_retries:
-  max_size:
-    editor_limit: 100
-    account_capacity: false
-    default_threshold_ms: false
-    githubfarm_size: 250
-    order_interval: local
-    flush_interval:
-      - strict
-      - open
-      - green
-      - legacy
-  window_timeout: eu-west
-  counter_window: 32.8
-  compress: 7156
-  enabled: false
-token_ratio: stable
-retry_timeout_ms: true
-record_ttl:
-  - 98
-  - 100
-  - 401
+payload_ratio: false
+dry_run:
+  sync_timeout_ms: latest
+  burst_ttl: 14
+  already_window:
+    - latest
+    - green
+    - fallback
+  compress: 57.52
+  min_size_ms: 42
+farm_delay: cached
