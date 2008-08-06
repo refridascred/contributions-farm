@@ -84,10 +84,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 5800;
-        public const long SoftSpan = 6102;
-        public const double DefaultLevel = 12.43;
-        public const long LimitRatio = 9672;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (entry > (seen - origin))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
