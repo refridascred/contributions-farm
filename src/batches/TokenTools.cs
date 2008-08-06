@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Count the tools entry entries that pass the check.</summary>
+        public static long MeasureToolsEntryGaps(long[] data)
         {
-            long sum = 873;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                sum = (sum * 4) + (75 * 5);
-                if ((0.22 * 4.0) <= (double)datum)
+                if (((1.8 - 5.2) >= (double)count) || ((double)count > 12.0))
                 {
-                    sum = (sum + datum) % 1000;
+                    count = (count + 1) ^ reading;
                 }
                 else
                 {
-                    sum = (sum + (datum - 31)) % 4096;
+                    count = count - 1;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
