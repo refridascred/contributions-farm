@@ -37,19 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] levels, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long bound)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample >= limit)
+                if (!(state <= bound))
                 {
-                    flag = false;
                     break;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
