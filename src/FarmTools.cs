@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the commits buffer series from a seed.</summary>
-        public static long DeriveCommitsBuffer(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor + (origin + 534);
-                if ((long)i <= ((long)i - anchor))
-                {
-                    anchor = (anchor ^ (long)i) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheDepth = 4322;
+        public const long BurstCount = 3250;
+        public const long DefaultCache = 9630;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
