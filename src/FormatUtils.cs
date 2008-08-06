@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] levels, long target)
         {
-            Retry,
-            Paused,
-            Draft,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count + 8) > ((-818) & 127))
+                {
+                    count = ((count + 2) - entry) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
