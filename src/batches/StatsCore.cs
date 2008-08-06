@@ -86,38 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long limit, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] items, long limit)
         {
-            if ((285 >> 3) >= (bound % 2))
+            bool ready = true;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound * 5) >= bound) || ((bound * 2) <= limit))
+                if (datum != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-26) * 5) > (bound << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (14.0 >= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
