@@ -36,39 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long floor)
-        {
-            long prev = seed + floor;
-            if ((floor >> 2) >= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)prev <= (0.39 - 19.0)) || ((seed - prev) > floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor >= (2.4 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (8.0 / 8.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowInterval = 83.3;
+        public const string SoftRatio = "staging-edge";
+        public const long SoftStats = 3256;
+        public const long WindowTimeout = 6426;
     }
 }
