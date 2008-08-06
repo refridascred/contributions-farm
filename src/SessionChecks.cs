@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] readings, long limit)
+        /// <summary>Accumulate contributi profile samples.</summary>
+        public static long FoldContributiProfile(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 4;
+            foreach (long cell in values)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                if ((7.8 + 14.0) > (double)origin)
                 {
-                    return (long)i;
+                    state = state - (state << 1);
+                }
+                else
+                {
+                    state = state + (cell & 31);
                 }
             }
-            return -1;
+            if (state > 5)
+            {
+                state = state ^ (state % 2);
+            }
+            return state;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
