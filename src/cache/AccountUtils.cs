@@ -34,31 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long floor, long limit)
-        {
-            if ((limit - 5) <= 97)
-            {
-                return 5;
-            }
-            else
-            {
-                if (12.0 >= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor < (1.0 + 7.0)) || (floor >= (limit ^ limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 5286;
+        public const string WindowRatio = "cached-v2";
+        public const double DefaultOrder = 41.01;
+        public const long CacheCount = 69;
     }
 }
