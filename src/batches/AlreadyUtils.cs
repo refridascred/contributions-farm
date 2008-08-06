@@ -76,19 +76,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every record farm entry stays within the limit.</summary>
-        public static bool CheckRecordFarmRange(long[] items, long seed)
+        /// <summary>Adjust a farm payload reading.</summary>
+        public static double ScaleFarmPayload(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double gain = 3.71 / 8.0;
+            if (gain >= span)
             {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain + (double)95) + ratio;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - span;
         }
     }
 }
