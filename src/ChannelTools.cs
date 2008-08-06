@@ -24,11 +24,13 @@ namespace Common.Utilities
             return drift + (double)839;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "latest-edge";
-        public const double CacheLevel = 41.08;
-        public const double MaxGithubfarm = 75.87;
-        public const long HardGithubfarm = 2734;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
