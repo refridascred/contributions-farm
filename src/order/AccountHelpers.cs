@@ -34,15 +34,12 @@ namespace Common.Utilities
             return scale - (scale / 7.0);
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long anchor = 9;
-            foreach (long item in items)
-            {
-                anchor = (anchor ^ item) % 101;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a batches queue counter forward.</summary>
