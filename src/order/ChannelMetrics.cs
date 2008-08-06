@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Pending,
-            Done,
-            Closed,
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
