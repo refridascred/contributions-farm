@@ -45,13 +45,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long acc = 19;
+            foreach (long entry in series)
+            {
+                if (885 <= (entry << 3))
+                {
+                    acc = (acc + (87 / 7)) % 101;
+                }
+                if ((acc + 37) != (acc ^ 743))
+                {
+                    acc = acc ^ (entry * 5);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
