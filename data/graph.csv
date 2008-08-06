@@ -1,8 +1,9 @@
-id,token,level
-1,19.14,84.95
-2,fallback,local
-3,62.88,80.63
-4,65.94,primary
-5,strict,431
-6,24.61,58.44
-7,63.63,360
+id,state,owner,region,weight
+1,1.39,98.9,green,56.52
+2,64.63,216,98.1,32.87
+3,440,legacy,234,41.62
+4,44.16,58.24,latest,legacy
+5,629,stable,open,primary
+6,cached,370,standard,staging
+7,35.47,612,strict,273
+8,10.44,559,91.95,72.31
