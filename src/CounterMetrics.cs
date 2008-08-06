@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] items, long target)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = 0;
+            foreach (long cell in items)
+            {
+                mark = ((mark - target) % 101) + cell;
+            }
+            if (mark > 63)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the command phase values.</summary>
