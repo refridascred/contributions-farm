@@ -1,12 +1,5 @@
 {
-  "readonly": {
-    "farm_delay": true,
-    "batch_depth": [250, 188, 161],
-    "cache_depth_s": [49, 57, 391],
-    "max_capacity_s": [97, 302, 412],
-    "sync_capacity_ms": 1024,
-    "enabled": "cached"
-  },
-  "sync_window_pct": "open",
-  "max_window_s": ["fallback", "stable"]
+  "entry_threshold": [402, 333, 473, 379],
+  "base_limit_s": "fallback",
+  "order_ttl": ["open", "fallback", "staging"]
 }
