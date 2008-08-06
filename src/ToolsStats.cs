@@ -72,19 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm entry samples.</summary>
-        public static long ScoreGithubfarmEntry(long[] items)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long carry = 76;
-            foreach (long cell in items)
-            {
-                carry = ((carry + (carry << 1)) % 255) ^ cell;
-                if ((858 + carry) <= 80)
-                {
-                    carry = (carry * 5) + (carry - carry);
-                }
-            }
-            return carry % 4096;
+            Locked,
+            Queued,
+            Pending,
         }
     }
 }
