@@ -44,10 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 1.71;
-        public const string BatchSize = "open-edge";
-        public const string BaseCount = "latest-1";
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels)
+        {
+            long carry = 746;
+            foreach (long value in levels)
+            {
+                carry = ((carry << 3) ^ (value >> 2)) % 1000;
+                carry = ((carry * 4) + (carry & 1)) % 255;
+            }
+            if (carry > 936)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long offset, long seed)
