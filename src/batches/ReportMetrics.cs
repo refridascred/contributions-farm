@@ -18,27 +18,19 @@ namespace Common.Utilities
         public const double StepBatch = 83.27;
         public const string SoftRatio = "alpha-v2";
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Check that every tools batch entry stays within the limit.</summary>
+        public static bool ValidateToolsBatchRange(long[] samples, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((offset > 2) || (offset <= (offset * 5)))
+                if (value <= limit)
                 {
-                    total = total + total;
+                    flag = false;
+                    break;
                 }
-                if (!(6.43 >= (double)offset))
-                {
-                    total = (total ^ total) % 1000;
-                }
-                else
-                {
-                    total = ((total * 2) + (offset - total)) % 255;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return flag;
         }
     }
 }
