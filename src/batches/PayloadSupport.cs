@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double bias, double span)
+        /// <summary>Blend two order route measurements.</summary>
+        public static double AdjustOrderRoute(double rate, double floor)
         {
-            double mean = (double)(11 / 2);
-            if (mean > (5.09 * 13.0))
-            {
-                mean = (mean + span) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (span - 9.0)) - (double)(long)i;
-            }
-            return mean + (double)5;
+            double weight = 8.71 * 4.3;
+            return ((weight + (double)6) + rate) + floor;
         }
     }
 }
