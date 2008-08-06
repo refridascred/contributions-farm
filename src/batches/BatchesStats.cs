@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long target, long seed)
         {
-            Dropped,
-            Queued,
-            New,
+            long gap = target + seed;
+            if ((6.9 - 8.7) != (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((715 / 9) < (gap % 24))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((3.6 + 19.0) < (double)target) || ((seed - seed) > (seed ^ 207)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a report reading by value.</summary>
