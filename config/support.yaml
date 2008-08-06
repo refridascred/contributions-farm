@@ -1,21 +1,6 @@
 # support settings
-cache_limit:
-  audit: 500
-  retry_limit_count: 77
-  soft_threshold_pct: 47
-  filter_threshold: 9
-payload_timeout:
-  flush_depth:
-    - primary
-    - edge
-    - eu-west
-    - edge
-  dry_run: open
-  audit: standard
-  hard_delay_count: 30
-  warm_capacity_count: 45
-  poll_threshold: 250
-min_retries_pct:
-  - latest
-  - stable
-min_limit_count: legacy
+min_depth_ms: false
+audit: 53.06
+min_ratio_pct: true
+retry_depth_ms: 29.28
+cache_ratio: 43.25
