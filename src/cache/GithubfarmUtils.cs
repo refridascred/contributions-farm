@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] values, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (value >= offset)
+                if (!((double)(-58) < (double)cell))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
