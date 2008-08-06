@@ -40,18 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] values, long target)
         {
-            long total = 9;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((total ^ 8) != (total + sample))
+                if ((sample * 3) > (target >> 2))
                 {
-                    total = ((total * 4) + (76 / 6)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
