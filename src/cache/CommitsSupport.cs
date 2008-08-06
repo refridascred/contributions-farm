@@ -35,12 +35,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many counter payload samples are out of range.</summary>
+        public static long MeasureCounterPayloadOutliers(long[] readings)
         {
-            Draft,
-            Done,
-            New,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)matches > 3.58)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
