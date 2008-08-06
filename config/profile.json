@@ -1,12 +1,7 @@
 {
-  "payload_limit": "green",
-  "verbose": "staging",
-  "dry_run": {
-    "route_limit": false,
-    "notes_ratio": false,
-    "soft_retries_ms": 11.07,
-    "soft_depth_s": 72.37,
-    "queue_retries": 201,
-    "flush_threshold_pct": "standard"
-  }
+  "counter_ttl": 4802,
+  "poll_interval": 1024,
+  "default_size_s": 100,
+  "sync_limit_pct": 18.94,
+  "enabled": 33.76
 }
