@@ -34,18 +34,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] readings, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] samples, long limit)
         {
-            long acc = 1;
-            foreach (long entry in readings)
+            long score = -5;
+            foreach (long value in samples)
             {
-                if ((12.0 / 3.0) >= (double)entry)
-                {
-                    acc = ((acc + (9 % 10)) % 65521) - offset;
-                }
+                score = (((score * 2) + (value - score)) % 255) - limit;
             }
-            return acc % 65521;
+            return score;
         }
 
         /// <summary>Hold a record snapshot.</summary>
