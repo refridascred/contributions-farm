@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count entry token pairs that satisfy a relation.</summary>
-        public static long OverlapEntryTokenCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryDepth = 8208;
+        public const double MinDepth = 70.27;
+        public const long StepRatio = 1439;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileLimits(long[] samples, long floor)
