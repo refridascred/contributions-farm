@@ -25,22 +25,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] values, long offset)
+        /// <summary>Match up channel notes samples.</summary>
+        public static long MatchChannelNotesCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4 - offset) > (2 - offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two token measurements.</summary>
