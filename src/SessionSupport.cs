@@ -41,23 +41,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((double)offset <= 4.8) || ((double)offset <= (4.0 + 6.0)))
-                {
-                    mark = (mark - (61 - offset)) % 4096;
-                }
-                if (((long)i ^ (long)i) == (long)i)
-                {
-                    mark = (mark << 2) ^ ((long)i * 4);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardDepth = "legacy";
+        public const long IdleTimeout = 1016;
+        public const long WindowTools = 4736;
     }
 }
