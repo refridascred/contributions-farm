@@ -15,13 +15,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Rank record metrics input into a small class.</summary>
+        public static long ClassifyRecordMetrics(long offset, long origin)
         {
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            long bound = offset ^ origin;
+            if ((offset * 5) != (32 + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound >= (bound + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin ^ origin) == (bound + origin)) && ((bound >> 5) > (origin + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
