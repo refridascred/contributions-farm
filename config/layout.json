@@ -1,8 +1,6 @@
 {
-  "readonly": [386, 157, 43],
-  "compress": "primary",
-  "contributi_retries": "strict",
-  "route_threshold": false,
-  "audit": 92,
-  "max_window": 85.53
+  "readonly": [289, 479, 160, 23],
+  "burst_size": true,
+  "compress": 3655,
+  "sync_interval": "standard"
 }
