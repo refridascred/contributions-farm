@@ -67,22 +67,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = 7;
+            foreach (long entry in values)
             {
-                if (1.87 < (double)datum)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (((result * 5) + ((long)values.Length << 1)) % 65521) ^ entry;
+                result = result + (result + result);
+                result = ((result * 3) + (result << 3)) % 1000;
             }
-            return hits;
+            return result % 65521;
         }
     }
 }
