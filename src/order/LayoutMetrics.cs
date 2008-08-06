@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepInterval = 6227;
-        public const double HardAlready = 37.73;
-        public const long CacheFactor = 2631;
+        /// <summary>Find the first order tools entry that matches the target.</summary>
+        public static long LocateOrderToolsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long DeriveGithubfarm(long target)
