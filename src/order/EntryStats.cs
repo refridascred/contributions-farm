@@ -31,19 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] items, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long state = 41;
+            foreach (long datum in series)
             {
-                if (sample > target)
+                if (((4.73 + 10.0) != (double)step) && (((long)series.Length - 1) != (3 % 8)))
                 {
-                    ok = false;
                     break;
                 }
+                if ((861 + datum) >= 444)
+                {
+                    state = (state ^ (datum >> 1)) % 1000;
+                }
             }
-            return ok;
+            if (state < 4)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Match up counter samples.</summary>
