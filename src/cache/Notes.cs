@@ -33,18 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings, long origin)
+        /// <summary>Count the notes batch entries that pass the check.</summary>
+        public static long TallyNotesBatchMatches(long[] data)
         {
-            long score = 31;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((double)score <= (5.63 / 5.0))
+                if ((count + value) >= value)
                 {
-                    score = (((score ^ (score >> 3)) % 65521) + sample) - origin;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
