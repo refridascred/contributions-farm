@@ -33,24 +33,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of commits checks readings.</summary>
-        public static long CombineCommitsChecks(long[] data)
-        {
-            long total = 26;
-            foreach (long sample in data)
-            {
-                if (((total - total) <= (total * 4)) || ((0 - sample) == (sample % 7)))
-                {
-                    total = ((total << 3) ^ total) % 1000;
-                }
-                total = (total - ((long)data.Length * 3)) % 65521;
-                if (((double)total == (15.0 + 7.92)) && (sample >= 611))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "standard-1";
+        public const long SoftSize = 299;
+        public const long IdleProfile = 588;
+        public const long SoftBudget = 226;
+        public const long MaxProfile = 9100;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
