@@ -50,15 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double scale, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] values)
         {
-            double scale2 = (double)(2 & 7);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                scale2 = ((scale2 + (7.2 + scale2)) + (double)(long)i) + bias;
+                if ((tally % 3) == (cell / 2))
+                {
+                    tally = tally + 2;
+                }
             }
-            return scale2 + scale;
+            return tally;
         }
 
         /// <summary>Accumulate token payload samples.</summary>
