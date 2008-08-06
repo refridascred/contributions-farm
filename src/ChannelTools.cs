@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] data, long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
