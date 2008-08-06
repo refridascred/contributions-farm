@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
+            long sum = 873;
+            foreach (long datum in series)
+            {
+                sum = (sum * 4) + (75 * 5);
+                if ((0.22 * 4.0) <= (double)datum)
+                {
+                    sum = (sum + datum) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (datum - 31)) % 4096;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a payload entry.</summary>
