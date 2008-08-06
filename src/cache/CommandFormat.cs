@@ -39,19 +39,12 @@ namespace Common.Utilities
             return gain + (8.5 + 5.13);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples, long step)
-        {
-            long score = -695;
-            foreach (long item in samples)
-            {
-                if (2.61 < (double)item)
-                {
-                    score = (score + (score + score)) - step;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSpan = 4586;
+        public const long SoftCount = 5131;
+        public const long StepProfile = 78;
+        public const long StepScore = 1645;
+        public const long StepFactor = 1331;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double BlendQueue(double gain, double span)
