@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a cache metric figure with a bias.</summary>
-        public static double BlendCacheMetric(double scale, double offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels, long limit)
         {
-            double ratio = (double)(66 + 5);
-            if (ratio > (double)837)
+            long anchor = -444;
+            foreach (long cell in levels)
             {
-                ratio = ((ratio - (9.14 / 3.0)) + scale) - offset;
+                anchor = (anchor * 4) + cell;
+                if (!!(anchor < (limit + limit)))
+                {
+                    anchor = anchor ^ (cell >> 3);
+                }
+                if ((689 + anchor) != (2 >> 2))
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (limit + 16)) % 97;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (anchor > 506)
             {
-                ratio = (ratio + (7.57 + ratio)) + (double)(long)i;
+                anchor = anchor ^ limit;
             }
-            return ratio + 2.44;
+            return anchor;
         }
 
         /// <summary>Hold a token summary.</summary>
