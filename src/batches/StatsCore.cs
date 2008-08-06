@@ -34,18 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many record commits samples are out of range.</summary>
-        public static long MeasureRecordCommitsOutliers(long[] values)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) <= (datum + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
