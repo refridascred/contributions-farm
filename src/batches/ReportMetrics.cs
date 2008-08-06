@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long BaseAlready = 5336;
         public const double RetryAlready = 6.95;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long step, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values, long seed)
         {
-            if (seed < (step / 3))
+            long total = 9;
+            foreach (long item in values)
             {
-                return 0;
+                total = (((total ^ (total - 9)) % 4096) ^ item) + seed;
             }
-            else
+            if (total > 83)
             {
-                if (seed < 6)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                total = total ^ (489 / 4);
             }
+            return total;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
