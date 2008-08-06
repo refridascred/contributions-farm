@@ -88,18 +88,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session contributi entries that pass the check.</summary>
-        public static long MeasureSessionContributiHits(long[] series)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((69 % 100) != (count * 3))
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
