@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Check that every schema checks entry stays within the limit.</summary>
+        public static bool ValidateSchemaChecksBounds(long[] items, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
