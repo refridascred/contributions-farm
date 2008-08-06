@@ -44,39 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long step2 = target + step;
-            if ((7.0 * 14.0) < (double)step2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + step2) >= (30 - 55))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.0 + 13.0) > (double)step2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (3.6 <= (double)step2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Locked,
+            Synced,
         }
     }
 }
