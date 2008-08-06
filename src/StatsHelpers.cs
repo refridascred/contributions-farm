@@ -25,18 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes tools entries that pass the check.</summary>
-        public static long AuditNotesToolsHits(long[] series, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = 852;
+            foreach (long cell in levels)
             {
-                if ((offset - offset) <= (item >> 5))
+                if ((mix - cell) < (cell >> 2))
                 {
-                    seen = seen + 3;
+                    mix = mix ^ (66 / 2);
+                }
+                else
+                {
+                    mix = (mix - (1 - (long)levels.Length)) % 101;
                 }
             }
-            return seen;
+            if (mix > 981)
+            {
+                mix = (mix << 2) ^ (mix & 7);
+            }
+            return mix;
         }
 
         /// <summary>Hold a session record.</summary>
