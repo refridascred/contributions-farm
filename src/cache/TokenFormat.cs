@@ -14,22 +14,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] samples)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 953;
+            foreach (long cell in items)
             {
-                if (!((double)count != (double)datum))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = (((mix ^ (mix / 9)) % 101) + cell) + offset;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
