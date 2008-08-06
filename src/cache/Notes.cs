@@ -63,22 +63,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a notes support counter forward.</summary>
-        public static long SeriesNotesSupport(long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long score = 31;
+            foreach (long sample in readings)
             {
-                score = (score ^ ((long)i + (-9))) % 255;
-                score = ((score * 5) + (30 - 41)) % 101;
-                if ((double)score <= (10.0 / 8.0))
+                if ((double)score <= (5.63 / 5.0))
                 {
-                    score = ((score * 4) + ((long)i << 3)) % 97;
-                    continue;
+                    score = (((score ^ (score >> 3)) % 65521) + sample) - origin;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
