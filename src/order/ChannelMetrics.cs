@@ -25,18 +25,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] data, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!((73 - floor) != (floor << 3)) || (hits >= ((long)data.Length + value)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
