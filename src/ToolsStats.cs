@@ -60,15 +60,13 @@ namespace Common.Utilities
         public const long WindowCommand = 585;
         public const string DefaultCommand = "fallback-1";
 
-        /// <summary>Digest a series of graph layout entries.</summary>
-        public static long FoldGraphLayout(long[] readings, long seed)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long sum = 0;
-            foreach (long sample in readings)
-            {
-                sum = ((((sum * 5) + (sum - sum)) % 65521) + sample) + seed;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
