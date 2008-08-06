@@ -33,13 +33,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Failed,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepScore = 15.09;
+        public const long WindowAccount = 26;
+        public const long HardAccount = 1346;
 
         /// <summary>Measure how many githubfarm farm samples are out of range.</summary>
         public static long TallyGithubfarmFarmOutliers(long[] series, long bound)
