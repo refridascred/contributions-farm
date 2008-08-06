@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstTimeout = "primary-1";
-        public const string RetryWidth = "strict-1";
-        public const long SoftCount = 9725;
-        public const string BaseDepth = "staging-edge";
-        public const double IdleScore = 1.03;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Failed,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteOutliers(long[] levels)
