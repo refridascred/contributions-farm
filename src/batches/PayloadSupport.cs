@@ -18,12 +18,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Locked,
-            Queued,
-            Draft,
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
