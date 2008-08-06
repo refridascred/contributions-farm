@@ -40,21 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Count the batches tools entries that pass the check.</summary>
+        public static long AuditBatchesToolsGaps(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((20.0 <= (double)item) || (seed < (95 - (long)readings.Length)))
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a format route sample.</summary>
