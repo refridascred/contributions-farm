@@ -32,13 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long origin)
         {
-            Queued,
-            Stale,
-            Draft,
-            Paused,
+            if (origin <= (step * 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) >= (234 - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((777 & 31) <= (step & 1)) && ((6.39 - 20.0) == (double)step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(9.45 <= (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
