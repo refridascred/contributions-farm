@@ -1,11 +1,11 @@
 # Command notes
 
-Keep record and metric names short and lowercase.
-The profile report groups every session by payload.
+Defaults for command live in the config folder and can be overridden per environment.
+Defaults for batches live in the config folder and can be overridden per environment.
+The checks module keeps profile values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review filter limits each release
-- Document new channel fields
-- Keep cache values small
-- Prefer farm defaults
+- Keep entry values small
+- Document new profile fields
+- Log every context change
