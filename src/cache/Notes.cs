@@ -53,32 +53,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long seed)
+        /// <summary>Roll a notes support counter forward.</summary>
+        public static long SeriesNotesSupport(long step)
         {
-            long span = offset + seed;
-            if ((568 >> 2) <= offset)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((span & 1) <= (seed * 3)) && ((offset + 68) > (-31)))
+                score = (score ^ ((long)i + (-9))) % 255;
+                score = ((score * 5) + (30 - 41)) % 101;
+                if ((double)score <= (10.0 / 8.0))
                 {
-                    return 0;
+                    score = ((score * 4) + ((long)i << 3)) % 97;
+                    continue;
                 }
-                else
-                {
-                    if (offset >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Describe the account state values.</summary>
