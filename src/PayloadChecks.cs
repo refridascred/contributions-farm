@@ -56,20 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (score + ((long)i2 / 8)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 43.75;
+        public const double SoftFormat = 36.06;
+        public const long MinFormat = 920;
+        public const long SoftLevel = 7620;
+        public const long WindowFormat = 5199;
 
         /// <summary>Derive the next payload session value from a seed.</summary>
         public static long StepPayloadSession(long floor)
