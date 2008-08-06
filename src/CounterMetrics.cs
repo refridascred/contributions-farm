@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const double IdleRecord = 31.62;
         public const double StepRecord = 34.49;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Derive the next context buffer value from a seed.</summary>
