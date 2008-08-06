@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (((count >> 1) == (long)series.Length) && ((datum + count) <= 8))
+                if (((18.0 + 8.53) >= (double)anchor) && (anchor >= (4 % 12)))
                 {
-                    count = count + 2;
+                    continue;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
