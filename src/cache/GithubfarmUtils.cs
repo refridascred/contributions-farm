@@ -25,13 +25,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate githubfarm farm samples.</summary>
+        public static long CombineGithubfarmFarm(long[] values)
         {
-            Idle,
-            Done,
-            Active,
-            Retry,
+            long anchor = 931;
+            foreach (long cell in values)
+            {
+                if ((8.2 / 5.0) == (double)anchor)
+                {
+                    anchor = ((anchor ^ (anchor >> 5)) % 255) - cell;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 4)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
