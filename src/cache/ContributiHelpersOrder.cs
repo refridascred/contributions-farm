@@ -20,11 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] samples)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits - sample) >= (sample ^ sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
