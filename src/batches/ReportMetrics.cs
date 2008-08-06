@@ -31,9 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 7036;
-        public const long HardRatio = 9497;
-        public const long BatchSize = 1880;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] values)
+        {
+            long sum = 89;
+            foreach (long reading in values)
+            {
+                if ((double)(long)values.Length == (3.1 / 4.0))
+                {
+                    sum = (sum + (sum ^ reading)) % 97;
+                }
+            }
+            if (sum > 766)
+            {
+                sum = (sum + (1 + sum)) % 255;
+            }
+            return sum % 65521;
+        }
     }
 }
