@@ -19,10 +19,22 @@ namespace Common.Utilities
         public const long SoftStats = 8198;
         public const double DefaultStats = 57.8;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseSpan = "legacy";
-        public const long HardWidth = 8412;
-        public const long BaseMetric = 37;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryHits(long[] series)
