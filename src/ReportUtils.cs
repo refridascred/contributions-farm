@@ -43,24 +43,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] values, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            long acc = 98;
-            foreach (long cell in values)
+            double mean = (double)(61 + 66);
+            if (mean <= mean)
             {
-                acc = acc - (acc + step);
-                acc = (acc - cell) % 65521;
-                if (acc >= (-3))
-                {
-                    acc = acc ^ cell;
-                }
-                if (((cell & 127) != (step - step)) || ((cell + step) < (61 + (-719))))
-                {
-                    break;
-                }
+                mean = ((mean + (mean + 9.0)) - bias) - offset;
             }
-            return acc;
+            else
+            {
+                mean = mean - (mean / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (double)3) + (double)(long)i;
+            }
+            return mean - (7.6 / 5.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
