@@ -68,11 +68,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheInterval = 2140;
-        public const long BurstScore = 6901;
-        public const long RetryFactor = 9966;
-        public const long BurstWidth = 2179;
-        public const long RetryStats = 4270;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples)
+        {
+            long mark = 1;
+            foreach (long datum in samples)
+            {
+                if ((mark / 9) >= datum)
+                {
+                    mark = mark - (71 + datum);
+                }
+                else
+                {
+                    mark = mark ^ (datum - datum);
+                }
+                if (((double)datum > (5.4 / 7.0)) && ((817 + mark) >= 9))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
