@@ -38,9 +38,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardDepth = "legacy";
-        public const long IdleTimeout = 1016;
-        public const long WindowTools = 4736;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultScore = 48.44;
+        public const long MinContributi = 3855;
+        public const double MaxContributi = 16.64;
+        public const double LimitContributi = 79.77;
     }
 }
