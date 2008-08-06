@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Idle,
-            Draft,
-            Active,
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the channel batch entries that pass the check.</summary>
