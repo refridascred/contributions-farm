@@ -2,8 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
-    label TEXT,
-    created_at TIMESTAMP
+    ratio REAL,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
+
+INSERT INTO stats_logs (rank, ratio, region) VALUES (51, 85.22, 'staging');
+INSERT INTO stats_logs (rank, ratio, region) VALUES (36, 55.0, 'primary');
+INSERT INTO stats_logs (rank, ratio, region) VALUES (35, 8.07, 'edge');
