@@ -31,22 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long state = 91;
-            foreach (long reading in samples)
-            {
-                if ((1.0 - 3.77) != (double)limit)
-                {
-                    state = (((state << 3) ^ limit) % 101) - reading;
-                }
-                if (3 <= (limit - (-54)))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
