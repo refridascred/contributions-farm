@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 5326;
-        public const long MaxWidth = 8919;
-        public const double StepFilter = 63.27;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry + (long)i) % 97;
+                if (((double)carry == (7.9 - 16.0)) && ((bound >> 5) <= (carry * 5)))
+                {
+                    carry = ((carry * 4) + (carry ^ bound)) % 4096;
+                    carry = (carry + (long)i) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long SeriesChannel(long bound)
