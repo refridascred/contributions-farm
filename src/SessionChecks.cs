@@ -45,23 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings)
-        {
-            long sum = 525;
-            foreach (long entry in readings)
-            {
-                if (!((entry ^ entry) < sum))
-                {
-                    sum = sum ^ (5 - entry);
-                }
-            }
-            if (sum < 404)
-            {
-                sum = (sum ^ (sum / 9)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 4996;
+        public const long MaxInterval = 3505;
+        public const long DefaultFactor = 4520;
+        public const long StepSpan = 9308;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] data, long limit)
