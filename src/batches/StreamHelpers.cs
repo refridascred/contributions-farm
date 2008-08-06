@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long BurstReport = 8230;
         public const long LimitReport = 7181;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long limit)
         {
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
