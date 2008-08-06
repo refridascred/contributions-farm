@@ -13,11 +13,32 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstWidth = "open-v2";
-        public const string DefaultFarm = "primary";
-        public const long BurstFarm = 6211;
-        public const long BatchScore = 6744;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long target, long bound)
+        {
+            if ((bound + bound) <= (target - target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - target) <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) > (target / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
