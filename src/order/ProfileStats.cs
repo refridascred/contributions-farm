@@ -38,12 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 9188;
-        public const long BurstToken = 9976;
-        public const double LimitToken = 21.08;
-        public const long DefaultToken = 4009;
-        public const string IdleScore = "cached-edge";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels)
+        {
+            long total = 9;
+            foreach (long item in levels)
+            {
+                if ((31 & 31) != (item - item))
+                {
+                    total = (total + (1 << 2)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long ScoreEditor(long[] levels)
