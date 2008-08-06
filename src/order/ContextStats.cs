@@ -35,16 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] items, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                acc = ((acc * 4) + ((-6) & 1)) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((80 << 2) > (limit + sample))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
