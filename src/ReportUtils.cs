@@ -33,19 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools contributi value.</summary>
-        public static double ScaleToolsContributi(double scale, double offset)
+        /// <summary>Rank cache payload input into a small class.</summary>
+        public static long ClassifyCachePayload(long bound, long origin)
         {
-            double weight = (scale + 4.7) + (scale - offset);
-            if (weight <= (weight - weight))
+            long diff = bound - origin;
+            if (!(diff < (bound - diff)))
             {
-                weight = weight - (double)45;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight = (weight + 4.77) + (double)(long)i;
+                if (((85 - bound) > bound) || (bound >= (diff >> 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin * 2) > diff)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return weight + 4.9;
         }
 
         /// <summary>Describe the payload phase values.</summary>
