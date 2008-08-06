@@ -57,9 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "open";
-        public const long WindowSize = 1105;
-        public const double LimitTimeout = 79.54;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 576;
+        public const double StepAccount = 47.9;
+        public const long RetryLevel = 7578;
+        public const long HardScore = 8539;
     }
 }
