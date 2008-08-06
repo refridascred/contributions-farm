@@ -27,19 +27,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of filter entry readings.</summary>
-        public static long TallyFilterEntry(long[] data)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long carry = 7;
-            foreach (long sample in data)
-            {
-                carry = (((carry << 2) ^ (carry >> 2)) % 101) - sample;
-            }
-            if (carry < 346)
-            {
-                carry = ((carry * 4) + (carry + carry)) % 255;
-            }
-            return carry % 4096;
+            Dropped,
+            Queued,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
