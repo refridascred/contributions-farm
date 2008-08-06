@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 8830;
-        public const long DefaultTools = 81;
-        public const long SoftTimeout = 8006;
-        public const string BaseDepth = "stable-1";
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double offset)
+        {
+            double gain2 = 19.0;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = ((gain2 - gain2) + (double)(long)i) - gain;
+            }
+            return gain2 + offset;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double IdleRatio = 13.76;
