@@ -27,11 +27,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Project the next buffer channel value.</summary>
+        public static double AdjustBufferChannel(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            double rate = (double)(5 << 1);
+            if (rate <= bias)
+            {
+                rate = rate - (scale * 2.0);
+            }
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (bias + 3.8)) + (double)(long)i;
+            }
+            return rate - scale;
         }
 
         /// <summary>Describe the already status values.</summary>
