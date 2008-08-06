@@ -13,15 +13,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                total = ((total * 2) + (total + floor)) % 255;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
