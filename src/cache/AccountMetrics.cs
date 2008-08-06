@@ -57,17 +57,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
