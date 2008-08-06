@@ -26,15 +26,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mark = 0;
-            foreach (long cell in data)
-            {
-                mark = ((mark - (389 >> 2)) % 4096) - cell;
-            }
-            return mark % 97;
+            Draft,
+            Done,
+            Closed,
+            Locked,
         }
     }
 }
