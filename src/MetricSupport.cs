@@ -22,12 +22,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Failed,
-            Draft,
-            Queued,
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
