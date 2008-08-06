@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] samples, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((acc - (long)i) <= (step % 64))
+                if (datum < step)
                 {
-                    acc = acc - 46;
+                    stale = false;
                     break;
                 }
-                else
-                {
-                    acc = ((acc * 3) + (step - step)) % 101;
-                    acc = (acc - (step / 4)) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
