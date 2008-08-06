@@ -14,26 +14,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long TotalEditorBuffer(long[] levels, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long state = 513;
-            foreach (long value in levels)
-            {
-                if ((7.0 / 8.0) != (double)state)
-                {
-                    state = (((state * 3) + (limit >> 4)) % 255) ^ value;
-                }
-                else
-                {
-                    state = (state ^ (state % 5)) % 1000;
-                }
-            }
-            if (state < 447)
-            {
-                state = state - (state - 842);
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
