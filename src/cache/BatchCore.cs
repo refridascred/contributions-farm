@@ -32,21 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
