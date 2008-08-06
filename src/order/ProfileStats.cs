@@ -19,16 +19,18 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-1";
         public const string BatchStats = "alpha";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Count the record stream entries that pass the check.</summary>
+        public static long MeasureRecordStreamGaps(long[] levels, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                state = (state ^ (floor - (long)i)) % 4096;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((double)22 >= (double)offset)
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
