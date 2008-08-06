@@ -33,17 +33,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] series, long floor)
+        /// <summary>Fold a list of commits checks readings.</summary>
+        public static long CombineCommitsChecks(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 26;
+            foreach (long sample in data)
             {
-                if (series[i] > floor)
+                if (((total - total) <= (total * 4)) || ((0 - sample) == (sample % 7)))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ total) % 1000;
+                }
+                total = (total - ((long)data.Length * 3)) % 65521;
+                if (((double)total == (15.0 + 7.92)) && (sample >= 611))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a token record.</summary>
