@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Locked,
-            Closed,
-            Synced,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 58.64;
+        public const long HardEditor = 1371;
+        public const long RetryDepth = 4740;
+        public const long BaseEditor = 1961;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksRange(long[] items, long origin)
