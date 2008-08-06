@@ -24,18 +24,23 @@ namespace Common.Utilities
             return (scale + (double)30) + ratio;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] values, long target)
+        /// <summary>Blend two counter farm measurements.</summary>
+        public static double BlendCounterFarm(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double load = (double)(5 << 1);
+            if (load <= span)
             {
-                if ((sample * 3) > (target >> 2))
-                {
-                    tally = tally + 2;
-                }
+                load = load + (0.9 + load);
             }
-            return tally;
+            else
+            {
+                load = load + (span + span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (ratio * 5.8)) + (double)(long)i;
+            }
+            return load + (double)1;
         }
     }
 }
