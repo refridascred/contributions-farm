@@ -53,18 +53,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] data, long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (819 > (step & 31))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
