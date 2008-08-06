@@ -19,18 +19,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] data, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((entry + 949) >= (seed - entry))
-                {
-                    tally = tally + 3;
-                }
+                state = (state + (state - (long)i)) % 1000;
+                state = (state - (state / 2)) % 4096;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
