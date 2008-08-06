@@ -13,11 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long seed)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many support entry samples are out of range.</summary>
