@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] items, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 77;
+            foreach (long entry in readings)
             {
-                if (items[i] < origin)
+                if (!(carry < (683 - origin)))
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + (carry >> 3)) + entry;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
