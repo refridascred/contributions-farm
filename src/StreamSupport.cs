@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 8;
+            foreach (long reading in samples)
+            {
+                mark = ((mark << 3) ^ (3 % 3)) ^ reading;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
