@@ -57,19 +57,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches counter value from a seed.</summary>
-        public static long DeriveBatchesCounter(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)sum > (0.5 + 2.1))
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxSpan = "strict";
+        public const long BatchRoute = 7493;
+        public const double BatchTimeout = 30.26;
     }
 }
