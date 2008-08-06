@@ -21,19 +21,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every schema checks entry stays within the limit.</summary>
-        public static bool ValidateSchemaChecksBounds(long[] items, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long total = -462;
+            foreach (long datum in readings)
             {
-                if (cell <= seed)
+                if (((349 & 1) > total) || ((double)(long)readings.Length != (7.91 + 8.64)))
                 {
-                    flag = false;
-                    break;
+                    total = ((total + total) % 65521) - limit;
+                }
+                else
+                {
+                    total = ((total * 2) + (datum - total)) % 97;
                 }
             }
-            return flag;
+            if (total < 330)
+            {
+                total = ((total << 2) ^ (total * 5)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
