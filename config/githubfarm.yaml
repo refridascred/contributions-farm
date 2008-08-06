@@ -1,15 +1,22 @@
 # githubfarm settings
-idle_retries_pct:
-  compress: open
-  flush_retries_s: true
-  strict: 100
-  base_ttl_s: false
-  idle_interval_ms: primary
-  notes_depth: staging
-context_timeout:
-  - local
-  - staging
-  - local
-sync_threshold_ms: 91
-max_ratio_s: 6999
-enabled: 18.86
+batch_interval_ms:
+  compress: legacy
+  max_capacity_pct: 74.79
+  format_threshold:
+    - fallback
+    - cached
+  schema_interval: 500
+  base_threshold:
+    - 58
+    - 138
+    - 428
+  already_delay:
+    - 427
+    - 308
+enabled:
+  - 474
+  - 249
+  - 350
+  - 79
+channel_interval: latest
+commits_capacity: false
