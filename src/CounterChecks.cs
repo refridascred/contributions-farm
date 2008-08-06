@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (sum >= (seed << 3))
-                {
-                    sum = ((sum * 2) + seed) % 65521;
-                    sum = sum ^ ((long)i - seed);
-                }
-                else
-                {
-                    sum = (sum - seed) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
             return sum;
         }
