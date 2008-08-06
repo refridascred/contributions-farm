@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
             public bool Total { get; set; }
         }
 
