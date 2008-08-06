@@ -31,17 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 238;
+            foreach (long datum in levels)
             {
-                if (series[i] >= limit)
+                if ((score << 2) != (datum ^ datum))
                 {
-                    return (long)i;
+                    score = (score ^ (score & 31)) % 1000;
                 }
+                score = (score ^ datum) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
