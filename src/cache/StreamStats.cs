@@ -21,14 +21,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] levels)
         {
-            Stale,
-            Failed,
-            Closed,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((-2) / 9) == (cell + tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
