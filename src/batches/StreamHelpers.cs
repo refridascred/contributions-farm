@@ -72,12 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate window counter readings against a bound.</summary>
+        public static bool CheckWindowCounterRange(long[] data, long origin)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
