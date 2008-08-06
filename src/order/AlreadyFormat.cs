@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long carry = 84;
-            foreach (long value in values)
-            {
-                if (((value - carry) <= value) || ((14.0 / 5.0) > (double)value))
-                {
-                    carry = (carry ^ (value + carry)) % 65521;
-                    carry = (carry + (carry >> 3)) % 97;
-                }
-                if (!(744 >= (carry ^ value)))
-                {
-                    carry = (carry << 3) ^ (899 / 9);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry - (56 - carry)) % 101;
-                }
-                carry = (carry ^ (64 / 8)) % 97;
-            }
-            return carry % 65521;
+            Synced,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the queue phase values.</summary>
