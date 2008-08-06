@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a entry stream pair into a bucket.</summary>
