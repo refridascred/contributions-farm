@@ -1,4 +1,8 @@
 # support settings
-batch_size_count: 64
-command_depth: 7033
-dry_run: eu-west
+persist: 23.59
+stream_capacity:
+  - blue
+  - legacy
+  - local
+  - primary
+buffer_retries: fallback
