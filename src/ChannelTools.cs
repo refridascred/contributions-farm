@@ -39,32 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long offset, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long offset2 = offset ^ bound;
-            if ((8.8 / 7.0) > (double)offset2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 >= (offset2 >> 5)) && (offset2 < (offset - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset + offset) < (offset / 7)) || ((bound & 63) >= (985 * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Active,
+            Failed,
         }
     }
 }
