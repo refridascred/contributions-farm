@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)step != (double)1) || (total < step))
-                {
-                    total = total - (total + total);
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                total = ((total * 5) + total) % 65521;
+                total = (total - (total << 3)) % 255;
+                total = ((total * 2) + (long)i) % 4093;
             }
             return total;
         }
