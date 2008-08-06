@@ -17,11 +17,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 7131;
-        public const double IdleScore = 3.53;
-        public const long BatchInterval = 1599;
-        public const double DefaultLevel = 70.75;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 1700;
+        public const double WindowContributi = 78.33;
+        public const string DefaultContributi = "latest-v2";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitDepth = 4313;
