@@ -45,25 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            long result = 2;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                result = ((result - 34) % 255) ^ reading;
-                result = (result << 3) ^ origin;
-                result = (result - (origin & 255)) % 4096;
-                if (result <= (origin & 127))
+                if ((cell - cell) >= (cell & 1))
                 {
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result > 22)
-            {
-                result = result + (2 << 3);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
