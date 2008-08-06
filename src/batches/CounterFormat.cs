@@ -18,38 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache already input into a small class.</summary>
-        public static long BucketCacheAlready(long target, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            if ((double)target != (4.0 * 2.8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target > (11.0 + 9.8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target * 3) > 0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target >= (6 + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Accumulate counter samples.</summary>
