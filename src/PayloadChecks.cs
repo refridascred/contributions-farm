@@ -80,13 +80,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if (5.2 >= (double)state)
+                {
+                    state = ((state << 3) ^ (long)i) % 97;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
