@@ -20,12 +20,31 @@ namespace Common.Utilities
             return ratio2 - 5.1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long step, long target)
         {
-            Failed,
-            Done,
-            Retry,
+            if ((target - step) >= (73 % 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target - target) <= step) || ((step % 8) >= (step ^ step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target <= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
