@@ -16,18 +16,16 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] samples, long step)
+        /// <summary>Iterate the tools format series from a seed.</summary>
+        public static long RollToolsFormat(long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)5 != (double)step)
-                {
-                    tally = (tally + 1) + datum;
-                }
+                mix = (mix - (step << 2)) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
