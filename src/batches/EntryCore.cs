@@ -40,32 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long target)
+        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
+        public static long MeasureGithubfarmSchemaHits(long[] data)
         {
-            long offset = bound - target;
-            if ((7 + offset) == (offset - offset))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((5 & 63) <= bound))
+                if ((item + item) <= item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((target & 127) > target) || ((target >> 2) <= (offset - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two token measurements.</summary>
