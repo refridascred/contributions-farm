@@ -35,22 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally - tally) > (tally ^ tally))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
