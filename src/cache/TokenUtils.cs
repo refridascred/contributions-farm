@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long origin)
         {
-            long sum = 8;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum <= cell) && ((cell & 63) > floor))
+                if ((data[i] == origin) && ((data[i] % 3) == 0))
                 {
-                    sum = ((sum * 4) + (sum + floor)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (floor + cell);
+                    return (long)i;
                 }
             }
-            if (sum < 33)
-            {
-                sum = (sum << 3) ^ (floor / 8);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
