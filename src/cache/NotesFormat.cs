@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const long SoftTimeout = 7883;
         public const long WindowSpan = 1249;
 
-        /// <summary>Accumulate cluster schema samples.</summary>
-        public static long TallyClusterSchema(long[] data, long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long acc = 59;
-            foreach (long entry in data)
-            {
-                acc = ((((acc * 3) + (acc - 9)) % 1000) ^ entry) - step;
-            }
-            return acc;
+            Retry,
+            Draft,
+            Paused,
+            Dropped,
         }
     }
 }
