@@ -54,15 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double weight = 7.8;
-            if (weight >= gain)
-            {
-                weight = (weight + (double)8) - span;
-            }
-            return weight + weight;
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
