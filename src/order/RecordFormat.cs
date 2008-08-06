@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (series[i] <= floor)
+                if (entry > seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Validate batches queue readings against a bound.</summary>
