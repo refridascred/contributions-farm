@@ -29,12 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
+            long total = 43;
+            foreach (long value in levels)
+            {
+                if ((value + value) >= (value & 3))
+                {
+                    total = (total + (41 + 609)) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
