@@ -15,39 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long delta = step ^ seed;
-            if (!((3.0 - 8.44) < (double)seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > (step ^ delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((delta - step) >= seed) && (step >= seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed << 3) < (step / 8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
