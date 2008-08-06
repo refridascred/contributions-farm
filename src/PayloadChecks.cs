@@ -26,15 +26,32 @@ namespace Common.Utilities
         public const long CacheWindow = 6608;
         public const string WindowFactor = "primary";
 
-        /// <summary>Roll a route schema counter forward.</summary>
-        public static long RollRouteSchema(long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long seed2)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long prev = seed + seed2;
+            if ((47 & 1) > (prev & 1))
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((85 + seed2) >= (22 >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed2 <= (prev + prev))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a route reading.</summary>
