@@ -57,13 +57,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Find the first batches payload entry that matches the target.</summary>
+        public static long FindBatchesPayloadIndex(long[] data, long target)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
