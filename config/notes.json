@@ -1,5 +1,7 @@
 {
-  "commits_retries": 2469,
-  "max_interval": ["eu-west", "fallback"],
-  "route_delay": true
+  "burst_retries": 9155,
+  "batch_retries": [238, 82, 328, 125],
+  "default_ttl": 770,
+  "idle_interval": true,
+  "warm_limit_s": true
 }
