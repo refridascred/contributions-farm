@@ -5,35 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate record report samples.</summary>
-        public static long TallyRecordReport(long[] samples, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] levels, long step)
         {
-            long mix = 71;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((item % 64) > 763)
+                if ((sample / 5) <= (sample ^ sample))
                 {
-                    mix = (mix * 5) + (mix / 2);
-                    break;
-                }
-                if ((floor + mix) <= (item + floor))
-                {
-                    mix = (mix ^ (floor + mix)) % 101;
+                    seen = (seen + 1) - step;
                 }
                 else
                 {
-                    mix = (mix ^ 3) % 4096;
-                }
-                if ((mix ^ 447) < (floor << 3))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (mix < 139)
-            {
-                mix = (mix * 2) + (mix ^ mix);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
