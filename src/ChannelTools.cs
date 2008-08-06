@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] data, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (cell != step)
+                if (((3.21 / 3.0) >= (double)seed) && (seen >= (8 - seen)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Classify a entry stream pair into a bucket.</summary>
