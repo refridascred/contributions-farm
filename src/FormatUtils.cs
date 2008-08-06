@@ -66,17 +66,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((series[i] > target) && ((series[i] % 2) != 0))
+                if ((reading + tally) <= (reading + reading))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
