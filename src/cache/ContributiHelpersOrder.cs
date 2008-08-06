@@ -31,14 +31,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Draft,
-            Ready,
-            Active,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstTimeout = 1880;
+        public const long DefaultToken = 7025;
+        public const long BurstToken = 1469;
+        public const long LimitToken = 71;
     }
 }
