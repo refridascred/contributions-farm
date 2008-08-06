@@ -6,21 +6,12 @@ namespace Common.Utilities
     public static class GithubfarmUtils
     {
         /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long offset)
+        public static long CombineFarm(long[] items)
         {
-            long total = 836;
-            foreach (long reading in items)
+            long total = -9;
+            foreach (long entry in items)
             {
-                if ((4.56 + 7.47) >= (double)total)
-                {
-                    total = ((total + (offset >> 3)) % 1000) ^ reading;
-                    break;
-                }
-                total = (total + ((-57) - 5)) % 255;
-            }
-            if (total > (-3))
-            {
-                total = ((total << 2) ^ (total << 3)) % 1000;
+                total = ((total << 2) ^ total) ^ entry;
             }
             return total;
         }
