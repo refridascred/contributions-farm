@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
