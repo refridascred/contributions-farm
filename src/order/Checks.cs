@@ -29,39 +29,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long target, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double gain, double bias)
         {
-            long prev = target + bound;
-            if ((prev >> 5) < prev)
+            double rate = gain;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                rate = ((rate - (4.0 - gain)) + (double)(long)i) - bias;
             }
-            else
-            {
-                if (!(target > (target - 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (prev > ((-296) - 205))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (9 <= prev)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return rate - (double)3;
         }
 
         /// <summary>Blend two metrics batches measurements.</summary>
