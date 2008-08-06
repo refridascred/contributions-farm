@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] data, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] items)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (item < step)
+                if ((datum << 2) > (datum % 10))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of layout already readings.</summary>
