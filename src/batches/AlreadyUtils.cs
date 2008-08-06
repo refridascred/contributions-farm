@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels)
+        /// <summary>Classify a session support pair into a bucket.</summary>
+        public static long SortSessionSupport(long target, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long slot = target + seed;
+            if (((double)slot > 4.2) && ((slot + 75) > slot))
             {
-                if ((((double)count == (9.52 + 4.0)) && ((reading + reading) < 2)) || (count <= (count + count)))
+                return 5;
+            }
+            else
+            {
+                if (((3.9 - 4.7) != (double)slot) || ((66 * 4) <= slot))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - target) <= slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed & 127) == (target & 255))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
