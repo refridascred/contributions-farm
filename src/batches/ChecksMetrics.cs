@@ -33,18 +33,12 @@ namespace Common.Utilities
         public const long BaseSchema = 8504;
         public const long HardWidth = 9536;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] items, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (count < ((long)items.Length ^ 58))
-                {
-                    count = ((count + 3) ^ reading) + offset;
-                }
-            }
-            return count;
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Combine already values into a single score.</summary>
