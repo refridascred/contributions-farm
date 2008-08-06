@@ -34,9 +34,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 9518;
-        public const long BatchSize = 1084;
-        public const long IdleWidth = 7738;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long target2)
+        {
+            long offset = target + target2;
+            if ((6.0 + 3.32) >= (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (81 > (target2 * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target2 > (target2 - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
