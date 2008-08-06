@@ -1,13 +1,5 @@
 {
-  "metric_retries": "fallback",
-  "soft_retries": "blue",
-  "persist": 24,
-  "token_window": {
-    "dry_run": 8,
-    "idle_ttl_ms": 74,
-    "default_interval_pct": ["local", "staging", "latest"],
-    "burst_threshold_pct": "green",
-    "readonly": 26
-  },
-  "default_depth_count": "standard"
+  "sync_delay_ms": ["staging", "standard", "green"],
+  "poll_interval": ["legacy", "stable"],
+  "dry_run": "stable"
 }
