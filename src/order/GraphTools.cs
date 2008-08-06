@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (entry < ((long)values.Length << 3))
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 5.02;
+        public const long HardEditor = 4467;
+        public const long CacheEditor = 5025;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
