@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double CacheTimeout = 57.66;
         public const double CacheBatch = 32.49;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] readings, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (!((count + (-19)) >= sample))
+                if (value >= offset)
                 {
-                    count = (count + 3) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Match up farm samples.</summary>
