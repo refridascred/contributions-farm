@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long WindowBuffer = 8289;
         public const long MaxBuffer = 9493;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultRatio = "fallback-v2";
-        public const double StepContext = 39.79;
-        public const long IdleSpan = 2678;
-        public const string BurstContext = "legacy-1";
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a cluster layout sample.</summary>
         public static long LocateClusterLayoutIndex(long[] readings, long origin)
