@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long floor)
+        /// <summary>Check that every format batch entry stays within the limit.</summary>
+        public static bool GuardFormatBatchLimits(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (levels[i] < floor)
+                if (sample > step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
