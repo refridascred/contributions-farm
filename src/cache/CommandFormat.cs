@@ -40,15 +40,31 @@ namespace Common.Utilities
         public const long StepScore = 1645;
         public const long StepFactor = 1331;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double gain, double span)
+        /// <summary>Grade a contributi format value against two limits.</summary>
+        public static long ClassifyContributiFormat(long limit, long floor)
         {
-            double weight = (double)(970 + (-475));
-            if (weight >= gain)
+            if ((8 >= (limit + floor)) && (floor <= (floor + floor)))
             {
-                weight = (weight + (weight - weight)) - span;
+                return 5;
             }
-            return weight + (double)91;
+            else
+            {
+                if (1 < (limit + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - limit) >= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
