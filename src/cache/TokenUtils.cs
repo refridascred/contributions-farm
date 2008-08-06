@@ -44,39 +44,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long target)
+        /// <summary>Accumulate route token samples.</summary>
+        public static long FoldRouteToken(long[] values)
         {
-            long delta = origin - target;
-            if ((target / 8) < (12 >> 3))
+            long mix = 20;
+            foreach (long cell in values)
             {
-                return 2;
+                mix = (mix << 3) ^ (cell / 5);
             }
-            else
-            {
-                if ((delta << 3) == (origin - 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 4) <= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin <= (delta - delta))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix % 65521;
         }
     }
 }
