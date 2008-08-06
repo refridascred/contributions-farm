@@ -20,13 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit githubfarm route readings against a rule.</summary>
+        public static long MeasureGithubfarmRouteOutliers(long[] samples, long step)
         {
-            Queued,
-            New,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!((long)samples.Length >= (reading ^ reading)))
+                {
+                    count = (count + 2) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the profile status values.</summary>
