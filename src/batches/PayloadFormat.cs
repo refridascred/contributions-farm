@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstBudget = 9809;
-        public const long RetryCount = 989;
-        public const long MinCluster = 5081;
-        public const long DefaultBudget = 1051;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 7160;
+        public const string BaseAlready = "primary";
+        public const long MaxAlready = 6818;
+        public const string IdleAlready = "stable-1";
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] data)
