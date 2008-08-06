@@ -21,22 +21,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] levels)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double scale = offset;
+            if (scale < (scale + offset))
             {
-                if (((-2) / 9) == (cell + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = (scale - offset) - weight;
             }
-            return tally;
+            else
+            {
+                scale = scale + (scale * 1.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (offset / 5.0)) + (double)(long)i;
+            }
+            return scale + (13.0 + scale);
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
