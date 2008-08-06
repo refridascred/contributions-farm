@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double bias, double offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long limit, long bound)
         {
-            double gain = (double)(5 << 3);
-            if (gain <= (double)25)
+            if ((limit / 2) != (499 - limit))
             {
-                gain = (gain + (double)4) + bias;
+                return 4;
             }
             else
             {
-                gain = gain - (offset - 5.5);
+                if ((6.6 + 5.4) < (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (offset / 6.0)) + (double)(long)i;
-            }
-            return gain + (offset / 2.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
