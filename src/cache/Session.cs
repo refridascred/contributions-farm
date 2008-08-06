@@ -33,38 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples, long bound)
         {
-            if ((8.68 - 4.1) <= (double)limit)
+            long score = 684;
+            foreach (long entry in samples)
             {
-                return 7;
+                score = score ^ (bound - (long)samples.Length);
+                score = score - (score + entry);
             }
-            else
+            if (score < 8)
             {
-                if (!((target % 97) == (target + target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit <= 3.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-562) >> 2) > target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                score = score ^ bound;
             }
+            return score % 97;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
