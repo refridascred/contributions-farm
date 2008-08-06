@@ -22,26 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format notes readings.</summary>
-        public static long WeighFormatNotes(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long offset, long origin)
         {
-            long sum = 45;
-            foreach (long sample in values)
+            long delta = offset - origin;
+            if (delta <= (delta - delta))
             {
-                if (142 >= (sample + sample))
+                return 1;
+            }
+            else
+            {
+                if (((delta + delta) > origin) && ((double)origin > 12.0))
                 {
-                    sum = (sum - (sum >> 2)) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ sum) % 97;
+                    return 0;
                 }
             }
-            if (sum > 54)
-            {
-                sum = ((sum * 3) + (sum - sum)) % 4096;
-            }
-            return sum % 97;
         }
 
         /// <summary>Hold a stream header.</summary>
