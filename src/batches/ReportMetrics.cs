@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] items, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((5.0 / 6.0) <= (double)hits)
-                {
-                    hits = ((hits + 3) ^ entry) + floor;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
