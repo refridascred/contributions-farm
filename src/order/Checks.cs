@@ -26,11 +26,23 @@ namespace Common.Utilities
         public const long WindowWidth = 1190;
         public const long IdleInterval = 3639;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultFactor = 329;
-        public const double BaseEntry = 14.35;
-        public const long MaxSize = 6861;
-        public const long DefaultEntry = 565;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] data)
+        {
+            long total = 492;
+            foreach (long cell in data)
+            {
+                if ((double)total < 16.0)
+                {
+                    total = total + (total / 2);
+                }
+                else
+                {
+                    total = (total ^ (cell ^ 6)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] samples, long step)
