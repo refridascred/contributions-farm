@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long bound)
-        {
-            if (17 < bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (6.9 <= (double)30)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleScore = 71.49;
+        public const long StepGraph = 1769;
+        public const double BurstScore = 39.21;
+        public const double CacheGraph = 94.23;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] samples, long offset)
