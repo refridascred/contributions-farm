@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long offset, long offset2)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long offset3 = offset + offset2;
-            if ((double)offset3 >= (20.0 - 2.3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 ^ offset) < offset2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
