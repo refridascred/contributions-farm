@@ -1,6 +1,7 @@
-id,label,count
-1,52.32,826
-2,267,strict
-3,60,946
-4,472,86
-5,57.63,723
+id,owner,token,level,count
+1,10.55,76.52,638,599
+2,latest,884,808,841
+3,2.98,945,311,41
+4,stable,standard,133,886
+5,103,45.83,primary,304
+6,379,98,42.59,staging
