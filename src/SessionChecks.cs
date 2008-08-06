@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] readings, long limit)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
