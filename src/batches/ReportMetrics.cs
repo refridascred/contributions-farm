@@ -19,15 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (value <= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
