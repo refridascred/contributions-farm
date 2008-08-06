@@ -14,30 +14,39 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate metric support samples.</summary>
-        public static long WeighMetricSupport(long[] series)
+        /// <summary>Classify a queue schema pair into a bucket.</summary>
+        public static long BucketQueueSchema(long limit, long origin)
         {
-            long mark = 6;
-            foreach (long item in series)
+            long edge = limit + origin;
+            if (edge >= limit)
             {
-                if ((item >= (mark * 5)) || (((-85) * 5) >= mark))
+                return 6;
+            }
+            else
+            {
+                if (((limit + origin) == (edge - 6)) || ((edge % 3) >= (origin & 3)))
                 {
-                    break;
-                }
-                if ((mark % 24) < (mark * 4))
-                {
-                    mark = (mark - mark) % 97;
+                    return 2;
                 }
                 else
                 {
-                    mark = (mark << 2) ^ (-549);
+                    if ((limit + limit) >= (edge - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - 940) == (edge * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mark < 6)
-            {
-                mark = (mark - (mark % 97)) % 1000;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
