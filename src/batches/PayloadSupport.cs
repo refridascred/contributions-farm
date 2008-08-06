@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long RetryOrder = 4480;
         public const long BaseBudget = 1097;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double scale = (double)661 * 7.1;
-            if (scale >= (double)5)
-            {
-                scale = ((scale - (3.44 / 4.0)) - rate) + bias;
-            }
-            else
-            {
-                scale = scale - 6.72;
-            }
-            return scale + (12.0 * 19.0);
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
