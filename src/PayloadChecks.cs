@@ -34,32 +34,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long seed2)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long prev = seed + seed2;
-            if ((47 & 1) > (prev & 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((85 + seed2) >= (22 >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed2 <= (prev + prev))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the contributi level values.</summary>
