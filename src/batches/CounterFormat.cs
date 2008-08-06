@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long offset, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] items, long limit)
         {
-            long lane = offset + bound;
-            if (bound >= (offset >> 1))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + lane) < (offset + offset))
+                if ((hits << 2) > (limit >> 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset <= (2.29 - 6.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (10.0 > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 2) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
