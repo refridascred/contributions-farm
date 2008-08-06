@@ -31,10 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 77.43;
-        public const double HardBuffer = 44.46;
-        public const double DefaultBuffer = 85.7;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstInterval = 184;
