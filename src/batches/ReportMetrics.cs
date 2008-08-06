@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const double StepBatch = 83.27;
         public const string SoftRatio = "alpha-v2";
 
-        /// <summary>Check that every tools batch entry stays within the limit.</summary>
-        public static bool ValidateToolsBatchRange(long[] samples, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (value <= limit)
+                if ((cell + hits) == ((long)readings.Length ^ cell))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
