@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "standard-1";
-        public const double DefaultReport = 76.05;
-        public const string WindowRatio = "alpha-1";
-        public const long BurstReport = 8230;
-        public const long LimitReport = 7181;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] levels, long limit)
