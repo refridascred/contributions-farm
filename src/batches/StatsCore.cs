@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 7520;
+        public const long BurstFactor = 432;
+        public const double LimitSupport = 61.78;
+        public const double MinSpan = 91.96;
+        public const long MaxSupport = 1072;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinSize = 4910;
