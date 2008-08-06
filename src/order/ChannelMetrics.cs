@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            Active,
+            Queued,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
