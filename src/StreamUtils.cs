@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first order githubfarm entry that matches the target.</summary>
-        public static long SeekOrderGithubfarmIndex(long[] series, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 90;
+            foreach (long value in values)
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    state = (state * 2) + (origin + state);
+                    state = state ^ (long)i;
+                }
+                if (!(value <= (state & 15)))
+                {
+                    state = (state - state) % 97;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Adjust a command reading.</summary>
