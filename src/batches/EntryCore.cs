@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long bound, long step)
         {
-            Closed,
-            Done,
-            New,
-            Idle,
-            Pending,
+            if ((double)bound != (double)460)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound * 5) >= (step / 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
