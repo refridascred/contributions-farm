@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] items, long limit)
+        /// <summary>Rank cache already input into a small class.</summary>
+        public static long BucketCacheAlready(long target, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((double)target != (4.0 * 2.8))
             {
-                if ((hits << 2) > (limit >> 5))
+                return 5;
+            }
+            else
+            {
+                if ((double)target > (11.0 + 9.8))
                 {
-                    hits = (hits + 2) + value;
+                    return 6;
+                }
+                else
+                {
+                    if ((target * 3) > 0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target >= (6 + step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
