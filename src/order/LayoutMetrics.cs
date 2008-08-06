@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Done,
-            Queued,
+            Stale,
+            Failed,
+            Synced,
             Idle,
-            Locked,
         }
 
         /// <summary>Hold a order options.</summary>
