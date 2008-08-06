@@ -39,12 +39,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            Active,
-            Paused,
-            Stale,
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score + origin) % 255) - (long)i2;
+                }
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    score = (score ^ (score ^ origin)) - (long)i3;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a cache options.</summary>
