@@ -23,17 +23,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a window buffer sample.</summary>
-        public static long FindWindowBufferIndex(long[] values, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
