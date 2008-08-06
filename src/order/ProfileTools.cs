@@ -60,18 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] levels, long offset)
+        /// <summary>Validate account editor readings against a bound.</summary>
+        public static bool GuardAccountEditorLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (((double)hits >= 6.68) && ((datum - 82) == (hits * 5)))
+                if (reading < step)
                 {
-                    hits = (hits + 2) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
