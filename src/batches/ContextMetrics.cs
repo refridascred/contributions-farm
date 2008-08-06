@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleBudget = 76.96;
+        public const long BaseCommand = 920;
+        public const long DefaultCommand = 7185;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
