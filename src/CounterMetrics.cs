@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 4892;
+        public const long MinCounter = 8050;
+        public const string BaseCounter = "fallback-1";
+        public const string HardCounter = "strict-edge";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] items, long step)
