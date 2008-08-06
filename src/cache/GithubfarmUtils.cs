@@ -42,25 +42,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long floor, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data, long seed)
         {
-            long span = floor - origin;
-            if (((39 + span) >= origin) && (span >= origin))
+            long mix = 28;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - span) > (859 * 2))
+                mix = ((mix + (-4)) % 1000) - seed;
+                if ((57 > (mix >> 3)) && (item < (item * 5)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            return mix;
         }
     }
 }
