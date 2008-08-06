@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data, long seed)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Done,
-            Queued,
+            long state = 589;
+            foreach (long datum in data)
+            {
+                state = (state * 4) + (datum + seed);
+                if ((3 & 127) != (seed % 100))
+                {
+                    state = (state - (datum + datum)) % 65521;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Match up profile samples.</summary>
