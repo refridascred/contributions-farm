@@ -71,17 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload cluster sample.</summary>
-        public static long SeekPayloadClusterIndex(long[] values, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] == seed)
+                if ((sample - floor) > 7)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
