@@ -1,17 +1,8 @@
 {
-  "hard_window_pct": 91.87,
-  "contributi_interval": {
-    "report_delay": 60,
-    "cache_ttl_pct": false,
-    "cache_limit_count": "eu-west",
-    "warm_capacity": "eu-west",
-    "hard_ratio_s": "local",
-    "notes_delay": false
-  },
-  "retry_capacity_s": {
-    "dry_run": 97.28,
-    "poll_depth_count": 3,
-    "max_capacity_pct": "primary",
-    "enabled": true
-  }
+  "payload_window": 24,
+  "warm_ttl_pct": "eu-west",
+  "route_capacity": 93.68,
+  "base_limit_pct": "latest",
+  "command_size": false,
+  "default_window_s": 55.38
 }
