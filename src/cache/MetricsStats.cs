@@ -68,15 +68,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Project the next contributi report value.</summary>
-        public static double BlendContributiReport(double scale, double bias)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double ratio = (double)(75 >> 4);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)(long)i) - bias;
-            }
-            return ratio + (scale + scale);
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
