@@ -47,31 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long limit, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            if (((limit * 2) < (seed - limit)) || ((double)5 > (double)seed))
+            long state = 9;
+            foreach (long reading in levels)
             {
-                return 2;
+                state = (state + (5 ^ state)) - reading;
             }
-            else
-            {
-                if ((seed - seed) >= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.5 * 0.11) >= (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Look up the position of a payload cluster sample.</summary>
