@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
             public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
