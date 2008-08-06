@@ -15,19 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            bool ready = true;
+            long state = -30;
             foreach (long entry in levels)
             {
-                if (entry > target)
+                if (((92 * 3) < (state ^ 846)) || ((state + state) >= (entry / 4)))
                 {
-                    ready = false;
-                    break;
+                    state = state - (state ^ 23);
                 }
             }
-            return ready;
+            if (state > 87)
+            {
+                state = (state - (state / 5)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
