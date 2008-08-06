@@ -52,9 +52,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 40.11;
-        public const long RetryAccount = 4781;
-        public const long BurstAccount = 2638;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels)
+        {
+            long total = 493;
+            foreach (long sample in levels)
+            {
+                if ((total - 5) != ((long)levels.Length + 7))
+                {
+                    total = total ^ (sample * 5);
+                }
+                else
+                {
+                    total = (total << 2) ^ ((long)levels.Length + total);
+                }
+            }
+            return total;
+        }
     }
 }
