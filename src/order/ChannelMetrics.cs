@@ -33,18 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings, long seed)
+        /// <summary>Look up the position of a window buffer sample.</summary>
+        public static long FindWindowBufferIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample < 5.7)
+                if (values[i] == seed)
                 {
-                    count = (count + 1) - seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
