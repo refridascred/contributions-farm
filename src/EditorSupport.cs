@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double weight, double bias)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long origin)
         {
-            double scale = bias - (11.0 + 4.98);
-            return (scale + bias) + weight;
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!(acc < (origin / 8)))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every counter payload entry stays within the limit.</summary>
