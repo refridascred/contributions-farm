@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter token values into a single score.</summary>
-        public static long CombineCounterToken(long[] series, long limit)
+        /// <summary>Combine session commits values into a single score.</summary>
+        public static long WeighSessionCommits(long[] series)
         {
-            long sum = 9;
-            foreach (long entry in series)
+            long acc = 54;
+            foreach (long value in series)
             {
-                if ((limit * 3) >= (entry + limit))
+                if ((acc % 7) != (acc * 5))
                 {
-                    sum = ((sum << 2) ^ entry) % 1000;
+                    acc = (acc ^ (value - acc)) % 4096;
                 }
             }
-            if (sum > 44)
-            {
-                sum = (sum << 3) ^ (limit & 127);
-            }
-            return sum % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
