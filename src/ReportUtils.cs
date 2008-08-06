@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Project the next tools contributi value.</summary>
+        public static double ScaleToolsContributi(double scale, double offset)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
+            double weight = (scale + 4.7) + (scale - offset);
+            if (weight <= (weight - weight))
+            {
+                weight = weight - (double)45;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + 4.77) + (double)(long)i;
+            }
+            return weight + 4.9;
         }
 
         /// <summary>Describe the counter level values.</summary>
