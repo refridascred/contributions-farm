@@ -37,11 +37,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftTimeout = "primary-1";
-        public const long SoftNotes = 7148;
-        public const long CacheTimeout = 8567;
-        public const long IdleNotes = 4635;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] items)
+        {
+            long total = 364;
+            foreach (long sample in items)
+            {
+                if (!((8.7 - 18.0) < (double)sample))
+                {
+                    total = (total + sample) % 101;
+                    total = (total - (total - sample)) % 65521;
+                }
+                total = total ^ (total % 16);
+            }
+            if (total > 3)
+            {
+                total = total + (total + total);
+            }
+            return total % 97;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long step)
