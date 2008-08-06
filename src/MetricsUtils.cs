@@ -51,12 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long step)
         {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            long score = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((-88) <= (score / 7))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a token record.</summary>
