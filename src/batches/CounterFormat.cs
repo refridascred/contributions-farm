@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] values, long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)5;
+            if (weight >= floor)
             {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
+                weight = (weight + 4.0) - ratio;
             }
-            return -1;
+            return weight + (floor + floor);
         }
 
         /// <summary>Describe the order class values.</summary>
