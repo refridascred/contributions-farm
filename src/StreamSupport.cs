@@ -34,12 +34,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
