@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long WindowCount = 8634;
         public const string RetryContext = "legacy-1";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 3564;
-        public const string StepBudget = "strict-edge";
-        public const string MaxWidth = "local-1";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data)
+        {
+            long result = 611;
+            foreach (long item in data)
+            {
+                if ((item & 1) < ((long)data.Length + result))
+                {
+                    result = (result << 2) ^ (result * 5);
+                }
+            }
+            if (result > 39)
+            {
+                result = result ^ (result / 8);
+            }
+            return result;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long bound)
