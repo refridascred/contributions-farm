@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((double)value <= (2.3 + 10.0))
+                if ((entry * 2) <= (3 + matches))
                 {
-                    tally = tally + 2;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
