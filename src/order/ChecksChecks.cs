@@ -40,19 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] items, long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double weight, double offset)
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias = offset / 9.0;
+            return bias + (bias - weight);
         }
     }
 }
