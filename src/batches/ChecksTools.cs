@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long floor, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values)
         {
-            if ((9.06 + 1.74) == (double)floor)
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + (-19)) > (183 + floor))
+                if ((double)count >= (9.9 + 5.0))
                 {
-                    return 2;
+                    count = (count + 2) ^ cell;
                 }
                 else
                 {
-                    if ((1.43 - 3.0) <= (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
