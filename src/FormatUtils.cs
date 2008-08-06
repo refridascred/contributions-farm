@@ -32,15 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the schema kind values.</summary>
