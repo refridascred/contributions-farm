@@ -1,8 +1,5 @@
 # entry settings
-farm_ratio: 500
-audit:
-  - 243
-  - 9
-  - 241
-batches_retries: 38
-readonly: 25.64
+flush_delay_ms: blue
+audit: latest
+warm_window: 2808
+compress: 500
