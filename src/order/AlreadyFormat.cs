@@ -49,19 +49,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] data, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long mix = 39;
+            foreach (long value in readings)
             {
-                if (item <= limit)
+                mix = mix - (8 / 5);
+                if (value >= (value - (long)readings.Length))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (mix > 691)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a layout info.</summary>
