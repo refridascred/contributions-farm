@@ -14,21 +14,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Roll a batch record counter forward.</summary>
+        public static long IterateBatchRecord(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                double drift = 1.5;
+                if ((mark < (mark + offset)) || ((double)3 <= drift))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark - (offset + 69);
                 }
+                else
+                {
+                    mark = mark ^ offset;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
