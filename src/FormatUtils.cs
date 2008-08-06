@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            Failed,
+            Locked,
+            Closed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Match up channel samples.</summary>
