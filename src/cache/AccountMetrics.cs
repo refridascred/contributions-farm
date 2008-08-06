@@ -74,12 +74,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] series)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((8.0 + 0.55) < (double)datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
