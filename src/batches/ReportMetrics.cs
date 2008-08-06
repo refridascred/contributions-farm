@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] levels, long limit)
+        /// <summary>Validate already window readings against a bound.</summary>
+        public static bool VerifyAlreadyWindowRange(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (sample < limit)
+                if (reading < origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
