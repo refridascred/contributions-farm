@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] series, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor + count) < (count + 9))
+                if (data[i] >= origin)
                 {
-                    count = (count + 3) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
