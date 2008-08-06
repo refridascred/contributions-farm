@@ -19,38 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long target, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] data, long bound)
         {
-            if ((target - target) <= (offset >> 3))
+            long anchor = 83;
+            foreach (long item in data)
             {
-                return 7;
+                anchor = anchor - (bound - item);
             }
-            else
-            {
-                if ((target <= (target ^ target)) || ((double)target <= 4.35))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset < (0.7 / 7.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target % 100) > (target >> 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the report class values.</summary>
