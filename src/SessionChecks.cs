@@ -16,20 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 4027;
+        public const long StepBudget = 5429;
+        public const double RetryInterval = 78.06;
+        public const double BatchRoute = 7.36;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
