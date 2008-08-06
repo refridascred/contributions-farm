@@ -42,10 +42,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheDepth = 3854;
-        public const long BurstScore = 9868;
-        public const double BurstDepth = 77.06;
-        public const long HardCache = 7214;
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
