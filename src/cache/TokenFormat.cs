@@ -37,21 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 75;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (target - target)) ^ entry;
             }
-            return hits;
+            if (anchor > 1)
+            {
+                anchor = (anchor + (anchor / 3)) % 1000;
+            }
+            return anchor;
         }
     }
 }
