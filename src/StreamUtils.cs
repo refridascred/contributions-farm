@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long IdleBuffer = 7666;
         public const long SoftWidth = 9287;
 
-        /// <summary>Look up the position of a channel context sample.</summary>
-        public static long LocateChannelContextIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowDepth = 7420;
+        public const long BurstFactor = 5451;
+        public const long MinCount = 7076;
+        public const string WindowLevel = "latest-edge";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchRatio = 2499;
