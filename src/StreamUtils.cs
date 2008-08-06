@@ -46,19 +46,17 @@ namespace Common.Utilities
         public const long DefaultInterval = 6360;
         public const string WindowStats = "fallback";
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long floor)
         {
-            double drift = ratio;
-            if (drift >= (double)985)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + (double)1) - floor;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
