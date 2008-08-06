@@ -60,19 +60,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (7.0 > (double)offset)
+                if (tally > item)
                 {
-                    total = (total - (offset + offset)) % 4096;
+                    tally = tally + 3;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
