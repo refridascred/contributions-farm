@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] series, long step)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long limit)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long cur = target ^ limit;
+            if (((limit + 435) <= 654) && ((limit / 7) <= ((-17) + cur)))
             {
-                if (reading >= step)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (double)target)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit >= (double)cur)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Project the next tools contributi value.</summary>
