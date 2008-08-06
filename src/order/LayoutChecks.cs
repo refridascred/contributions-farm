@@ -45,18 +45,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine queue metrics values into a single score.</summary>
-        public static long CombineQueueMetrics(long[] series, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] data, long origin)
         {
-            long total = 262;
-            foreach (long reading in series)
+            long result = 2;
+            foreach (long reading in data)
             {
-                if (reading >= (reading * 3))
+                result = ((result - 34) % 255) ^ reading;
+                result = (result << 3) ^ origin;
+                result = (result - (origin & 255)) % 4096;
+                if (result <= (origin & 127))
                 {
-                    total = (total << 2) ^ (floor * 4);
+                    break;
                 }
             }
-            return total;
+            if (result > 22)
+            {
+                result = result + (2 << 3);
+            }
+            return result;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
