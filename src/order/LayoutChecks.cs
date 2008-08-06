@@ -82,22 +82,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((((double)hits == (8.72 - 20.0)) || ((cell + hits) != (55 - hits))) || ((4.0 - 2.0) > (double)cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 7138;
+        public const long HardCache = 8634;
+        public const long CacheSize = 5049;
+        public const long WindowCache = 2235;
     }
 }
