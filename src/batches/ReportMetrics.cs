@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((4.11 * 19.0) > (double)hits)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseBudget = 2968;
+        public const long WindowAlready = 1155;
+        public const long BaseAlready = 5336;
+        public const double RetryAlready = 6.95;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryInterval = 82.12;
