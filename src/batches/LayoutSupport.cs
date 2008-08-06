@@ -59,12 +59,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Count { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftSize = 4505;
+        public const long BaseDepth = 974;
+        public const long MinMetrics = 1715;
+        public const long HardMetrics = 1300;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
