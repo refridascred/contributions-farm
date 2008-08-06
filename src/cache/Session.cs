@@ -28,32 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Project the next session route value.</summary>
+        public static double BlendSessionRoute(double bias, double offset)
         {
-            long carry = 83;
-            foreach (long entry in levels)
+            double ratio = offset;
+            if (ratio < (double)(-3))
             {
-                if ((carry + 96) >= (277 + entry))
-                {
-                    carry = carry ^ (carry % 24);
-                    carry = (carry - entry) % 1000;
-                }
-                if ((carry - entry) == (337 - entry))
-                {
-                    carry = carry + (50 * 5);
-                    break;
-                }
-                if (carry >= (long)levels.Length)
-                {
-                    carry = carry + 332;
-                }
+                ratio = (ratio - (ratio + 6.5)) - bias;
             }
-            if (carry > (-20))
-            {
-                carry = carry ^ (carry ^ carry);
-            }
-            return carry % 97;
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Describe the metrics state values.</summary>
