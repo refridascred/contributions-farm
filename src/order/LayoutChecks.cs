@@ -43,15 +43,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next route counter value.</summary>
-        public static double BlendRouteCounter(double rate, double bias)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] readings, long bound)
         {
-            double weight = (double)(526 % 60);
-            if (weight > (double)(-47))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (double)294) - rate;
+                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - bias;
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
