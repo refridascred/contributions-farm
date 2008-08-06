@@ -46,12 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSize = 19.21;
+        public const long StepRatio = 7821;
+        public const long LimitLevel = 6366;
+        public const long BaseSchema = 3023;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] readings, long floor)
