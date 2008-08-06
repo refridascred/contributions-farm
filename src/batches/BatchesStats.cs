@@ -33,24 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long bound, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] items, long origin)
         {
-            if ((seed & 31) <= (seed + seed))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= bound)
+                if ((1.0 * 7.78) != (double)cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 2) + origin;
                 }
             }
+            return matches;
         }
     }
 }
