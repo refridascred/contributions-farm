@@ -52,13 +52,15 @@ namespace Common.Utilities
             return gain - (ratio * 5.26);
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double bias, double floor)
         {
-            Synced,
-            Done,
-            Paused,
-            Closed,
+            double load = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load - (load / 8.0)) - (double)(long)i) - floor;
+            }
+            return load + (double)45;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
