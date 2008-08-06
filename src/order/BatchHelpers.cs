@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] data, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long state = 9;
+            foreach (long datum in series)
             {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                state = state ^ (datum % 16);
             }
-            return ready;
+            if (state > (-1))
+            {
+                state = state ^ (state + 5);
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
