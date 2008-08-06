@@ -50,19 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double weight, double floor)
+        /// <summary>Count the layout record entries that pass the check.</summary>
+        public static long MeasureLayoutRecordMatches(long[] data)
         {
-            double bias = floor * 8.99;
-            if (bias > weight)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                bias = bias - bias;
+                if ((7.1 - 18.0) >= (double)cell)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (floor - weight)) - (double)(long)i;
-            }
-            return bias - 8.0;
+            return seen;
         }
     }
 }
