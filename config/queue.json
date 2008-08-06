@@ -1,6 +1,21 @@
 {
-  "batch_size": false,
-  "idle_interval": 94,
-  "editor_timeout": 9157,
-  "poll_interval": 21.76
+  "buffer_size": {
+    "stats_depth": ["cached", "latest"],
+    "max_size": "fallback",
+    "hard_timeout_s": [121, 397, 12]
+  },
+  "soft_interval_count": {
+    "poll_interval_s": {
+      "hard_delay_count": 8405,
+      "retry_limit_pct": ["green", "latest", "local", "blue"],
+      "audit": false,
+      "metrics_delay": true,
+      "hard_depth_count": [45, 213, 364]
+    },
+    "counter_size": false,
+    "channel_capacity": false,
+    "hard_ratio_ms": true
+  },
+  "min_retries_count": "standard",
+  "audit": ["strict", "stable", "strict", "green"]
 }
