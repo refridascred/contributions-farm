@@ -34,18 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long score = 1;
+            foreach (long datum in series)
             {
-                if ((cell + hits) == ((long)readings.Length ^ cell))
+                if ((datum + offset) > (offset - score))
                 {
-                    hits = hits + 2;
+                    score = (score + (offset >> 3)) % 65521;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
