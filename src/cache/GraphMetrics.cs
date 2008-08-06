@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Draft,
-            Retry,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 5433;
+        public const string DefaultAccount = "legacy-edge";
+        public const double SoftAccount = 30.97;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueMatches(long[] data)
