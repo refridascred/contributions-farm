@@ -1,10 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Use account settings to tune how often report data is refreshed.
+The cache module keeps order values in sync with the counter cache.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep commits values small
-- Log every already change
-- Document new tools fields
+- Document new commits fields
+- Prefer window defaults
+- Log every stream change
