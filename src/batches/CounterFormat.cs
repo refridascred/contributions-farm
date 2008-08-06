@@ -24,15 +24,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 4969;
         public const long DefaultFormat = 6092;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] items, long limit)
         {
-            long state = 2;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                state = ((state << 3) ^ (sample + (-490))) + target;
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
