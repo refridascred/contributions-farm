@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long seed)
         {
-            Stale,
-            Failed,
-            Synced,
-            Idle,
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of support batches entries.</summary>
