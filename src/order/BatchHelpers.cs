@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1343;
-        public const double DefaultQueue = 3.23;
-        public const long BurstDepth = 7563;
+        /// <summary>Iterate the farm batches series from a seed.</summary>
+        public static long SeriesFarmBatches(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
