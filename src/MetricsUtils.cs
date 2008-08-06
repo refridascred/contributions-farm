@@ -61,11 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit farm record readings against a rule.</summary>
+        public static long MeasureFarmRecordGaps(long[] samples, long seed)
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((seed << 3) == (3 % 8))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
