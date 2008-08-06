@@ -39,21 +39,39 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = seed + floor;
+            if ((floor >> 2) >= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)prev <= (0.39 - 19.0)) || ((seed - prev) > floor))
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor >= (2.4 / 7.0))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (8.0 / 8.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
