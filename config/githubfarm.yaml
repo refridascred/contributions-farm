@@ -1,10 +1,17 @@
 # githubfarm settings
-strict: fallback
-queue_capacity: 2683
-default_threshold_ms:
-  - 64
-  - 175
-  - 365
-  - 220
-retry_interval_ms: false
-soft_depth_s: latest
+cache_threshold_s: legacy
+batch_size_ms: 5187
+burst_interval_s:
+  graph_delay: 6737
+  poll_limit:
+    - 455
+    - 385
+    - 275
+    - 118
+  soft_timeout_pct: 61.14
+flush_limit_count: false
+base_capacity_pct:
+  - open
+  - fallback
+  - legacy
+  - green
