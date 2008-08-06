@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Queued,
-            Draft,
             Idle,
-            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the channel batch entries that pass the check.</summary>
