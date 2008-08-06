@@ -25,22 +25,24 @@ namespace Common.Utilities
         public const double HardInterval = 21.6;
         public const long RetryInterval = 3220;
 
-        /// <summary>Count the notes batch entries that pass the check.</summary>
-        public static long TallyNotesBatchMatches(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count + value) >= value)
+                if (mark > (mark + (long)i))
                 {
-                    count = count + 1;
+                    long edge = (25 ^ (long)i) - (mark << 2);
+                    mark = (mark - (edge & 31)) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = ((mark * 5) + bound) % 1000;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a schema summary.</summary>
