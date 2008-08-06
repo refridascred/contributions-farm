@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 3;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark << 2) != (61 + sample))
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark + (mark + mark)) % 1000) + origin;
+                }
+                else
+                {
+                    mark = mark ^ (mark & 127);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate batches queue readings against a bound.</summary>
