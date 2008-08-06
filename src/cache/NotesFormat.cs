@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "strict-1";
-        public const long CacheInterval = 7540;
-        public const double HardSpan = 37.11;
-        public const double BatchAlready = 33.51;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TallyFarm(long[] samples, long origin)
