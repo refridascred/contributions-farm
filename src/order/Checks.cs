@@ -27,25 +27,10 @@ namespace Common.Utilities
         public const long WindowWidth = 1190;
         public const long IdleInterval = 3639;
 
-        /// <summary>Rank schema batch input into a small class.</summary>
-        public static long SortSchemaBatch(long offset, long step)
-        {
-            if ((716 - offset) > (8 - offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((offset & 1) > (offset << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 24.1;
+        public const string BurstEntry = "local-v2";
+        public const long MinInterval = 741;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] samples, long step)
