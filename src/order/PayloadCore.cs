@@ -56,18 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            long score = 982;
-            foreach (long cell in items)
+            double gain = bias * 20.0;
+            if (gain >= bias)
             {
-                if ((double)cell < (8.5 + 8.03))
-                {
-                    score = (score * 2) + (cell - score);
-                }
+                gain = gain - (bias2 * 4.58);
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (gain + gain)) - (double)(long)i;
+            }
+            return gain + bias2;
         }
     }
 }
