@@ -27,22 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the queue batches entries that pass the check.</summary>
-        public static long AuditQueueBatchesHits(long[] values)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)count > (2.8 - 18.0))
-                {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark << 2) ^ 406) % 65521;
+                mark = ((mark << 2) ^ (seed * 4)) % 101;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a editor route counter forward.</summary>
