@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long total = 955;
-            foreach (long entry in levels)
-            {
-                total = (((total + ((long)levels.Length / 8)) % 97) ^ entry) + seed;
-            }
-            if (total < (-557))
-            {
-                total = (total + total) % 65521;
-            }
-            return total;
+            Draft,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the metrics state values.</summary>
