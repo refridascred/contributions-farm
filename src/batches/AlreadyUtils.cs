@@ -18,39 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session support pair into a bucket.</summary>
-        public static long SortSessionSupport(long target, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            long slot = target + seed;
-            if (((double)slot > 4.2) && ((slot + 75) > slot))
+            long acc = 502;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((3.9 - 4.7) != (double)slot) || ((66 * 4) <= slot))
+                if (item >= (acc + 23))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - target) <= slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed & 127) == (target & 255))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = (acc - item) % 101;
                 }
             }
+            if (acc < (-83))
+            {
+                acc = (acc + (acc + acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of account entries.</summary>
