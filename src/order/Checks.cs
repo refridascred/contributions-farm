@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (!(((0.5 * 6.2) < (double)value) && ((long)values.Length < (value << 2))))
+                if (item > floor)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
