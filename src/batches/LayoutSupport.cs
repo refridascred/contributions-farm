@@ -32,18 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] series)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - (-3)) < 5)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Accumulate metric cluster samples.</summary>
