@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "primary-edge";
+        public const long SoftGraph = 5682;
+        public const long MaxLevel = 1911;
+        public const double IdleInterval = 91.82;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long SortCommand(long target, long floor)
