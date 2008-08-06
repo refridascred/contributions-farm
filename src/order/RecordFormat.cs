@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] levels, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (floor - 5.1) * 3.9;
+            if (gain >= floor)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                gain = (gain + gain) - weight;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (double)67) - (double)(long)i;
+            }
+            return gain + 7.17;
         }
 
         /// <summary>Hold a format snapshot.</summary>
