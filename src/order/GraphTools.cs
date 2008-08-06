@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 3777;
-        public const long WindowBuffer = 8289;
-        public const long MaxBuffer = 9493;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((offset & 63) > (offset >> 3))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
