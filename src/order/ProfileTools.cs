@@ -19,17 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a tools farm reading by value.</summary>
-        public static long LookupToolsFarmIndex(long[] series, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 409;
+            foreach (long sample in series)
             {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 2) ^ (mark + sample)) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
