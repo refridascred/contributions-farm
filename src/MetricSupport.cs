@@ -15,10 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 8729;
-        public const string HardGithubfarm = "strict-1";
-        public const double BaseGithubfarm = 12.9;
+        /// <summary>Match up notes graph samples.</summary>
+        public static long PairNotesGraphCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
