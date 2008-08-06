@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Closed,
-            Pending,
             Ready,
-            Active,
-            Done,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the route kind values.</summary>
