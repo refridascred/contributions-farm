@@ -1,10 +1,7 @@
 # githubfarm settings
-support_delay: 100
-batch_delay: blue
-verbose: 636
-idle_threshold:
-  - latest
-  - fallback
-  - green
-default_delay_s: 23.09
-strict: fallback
+batch_depth_count: false
+enabled: 6304
+poll_timeout: 250
+metric_timeout: edge
+burst_threshold: 19.28
+base_limit: true
