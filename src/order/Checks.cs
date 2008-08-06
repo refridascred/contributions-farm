@@ -38,10 +38,40 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 24.1;
-        public const string BurstEntry = "local-v2";
-        public const long MinInterval = 741;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long target, long bound)
+        {
+            long prev = target + bound;
+            if ((prev >> 5) < prev)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(target > (target - 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (prev > ((-296) - 205))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (9 <= prev)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a counter record reading by value.</summary>
         public static long LocateCounterRecordIndex(long[] values, long offset)
