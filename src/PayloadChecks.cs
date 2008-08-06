@@ -39,24 +39,11 @@ namespace Common.Utilities
         public const long WindowAccount = 26;
         public const long HardAccount = 1346;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings, long origin)
-        {
-            long sum = 4;
-            foreach (long sample in readings)
-            {
-                sum = (((sum * 2) + sum) % 101) + origin;
-                if ((1.5 + 5.0) < (double)sample)
-                {
-                    break;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = ((sum << 2) ^ (long)readings.Length) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 47.02;
+        public const string SoftScore = "latest";
+        public const long HardSupport = 4795;
+        public const double MaxInterval = 48.66;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
