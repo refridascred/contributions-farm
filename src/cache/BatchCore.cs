@@ -29,20 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] data, long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long acc = 8;
-            foreach (long datum in data)
-            {
-                long cur = datum - 4;
-                if (((11.0 * 0.74) <= (double)cur) && ((20.0 * 4.09) <= (double)floor))
-                {
-                    acc = (acc << 2) ^ (cur << 2);
-                }
-                acc = (acc << 2) ^ ((long)data.Length + acc);
-            }
-            return acc;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
