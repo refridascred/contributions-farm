@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 7020;
-        public const string BaseSize = "legacy";
-        public const string LimitInterval = "strict";
+        /// <summary>Count batches token pairs that satisfy a relation.</summary>
+        public static long PairBatchesTokenCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double SmoothBatch(double scale, double bias)
