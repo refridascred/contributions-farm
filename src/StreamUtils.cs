@@ -69,18 +69,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] data, long offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double weight = bias;
+            if (weight >= offset)
             {
-                if (!((datum % 97) > datum))
-                {
-                    matches = (matches + 1) + offset;
-                }
+                weight = weight + offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (weight - weight)) + (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
