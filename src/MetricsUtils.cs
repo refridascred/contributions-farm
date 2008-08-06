@@ -61,21 +61,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -12;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (((acc - acc) % 65521) - cell) - origin;
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
