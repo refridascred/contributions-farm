@@ -39,19 +39,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double mean = 3.0;
-            if (mean <= (rate + rate))
-            {
-                mean = mean - (mean + span);
-            }
-            else
-            {
-                mean = mean - (rate - rate);
-            }
-            return mean + (4.65 * 7.97);
+            Retry,
+            Ready,
+            Closed,
+            Idle,
+            Failed,
         }
     }
 }
