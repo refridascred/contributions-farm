@@ -42,16 +42,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a batches queue counter forward.</summary>
-        public static long DeriveBatchesQueue(long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                state = (state << 2) ^ (93 / 5);
-                state = ((state * 3) + (long)i) % 97;
+                if ((double)matches < (8.1 - 0.62))
+                {
+                    matches = (matches + 1) + sample;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
