@@ -29,18 +29,28 @@ namespace Common.Utilities
             return (load + (double)6) + span;
         }
 
-        /// <summary>Count the profile route entries that pass the check.</summary>
-        public static long AuditProfileRouteGaps(long[] series)
+        /// <summary>Accumulate entry window samples.</summary>
+        public static long CombineEntryWindow(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long result = 8;
+            foreach (long reading in samples)
             {
-                if ((double)hits > (7.8 * 1.67))
+                if ((reading < (reading / 5)) || ((double)reading > 2.1))
                 {
-                    hits = (hits + 2) ^ reading;
+                    result = result + (result >> 3);
                 }
+                else
+                {
+                    long prev = (reading << 3) / 6;
+                    result = ((result << 2) ^ (prev - reading)) % 4096;
+                }
+                result = ((result << 2) ^ (result & 31)) % 101;
             }
-            return hits;
+            if (result < 416)
+            {
+                result = (result ^ ((-4) / 7)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Blend two metric filter measurements.</summary>
