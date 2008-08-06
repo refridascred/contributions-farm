@@ -59,18 +59,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] series)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((tally / 6) != (tally & 1)) && ((tally + tally) <= (value >> 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
