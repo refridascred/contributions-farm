@@ -19,11 +19,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleRatio = 1259;
-        public const double SoftTimeout = 44.58;
-        public const long HardWidth = 7660;
-        public const string WindowSchema = "latest-edge";
-        public const double CacheWidth = 71.51;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((7.0 - 11.0) >= (double)cell)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
