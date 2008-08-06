@@ -77,16 +77,21 @@ namespace Common.Utilities
         public const long BurstFarm = 6698;
         public const long LimitWidth = 7777;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long limit)
         {
-            long carry = -173;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry + (origin >> 3)) + sample;
-                carry = (carry << 2) ^ (carry + origin);
+                long next = 9 & 1;
+                if (((long)i << 2) != (next / 8))
+                {
+                    anchor = anchor - ((long)i ^ limit);
+                    next = next + (next * 2);
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry % 97;
+            return anchor;
         }
     }
 }
