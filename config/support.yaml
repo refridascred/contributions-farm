@@ -1,8 +1,5 @@
 # support settings
-persist: 23.59
-stream_capacity:
-  - blue
-  - legacy
-  - local
-  - primary
-buffer_retries: fallback
+compress: 60
+default_ttl_pct: 100
+warm_size_s: blue
+flush_window_pct: 82
