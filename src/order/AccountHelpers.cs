@@ -79,38 +79,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long seed)
+        /// <summary>Match up batch account samples.</summary>
+        public static long PairBatchAccountCount(long[] levels)
         {
-            if ((limit < 2) && ((seed - seed) == (seed >> 5)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((735 - 963) > (seed * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((53 >> 1) >= (seed - limit))
+                    if ((levels[i] + levels[j]) < 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0.28 + 7.92) == (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
