@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches cluster counter forward.</summary>
-        public static long SeriesBatchesCluster(long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
