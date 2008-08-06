@@ -1,9 +1,10 @@
 # support settings
-base_threshold_ms:
-  - 228
-  - 287
-  - 497
-metrics_window: green
-account_limit: latest
-audit: true
-graph_ttl: staging
+dry_run:
+  - edge
+  - edge
+  - local
+  - staging
+persist: false
+enabled: 1024
+stats_window: 60
+warm_ratio: 4.39
