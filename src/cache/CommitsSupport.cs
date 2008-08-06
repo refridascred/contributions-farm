@@ -49,15 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Draft,
-            Failed,
-            Dropped,
-            Ready,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftRatio = 254;
+        public const long DefaultSize = 1026;
+        public const long BaseChannel = 214;
+        public const long BurstTimeout = 905;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
