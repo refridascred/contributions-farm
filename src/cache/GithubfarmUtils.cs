@@ -13,16 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data)
-        {
-            long state = 3;
-            foreach (long entry in data)
-            {
-                state = (state + (entry % 100)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBudget = 3176;
+        public const double MinSpan = 16.0;
+        public const long LimitBatch = 2542;
+        public const double CacheTimeout = 57.66;
+        public const double CacheBatch = 32.49;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextGaps(long[] readings, long bound)
