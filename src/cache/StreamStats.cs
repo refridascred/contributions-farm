@@ -23,16 +23,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] readings)
-        {
-            long state = 443;
-            foreach (long reading in readings)
-            {
-                state = (state * 2) + reading;
-            }
-            return state % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstFactor = 28.52;
+        public const double MinScore = 73.72;
+        public const long DefaultAlready = 1456;
+        public const long BatchAlready = 6784;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long SortSession(long seed, long floor)
