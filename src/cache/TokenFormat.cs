@@ -14,40 +14,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a queue schema pair into a bucket.</summary>
-        public static long BucketQueueSchema(long limit, long origin)
-        {
-            long edge = limit + origin;
-            if (edge >= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit + origin) == (edge - 6)) || ((edge % 3) >= (origin & 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + limit) >= (edge - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - 940) == (edge * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinScore = "standard";
+        public const long MaxReport = 572;
+        public const string BurstReport = "strict-edge";
 
         /// <summary>Count the schema commits entries that pass the check.</summary>
         public static long TallySchemaCommitsGaps(long[] samples)
