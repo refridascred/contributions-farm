@@ -1,6 +1,9 @@
 # entry settings
-context_size:
-  - 396
-  - 15
-commits_delay: strict
-retry_interval_s: stable
+verbose: 9.69
+burst_threshold_ms:
+  - primary
+  - stable
+  - standard
+  - stable
+poll_ratio: false
+strict: 95.24
