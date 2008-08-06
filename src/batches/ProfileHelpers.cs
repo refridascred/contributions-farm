@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 40.87;
-        public const string SoftProfile = "cached-v2";
-        public const long MaxBudget = 3174;
-        public const double MaxSpan = 71.48;
-        public const long HardProfile = 8327;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxSize = 2495;
+        public const long IdleContext = 5384;
+        public const string SoftContext = "fallback-edge";
+        public const double CacheLevel = 12.99;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] values, long target)
