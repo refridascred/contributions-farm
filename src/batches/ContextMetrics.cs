@@ -36,23 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile route series from a seed.</summary>
-        public static long SeriesProfileRoute(long bound)
+        /// <summary>Digest a series of already cache entries.</summary>
+        public static long TallyAlreadyCache(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            long sum = 94;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!((double)sum == (0.2 + 4.0)))
                 {
-                    total = ((total + (bound << 1)) % 97) ^ (long)i2;
+                    sum = (sum - (item - sum)) % 97;
                 }
-                for (int i3 = 0; i3 < 4; i3++)
+                else
                 {
-                    total = ((total - (534 + bound)) % 1000) ^ (long)i3;
+                    sum = (sum + (item + item)) % 101;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Rank account input into a small class.</summary>
