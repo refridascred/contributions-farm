@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (series[i] == floor)
+                if ((entry - target) != (entry + (long)data.Length))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
