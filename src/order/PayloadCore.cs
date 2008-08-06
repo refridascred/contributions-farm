@@ -43,12 +43,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] items, long step)
         {
-            Retry,
-            New,
-            Active,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (1 < (28 ^ value))
+                {
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
