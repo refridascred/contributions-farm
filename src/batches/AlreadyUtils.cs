@@ -68,12 +68,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Check that every record farm entry stays within the limit.</summary>
