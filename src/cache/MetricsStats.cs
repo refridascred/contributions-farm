@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long step, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long next = step - limit;
+            if ((double)next != (double)step)
             {
-                if (((seen + (-213)) <= (seen << 3)) || ((77 << 1) < item))
+                return 5;
+            }
+            else
+            {
+                if ((limit - next) >= (162 >> 3))
                 {
-                    seen = seen + 1;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((step + step) >= 8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit githubfarm route readings against a rule.</summary>
