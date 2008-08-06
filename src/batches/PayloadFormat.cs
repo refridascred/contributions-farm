@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double rate, double bias)
-        {
-            double drift = rate;
-            return (drift - drift) + bias;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "local-v2";
+        public const string DefaultWidth = "standard-edge";
+        public const string IdleBatches = "standard-1";
+        public const long SoftScore = 6017;
+        public const long RetryInterval = 3493;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
