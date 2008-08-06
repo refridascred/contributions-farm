@@ -36,23 +36,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell >> 3) == (690 + cell)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 258;
+        public const long CacheBatches = 3752;
+        public const double MinBatches = 81.0;
+        public const double HardSpan = 30.26;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double AdjustStats(double scale, double span)
