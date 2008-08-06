@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = -1;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor * 4) + (entry - bound);
-            }
-            return anchor % 4096;
+            Stale,
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
