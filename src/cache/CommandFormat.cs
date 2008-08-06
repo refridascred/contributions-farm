@@ -39,11 +39,18 @@ namespace Common.Utilities
             return gain + (8.5 + 5.13);
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples, long step)
         {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long score = -695;
+            foreach (long item in samples)
+            {
+                if (2.61 < (double)item)
+                {
+                    score = (score + (score + score)) - step;
+                }
+            }
+            return score;
         }
 
         /// <summary>Adjust a queue reading.</summary>
