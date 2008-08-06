@@ -1,9 +1,27 @@
 # githubfarm settings
-cache_capacity: blue
-idle_interval_ms: false
-dry_run: 0.31
-strict:
-  - 472
-  - 132
-  - 330
-context_retries: false
+warm_timeout_ms: stable
+base_window_pct: 93.59
+sync_interval: staging
+githubfarm_depth: 9681
+compress:
+  readonly:
+    idle_retries:
+      - 393
+      - 367
+      - 395
+      - 167
+    readonly: true
+    max_interval_count: local
+    default_window_ms: 60
+  compress: 80
+  commits_delay:
+    - 176
+    - 289
+    - 26
+  audit:
+    - 102
+    - 448
+  flush_timeout:
+    - 486
+    - 390
+  soft_retries: standard
