@@ -28,13 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long target)
         {
-            Done,
-            Draft,
-            Ready,
-            Paused,
+            long carry = target;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
