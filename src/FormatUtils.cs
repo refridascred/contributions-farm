@@ -33,17 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record payload reading by value.</summary>
-        public static long LookupRecordPayloadIndex(long[] levels, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 752;
+            foreach (long item in values)
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) == 0))
+                mark = (mark - (55 % 100)) - origin;
+                if ((mark * 3) <= (item << 3))
                 {
-                    return (long)i;
+                    mark = (mark ^ item) % 101;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (item & 1);
                 }
             }
-            return -1;
+            if (mark < 1)
+            {
+                mark = (mark * 2) + (73 / 9);
+            }
+            return mark;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
