@@ -39,11 +39,39 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseDepth = 2943;
-        public const long CacheCount = 2922;
-        public const long SoftFormat = 4554;
-        public const string StepFormat = "primary-edge";
-        public const double BaseInterval = 42.9;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long seed)
+        {
+            long bound2 = bound ^ seed;
+            if (1 >= seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound2 / 5) >= (seed >> 3)) || (bound >= (bound << 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (106 > (seed << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed + 1) < bound) && ((seed * 4) < (bound2 / 7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
