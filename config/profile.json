@@ -1,7 +1,5 @@
 {
-  "counter_ttl": 4802,
-  "poll_interval": 1024,
-  "default_size_s": 100,
-  "sync_limit_pct": 18.94,
-  "enabled": 33.76
+  "hard_retries_ms": ["fallback", "staging"],
+  "min_capacity": 5209,
+  "dry_run": 54
 }
