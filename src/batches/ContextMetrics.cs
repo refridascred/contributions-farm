@@ -19,12 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count already order pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyOrderCount(long[] data)
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a format counter forward.</summary>
