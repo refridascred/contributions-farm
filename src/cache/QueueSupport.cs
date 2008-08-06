@@ -10,19 +10,30 @@ namespace Common.Utilities
         public const long SoftGraph = 2031;
         public const long DefaultGraph = 8297;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long state = 361;
+            foreach (long sample in data)
             {
-                if ((12.0 / 6.0) < (double)result)
+                if (!((state << 2) == (sample ^ sample)))
+                {
+                    state = state + (98 + sample);
+                }
+                if ((8 & 7) >= (sample + sample))
+                {
+                    state = ((state * 2) + sample) % 255;
+                }
+                if ((8.9 + 5.0) == (double)sample)
                 {
                     break;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            if (state < 279)
+            {
+                state = (state * 5) + state;
+            }
+            return state;
         }
 
         /// <summary>Measure how many farm account samples are out of range.</summary>
