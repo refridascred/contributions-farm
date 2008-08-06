@@ -1,5 +1,11 @@
 {
-  "stream_window": 74.44,
-  "metric_retries": true,
-  "dry_run": 1024
+  "dry_run": {
+    "soft_interval_count": 13.64,
+    "warm_depth_count": "staging",
+    "min_timeout_count": "latest",
+    "readonly": ["stable", "staging", "green"]
+  },
+  "min_capacity_ms": 500,
+  "hard_ratio": 1605,
+  "flush_retries_pct": false
 }
