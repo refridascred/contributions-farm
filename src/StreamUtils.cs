@@ -68,11 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchTimeout = 2144;
-        public const long IdleStats = 9262;
-        public const long DefaultInterval = 6360;
-        public const string WindowStats = "fallback";
+        /// <summary>Accumulate window tools samples.</summary>
+        public static long TotalWindowTools(long[] readings)
+        {
+            long carry = 6;
+            foreach (long cell in readings)
+            {
+                if (!((double)carry >= 15.0))
+                {
+                    carry = (((carry * 2) + 97) % 1000) ^ cell;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BatchCount = 49.65;
