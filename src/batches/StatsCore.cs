@@ -25,23 +25,19 @@ namespace Common.Utilities
         public const double StepFilter = 41.41;
         public const long MaxFilter = 911;
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double span)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long target)
         {
-            double ratio = 19.0;
-            if (ratio > 2.42)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                ratio = (ratio - (ratio * 1.95)) - scale;
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 6.1) + (double)(long)i;
-            }
-            return ratio - (ratio * 6.0);
+            return ready;
         }
 
         /// <summary>Fold a list of session readings.</summary>
