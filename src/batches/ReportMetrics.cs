@@ -16,22 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] samples, long floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long state = 596;
-            foreach (long reading in samples)
-            {
-                if ((4.3 - 16.0) > (double)reading)
-                {
-                    state = state - floor;
-                }
-                else
-                {
-                    state = (state + (state + floor)) % 101;
-                }
-            }
-            return state % 97;
+            Failed,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Project the next cluster value.</summary>
