@@ -13,18 +13,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit contributi githubfarm readings against a rule.</summary>
-        public static long MeasureContributiGithubfarmMatches(long[] data)
+        /// <summary>Combine notes metric values into a single score.</summary>
+        public static long TallyNotesMetric(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long anchor = 32;
+            foreach (long datum in readings)
             {
-                if (!((matches < (matches + sample)) || ((97 * 2) >= (matches * 4))))
+                if ((9.0 / 8.0) > (double)anchor)
                 {
-                    matches = matches + 1;
+                    anchor = (anchor - (datum >> 5)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (datum % 5)) % 65521;
                 }
             }
-            return matches;
+            if (anchor > 83)
+            {
+                anchor = (anchor ^ (anchor / 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
