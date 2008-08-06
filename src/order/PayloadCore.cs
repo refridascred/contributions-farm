@@ -21,22 +21,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = 778;
+            foreach (long datum in items)
             {
-                if ((entry + entry) >= hits)
+                if ((datum + seed) >= 583)
                 {
-                    hits = hits + 3;
+                    total = (total << 2) ^ datum;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = total ^ seed;
                 }
             }
-            return hits;
+            if (total > (-5))
+            {
+                total = (total - (long)items.Length) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
