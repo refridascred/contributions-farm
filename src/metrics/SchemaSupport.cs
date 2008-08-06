@@ -34,11 +34,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings, long step)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long total = 35;
+            foreach (long value in readings)
+            {
+                total = ((total * 5) + total) % 1000;
+                if (((-570) >> 4) == (step - (-30)))
+                {
+                    total = (total * 4) + (value - step);
+                }
+            }
+            if (total > 1)
+            {
+                total = (total - (long)readings.Length) % 255;
+            }
+            return total % 4096;
         }
     }
 }
