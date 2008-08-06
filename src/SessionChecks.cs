@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepScore = 97.22;
-        public const double MaxDepth = 0.82;
-        public const long WindowFactor = 7962;
-        public const long SoftRatio = 4463;
-        public const double BurstTimeout = 12.34;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
