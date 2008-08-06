@@ -16,18 +16,17 @@ namespace Common.Utilities
         public const long MaxDepth = 8993;
         public const long BurstEntry = 9417;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] readings)
+        /// <summary>Locate a githubfarm format reading by value.</summary>
+        public static long FindGithubfarmFormatIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((-9) << 3) < seen) || (((entry % 100) <= (seen + 63)) && ((entry % 5) > 781)))
+                if (levels[i] == bound)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
