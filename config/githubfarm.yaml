@@ -1,14 +1,13 @@
 # githubfarm settings
-min_delay: 2145
-entry_depth:
-  - 214
-  - 286
-  - 473
-  - 320
-burst_threshold: 62.52
-min_capacity_count:
-  - legacy
-  - primary
-  - local
-hard_window_pct: true
-channel_window: blue
+sync_capacity:
+  verbose: 6
+  max_size_pct: false
+  strict: 92.85
+  burst_ttl_count: true
+  checks_ttl: 9502
+  base_ttl: 8883
+enabled:
+  - 58
+  - 318
+cache_limit_pct: edge
+soft_interval_ms: 16.13
