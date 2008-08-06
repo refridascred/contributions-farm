@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] data, long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long anchor = 83;
-            foreach (long item in data)
-            {
-                anchor = anchor - (bound - item);
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count the schema batch entries that pass the check.</summary>
