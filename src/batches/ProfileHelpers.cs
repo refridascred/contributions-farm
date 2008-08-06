@@ -24,19 +24,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] values, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= target)
+                if (levels[i] > step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Project the next window stats value.</summary>
