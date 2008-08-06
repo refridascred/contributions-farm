@@ -1,11 +1,22 @@
 {
-  "burst_depth_pct": [137, 96],
-  "dry_run": {
-    "compress": true,
-    "retry_delay_ms": false,
-    "retry_ttl_s": "edge",
-    "route_ttl": "eu-west",
-    "dry_run": 14.57
-  },
-  "flush_limit_pct": "strict"
+  "compress": 1024,
+  "support_timeout": 5119,
+  "burst_limit_s": {
+    "cache_timeout_count": {
+      "persist": ["eu-west", "standard", "standard"],
+      "stats_limit": 500,
+      "soft_depth": 11,
+      "checks_depth": 67.36
+    },
+    "default_limit_pct": 80,
+    "burst_ratio": {
+      "min_interval_s": "standard",
+      "soft_size_s": "blue",
+      "window_capacity": 91.04,
+      "dry_run": true,
+      "warm_delay": 25
+    },
+    "verbose": 48.64,
+    "burst_timeout_count": [171, 31, 47]
+  }
 }
