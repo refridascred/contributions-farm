@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] series, long step)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Region { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a graph stats.</summary>
