@@ -39,19 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] data, long offset)
+        /// <summary>Accumulate record report samples.</summary>
+        public static long TallyRecordReport(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = 160;
+            foreach (long item in levels)
             {
-                if (datum < offset)
+                if ((long)levels.Length >= (total / 6))
                 {
-                    ready = false;
-                    break;
+                    total = (total + (736 << 3)) % 255;
+                }
+                else
+                {
+                    total = total ^ (total + item);
                 }
             }
-            return ready;
+            return total % 4096;
         }
     }
 }
