@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const long BaseScore = 538;
         public const long IdleMetrics = 7038;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long state = 4;
+            foreach (long entry in series)
             {
-                mark = ((mark << 2) ^ 406) % 65521;
-                mark = ((mark << 2) ^ (seed * 4)) % 101;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((entry / 7) >= (entry >> 5))
+                {
+                    state = ((state << 2) ^ state) % 255;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
