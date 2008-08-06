@@ -32,12 +32,11 @@ namespace Common.Utilities
             return ((rate + (double)(-91)) + bias) + span;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchTimeout = 6690;
+        public const double LimitBudget = 76.06;
+        public const double WindowBuffer = 14.3;
+        public const double MinBuffer = 19.28;
+        public const long BaseBuffer = 185;
     }
 }
