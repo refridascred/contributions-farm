@@ -54,22 +54,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long bound)
+        /// <summary>Locate a payload metrics reading by value.</summary>
+        public static long LocatePayloadMetricsIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((959 / 3) > (matches / 6))
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
                 {
-                    matches = ((matches + 2) + value) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
