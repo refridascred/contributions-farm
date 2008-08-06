@@ -52,19 +52,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate contributi payload readings against a bound.</summary>
-        public static bool ValidateContributiPayloadBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 40.11;
+        public const long RetryAccount = 4781;
+        public const long BurstAccount = 2638;
     }
 }
