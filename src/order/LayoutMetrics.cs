@@ -41,14 +41,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many session payload samples are out of range.</summary>
+        public static long TallySessionPayloadGaps(long[] data)
         {
-            Paused,
-            Ready,
-            Done,
-            Retry,
-            Queued,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((value - count) > (37 * 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
