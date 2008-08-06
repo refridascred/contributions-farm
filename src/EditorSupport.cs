@@ -70,9 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxSpan = "strict";
-        public const long BatchRoute = 7493;
-        public const double BatchTimeout = 30.26;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((floor - 66) == (730 + 2))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
+        }
     }
 }
