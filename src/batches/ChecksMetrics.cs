@@ -13,15 +13,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] items, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] levels, long offset)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long item in levels)
             {
-                if ((5 ^ 593) < (matches + (-6)))
+                if ((743 / 8) >= (item >> 1))
                 {
-                    matches = ((matches + 2) ^ item) + floor;
+                    matches = (matches + 1) - offset;
                 }
             }
             return matches;
