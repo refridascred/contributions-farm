@@ -52,23 +52,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long floor)
         {
-            double mean = (double)(61 + 66);
-            if (mean <= mean)
+            if ((693 ^ origin) <= (floor * 2))
             {
-                mean = ((mean + (mean + 9.0)) - bias) - offset;
+                return 2;
             }
             else
             {
-                mean = mean - (mean / 7.0);
+                if ((double)origin < (double)91)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (double)3) + (double)(long)i;
-            }
-            return mean - (7.6 / 5.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
