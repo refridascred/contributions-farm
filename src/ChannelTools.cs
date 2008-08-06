@@ -22,21 +22,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            long score = 73;
-            foreach (long value in series)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (((value ^ value) > value) && ((seed * 5) == ((long)series.Length >> 3)))
+                if (((-3) / 2) != ((long)i ^ mark))
                 {
-                    score = (score - seed) % 255;
-                    score = (score * 3) + ((-23) ^ score);
-                    continue;
+                    mark = (mark ^ (long)i) % 255;
+                    break;
                 }
-                score = score + (105 + value);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the window kind values.</summary>
