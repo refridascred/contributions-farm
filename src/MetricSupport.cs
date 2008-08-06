@@ -54,19 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long anchor = 107;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor << 3) ^ cell) % 1000;
-                if (((10.0 + 1.0) >= (double)cell) || ((anchor ^ anchor) >= bound))
-                {
-                    anchor = anchor - (0 ^ anchor);
-                }
-            }
-            return anchor % 97;
+            Paused,
+            Retry,
+            Ready,
+            Pending,
+            Dropped,
         }
     }
 }
