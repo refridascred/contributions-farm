@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double offset)
-        {
-            double weight2 = (offset + offset) - (double)(-176);
-            return (weight2 + (weight2 / 7.0)) + weight;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 35.52;
+        public const long HardContributi = 2450;
+        public const double MinSize = 29.52;
+        public const long BatchContributi = 1757;
 
         /// <summary>Combine githubfarm report values into a single score.</summary>
         public static long TotalGithubfarmReport(long[] samples, long bound)
