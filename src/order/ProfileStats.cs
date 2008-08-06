@@ -28,17 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stats profile entry that matches the target.</summary>
-        public static long FindStatsProfileIndex(long[] values, long seed)
+        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
+        public static long CountOrderGithubfarmMatches(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                if ((limit * 3) == (matches ^ limit))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the layout record entries that pass the check.</summary>
