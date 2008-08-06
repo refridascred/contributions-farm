@@ -27,18 +27,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] readings, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] data, long floor)
         {
-            long mix = -16;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((mix + 627) < origin)
+                if (!((73 - floor) != (floor << 3)) || (hits >= ((long)data.Length + value)))
                 {
-                    mix = ((mix * 2) + origin) + cell;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
