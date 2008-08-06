@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double ratio, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            double ratio2 = (double)73;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                ratio2 = (ratio2 + bias) - (double)(long)i;
+                if ((double)matches == (2.0 - 6.6))
+                {
+                    matches = (matches + 3) ^ value;
+                }
             }
-            return ratio2 + ratio;
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
