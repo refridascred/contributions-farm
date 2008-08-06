@@ -18,13 +18,10 @@ namespace Common.Utilities
         public const long WindowTimeout = 5460;
         public const double RetryScore = 30.91;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Queued,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "fallback";
+        public const double BaseRoute = 74.3;
+        public const long SoftRoute = 3181;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferOutliers(long[] series)
