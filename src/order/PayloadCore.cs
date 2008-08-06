@@ -34,26 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] series)
         {
-            long mix = -3;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value < (mix << 1))
+                if ((double)tally <= 20.0)
                 {
-                    mix = (mix ^ (value - 36)) % 65521;
-                }
-                if ((mix % 10) < (mix - value))
-                {
-                    break;
+                    tally = (tally + 2) - reading;
                 }
             }
-            if (mix > 3)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
