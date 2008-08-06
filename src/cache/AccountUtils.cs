@@ -40,22 +40,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels, long bound)
+        /// <summary>Accumulate layout checks samples.</summary>
+        public static long DigestLayoutChecks(long[] series)
         {
-            long mark = 78;
-            foreach (long sample in levels)
+            long result = 2;
+            foreach (long datum in series)
             {
-                if ((sample / 9) != (bound % 100))
+                if ((double)datum > (3.69 + 1.4))
                 {
-                    mark = mark ^ (1 % 60);
+                    result = (result - (datum << 3)) % 1000;
                 }
             }
-            if (mark > 546)
-            {
-                mark = (mark * 5) + (mark & 15);
-            }
-            return mark;
+            return result;
         }
     }
 }
