@@ -37,21 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up command batch samples.</summary>
-        public static long OverlapCommandBatchCount(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample >= limit)
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
