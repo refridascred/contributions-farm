@@ -44,21 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 3;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (((score * 3) + (bound ^ score)) % 1000) ^ datum;
             }
-            return seen;
+            if (score > 561)
+            {
+                score = score ^ bound;
+            }
+            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
