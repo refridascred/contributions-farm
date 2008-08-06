@@ -46,15 +46,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long limit, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            if ((limit - 5) >= (target & 7))
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((6.0 * 2.8) == (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
