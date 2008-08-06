@@ -13,23 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mark = 20;
-            foreach (long value in series)
-            {
-                mark = (mark ^ (mark - 995)) % 1000;
-                if ((double)value < (2.0 + 9.3))
-                {
-                    mark = mark - (mark - 1);
-                }
-            }
-            if (mark < 3)
-            {
-                mark = (mark ^ (-6)) % 97;
-            }
-            return mark;
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Derive the next context buffer value from a seed.</summary>
