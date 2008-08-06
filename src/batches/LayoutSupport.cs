@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryDepth = 8208;
-        public const double MinDepth = 70.27;
-        public const long StepRatio = 1439;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileLimits(long[] samples, long floor)
