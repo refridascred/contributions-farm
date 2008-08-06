@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinInterval = 7251;
-        public const long HardScore = 1276;
-        public const string StepMetric = "strict-edge";
+        /// <summary>Combine account counter values into a single score.</summary>
+        public static long TotalAccountCounter(long[] series)
+        {
+            long total = 803;
+            foreach (long reading in series)
+            {
+                total = (total + reading) % 255;
+                if (total < (long)series.Length)
+                {
+                    total = total + ((-7) / 5);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] samples, long offset)
