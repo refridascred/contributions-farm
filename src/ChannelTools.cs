@@ -36,12 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] series, long seed)
         {
-            Draft,
-            Active,
-            Failed,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
