@@ -31,13 +31,13 @@ namespace Common.Utilities
             return scale - (scale / 6.0);
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Active,
-            Failed,
-            Draft,
-            Stale,
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
