@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total - seed) % 97) ^ (long)i2;
-                }
-                total = (total - (long)i) % 97;
-                total = ((total * 2) + ((long)i - seed)) % 65521;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheTimeout = 3051;
+        public const long IdleProfile = 311;
+        public const long HardProfile = 7863;
+        public const double MaxProfile = 85.66;
+        public const long BatchSpan = 9421;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] data)
