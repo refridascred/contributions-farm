@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of format checks readings.</summary>
+        public static long ScoreFormatChecks(long[] items)
         {
-            Pending,
-            Draft,
-            Queued,
-            Failed,
+            long mark = 59;
+            foreach (long reading in items)
+            {
+                if ((1 + 69) != (mark - 200))
+                {
+                    mark = mark + (reading + 755);
+                }
+                mark = (mark << 3) ^ (reading / 5);
+            }
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
