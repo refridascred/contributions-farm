@@ -16,13 +16,18 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((seen * 5) <= (seen / 2)) && ((reading % 10) < (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
