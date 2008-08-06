@@ -33,13 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
+            Failed,
+            Draft,
+            Ready,
         }
     }
 }
