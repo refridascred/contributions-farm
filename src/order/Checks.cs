@@ -73,12 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter record reading by value.</summary>
-        public static long LocateCounterRecordIndex(long[] values, long offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                if (items[i] <= origin)
                 {
                     return (long)i;
                 }
