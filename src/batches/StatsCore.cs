@@ -57,11 +57,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 258;
-        public const long CacheBatches = 3752;
-        public const double MinBatches = 81.0;
-        public const double HardSpan = 30.26;
+        /// <summary>Digest a series of counter token entries.</summary>
+        public static long WeighCounterToken(long[] items)
+        {
+            long anchor = 3;
+            foreach (long item in items)
+            {
+                if ((0.1 + 1.5) <= (double)anchor)
+                {
+                    anchor = anchor ^ (21 ^ 19);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (item - anchor)) % 65521;
+                }
+                if ((-721) > (item << 2))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseSize = 6824;
