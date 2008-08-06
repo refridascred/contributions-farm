@@ -1,6 +1,23 @@
 {
-  "queue_ratio": 500,
-  "retry_depth_count": false,
-  "persist": ["standard", "latest"],
-  "burst_window_pct": false
+  "verbose": {
+    "strict": [232, 199, 198],
+    "soft_size": 32.72,
+    "compress": "cached",
+    "audit": 42
+  },
+  "idle_limit_count": "stable",
+  "dry_run": {
+    "stream_limit": 60,
+    "enabled": 17,
+    "persist": "standard",
+    "dry_run": 51,
+    "max_depth_count": "eu-west"
+  },
+  "burst_ratio_pct": {
+    "base_threshold_ms": 51.54,
+    "verbose": 2075,
+    "retry_depth_ms": "green"
+  },
+  "retry_depth": false,
+  "compress": false
 }
