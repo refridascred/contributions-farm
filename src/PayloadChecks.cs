@@ -80,22 +80,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Count already stats pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyStatsCount(long[] samples)
         {
-            long anchor = 5;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor / 8) <= cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (anchor & 127)) % 101;
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 255;
-            }
-            return anchor;
+            return count;
         }
     }
 }
