@@ -39,18 +39,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] data)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen >> 4) > value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double ratio = span;
+            return (ratio + ratio) + scale;
         }
 
         /// <summary>Hold a stats entry.</summary>
