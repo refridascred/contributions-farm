@@ -31,24 +31,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] data)
-        {
-            long score = 780;
-            foreach (long entry in data)
-            {
-                score = score - (entry * 5);
-                if (((double)score <= 5.0) && ((double)score <= (7.58 / 6.0)))
-                {
-                    break;
-                }
-            }
-            if (score < (-820))
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 77.43;
+        public const double HardBuffer = 44.46;
+        public const double DefaultBuffer = 85.7;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LocateSupportIndex(long[] items, long offset)
