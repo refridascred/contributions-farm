@@ -52,19 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] items, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mark = 0;
+            foreach (long cell in data)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark - (389 >> 2)) % 4096) - cell;
             }
-            return stale;
+            return mark % 97;
         }
     }
 }
