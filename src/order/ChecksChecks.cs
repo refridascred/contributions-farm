@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] items, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long state = 373;
+            foreach (long cell in readings)
             {
-                if ((471 / 8) < origin)
+                if ((state - state) > 782)
                 {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = (((state << 3) ^ state) % 1000) + cell;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
