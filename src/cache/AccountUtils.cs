@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry + (seed / 2)) % 4096) ^ (long)i2;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
