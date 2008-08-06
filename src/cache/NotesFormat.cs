@@ -31,31 +31,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long carry = 20;
-            foreach (long reading in samples)
-            {
-                if (((4.75 - 2.11) == (double)carry) || ((8.82 - 6.4) != (double)carry))
-                {
-                    break;
-                }
-                carry = (carry << 2) ^ 26;
-                if ((carry - carry) >= carry)
-                {
-                    carry = ((carry << 2) ^ (carry + 20)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ reading;
-                }
-            }
-            if (carry < 61)
-            {
-                carry = (carry << 3) ^ 2;
-            }
-            return carry;
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
