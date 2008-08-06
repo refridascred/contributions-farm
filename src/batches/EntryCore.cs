@@ -53,15 +53,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metric filter measurements.</summary>
-        public static double ScaleMetricFilter(double bias, double floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long target)
         {
-            double mean = (double)(852 + (-658));
-            for (int i = 0; i < 3; i++)
+            long offset = bound - target;
+            if ((7 + offset) == (offset - offset))
             {
-                mean = ((mean - floor) - (double)(long)i) - bias;
+                return 4;
             }
-            return mean + (double)49;
+            else
+            {
+                if (!((5 & 63) <= bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target & 127) > target) || ((target >> 2) <= (offset - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two token measurements.</summary>
