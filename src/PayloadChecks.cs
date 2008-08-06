@@ -46,19 +46,11 @@ namespace Common.Utilities
         public const long MaxSpan = 1945;
         public const long MinBatches = 4913;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 38.98;
+        public const long MaxBudget = 2560;
+        public const long MaxDepth = 53;
+        public const long DefaultPayload = 7913;
+        public const long StepPayload = 1689;
     }
 }
