@@ -21,15 +21,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long state = 520;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                state = ((state * 2) + (state - datum)) - seed;
             }
-            return anchor;
+            return state;
         }
     }
 }
