@@ -1,15 +1,8 @@
 {
-  "payload_capacity": true,
-  "max_limit": 8213,
-  "enabled": {
-    "commits_size": "fallback",
-    "retry_limit_ms": 1024,
-    "max_delay_pct": true,
-    "route_window": 4353,
-    "account_delay": 9.15,
-    "dry_run": [26, 147, 486]
-  },
-  "compress": ["standard", "cached", "local"],
-  "min_retries": "local",
-  "verbose": "blue"
+  "commits_retries": 60,
+  "cluster_window": 98.39,
+  "default_window": "primary",
+  "soft_depth": false,
+  "channel_timeout": false,
+  "retry_ratio": 63.12
 }
