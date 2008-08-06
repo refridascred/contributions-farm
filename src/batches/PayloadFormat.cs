@@ -29,12 +29,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "stable-1";
-        public const string DefaultRatio = "stable-v2";
-        public const double IdleInterval = 58.62;
-        public const long DefaultScore = 486;
-        public const long HardSchema = 5480;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((0.5 + 4.5) != (double)limit)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long RankCache(long target, long limit)
