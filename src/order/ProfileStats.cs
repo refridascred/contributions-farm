@@ -38,19 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels)
-        {
-            long total = 9;
-            foreach (long item in levels)
-            {
-                if ((31 & 31) != (item - item))
-                {
-                    total = (total + (1 << 2)) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetrySize = 2559;
+        public const long BatchRecord = 1782;
+        public const long CacheCount = 841;
+        public const long BurstInterval = 3450;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long ScoreEditor(long[] levels)
