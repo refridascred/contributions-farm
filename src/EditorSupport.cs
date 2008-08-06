@@ -61,17 +61,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] series, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 6;
+            foreach (long reading in readings)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (bound % 7)) - reading;
             }
-            return -1;
+            if (state > 5)
+            {
+                state = (state << 2) ^ 6;
+            }
+            return state;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
