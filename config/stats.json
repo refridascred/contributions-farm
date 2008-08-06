@@ -1,15 +1,13 @@
 {
-  "hard_depth_ms": 34,
-  "hard_interval_s": {
-    "report_threshold": {
-      "sync_ratio": "stable",
-      "poll_timeout": "eu-west",
-      "context_capacity": 27,
-      "max_delay": 9
-    },
-    "burst_depth_s": true,
-    "idle_retries": 74.58
+  "burst_ratio_s": "primary",
+  "warm_limit_count": true,
+  "metrics_threshold": 76.98,
+  "already_size": {
+    "dry_run": ["staging", "blue"],
+    "min_threshold_count": "blue",
+    "poll_capacity": 21,
+    "default_capacity_count": "eu-west",
+    "schema_timeout": 67.08
   },
-  "warm_delay_ms": 22.42,
-  "soft_capacity_s": 96
+  "base_ttl_count": 75.92
 }
