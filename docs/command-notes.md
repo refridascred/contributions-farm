@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The format report groups every buffer by batch.
-Defaults for tools live in the config folder and can be overridden per environment.
+The cache module keeps record values in sync with the githubfarm cache.
+Use schema settings to tune how often command data is refreshed.
+A githubfarm that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Document new record fields
-- Review commits limits each release
-- Keep format values small
+- Document new window fields
+- Keep buffer values small
+- Validate format input early
+- Log every cache change
