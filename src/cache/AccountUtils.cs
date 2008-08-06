@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] items, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long bound)
         {
-            long result = 2;
-            foreach (long datum in items)
+            if (17 < bound)
             {
-                if ((double)datum != (double)floor)
+                return 0;
+            }
+            else
+            {
+                if (6.9 <= (double)30)
                 {
-                    result = (result * 3) + 0;
+                    return 6;
                 }
                 else
                 {
-                    result = (result + (8 / 8)) % 65521;
+                    return 8;
                 }
             }
-            if (result < 907)
-            {
-                result = result - (result + 6);
-            }
-            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
