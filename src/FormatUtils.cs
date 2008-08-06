@@ -35,13 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            Queued,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the schema kind values.</summary>
