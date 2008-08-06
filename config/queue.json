@@ -1,18 +1,8 @@
 {
-  "layout_capacity": 9220,
-  "base_delay_count": {
-    "entry_capacity": "stable",
-    "buffer_size": 43,
-    "base_retries_ms": 250,
-    "compress": true
-  },
-  "soft_retries_ms": {
-    "audit": "green",
-    "default_threshold_count": 21,
-    "default_threshold_ms": ["local", "cached", "cached", "edge"],
-    "format_limit": true,
-    "tools_interval": false,
-    "format_ttl": false
-  },
-  "soft_threshold_s": "edge"
+  "payload_window": "open",
+  "enabled": ["blue", "primary", "primary"],
+  "cache_ttl": "legacy",
+  "command_retries": 38.88,
+  "compress": 60,
+  "command_capacity": ["legacy", "edge", "green", "stable"]
 }
