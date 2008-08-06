@@ -19,20 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats farm reading.</summary>
-        public static double ProjectStatsFarm(double bias, double floor)
-        {
-            double scale = 5.0;
-            if (scale >= (7.19 * 1.93))
-            {
-                scale = (scale + (double)61) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - (scale / 7.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstTimeout = 2528;
+        public const double HardStream = 53.96;
+        public const long RetrySize = 2510;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
