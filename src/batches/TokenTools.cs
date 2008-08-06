@@ -23,12 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 9.25;
-        public const string HardLevel = "standard-v2";
-        public const double IdleBudget = 7.0;
-        public const long MaxDepth = 407;
-        public const long StepNotes = 5900;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long origin)
+        {
+            if (((origin ^ seed) != (seed >> 4)) && ((origin - seed) < (seed / 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (6.32 + 17.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 2) > (seed + 44))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long ClassifyLayout(long target, long floor)
