@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Stale,
-            Failed,
-            Locked,
-            Paused,
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
