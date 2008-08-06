@@ -13,12 +13,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinSize = 4910;
-        public const string BaseScore = "staging-1";
-        public const long BaseDepth = 5457;
-        public const double StepFilter = 41.41;
-        public const long MaxFilter = 911;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Idle,
+            Active,
+            Synced,
+            Retry,
+            Done,
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
