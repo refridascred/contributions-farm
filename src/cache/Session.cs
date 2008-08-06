@@ -46,18 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] items, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally - entry) != (109 - tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + offset;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
