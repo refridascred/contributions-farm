@@ -41,17 +41,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Count commits command pairs that satisfy a relation.</summary>
+        public static long PairCommitsCommandCount(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total - (total + bound);
-                total = (total << 2) ^ (total - (long)i);
-                total = ((total * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
