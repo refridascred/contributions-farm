@@ -1,10 +1,6 @@
 {
-  "entry_timeout": [212, 263, 123, 480],
-  "readonly": 28,
-  "default_interval_count": {
-    "verbose": "local",
-    "soft_timeout": "strict",
-    "default_limit_s": "blue",
-    "counter_delay": 78.64
-  }
+  "soft_delay_s": "local",
+  "record_timeout": 43.1,
+  "entry_capacity": "staging",
+  "hard_ttl_pct": 1024
 }
