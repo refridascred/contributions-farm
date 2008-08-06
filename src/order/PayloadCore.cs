@@ -21,26 +21,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] readings, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] items)
         {
-            long total = -462;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((349 & 1) > total) || ((double)(long)readings.Length != (7.91 + 8.64)))
+                if ((entry + entry) >= hits)
                 {
-                    total = ((total + total) % 65521) - limit;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    total = ((total * 2) + (datum - total)) % 97;
+                    hits = hits - 1;
                 }
             }
-            if (total < 330)
-            {
-                total = ((total << 2) ^ (total * 5)) % 65521;
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
