@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] data)
         {
-            Pending,
-            Dropped,
-            Locked,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((3.9 * 19.0) < (double)hits) || (((9 << 2) != (sample - 94)) || ((hits + sample) < (sample % 60))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank order input into a small class.</summary>
