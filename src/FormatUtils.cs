@@ -33,12 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor + (target + target)) % 65521;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (anchor + (target + target)) - (long)i2;
+                }
+                anchor = anchor - (target * 3);
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
