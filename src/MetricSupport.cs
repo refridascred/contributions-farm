@@ -15,14 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 8729;
+        public const string HardGithubfarm = "strict-1";
+        public const double BaseGithubfarm = 12.9;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
