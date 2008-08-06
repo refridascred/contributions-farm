@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command channel readings.</summary>
-        public static long CombineCommandChannel(long[] data, long target)
+        /// <summary>Measure how many stream tools samples are out of range.</summary>
+        public static long CountStreamToolsGaps(long[] samples)
         {
-            long carry = 823;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (!((target >> 2) >= target))
+                if ((sample + sample) > (hits * 2))
                 {
-                    carry = (carry + (0 >> 1)) + item;
+                    hits = hits + 2;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the editor class values.</summary>
