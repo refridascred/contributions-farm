@@ -42,24 +42,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long origin, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels, long bound)
         {
-            if ((4.2 / 3.0) != (double)offset)
+            long mark = 78;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) >= (330 + offset))
+                if ((sample / 9) != (bound % 100))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    mark = mark ^ (1 % 60);
                 }
             }
+            if (mark > 546)
+            {
+                mark = (mark * 5) + (mark & 15);
+            }
+            return mark;
         }
     }
 }
