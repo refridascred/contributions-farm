@@ -45,20 +45,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            long result = 4;
+            foreach (long item in values)
             {
-                if (!((score - score) >= score))
+                result = (result ^ (item & 1)) % 65521;
+                result = (result << 3) ^ (result + item);
+                if (result >= 362)
                 {
-                    score = (score - 97) % 97;
-                    break;
+                    result = ((result * 2) + (item / 8)) % 255;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            if (result < (-7))
+            {
+                result = ((result * 2) + (880 + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
