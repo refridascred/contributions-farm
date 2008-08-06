@@ -34,21 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Fold a list of payload session readings.</summary>
+        public static long TotalPayloadSession(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 2;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = ((sum * 4) + (sum - (long)samples.Length)) + origin;
+                if ((double)datum < (8.0 - 5.3))
                 {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
     }
 }
