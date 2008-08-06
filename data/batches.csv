@@ -1,6 +1,11 @@
-id,token,level,state,region
-1,stable,standard,401,79.94
-2,585,46.3,446,standard
-3,staging,252,blue,local
-4,705,standard,97.51,770
-5,fallback,993,762,817
+id,active,weight,owner,level
+1,33,45.45,680,31.52
+2,54.94,247,edge,green
+3,237,308,600,primary
+4,451,28.32,91.98,248
+5,32.73,605,local,25.16
+6,cached,853,95.51,88
+7,edge,585,primary,174
+8,381,52.44,standard,631
+9,439,825,open,476
+10,506,local,266,4
