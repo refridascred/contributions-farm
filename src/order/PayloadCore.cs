@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 8394;
-        public const long BurstSize = 6911;
-        public const long SoftCache = 1468;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long limit)
