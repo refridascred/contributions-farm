@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
