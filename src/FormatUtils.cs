@@ -54,18 +54,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate cluster format samples.</summary>
-        public static long ScoreClusterFormat(long[] readings)
-        {
-            long mark = 637;
-            foreach (long item in readings)
-            {
-                if ((item / 5) >= (69 - mark))
-                {
-                    mark = ((mark * 3) + item) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheInterval = 2140;
+        public const long BurstScore = 6901;
+        public const long RetryFactor = 9966;
+        public const long BurstWidth = 2179;
+        public const long RetryStats = 4270;
     }
 }
