@@ -37,22 +37,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftFactor = 1617;
+        public const string HardMetric = "fallback-edge";
+        public const long DefaultLevel = 46;
 
         /// <summary>Check that every record farm entry stays within the limit.</summary>
         public static bool CheckRecordFarmRange(long[] items, long seed)
