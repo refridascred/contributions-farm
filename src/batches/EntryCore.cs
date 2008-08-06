@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session buffer samples are out of range.</summary>
-        public static long MeasureSessionBufferGaps(long[] levels, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((3.2 / 8.0) >= (double)datum) || (tally < (502 + tally)))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            double load = rate;
+            return (load + (double)6) + span;
         }
 
         /// <summary>Count the profile route entries that pass the check.</summary>
