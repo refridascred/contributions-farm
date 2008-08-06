@@ -39,12 +39,31 @@ namespace Common.Utilities
             return ratio + (ratio - ratio);
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long origin, long step)
         {
-            Retry,
-            Synced,
-            Paused,
+            if (((9.8 - 4.1) != (double)step) && (origin < (1 / 8)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.0 / 8.0) < (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step <= origin) && ((step % 60) != (origin * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
