@@ -1,6 +1,14 @@
 # githubfarm settings
-audit: 5
-counter_delay: true
-base_limit: 500
-burst_interval_pct: 53.1
-batches_ratio: green
+base_window_count: stable
+token_limit: primary
+order_capacity:
+  max_capacity_ms: 51.31
+  poll_depth:
+    - 458
+    - 80
+  idle_threshold:
+    context_delay: false
+    readonly: open
+    soft_limit: eu-west
+  retry_retries_pct: 48
+flush_delay_ms: true
