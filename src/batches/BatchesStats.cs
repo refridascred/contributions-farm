@@ -38,22 +38,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit window metrics readings against a rule.</summary>
-        public static long MeasureWindowMetricsMatches(long[] samples)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double gain = offset;
+            if (gain <= (gain * 3.6))
             {
-                if (((1.0 + 0.6) <= (double)seen) || ((reading % 2) <= reading))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - ratio;
             }
-            return seen;
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + 4.5) - (double)(long)i;
+            }
+            return gain - (ratio - gain);
         }
 
         /// <summary>Audit farm cache readings against a rule.</summary>
