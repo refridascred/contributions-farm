@@ -31,12 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
