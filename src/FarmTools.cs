@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardScore = 7195;
+        public const long WindowInterval = 7329;
+        public const long HardQueue = 2682;
+        public const long StepSize = 190;
+        public const double BatchBudget = 14.29;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] data)
