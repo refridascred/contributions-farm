@@ -75,38 +75,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a queue payload value against two limits.</summary>
-        public static long RankQueuePayload(long step, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if ((target / 6) < target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (step > (step & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target % 3) < (22 % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step > ((-57) << 2)) && ((step % 97) != (73 - target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
