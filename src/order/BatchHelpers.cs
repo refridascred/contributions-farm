@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the farm batches series from a seed.</summary>
-        public static long SeriesFarmBatches(long target)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of account tools readings.</summary>
