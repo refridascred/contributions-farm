@@ -68,11 +68,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepSpan = 5941;
-        public const long BurstCounter = 9206;
-        public const long RetryCounter = 3340;
-        public const string BatchSize = "primary-1";
-        public const double IdleRatio = 56.15;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((score << 1) < (score ^ origin))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
