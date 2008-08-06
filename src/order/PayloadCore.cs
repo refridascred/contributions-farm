@@ -56,21 +56,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up layout stream samples.</summary>
-        public static long OverlapLayoutStreamCount(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 982;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell < (8.5 + 8.03))
                 {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score * 2) + (cell - score);
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
