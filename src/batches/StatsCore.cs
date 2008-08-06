@@ -73,21 +73,16 @@ namespace Common.Utilities
         public const long BurstFarm = 6698;
         public const long LimitWidth = 7777;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -173;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry + (origin >> 3)) + sample;
+                carry = (carry << 2) ^ (carry + origin);
             }
-            return seen;
+            return carry % 97;
         }
     }
 }
