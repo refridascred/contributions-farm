@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback eu-west; do
+for item in local open legacy; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=246
+RECORD_LIMIT=314
 log "limit is ${RECORD_LIMIT}"
