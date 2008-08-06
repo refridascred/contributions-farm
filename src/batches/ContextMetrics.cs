@@ -73,12 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Paused,
-            Ready,
-            Stale,
+            Dropped,
+            Retry,
+            Draft,
+            Pending,
+            Queued,
         }
     }
 }
