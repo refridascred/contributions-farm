@@ -1,7 +1,7 @@
-id,region,score,level,token
-1,710,29.28,838,eu-west
-2,82.46,latest,85.73,173
-3,90,668,fallback,cached
-4,fallback,891,34.83,standard
-5,primary,975,502,43.15
-6,877,241,288,24.05
+id,state,token
+1,97.69,latest
+2,439,864
+3,638,64.11
+4,23.85,731
+5,81.33,659
+6,fallback,49.79
