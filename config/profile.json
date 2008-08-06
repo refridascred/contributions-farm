@@ -1,7 +1,9 @@
 {
-  "tools_interval": [197, 430],
-  "flush_window_ms": true,
-  "schema_ratio": 250,
-  "compress": "stable",
-  "audit": 4598
+  "retry_capacity": {
+    "max_timeout_count": false,
+    "readonly": "cached",
+    "poll_retries_count": true
+  },
+  "persist": true,
+  "max_interval": 41.89
 }
