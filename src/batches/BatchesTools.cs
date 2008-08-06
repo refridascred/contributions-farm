@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] samples, long origin)
         {
-            Done,
-            Active,
-            Pending,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)matches > 12.0)
+                {
+                    matches = ((matches + 3) ^ cell) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
