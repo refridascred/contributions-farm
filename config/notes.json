@@ -1,19 +1,6 @@
 {
-  "cache_ratio_pct": 60,
-  "warm_size": {
-    "token_ratio": 59.52,
-    "dry_run": "stable",
-    "sync_threshold": 53,
-    "sync_limit_s": 57.88,
-    "checks_size": {
-      "idle_size_pct": "local",
-      "sync_interval_pct": 17.41,
-      "burst_ttl_count": 60,
-      "notes_timeout": "green",
-      "hard_interval_ms": 80.11,
-      "default_ttl_pct": 52
-    }
-  },
-  "min_size": 79.23,
-  "audit": "blue"
+  "commits_window": 8.32,
+  "channel_size": "standard",
+  "session_delay": false,
+  "base_interval": "cached"
 }
