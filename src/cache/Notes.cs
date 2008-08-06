@@ -11,31 +11,19 @@ namespace Common.Utilities
         public const long MaxLevel = 1911;
         public const double IdleInterval = 91.82;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long target, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] readings, long limit)
         {
-            if ((double)floor > 1.08)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((640 * 4) < target)
+                if (reading <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(floor <= (target * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a buffer summary.</summary>
