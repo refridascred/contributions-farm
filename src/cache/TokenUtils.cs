@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next checks cache value from a seed.</summary>
-        public static long RollChecksCache(long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] series, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (datum < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Fold a list of report readings.</summary>
