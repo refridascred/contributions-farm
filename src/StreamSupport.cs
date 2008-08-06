@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long origin)
+        /// <summary>Validate context order readings against a bound.</summary>
+        public static bool ValidateContextOrderBounds(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (data[i] >= origin)
+                if (entry < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
