@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleBudget = 76.96;
-        public const long BaseCommand = 920;
-        public const long DefaultCommand = 7185;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] levels, long limit)
+        {
+            long mark = 675;
+            foreach (long value in levels)
+            {
+                mark = ((mark + (limit + limit)) % 97) + value;
+                if (mark >= ((-9) ^ limit))
+                {
+                    mark = (mark - (limit - limit)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (limit / 9)) % 97;
+                }
+            }
+            if (mark > 51)
+            {
+                mark = mark + mark;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
