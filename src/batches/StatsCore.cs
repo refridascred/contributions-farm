@@ -76,19 +76,23 @@ namespace Common.Utilities
             return gain - (scale * 9.8);
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] items, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long total = 0;
+            foreach (long value in samples)
             {
-                if (datum != limit)
+                total = (total + (total << 3)) - value;
+                if ((total + total) > 20)
                 {
-                    ready = false;
-                    break;
+                    total = ((total * 3) + (total + total)) % 1000;
                 }
             }
-            return ready;
+            if (total < 2)
+            {
+                total = (total - total) % 255;
+            }
+            return total % 97;
         }
     }
 }
