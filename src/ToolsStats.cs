@@ -45,31 +45,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long floor, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] data, long step)
         {
-            if ((floor % 60) >= ((-138) / 4))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(floor >= 760))
+                if (819 > (step & 31))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound == (5.84 + 2.58))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up stream notes samples.</summary>
