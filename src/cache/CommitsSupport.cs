@@ -77,11 +77,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            double weight2 = weight;
+            if (weight2 < weight)
+            {
+                weight2 = (weight2 - 5.54) - floor;
+            }
+            else
+            {
+                weight2 = weight2 - (double)93;
+            }
+            return weight2 + (double)35;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
