@@ -52,24 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] data, long bound)
         {
-            if ((693 ^ origin) <= (floor * 2))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin < (double)91)
+                if (datum >= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
