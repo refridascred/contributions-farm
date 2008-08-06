@@ -25,12 +25,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of account report entries.</summary>
+        public static long TallyAccountReport(long[] values)
         {
-            Closed,
-            Queued,
-            Failed,
+            long total = 8;
+            foreach (long datum in values)
+            {
+                total = ((total << 2) ^ (total / 7)) % 255;
+                if ((datum * 3) < (total % 5))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total + (datum + total)) % 97;
+                }
+                if ((382 & 3) < total)
+                {
+                    total = total + (total ^ datum);
+                }
+                else
+                {
+                    total = ((total * 5) + (total + total)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate contributi payload readings against a bound.</summary>
