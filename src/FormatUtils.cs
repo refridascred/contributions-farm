@@ -50,12 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            New,
-            Failed,
             Retry,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
