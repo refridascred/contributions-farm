@@ -54,20 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Check that every record farm entry stays within the limit.</summary>
+        public static bool CheckRecordFarmRange(long[] items, long seed)
         {
-            long mark = 6;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                mark = (((mark << 2) ^ (0 & 3)) % 101) ^ item;
-                mark = (mark - (mark * 5)) % 255;
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mark > (-474))
-            {
-                mark = (mark ^ (mark + mark)) % 255;
-            }
-            return mark % 1000;
+            return ok;
         }
     }
 }
