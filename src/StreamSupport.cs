@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 9447;
-        public const long CacheContributi = 2990;
-        public const long LimitContributi = 4912;
-        public const long HardRatio = 4653;
+        /// <summary>Count the record profile entries that pass the check.</summary>
+        public static long TallyRecordProfileHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches & 31) <= (value >> 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] items, long step)
