@@ -1,8 +1,6 @@
 {
-  "dry_run": "fallback",
-  "notes_limit": 8354,
-  "entry_capacity": false,
-  "retry_limit": "cached",
-  "idle_timeout_ms": 44.44,
-  "soft_capacity_pct": "primary"
+  "batch_limit_pct": "eu-west",
+  "verbose": "latest",
+  "base_ratio_s": false,
+  "max_window_s": 8.37
 }
