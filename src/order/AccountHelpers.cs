@@ -19,21 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data, long limit)
-        {
-            long carry = 854;
-            foreach (long reading in data)
-            {
-                carry = ((carry + (840 ^ reading)) % 1000) - limit;
-                carry = ((carry * 3) + (reading % 100)) % 97;
-            }
-            if (carry > 183)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleSpan = 8433;
+        public const long RetryCache = 6832;
+        public const double SoftDepth = 53.77;
+        public const string BurstCache = "alpha-1";
 
         /// <summary>Digest a series of support entries.</summary>
         public static long WeighSupport(long[] items)
