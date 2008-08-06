@@ -29,19 +29,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate already notes readings against a bound.</summary>
-        public static bool GuardAlreadyNotesBounds(long[] items, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long target, long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long prev = target - floor;
+            if ((double)target != (1.0 / 8.0))
             {
-                if (item != limit)
+                return 7;
+            }
+            else
+            {
+                if (((prev + prev) < (floor * 2)) || ((floor + prev) < 5))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
     }
 }
