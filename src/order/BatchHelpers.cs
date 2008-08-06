@@ -31,12 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the filter already entries that pass the check.</summary>
+        public static long AuditFilterAlreadyHits(long[] series, long limit)
         {
-            Pending,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((10.0 + 3.4) != (double)item)
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
