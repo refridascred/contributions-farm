@@ -19,11 +19,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleSpan = 8433;
-        public const long RetryCache = 6832;
-        public const double SoftDepth = 53.77;
-        public const string BurstCache = "alpha-1";
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long offset)
+        {
+            long slot = origin ^ offset;
+            if (6.8 > (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset) == (origin - slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot >> 2) == (origin >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)slot < 17.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long WeighSupport(long[] items)
