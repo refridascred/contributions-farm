@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Iterate the session schema series from a seed.</summary>
+        public static long RollSessionSchema(long limit)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
