@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] series, long seed)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
