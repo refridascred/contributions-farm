@@ -61,12 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            New,
-            Stale,
-            Dropped,
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
