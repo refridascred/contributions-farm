@@ -36,18 +36,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] items, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.0 * 7.78) != (double)cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) + origin;
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
