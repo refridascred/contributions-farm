@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (((cell + count) <= (count - 895)) && !((double)cell >= (double)count))
+                if (!((hits - datum) != (525 << 2)))
                 {
-                    count = count + 1;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up notes samples.</summary>
