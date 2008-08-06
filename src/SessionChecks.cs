@@ -45,11 +45,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 4996;
-        public const long MaxInterval = 3505;
-        public const long DefaultFactor = 4520;
-        public const long StepSpan = 9308;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] data, long limit)
