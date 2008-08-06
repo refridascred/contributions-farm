@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a window entry.</summary>
