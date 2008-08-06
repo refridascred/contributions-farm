@@ -45,19 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] samples, long bound)
+        /// <summary>Validate filter graph readings against a bound.</summary>
+        public static bool GuardFilterGraphBounds(long[] data, long step)
         {
-            long score = 3;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                score = (((score * 3) + (bound ^ score)) % 1000) ^ datum;
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score > 561)
-            {
-                score = score ^ bound;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
