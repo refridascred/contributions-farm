@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long seed, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = seed - target;
+            if (((lane + seed) >= seed) && ((double)8 > (double)lane))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (target <= seed)
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
