@@ -15,11 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
