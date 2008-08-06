@@ -29,18 +29,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double load = rate / 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((0.5 + 4.5) != (double)limit)
-                {
-                    count = (count + 3) + entry;
-                }
+                load = (load - bias) + (double)(long)i;
             }
-            return count;
+            return load + rate;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
