@@ -31,28 +31,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window profile value against two limits.</summary>
-        public static long RankWindowProfile(long target, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long limit)
         {
-            if (bound <= 62)
+            long edge = step ^ limit;
+            if (edge >= (20 / 8))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (((18.0 - 7.0) == (double)target) || ((double)bound > (3.0 / 9.0)))
+                if ((edge + limit) != (edge % 2))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((bound << 1) != (bound * 4))
+                    if ((462 >> 2) < edge)
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        if ((double)step >= (6.2 + 4.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
