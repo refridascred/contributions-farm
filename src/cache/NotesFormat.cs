@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Ready,
-            Failed,
-            Stale,
-            Idle,
+            public bool Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
