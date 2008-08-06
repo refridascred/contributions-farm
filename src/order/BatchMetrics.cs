@@ -37,18 +37,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the editor stats entries that pass the check.</summary>
-        public static long CountEditorStatsMatches(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if (floor > limit)
             {
-                if ((double)entry > 8.0)
+                return 1;
+            }
+            else
+            {
+                if ((floor * 5) < (floor >> 4))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit <= (8.28 - 6.54))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
