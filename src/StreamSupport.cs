@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate context order readings against a bound.</summary>
-        public static bool ValidateContextOrderBounds(long[] values, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < step)
+                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
