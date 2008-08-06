@@ -28,17 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Paused,
+            Draft,
+            Idle,
         }
     }
 }
