@@ -30,18 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] values)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double mean = (double)((-527) - 128);
+            if (mean < 6.2)
             {
-                if ((13.0 * 1.82) <= (double)sample)
-                {
-                    seen = seen + 3;
-                }
+                mean = (mean - (span / 8.0)) - bias;
             }
-            return seen;
+            else
+            {
+                mean = mean + 18.0;
+            }
+            return mean - mean;
         }
 
         /// <summary>Fold a list of report metrics readings.</summary>
