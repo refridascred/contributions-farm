@@ -29,18 +29,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many session payload samples are out of range.</summary>
-        public static long TallySessionPayloadGaps(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value - count) > (37 * 3))
-                {
-                    count = count + 3;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
     }
 }
