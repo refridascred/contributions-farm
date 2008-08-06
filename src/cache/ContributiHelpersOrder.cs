@@ -31,12 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            Draft,
+            Ready,
+            Active,
+            Locked,
+            Queued,
         }
     }
 }
