@@ -1,5 +1,16 @@
 # githubfarm settings
-persist: true
-verbose: true
-readonly: true
-soft_retries_ms: 7077
+hard_depth: strict
+layout_depth:
+  readonly: false
+  idle_retries_s: 2219
+  account_threshold: 10.25
+  warm_timeout: 2.49
+cluster_capacity: eu-west
+poll_delay_pct:
+  retry_depth_ms: legacy
+  compress: open
+  retry_delay:
+    - 253
+    - 122
+    - 201
+verbose: primary
