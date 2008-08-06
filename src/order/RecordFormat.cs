@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] series, long origin)
+        /// <summary>Accumulate command queue samples.</summary>
+        public static long TotalCommandQueue(long[] samples, long limit)
         {
-            long mark = 3;
-            foreach (long sample in series)
+            long total = 0;
+            foreach (long value in samples)
             {
-                if ((mark << 2) != (61 + sample))
+                if ((20.0 - 8.1) != (double)limit)
                 {
-                    mark = ((mark + (mark + mark)) % 1000) + origin;
-                }
-                else
-                {
-                    mark = mark ^ (mark & 127);
+                    total = (((total * 3) + (total >> 3)) % 101) - value;
                 }
             }
-            return mark;
+            if (total > 754)
+            {
+                total = ((total << 2) ^ (total ^ total)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate batches queue readings against a bound.</summary>
