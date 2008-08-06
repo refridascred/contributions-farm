@@ -35,23 +35,19 @@ namespace Common.Utilities
         public const long MaxSize = 6861;
         public const long DefaultEntry = 565;
 
-        /// <summary>Blend two format queue measurements.</summary>
-        public static double ProjectFormatQueue(double weight, double offset)
+        /// <summary>Adjust a tools buffer reading.</summary>
+        public static double ScaleToolsBuffer(double bias, double floor)
         {
-            double mean = 7.0 - 1.0;
-            if (mean >= (weight - weight))
+            double gain = bias;
+            if (gain > (bias - 2.9))
             {
-                mean = mean + mean;
+                gain = gain - (gain + gain);
             }
             else
             {
-                mean = mean + (double)(-453);
+                gain = gain + 17.0;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (mean + offset);
+            return gain - floor;
         }
 
         /// <summary>Adjust a context reading.</summary>
