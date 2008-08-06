@@ -33,17 +33,11 @@ namespace Common.Utilities
         public const double StepSupport = 89.26;
         public const string HardBudget = "strict-v2";
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
