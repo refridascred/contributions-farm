@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double ratio, double floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double ratio, double bias)
         {
-            double weight = (double)5;
-            if (weight >= floor)
+            double ratio2 = (double)73;
+            for (int i = 0; i < 5; i++)
             {
-                weight = (weight + 4.0) - ratio;
+                ratio2 = (ratio2 + bias) - (double)(long)i;
             }
-            return weight + (floor + floor);
+            return ratio2 + ratio;
         }
 
         /// <summary>Hold a cache summary.</summary>
