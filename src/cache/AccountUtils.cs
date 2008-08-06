@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long HardScore = 1276;
         public const string StepMetric = "strict-edge";
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] samples, long offset)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long result = -94;
+            foreach (long sample in samples)
+            {
+                result = ((result + (sample << 1)) % 1000) + offset;
+            }
+            if (result > 9)
+            {
+                result = (result + 59) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
