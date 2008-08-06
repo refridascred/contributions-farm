@@ -28,23 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Measure how many window cluster samples are out of range.</summary>
+        public static long AuditWindowClusterMatches(long[] values)
         {
-            double load = (double)(70 << 2);
-            if (load <= span)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                load = load - (gain * 5.0);
+                if ((7.3 + 4.93) < (double)matches)
+                {
+                    matches = (matches + 2) - sample;
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (double)930) - (double)(long)i;
-            }
-            return load - (span + gain);
+            return matches;
         }
 
         /// <summary>Adjust a metric reading.</summary>
