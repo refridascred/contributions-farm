@@ -67,12 +67,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
