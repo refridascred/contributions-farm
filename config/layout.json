@@ -1,5 +1,5 @@
 {
-  "dry_run": "standard",
-  "checks_retries": 250,
-  "compress": false
+  "editor_limit": "staging",
+  "sync_window_pct": "open",
+  "batch_interval_pct": 0.52
 }
