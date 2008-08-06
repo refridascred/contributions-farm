@@ -60,12 +60,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "standard-1";
-        public const long SoftSize = 299;
-        public const long IdleProfile = 588;
-        public const long SoftBudget = 226;
-        public const long MaxProfile = 9100;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if (7.0 > (double)offset)
+                {
+                    total = (total - (offset + offset)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
