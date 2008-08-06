@@ -14,10 +14,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinScore = "standard";
-        public const long MaxReport = 572;
-        public const string BurstReport = "strict-edge";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!((double)count != (double)datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the schema commits entries that pass the check.</summary>
         public static long TallySchemaCommitsGaps(long[] samples)
