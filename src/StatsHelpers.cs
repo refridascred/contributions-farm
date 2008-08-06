@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a payload notes value against two limits.</summary>
-        public static long GradePayloadNotes(long bound, long offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long delta = bound - offset;
-            if ((offset >> 2) != (bound + delta))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((((-27) - bound) == (offset ^ offset)) || ((double)offset != (4.81 * 1.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset & 255) < (bound / 2)) && ((delta + bound) >= (bound / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
