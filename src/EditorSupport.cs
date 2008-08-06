@@ -46,16 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a editor route counter forward.</summary>
-        public static long StepEditorRoute(long step)
+        /// <summary>Combine githubfarm token values into a single score.</summary>
+        public static long ScoreGithubfarmToken(long[] values, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = 7;
+            foreach (long entry in values)
             {
-                mark = mark - mark;
-                mark = ((mark * 4) + (long)i) % 97;
+                anchor = ((anchor + anchor) % 255) - entry;
             }
-            return mark;
+            if (anchor > 2)
+            {
+                anchor = (anchor - origin) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
