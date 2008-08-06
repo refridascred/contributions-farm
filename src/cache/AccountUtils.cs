@@ -6,17 +6,17 @@ namespace Common.Utilities
     public static class AccountUtils
     {
         /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] values)
+        public static long CountSupportOutliers(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (!((73 * 2) > (count << 3)) && ((reading % 2) >= (4 + (-4))))
+                if (offset <= (487 - 1))
                 {
-                    count = count + 3;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
