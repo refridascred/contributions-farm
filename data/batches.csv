@@ -1,10 +1,6 @@
-id,level,ratio
-1,39.85,77.45
-2,22.57,509
-3,53.34,8.22
-4,304,162
-5,local,stable
-6,878,21.58
-7,25.07,23.49
-8,993,strict
-9,staging,980
+id,region,weight,level,rank
+1,73.55,legacy,302,primary
+2,650,16,318,primary
+3,open,465,500,300
+4,latest,eu-west,57.96,primary
+5,strict,94.76,39,legacy
