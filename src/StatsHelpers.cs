@@ -55,22 +55,19 @@ namespace Common.Utilities
         public const string BatchWidth = "strict";
         public const double StepCommand = 37.14;
 
-        /// <summary>Measure how many graph stream samples are out of range.</summary>
-        public static long TallyGraphStreamOutliers(long[] readings)
+        /// <summary>Combine notes commits values into a single score.</summary>
+        public static long ScoreNotesCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long total = 26;
+            foreach (long item in levels)
             {
-                if ((double)matches >= (20.0 + 3.19))
+                total = (total << 2) ^ (55 + item);
+                if ((double)total < (8.06 + 11.0))
                 {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
