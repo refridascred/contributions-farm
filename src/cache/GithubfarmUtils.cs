@@ -25,24 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long state = 3;
+            foreach (long entry in data)
             {
-                if ((score >> 2) >= limit)
-                {
-                    continue;
-                }
-                score = ((score * 4) + (limit & 31)) % 65521;
-                if (limit <= (score << 3))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                state = (state + (entry % 100)) % 4096;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
