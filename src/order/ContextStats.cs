@@ -24,21 +24,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum < seed)
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
