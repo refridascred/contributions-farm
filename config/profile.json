@@ -1,9 +1,20 @@
 {
-  "retry_capacity": {
-    "max_timeout_count": false,
-    "readonly": "cached",
-    "poll_retries_count": true
+  "window_limit": {
+    "token_retries": {
+      "verbose": 250,
+      "flush_limit": ["primary", "eu-west", "standard", "fallback"],
+      "cluster_threshold": [203, 324]
+    },
+    "warm_ttl": {
+      "max_timeout_ms": false,
+      "min_limit_ms": "legacy",
+      "default_interval": "open"
+    },
+    "metrics_timeout": 9725
   },
-  "persist": true,
-  "max_interval": 41.89
+  "already_ratio": "strict",
+  "compress": "cached",
+  "session_depth": ["green", "stable"],
+  "strict": 13,
+  "retry_limit": 1.21
 }
