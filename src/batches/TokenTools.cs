@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many contributi report samples are out of range.</summary>
+        public static long CountContributiReportGaps(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((sample * 4) < (tally - sample)) || ((double)sample <= (8.53 / 6.0))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
