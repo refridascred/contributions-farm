@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double ratio, double span)
-        {
-            double bias = ratio;
-            if (bias < (ratio * 6.8))
-            {
-                bias = bias - (span - ratio);
-            }
-            else
-            {
-                bias = bias - (double)50;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (span / 3.0)) - (double)(long)i;
-            }
-            return bias - (span - ratio);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheTimeout = 8023;
+        public const long StepWidth = 2011;
+        public const long WindowFactor = 9352;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BurstWidth = 3491;
