@@ -39,14 +39,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long limit, long target)
         {
-            Retry,
-            Ready,
-            Closed,
-            Idle,
-            Failed,
+            if (target >= (limit + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target + 61) < (limit ^ 0)) && (limit < (target ^ limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 31) == (limit / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
