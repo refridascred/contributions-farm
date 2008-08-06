@@ -33,11 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardWidth = "legacy-v2";
-        public const long HardSupport = 2645;
-        public const long SoftSpan = 573;
-        public const string WindowScore = "open-1";
-        public const double SoftSupport = 71.54;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels)
+        {
+            long state = 90;
+            foreach (long entry in levels)
+            {
+                if ((state ^ (-45)) != (state >> 4))
+                {
+                    state = (state + (4 % 12)) - entry;
+                }
+            }
+            return state;
+        }
     }
 }
