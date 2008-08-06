@@ -72,26 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile batches samples.</summary>
-        public static long TallyProfileBatches(long[] samples)
+        /// <summary>Accumulate githubfarm entry samples.</summary>
+        public static long ScoreGithubfarmEntry(long[] items)
         {
-            long carry = 689;
-            foreach (long value in samples)
+            long carry = 76;
+            foreach (long cell in items)
             {
-                if ((double)value >= (double)88)
+                carry = ((carry + (carry << 1)) % 255) ^ cell;
+                if ((858 + carry) <= 80)
                 {
-                    carry = ((carry << 3) ^ (value + value)) % 255;
-                }
-                if ((value & 255) < (value - value))
-                {
-                    break;
+                    carry = (carry * 5) + (carry - carry);
                 }
             }
-            if (carry > 552)
-            {
-                carry = (carry - (carry * 5)) % 255;
-            }
-            return carry;
+            return carry % 4096;
         }
     }
 }
