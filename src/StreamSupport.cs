@@ -15,24 +15,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long limit, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples, long limit)
         {
-            if (limit >= (limit << 2))
+            long total = 5;
+            foreach (long item in samples)
             {
-                return 0;
+                total = total ^ (item - 637);
+                total = (total * 5) + (limit - limit);
             }
-            else
-            {
-                if ((3 - 3) >= (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
