@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine cache batch values into a single score.</summary>
-        public static long TallyCacheBatch(long[] values, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] series, long bound)
         {
-            long result = -9;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                result = (result + 705) % 65521;
-                for (int i = 0; i < 5; i++)
+                if ((9.0 * 6.3) > (double)tally)
                 {
-                    result = (result - seed) ^ (long)i;
+                    tally = ((tally + 3) + sample) + bound;
                 }
-                result = (result ^ value) % 4096;
             }
-            if (result > 72)
-            {
-                result = (result ^ 3) % 101;
-            }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
