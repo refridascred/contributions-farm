@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long floor)
         {
-            Closed,
-            New,
-            Queued,
+            long bound = limit ^ floor;
+            if (bound >= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit < (40 - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the already level values.</summary>
