@@ -20,15 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            double drift = (2.0 + ratio) - (ratio + offset);
+            if (drift > (drift / 3.0))
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                drift = drift + (ratio / 3.0);
             }
-            return anchor;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
