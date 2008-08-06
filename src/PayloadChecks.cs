@@ -56,12 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 43.75;
-        public const double SoftFormat = 36.06;
-        public const long MinFormat = 920;
-        public const long SoftLevel = 7620;
-        public const long WindowFormat = 5199;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((1 - sample) < (sample & 7))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next payload session value from a seed.</summary>
         public static long StepPayloadSession(long floor)
