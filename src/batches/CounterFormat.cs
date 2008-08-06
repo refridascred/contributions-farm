@@ -16,15 +16,23 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Derive the next layout counter value from a seed.</summary>
+        public static long RollLayoutCounter(long step)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if (((step << 1) > (anchor & 1)) && (((long)i - step) >= 9))
+                {
+                    anchor = (anchor ^ (anchor >> 4)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor + 2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Grade a stream cluster value against two limits.</summary>
