@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] samples, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] levels, long step)
         {
-            long mark = 3;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((496 - mark) >= (mark ^ 19))
+                if (entry < step)
                 {
-                    mark = (((mark << 3) ^ 29) % 255) - datum;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark * 3)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < 99)
-            {
-                mark = mark - (origin >> 5);
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a session summary.</summary>
