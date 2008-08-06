@@ -72,18 +72,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((((long)values.Length % 100) != (item - 8)) && (((double)tally < (3.2 / 3.0)) && (tally < (tally - tally))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Compare every pair of route queue readings.</summary>
