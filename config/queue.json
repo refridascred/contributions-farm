@@ -1,6 +1,18 @@
 {
-  "soft_delay_s": "local",
-  "record_timeout": 43.1,
-  "entry_capacity": "staging",
-  "hard_ttl_pct": 1024
+  "hard_limit_count": {
+    "default_limit_ms": 30.21,
+    "record_depth": {
+      "max_size_count": false,
+      "order_retries": 5300,
+      "retry_depth": [199, 85, 205]
+    },
+    "context_interval": 30,
+    "readonly": 65.39,
+    "verbose": 60,
+    "audit": 48.9
+  },
+  "poll_ttl_pct": "green",
+  "flush_size": ["primary", "blue", "standard"],
+  "compress": false,
+  "readonly": 83.65
 }
