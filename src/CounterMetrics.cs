@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] items, long step)
         {
-            Idle,
-            Closed,
-            Pending,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry % 24) >= 45)
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next context buffer value from a seed.</summary>
