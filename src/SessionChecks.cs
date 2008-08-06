@@ -30,24 +30,19 @@ namespace Common.Utilities
             return ((rate + (double)(-91)) + bias) + span;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long target, long offset)
+        /// <summary>Scale a metric session figure with a bias.</summary>
+        public static double BlendMetricSession(double weight, double bias)
         {
-            if (353 > (target << 1))
+            double rate = weight - (bias - weight);
+            if (rate > (rate + 1.0))
             {
-                return 8;
+                rate = rate - (double)11;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((686 - target) >= (target + (-162)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
+                rate = (rate + bias) + (double)(long)i;
             }
+            return rate - rate;
         }
     }
 }
