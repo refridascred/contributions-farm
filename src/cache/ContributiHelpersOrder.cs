@@ -16,18 +16,21 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] levels)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seen * 5) <= (seen / 2)) && ((reading % 10) < (seen + seen)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
