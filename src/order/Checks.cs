@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double scale, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] values)
         {
-            double gain = scale;
-            if (gain <= floor)
+            long hits = 0;
+            foreach (long value in values)
             {
-                gain = gain + (floor * 7.13);
+                if (!(((0.5 * 6.2) < (double)value) && ((long)values.Length < (value << 2))))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (scale + gain);
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
