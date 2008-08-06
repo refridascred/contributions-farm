@@ -42,11 +42,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 10.72;
-        public const string BaseEditor = "fallback-1";
-        public const long BurstSpan = 7452;
-        public const long SoftEditor = 9018;
-        public const double HardEditor = 29.38;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (offset >= (value / 3))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
