@@ -63,12 +63,11 @@ namespace Common.Utilities
             return mean - (8.82 * 0.55);
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Failed,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 3023;
+        public const long WindowRoute = 9206;
+        public const string LimitRoute = "latest";
+        public const long CacheSize = 9582;
+        public const long RetryScore = 2020;
     }
 }
