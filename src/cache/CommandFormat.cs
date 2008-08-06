@@ -20,31 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank checks contributi input into a small class.</summary>
-        public static long GradeChecksContributi(long origin, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double ratio, double offset)
         {
-            if ((bound & 3) == (bound + bound))
+            double gain = (ratio - offset) + (double)(-69);
+            if (gain >= (ratio / 9.0))
             {
-                return 8;
+                gain = gain - ratio;
             }
             else
             {
-                if ((double)origin <= (5.14 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound != (4.5 - 5.45))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain = gain + (double)4;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (double)56) + (double)(long)i;
+            }
+            return gain + (8.5 + 5.13);
         }
 
         /// <summary>Hold a contributi options.</summary>
