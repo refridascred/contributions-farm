@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster window readings.</summary>
-        public static long CombineClusterWindow(long[] items, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] levels, long target)
         {
-            long sum = 2;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.3 + 1.85) < (double)datum)
+                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
                 {
-                    sum = (sum - (sum - step)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ datum) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
