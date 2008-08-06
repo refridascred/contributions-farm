@@ -51,10 +51,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowInterval = 83.3;
-        public const string SoftRatio = "staging-edge";
-        public const long SoftStats = 3256;
-        public const long WindowTimeout = 6426;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
