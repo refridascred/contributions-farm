@@ -54,17 +54,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a payload metrics reading by value.</summary>
-        public static long LocatePayloadMetricsIndex(long[] items, long origin)
+        /// <summary>Accumulate cluster format samples.</summary>
+        public static long ScoreClusterFormat(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 637;
+            foreach (long item in readings)
             {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
+                if ((item / 5) >= (69 - mark))
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + item) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
