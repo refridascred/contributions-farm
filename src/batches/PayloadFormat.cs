@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Combine stats session values into a single score.</summary>
+        public static long ScoreStatsSession(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mark = 46;
+            foreach (long reading in items)
             {
-                if ((hits & 3) <= (hits % 97))
+                if (reading < (9 & 3))
                 {
-                    hits = (hits + 1) ^ entry;
+                    mark = ((mark << 2) ^ mark) % 4096;
+                }
+                else
+                {
+                    mark = (mark + reading) % 1000;
+                }
+                if ((double)reading < (6.0 / 7.0))
+                {
+                    mark = mark + (15 + 824);
+                }
+                else
+                {
+                    mark = (mark + (mark << 1)) % 255;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
