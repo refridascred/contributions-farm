@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long origin, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            if (25 < (origin % 100))
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + 25) <= origin) && ((double)origin == (0.4 - 4.58)))
+                if (sum >= (seed << 3))
                 {
-                    return 4;
+                    sum = ((sum * 2) + seed) % 65521;
+                    sum = sum ^ ((long)i - seed);
                 }
                 else
                 {
-                    if ((bound + 236) < (origin & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin + bound) <= origin) || ((14.0 + 7.22) < (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum - seed) % 97;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
