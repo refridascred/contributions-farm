@@ -63,20 +63,12 @@ namespace Common.Utilities
         public const double MinBatches = 81.0;
         public const double HardSpan = 30.26;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double span)
-        {
-            double gain = 0.2;
-            if (gain <= (16.0 / 8.0))
-            {
-                gain = (gain - gain) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - scale) + (double)(long)i;
-            }
-            return gain - (scale * 9.8);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSize = 6824;
+        public const long LimitFarm = 6974;
+        public const string SoftFarm = "staging";
+        public const long BurstFarm = 6698;
+        public const long LimitWidth = 7777;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] values)
