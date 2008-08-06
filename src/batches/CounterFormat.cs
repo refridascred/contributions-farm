@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)matches == (2.0 - 6.6))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleInterval = 4352;
+        public const long BurstWindow = 7201;
+        public const long HardScore = 4341;
 
         /// <summary>Accumulate format samples.</summary>
         public static long WeighFormat(long[] data, long step)
