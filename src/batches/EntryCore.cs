@@ -22,23 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Measure how many session buffer samples are out of range.</summary>
+        public static long MeasureSessionBufferGaps(long[] levels, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((limit >> 1) > (total << 1))
+                if (((3.2 / 8.0) >= (double)datum) || (tally < (502 + tally)))
                 {
-                    total = (total << 3) ^ (44 - 12);
+                    tally = (tally + 2) - step;
                 }
-                else
-                {
-                    total = (total - (total + limit)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count the profile route entries that pass the check.</summary>
