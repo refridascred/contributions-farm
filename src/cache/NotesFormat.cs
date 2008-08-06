@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series, long limit)
-        {
-            long total = 6;
-            foreach (long item in series)
-            {
-                if ((12.0 + 11.0) > (double)total)
-                {
-                    total = (total - (item + limit)) % 97;
-                }
-                else
-                {
-                    total = (total - (1 / 9)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "strict-1";
+        public const long CacheInterval = 7540;
+        public const double HardSpan = 37.11;
+        public const double BatchAlready = 33.51;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TallyFarm(long[] samples, long origin)
