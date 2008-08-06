@@ -68,21 +68,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            Locked,
         }
     }
 }
