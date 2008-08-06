@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command channel readings.</summary>
-        public static long CombineCommandChannel(long[] items)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long mark = 15;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((value - value) > (6 / 9)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark + value;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
