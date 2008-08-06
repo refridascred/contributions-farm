@@ -1,7 +1,38 @@
 # entry settings
-soft_ratio_pct: 23.43
-default_size:
-  - eu-west
-  - staging
-  - stable
-batch_depth_pct: 95.64
+record_window: 30
+editor_window:
+  default_retries: blue
+  min_threshold: local
+  burst_interval: eu-west
+  flush_window_count: 100
+  warm_depth_pct: true
+  batch_ttl_pct:
+    min_retries_ms: 40
+    burst_capacity_s: false
+    cache_ttl:
+      - 85
+      - 339
+    flush_threshold: 2943
+    burst_ttl_ms: 250
+    batch_capacity_count: latest
+stats_interval:
+  burst_ratio_ms: stable
+  commits_limit: fallback
+  contributi_capacity:
+    idle_window:
+      - 198
+      - 338
+      - 49
+    batch_threshold_pct: 6446
+    warm_capacity_s: eu-west
+  context_limit: 98.93
+  idle_timeout: open
+  sync_limit_pct:
+    - staging
+    - stable
+    - open
+    - open
+retry_threshold_ms: staging
+warm_retries_ms:
+  - latest
+  - latest
