@@ -22,17 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)bound <= (17.0 + 0.09))
             {
-                if (values[i] < target)
+                return 3;
+            }
+            else
+            {
+                if ((target << 3) > (bound + bound))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
