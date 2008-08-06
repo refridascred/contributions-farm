@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            long mix = 89;
-            foreach (long sample in data)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix ^ (51 ^ mix)) % 1000) - target;
-                if ((9.0 - 8.12) > (double)mix)
-                {
-                    mix = mix + (926 - mix);
-                }
-                else
-                {
-                    mix = (mix ^ (mix - sample)) % 97;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return mix % 97;
+            return state;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
