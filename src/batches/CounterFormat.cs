@@ -33,18 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] values, long bound)
         {
-            long state = 90;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state ^ (-45)) != (state >> 4))
+                if (values[i] == bound)
                 {
-                    state = (state + (4 % 12)) - entry;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
