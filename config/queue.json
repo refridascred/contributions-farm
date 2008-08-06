@@ -1,5 +1,18 @@
 {
-  "order_window": 53,
-  "poll_threshold_pct": 1580,
-  "batch_ratio_count": 500
+  "layout_capacity": 9220,
+  "base_delay_count": {
+    "entry_capacity": "stable",
+    "buffer_size": 43,
+    "base_retries_ms": 250,
+    "compress": true
+  },
+  "soft_retries_ms": {
+    "audit": "green",
+    "default_threshold_count": 21,
+    "default_threshold_ms": ["local", "cached", "cached", "edge"],
+    "format_limit": true,
+    "tools_interval": false,
+    "format_ttl": false
+  },
+  "soft_threshold_s": "edge"
 }
