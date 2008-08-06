@@ -1,9 +1,6 @@
 {
-  "verbose": {
-    "hard_retries_ms": 100,
-    "token_limit": 81.88,
-    "entry_ratio": [51, 497]
-  },
-  "warm_timeout": true,
-  "min_size_s": false
+  "compress": [470, 161],
+  "strict": ["legacy", "standard", "standard"],
+  "retry_delay_pct": "fallback",
+  "channel_interval": 473
 }
