@@ -1,6 +1,7 @@
 {
-  "batch_ratio": "strict",
-  "base_timeout_ms": true,
-  "batches_interval": 7429,
-  "sync_window_ms": true
+  "sync_delay_pct": "latest",
+  "burst_ttl_pct": true,
+  "idle_depth_count": 500,
+  "metric_depth": 96.86,
+  "enabled": 37.61
 }
