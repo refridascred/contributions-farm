@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 3835;
-        public const string DefaultSize = "open";
-        public const string WindowSchema = "standard";
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series, long step)
+        {
+            long result = 480;
+            foreach (long sample in series)
+            {
+                if ((result & 15) <= (sample + sample))
+                {
+                    result = ((result * 5) + (step % 10)) % 255;
+                }
+                if ((2.26 / 2.0) >= (double)step)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Find the first buffer editor entry that matches the target.</summary>
         public static long SeekBufferEditorIndex(long[] series, long step)
