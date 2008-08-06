@@ -35,24 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stream cluster value against two limits.</summary>
-        public static long BucketStreamCluster(long origin, long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long target)
         {
-            if ((double)origin > (9.74 / 5.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) != (floor + 79))
+                if ((data[i] == target) && ((data[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
