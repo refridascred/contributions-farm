@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every layout stats entry stays within the limit.</summary>
-        public static bool CheckLayoutStatsRange(long[] readings, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (entry != target)
+                if (datum <= offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
