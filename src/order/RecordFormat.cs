@@ -38,13 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] levels, long target)
         {
-            Pending,
-            Draft,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((5.67 - 7.77) > (double)entry) && (target < (entry - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
