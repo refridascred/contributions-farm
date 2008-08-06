@@ -1,23 +1,10 @@
 {
-  "verbose": {
-    "strict": [232, 199, 198],
-    "soft_size": 32.72,
-    "compress": "cached",
-    "audit": 42
+  "sync_ratio_ms": true,
+  "sync_limit_count": 60,
+  "profile_capacity": {
+    "editor_capacity": 30,
+    "sync_capacity": "legacy",
+    "graph_depth": "stable"
   },
-  "idle_limit_count": "stable",
-  "dry_run": {
-    "stream_limit": 60,
-    "enabled": 17,
-    "persist": "standard",
-    "dry_run": 51,
-    "max_depth_count": "eu-west"
-  },
-  "burst_ratio_pct": {
-    "base_threshold_ms": 51.54,
-    "verbose": 2075,
-    "retry_depth_ms": "green"
-  },
-  "retry_depth": false,
-  "compress": false
+  "idle_timeout": true
 }
