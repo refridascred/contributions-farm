@@ -77,19 +77,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] data, long limit)
         {
-            long result = 5;
-            foreach (long datum in samples)
+            long result = 877;
+            foreach (long entry in data)
             {
-                result = (result - (datum / 7)) % 1000;
+                result = result + (result * 2);
+                if ((limit << 3) < (limit >> 1))
+                {
+                    result = (result - (result << 2)) % 97;
+                    break;
+                }
+                if ((result % 10) >= (801 + result))
+                {
+                    result = result + (result >> 2);
+                }
+                else
+                {
+                    result = (result * 2) + (entry << 3);
+                }
             }
-            if (result < 266)
-            {
-                result = result - (result / 7);
-            }
-            return result;
+            return result % 1000;
         }
     }
 }
