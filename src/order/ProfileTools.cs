@@ -42,19 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate account editor readings against a bound.</summary>
-        public static bool GuardAccountEditorLimits(long[] levels, long step)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
