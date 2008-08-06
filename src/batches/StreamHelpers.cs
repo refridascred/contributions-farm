@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            Done,
+            Stale,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
