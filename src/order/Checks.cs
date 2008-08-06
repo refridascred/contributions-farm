@@ -29,15 +29,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double gain, double bias)
+        /// <summary>Blend two report route measurements.</summary>
+        public static double ScaleReportRoute(double rate, double span)
         {
-            double rate = gain;
-            for (int i = 0; i < 5; i++)
+            double weight = span + rate;
+            if (weight <= (double)(-482))
             {
-                rate = ((rate - (4.0 - gain)) + (double)(long)i) - bias;
+                weight = weight + (rate + weight);
             }
-            return rate - (double)3;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight + rate)) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Hold a notes stats.</summary>
