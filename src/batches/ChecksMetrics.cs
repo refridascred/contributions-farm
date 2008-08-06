@@ -47,16 +47,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 5358;
+        public const long BatchSession = 2426;
+        public const long BaseSession = 7097;
+        public const long BatchCount = 5682;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] samples, long step)
