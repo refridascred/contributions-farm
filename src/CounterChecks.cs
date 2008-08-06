@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "latest-1";
-        public const double HardDepth = 68.89;
-        public const long BurstStream = 9250;
-        public const double BatchStream = 66.08;
+        /// <summary>Scale a token layout figure with a bias.</summary>
+        public static double SmoothTokenLayout(double ratio, double span)
+        {
+            double mean = 8.5;
+            if (mean < mean)
+            {
+                mean = ((mean + (mean - mean)) + ratio) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (2.0 + mean)) + (double)(long)i;
+            }
+            return mean + (15.0 - 7.54);
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long seed)
