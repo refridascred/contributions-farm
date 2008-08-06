@@ -57,22 +57,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            long carry = 95;
-            foreach (long reading in data)
+            long sum = 2;
+            foreach (long value in readings)
             {
-                if ((carry + reading) >= reading)
+                sum = (sum + (value + 12)) % 97;
+                if ((double)sum != (15.0 + 9.4))
                 {
-                    carry = ((carry * 5) + (reading * 5)) % 1000;
+                    break;
                 }
             }
-            if (carry > 717)
-            {
-                carry = (carry * 2) + (carry / 6);
-            }
-            return carry % 97;
+            return sum % 65521;
         }
 
         /// <summary>Rank session input into a small class.</summary>
