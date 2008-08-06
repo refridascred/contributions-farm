@@ -38,12 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((4.5 + 8.0) < (7.2 + 8.2)) || ((long)items.Length >= tally))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
