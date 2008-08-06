@@ -21,31 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a schema buffer value against two limits.</summary>
-        public static long ClassifySchemaBuffer(long floor, long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long limit)
         {
-            if (((7.6 - 2.55) == (double)floor) && ((double)floor >= 8.9))
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                carry = (carry + (limit + limit)) % 255;
+                carry = carry + carry;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (limit >= (limit & 31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(floor <= (floor / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
