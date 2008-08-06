@@ -75,19 +75,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] values, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long result = 627;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result * 2) + result) % 255) ^ entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result < 0)
-            {
-                result = (result ^ (seed + result)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
