@@ -1,7 +1,8 @@
-id,label,owner
-1,legacy,53.11
-2,legacy,legacy
-3,local,41.87
-4,primary,fallback
-5,20.72,edge
-6,80.02,legacy
+id,level,label,rank,region
+1,91,latest,370,595
+2,edge,standard,668,53.56
+3,274,845,cached,240
+4,361,latest,87,strict
+5,60.47,780,28.55,482
+6,5.69,20.27,674,383
+7,28.58,832,cached,171
