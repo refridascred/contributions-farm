@@ -30,21 +30,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (origin2 < (origin * 4))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((815 + origin2) >= (origin - 411))
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
