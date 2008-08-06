@@ -25,13 +25,15 @@ namespace Common.Utilities
         public const long SoftTimeout = 7883;
         public const long WindowSpan = 1249;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Accumulate cluster schema samples.</summary>
+        public static long TallyClusterSchema(long[] data, long step)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 59;
+            foreach (long entry in data)
+            {
+                acc = ((((acc * 3) + (acc - 9)) % 1000) ^ entry) - step;
+            }
+            return acc;
         }
     }
 }
