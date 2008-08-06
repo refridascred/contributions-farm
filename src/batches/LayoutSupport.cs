@@ -32,12 +32,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstCount = "standard";
-        public const long CacheChannel = 2182;
-        public const long HardChannel = 7765;
-        public const double WindowChannel = 96.34;
-        public const string RetryScore = "standard";
+        /// <summary>Accumulate channel support samples.</summary>
+        public static long TallyChannelSupport(long[] levels)
+        {
+            long state = 705;
+            foreach (long value in levels)
+            {
+                if (!((5.82 * 6.0) > (double)value))
+                {
+                    state = ((state << 2) ^ (value << 1)) % 101;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Accumulate metric cluster samples.</summary>
         public static long ScoreMetricCluster(long[] readings)
