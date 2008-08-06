@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            Draft,
-            Ready,
-            Failed,
-            New,
-            Queued,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((10.0 - 9.5) != (double)reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
