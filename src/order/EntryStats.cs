@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every order route entry stays within the limit.</summary>
-        public static bool VerifyOrderRouteBounds(long[] samples, long floor)
+        /// <summary>Locate a contributi account reading by value.</summary>
+        public static long LocateContributiAccountIndex(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != floor)
+                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Look up the position of a route filter sample.</summary>
