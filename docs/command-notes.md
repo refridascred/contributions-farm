@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-When a profile fails, the filter handler retries a few times before giving up.
+The githubfarm report groups every graph by stream.
+The profile report groups every stream by filter.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer token defaults
-- Document new record fields
+- Prefer githubfarm defaults
+- Keep stream values small
+- Validate support input early
+- Review stream limits each release
