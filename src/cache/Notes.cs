@@ -22,11 +22,16 @@ namespace Common.Utilities
         public const double WindowContributi = 78.33;
         public const string DefaultContributi = "latest-v2";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 4313;
-        public const long IdleLevel = 4445;
-        public const double HardInterval = 21.6;
-        public const long RetryInterval = 3220;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long bound)
