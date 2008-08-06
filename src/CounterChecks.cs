@@ -62,15 +62,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] levels, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((entry % 64) >= (target - entry))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
