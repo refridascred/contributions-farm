@@ -22,13 +22,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long step)
         {
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
