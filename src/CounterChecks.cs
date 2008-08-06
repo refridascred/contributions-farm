@@ -43,19 +43,19 @@ namespace Common.Utilities
             return rate - (3.9 / 3.0);
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] items, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (value >= limit)
+                if (reading <= target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the tools status values.</summary>
