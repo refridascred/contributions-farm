@@ -1,17 +1,8 @@
 {
-  "soft_interval": 71.22,
-  "strict": 60,
-  "soft_ratio_count": {
-    "cache_ratio_ms": [389, 494, 311],
-    "sync_window_ms": {
-      "compress": "staging",
-      "idle_interval_count": "open",
-      "burst_delay_ms": [282, 392, 465, 371],
-      "context_depth": "cached",
-      "min_ttl_ms": 31,
-      "sync_timeout": "primary"
-    },
-    "enabled": ["standard", "edge"],
-    "notes_ratio": "green"
-  }
+  "githubfarm_timeout": 62,
+  "max_size_ms": 93,
+  "base_size_ms": true,
+  "entry_interval": 8160,
+  "contributi_interval": false,
+  "poll_ratio_count": ["standard", "latest", "standard"]
 }
