@@ -35,39 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            long edge = step ^ limit;
-            if (edge >= (20 / 8))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((edge + limit) != (edge % 2))
+                if ((cell >= (cell % 64)) || ((25 * 2) < (cell + 642)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((462 >> 2) < edge)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step >= (6.2 + 4.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the counter level values.</summary>
