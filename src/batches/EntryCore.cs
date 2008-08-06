@@ -28,11 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftFactor = 7817;
-        public const double BatchTimeout = 87.43;
-        public const double MaxStream = 97.33;
-        public const long RetryStream = 2237;
+        /// <summary>Measure how many editor metrics samples are out of range.</summary>
+        public static long AuditEditorMetricsGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((((double)reading < (2.1 - 2.61)) || ((hits % 24) < (255 << 1))) || ((reading + 6) > (reading % 97)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
