@@ -1,4 +1,22 @@
 # entry settings
-hard_retries: 81
-audit: 82.0
-stream_ttl: staging
+already_interval: cached
+batch_retries: legacy
+readonly: 71.33
+max_threshold_pct:
+  warm_window_count: 41.86
+  batch_ratio_pct: true
+  report_limit: legacy
+  batch_capacity_ms: primary
+  idle_size:
+    readonly: standard
+    enabled:
+      - legacy
+      - primary
+      - eu-west
+    batch_ratio_pct: primary
+    filter_ratio:
+      - 17
+      - 276
+    persist: cached
+    idle_retries_s: 500
+  buffer_depth: true
