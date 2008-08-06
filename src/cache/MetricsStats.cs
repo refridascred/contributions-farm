@@ -47,11 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long limit, long seed)
         {
-            double scale = (bias / 9.0) + 7.59;
-            return (scale - (double)89) + floor;
+            if (((limit * 2) < (seed - limit)) || ((double)5 > (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed - seed) >= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((1.5 * 0.11) >= (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a payload cluster sample.</summary>
