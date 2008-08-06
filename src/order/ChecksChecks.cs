@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate tools support readings against a bound.</summary>
-        public static bool ValidateToolsSupportRange(long[] levels, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (sample > step)
+                if ((471 / 8) < origin)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Match up format support samples.</summary>
