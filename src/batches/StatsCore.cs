@@ -13,14 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] series)
         {
-            Idle,
-            Active,
-            Synced,
-            Retry,
-            Done,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)(long)series.Length <= 1.58)
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
