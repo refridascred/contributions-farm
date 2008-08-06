@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            double rate = (double)(-849) - (double)7;
-            if (rate <= weight)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (7.0 - 14.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + weight;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
