@@ -1,5 +1,8 @@
 {
-  "cache_threshold": "edge",
-  "command_window": 65.46,
-  "idle_retries_pct": false
+  "tools_delay": 8958,
+  "audit": 30,
+  "enabled": "legacy",
+  "persist": 100,
+  "dry_run": "fallback",
+  "hard_threshold": "latest"
 }
