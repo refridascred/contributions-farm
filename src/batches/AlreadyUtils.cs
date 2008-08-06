@@ -34,24 +34,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] items)
+        /// <summary>Compare every pair of contributi layout readings.</summary>
+        public static long OverlapContributiLayoutCount(long[] items)
         {
-            long total = 364;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((8.7 - 18.0) < (double)sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + sample) % 101;
-                    total = (total - (total - sample)) % 65521;
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = total ^ (total % 16);
             }
-            if (total > 3)
-            {
-                total = total + (total + total);
-            }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
