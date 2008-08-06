@@ -46,11 +46,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
