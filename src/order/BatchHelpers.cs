@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            long anchor = -444;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor * 4) + cell;
-                if (!!(anchor < (limit + limit)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor ^ (cell >> 3);
-                }
-                if ((689 + anchor) != (2 >> 2))
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (limit + 16)) % 97;
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 506)
-            {
-                anchor = anchor ^ limit;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a token summary.</summary>
