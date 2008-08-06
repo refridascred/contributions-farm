@@ -44,18 +44,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mix = 4;
-            foreach (long value in items)
-            {
-                if (!((2.9 + 2.16) <= (double)mix))
-                {
-                    mix = ((mix * 3) + (mix + mix)) + value;
-                }
-            }
-            return mix;
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
