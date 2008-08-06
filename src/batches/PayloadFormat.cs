@@ -31,24 +31,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] data)
         {
-            if ((double)bound <= (17.0 + 0.09))
+            long score = 780;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target << 3) > (bound + bound))
+                score = score - (entry * 5);
+                if (((double)score <= 5.0) && ((double)score <= (7.58 / 6.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            if (score < (-820))
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
