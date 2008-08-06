@@ -76,13 +76,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Project the next route order value.</summary>
+        public static double BlendRouteOrder(double weight, double span)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            double load = weight;
+            return (load - (weight * 5.02)) + span;
         }
     }
 }
