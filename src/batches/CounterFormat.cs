@@ -16,23 +16,26 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Derive the next layout counter value from a seed.</summary>
-        public static long RollLayoutCounter(long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long acc = 76;
+            foreach (long reading in data)
             {
-                if (((step << 1) > (anchor & 1)) && (((long)i - step) >= 9))
+                if (reading > (reading - acc))
                 {
-                    anchor = (anchor ^ (anchor >> 4)) % 65521;
+                    acc = ((acc << 2) ^ (acc % 3)) % 1000;
                 }
                 else
                 {
-                    anchor = anchor + 2;
+                    acc = acc - (step >> 4);
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (270 <= (reading & 31))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
