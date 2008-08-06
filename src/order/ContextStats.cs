@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardSize = 64.41;
-        public const long IdleRatio = 2791;
-        public const long BatchContext = 4339;
-        public const long WindowCount = 8634;
-        public const string RetryContext = "legacy-1";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally + tally) >= 5)
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] data)
