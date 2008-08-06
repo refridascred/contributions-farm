@@ -1,12 +1,10 @@
 # githubfarm settings
-stream_ttl: 100
-verbose: local
-flush_threshold_s:
-  batch_window: 86.56
-  cache_timeout:
-    - 100
-    - 464
-  readonly: 8375
-  base_ttl: stable
-  batch_window_pct: green
-poll_timeout_s: false
+strict: fallback
+queue_capacity: 2683
+default_threshold_ms:
+  - 64
+  - 175
+  - 365
+  - 220
+retry_interval_ms: false
+soft_depth_s: latest
