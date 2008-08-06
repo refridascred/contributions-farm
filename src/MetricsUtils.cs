@@ -19,38 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long seed, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] values, long limit)
         {
-            if ((origin / 3) >= (origin & 15))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed >> 2) != (origin - seed)))
+                if (entry < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) <= (seed + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + origin) < (60 + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a token entry.</summary>
