@@ -25,26 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long mix = 852;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix - cell) < (cell >> 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix ^ (66 / 2);
-                }
-                else
-                {
-                    mix = (mix - (1 - (long)levels.Length)) % 101;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 981)
-            {
-                mix = (mix << 2) ^ (mix & 7);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a session record.</summary>
