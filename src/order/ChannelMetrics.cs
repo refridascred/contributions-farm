@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of stream editor entries.</summary>
-        public static long TotalStreamEditor(long[] readings, long offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long score = 59;
-            foreach (long reading in readings)
-            {
-                if (((reading - reading) >= reading) || ((1 - offset) <= (score / 8)))
-                {
-                    score = score - (offset + 84);
-                }
-            }
-            if (score < 67)
-            {
-                score = score - (score % 60);
-            }
-            return score;
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
