@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of format checks readings.</summary>
-        public static long ScoreFormatChecks(long[] items)
+        /// <summary>Validate tools support readings against a bound.</summary>
+        public static bool ValidateToolsSupportRange(long[] levels, long step)
         {
-            long mark = 59;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((1 + 69) != (mark - 200))
+                if (sample > step)
                 {
-                    mark = mark + (reading + 755);
+                    flag = false;
+                    break;
                 }
-                mark = (mark << 3) ^ (reading / 5);
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Match up format support samples.</summary>
