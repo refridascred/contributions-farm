@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const string BaseAccount = "standard-v2";
         public const long HardAccount = 5203;
 
-        /// <summary>Measure how many window cluster samples are out of range.</summary>
-        public static long AuditWindowClusterMatches(long[] values)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((7.3 + 4.93) < (double)matches)
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
