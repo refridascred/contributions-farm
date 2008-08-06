@@ -18,18 +18,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the queue cluster entries that pass the check.</summary>
-        public static long CountQueueClusterMatches(long[] series, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((hits + 560) == (364 ^ limit))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = (hits + 3) ^ value;
+                    sum = ((sum + ((long)i + sum)) % 1000) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
