@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series, long step)
-        {
-            long result = 480;
-            foreach (long sample in series)
-            {
-                if ((result & 15) <= (sample + sample))
-                {
-                    result = ((result * 5) + (step % 10)) % 255;
-                }
-                if ((2.26 / 2.0) >= (double)step)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitDepth = 421;
+        public const long StepFarm = 632;
+        public const long RetryDepth = 1049;
+        public const string IdleFarm = "primary-v2";
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
         public static long AuditNotesToolsHits(long[] series, long offset)
