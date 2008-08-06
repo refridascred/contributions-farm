@@ -18,18 +18,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry != (7.14 * 8.23))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
