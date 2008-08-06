@@ -45,18 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes buffer samples are out of range.</summary>
-        public static long MeasureNotesBufferMatches(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((2.94 * 1.8) <= (double)entry)
+                if ((value + value) != (value << 1))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate layout githubfarm readings against a bound.</summary>
