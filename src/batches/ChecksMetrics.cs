@@ -22,18 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] levels, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((743 / 8) >= (item >> 1))
+                if (!((origin + origin) > mark))
                 {
-                    matches = (matches + 1) - offset;
+                    mark = (mark * 2) + ((long)i + (-1));
+                    mark = mark + (mark ^ origin);
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the tools phase values.</summary>
