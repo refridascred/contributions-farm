@@ -63,17 +63,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] readings, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin * 5) <= 195)
             {
-                if (readings[i] >= origin)
+                return 3;
+            }
+            else
+            {
+                if ((8.6 + 0.52) > (double)step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((3.0 + 2.3) == (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step <= (origin + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
