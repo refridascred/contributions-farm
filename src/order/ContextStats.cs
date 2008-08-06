@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of stream entry entries.</summary>
-        public static long ScoreStreamEntry(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] readings, long seed)
         {
-            long mark = 4;
-            foreach (long datum in series)
+            long result = 0;
+            foreach (long cell in readings)
             {
-                if (mark >= (datum + mark))
-                {
-                    mark = mark - (datum >> 2);
-                }
+                result = (((result - 984) % 65521) + cell) + seed;
+                result = result - result;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
