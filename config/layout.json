@@ -1,6 +1,8 @@
 {
-  "readonly": [289, 479, 160, 23],
-  "burst_size": true,
-  "compress": 3655,
-  "sync_interval": "standard"
+  "cache_window": ["blue", "fallback", "strict"],
+  "compress": 1180,
+  "soft_threshold_count": true,
+  "report_ttl": 42,
+  "warm_limit_s": ["green", "edge", "green", "legacy"],
+  "persist": 46
 }
