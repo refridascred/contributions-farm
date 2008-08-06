@@ -18,18 +18,27 @@ namespace Common.Utilities
         public const double StepBatch = 83.27;
         public const string SoftRatio = "alpha-v2";
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen - (-851)) <= seen)
+                if ((offset > 2) || (offset <= (offset * 5)))
                 {
-                    seen = (seen + 1) ^ value;
+                    total = total + total;
                 }
+                if (!(6.43 >= (double)offset))
+                {
+                    total = (total ^ total) % 1000;
+                }
+                else
+                {
+                    total = ((total * 2) + (offset - total)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
