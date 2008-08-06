@@ -20,10 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftCount = 1119;
-        public const string SoftSupport = "fallback-v2";
-        public const double StepSupport = 92.29;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((2 & 15) > seen) || !((seen * 4) <= (seen * 3)))
+                {
+                    seen = ((seen + 1) + entry) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LookupBufferIndex(long[] data, long offset)
