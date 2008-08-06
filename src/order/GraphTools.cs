@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] readings, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset & 63) > (offset >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + reading;
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a window summary.</summary>
