@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            Queued,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the channel batch entries that pass the check.</summary>
