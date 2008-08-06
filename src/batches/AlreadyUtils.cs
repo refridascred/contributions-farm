@@ -15,12 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Accumulate context samples.</summary>
