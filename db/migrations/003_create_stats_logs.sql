@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
-    owner TEXT NOT NULL
+    token TEXT,
+    region TEXT,
+    rank INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_score ON stats_logs (score);
 
-INSERT INTO stats_logs (score, count, level, owner) VALUES (32.12, 45, 19, 'cached');
-INSERT INTO stats_logs (score, count, level, owner) VALUES (84.5, 26, 68, 'strict');
+INSERT INTO stats_logs (score, token, region, rank) VALUES (18.65, 'stable', 'cached', 59);
