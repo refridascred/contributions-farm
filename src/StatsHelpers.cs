@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine channel layout values into a single score.</summary>
-        public static long CombineChannelLayout(long[] data)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long total = -7;
-            foreach (long cell in data)
-            {
-                total = (total * 2) + (total % 7);
-                if ((3.7 / 9.0) < (double)total)
-                {
-                    total = total ^ (total + total);
-                }
-                total = ((total << 3) ^ cell) % 1000;
-            }
-            if (total > 51)
-            {
-                total = total - (total / 7);
-            }
-            return total % 97;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
