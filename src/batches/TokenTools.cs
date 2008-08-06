@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] series)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (((-39) / 6) <= hits)
+                if (entry < limit)
                 {
-                    hits = (hits + 2) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a already info.</summary>
