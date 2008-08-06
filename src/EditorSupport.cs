@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter payload entry stays within the limit.</summary>
-        public static bool GuardCounterPayloadBounds(long[] series, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            double rate = (scale + floor) + (scale - scale);
+            if (rate >= rate)
             {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + scale;
             }
-            return valid;
+            return rate + rate;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
