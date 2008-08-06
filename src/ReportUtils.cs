@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long limit)
-        {
-            long cur = target ^ limit;
-            if (((limit + 435) <= 654) && ((limit / 7) <= ((-17) + cur)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit != (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit >= (double)cur)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitCount = 5647;
+        public const double CacheMetric = 42.02;
+        public const long RetryMetric = 1904;
+        public const string SoftMetric = "alpha";
+        public const long BurstRatio = 5486;
 
         /// <summary>Rank cache payload input into a small class.</summary>
         public static long ClassifyCachePayload(long bound, long origin)
