@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] items, long seed)
         {
-            Queued,
-            Failed,
-            Locked,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count & 127) != (361 & 15))
+                {
+                    count = ((count + 1) ^ item) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
