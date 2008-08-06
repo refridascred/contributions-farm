@@ -1,8 +1,6 @@
 {
-  "githubfarm_timeout": 62,
-  "max_size_ms": 93,
-  "base_size_ms": true,
-  "entry_interval": 8160,
-  "contributi_interval": false,
-  "poll_ratio_count": ["standard", "latest", "standard"]
+  "burst_timeout": ["standard", "edge"],
+  "flush_ttl_s": 71.16,
+  "contributi_capacity": 1024,
+  "batch_ttl_pct": 85.0
 }
