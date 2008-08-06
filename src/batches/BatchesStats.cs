@@ -41,13 +41,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Fold a list of graph batch readings.</summary>
+        public static long WeighGraphBatch(long[] samples, long seed)
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long mark = 5;
+            foreach (long value in samples)
+            {
+                mark = (mark + seed) ^ value;
+                mark = (mark << 2) ^ (seed + mark);
+            }
+            return mark;
         }
     }
 }
