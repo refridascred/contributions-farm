@@ -67,21 +67,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((36 * 3) >= (item + origin))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
