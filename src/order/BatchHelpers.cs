@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] values, long offset)
         {
-            long state = 9;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long item in values)
             {
-                state = state ^ (datum % 16);
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state > (-1))
-            {
-                state = state ^ (state + 5);
-            }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
