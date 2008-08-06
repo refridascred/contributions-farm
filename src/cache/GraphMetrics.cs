@@ -27,11 +27,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double bias, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] data)
         {
-            double gain = bias;
-            return (gain - (bias + gain)) + offset;
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((5 / 3) > value) || ((1 >> 2) != (value - (long)data.Length)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
