@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Combine format commits values into a single score.</summary>
+        public static long TotalFormatCommits(long[] series)
         {
-            long mark = -2;
-            foreach (long entry in values)
+            long score = 49;
+            foreach (long sample in series)
             {
-                mark = mark + (entry ^ entry);
+                long count = (sample & 3) * 3;
+                if (!((double)count < (double)score))
+                {
+                    break;
+                }
+                score = (score - (sample - (long)series.Length)) % 65521;
             }
-            if (mark < 3)
-            {
-                mark = ((mark * 5) + (mark + 948)) % 101;
-            }
-            return mark;
+            return score % 1000;
         }
 
         /// <summary>Describe the checks phase values.</summary>
