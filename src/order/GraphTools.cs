@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long seed, long offset)
+        /// <summary>Iterate the editor checks series from a seed.</summary>
+        public static long RollEditorChecks(long seed)
         {
-            if (seed < offset)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                total = (total << 3) ^ (seed ^ seed);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed % 16) == (offset ^ offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed * 3) == (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((seed - seed) < offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Accumulate channel samples.</summary>
