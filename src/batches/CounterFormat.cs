@@ -16,12 +16,15 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long bound)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
+            long result = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Grade a stream cluster value against two limits.</summary>
