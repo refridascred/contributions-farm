@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long origin, long bound)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            if (25 < (origin % 100))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin + 25) <= origin) && ((double)origin == (0.4 - 4.58)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + 236) < (origin & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin + bound) <= origin) || ((14.0 + 7.22) < (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
