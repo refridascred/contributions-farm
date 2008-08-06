@@ -1,6 +1,18 @@
 {
-  "flush_limit_pct": 24.54,
-  "readonly": "legacy",
-  "tools_ratio": 96.13,
-  "default_retries": ["local", "standard", "primary"]
+  "commits_ttl": [396, 388],
+  "entry_capacity": 2184,
+  "commits_timeout": {
+    "base_retries_ms": 225,
+    "default_timeout_s": [414, 411],
+    "burst_delay_ms": ["edge", "open", "primary"],
+    "cache_retries_ms": {
+      "cluster_timeout": "latest",
+      "soft_limit_ms": 7728,
+      "burst_limit": "local",
+      "stats_interval": 72.02,
+      "default_retries_count": 500
+    },
+    "poll_timeout_count": 1024
+  },
+  "default_delay_count": false
 }
