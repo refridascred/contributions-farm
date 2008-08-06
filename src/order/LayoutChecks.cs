@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data, long target)
         {
-            double gain2 = (double)(32 >> 3);
-            if (gain2 < 2.4)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                gain2 = (gain2 - (gain / 5.0)) - floor;
+                if ((matches + sample) == (sample >> 3))
+                {
+                    matches = (matches + 3) + target;
+                }
             }
-            return gain2 + (double)0;
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
