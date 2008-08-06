@@ -14,19 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many session filter samples are out of range.</summary>
-        public static long AuditSessionFilterHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((value ^ hits) < 77) || (((hits + 66) >= 19) && ((value * 2) >= (value % 12))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftCount = 1119;
+        public const string SoftSupport = "fallback-v2";
+        public const double StepSupport = 92.29;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LookupBufferIndex(long[] data, long offset)
