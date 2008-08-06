@@ -25,10 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseCount = 2597;
-        public const long WindowReport = 6921;
-        public const string BurstReport = "open";
-        public const long StepReport = 123;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Paused,
+            Ready,
+            Done,
+            Retry,
+            Queued,
+        }
     }
 }
