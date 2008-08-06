@@ -44,12 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            New,
+            Stale,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
