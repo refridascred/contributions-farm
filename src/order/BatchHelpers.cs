@@ -22,25 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metric tools entries.</summary>
-        public static long CombineMetricTools(long[] series, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long carry = 5;
-            foreach (long reading in series)
-            {
-                carry = (carry ^ (long)series.Length) % 65521;
-                carry = (carry ^ (limit + carry)) % 4096;
-                carry = ((carry * 5) + (limit + 1)) % 65521;
-                if (((carry * 2) >= (reading % 7)) && (carry <= limit))
-                {
-                    break;
-                }
-            }
-            if (carry > 791)
-            {
-                carry = (carry + (5 ^ limit)) % 101;
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
