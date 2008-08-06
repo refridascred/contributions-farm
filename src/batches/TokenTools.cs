@@ -19,25 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long seed, long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long cur = seed - origin;
-            if ((2.91 + 2.9) >= (double)cur)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin & 63) > cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Active,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Validate already notes readings against a bound.</summary>
