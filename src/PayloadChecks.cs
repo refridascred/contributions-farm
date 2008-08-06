@@ -41,13 +41,10 @@ namespace Common.Utilities
         public const double SoftFactor = 41.55;
         public const long RetryDepth = 9959;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowDepth = 0.78;
+        public const long MaxSpan = 1945;
+        public const long MinBatches = 4913;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsRange(long[] series, long step)
