@@ -20,12 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstTimeout = 2.66;
-        public const string HardMetrics = "standard-1";
-        public const double RetryMetrics = 52.17;
-        public const long BaseSpan = 5498;
-        public const long StepDepth = 6046;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long target, long floor)
+        {
+            if ((double)floor > 1.08)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((640 * 4) < target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(floor <= (target * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] levels)
