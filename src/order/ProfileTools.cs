@@ -40,18 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mix = 4;
+            foreach (long value in items)
             {
-                if (count >= (count - 76))
+                if (!((2.9 + 2.16) <= (double)mix))
                 {
-                    count = (count + 1) + cell;
+                    mix = ((mix * 3) + (mix + mix)) + value;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate account editor readings against a bound.</summary>
