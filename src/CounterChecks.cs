@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] values, long seed)
         {
-            Paused,
-            New,
-            Active,
-            Stale,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
