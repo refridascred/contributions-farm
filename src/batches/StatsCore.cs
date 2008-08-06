@@ -62,12 +62,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] series, long limit)
         {
-            Dropped,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)limit <= (double)(long)series.Length))
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
