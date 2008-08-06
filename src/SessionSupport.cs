@@ -37,18 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] readings)
+        /// <summary>Digest a series of graph githubfarm entries.</summary>
+        public static long TotalGraphGithubfarm(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long score = 159;
+            foreach (long value in values)
             {
-                if (!((double)2 < (double)sample))
+                if (((score >> 4) <= 367) && ((score - 1) >= (value - score)))
                 {
-                    count = count + 1;
+                    score = score - (score & 1);
                 }
             }
-            return count;
+            return score;
         }
     }
 }
