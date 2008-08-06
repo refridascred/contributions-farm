@@ -45,12 +45,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            New,
-            Locked,
-            Synced,
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
