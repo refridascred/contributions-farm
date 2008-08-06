@@ -34,22 +34,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] series, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long floor)
         {
-            long result = 1;
-            foreach (long cell in series)
+            if ((floor <= (floor + 13)) && ((5.4 - 2.9) >= (double)origin))
             {
-                if ((cell + cell) == (step >> 4))
+                return 5;
+            }
+            else
+            {
+                if (!(7 < (floor - origin)))
                 {
-                    result = ((result * 2) + (result + 337)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin & 31) >= (origin + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((floor + floor) > origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (result < 1)
-            {
-                result = result + (step & 31);
-            }
-            return result % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
