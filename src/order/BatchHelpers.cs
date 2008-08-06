@@ -31,15 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the filter already entries that pass the check.</summary>
-        public static long AuditFilterAlreadyHits(long[] series, long limit)
+        /// <summary>Count the checks route entries that pass the check.</summary>
+        public static long AuditChecksRouteHits(long[] data, long floor)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long sample in data)
             {
-                if ((10.0 + 3.4) != (double)item)
+                if ((683 + sample) < (58 & 31))
                 {
-                    seen = (seen + 1) - limit;
+                    seen = (seen + 2) + floor;
                 }
             }
             return seen;
