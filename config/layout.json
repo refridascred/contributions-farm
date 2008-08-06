@@ -1,6 +1,7 @@
 {
-  "notes_threshold": 2932,
-  "base_timeout_count": "local",
-  "sync_ttl_s": 6216,
-  "sync_ttl": 8471
+  "burst_timeout_s": 26.98,
+  "soft_ttl_ms": false,
+  "default_retries": ["eu-west", "primary", "green"],
+  "retry_size": "edge",
+  "warm_threshold_pct": 60
 }
