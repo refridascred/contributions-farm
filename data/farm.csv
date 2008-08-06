@@ -1,9 +1,7 @@
-id,count
-1,eu-west
-2,96.83
-3,blue
-4,blue
-5,80.73
-6,963
-7,875
-8,67.46
+id,owner,weight,region,rank
+1,456,24.38,70.14,69.64
+2,eu-west,530,158,719
+3,51.25,standard,38.61,27
+4,55.62,89.47,standard,571
+5,standard,12.78,547,379
+6,primary,766,98.39,14
