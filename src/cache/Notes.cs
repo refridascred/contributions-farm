@@ -17,10 +17,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 1700;
-        public const double WindowContributi = 78.33;
-        public const string DefaultContributi = "latest-v2";
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long limit)
