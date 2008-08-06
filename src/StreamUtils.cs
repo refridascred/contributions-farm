@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long floor, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long step2 = floor - step;
+            if ((floor * 3) >= floor)
             {
-                if ((double)item < (18.0 - 0.1))
+                return 8;
+            }
+            else
+            {
+                if ((floor > 19) || ((step << 1) != (step * 5)))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!((-3) > floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step2 << 1) <= step2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a tools summary.</summary>
