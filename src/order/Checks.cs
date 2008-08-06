@@ -61,17 +61,13 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] data, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
