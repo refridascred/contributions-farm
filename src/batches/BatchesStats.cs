@@ -28,18 +28,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6463;
+        public const string StepFactor = "open-v2";
+        public const long WindowProfile = 2515;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
