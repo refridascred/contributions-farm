@@ -45,19 +45,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter graph readings against a bound.</summary>
-        public static bool GuardFilterGraphBounds(long[] data, long step)
+        /// <summary>Grade a cluster layout value against two limits.</summary>
+        public static long ClassifyClusterLayout(long step, long seed)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long bound = step + seed;
+            if (seed > (step + (-940)))
             {
-                if (cell >= step)
+                return 4;
+            }
+            else
+            {
+                if (((step % 97) < step) && ((2.5 * 10.0) < (double)step))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (step > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - step) >= (bound + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
