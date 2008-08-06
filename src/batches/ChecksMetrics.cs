@@ -27,19 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor route entry stays within the limit.</summary>
-        public static bool VerifyEditorRouteRange(long[] data, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the record status values.</summary>
