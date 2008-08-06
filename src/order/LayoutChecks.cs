@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowSize = 3508;
-        public const double MaxRatio = 44.16;
-        public const string RetryCluster = "standard-1";
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double AdjustSession(double gain, double floor)
