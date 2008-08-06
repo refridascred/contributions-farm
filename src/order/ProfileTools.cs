@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            Pending,
+            Ready,
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
