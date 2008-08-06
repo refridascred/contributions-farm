@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long score = 5;
+            foreach (long sample in data)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if (7 >= (score * 5))
+                {
+                    break;
+                }
+                score = (((score << 3) ^ score) % 255) + sample;
             }
-            return carry;
+            return score % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
