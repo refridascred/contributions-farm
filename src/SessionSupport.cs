@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] series, long target)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
