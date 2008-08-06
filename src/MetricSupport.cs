@@ -12,26 +12,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Grade a record order value against two limits.</summary>
+        public static long RankRecordOrder(long bound, long limit)
         {
-            long acc = 834;
-            foreach (long reading in readings)
+            if ((limit / 5) != (bound / 8))
             {
-                if (3.9 > (double)acc)
+                return 6;
+            }
+            else
+            {
+                if (limit < (limit % 64))
                 {
-                    acc = (acc + (reading ^ 208)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    acc = (acc ^ (reading - reading)) % 4096;
+                    if ((double)limit >= (2.6 - 14.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) <= (limit - bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc > 2)
-            {
-                acc = ((acc * 2) + acc) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
