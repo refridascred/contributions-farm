@@ -15,11 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 6887;
-        public const string BaseMetric = "legacy-edge";
-        public const double DefaultMetric = 18.05;
-        public const long RetryInterval = 2044;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long WeighContext(long[] readings, long offset)
