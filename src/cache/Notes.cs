@@ -27,39 +27,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long offset)
+        /// <summary>Match up context notes samples.</summary>
+        public static long PairContextNotesCount(long[] levels)
         {
-            long diff = seed ^ offset;
-            if ((diff * 5) <= (seed + diff))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((seed + seed) <= offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(seed <= (seed - 57)))
+                    if ((levels[i] ^ levels[j]) < 19)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)diff <= (15.0 * 5.3)) || ((1.1 + 9.0) != (double)diff))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the graph mode values.</summary>
