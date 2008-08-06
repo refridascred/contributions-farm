@@ -70,19 +70,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series, long limit)
-        {
-            long score = 0;
-            foreach (long cell in series)
-            {
-                score = (score + (cell % 60)) + limit;
-            }
-            if (score > 39)
-            {
-                score = ((score << 3) ^ (score + score)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 8477;
+        public const long BatchInterval = 3823;
+        public const string IdleSession = "primary";
+        public const long HardLevel = 520;
+        public const long BaseSession = 6105;
     }
 }
