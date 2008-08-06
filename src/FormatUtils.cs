@@ -32,12 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 5) + seed) % 255;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the schema kind values.</summary>
