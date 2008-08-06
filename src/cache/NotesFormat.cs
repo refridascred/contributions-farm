@@ -27,11 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] data)
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)tally <= (7.9 / 8.0))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
