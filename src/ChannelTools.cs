@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((cell + count) != (17 ^ count))
                 {
-                    mark = ((mark - (mark - origin)) % 4096) ^ (long)i2;
+                    count = count + 3;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a support options.</summary>
