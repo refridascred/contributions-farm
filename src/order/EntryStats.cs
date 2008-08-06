@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a schema record sample.</summary>
-        public static long LocateSchemaRecordIndex(long[] data, long floor)
+        /// <summary>Look up the position of a route filter sample.</summary>
+        public static long SeekRouteFilterIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= floor)
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
