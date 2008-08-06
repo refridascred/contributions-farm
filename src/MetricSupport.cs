@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long acc = 8;
-            foreach (long datum in samples)
-            {
-                if ((acc + datum) >= (datum + acc))
-                {
-                    break;
-                }
-                acc = ((acc << 3) ^ datum) % 65521;
-            }
-            return acc % 97;
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
