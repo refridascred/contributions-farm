@@ -24,11 +24,17 @@ namespace Common.Utilities
         public const long StepWidth = 2011;
         public const long WindowFactor = 9352;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long offset)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a token record.</summary>
