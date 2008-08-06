@@ -1,6 +1,10 @@
 # githubfarm settings
-dry_run: 1921
-batch_window: false
-persist: true
-enabled: true
-cache_capacity_ms: primary
+support_delay: 100
+batch_delay: blue
+verbose: 636
+idle_threshold:
+  - latest
+  - fallback
+  - green
+default_delay_s: 23.09
+strict: fallback
