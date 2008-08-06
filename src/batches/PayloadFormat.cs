@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const long MaxAlready = 6818;
         public const string IdleAlready = "stable-1";
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Find the first window profile entry that matches the target.</summary>
+        public static long LocateWindowProfileIndex(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
