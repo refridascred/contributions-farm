@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Scale a commits githubfarm figure with a bias.</summary>
+        public static double SmoothCommitsGithubfarm(double ratio, double floor)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            double drift = (double)(0 & 255);
+            if (drift > 3.5)
+            {
+                drift = (drift + drift) + ratio;
+            }
+            return drift + floor;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
