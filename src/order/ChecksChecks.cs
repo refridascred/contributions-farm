@@ -28,10 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "legacy-edge";
-        public const long RetryCommand = 8901;
-        public const double LimitTimeout = 10.54;
-        public const long BurstInterval = 6458;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
