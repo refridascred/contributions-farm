@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
-        {
-            long total = 51;
-            foreach (long entry in readings)
-            {
-                total = (((total << 3) ^ (total + total)) % 255) + entry;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultWidth = 649;
+        public const long BasePayload = 5629;
+        public const string MaxPayload = "latest-edge";
+        public const long WindowPayload = 8520;
+        public const long WindowInterval = 6802;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] items, long step)
