@@ -30,10 +30,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "fallback";
-        public const double BaseRoute = 74.3;
-        public const long SoftRoute = 3181;
+        /// <summary>Rank window commits input into a small class.</summary>
+        public static long RankWindowCommits(long offset, long bound)
+        {
+            if (!((offset + offset) >= (5 >> 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound << 3) < (bound % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - bound) > (bound & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(offset <= bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferOutliers(long[] series)
