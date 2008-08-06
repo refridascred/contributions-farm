@@ -1,6 +1,35 @@
 # githubfarm settings
-idle_retries: local
-idle_delay_count: 87.2
-contributi_limit:
+max_capacity_count: 5383
+warm_threshold_s:
+  - open
+  - edge
   - latest
-  - standard
+  - legacy
+counter_capacity:
+  batch_ttl: cached
+  strict:
+    batch_ttl: latest
+    readonly: 2910
+    soft_ttl: 2225
+    order_capacity: 11.34
+    poll_ttl_ms: 86.63
+    batch_size_s:
+      - edge
+      - blue
+      - edge
+  base_threshold:
+    sync_depth_pct: 42.99
+    max_delay: 302
+    min_capacity: 52
+    enabled:
+      - 127
+      - 147
+      - 57
+      - 354
+    compress: 1024
+    burst_limit:
+      - edge
+      - eu-west
+  flush_limit_count: false
+  soft_depth: false
+warm_interval: 36
