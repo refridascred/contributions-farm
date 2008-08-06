@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] series, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
