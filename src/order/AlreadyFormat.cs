@@ -67,22 +67,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] items, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((36 * 3) >= (item + origin))
+                if ((5.1 - 9.67) < (double)tally)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = ((tally + 3) + reading) + offset;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
