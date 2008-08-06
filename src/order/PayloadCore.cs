@@ -39,22 +39,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] items, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = -3;
+            foreach (long value in values)
             {
-                if (1 < (28 ^ value))
+                if (value < (mix << 1))
                 {
-                    count = (count + 1) - step;
+                    mix = (mix ^ (value - 36)) % 65521;
                 }
-                else
+                if ((mix % 10) < (mix - value))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mix > 3)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
