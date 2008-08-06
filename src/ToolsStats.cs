@@ -57,20 +57,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] samples, long origin)
-        {
-            long score = 99;
-            foreach (long item in samples)
-            {
-                score = (score + (origin + score)) % 97;
-                if ((item - origin) < (score / 6))
-                {
-                    break;
-                }
-                score = ((score << 3) ^ (item + origin)) % 65521;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinInterval = 7775;
+        public const string WindowGithubfarm = "local-edge";
+        public const long CacheGithubfarm = 5255;
+        public const double DefaultWidth = 82.32;
     }
 }
