@@ -25,28 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] data, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                long prev = (sum % 8) - sum;
-                if ((prev + sum) != (long)i)
+                if (origin < (origin + 18))
                 {
-                    sum = ((sum * 3) + (floor + sum)) % 65521;
+                    tally = (tally + 2) ^ value;
                 }
-                if ((11.0 + 4.69) < (double)prev)
-                {
-                    sum = (sum ^ ((long)i >> 4)) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (sum % 16)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a window stats.</summary>
