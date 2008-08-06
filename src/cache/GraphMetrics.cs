@@ -16,10 +16,14 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 33.36;
-        public const long SoftBudget = 1471;
-        public const double MaxSize = 77.82;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Draft,
+            Retry,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Fold a list of command editor readings.</summary>
         public static long TallyCommandEditor(long[] values, long offset)
