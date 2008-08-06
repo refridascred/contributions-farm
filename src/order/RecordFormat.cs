@@ -43,9 +43,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchTimeout = 9895;
-        public const double CacheLevel = 14.28;
-        public const long LimitRatio = 7296;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
