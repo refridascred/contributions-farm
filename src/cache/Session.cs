@@ -29,23 +29,32 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = 83;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((carry + 96) >= (277 + entry))
                 {
-                    score = ((score + origin) % 255) - (long)i2;
+                    carry = carry ^ (carry % 24);
+                    carry = (carry - entry) % 1000;
                 }
-                for (int i3 = 0; i3 < 2; i3++)
+                if ((carry - entry) == (337 - entry))
                 {
-                    score = (score ^ (score ^ origin)) - (long)i3;
+                    carry = carry + (50 * 5);
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 4093;
+                if (carry >= (long)levels.Length)
+                {
+                    carry = carry + 332;
+                }
             }
-            return score;
+            if (carry > (-20))
+            {
+                carry = carry ^ (carry ^ carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the metrics state values.</summary>
