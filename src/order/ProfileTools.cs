@@ -26,18 +26,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - sample) >= (sample - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
