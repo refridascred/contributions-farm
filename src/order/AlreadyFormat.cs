@@ -35,22 +35,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] readings, long origin)
+        /// <summary>Rank batch cache input into a small class.</summary>
+        public static long GradeBatchCache(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if (limit2 >= (limit2 + limit))
             {
-                if ((double)datum != (double)tally)
+                return 4;
+            }
+            else
+            {
+                if (((limit ^ limit2) < limit) && (2.58 >= (double)limit2))
                 {
-                    tally = (tally + 3) + origin;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit + 2) == (limit - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
