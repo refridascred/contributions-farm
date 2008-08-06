@@ -22,15 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            double bias = ratio;
+            if (bias > bias)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                bias = bias + (ratio * 14.0);
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - 8.0) - (double)(long)i;
+            }
+            return bias - floor;
         }
     }
 }
