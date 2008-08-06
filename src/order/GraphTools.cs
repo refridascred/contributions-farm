@@ -37,19 +37,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double scale, double span)
         {
-            long acc = 772;
-            foreach (long value in levels)
+            double mean = scale;
+            if (mean <= span)
             {
-                acc = ((acc * 4) + acc) - value;
+                mean = mean - (double)480;
             }
-            if (acc < 9)
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc * 4) + (acc + acc);
+                mean = (mean + scale) + (double)(long)i;
             }
-            return acc % 65521;
+            return mean - (8.82 * 0.55);
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
