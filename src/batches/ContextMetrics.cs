@@ -20,19 +20,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two command account measurements.</summary>
-        public static double ProjectCommandAccount(double gain, double offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            double gain2 = offset;
-            if (gain2 < offset)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                gain2 = gain2 - (offset - 3.66);
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = ((anchor - (-992)) % 1000) ^ (long)i2;
+                    anchor = ((anchor << 3) ^ seed) % 1000;
+                }
+                if (seed >= (anchor & 3))
+                {
+                    anchor = anchor ^ (anchor - seed);
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (4.61 * 14.0)) - (double)(long)i;
-            }
-            return gain2 - (gain - gain2);
+            return anchor;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
