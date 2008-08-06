@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((double)matches <= (4.4 * 17.0)) && (value >= (matches >> 2)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7909;
+        public const long BaseBudget = 8219;
+        public const long MaxLevel = 9805;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long CombineCluster(long[] samples)
