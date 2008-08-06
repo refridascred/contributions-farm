@@ -57,13 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
+            New,
+            Failed,
             Retry,
-            Synced,
-            Closed,
-            Stale,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
