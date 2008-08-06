@@ -19,14 +19,10 @@ namespace Common.Utilities
         public const long BatchInterval = 1599;
         public const double DefaultLevel = 70.75;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "cached";
+        public const long StepCount = 5578;
+        public const long BaseTimeout = 16;
 
         /// <summary>Count the notes batch entries that pass the check.</summary>
         public static long TallyNotesBatchMatches(long[] data)
