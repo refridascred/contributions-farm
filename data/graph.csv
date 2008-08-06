@@ -1,8 +1,6 @@
-id,level,ratio
-1,199,164
-2,stable,81.26
-3,58.91,primary
-4,806,217
-5,green,fallback
-6,739,7.12
-7,35.39,167
+id,ratio,level,weight
+1,blue,strict,867
+2,eu-west,435,5.59
+3,25.55,61,61.09
+4,blue,primary,58.01
+5,590,green,179
