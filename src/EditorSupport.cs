@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double weight, double bias)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            double scale = bias - (11.0 + 4.98);
+            return (scale + bias) + weight;
         }
 
         /// <summary>Check that every counter payload entry stays within the limit.</summary>
