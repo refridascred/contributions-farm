@@ -48,19 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double ratio, double floor)
+        /// <summary>Look up the position of a farm graph sample.</summary>
+        public static long SeekFarmGraphIndex(long[] samples, long bound)
         {
-            double load = 0.7;
-            if (load >= (load * 7.34))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (ratio + load)) - floor;
+                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (4.7 / 9.0);
-            }
-            return load + 1.12;
+            return -1;
         }
     }
 }
