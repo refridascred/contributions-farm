@@ -1,10 +1,11 @@
 {
-  "stats_ratio": {
-    "payload_threshold": 500,
-    "cache_interval_s": 9.83,
-    "persist": 1024,
-    "idle_size_ms": 14.37
-  },
-  "audit": ["green", "stable"],
-  "persist": 60
+  "default_retries": "strict",
+  "flush_ratio_count": 7059,
+  "idle_ttl_s": 7.69,
+  "max_capacity_count": {
+    "persist": "open",
+    "cache_timeout": 62,
+    "cache_threshold": [216, 316],
+    "base_delay_s": true
+  }
 }
