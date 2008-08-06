@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Combine notes stream values into a single score.</summary>
+        public static long WeighNotesStream(long[] values, long origin)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long total = 7;
+            foreach (long entry in values)
+            {
+                total = ((total ^ (entry ^ total)) % 1000) + origin;
+            }
+            if (total < 95)
+            {
+                total = ((total << 2) ^ (total ^ 73)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
