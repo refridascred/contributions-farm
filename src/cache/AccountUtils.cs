@@ -12,18 +12,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many session entry samples are out of range.</summary>
-        public static long MeasureSessionEntryMatches(long[] readings)
+        /// <summary>Fold a list of context githubfarm readings.</summary>
+        public static long TotalContextGithubfarm(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = 0;
+            foreach (long datum in items)
             {
-                if ((0.84 - 3.06) >= (double)hits)
+                if ((datum + datum) <= (score - datum))
                 {
-                    hits = (hits + 2) + datum;
+                    score = ((score * 4) + 140) % 97;
                 }
             }
-            return hits;
+            if (score > 579)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Rank githubfarm filter input into a small class.</summary>
