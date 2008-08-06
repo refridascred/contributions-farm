@@ -1,5 +1,6 @@
 {
-  "default_capacity_s": "stable",
-  "burst_limit": 60,
-  "batches_size": 90.83
+  "max_ratio": 7.62,
+  "retry_limit_ms": 1173,
+  "retry_interval": 60,
+  "hard_ratio_count": false
 }
