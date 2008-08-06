@@ -1,5 +1,4 @@
 # support settings
-compress: 60
-default_ttl_pct: 100
-warm_size_s: blue
-flush_window_pct: 82
+retry_capacity_count: 6748
+record_interval: 76.53
+tools_ratio: 76.83
