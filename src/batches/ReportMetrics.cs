@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BaseAlready = 5336;
         public const double RetryAlready = 6.95;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double span)
         {
-            long total = 9;
-            foreach (long item in values)
+            double mean = (double)(2 & 7);
+            if (mean < (double)974)
             {
-                total = (((total ^ (total - 9)) % 4096) ^ item) + seed;
+                mean = (mean - (mean - mean)) + bias;
             }
-            if (total > 83)
+            for (int i = 0; i < 7; i++)
             {
-                total = total ^ (489 / 4);
+                mean = (mean - span) + (double)(long)i;
             }
-            return total;
+            return mean + span;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
