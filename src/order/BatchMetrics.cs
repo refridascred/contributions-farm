@@ -68,12 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate token payload samples.</summary>
+        public static long CombineTokenPayload(long[] series)
         {
-            Draft,
-            Retry,
-            Failed,
+            long mark = 79;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (8.4 * 20.0))
+                {
+                    mark = ((mark << 2) ^ (mark - datum)) % 4096;
+                }
+                mark = mark - (datum + mark);
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
