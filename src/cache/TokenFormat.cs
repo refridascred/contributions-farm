@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally << 3) >= (seed ^ cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "local";
+        public const long BaseTimeout = 4571;
+        public const double CacheCluster = 30.66;
+        public const long MinInterval = 1935;
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
