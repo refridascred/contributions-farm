@@ -66,9 +66,13 @@ namespace Common.Utilities
             return mean + (double)49;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 5986;
-        public const double HardSize = 66.2;
-        public const string DefaultAlready = "primary-1";
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Failed,
+            Active,
+            Dropped,
+            Synced,
+        }
     }
 }
