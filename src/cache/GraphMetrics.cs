@@ -25,15 +25,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of command editor readings.</summary>
-        public static long TallyCommandEditor(long[] values, long offset)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double bias, double offset)
         {
-            long mix = 1;
-            foreach (long entry in values)
-            {
-                mix = (((mix * 3) + (entry - (long)values.Length)) % 101) - offset;
-            }
-            return mix;
+            double gain = bias;
+            return (gain - (bias + gain)) + offset;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
