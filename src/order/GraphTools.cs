@@ -51,13 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Idle,
+            Pending,
             Draft,
-            Done,
-            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a checks stats.</summary>
