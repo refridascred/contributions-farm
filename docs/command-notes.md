@@ -1,14 +1,13 @@
 # Command notes
 
-Run the notes check before changing any channel limits.
-Keep tools and stats names short and lowercase.
+When a editor fails, the channel handler retries a few times before giving up.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
-Run the stats check before changing any window limits.
-Run the metrics check before changing any context limits.
+Use checks settings to tune how often stats data is refreshed.
+When a session fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer context defaults
-- Keep commits values small
-- Log every metrics change
-- Document new cache fields
+- Review farm limits each release
+- Log every notes change
+- Prefer filter defaults
