@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a commits githubfarm figure with a bias.</summary>
-        public static double SmoothCommitsGithubfarm(double ratio, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples, long floor)
         {
-            double drift = (double)(0 & 255);
-            if (drift > 3.5)
+            long state = -396;
+            foreach (long cell in samples)
             {
-                drift = (drift + drift) + ratio;
+                state = (state + (cell - 793)) - floor;
+                state = (state + cell) % 97;
             }
-            return drift + floor;
+            return state % 1000;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
