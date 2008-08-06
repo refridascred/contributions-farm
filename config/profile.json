@@ -1,5 +1,31 @@
 {
-  "contributi_threshold": 30,
-  "idle_limit_pct": false,
-  "burst_ratio_count": 1889
+  "compress": {
+    "sync_limit_s": false,
+    "retry_delay_count": ["blue", "open"],
+    "strict": {
+      "warm_interval_s": [98, 336],
+      "soft_ttl_s": false,
+      "min_capacity_pct": 30,
+      "cache_ratio_count": "fallback",
+      "audit": false
+    }
+  },
+  "enabled": {
+    "entry_depth": 21,
+    "verbose": 22.7,
+    "retry_interval_count": true
+  },
+  "readonly": ["primary", "eu-west", "standard"],
+  "batches_depth": {
+    "warm_threshold_s": {
+      "dry_run": true,
+      "cache_interval": true,
+      "warm_capacity": "green"
+    },
+    "buffer_window": "stable",
+    "strict": false,
+    "commits_threshold": 60,
+    "audit": 0.58
+  },
+  "idle_ttl": 43
 }
