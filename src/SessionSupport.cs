@@ -33,11 +33,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
+            double weight = gain;
+            if (weight > 9.62)
+            {
+                weight = weight - offset;
+            }
+            else
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (offset * 2.8)) + (double)(long)i;
+            }
+            return weight + (gain / 9.0);
         }
     }
 }
