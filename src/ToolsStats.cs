@@ -60,13 +60,11 @@ namespace Common.Utilities
         public const long WindowCommand = 585;
         public const string DefaultCommand = "fallback-1";
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinCount = 9064;
+        public const long RetryInterval = 575;
+        public const double BatchSchema = 38.4;
+        public const double BaseCount = 40.22;
+        public const long DefaultWidth = 5632;
     }
 }
