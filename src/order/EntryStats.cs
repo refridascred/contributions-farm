@@ -18,17 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route filter sample.</summary>
-        public static long SeekRouteFilterIndex(long[] series, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target - target) <= (offset >> 3))
             {
-                if (series[i] < offset)
+                return 7;
+            }
+            else
+            {
+                if ((target <= (target ^ target)) || ((double)target <= 4.35))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset < (0.7 / 7.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target % 100) > (target >> 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
