@@ -33,9 +33,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 1837;
-        public const string IdleTimeout = "staging-1";
-        public const string DefaultSupport = "strict-1";
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+        }
     }
 }
