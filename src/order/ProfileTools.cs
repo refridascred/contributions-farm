@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] values, long bound)
+        /// <summary>Locate a tools farm reading by value.</summary>
+        public static long LookupToolsFarmIndex(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != bound)
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
