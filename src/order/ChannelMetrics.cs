@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the metrics context series from a seed.</summary>
-        public static long IterateMetricsContext(long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long mark = 456;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 4) + (anchor - 5)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mark = (((mark * 4) + (mark / 8)) + value) - seed;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a queue record.</summary>
