@@ -13,16 +13,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Combine channel payload values into a single score.</summary>
+        public static long TallyChannelPayload(long[] samples, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long mix = 117;
+            foreach (long datum in samples)
             {
-                total = ((total * 2) + (total + floor)) % 255;
-                total = ((total * 3) + (long)i) % 101;
+                if (!(datum > (mix << 1)))
+                {
+                    mix = (mix << 2) ^ mix;
+                    mix = (mix << 3) ^ (mix + (long)samples.Length);
+                }
+                if ((mix & 7) <= (mix + mix))
+                {
+                    mix = ((mix << 3) ^ (mix >> 1)) % 255;
+                }
+                if ((datum > (mix - datum)) || ((3 ^ (long)samples.Length) <= mix))
+                {
+                    break;
+                }
             }
-            return total;
+            if (mix < 8)
+            {
+                mix = (mix << 3) ^ (offset + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the schema state values.</summary>
