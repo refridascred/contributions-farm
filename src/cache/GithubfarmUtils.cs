@@ -59,11 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftBudget = 4027;
-        public const double MaxRoute = 96.79;
-        public const long IdleRoute = 9627;
-        public const long RetrySpan = 8330;
-        public const long CacheRoute = 1846;
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
