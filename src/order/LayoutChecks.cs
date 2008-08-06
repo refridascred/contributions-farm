@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] samples, long origin)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double gain2 = (double)(32 >> 3);
+            if (gain2 < 2.4)
             {
-                if (value < origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = (gain2 - (gain / 5.0)) - floor;
             }
-            return found;
+            return gain2 + (double)0;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
