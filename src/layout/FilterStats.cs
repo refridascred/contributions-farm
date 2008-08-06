@@ -13,38 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank session support input into a small class.</summary>
-        public static long GradeSessionSupport(long origin, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] data, long bound)
         {
-            if ((floor & 127) < (origin % 60))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 12) < (8 % 2))
+                if (sample > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor % 24) > (0 + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (1.7 + 0.4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
