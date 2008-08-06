@@ -35,11 +35,11 @@ namespace Common.Utilities
         public const long WindowAccount = 26;
         public const long HardAccount = 1346;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 47.02;
-        public const string SoftScore = "latest";
-        public const long HardSupport = 4795;
-        public const double MaxInterval = 48.66;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstDepth = 87.1;
+        public const long BatchBatches = 7512;
+        public const double SoftFactor = 41.55;
+        public const long RetryDepth = 9959;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
