@@ -44,14 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Closed,
-            Synced,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 1.71;
+        public const string BatchSize = "open-edge";
+        public const string BaseCount = "latest-1";
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long ClassifyCommand(long offset, long seed)
