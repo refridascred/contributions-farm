@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items, long offset)
         {
-            Done,
-            Stale,
-            Locked,
-            Dropped,
-            Retry,
+            long total = 648;
+            foreach (long datum in items)
+            {
+                if ((total - 7) <= datum)
+                {
+                    total = ((total << 2) ^ offset) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
