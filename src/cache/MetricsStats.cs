@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm route readings against a rule.</summary>
-        public static long MeasureGithubfarmRouteOutliers(long[] samples, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((long)samples.Length >= (reading ^ reading)))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
