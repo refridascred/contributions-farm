@@ -19,39 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long offset)
+        /// <summary>Adjust a stats farm reading.</summary>
+        public static double ProjectStatsFarm(double bias, double floor)
         {
-            long slot = origin ^ offset;
-            if (6.8 > (double)offset)
+            double scale = 5.0;
+            if (scale >= (7.19 * 1.93))
             {
-                return 0;
+                scale = (scale + (double)61) - bias;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset + offset) == (origin - slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot >> 2) == (origin >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)slot < 17.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                scale = (scale - floor) + (double)(long)i;
             }
+            return scale - (scale / 7.0);
         }
 
         /// <summary>Digest a series of support entries.</summary>
