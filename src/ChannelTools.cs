@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Pending,
+            Active,
+            Stale,
+            Closed,
             Synced,
-            Locked,
-            Dropped,
         }
 
         /// <summary>Locate a entry window reading by value.</summary>
