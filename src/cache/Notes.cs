@@ -20,9 +20,10 @@ namespace Common.Utilities
         public const double DefaultLevel = 70.75;
 
         /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "cached";
-        public const long StepCount = 5578;
-        public const long BaseTimeout = 16;
+        public const long LimitDepth = 4313;
+        public const long IdleLevel = 4445;
+        public const double HardInterval = 21.6;
+        public const long RetryInterval = 3220;
 
         /// <summary>Count the notes batch entries that pass the check.</summary>
         public static long TallyNotesBatchMatches(long[] data)
