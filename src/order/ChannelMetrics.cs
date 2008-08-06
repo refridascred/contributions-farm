@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of metrics schema readings.</summary>
-        public static long ScoreMetricsSchema(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] readings, long step)
         {
-            long mix = 4;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mix = (mix ^ 9) % 101;
-                mix = ((mix << 2) ^ (781 + cell)) % 255;
+                if (!!((sample * 3) != (step << 3)))
+                {
+                    count = count + 3;
+                }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
