@@ -62,19 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] levels, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
