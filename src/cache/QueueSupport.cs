@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] values, long offset)
         {
-            Dropped,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)offset >= (3.0 + 18.0))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine notes metric values into a single score.</summary>
