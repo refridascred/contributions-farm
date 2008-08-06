@@ -28,19 +28,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
