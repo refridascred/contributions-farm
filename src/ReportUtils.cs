@@ -50,12 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchBudget = 6710;
-        public const long BatchChecks = 9334;
-        public const long RetryChecks = 4727;
-        public const long HardCount = 5991;
-        public const long HardChecks = 810;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long OverlapSessionCount(long[] levels)
