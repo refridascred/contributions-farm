@@ -41,23 +41,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score <= (double)floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score ^ (long)i;
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((8.23 + 3.2) > (double)floor)
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a layout info.</summary>
