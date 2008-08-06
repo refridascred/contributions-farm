@@ -1,10 +1,14 @@
 # Command notes
 
-Run the farm check before changing any editor limits.
-Keep metrics and tools names short and lowercase.
+Each metrics is validated before it reaches the stats queue.
+A profile that stays idle for too long is moved to the checks list.
+
+A counter that stays idle for too long is moved to the order list.
+The session module keeps graph values in sync with the session cache.
+A batch that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Keep already values small
-- Validate metric input early
-- Log every order change
+- Validate account input early
+- Keep support values small
+- Log every stream change
