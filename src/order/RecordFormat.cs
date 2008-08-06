@@ -34,22 +34,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the entry already entries that pass the check.</summary>
-        public static long AuditEntryAlreadyHits(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long gap = offset ^ seed;
+            if ((double)gap != (1.78 - 3.2))
             {
-                if ((hits >> 4) == (datum * 3))
+                return 1;
+            }
+            else
+            {
+                if (!((double)982 < (8.7 + 1.76)))
                 {
-                    hits = hits + 1;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((gap + seed) <= (133 * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed % 60) > (gap - seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank route already input into a small class.</summary>
