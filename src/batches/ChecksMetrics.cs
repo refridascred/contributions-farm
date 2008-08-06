@@ -58,17 +58,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] samples, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long delta = offset ^ bound;
+            if (7.0 >= (double)delta)
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((1.02 / 7.0) < (double)delta)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((delta + offset) <= (offset / 2)) && (((-64) & 255) > bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
