@@ -18,18 +18,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long CountSupportRecordOutliers(long[] items, long origin)
+        /// <summary>Combine githubfarm notes values into a single score.</summary>
+        public static long TallyGithubfarmNotes(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mark = -513;
+            foreach (long item in levels)
             {
-                if (!(sample >= (matches & 1)))
+                if ((double)803 == (double)item)
                 {
-                    matches = (matches + 2) - origin;
+                    mark = (((mark << 2) ^ mark) % 4096) + target;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
