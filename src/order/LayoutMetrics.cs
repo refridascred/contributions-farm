@@ -14,13 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 2) == (count & 63))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
