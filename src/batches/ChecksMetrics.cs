@@ -13,17 +13,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)origin > (double)offset)
             {
-                if (readings[i] == step)
+                return 6;
+            }
+            else
+            {
+                if ((7.56 * 1.0) <= (double)offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + 101) == (origin + 73))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
