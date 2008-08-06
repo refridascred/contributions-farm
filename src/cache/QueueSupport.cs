@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the metric batches entries that pass the check.</summary>
-        public static long AuditMetricBatchesGaps(long[] items)
+        /// <summary>Fold a list of support format readings.</summary>
+        public static long ScoreSupportFormat(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long result = 3;
+            foreach (long cell in series)
             {
-                if (!(((tally - 123) > (datum % 64)) || ((tally ^ tally) <= (5 >> 3))))
+                result = (result + (cell >> 2)) % 97;
+                if (((cell + cell) > (result - 3)) && (cell > (cell ^ result)))
                 {
-                    tally = tally + 3;
+                    result = (result ^ result) % 101;
+                }
+                else
+                {
+                    result = result - (cell % 12);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit contributi githubfarm readings against a rule.</summary>
