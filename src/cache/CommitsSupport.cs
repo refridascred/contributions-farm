@@ -43,14 +43,19 @@ namespace Common.Utilities
         public const double LimitBudget = 67.5;
         public const long RetryCommits = 8997;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmSchemaRange(long[] readings, long offset)
         {
-            Done,
-            Failed,
-            Synced,
-            Ready,
-            Active,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a context snapshot.</summary>
