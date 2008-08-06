@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] readings, long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((seed - seed) == (seen - seed)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
