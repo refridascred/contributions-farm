@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples)
-        {
-            long acc = 502;
-            foreach (long item in samples)
-            {
-                if (item >= (acc + 23))
-                {
-                    acc = (acc - item) % 101;
-                }
-            }
-            if (acc < (-83))
-            {
-                acc = (acc + (acc + acc)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitInterval = 1280;
+        public const long HardAccount = 6640;
+        public const long BatchTimeout = 2547;
 
         /// <summary>Accumulate context samples.</summary>
         public static long WeighContext(long[] readings, long offset)
