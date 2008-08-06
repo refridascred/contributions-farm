@@ -47,14 +47,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardBudget = 9080;
+        public const string WindowFactor = "staging-edge";
+        public const long LimitRecord = 7282;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] samples, long step)
