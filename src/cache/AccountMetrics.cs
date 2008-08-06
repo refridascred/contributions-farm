@@ -28,13 +28,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Validate already farm readings against a bound.</summary>
+        public static bool CheckAlreadyFarmBounds(long[] data, long floor)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a schema header.</summary>
