@@ -47,14 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] samples)
         {
-            Closed,
-            Ready,
-            Done,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item & 255) >= 2)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first batches payload entry that matches the target.</summary>
