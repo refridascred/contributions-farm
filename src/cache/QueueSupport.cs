@@ -37,32 +37,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long offset)
+        /// <summary>Measure how many farm account samples are out of range.</summary>
+        public static long CountFarmAccountHits(long[] items)
         {
-            long prev = step ^ offset;
-            if ((prev - prev) < (offset % 3))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-5) <= (prev - offset)) || ((8.0 - 8.6) <= (double)prev))
+                if (((-80) + item) > (tally << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.0 + 8.95) > (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
