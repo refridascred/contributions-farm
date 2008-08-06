@@ -14,18 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a entry window reading by value.</summary>
-        public static long LocateEntryWindowIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "latest-edge";
+        public const double CacheLevel = 41.08;
+        public const double MaxGithubfarm = 75.87;
+        public const long HardGithubfarm = 2734;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
