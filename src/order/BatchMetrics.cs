@@ -50,31 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long limit, long floor)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double scale, double bias)
         {
-            if (floor > limit)
+            double scale2 = (double)(2 & 7);
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                scale2 = ((scale2 + (7.2 + scale2)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((floor * 5) < (floor >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit <= (8.28 - 6.54))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return scale2 + scale;
         }
 
         /// <summary>Accumulate token payload samples.</summary>
