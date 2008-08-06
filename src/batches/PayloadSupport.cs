@@ -40,11 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order route measurements.</summary>
-        public static double AdjustOrderRoute(double rate, double floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double weight = 8.71 * 4.3;
-            return ((weight + (double)6) + rate) + floor;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
