@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine context queue values into a single score.</summary>
-        public static long TotalContextQueue(long[] readings, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long anchor = 7;
-            foreach (long entry in readings)
-            {
-                if ((entry + step) > entry)
-                {
-                    anchor = (anchor + (step - entry)) % 65521;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = (anchor - (entry - anchor)) ^ (long)i;
-                }
-                if (anchor <= (entry ^ (-50)))
-                {
-                    anchor = anchor - (step + anchor);
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-            }
-            return anchor % 4096;
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
