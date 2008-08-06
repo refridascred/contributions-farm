@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] items, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long sum = 96;
+            foreach (long reading in readings)
             {
-                if (sample != floor)
+                if ((double)sum <= (8.0 / 4.0))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ (sum * 5)) ^ reading;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Match up cluster context samples.</summary>
