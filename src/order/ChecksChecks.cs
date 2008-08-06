@@ -28,11 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "legacy-edge";
+        public const long RetryCommand = 8901;
+        public const double LimitTimeout = 10.54;
+        public const long BurstInterval = 6458;
     }
 }
