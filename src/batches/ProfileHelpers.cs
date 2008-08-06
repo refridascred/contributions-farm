@@ -37,23 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window stats value.</summary>
-        public static double SmoothWindowStats(double scale, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] levels)
         {
-            double load = (double)(28 + (-77));
-            if (load >= (load * 18.0))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                load = load - (scale / 7.0);
+                if ((entry + tally) >= (entry % 2))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                load = load + (scale / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (floor + load)) + (double)(long)i;
-            }
-            return load + (double)9;
+            return tally;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
