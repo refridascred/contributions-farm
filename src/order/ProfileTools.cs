@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] readings)
         {
-            Pending,
-            Ready,
-            Stale,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 3) < (4 >> 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
