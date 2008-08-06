@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] samples, long origin)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)matches > 12.0)
-                {
-                    matches = ((matches + 3) ^ cell) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine cluster batch values into a single score.</summary>
