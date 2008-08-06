@@ -35,12 +35,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] levels, long step)
         {
-            Queued,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((matches << 1) < (matches << 2)))
+                {
+                    matches = ((matches + 1) - item) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a token record.</summary>
