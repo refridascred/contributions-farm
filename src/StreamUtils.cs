@@ -56,18 +56,10 @@ namespace Common.Utilities
         public const long DefaultInterval = 6360;
         public const string WindowStats = "fallback";
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchCount = 49.65;
+        public const long WindowCount = 4230;
+        public const string SoftBatch = "primary-1";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string WindowContext = "local-edge";
