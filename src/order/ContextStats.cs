@@ -23,21 +23,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (hits >= (hits + 5))
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a stats entry.</summary>
