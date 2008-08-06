@@ -49,12 +49,39 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long step, long limit)
         {
-            Active,
-            Idle,
-            Locked,
+            long delta = step + limit;
+            if ((2.8 * 2.6) >= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step % 10) >= (step & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.6 + 1.8) > (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit <= (step + delta))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
