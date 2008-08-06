@@ -37,11 +37,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 9170;
-        public const double IdleLevel = 13.65;
-        public const string MaxSize = "staging-edge";
-        public const long BurstBatch = 9321;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] readings)
+        {
+            long state = 443;
+            foreach (long reading in readings)
+            {
+                state = (state * 2) + reading;
+            }
+            return state % 97;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long SeriesAccount(long bound)
