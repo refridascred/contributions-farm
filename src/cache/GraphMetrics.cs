@@ -16,11 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 5163;
-        public const string LimitChecks = "primary-1";
-        public const long SoftChecks = 7545;
-        public const string BaseWidth = "alpha-1";
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueMatches(long[] data)
