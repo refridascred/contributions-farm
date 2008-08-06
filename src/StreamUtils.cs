@@ -76,18 +76,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long carry = 495;
-            foreach (long item in readings)
-            {
-                if (item >= (item << 3))
-                {
-                    carry = (carry << 2) ^ (carry >> 3);
-                }
-            }
-            return carry % 65521;
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
