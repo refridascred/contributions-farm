@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] data, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long total = 6;
+            foreach (long item in series)
             {
-                if (((long)data.Length - matches) <= (origin + matches))
+                if ((12.0 + 11.0) > (double)total)
                 {
-                    matches = (matches + 3) ^ reading;
+                    total = (total - (item + limit)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total - (1 / 9)) % 65521;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
