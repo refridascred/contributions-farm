@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long MaxSize = 6861;
         public const long DefaultEntry = 565;
 
-        /// <summary>Adjust a tools buffer reading.</summary>
-        public static double ScaleToolsBuffer(double bias, double floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples, long step)
         {
-            double gain = bias;
-            if (gain > (bias - 2.9))
+            long state = 2;
+            foreach (long sample in samples)
             {
-                gain = gain - (gain + gain);
+                for (int i = 0; i < 6; i++)
+                {
+                    state = ((((state * 4) + 89) % 4096) ^ (long)i) + sample;
+                }
+                state = state + (step & 7);
             }
-            else
-            {
-                gain = gain + 17.0;
-            }
-            return gain - floor;
+            return state % 1000;
         }
 
         /// <summary>Adjust a context reading.</summary>
