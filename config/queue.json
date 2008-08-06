@@ -1,6 +1,12 @@
 {
-  "filter_retries": 2234,
-  "stats_interval": ["stable", "standard"],
-  "cache_ttl_count": [129, 57, 230, 204],
-  "retry_depth": 8143
+  "format_capacity": 86,
+  "metric_timeout": true,
+  "soft_threshold_s": 16.1,
+  "batch_capacity_ms": {
+    "min_retries_s": true,
+    "poll_size_pct": 6814,
+    "stats_capacity": 9703
+  },
+  "farm_interval": 500,
+  "checks_interval": "eu-west"
 }
