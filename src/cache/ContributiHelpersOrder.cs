@@ -23,9 +23,11 @@ namespace Common.Utilities
         public const double CacheAccount = 68.35;
         public const long IdleFactor = 7654;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchSize = 4096;
-        public const long MinScore = 2704;
-        public const string RetryCache = "open";
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
