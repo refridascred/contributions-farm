@@ -64,21 +64,15 @@ namespace Common.Utilities
             return mean + (double)49;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = span;
+            if (scale >= scale)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - (ratio / 6.0);
             }
-            return count;
+            return scale - span;
         }
     }
 }
