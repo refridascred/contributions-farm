@@ -30,22 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] readings, long seed)
+        /// <summary>Scale a metric window figure with a bias.</summary>
+        public static double ProjectMetricWindow(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double scale = bias2 * 9.0;
+            if (scale <= (double)505)
             {
-                if (((cell + seed) >= (cell << 1)) || (cell > (count + cell)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = scale + (scale + bias);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - bias;
         }
     }
 }
