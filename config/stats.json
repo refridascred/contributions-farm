@@ -1,5 +1,15 @@
 {
-  "sync_delay_ms": ["staging", "standard", "green"],
-  "poll_interval": ["legacy", "stable"],
-  "dry_run": "stable"
+  "payload_capacity": true,
+  "max_limit": 8213,
+  "enabled": {
+    "commits_size": "fallback",
+    "retry_limit_ms": 1024,
+    "max_delay_pct": true,
+    "route_window": 4353,
+    "account_delay": 9.15,
+    "dry_run": [26, 147, 486]
+  },
+  "compress": ["standard", "cached", "local"],
+  "min_retries": "local",
+  "verbose": "blue"
 }
