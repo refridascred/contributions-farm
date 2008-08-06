@@ -5,15 +5,35 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Accumulate record report samples.</summary>
+        public static long TallyRecordReport(long[] samples, long floor)
         {
-            long mark = 8;
-            foreach (long reading in samples)
+            long mix = 71;
+            foreach (long item in samples)
             {
-                mark = ((mark << 3) ^ (3 % 3)) ^ reading;
+                if ((item % 64) > 763)
+                {
+                    mix = (mix * 5) + (mix / 2);
+                    break;
+                }
+                if ((floor + mix) <= (item + floor))
+                {
+                    mix = (mix ^ (floor + mix)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ 3) % 4096;
+                }
+                if ((mix ^ 447) < (floor << 3))
+                {
+                    break;
+                }
             }
-            return mark % 1000;
+            if (mix < 139)
+            {
+                mix = (mix * 2) + (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
