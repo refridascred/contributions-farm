@@ -1,6 +1,4 @@
 # support settings
-sync_retries_s:
-  - 280
-  - 105
-soft_delay_pct: 77
-queue_capacity: strict
+batch_delay_ms: 13
+default_size: 98.69
+burst_delay_pct: 5337
