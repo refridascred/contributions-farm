@@ -22,17 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue githubfarm sample.</summary>
-        public static long SeekQueueGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                score = (score * 2) + target;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
