@@ -34,12 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] readings, long seed)
         {
-            Done,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item > 3.3)
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
