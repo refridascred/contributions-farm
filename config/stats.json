@@ -1,6 +1,6 @@
 {
-  "hard_timeout": [182, 437, 97],
-  "tools_interval": 30,
-  "cache_limit": 4852,
-  "githubfarm_timeout": 85
+  "graph_limit": "local",
+  "enabled": ["stable", "primary"],
+  "verbose": "staging",
+  "base_ratio_s": 62.12
 }
