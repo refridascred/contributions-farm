@@ -37,11 +37,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstSize = "staging-1";
-        public const long BurstCount = 8262;
-        public const long LimitWidth = 3738;
-        public const long HardCount = 743;
-        public const long RetryLevel = 1841;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((anchor % 16) == (5 + 2)))
+                {
+                    anchor = ((anchor << 3) ^ (anchor ^ 472)) % 4096;
+                    break;
+                }
+                if ((double)anchor == (8.51 + 5.0))
+                {
+                    long prev = (long)i;
+                    anchor = (anchor ^ (prev + (long)i)) % 255;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
