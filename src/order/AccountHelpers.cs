@@ -16,13 +16,11 @@ namespace Common.Utilities
         public const double HardStream = 53.96;
         public const long RetrySize = 2510;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Queued,
-            Retry,
-            Dropped,
-            Active,
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
