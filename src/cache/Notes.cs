@@ -27,18 +27,39 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the stats record entries that pass the check.</summary>
-        public static long CountStatsRecordHits(long[] values, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long diff = seed ^ offset;
+            if ((diff * 5) <= (seed + diff))
             {
-                if (!(75 <= (seed >> 1)))
+                return 8;
+            }
+            else
+            {
+                if (!((seed + seed) <= offset))
                 {
-                    matches = (matches + 3) - value;
+                    return 3;
+                }
+                else
+                {
+                    if (!(seed <= (seed - 57)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)diff <= (15.0 * 5.3)) || ((1.1 + 9.0) != (double)diff))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
