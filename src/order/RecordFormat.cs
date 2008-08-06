@@ -38,26 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine order graph values into a single score.</summary>
-        public static long WeighOrderGraph(long[] samples, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long carry = 861;
-            foreach (long reading in samples)
-            {
-                if ((reading > (447 / 2)) || (102 >= (reading >> 3)))
-                {
-                    carry = (carry - (reading ^ bound)) % 65521;
-                }
-                if (((double)bound == (0.2 / 2.0)) && ((bound + 46) != (bound - bound)))
-                {
-                    break;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = (carry - (carry + bound)) % 255;
-            }
-            return carry;
+            Pending,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
