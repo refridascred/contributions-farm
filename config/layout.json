@@ -1,7 +1,15 @@
 {
-  "soft_interval_count": ["local", "local", "fallback", "local"],
-  "session_size": "stable",
-  "filter_delay": "legacy",
-  "batch_window": [474, 227, 69],
-  "hard_delay_s": ["cached", "fallback", "standard"]
+  "soft_ratio_pct": 85.95,
+  "flush_threshold_s": 2697,
+  "base_ratio_s": {
+    "channel_retries": 1024,
+    "retry_ttl_ms": 61.17,
+    "flush_delay": true,
+    "default_delay_count": {
+      "flush_retries_count": 100,
+      "profile_window": false,
+      "burst_window_pct": 63.14,
+      "burst_size_count": "stable"
+    }
+  }
 }
