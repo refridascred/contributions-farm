@@ -24,13 +24,24 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Grade a stream cluster value against two limits.</summary>
+        public static long BucketStreamCluster(long origin, long floor)
         {
-            Draft,
-            Done,
-            Closed,
-            Locked,
+            if ((double)origin > (9.74 / 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) != (floor + 79))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
