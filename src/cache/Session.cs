@@ -27,14 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series)
         {
-            Dropped,
-            Queued,
-            New,
-            Ready,
-            Failed,
+            long total = 4;
+            foreach (long entry in series)
+            {
+                if (!(total > (entry - total)))
+                {
+                    total = (total * 2) + (entry % 7);
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
