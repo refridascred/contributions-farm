@@ -52,24 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long target, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            if (((7.5 / 6.0) == (double)limit) || (1.9 < (double)limit))
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((target & 127) <= (target / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return score;
         }
 
         /// <summary>Roll a order counter forward.</summary>
