@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - target) != (entry + (long)data.Length))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinSpan = "alpha-v2";
+        public const double BaseTimeout = 72.88;
+        public const long DefaultFarm = 1463;
+        public const long LimitInterval = 1535;
+        public const double MinFarm = 71.64;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandMatches(long[] readings)
