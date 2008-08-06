@@ -59,11 +59,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftSize = 4505;
-        public const long BaseDepth = 974;
-        public const long MinMetrics = 1715;
-        public const long HardMetrics = 1300;
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long TallyBufferMetricMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) < (target % 5))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
