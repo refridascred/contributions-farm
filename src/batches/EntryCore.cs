@@ -29,18 +29,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
-        public static long MeasureGithubfarmSchemaHits(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + item) <= item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Blend two token measurements.</summary>
