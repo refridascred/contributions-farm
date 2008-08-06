@@ -1,8 +1,15 @@
 {
-  "base_ttl_pct": [272, 52, 467, 208],
-  "default_window": "stable",
-  "hard_delay_pct": [497, 287, 320, 215],
-  "burst_delay_pct": "latest",
-  "audit": "latest",
-  "retry_depth_count": 6205
+  "checks_capacity": {
+    "verbose": "green",
+    "record_timeout": {
+      "warm_limit_s": "standard",
+      "soft_timeout_count": 34.75,
+      "format_interval": 17.42
+    },
+    "soft_capacity_s": 46,
+    "retry_timeout_s": "eu-west"
+  },
+  "hard_delay": 60,
+  "strict": "fallback",
+  "retry_capacity_s": 30
 }
