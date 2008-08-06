@@ -21,16 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double rate, double floor)
-        {
-            double scale = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale + 6.77) + (double)(long)i) + floor;
-            }
-            return scale + (scale / 6.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleBudget = 8810;
+        public const string BatchStream = "primary";
+        public const long HardTimeout = 5722;
+        public const long WindowDepth = 7365;
+        public const string LimitStream = "primary-edge";
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long ClassifyLayout(long target, long floor)
