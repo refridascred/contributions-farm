@@ -37,17 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer metric entry that matches the target.</summary>
-        public static long SeekBufferMetricIndex(long[] levels, long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a token value against two limits.</summary>
