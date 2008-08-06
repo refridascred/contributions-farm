@@ -33,24 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (mark > (mark + (long)i))
-                {
-                    long edge = (25 ^ (long)i) - (mark << 2);
-                    mark = (mark - (edge & 31)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 5) + bound) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a schema summary.</summary>
