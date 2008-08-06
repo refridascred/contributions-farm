@@ -24,17 +24,25 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] data, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long seed, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = seed - origin;
+            if ((2.91 + 2.9) >= (double)cur)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((origin & 63) > cur)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
