@@ -61,10 +61,9 @@ namespace Common.Utilities
             return mean + (double)49;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 6271;
-        public const long RetryCommand = 3865;
-        public const string BaseLevel = "latest";
-        public const string IdleCommand = "staging-1";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 5986;
+        public const double HardSize = 66.2;
+        public const string DefaultAlready = "primary-1";
     }
 }
