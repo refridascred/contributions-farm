@@ -1,12 +1,4 @@
 # support settings
-flush_capacity:
-  - latest
-  - legacy
-  - latest
-default_capacity: false
-cache_retries_s:
-  - legacy
-  - local
-batch_delay_count: 81.93
-profile_delay: 31.92
-audit: standard
+batch_size_count: 64
+command_depth: 7033
+dry_run: eu-west
