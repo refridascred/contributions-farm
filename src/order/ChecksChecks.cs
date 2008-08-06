@@ -32,15 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two profile githubfarm measurements.</summary>
-        public static double ProjectProfileGithubfarm(double gain, double floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double rate = (double)(436 >> 5);
-            if (rate > gain)
-            {
-                rate = (rate + gain) + floor;
-            }
-            return rate + (double)71;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
