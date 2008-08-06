@@ -49,11 +49,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph context reading.</summary>
-        public static double ProjectGraphContext(double rate, double floor)
-        {
-            double weight = (11.0 - floor) + (double)5;
-            return weight + rate;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultBudget = 3547;
+        public const long MaxProfile = 7247;
+        public const string MaxTimeout = "primary-edge";
     }
 }
