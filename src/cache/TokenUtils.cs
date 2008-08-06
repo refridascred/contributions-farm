@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a layout metrics reading.</summary>
-        public static double BlendLayoutMetrics(double rate, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] data, long target)
         {
-            double gain = (double)(801 * 3);
-            return ((gain - gain) + rate) + offset;
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm support samples are out of range.</summary>
