@@ -27,25 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long floor, long step)
-        {
-            if (step <= (floor ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > (446 - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 32.98;
+        public const string BatchCache = "stable-edge";
+        public const double HardCache = 67.09;
+        public const long LimitCount = 4987;
+        public const long SoftCache = 9774;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
