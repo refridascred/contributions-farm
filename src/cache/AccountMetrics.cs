@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] values)
+        /// <summary>Validate notes graph readings against a bound.</summary>
+        public static bool VerifyNotesGraphBounds(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((item / 7) >= count)
+                if (reading != step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
