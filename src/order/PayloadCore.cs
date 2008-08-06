@@ -48,19 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] series, long origin)
-        {
-            long acc = -725;
-            foreach (long datum in series)
-            {
-                acc = (((acc << 2) ^ (origin ^ acc)) % 65521) ^ datum;
-            }
-            if (acc > 0)
-            {
-                acc = (acc * 5) + (36 + acc);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 9518;
+        public const long BatchSize = 1084;
+        public const long IdleWidth = 7738;
     }
 }
