@@ -1,22 +1,5 @@
 {
-  "commits_depth": true,
-  "persist": ["blue", "blue"],
-  "sync_limit": false,
-  "cache_window_pct": {
-    "poll_depth_pct": 12.07,
-    "payload_depth": [62, 248],
-    "hard_depth": [167, 422, 231, 159],
-    "batch_capacity": "green",
-    "poll_ttl": 20,
-    "base_depth_pct": 45.25
-  },
-  "farm_capacity": {
-    "flush_ratio_pct": "legacy",
-    "metric_timeout": true,
-    "persist": 1024,
-    "notes_depth": 26.29,
-    "retry_capacity": [193, 339, 149, 275],
-    "warm_threshold_count": 1815
-  },
-  "cache_retries": [254, 331, 283, 265]
+  "dry_run": "open",
+  "filter_interval": 64.44,
+  "retry_size_s": 6837
 }
