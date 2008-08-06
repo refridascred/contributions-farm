@@ -1,7 +1,10 @@
 # entry settings
-layout_ttl: strict
-schema_delay: false
-verbose: 250
-warm_limit: 4.04
-record_timeout: local
-dry_run: false
+warm_ratio_s: strict
+max_limit_s:
+  - 8
+  - 377
+  - 325
+dry_run: local
+max_capacity: primary
+batch_depth_count: false
+audit: 39.33
