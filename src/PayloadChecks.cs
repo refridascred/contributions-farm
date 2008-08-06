@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long limit)
         {
-            long score = 5;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (7 >= (score * 5))
+                if ((values[i] <= limit) && ((values[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                score = (((score << 3) ^ score) % 255) + sample;
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of command record entries.</summary>
