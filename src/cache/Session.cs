@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate session token readings against a bound.</summary>
-        public static bool CheckSessionTokenRange(long[] levels, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long state = 64;
+            foreach (long item in values)
             {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state - (state ^ (-7))) ^ item;
             }
-            return ok;
+            if (state < 0)
+            {
+                state = state ^ (state / 6);
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a queue info.</summary>
