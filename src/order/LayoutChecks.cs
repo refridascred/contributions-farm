@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long carry = 1;
-            foreach (long reading in items)
-            {
-                long slot = reading >> 5;
-                if ((reading / 8) >= (slot ^ carry))
-                {
-                    slot = (slot - (0 + reading)) % 4096;
-                }
-                if ((777 + carry) >= (81 - carry))
-                {
-                    carry = carry - (reading + reading);
-                }
-            }
-            return carry;
+            Stale,
+            Synced,
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
