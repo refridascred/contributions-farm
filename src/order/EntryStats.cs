@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a contributi account reading by value.</summary>
-        public static long LocateContributiAccountIndex(long[] readings, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
+                if ((((-861) + step) < step) && (((20 & 15) < (tally % 10)) || ((double)value < (0.6 - 9.86))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
