@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long total = 8;
-            foreach (long cell in samples)
-            {
-                if ((total - 6) > seed)
-                {
-                    total = (total + cell) % 4096;
-                }
-            }
-            if (total > (-3))
-            {
-                total = total + 819;
-            }
-            return total;
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every schema profile entry stays within the limit.</summary>
