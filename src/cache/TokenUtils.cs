@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long origin)
+        /// <summary>Scale a account channel figure with a bias.</summary>
+        public static double ProjectAccountChannel(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (floor - floor) + 17.0;
+            if (weight <= (double)4)
             {
-                if ((data[i] == origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (double)(-86);
             }
-            return -1;
+            else
+            {
+                weight = weight + (floor / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (ratio + weight)) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
