@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] data)
         {
-            Done,
-            Idle,
-            Pending,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!(((33 + item) > (item * 2)) || (hits < ((-893) % 2))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
