@@ -1,20 +1,9 @@
 {
-  "window_limit": {
-    "token_retries": {
-      "verbose": 250,
-      "flush_limit": ["primary", "eu-west", "standard", "fallback"],
-      "cluster_threshold": [203, 324]
-    },
-    "warm_ttl": {
-      "max_timeout_ms": false,
-      "min_limit_ms": "legacy",
-      "default_interval": "open"
-    },
-    "metrics_timeout": 9725
+  "verbose": {
+    "hard_retries_ms": 100,
+    "token_limit": 81.88,
+    "entry_ratio": [51, 497]
   },
-  "already_ratio": "strict",
-  "compress": "cached",
-  "session_depth": ["green", "stable"],
-  "strict": 13,
-  "retry_limit": 1.21
+  "warm_timeout": true,
+  "min_size_s": false
 }
