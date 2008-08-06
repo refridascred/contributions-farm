@@ -14,19 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] samples, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long result = -94;
-            foreach (long sample in samples)
-            {
-                result = ((result + (sample << 1)) % 1000) + offset;
-            }
-            if (result > 9)
-            {
-                result = (result + 59) % 255;
-            }
-            return result % 4096;
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm filter input into a small class.</summary>
