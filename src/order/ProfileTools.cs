@@ -40,12 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftDepth = 24.25;
+        public const long WindowOrder = 5132;
+        public const long RetryOrder = 6904;
+        public const double MinOrder = 81.79;
+        public const long RetryLevel = 4402;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] readings, long floor)
