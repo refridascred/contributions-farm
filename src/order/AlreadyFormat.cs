@@ -31,21 +31,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Grade a window profile value against two limits.</summary>
+        public static long RankWindowProfile(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (bound <= 62)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((18.0 - 7.0) == (double)target) || ((double)bound > (3.0 / 9.0)))
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
+                    return 6;
+                }
+                else
+                {
+                    if ((bound << 1) != (bound * 4))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the counter level values.</summary>
