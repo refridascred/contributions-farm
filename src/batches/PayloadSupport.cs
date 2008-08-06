@@ -41,12 +41,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Grade a metrics channel value against two limits.</summary>
+        public static long SortMetricsChannel(long target, long floor)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            long lane = target - floor;
+            if (target < (target % 100))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > (24 ^ floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target >> 1) > (target - lane)) || ((2.7 - 7.6) == (double)floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
