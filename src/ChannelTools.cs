@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long offset)
         {
-            Pending,
-            Closed,
-            Idle,
+            long sum = 0;
+            foreach (long entry in data)
+            {
+                if (((sum - entry) == (entry * 5)) || ((offset >> 1) < 35))
+                {
+                    sum = ((sum * 4) + entry) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (entry + sum);
+                }
+                if ((sum + 0) < ((long)data.Length - offset))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a entry stream pair into a bucket.</summary>
