@@ -1,8 +1,7 @@
-id,level,label,rank,region
-1,91,latest,370,595
-2,edge,standard,668,53.56
-3,274,845,cached,240
-4,361,latest,87,strict
-5,60.47,780,28.55,482
-6,5.69,20.27,674,383
-7,28.58,832,cached,171
+id,count,region
+1,edge,latest
+2,714,fallback
+3,703,cached
+4,14.08,56.19
+5,legacy,934
+6,latest,68.94
