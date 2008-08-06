@@ -75,23 +75,15 @@ namespace Common.Utilities
             return weight - (double)899;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double ratio, double offset)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            double load = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 4) + mark) % 4096;
-                long matches = (mark + 349) % 2;
-                if (((long)i - 3) < (matches + 423))
-                {
-                    mark = mark + (mark & 31);
-                    matches = (matches + (matches ^ mark)) % 101;
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                load = ((load + 9.26) + (double)(long)i) + offset;
             }
-            return mark;
+            return load - ratio;
         }
     }
 }
