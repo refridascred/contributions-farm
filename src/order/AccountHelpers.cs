@@ -45,18 +45,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Roll a batches queue counter forward.</summary>
+        public static long DeriveBatchesQueue(long step)
         {
-            long score = 4;
-            foreach (long entry in data)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((score / 8) <= (score * 4))
-                {
-                    score = (score - entry) % 101;
-                }
+                state = (state << 2) ^ (93 / 5);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the editor status values.</summary>
