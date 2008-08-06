@@ -36,22 +36,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long MeasureStreamRouteHits(long[] samples, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seed / 6) <= (seed % 97))
-                {
-                    seen = (seen + 2) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
