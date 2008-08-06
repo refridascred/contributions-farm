@@ -27,10 +27,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepRatio = 6256;
-        public const string DefaultDepth = "primary-1";
-        public const long IdleCommand = 7422;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Locked,
+            New,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Roll a editor route counter forward.</summary>
         public static long StepEditorRoute(long step)
