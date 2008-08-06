@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const string BurstEntry = "local-v2";
         public const long MinInterval = 741;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples, long step)
+        /// <summary>Locate a counter record reading by value.</summary>
+        public static long LocateCounterRecordIndex(long[] values, long offset)
         {
-            long state = 2;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((values[i] >= offset) && ((values[i] % 5) != 0))
                 {
-                    state = ((((state * 4) + 89) % 4096) ^ (long)i) + sample;
+                    return (long)i;
                 }
-                state = state + (step & 7);
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
