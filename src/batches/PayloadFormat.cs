@@ -41,18 +41,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Rank already stats input into a small class.</summary>
+        public static long GradeAlreadyStats(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (seed < (origin * 2))
             {
-                if ((tally % 24) <= (tally * 3))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (double)51)
                 {
-                    tally = (tally + 2) + sample;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
