@@ -16,21 +16,18 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)5 != (double)step)
                 {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
