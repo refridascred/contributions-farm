@@ -16,20 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 4937;
+        public const long WindowTimeout = 5460;
+        public const double RetryScore = 30.91;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
