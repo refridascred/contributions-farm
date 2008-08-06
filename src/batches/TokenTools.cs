@@ -24,13 +24,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            Synced,
+            Draft,
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a graph stats.</summary>
