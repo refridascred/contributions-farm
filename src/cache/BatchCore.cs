@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long LimitScore = 2142;
         public const string MinCluster = "fallback-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinSpan = "alpha-v2";
-        public const double BaseTimeout = 72.88;
-        public const long DefaultFarm = 1463;
-        public const long LimitInterval = 1535;
-        public const double MinFarm = 71.64;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepTimeout = "strict-edge";
+        public const long BaseEntry = 8496;
+        public const long MaxDepth = 8993;
+        public const long BurstEntry = 9417;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandMatches(long[] readings)
