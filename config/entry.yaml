@@ -1,7 +1,7 @@
 # entry settings
-idle_threshold_pct: 100
-retry_limit_pct: 82
-max_retries:
-  - primary
-  - blue
-warm_delay_count: 52
+soft_ratio_pct: 23.43
+default_size:
+  - eu-west
+  - staging
+  - stable
+batch_depth_pct: 95.64
