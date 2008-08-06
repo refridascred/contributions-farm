@@ -23,22 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            long result = 611;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item & 1) < ((long)data.Length + result))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result << 2) ^ (result * 5);
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 39)
-            {
-                result = result ^ (result / 8);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Count commits command pairs that satisfy a relation.</summary>
