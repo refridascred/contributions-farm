@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate support graph readings against a bound.</summary>
-        public static bool CheckSupportGraphRange(long[] readings, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (reading > target)
+                if ((tally << 3) >= (seed ^ cell))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Match up layout samples.</summary>
