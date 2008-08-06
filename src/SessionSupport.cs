@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session commits values into a single score.</summary>
-        public static long WeighSessionCommits(long[] series)
-        {
-            long acc = 54;
-            foreach (long value in series)
-            {
-                if ((acc % 7) != (acc * 5))
-                {
-                    acc = (acc ^ (value - acc)) % 4096;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "strict-v2";
+        public const long BatchWindow = 5474;
+        public const double IdleWindow = 53.15;
+        public const long HardCount = 977;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long offset)
