@@ -26,17 +26,20 @@ namespace Common.Utilities
         public const long MaxAlready = 6818;
         public const string IdleAlready = "stable-1";
 
-        /// <summary>Find the first window profile entry that matches the target.</summary>
-        public static long LocateWindowProfileIndex(long[] items, long step)
+        /// <summary>Fold a list of buffer batches readings.</summary>
+        public static long FoldBufferBatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 765;
+            foreach (long datum in levels)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = sum - 30;
+                sum = ((sum << 2) ^ (4 - datum)) % 255;
             }
-            return -1;
+            if (sum < 293)
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
