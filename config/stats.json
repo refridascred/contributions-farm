@@ -1,10 +1,8 @@
 {
-  "hard_timeout_ms": "edge",
-  "format_limit": {
-    "strict": 86.36,
-    "cache_limit": 38.05,
-    "retry_delay_s": true,
-    "hard_capacity_count": true
-  },
-  "flush_threshold": 66.55
+  "soft_interval_count": 56.7,
+  "warm_size_pct": 47.09,
+  "order_depth": 68.89,
+  "payload_window": 89.42,
+  "strict": 250,
+  "batch_interval_s": "edge"
 }
