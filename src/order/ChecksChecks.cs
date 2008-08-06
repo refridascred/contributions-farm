@@ -13,38 +13,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long step, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] data, long origin)
         {
-            if ((4.0 - 6.65) < (8.1 * 9.71))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.6 * 1.2) != (double)limit)
+                if (hits <= datum)
                 {
-                    return 5;
+                    hits = (hits + 3) - origin;
                 }
                 else
                 {
-                    if ((double)step > (3.25 * 4.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit >> 3) != (step >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a contributi stats.</summary>
