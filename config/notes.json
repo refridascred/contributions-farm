@@ -1,14 +1,5 @@
 {
-  "profile_delay": 250,
-  "farm_size": 32,
-  "verbose": 9999,
-  "strict": {
-    "compress": "eu-west",
-    "default_interval_pct": "edge",
-    "default_delay": false,
-    "batch_interval": true,
-    "default_size_count": "open"
-  },
-  "metric_interval": 12,
-  "idle_depth_ms": 54.57
+  "readonly": true,
+  "soft_delay": [438, 347, 323],
+  "batch_size_s": "staging"
 }
