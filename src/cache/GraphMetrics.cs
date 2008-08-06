@@ -16,19 +16,10 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample & 127) <= (sample >> 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 33.36;
+        public const long SoftBudget = 1471;
+        public const double MaxSize = 77.82;
 
         /// <summary>Fold a list of command editor readings.</summary>
         public static long TallyCommandEditor(long[] values, long offset)
