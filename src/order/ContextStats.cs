@@ -53,19 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double weight, double span)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double weight2 = weight;
-            if (weight2 <= weight)
-            {
-                weight2 = (weight2 - (double)88) - span;
-            }
-            else
-            {
-                weight2 = weight2 + weight;
-            }
-            return weight2 + (weight2 * 6.81);
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
