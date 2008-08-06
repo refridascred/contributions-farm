@@ -1,5 +1,5 @@
 {
-  "idle_retries_count": false,
-  "graph_delay": "primary",
-  "enabled": true
+  "buffer_threshold": true,
+  "audit": true,
+  "max_timeout_s": 4194
 }
