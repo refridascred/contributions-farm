@@ -64,18 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] series)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double gain, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double weight = (double)(970 + (-475));
+            if (weight >= gain)
             {
-                if ((seen * 4) < 16)
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                weight = (weight + (weight - weight)) - span;
             }
-            return seen;
+            return weight + (double)91;
         }
     }
 }
