@@ -37,15 +37,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session route value.</summary>
-        public static double BlendSessionRoute(double bias, double offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long target)
         {
-            double ratio = offset;
-            if (ratio < (double)(-3))
+            if ((8.68 - 4.1) <= (double)limit)
             {
-                ratio = (ratio - (ratio + 6.5)) - bias;
+                return 7;
             }
-            return ratio + (ratio - ratio);
+            else
+            {
+                if (!((target % 97) == (target + target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit <= 3.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-562) >> 2) > target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
