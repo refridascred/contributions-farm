@@ -59,15 +59,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long carry = 0;
-            foreach (long item in levels)
-            {
-                carry = (carry + item) % 97;
-            }
-            return carry % 97;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
