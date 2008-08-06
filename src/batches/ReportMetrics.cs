@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue githubfarm counter forward.</summary>
-        public static long IterateQueueGithubfarm(long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc << 3) ^ step) % 255;
-                acc = ((acc << 2) ^ (step % 10)) % 1000;
-                acc = ((acc * 4) + (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
