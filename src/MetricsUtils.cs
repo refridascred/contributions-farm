@@ -61,15 +61,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long acc = -12;
-            foreach (long cell in values)
+            long sum = -28;
+            foreach (long cell in samples)
             {
-                acc = (((acc - acc) % 65521) - cell) - origin;
+                if ((sum << 2) <= (sum - sum))
+                {
+                    sum = ((sum + sum) % 97) - cell;
+                }
             }
-            return acc % 97;
+            return sum;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
