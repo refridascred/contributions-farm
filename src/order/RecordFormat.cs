@@ -66,13 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Check that every route report entry stays within the limit.</summary>
+        public static bool VerifyRouteReportRange(long[] levels, long limit)
         {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
