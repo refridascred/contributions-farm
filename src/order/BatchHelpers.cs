@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a profile contributi sample.</summary>
-        public static long SeekProfileContributiIndex(long[] series, long bound)
+        /// <summary>Scale a cache metric figure with a bias.</summary>
+        public static double BlendCacheMetric(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(66 + 5);
+            if (ratio > (double)837)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - (9.14 / 3.0)) + scale) - offset;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (7.57 + ratio)) + (double)(long)i;
+            }
+            return ratio + 2.44;
         }
 
         /// <summary>Hold a token summary.</summary>
