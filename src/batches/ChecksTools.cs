@@ -43,21 +43,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up session account samples.</summary>
-        public static long PairSessionAccountCount(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 15;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((3 + (long)samples.Length) < (total >> 2)))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total * 4) + total;
+                }
+                if (bound <= (sample - total))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total > 881)
+            {
+                total = total ^ (total / 3);
+            }
+            return total;
         }
 
         /// <summary>Rank already input into a small class.</summary>
