@@ -34,18 +34,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = 6;
+            foreach (long datum in items)
             {
-                if ((item % 100) < (2 + count))
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor + anchor) % 101) ^ datum;
             }
-            return count;
+            if (anchor < 617)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the account mode values.</summary>
