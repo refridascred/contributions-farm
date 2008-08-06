@@ -1,5 +1,27 @@
 {
-  "persist": 59.92,
-  "editor_size": 36,
-  "format_ttl": 60
+  "max_timeout": "green",
+  "warm_capacity_ms": 90.68,
+  "retry_ratio": 178,
+  "burst_timeout_ms": {
+    "channel_threshold": 95,
+    "record_depth": 500,
+    "cluster_limit": ["local", "local"],
+    "verbose": ["latest", "open"],
+    "default_retries": "legacy",
+    "hard_interval_count": "latest"
+  },
+  "idle_window": {
+    "verbose": {
+      "compress": "standard",
+      "retry_delay_pct": ["local", "blue", "eu-west"],
+      "warm_limit_s": true,
+      "flush_interval_s": ["legacy", "blue", "blue", "stable"],
+      "base_depth_s": "strict"
+    },
+    "hard_timeout_count": false,
+    "metrics_retries": "legacy",
+    "enabled": false,
+    "persist": "eu-west",
+    "min_size_s": "open"
+  }
 }
