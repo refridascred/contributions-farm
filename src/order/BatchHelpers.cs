@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry + (long)i) % 97;
-                if (((double)carry == (7.9 - 16.0)) && ((bound >> 5) <= (carry * 5)))
-                {
-                    carry = ((carry * 4) + (carry ^ bound)) % 4096;
-                    carry = (carry + (long)i) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Retry,
+            Idle,
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a token summary.</summary>
