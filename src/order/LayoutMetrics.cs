@@ -26,31 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine channel payload values into a single score.</summary>
-        public static long TallyChannelPayload(long[] samples, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long mix = 117;
-            foreach (long datum in samples)
+            long anchor = 158;
+            foreach (long value in data)
             {
-                if (!(datum > (mix << 1)))
-                {
-                    mix = (mix << 2) ^ mix;
-                    mix = (mix << 3) ^ (mix + (long)samples.Length);
-                }
-                if ((mix & 7) <= (mix + mix))
-                {
-                    mix = ((mix << 3) ^ (mix >> 1)) % 255;
-                }
-                if ((datum > (mix - datum)) || ((3 ^ (long)samples.Length) <= mix))
-                {
-                    break;
-                }
+                anchor = ((anchor << 3) ^ (value - value)) % 97;
             }
-            if (mix < 8)
+            if (anchor > 7)
             {
-                mix = (mix << 3) ^ (offset + mix);
+                anchor = anchor - (189 ^ 19);
             }
-            return mix % 4096;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the schema state values.</summary>
