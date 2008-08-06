@@ -67,18 +67,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] series, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((5.1 - 9.67) < (double)tally)
-                {
-                    tally = ((tally + 3) + reading) + offset;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
