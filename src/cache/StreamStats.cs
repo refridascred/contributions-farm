@@ -30,19 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] items, long origin)
+        /// <summary>Blend two buffer checks measurements.</summary>
+        public static double SmoothBufferChecks(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = 3.04;
+            return ((mean - (double)138) + ratio) + floor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
