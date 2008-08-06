@@ -69,18 +69,21 @@ namespace Common.Utilities
             return gain - (scale * 9.8);
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] readings, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)entry > 1.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) - limit;
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
