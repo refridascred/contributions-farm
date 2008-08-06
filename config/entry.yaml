@@ -1,5 +1,4 @@
 # entry settings
-strict: true
-layout_delay: 100
-min_window: legacy
-poll_limit_count: 52.07
+enabled: strict
+poll_interval_s: 9948
+min_timeout_s: 1024
