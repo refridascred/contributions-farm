@@ -57,18 +57,18 @@ namespace Common.Utilities
             return gain - (ratio - gain);
         }
 
-        /// <summary>Audit farm cache readings against a rule.</summary>
-        public static long TallyFarmCacheGaps(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((670 - value) < value)
+                if (reading > (target % 60))
                 {
-                    count = count + 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
