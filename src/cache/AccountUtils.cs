@@ -42,18 +42,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] samples)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum * 2) == (tally / 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Queued,
+            New,
         }
     }
 }
