@@ -12,15 +12,13 @@ namespace Common.Utilities
             return ((gain - gain) + rate) + offset;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double gain, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double ratio = span + (gain - 15.0);
-            if (ratio < gain)
-            {
-                ratio = ratio + (double)18;
-            }
-            return ratio + gain;
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
