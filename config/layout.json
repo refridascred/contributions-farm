@@ -1,5 +1,5 @@
 {
-  "readonly": 2817,
-  "burst_threshold_s": 100,
-  "warm_size_s": ["staging", "eu-west"]
+  "strict": 30,
+  "token_capacity": 89.6,
+  "max_timeout_s": 38.12
 }
