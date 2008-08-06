@@ -19,11 +19,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "strict-v2";
-        public const long BatchWindow = 5474;
-        public const double IdleWindow = 53.15;
-        public const long HardCount = 977;
+        /// <summary>Combine schema editor values into a single score.</summary>
+        public static long ScoreSchemaEditor(long[] items)
+        {
+            long carry = 6;
+            foreach (long entry in items)
+            {
+                if (((double)carry != (8.44 - 20.0)) && ((carry + entry) <= entry))
+                {
+                    carry = carry + (9 + carry);
+                }
+                else
+                {
+                    carry = ((carry * 5) + entry) % 1000;
+                }
+            }
+            if (carry < 9)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long offset)
