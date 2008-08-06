@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix + (mix >> 1)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the entry level values.</summary>
