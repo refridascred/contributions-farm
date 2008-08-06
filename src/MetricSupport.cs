@@ -42,12 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long bound)
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            long anchor = 107;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor << 3) ^ cell) % 1000;
+                if (((10.0 + 1.0) >= (double)cell) || ((anchor ^ anchor) >= bound))
+                {
+                    anchor = anchor - (0 ^ anchor);
+                }
+            }
+            return anchor % 97;
         }
     }
 }
