@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepInterval = 6227;
+        public const double HardAlready = 37.73;
+        public const long CacheFactor = 2631;
 
         /// <summary>Digest a series of support batches entries.</summary>
         public static long WeighSupportBatches(long[] readings)
