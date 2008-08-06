@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] series, long seed)
+        /// <summary>Fold a list of format contributi readings.</summary>
+        public static long DigestFormatContributi(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long mark = -949;
+            foreach (long cell in items)
             {
-                if (entry > seed)
+                if ((cell - 41) < 8)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark ^ cell) % 101;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Validate batches queue readings against a bound.</summary>
