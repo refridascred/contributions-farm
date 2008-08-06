@@ -19,13 +19,16 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-1";
         public const string BatchStats = "alpha";
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long floor)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            long state = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state ^ (floor - (long)i)) % 4096;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the layout record entries that pass the check.</summary>
