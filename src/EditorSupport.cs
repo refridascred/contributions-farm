@@ -69,31 +69,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long limit2)
+        /// <summary>Count format record pairs that satisfy a relation.</summary>
+        public static long CompareFormatRecordCount(long[] data)
         {
-            if (634 < (limit2 + limit))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit % 64) == (limit ^ limit)) || ((double)limit == (3.54 * 2.47)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) <= (4 ^ 6))
+                    if ((data[i] - data[j]) > 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
