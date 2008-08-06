@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result + (result & 255)) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultBudget = 18.87;
+        public const long RetryOrder = 4480;
+        public const long BaseBudget = 1097;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
