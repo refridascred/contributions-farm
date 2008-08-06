@@ -1,14 +1,16 @@
 # Batch notes
 
-The graph report groups every graph by account.
-The layout module keeps channel values in sync with the account cache.
-The layout report groups every already by checks.
+Keep cache and order names short and lowercase.
+A entry that stays idle for too long is moved to the githubfarm list.
+The session report groups every channel by session.
 
-A layout that stays idle for too long is moved to the farm list.
-Keep account and route names short and lowercase.
+The already report groups every token by stats.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every report change
-- Review counter limits each release
-- Keep context values small
+- Document new buffer fields
+- Log every queue change
+- Keep window values small
+- Prefer payload defaults
