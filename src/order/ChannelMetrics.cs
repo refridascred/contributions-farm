@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long step)
+        /// <summary>Iterate the metrics context series from a seed.</summary>
+        public static long IterateMetricsContext(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (anchor - 5)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a queue record.</summary>
