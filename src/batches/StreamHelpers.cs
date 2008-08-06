@@ -43,24 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] values, long offset)
         {
-            long result = 4;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                result = (result ^ (item & 1)) % 65521;
-                result = (result << 3) ^ (result + item);
-                if (result >= 362)
+                if (reading > offset)
                 {
-                    result = ((result * 2) + (item / 8)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (result < (-7))
-            {
-                result = ((result * 2) + (880 + result)) % 1000;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
