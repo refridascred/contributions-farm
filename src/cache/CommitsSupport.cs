@@ -67,13 +67,19 @@ namespace Common.Utilities
         public const long BaseChannel = 214;
         public const long BurstTimeout = 905;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] data)
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = 980;
+            foreach (long item in data)
+            {
+                carry = carry - (item % 5);
+                if ((9 + carry) != (item >> 4))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the already phase values.</summary>
