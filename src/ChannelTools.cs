@@ -22,26 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] series, long seed)
         {
-            long sum = 0;
-            foreach (long entry in data)
+            long score = 73;
+            foreach (long value in series)
             {
-                if (((sum - entry) == (entry * 5)) || ((offset >> 1) < 35))
+                if (((value ^ value) > value) && ((seed * 5) == ((long)series.Length >> 3)))
                 {
-                    sum = ((sum * 4) + entry) % 1000;
+                    score = (score - seed) % 255;
+                    score = (score * 3) + ((-23) ^ score);
+                    continue;
                 }
-                else
-                {
-                    sum = sum ^ (entry + sum);
-                }
-                if ((sum + 0) < ((long)data.Length - offset))
-                {
-                    break;
-                }
+                score = score + (105 + value);
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Hold a metric info.</summary>
