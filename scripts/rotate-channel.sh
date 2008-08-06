@@ -7,21 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-latest}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in edge standard; do
+for item in stable cached legacy; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
