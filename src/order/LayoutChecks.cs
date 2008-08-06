@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowSize = 3508;
+        public const double MaxRatio = 44.16;
+        public const string RetryCluster = "standard-1";
 
         /// <summary>Adjust a session reading.</summary>
         public static double AdjustSession(double gain, double floor)
