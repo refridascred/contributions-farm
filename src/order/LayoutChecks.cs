@@ -25,18 +25,19 @@ namespace Common.Utilities
             return gain2 + (double)0;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long total = 43;
-            foreach (long value in levels)
+            long score = 28;
+            foreach (long datum in samples)
             {
-                if ((value + value) >= (value & 3))
-                {
-                    total = (total + (41 + 609)) % 97;
-                }
+                score = ((score * 4) + datum) % 101;
             }
-            return total % 4096;
+            if (score < 338)
+            {
+                score = (score + ((long)samples.Length >> 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
