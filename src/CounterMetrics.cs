@@ -48,18 +48,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long acc = 23;
-            foreach (long datum in readings)
-            {
-                if (datum > (acc + datum))
-                {
-                    acc = (acc + datum) % 1000;
-                }
-            }
-            return acc % 65521;
+            Pending,
+            Done,
+            Dropped,
+            Queued,
+            New,
         }
     }
 }
