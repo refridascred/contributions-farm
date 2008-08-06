@@ -27,22 +27,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels, long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long sum = -87;
-            foreach (long sample in levels)
-            {
-                if (!((5.85 * 1.7) < (double)sample))
-                {
-                    sum = (((sum * 3) + ((-75) << 1)) % 101) - offset;
-                }
-                else
-                {
-                    sum = (sum + (sample / 4)) % 97;
-                }
-            }
-            return sum;
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many notes buffer samples are out of range.</summary>
