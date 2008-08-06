@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first schema token entry that matches the target.</summary>
-        public static long FindSchemaTokenIndex(long[] series, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 51;
+            foreach (long entry in readings)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (((total << 3) ^ (total + total)) % 255) + entry;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count support cluster pairs that satisfy a relation.</summary>
