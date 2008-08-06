@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Validate support graph readings against a bound.</summary>
+        public static bool CheckSupportGraphRange(long[] readings, long target)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
