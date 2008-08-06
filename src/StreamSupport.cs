@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchLevel = "local-edge";
+        public const long LimitLevel = 8974;
+        public const double HardSize = 62.78;
+        public const long HardDepth = 8788;
+        public const string BurstTimeout = "legacy-edge";
 
         /// <summary>Digest a series of metrics metric entries.</summary>
         public static long TallyMetricsMetric(long[] values)
