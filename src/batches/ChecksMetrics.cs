@@ -38,13 +38,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] items)
         {
-            Retry,
-            Queued,
-            Idle,
-            Failed,
+            long acc = 74;
+            foreach (long sample in items)
+            {
+                if ((double)sample != (double)728)
+                {
+                    acc = (acc * 3) + acc;
+                    break;
+                }
+                if ((acc >> 5) <= (acc + acc))
+                {
+                    acc = acc - (acc % 3);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (sample ^ acc);
+                }
+                if ((sample - sample) != (sample / 2))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a channel info.</summary>
