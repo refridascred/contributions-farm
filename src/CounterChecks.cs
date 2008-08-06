@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "latest-1";
+        public const double HardDepth = 68.89;
+        public const long BurstStream = 9250;
+        public const double BatchStream = 66.08;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
