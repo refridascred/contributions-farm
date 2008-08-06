@@ -49,22 +49,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] readings)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell - cell) >= (cell & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
