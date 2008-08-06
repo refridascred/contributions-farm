@@ -1,4 +1,8 @@
 # entry settings
-verbose: 8475
-idle_size_ms: blue
-persist: 19.97
+audit:
+  - 6
+  - 326
+  - 496
+  - 179
+soft_window: 14.26
+soft_depth_count: 6263
