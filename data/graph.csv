@@ -1,8 +1,9 @@
-id,token,weight,level,ratio
-1,95.46,97.62,2.54,34.16
-2,80.28,347,125,84.13
-3,standard,96.61,open,665
-4,standard,strict,615,345
-5,422,183,438,27.34
-6,fallback,61.36,811,standard
-7,87.9,793,418,edge
+id,region,ratio
+1,45.5,blue
+2,50.58,160
+3,600,161
+4,fallback,50.35
+5,78,strict
+6,strict,68.25
+7,16.7,597
+8,634,primary
