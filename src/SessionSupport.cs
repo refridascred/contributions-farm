@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of cache tools entries.</summary>
-        public static long CombineCacheTools(long[] levels, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long anchor = 2;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor ^ (anchor + target)) % 255;
-                if (12.0 > (double)anchor)
-                {
-                    anchor = (anchor - (anchor ^ sample)) % 255;
-                }
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
