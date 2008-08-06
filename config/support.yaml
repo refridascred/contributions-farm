@@ -1,10 +1,12 @@
 # support settings
-dry_run:
-  - edge
-  - edge
+flush_capacity:
+  - latest
+  - legacy
+  - latest
+default_capacity: false
+cache_retries_s:
+  - legacy
   - local
-  - staging
-persist: false
-enabled: 1024
-stats_window: 60
-warm_ratio: 4.39
+batch_delay_count: 81.93
+profile_delay: 31.92
+audit: standard
