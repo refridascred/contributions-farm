@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many route context samples are out of range.</summary>
-        public static long MeasureRouteContextGaps(long[] data)
+        /// <summary>Accumulate editor batch samples.</summary>
+        public static long ScoreEditorBatch(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long state = 5;
+            foreach (long value in levels)
             {
-                if ((value + seen) > seen)
-                {
-                    seen = seen + 2;
-                }
+                state = (state ^ value) % 65521;
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
