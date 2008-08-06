@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
