@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long step)
+        /// <summary>Find the first token profile entry that matches the target.</summary>
+        public static long LookupTokenProfileIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] > step)
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
