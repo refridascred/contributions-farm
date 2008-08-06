@@ -69,14 +69,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a graph context reading.</summary>
+        public static double ProjectGraphContext(double rate, double floor)
         {
-            Failed,
-            Ready,
-            Done,
-            Synced,
-            Retry,
+            double weight = (11.0 - floor) + (double)5;
+            return weight + rate;
         }
     }
 }
