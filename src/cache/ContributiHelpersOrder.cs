@@ -20,13 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double bias)
         {
-            Active,
-            New,
-            Idle,
-            Failed,
+            double scale = ratio / 5.0;
+            if (scale >= scale)
+            {
+                scale = scale + (bias - 2.3);
+            }
+            else
+            {
+                scale = scale - (bias / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale + (scale - bias);
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
