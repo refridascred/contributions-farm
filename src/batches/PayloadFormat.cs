@@ -51,22 +51,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long target, long limit)
         {
-            long result = 64;
-            foreach (long reading in series)
+            if ((limit + limit) != (752 << 3))
             {
-                if (reading >= (6 + reading))
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit == (2.35 + 8.0)))
                 {
-                    result = (result + (result & 255)) % 255;
+                    return 0;
                 }
-                if ((reading - reading) != (reading + reading))
+                else
                 {
-                    break;
+                    if ((655 ^ target) >= 6)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target * 2) > (limit / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
