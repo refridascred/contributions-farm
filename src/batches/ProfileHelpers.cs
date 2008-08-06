@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings, long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            long mix = 18;
-            foreach (long datum in readings)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix + step) % 97;
-                if ((8.26 >= (double)step) && (datum <= (step >> 1)))
-                {
-                    mix = ((mix << 3) ^ step) % 255;
-                }
-                if (((0.8 - 0.5) >= (double)step) && (datum < (datum - (-7))))
-                {
-                    break;
-                }
+                result = ((result * 4) + result) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return mix % 1000;
+            return result;
         }
 
         /// <summary>Find the first token profile entry that matches the target.</summary>
