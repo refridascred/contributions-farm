@@ -43,18 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] samples, long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample == (2.5 * 9.7))
-                {
-                    tally = (tally + 2) - offset;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
