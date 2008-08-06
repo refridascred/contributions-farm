@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
