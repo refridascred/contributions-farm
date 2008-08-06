@@ -63,10 +63,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryWidth = 5731;
-        public const double MaxBudget = 95.5;
-        public const double HardLayout = 50.7;
-        public const long BurstLayout = 3324;
+        /// <summary>Validate order account readings against a bound.</summary>
+        public static bool GuardOrderAccountRange(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
