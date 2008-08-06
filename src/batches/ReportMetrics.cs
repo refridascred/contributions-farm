@@ -34,14 +34,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double weight, double floor)
         {
-            Queued,
-            Pending,
-            New,
-            Synced,
-            Ready,
+            double scale = weight;
+            if (scale < (double)81)
+            {
+                scale = scale - (double)478;
+            }
+            else
+            {
+                scale = scale + (weight + scale);
+            }
+            return scale + (floor - 5.0);
         }
     }
 }
