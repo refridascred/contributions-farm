@@ -1,6 +1,16 @@
 {
-  "graph_limit": "local",
-  "enabled": ["stable", "primary"],
-  "verbose": "staging",
-  "base_ratio_s": 62.12
+  "stream_threshold": "eu-west",
+  "dry_run": 100,
+  "max_limit_ms": {
+    "soft_size_ms": 48.26,
+    "readonly": {
+      "stats_depth": false,
+      "record_limit": 100,
+      "strict": false
+    },
+    "cache_delay": "green",
+    "retry_threshold_pct": [384, 404, 135, 216],
+    "audit": "stable",
+    "hard_limit_count": 8.62
+  }
 }
