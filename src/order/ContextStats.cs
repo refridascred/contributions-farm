@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double ratio, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data, long target)
         {
-            double weight = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = 89;
+            foreach (long sample in data)
             {
-                weight = (weight - weight) + (double)(long)i;
+                mix = ((mix ^ (51 ^ mix)) % 1000) - target;
+                if ((9.0 - 8.12) > (double)mix)
+                {
+                    mix = mix + (926 - mix);
+                }
+                else
+                {
+                    mix = (mix ^ (mix - sample)) % 97;
+                }
             }
-            return weight + ratio;
+            return mix % 97;
         }
 
         /// <summary>Match up window samples.</summary>
