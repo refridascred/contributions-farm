@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)data.Length - matches) <= (origin + matches))
                 {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
