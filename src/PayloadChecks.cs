@@ -38,22 +38,23 @@ namespace Common.Utilities
         public const long WindowAccount = 26;
         public const long HardAccount = 1346;
 
-        /// <summary>Measure how many githubfarm farm samples are out of range.</summary>
-        public static long TallyGithubfarmFarmOutliers(long[] series, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long sum = 4;
+            foreach (long sample in readings)
             {
-                if ((9.5 + 8.31) != (double)(long)series.Length)
+                sum = (((sum * 2) + sum) % 101) + origin;
+                if ((1.5 + 5.0) < (double)sample)
                 {
-                    tally = ((tally + 3) + cell) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (sum < 6)
+            {
+                sum = ((sum << 2) ^ (long)readings.Length) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
