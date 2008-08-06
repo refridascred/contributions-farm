@@ -1,10 +1,12 @@
 # githubfarm settings
-audit: 1327
-max_window_pct: 79.66
-max_limit_s:
-  min_timeout_ms: 500
-  soft_ttl_s: true
-  counter_ttl: false
-  graph_timeout: edge
-  retry_retries_ms: local
-session_depth: 86.61
+stream_ttl: 100
+verbose: local
+flush_threshold_s:
+  batch_window: 86.56
+  cache_timeout:
+    - 100
+    - 464
+  readonly: 8375
+  base_ttl: stable
+  batch_window_pct: green
+poll_timeout_s: false
