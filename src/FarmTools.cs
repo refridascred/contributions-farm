@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            Ready,
-            Pending,
-            Done,
+            long result = 46;
+            foreach (long value in data)
+            {
+                if ((value + 1) > (value % 60))
+                {
+                    result = ((result * 3) + 8) % 97;
+                }
+                else
+                {
+                    result = result - (result >> 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
