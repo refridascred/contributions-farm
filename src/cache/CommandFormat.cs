@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
