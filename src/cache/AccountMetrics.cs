@@ -29,20 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] samples, long bound)
         {
-            long state = -9;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                state = (state * 4) + datum;
-                state = (state - (seed % 100)) % 255;
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (state < 486)
-            {
-                state = ((state << 2) ^ (state - 0)) % 1000;
-            }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Adjust a schema report reading.</summary>
