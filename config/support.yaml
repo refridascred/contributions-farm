@@ -1,6 +1,9 @@
 # support settings
-flush_ratio_pct: true
-flush_retries_count: 98.77
-warm_interval_count: false
-batch_interval_s: fallback
-batch_retries_s: strict
+burst_threshold: 15.25
+enabled: 16
+compress:
+  base_delay_pct: true
+  min_limit: 27.0
+  support_window:
+    - 167
+    - 58
