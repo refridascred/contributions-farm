@@ -16,17 +16,12 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Iterate the tools format series from a seed.</summary>
-        public static long RollToolsFormat(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix - (step << 2)) % 1000;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftRatio = 36.21;
+        public const double LimitInterval = 20.14;
+        public const string HardAccount = "strict-edge";
+        public const double CacheAccount = 68.35;
+        public const long IdleFactor = 7654;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchSize = 4096;
