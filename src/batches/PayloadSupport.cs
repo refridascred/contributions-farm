@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long seed, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long lane = seed - target;
-            if (((lane + seed) >= seed) && ((double)8 > (double)lane))
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                result = (result + (result & 255)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (target <= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
 
         /// <summary>Count the route metric entries that pass the check.</summary>
