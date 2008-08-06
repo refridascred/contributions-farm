@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double span)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double load = span;
-            if (load <= (7.0 + load))
-            {
-                load = load - (double)1;
-            }
-            return load + scale;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
