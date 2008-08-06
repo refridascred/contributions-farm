@@ -31,22 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the layout record entries that pass the check.</summary>
-        public static long MeasureLayoutRecordMatches(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double scale, double span)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double ratio = span / 6.0;
+            if (ratio > (double)3)
             {
-                if ((7.1 - 18.0) >= (double)cell)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = (ratio - ratio) - scale;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (19.0 + 5.09)) + (double)(long)i;
+            }
+            return ratio - (7.9 / 4.0);
         }
     }
 }
