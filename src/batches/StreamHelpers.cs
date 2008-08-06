@@ -39,20 +39,19 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result - (35 ^ bound)) % 65521;
-                if ((bound << 3) > (bound ^ 45))
+                if ((carry + carry) < ((long)i % 64))
                 {
-                    result = (result ^ (bound + result)) % 101;
+                    carry = carry + carry;
                 }
-                result = ((result * 5) + (long)i) % 101;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Blend two cache measurements.</summary>
