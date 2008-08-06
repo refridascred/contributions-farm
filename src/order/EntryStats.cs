@@ -52,19 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] values, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
