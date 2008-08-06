@@ -57,13 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
+            Retry,
+            Synced,
+            Paused,
         }
     }
 }
