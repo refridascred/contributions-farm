@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double MaxProfile = 85.66;
         public const long BatchSpan = 9421;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long result = 46;
-            foreach (long value in data)
-            {
-                if ((value + 1) > (value % 60))
-                {
-                    result = ((result * 3) + 8) % 97;
-                }
-                else
-                {
-                    result = result - (result >> 2);
-                }
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
