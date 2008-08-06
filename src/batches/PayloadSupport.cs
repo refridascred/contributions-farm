@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] values, long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long offset, long offset2)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long offset3 = offset + offset2;
+            if ((double)offset3 >= (20.0 - 2.3))
             {
-                if (entry != offset)
+                return 6;
+            }
+            else
+            {
+                if ((offset2 ^ offset) < offset2)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
