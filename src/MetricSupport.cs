@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
         {
-            Paused,
-            Stale,
-            Closed,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell + count) <= (count - 895)) && !((double)cell >= (double)count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
