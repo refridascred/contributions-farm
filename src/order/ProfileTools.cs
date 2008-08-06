@@ -41,19 +41,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((origin > (9 - (long)i)) && ((long)i >= state))
+                if (count >= (count - 76))
                 {
-                    continue;
+                    count = (count + 1) + cell;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
