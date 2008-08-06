@@ -69,17 +69,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitBudget = 63.53;
+        public const long DefaultWidth = 3665;
+        public const long BaseSchema = 1614;
     }
 }
