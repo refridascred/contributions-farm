@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long SoftRatio = 4463;
         public const double BurstTimeout = 12.34;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double bias, double span)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double rate = (5.8 * 5.6) / 7.0;
-            return ((rate + (double)(-91)) + bias) + span;
+            public bool Count { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
