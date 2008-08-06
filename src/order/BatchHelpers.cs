@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] data, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((step & 255) == (7 & 127))
-                {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
