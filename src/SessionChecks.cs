@@ -11,11 +11,38 @@ namespace Common.Utilities
         public const double BatchCount = 23.57;
         public const long HardCluster = 3000;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long offset)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
+            if (!((offset - offset) == (seed ^ seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset > (offset & 127))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((9.8 * 4.93) == (double)seed) || ((seed ^ offset) > (seed * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((0 + 14) >= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine githubfarm notes values into a single score.</summary>
