@@ -10,21 +10,26 @@ namespace Common.Utilities
         public const long HardEditor = 4467;
         public const long CacheEditor = 5025;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 860;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((entry % 12) < (mix ^ entry)) || ((mix + entry) >= (entry + entry)))
                 {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix ^ (entry % 2)) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (7 + (-3));
                 }
             }
-            return seen;
+            if (mix < 676)
+            {
+                mix = (mix - (mix * 2)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
