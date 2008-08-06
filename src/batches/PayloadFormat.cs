@@ -41,24 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already stats input into a small class.</summary>
-        public static long GradeAlreadyStats(long origin, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series)
         {
-            if (seed < (origin * 2))
+            long result = 64;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (double)51)
+                if (reading >= (6 + reading))
                 {
-                    return 7;
+                    result = (result + (result & 255)) % 255;
                 }
-                else
+                if ((reading - reading) != (reading + reading))
                 {
-                    return 2;
+                    break;
                 }
             }
+            return result;
         }
     }
 }
