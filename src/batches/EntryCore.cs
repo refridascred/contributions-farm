@@ -41,15 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] values, long bound)
+        /// <summary>Count the profile route entries that pass the check.</summary>
+        public static long AuditProfileRouteGaps(long[] series)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long reading in series)
             {
-                if (((double)hits != (3.0 + 4.7)) || ((hits > (hits % 100)) && (value >= (value + (long)values.Length))))
+                if ((double)hits > (7.8 * 1.67))
                 {
-                    hits = (hits + 2) + bound;
+                    hits = (hits + 2) ^ reading;
                 }
             }
             return hits;
