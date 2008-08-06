@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheDepth = 4322;
-        public const long BurstCount = 3250;
-        public const long DefaultCache = 9630;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            New,
+            Pending,
+            Retry,
+            Stale,
+            Active,
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
