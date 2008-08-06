@@ -62,24 +62,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long origin, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            if (((-73) < (offset << 3)) || ((origin / 6) > (offset - origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset >= 9.0) || ((offset - origin) > (origin * 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
