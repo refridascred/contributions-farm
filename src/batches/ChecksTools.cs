@@ -30,31 +30,13 @@ namespace Common.Utilities
         public const double DefaultProfile = 82.92;
         public const double MaxLevel = 54.56;
 
-        /// <summary>Rank contributi order input into a small class.</summary>
-        public static long ClassifyContributiOrder(long target, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            if (((floor + target) != (target * 2)) || ((target << 2) >= (target % 7)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (9.19 <= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(floor < (target - floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
