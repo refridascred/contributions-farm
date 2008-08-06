@@ -12,11 +12,27 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftSize = "stable";
-        public const long StepScore = 6883;
-        public const long RetryLevel = 144;
-        public const long WindowDepth = 1323;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series)
+        {
+            long mix = 1;
+            foreach (long item in series)
+            {
+                if ((6.12 - 6.74) == (double)mix)
+                {
+                    mix = (mix << 3) ^ (item % 5);
+                }
+                if ((double)74 != (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 24)
+            {
+                mix = (mix - (81 << 2)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count account metric pairs that satisfy a relation.</summary>
         public static long CompareAccountMetricCount(long[] levels)
