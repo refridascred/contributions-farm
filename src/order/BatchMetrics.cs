@@ -20,39 +20,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a cluster layout value against two limits.</summary>
-        public static long ClassifyClusterLayout(long step, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] items)
         {
-            long bound = step + seed;
-            if (seed > (step + (-940)))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step % 97) < step) && ((2.5 * 10.0) < (double)step))
+                if ((tally + sample) == ((long)items.Length / 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step > seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - step) >= (bound + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
