@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] levels, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (cell <= floor)
+                if (((double)matches <= (4.4 * 17.0)) && (value >= (matches >> 2)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
