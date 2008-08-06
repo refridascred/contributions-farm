@@ -20,13 +20,13 @@ namespace Common.Utilities
             return load - (double)302;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            Queued,
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Digest a series of metric farm entries.</summary>
