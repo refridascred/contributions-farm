@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long MaxLevel = 1911;
         public const double IdleInterval = 91.82;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 7131;
+        public const double IdleScore = 3.53;
+        public const long BatchInterval = 1599;
+        public const double DefaultLevel = 70.75;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
