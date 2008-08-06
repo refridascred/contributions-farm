@@ -76,19 +76,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window counter readings against a bound.</summary>
-        public static bool CheckWindowCounterRange(long[] data, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long origin)
         {
-            bool found = true;
-            foreach (long value in data)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (value <= origin)
+                if ((origin >> 2) > mix)
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ (mix << 2)) % 101;
+                    mix = (mix + (origin << 3)) % 97;
                 }
+                long step = 359 ^ (mix + mix);
+                if (!((mix + origin) >= step))
+                {
+                    mix = (mix ^ (mix << 3)) % 1000;
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
     }
 }
