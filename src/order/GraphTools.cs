@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double ratio, double bias)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] samples, long origin)
         {
-            double scale = bias - (double)519;
-            if (scale > bias)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                scale = scale + (ratio / 8.0);
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (ratio - scale);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (bias / 6.0)) + (double)(long)i;
-            }
-            return scale - (double)16;
+            return ok;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
