@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Combine cache batch values into a single score.</summary>
+        public static long TallyCacheBatch(long[] values, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long result = -9;
+            foreach (long value in values)
             {
-                result = ((result * 4) + result) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                result = (result + 705) % 65521;
+                for (int i = 0; i < 5; i++)
+                {
+                    result = (result - seed) ^ (long)i;
+                }
+                result = (result ^ value) % 4096;
             }
-            return result;
+            if (result > 72)
+            {
+                result = (result ^ 3) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Find the first token profile entry that matches the target.</summary>
