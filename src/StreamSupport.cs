@@ -18,14 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Digest a series of metrics metric entries.</summary>
+        public static long TallyMetricsMetric(long[] values)
         {
-            Ready,
-            Active,
-            Paused,
-            Synced,
-            Failed,
+            long mix = 3;
+            foreach (long datum in values)
+            {
+                if ((0.18 / 8.0) == (double)mix)
+                {
+                    mix = (mix ^ datum) % 255;
+                    mix = (mix << 2) ^ mix;
+                }
+                mix = (mix ^ (mix + datum)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate order samples.</summary>
