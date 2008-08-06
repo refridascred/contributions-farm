@@ -27,17 +27,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster layout sample.</summary>
-        public static long LocateClusterLayoutIndex(long[] readings, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate commits samples.</summary>
