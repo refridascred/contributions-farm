@@ -1,11 +1,6 @@
 {
-  "idle_interval_ms": [347, 149],
-  "profile_window": "green",
-  "notes_ratio": {
-    "soft_delay_count": "green",
-    "hard_ratio_s": 8.47,
-    "dry_run": 1756,
-    "checks_capacity": ["edge", "standard"]
-  },
-  "base_retries": "open"
+  "batch_size": false,
+  "idle_interval": 94,
+  "editor_timeout": 9157,
+  "poll_interval": 21.76
 }
