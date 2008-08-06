@@ -1,7 +1,5 @@
 {
-  "poll_window": 60,
-  "profile_ratio": "standard",
-  "retry_depth_pct": 26,
-  "compress": 500,
-  "support_capacity": 5085
+  "default_capacity_s": "stable",
+  "burst_limit": 60,
+  "batches_size": 90.83
 }
