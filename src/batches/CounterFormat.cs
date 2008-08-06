@@ -24,12 +24,15 @@ namespace Common.Utilities
         public const long DefaultDepth = 4969;
         public const long DefaultFormat = 6092;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Iterate the farm schema series from a seed.</summary>
+        public static long DeriveFarmSchema(long seed)
         {
-            Ready,
-            Paused,
-            Pending,
+            long state = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
