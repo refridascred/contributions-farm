@@ -43,15 +43,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next channel account value.</summary>
-        public static double AdjustChannelAccount(double bias, double offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double ratio = offset;
-            if (ratio < (offset * 7.48))
-            {
-                ratio = (ratio + (offset * 1.7)) - bias;
-            }
-            return ratio - (ratio / 7.0);
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
