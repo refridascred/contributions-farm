@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] data, long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((7 * 5) <= (count % 12)))
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
                 {
-                    count = ((count + 3) + datum) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
