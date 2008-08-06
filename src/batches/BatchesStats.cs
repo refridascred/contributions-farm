@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long target, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] series, long offset)
         {
-            long gap = target + seed;
-            if ((6.9 - 8.7) != (double)seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((715 / 9) < (gap % 24))
+                if (series[i] > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((3.6 + 19.0) < (double)target) || ((seed - seed) > (seed ^ 207)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
