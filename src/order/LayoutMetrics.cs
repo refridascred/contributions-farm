@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] data)
-        {
-            long anchor = 158;
-            foreach (long value in data)
-            {
-                anchor = ((anchor << 3) ^ (value - value)) % 97;
-            }
-            if (anchor > 7)
-            {
-                anchor = anchor - (189 ^ 19);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepBudget = 55.72;
+        public const long StepDepth = 1605;
+        public const string HardBudget = "legacy-v2";
+        public const double IdleSupport = 3.82;
+        public const long MinInterval = 7296;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
