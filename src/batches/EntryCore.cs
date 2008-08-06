@@ -41,38 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a format session pair into a bucket.</summary>
-        public static long SortFormatSession(long origin, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] values, long bound)
         {
-            if (origin < (origin * 4))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (origin << 1))
+                if (((double)hits != (3.0 + 4.7)) || ((hits > (hits % 100)) && (value >= (value + (long)values.Length))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset >= 5.69)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5.25 * 0.9) >= (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 2) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two metric filter measurements.</summary>
