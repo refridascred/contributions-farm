@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 35.52;
-        public const long HardContributi = 2450;
-        public const double MinSize = 29.52;
-        public const long BatchContributi = 1757;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Locked,
+            Draft,
+            Failed,
+            Active,
+            Retry,
+        }
 
         /// <summary>Combine githubfarm report values into a single score.</summary>
         public static long TotalGithubfarmReport(long[] samples, long bound)
