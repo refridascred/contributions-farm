@@ -13,19 +13,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine notes stream values into a single score.</summary>
-        public static long WeighNotesStream(long[] values, long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long total = 7;
-            foreach (long entry in values)
-            {
-                total = ((total ^ (entry ^ total)) % 1000) + origin;
-            }
-            if (total < 95)
-            {
-                total = ((total << 2) ^ (total ^ 73)) % 101;
-            }
-            return total;
+            Locked,
+            Closed,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Accumulate layout samples.</summary>
