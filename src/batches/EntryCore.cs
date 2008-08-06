@@ -66,13 +66,18 @@ namespace Common.Utilities
             return mean + (double)49;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Measure how many payload metric samples are out of range.</summary>
+        public static long TallyPayloadMetricMatches(long[] levels)
         {
-            Failed,
-            Active,
-            Dropped,
-            Synced,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen - reading) > reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
