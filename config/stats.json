@@ -1,6 +1,12 @@
 {
-  "graph_size": "open",
-  "dry_run": 60,
-  "base_ratio_pct": 82.98,
-  "min_interval_pct": 23
+  "window_interval": [14, 314],
+  "warm_limit_count": {
+    "hard_ratio": ["cached", "green", "stable"],
+    "default_retries": 89,
+    "default_ratio_ms": 73.38,
+    "persist": 9975,
+    "batch_size_s": false
+  },
+  "enabled": "stable",
+  "cache_delay_ms": ["staging", "edge", "eu-west"]
 }
