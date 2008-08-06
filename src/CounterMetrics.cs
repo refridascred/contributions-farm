@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheSize = "strict-1";
-        public const string BatchRecord = "primary-1";
-        public const double IdleRecord = 31.62;
-        public const double StepRecord = 34.49;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long seed)
+        {
+            if (((-8) - step) == ((-1) + step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step % 16) <= (step * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Blend two route batch measurements.</summary>
         public static double AdjustRouteBatch(double weight, double floor)
