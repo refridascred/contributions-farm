@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long origin, long bound)
         {
-            Queued,
-            Pending,
-            Active,
+            if ((bound << 3) > (origin ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)origin < (double)243))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
