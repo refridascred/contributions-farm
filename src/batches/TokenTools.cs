@@ -24,14 +24,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] data, long seed)
         {
-            Synced,
-            Draft,
-            Pending,
-            Closed,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph stats.</summary>
