@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] values)
         {
-            Locked,
-            New,
-            Synced,
+            long sum = 51;
+            foreach (long sample in values)
+            {
+                if ((sample >> 4) != (sum + sample))
+                {
+                    sum = (sum << 3) ^ (sample << 2);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
