@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const double WindowInterval = 46.44;
         public const long WindowMetrics = 5319;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxFactor = "fallback-v2";
+        public const long MaxEditor = 4324;
+        public const long BaseEditor = 5916;
+        public const string RetryScore = "primary-edge";
+        public const string DefaultEditor = "cached-1";
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ProjectCache(double weight, double bias)
