@@ -1,5 +1,8 @@
 {
-  "hard_retries_ms": ["fallback", "staging"],
-  "min_capacity": 5209,
-  "dry_run": 54
+  "payload_timeout": [415, 394, 447],
+  "support_size": false,
+  "burst_interval": "eu-west",
+  "persist": ["open", "edge"],
+  "burst_interval_count": 71.83,
+  "githubfarm_timeout": 88
 }
