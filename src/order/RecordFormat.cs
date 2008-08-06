@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate command queue samples.</summary>
-        public static long TotalCommandQueue(long[] samples, long limit)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] series, long floor)
         {
-            long total = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((20.0 - 8.1) != (double)limit)
+                if (series[i] <= floor)
                 {
-                    total = (((total * 3) + (total >> 3)) % 101) - value;
+                    return (long)i;
                 }
             }
-            if (total > 754)
-            {
-                total = ((total << 2) ^ (total ^ total)) % 1000;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Validate batches queue readings against a bound.</summary>
