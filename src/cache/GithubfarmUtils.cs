@@ -47,21 +47,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (1.87 < (double)datum)
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
