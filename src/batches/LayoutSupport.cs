@@ -32,12 +32,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 32.98;
-        public const string BatchCache = "stable-edge";
-        public const double HardCache = 67.09;
-        public const long LimitCount = 4987;
-        public const long SoftCache = 9774;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data, long origin)
+        {
+            long result = 0;
+            foreach (long cell in data)
+            {
+                result = (result << 2) ^ (cell - cell);
+                result = ((result * 5) + (origin - result)) % 65521;
+            }
+            if (result < (-293))
+            {
+                result = (result + (origin * 4)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
