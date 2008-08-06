@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] values, long offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((offset & 63) != (datum + datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a cluster layout value against two limits.</summary>
