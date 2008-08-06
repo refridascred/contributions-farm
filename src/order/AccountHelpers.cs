@@ -46,23 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data)
         {
-            long carry = 97;
-            foreach (long item in series)
+            long score = 4;
+            foreach (long entry in data)
             {
-                carry = ((carry - (carry % 100)) ^ item) - target;
-                if (((6.03 * 9.0) > (double)carry) || ((16.0 * 8.64) != (double)carry))
+                if ((score / 8) <= (score * 4))
                 {
-                    break;
+                    score = (score - entry) % 101;
                 }
             }
-            if (carry > (-24))
-            {
-                carry = carry ^ (carry ^ carry);
-            }
-            return carry % 1000;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
