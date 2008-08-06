@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of support format readings.</summary>
-        public static long ScoreSupportFormat(long[] series)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long result = 3;
-            foreach (long cell in series)
-            {
-                result = (result + (cell >> 2)) % 97;
-                if (((cell + cell) > (result - 3)) && (cell > (cell ^ result)))
-                {
-                    result = (result ^ result) % 101;
-                }
-                else
-                {
-                    result = result - (cell % 12);
-                }
-            }
-            return result;
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Audit contributi githubfarm readings against a rule.</summary>
