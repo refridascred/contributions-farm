@@ -54,39 +54,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long step, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] values, long bound)
         {
-            long delta = step + limit;
-            if ((2.8 * 2.6) >= (double)limit)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step % 10) >= (step & 127))
+                if (datum > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.6 + 1.8) > (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit <= (step + delta))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of graph layout entries.</summary>
