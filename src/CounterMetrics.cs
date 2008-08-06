@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if (((-8) - step) == ((-1) + step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step % 16) <= (step * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two route batch measurements.</summary>
