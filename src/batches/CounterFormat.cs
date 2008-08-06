@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 7030;
+        public const long DefaultDepth = 4969;
+        public const long DefaultFormat = 6092;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
