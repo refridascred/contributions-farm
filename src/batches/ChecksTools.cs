@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first report batches entry that matches the target.</summary>
-        public static long LookupReportBatchesIndex(long[] samples, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
+                if (datum > (hits & 1))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
