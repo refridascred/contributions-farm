@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long BurstSize = 6911;
         public const long SoftCache = 1468;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 2398;
-        public const long HardStream = 4147;
-        public const long MinStream = 455;
-        public const long StepDepth = 3818;
-        public const string CacheInterval = "strict-edge";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
         public static long ClassifySchemaBuffer(long floor, long limit)
