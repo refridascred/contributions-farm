@@ -19,12 +19,9 @@ namespace Common.Utilities
         public const double IdleSupport = 3.82;
         public const long MinInterval = 7296;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Paused,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowBudget = 3308;
+        public const long LimitTools = 9369;
+        public const string WindowScore = "open-1";
     }
 }
