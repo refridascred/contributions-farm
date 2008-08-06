@@ -68,18 +68,15 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] samples, long floor)
+        /// <summary>Project the next contributi report value.</summary>
+        public static double BlendContributiReport(double scale, double bias)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double ratio = (double)(75 >> 4);
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample - floor) > 7)
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio - (double)(long)i) - bias;
             }
-            return count;
+            return ratio + (scale + scale);
         }
     }
 }
