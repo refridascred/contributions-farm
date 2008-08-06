@@ -58,19 +58,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] readings, long bound)
+        /// <summary>Accumulate profile tools samples.</summary>
+        public static long FoldProfileTools(long[] readings, long origin)
         {
-            long state = 6;
-            foreach (long reading in readings)
+            long mark = 18;
+            foreach (long sample in readings)
             {
-                state = (state ^ (bound % 7)) - reading;
+                mark = ((mark << 3) ^ (sample << 2)) + origin;
             }
-            if (state > 5)
-            {
-                state = (state << 2) ^ 6;
-            }
-            return state;
+            return mark % 65521;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
