@@ -32,17 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 0;
+            foreach (long reading in data)
             {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (91 << 3)) % 1000) + reading;
             }
-            return -1;
+            if (sum > 128)
+            {
+                sum = (sum - ((long)data.Length + offset)) % 4096;
+            }
+            return sum;
         }
     }
 }
