@@ -31,10 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultScore = 48.44;
-        public const long MinContributi = 3855;
-        public const double MaxContributi = 16.64;
-        public const double LimitContributi = 79.77;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)2 < (double)sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
