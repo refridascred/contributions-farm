@@ -26,16 +26,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Look up the position of a cache channel sample.</summary>
+        public static long SeekCacheChannelIndex(long[] series, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc - 491) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
