@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double ratio, double offset)
-        {
-            double drift = (2.0 + ratio) - (ratio + offset);
-            if (drift > (drift / 3.0))
-            {
-                drift = drift + (ratio / 3.0);
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift + ratio;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepWidth = "local-1";
+        public const string BaseMetrics = "local-edge";
+        public const string WindowLevel = "alpha";
+        public const double WindowInterval = 46.44;
+        public const long WindowMetrics = 5319;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
