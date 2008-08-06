@@ -43,22 +43,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (offset >= (value / 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftBudget = 4027;
+        public const double MaxRoute = 96.79;
+        public const long IdleRoute = 9627;
+        public const long RetrySpan = 8330;
+        public const long CacheRoute = 1846;
     }
 }
