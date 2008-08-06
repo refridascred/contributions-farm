@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long offset)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            if (!((offset * 5) == (offset / 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((offset * 3) != (offset >> 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a record order value against two limits.</summary>
