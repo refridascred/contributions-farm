@@ -1,7 +1,14 @@
 {
-  "idle_ratio": ["open", "primary", "edge", "blue"],
-  "cache_ttl_s": 60,
-  "readonly": 27.63,
-  "sync_window_count": false,
-  "compress": 2.93
+  "audit": ["latest", "stable", "strict"],
+  "warm_threshold": 77.52,
+  "batch_timeout_pct": {
+    "cache_size": false,
+    "soft_interval": 4.87,
+    "filter_depth": ["green", "open", "primary"]
+  },
+  "soft_retries": {
+    "burst_size_count": "green",
+    "poll_limit_pct": false,
+    "cache_retries_ms": false
+  }
 }
