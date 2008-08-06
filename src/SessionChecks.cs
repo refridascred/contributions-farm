@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Active,
-            Ready,
-            Dropped,
-            Failed,
-            Draft,
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank record metrics input into a small class.</summary>
