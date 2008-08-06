@@ -21,12 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleBudget = 8810;
-        public const string BatchStream = "primary";
-        public const long HardTimeout = 5722;
-        public const long WindowDepth = 7365;
-        public const string LimitStream = "primary-edge";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (matches <= (limit / 4))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a filter checks value against two limits.</summary>
         public static long SortFilterChecks(long limit, long step)
