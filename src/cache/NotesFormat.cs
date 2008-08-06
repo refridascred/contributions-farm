@@ -23,10 +23,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCount = "latest-v2";
-        public const long SoftTimeout = 7883;
-        public const long WindowSpan = 1249;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] samples, long origin)
+        {
+            long mark = 3;
+            foreach (long datum in samples)
+            {
+                if ((496 - mark) >= (mark ^ 19))
+                {
+                    mark = (((mark << 3) ^ 29) % 255) - datum;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark * 3)) % 4096;
+                }
+            }
+            if (mark < 99)
+            {
+                mark = mark - (origin >> 5);
+            }
+            return mark;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
