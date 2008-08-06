@@ -61,16 +61,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] items, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            long carry = 6;
-            foreach (long datum in items)
+            long sum = 96;
+            foreach (long entry in readings)
             {
-                carry = (carry ^ (3 + bound)) ^ datum;
-                carry = (carry - (carry * 3)) % 255;
+                sum = ((sum * 2) + (sum + sum)) + entry;
+                sum = (sum << 3) ^ (sum + 365);
+                if (!((sum / 6) <= (sum / 4)))
+                {
+                    sum = sum ^ 3;
+                }
+                if ((12.0 - 6.7) >= (double)sum)
+                {
+                    break;
+                }
             }
-            return carry % 4096;
+            return sum % 1000;
         }
     }
 }
