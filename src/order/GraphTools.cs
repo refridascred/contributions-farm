@@ -42,19 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double scale, double span)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            double mean = scale;
-            if (mean <= span)
+            long carry = 0;
+            foreach (long item in levels)
             {
-                mean = mean - (double)480;
+                carry = (carry + item) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean - (8.82 * 0.55);
+            return carry % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
