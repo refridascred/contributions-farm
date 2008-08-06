@@ -1,5 +1,5 @@
 {
-  "tools_delay": 500,
-  "queue_interval": "staging",
-  "retry_ttl": 6611
+  "idle_retries_count": false,
+  "graph_delay": "primary",
+  "enabled": true
 }
