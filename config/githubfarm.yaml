@@ -1,10 +1,11 @@
 # githubfarm settings
-sync_size: cached
-strict: false
-poll_window_pct: 40.42
-flush_interval:
-  hard_capacity_pct: 500
-  cache_timeout_count: local
-  max_size_s: blue
-soft_limit_s: eu-west
-max_depth_count: 96.48
+tools_timeout:
+  - green
+  - stable
+  - standard
+idle_capacity_pct: strict
+poll_size:
+  - 465
+  - 196
+  - 457
+  - 461
