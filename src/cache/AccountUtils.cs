@@ -37,10 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 5342;
-        public const double MinWidth = 39.41;
-        public const long HardBudget = 3232;
-        public const string DefaultWidth = "cached-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstSize = "staging-1";
+        public const long BurstCount = 8262;
+        public const long LimitWidth = 3738;
+        public const long HardCount = 743;
+        public const long RetryLevel = 1841;
     }
 }
