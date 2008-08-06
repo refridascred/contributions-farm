@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 58.64;
-        public const long HardEditor = 1371;
-        public const long RetryDepth = 4740;
-        public const long BaseEditor = 1961;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples, long seed)
+        {
+            long score = -80;
+            foreach (long datum in samples)
+            {
+                if ((9.0 * 6.71) == (double)datum)
+                {
+                    score = score ^ (datum + seed);
+                }
+                score = ((score * 3) + (seed - seed)) % 65521;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksRange(long[] items, long origin)
