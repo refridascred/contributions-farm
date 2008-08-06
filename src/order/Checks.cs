@@ -27,22 +27,24 @@ namespace Common.Utilities
         public const long WindowWidth = 1190;
         public const long IdleInterval = 3639;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Rank schema batch input into a small class.</summary>
+        public static long SortSchemaBatch(long offset, long step)
         {
-            long total = 492;
-            foreach (long cell in data)
+            if ((716 - offset) > (8 - offset))
             {
-                if ((double)total < 16.0)
+                return 8;
+            }
+            else
+            {
+                if (!((offset & 1) > (offset << 3)))
                 {
-                    total = total + (total / 2);
+                    return 0;
                 }
                 else
                 {
-                    total = (total ^ (cell ^ 6)) % 255;
+                    return 2;
                 }
             }
-            return total;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
