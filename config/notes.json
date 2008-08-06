@@ -1,14 +1,5 @@
 {
-  "persist": "local",
-  "burst_delay_count": [186, 116, 147, 290],
-  "readonly": 8742,
-  "batch_threshold": {
-    "poll_depth_ms": 124,
-    "sync_depth": 39,
-    "flush_depth_pct": "eu-west",
-    "hard_ttl_count": "fallback",
-    "already_retries": [309, 403, 58]
-  },
-  "route_depth": "latest",
-  "enabled": 83.98
+  "channel_ratio": "legacy",
+  "audit": false,
+  "compress": 500
 }
