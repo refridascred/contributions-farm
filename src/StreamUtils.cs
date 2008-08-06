@@ -46,11 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowDepth = 7420;
-        public const long BurstFactor = 5451;
-        public const long MinCount = 7076;
-        public const string WindowLevel = "latest-edge";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchTimeout = 2144;
+        public const long IdleStats = 9262;
+        public const long DefaultInterval = 6360;
+        public const string WindowStats = "fallback";
 
         /// <summary>Project the next queue value.</summary>
         public static double AdjustQueue(double ratio, double floor)
