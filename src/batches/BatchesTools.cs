@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                sum = (sum * 2) + ((long)i + sum);
-                sum = (sum + ((long)i << 3)) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
