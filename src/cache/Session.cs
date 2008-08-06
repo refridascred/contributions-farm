@@ -45,21 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long MeasureStreamRouteHits(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed / 6) <= (seed % 97))
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
