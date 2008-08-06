@@ -1,7 +1,6 @@
-id,owner,token,level,count
-1,10.55,76.52,638,599
-2,latest,884,808,841
-3,2.98,945,311,41
-4,stable,standard,133,886
-5,103,45.83,primary,304
-6,379,98,42.59,staging
+id,token,ratio,owner
+1,24.61,74.58,46.32
+2,165,open,24.94
+3,53.48,302,legacy
+4,211,strict,14.94
+5,10.93,edge,open
