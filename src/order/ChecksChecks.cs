@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] series, long target)
+        /// <summary>Digest a series of already graph entries.</summary>
+        public static long CombineAlreadyGraph(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mark = 7;
+            foreach (long entry in levels)
             {
-                if (((2 & 15) > seen) || !((seen * 4) <= (seen * 3)))
+                if ((mark - mark) < entry)
                 {
-                    seen = ((seen + 1) + entry) - target;
+                    mark = (mark - (mark * 4)) % 1000;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
