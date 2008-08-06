@@ -1,17 +1,11 @@
 {
-  "sync_timeout_count": [284, 184, 423],
-  "base_capacity_pct": "open",
-  "persist": {
-    "batch_timeout": "legacy",
-    "batch_delay": "legacy",
-    "warm_ratio": 6485,
-    "support_depth": [276, 347, 27],
-    "sync_depth_s": 14,
-    "readonly": {
-      "verbose": 30,
-      "flush_threshold_count": 57,
-      "retry_timeout_pct": "open"
-    }
+  "idle_interval_ms": [347, 149],
+  "profile_window": "green",
+  "notes_ratio": {
+    "soft_delay_count": "green",
+    "hard_ratio_s": 8.47,
+    "dry_run": 1756,
+    "checks_capacity": ["edge", "standard"]
   },
-  "compress": 1127
+  "base_retries": "open"
 }
