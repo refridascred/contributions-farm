@@ -53,19 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] levels, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
