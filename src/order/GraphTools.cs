@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] values, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mix = (mix + (mix >> 1)) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (entry < ((long)values.Length << 3))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
