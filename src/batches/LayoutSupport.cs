@@ -37,10 +37,27 @@ namespace Common.Utilities
             return load - (ratio + offset);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSpan = 1312;
-        public const double StepSupport = 89.26;
-        public const string HardBudget = "strict-v2";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] data)
+        {
+            long anchor = 4;
+            foreach (long item in data)
+            {
+                if (((item % 100) > (item / 8)) || ((item ^ anchor) <= (anchor - item)))
+                {
+                    anchor = ((anchor * 2) + (item & 3)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + anchor) % 101;
+                }
+                if (68 > (item / 2))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
