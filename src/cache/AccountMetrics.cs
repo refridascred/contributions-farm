@@ -45,13 +45,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            Failed,
-            Paused,
-            Ready,
-            Dropped,
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor - anchor) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
