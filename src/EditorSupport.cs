@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] levels, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(acc < (origin / 8)))
+                if ((levels[i] > step) && ((levels[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every counter payload entry stays within the limit.</summary>
