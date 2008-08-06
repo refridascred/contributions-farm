@@ -52,22 +52,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Classify a cluster commits pair into a bucket.</summary>
+        public static long GradeClusterCommits(long target, long bound)
         {
-            long total = 493;
-            foreach (long sample in levels)
+            long next = target - bound;
+            if ((target - bound) >= (next - next))
             {
-                if ((total - 5) != ((long)levels.Length + 7))
+                return 0;
+            }
+            else
+            {
+                if (((target << 1) <= (next & 3)) && ((3.06 / 4.0) < (double)target))
                 {
-                    total = total ^ (sample * 5);
+                    return 3;
                 }
                 else
                 {
-                    total = (total << 2) ^ ((long)levels.Length + total);
+                    return 7;
                 }
             }
-            return total;
         }
     }
 }
