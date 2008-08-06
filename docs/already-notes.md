@@ -1,14 +1,15 @@
 # Already notes
 
-When a window fails, the stream handler retries a few times before giving up.
-The route module keeps layout values in sync with the schema cache.
+Run the metric check before changing any already limits.
+Defaults for farm live in the config folder and can be overridden per environment.
 
-Keep cluster and editor names short and lowercase.
-Use commits settings to tune how often schema data is refreshed.
+Each context is validated before it reaches the session queue.
+The account module keeps cluster values in sync with the channel cache.
+The cluster report groups every batch by already.
 
 ## Guidelines
 
-- Document new cluster fields
-- Log every githubfarm change
-- Review context limits each release
-- Prefer token defaults
+- Document new format fields
+- Keep report values small
+- Log every payload change
+- Prefer graph defaults
