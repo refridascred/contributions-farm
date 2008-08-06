@@ -62,22 +62,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] series, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long diff = limit - target;
+            if (((double)target >= 4.1) && ((double)limit <= (8.09 + 12.0)))
             {
-                if (!((double)limit <= (double)(long)series.Length))
+                return 2;
+            }
+            else
+            {
+                if ((double)target <= (1.59 + 3.95))
                 {
-                    count = (count + 3) ^ cell;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (99 >= (target + diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
