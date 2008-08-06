@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] levels, long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches >> 2) < (datum >> 1))
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
+            Pending,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
