@@ -53,12 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] levels, long seed)
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
