@@ -40,13 +40,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Retry,
-            Draft,
-            Paused,
-            Dropped,
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
