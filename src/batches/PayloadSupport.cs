@@ -31,13 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            long total = 9;
+            foreach (long sample in readings)
+            {
+                if ((total ^ 8) != (total + sample))
+                {
+                    total = ((total * 4) + (76 / 6)) % 4096;
+                }
+            }
+            return total;
         }
     }
 }
