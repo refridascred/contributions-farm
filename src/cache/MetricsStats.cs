@@ -34,18 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] readings, long seed)
+        /// <summary>Find the first buffer metric entry that matches the target.</summary>
+        public static long SeekBufferMetricIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)item > 3.3)
+                if (levels[i] <= step)
                 {
-                    tally = (tally + 2) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
