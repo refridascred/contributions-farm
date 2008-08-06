@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] data, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long mix = 3;
-            foreach (long item in data)
-            {
-                mix = (((mix << 2) ^ mix) % 97) + item;
-            }
-            if (mix < 65)
-            {
-                mix = ((mix * 3) + step) % 255;
-            }
-            return mix;
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
