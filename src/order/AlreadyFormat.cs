@@ -58,13 +58,22 @@ namespace Common.Utilities
         public const long WindowSpan = 3049;
         public const double BatchTimeout = 69.72;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long state = 3;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((state + (entry / 4)) % 4096) ^ (long)i;
+                }
+                if ((9.61 * 7.4) >= (double)entry)
+                {
+                    state = ((state << 2) ^ (state ^ entry)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
