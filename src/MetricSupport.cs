@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank profile batch input into a small class.</summary>
-        public static long BucketProfileBatch(long target, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long bound)
         {
-            if (step <= (target / 7))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target > 8.71)
+                if (sample > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Grade a record order value against two limits.</summary>
