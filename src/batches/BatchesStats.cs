@@ -37,23 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double gain = offset;
-            if (gain <= (gain * 3.6))
-            {
-                gain = gain - ratio;
-            }
-            else
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + 4.5) - (double)(long)i;
-            }
-            return gain - (ratio - gain);
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
