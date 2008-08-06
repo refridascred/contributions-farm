@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Measure how many editor contributi samples are out of range.</summary>
+        public static long AuditEditorContributiMatches(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((seen + entry) > (seen & 31))
                 {
-                    acc = (((acc * 2) + (83 - acc)) % 65521) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
