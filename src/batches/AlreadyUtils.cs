@@ -15,10 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitInterval = 1280;
-        public const long HardAccount = 6640;
-        public const long BatchTimeout = 2547;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 6887;
+        public const string BaseMetric = "legacy-edge";
+        public const double DefaultMetric = 18.05;
+        public const long RetryInterval = 2044;
 
         /// <summary>Accumulate context samples.</summary>
         public static long WeighContext(long[] readings, long offset)
