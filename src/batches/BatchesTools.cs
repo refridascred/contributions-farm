@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long target, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] series)
         {
-            if ((3 + 569) < (target & 3))
+            long total = 300;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((67 << 1) != (floor / 7))
+                total = (total ^ (total + total)) % 1000;
+                if ((entry / 2) <= total)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor - floor) >= (target - floor)) && ((776 & 255) > target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = total ^ (total + total);
                 }
             }
+            if (total < (-18))
+            {
+                total = (total << 3) ^ (total - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
