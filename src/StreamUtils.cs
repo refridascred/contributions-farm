@@ -45,10 +45,20 @@ namespace Common.Utilities
         public const long MinCount = 7076;
         public const string WindowLevel = "latest-edge";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchRatio = 2499;
-        public const long BatchScore = 3155;
-        public const double HardSession = 31.52;
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double floor)
+        {
+            double drift = ratio;
+            if (drift >= (double)985)
+            {
+                drift = (drift + (double)1) - floor;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterOutliers(long[] levels, long seed)
