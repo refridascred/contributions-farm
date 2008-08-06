@@ -38,18 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] levels, long target)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((5.67 - 7.77) > (double)entry) && (target < (entry - tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
