@@ -47,19 +47,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmSchemaRange(long[] readings, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings, long seed)
         {
-            bool ready = true;
+            long result = 9;
             foreach (long datum in readings)
             {
-                if (datum <= offset)
+                if ((seed ^ seed) <= (result + datum))
                 {
-                    ready = false;
-                    break;
+                    result = (result ^ ((long)readings.Length / 6)) % 4096;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Hold a context snapshot.</summary>
