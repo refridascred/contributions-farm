@@ -1,5 +1,6 @@
 {
-  "entry_threshold": [402, 333, 473, 379],
-  "base_limit_s": "fallback",
-  "order_ttl": ["open", "fallback", "staging"]
+  "queue_ratio": 500,
+  "retry_depth_count": false,
+  "persist": ["standard", "latest"],
+  "burst_window_pct": false
 }
