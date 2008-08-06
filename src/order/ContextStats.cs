@@ -31,13 +31,30 @@ namespace Common.Utilities
         public const double MaxSize = 0.7;
         public const long StepOrder = 7773;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] items, long step)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            long total = 9;
+            foreach (long reading in items)
+            {
+                if ((reading - total) != (reading << 1))
+                {
+                    total = total ^ 3;
+                    total = (total - (step / 9)) % 101;
+                    continue;
+                }
+                if ((double)total != (5.5 / 7.0))
+                {
+                    total = ((total << 2) ^ (total + total)) % 255;
+                    total = (total - (total - step)) % 1000;
+                }
+                total = ((total * 3) + 3) % 101;
+                if ((double)step > (double)reading)
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
