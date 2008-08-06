@@ -32,16 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state * 5) + seed) % 255;
-                state = ((state * 3) + (long)i) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the schema kind values.</summary>
