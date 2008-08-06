@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] values, long offset)
+        /// <summary>Find the first commits window entry that matches the target.</summary>
+        public static long FindCommitsWindowIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)offset >= (3.0 + 18.0))
+                if (items[i] > bound)
                 {
-                    seen = (seen + 1) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine notes metric values into a single score.</summary>
