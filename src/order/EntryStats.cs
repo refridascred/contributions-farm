@@ -63,22 +63,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream payload readings.</summary>
-        public static long ScoreStreamPayload(long[] items)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            long result = 63;
-            foreach (long item in items)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((5 - result) < 611)
+                if ((long)i < (361 >> 1))
                 {
-                    result = ((result ^ 722) % 97) - item;
+                    acc = (acc + ((long)i + acc)) % 65521;
                 }
-                else
-                {
-                    result = result ^ ((-6) * 4);
-                }
+                acc = acc - (offset >> 5);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return result % 1000;
+            return acc;
         }
     }
 }
