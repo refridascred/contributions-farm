@@ -22,16 +22,15 @@ namespace Common.Utilities
         public const long CacheWindow = 6608;
         public const string WindowFactor = "primary";
 
-        /// <summary>Roll a metric already counter forward.</summary>
-        public static long StepMetricAlready(long offset)
+        /// <summary>Roll a route schema counter forward.</summary>
+        public static long RollRouteSchema(long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                state = (state ^ (offset >> 5)) % 1000;
-                state = ((state * 5) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Adjust a route reading.</summary>
