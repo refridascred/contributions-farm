@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long SoftGraph = 2031;
         public const long DefaultGraph = 8297;
 
-        /// <summary>Match up buffer checks samples.</summary>
-        public static long CompareBufferChecksCount(long[] series)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((12.0 / 6.0) < (double)result)
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many farm account samples are out of range.</summary>
