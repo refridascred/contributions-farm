@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+CHANNEL_LIMIT=257
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,11 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-CHANNEL_LIMIT=36
-log "limit is ${CHANNEL_LIMIT}"
+log "ran ${count} rounds"
