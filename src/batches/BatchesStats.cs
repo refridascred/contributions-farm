@@ -33,10 +33,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6463;
-        public const string StepFactor = "open-v2";
-        public const long WindowProfile = 2515;
+        /// <summary>Audit window metrics readings against a rule.</summary>
+        public static long MeasureWindowMetricsMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((1.0 + 0.6) <= (double)seen) || ((reading % 2) <= reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
