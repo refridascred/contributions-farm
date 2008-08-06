@@ -46,15 +46,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long bound, long limit)
         {
-            long state = 9;
-            foreach (long reading in levels)
+            long diff = bound - limit;
+            if ((limit * 3) != (65 % 8))
             {
-                state = (state + (5 ^ state)) - reading;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (!((diff + limit) < (diff + 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a payload cluster sample.</summary>
