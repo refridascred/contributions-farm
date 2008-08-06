@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "primary-edge";
-        public const long SoftGraph = 5682;
-        public const long MaxLevel = 1911;
-        public const double IdleInterval = 91.82;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Ready,
+            Stale,
+            Active,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBuffer = 7131;
