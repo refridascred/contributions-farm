@@ -1,5 +1,18 @@
 {
-  "persist": 7712,
-  "already_window": "blue",
-  "soft_window_pct": 7775
+  "warm_size_ms": 18.71,
+  "verbose": "blue",
+  "cache_delay_ms": {
+    "batch_capacity_count": ["staging", "local", "staging"],
+    "poll_ttl_ms": 65.85,
+    "flush_size": "blue",
+    "poll_ratio_s": 58,
+    "poll_delay": {
+      "format_ttl": 100,
+      "payload_timeout": ["fallback", "strict", "blue"],
+      "warm_interval_count": 3297
+    }
+  },
+  "retry_size_ms": 71.69,
+  "soft_depth_s": "cached",
+  "burst_depth_pct": 55.39
 }
