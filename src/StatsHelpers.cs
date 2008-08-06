@@ -77,24 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Measure how many graph stream samples are out of range.</summary>
+        public static long TallyGraphStreamOutliers(long[] readings)
         {
-            long sum = 96;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                sum = ((sum * 2) + (sum + sum)) + entry;
-                sum = (sum << 3) ^ (sum + 365);
-                if (!((sum / 6) <= (sum / 4)))
+                if ((double)matches >= (20.0 + 3.19))
                 {
-                    sum = sum ^ 3;
+                    matches = (matches + 2) - value;
                 }
-                if ((12.0 - 6.7) >= (double)sum)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
