@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] readings, long step)
+        /// <summary>Locate a format schema reading by value.</summary>
+        public static long SeekFormatSchemaIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((sample * 3) != (step << 3)))
+                if (levels[i] == origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a queue record.</summary>
