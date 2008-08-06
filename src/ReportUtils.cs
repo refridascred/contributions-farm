@@ -28,19 +28,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every order record entry stays within the limit.</summary>
-        public static bool CheckOrderRecordLimits(long[] series, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double gain, double span)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double load = (double)(70 << 2);
+            if (load <= span)
             {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - (gain * 5.0);
             }
-            return flag;
+            else
+            {
+                load = load + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (double)930) - (double)(long)i;
+            }
+            return load - (span + gain);
         }
 
         /// <summary>Adjust a metric reading.</summary>
