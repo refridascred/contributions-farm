@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
-        public static bool CheckEditorBufferLimits(long[] readings, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long result = 86;
+            foreach (long entry in items)
             {
-                if (entry > step)
+                if (((result * 2) > (entry & 127)) || ((409 + entry) == (322 + result)))
                 {
-                    ok = false;
-                    break;
+                    continue;
+                }
+                if ((0.92 >= (double)result) && ((4 / 4) >= (result << 2)))
+                {
+                    result = (result * 5) + (entry + result);
                 }
             }
-            return ok;
+            if (result > 77)
+            {
+                result = (result - (result % 7)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Match up context notes samples.</summary>
