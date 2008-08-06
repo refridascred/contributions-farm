@@ -58,22 +58,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many schema farm samples are out of range.</summary>
-        public static long MeasureSchemaFarmGaps(long[] values, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((708 <= ((long)values.Length + count)) || ((step ^ sample) > 444))
+                if ((series[i] > target) && ((series[i] % 2) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
