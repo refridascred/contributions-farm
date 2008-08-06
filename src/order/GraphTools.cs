@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] samples, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (sample > origin)
+                if ((origin << 3) < value)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
