@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count >= (9.9 + 5.0))
-                {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "legacy";
+        public const double BurstFactor = 84.56;
+        public const long MinFactor = 9721;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long step, long origin)
