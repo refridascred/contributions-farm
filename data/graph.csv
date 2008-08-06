@@ -1,6 +1,6 @@
-id,level,weight
-1,107,strict
-2,fallback,legacy
-3,726,656
-4,staging,166
-5,stable,158
+id,region,ratio,label,state
+1,staging,staging,stable,58.98
+2,local,open,88.15,266
+3,staging,81.49,27.24,standard
+4,421,86.25,55,370
+5,green,516,32.17,edge
