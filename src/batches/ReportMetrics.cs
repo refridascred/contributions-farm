@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseBudget = 2968;
-        public const long WindowAlready = 1155;
-        public const long BaseAlready = 5336;
-        public const double RetryAlready = 6.95;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Paused,
+            New,
+            Closed,
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesLimits(long[] levels, long offset)
