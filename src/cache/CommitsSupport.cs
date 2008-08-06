@@ -49,22 +49,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long acc = 19;
-            foreach (long entry in series)
-            {
-                if (885 <= (entry << 3))
-                {
-                    acc = (acc + (87 / 7)) % 101;
-                }
-                if ((acc + 37) != (acc ^ 743))
-                {
-                    acc = acc ^ (entry * 5);
-                }
-            }
-            return acc;
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Accumulate editor samples.</summary>
