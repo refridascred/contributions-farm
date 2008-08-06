@@ -1,16 +1,15 @@
 {
-  "stream_threshold": "eu-west",
-  "dry_run": 100,
-  "max_limit_ms": {
-    "soft_size_ms": 48.26,
-    "readonly": {
-      "stats_depth": false,
-      "record_limit": 100,
-      "strict": false
+  "hard_depth_ms": 34,
+  "hard_interval_s": {
+    "report_threshold": {
+      "sync_ratio": "stable",
+      "poll_timeout": "eu-west",
+      "context_capacity": 27,
+      "max_delay": 9
     },
-    "cache_delay": "green",
-    "retry_threshold_pct": [384, 404, 135, 216],
-    "audit": "stable",
-    "hard_limit_count": 8.62
-  }
+    "burst_depth_s": true,
+    "idle_retries": 74.58
+  },
+  "warm_delay_ms": 22.42,
+  "soft_capacity_s": 96
 }
