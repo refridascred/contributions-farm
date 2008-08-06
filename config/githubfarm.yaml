@@ -1,16 +1,10 @@
 # githubfarm settings
-max_retries_s:
-  compress: 4112
-  poll_delay: legacy
-  flush_capacity_count: false
-  burst_depth_pct: standard
-  warm_window_count:
-    idle_ratio_s: false
-    strict: 56
-    idle_depth_pct: 60
-token_capacity:
-  - 260
-  - 424
-context_delay: strict
-flush_delay_count: 51.31
-batch_capacity: 94
+sync_size: cached
+strict: false
+poll_window_pct: 40.42
+flush_interval:
+  hard_capacity_pct: 500
+  cache_timeout_count: local
+  max_size_s: blue
+soft_limit_s: eu-west
+max_depth_count: 96.48
