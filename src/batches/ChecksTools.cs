@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((9.06 + 1.74) == (double)floor)
             {
-                if ((datum << 2) > (datum % 10))
+                return 7;
+            }
+            else
+            {
+                if ((floor + (-19)) > (183 + floor))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.43 - 3.0) <= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of layout already readings.</summary>
