@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-The profile report groups every cluster by graph.
-Use queue settings to tune how often account data is refreshed.
+When a format fails, the counter handler retries a few times before giving up.
+Keep session and command names short and lowercase.
+Run the format check before changing any editor limits.
 
 ## Guidelines
 
-- Validate payload input early
-- Log every report change
-- Document new buffer fields
-- Keep filter values small
+- Log every order change
+- Keep contributi values small
+- Prefer metric defaults
+- Document new checks fields
