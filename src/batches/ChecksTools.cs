@@ -32,15 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout already readings.</summary>
-        public static long DigestLayoutAlready(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long step, long origin)
         {
-            long acc = 804;
-            foreach (long cell in values)
+            if (step > origin)
             {
-                acc = acc + (cell >> 5);
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((double)origin > (3.7 + 8.9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
