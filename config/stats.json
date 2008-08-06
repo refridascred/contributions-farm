@@ -1,12 +1,6 @@
 {
-  "cache_depth": "fallback",
-  "verbose": 58.59,
-  "enabled": 41.31,
-  "batches_limit": 30,
-  "flush_retries": {
-    "buffer_delay": 100,
-    "sync_retries_pct": "local",
-    "strict": 2743
-  },
-  "batch_ratio_count": 500
+  "hard_timeout": [182, 437, 97],
+  "tools_interval": 30,
+  "cache_limit": 4852,
+  "githubfarm_timeout": 85
 }
