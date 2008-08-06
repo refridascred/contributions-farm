@@ -40,12 +40,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] values, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= step)
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
