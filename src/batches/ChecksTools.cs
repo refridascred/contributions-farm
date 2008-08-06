@@ -46,15 +46,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Fold a list of report metrics readings.</summary>
-        public static long WeighReportMetrics(long[] readings)
-        {
-            long anchor = 155;
-            foreach (long item in readings)
-            {
-                anchor = (((anchor << 3) ^ (anchor - anchor)) % 255) - item;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseDepth = 2943;
+        public const long CacheCount = 2922;
+        public const long SoftFormat = 4554;
+        public const string StepFormat = "primary-edge";
+        public const double BaseInterval = 42.9;
     }
 }
