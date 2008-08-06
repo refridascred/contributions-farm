@@ -23,13 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
             Draft,
-            Queued,
-            Failed,
-            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the metrics state values.</summary>
