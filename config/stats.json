@@ -1,14 +1,10 @@
 {
-  "payload_capacity": true,
-  "queue_threshold": true,
-  "audit": 5833,
-  "idle_retries_pct": "stable",
-  "max_delay": 1131,
-  "contributi_timeout": {
-    "batch_size_pct": "cached",
-    "commits_interval": true,
-    "flush_limit_count": 45.73,
-    "window_interval": "fallback",
-    "support_timeout": true
-  }
+  "hard_timeout_ms": "edge",
+  "format_limit": {
+    "strict": 86.36,
+    "cache_limit": 38.05,
+    "retry_delay_s": true,
+    "hard_capacity_count": true
+  },
+  "flush_threshold": 66.55
 }
