@@ -1,8 +1,5 @@
 # entry settings
-audit:
-  - 6
-  - 326
-  - 496
-  - 179
-soft_window: 14.26
-soft_depth_count: 6263
+idle_ratio: false
+hard_delay_s: 12
+sync_capacity_count: 79.25
+strict: false
