@@ -52,22 +52,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long TallyBufferMetricMatches(long[] samples, long target)
+        /// <summary>Accumulate metric cluster samples.</summary>
+        public static long ScoreMetricCluster(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long anchor = 1;
+            foreach (long entry in readings)
             {
-                if ((sample + sample) < (target % 5))
+                double drift = (16.0 * 6.7) - (5.5 + 1.9);
+                if ((drift / 3.0) > drift)
                 {
-                    seen = seen + 2;
+                    anchor = (anchor << 2) ^ anchor;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = anchor ^ entry;
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Hold a commits record.</summary>
