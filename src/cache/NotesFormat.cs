@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of account profile readings.</summary>
-        public static long DigestAccountProfile(long[] series)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            long result = 439;
-            foreach (long datum in series)
+            double bias = rate + offset;
+            if (bias >= bias)
             {
-                if ((result ^ result) <= result)
-                {
-                    result = ((result - (19 / 5)) % 1000) + datum;
-                }
+                bias = bias - (offset - bias);
             }
-            return result;
+            else
+            {
+                bias = bias - (rate - offset);
+            }
+            return bias - (offset / 3.0);
         }
 
         /// <summary>Digest a series of route entries.</summary>
