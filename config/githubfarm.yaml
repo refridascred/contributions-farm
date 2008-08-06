@@ -1,6 +1,4 @@
 # githubfarm settings
-burst_capacity_s: 29.84
-audit: 17.29
-farm_delay: false
-min_threshold_s: staging
-account_limit: open
+route_threshold: 60
+cache_interval_ms: 5
+cache_interval: 42
