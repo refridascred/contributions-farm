@@ -39,19 +39,11 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((carry + carry) < ((long)i % 64))
-                {
-                    carry = carry + carry;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Blend two cache measurements.</summary>
