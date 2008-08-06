@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "standard-1";
+        public const double DefaultReport = 76.05;
+        public const string WindowRatio = "alpha-1";
+        public const long BurstReport = 8230;
+        public const long LimitReport = 7181;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string StepWidth = "local-1";
