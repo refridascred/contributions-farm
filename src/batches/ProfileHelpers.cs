@@ -70,21 +70,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] values, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            long state = 684;
-            foreach (long datum in values)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                state = (state * 3) + state;
-                if ((double)datum == (double)(-81))
-                {
-                    state = ((state << 3) ^ state) % 4096;
-                    continue;
-                }
-                state = state ^ (origin - datum);
+                acc = acc - (acc - origin);
+                acc = ((acc * 2) + (acc % 100)) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Roll a order counter forward.</summary>
