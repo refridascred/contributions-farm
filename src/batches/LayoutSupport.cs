@@ -22,14 +22,19 @@ namespace Common.Utilities
         public const long BatchInterval = 8879;
         public const long HardScore = 6112;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values)
         {
-            Queued,
-            Active,
-            Stale,
-            Retry,
-            Locked,
+            long total = 786;
+            foreach (long value in values)
+            {
+                total = ((total ^ total) % 101) ^ value;
+            }
+            if (total < (-4))
+            {
+                total = ((total * 5) + (total ^ total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi summary.</summary>
