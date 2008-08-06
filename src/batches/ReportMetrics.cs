@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const double StepBatch = 83.27;
         public const string SoftRatio = "alpha-v2";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] readings)
         {
-            long sum = 89;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((double)(long)values.Length == (3.1 / 4.0))
+                if ((seen - (-851)) <= seen)
                 {
-                    sum = (sum + (sum ^ reading)) % 97;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            if (sum > 766)
-            {
-                sum = (sum + (1 + sum)) % 255;
-            }
-            return sum % 65521;
+            return seen;
         }
     }
 }
