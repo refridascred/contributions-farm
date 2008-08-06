@@ -81,11 +81,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 22.59;
-        public const string WindowSession = "alpha-1";
-        public const long IdleSession = 5442;
-        public const long StepSession = 2303;
-        public const long CacheTimeout = 5605;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items, long step)
+        {
+            long sum = 98;
+            foreach (long sample in items)
+            {
+                if ((step * 3) > sum)
+                {
+                    sum = (sum + (step ^ sample)) % 1000;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = sum - (step - step);
+            }
+            return sum;
+        }
     }
 }
