@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long bound, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            if ((double)bound != (double)460)
+            long acc = 81;
+            foreach (long cell in levels)
             {
-                return 4;
+                acc = ((acc + acc) % 101) - cell;
             }
-            else
-            {
-                if ((bound * 5) >= (step / 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
