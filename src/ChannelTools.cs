@@ -39,15 +39,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double rate, double span)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long offset, long bound)
         {
-            double ratio = (span + 16.0) - 7.42;
-            for (int i = 0; i < 8; i++)
+            long offset2 = offset ^ bound;
+            if ((8.8 / 7.0) > (double)offset2)
             {
-                ratio = (ratio + (ratio - rate)) - (double)(long)i;
+                return 4;
             }
-            return ratio - span;
+            else
+            {
+                if ((offset2 >= (offset2 >> 5)) && (offset2 < (offset - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset + offset) < (offset / 7)) || ((bound & 63) >= (985 * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
