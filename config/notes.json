@@ -1,10 +1,21 @@
 {
-  "enabled": "edge",
-  "already_delay": true,
-  "base_delay": {
-    "poll_capacity_ms": "primary",
-    "persist": "standard",
-    "metrics_interval": ["cached", "latest"],
-    "audit": 47
-  }
+  "audit": 19.71,
+  "sync_size_pct": {
+    "audit": 1546,
+    "idle_retries": {
+      "poll_limit_count": [135, 22, 102, 258],
+      "idle_limit": 42.1,
+      "strict": 73,
+      "max_capacity": 7840,
+      "min_retries": ["open", "cached"]
+    },
+    "soft_capacity_s": 6203,
+    "max_delay": true,
+    "compress": [211, 405],
+    "already_depth": false
+  },
+  "cache_retries_ms": 80,
+  "hard_capacity": 100,
+  "tools_depth": false,
+  "burst_threshold": ["eu-west", "green", "open", "open"]
 }
