@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
@@ -17,7 +17,11 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+for item in staging primary; do
+    log "checking ${item}"
+done
