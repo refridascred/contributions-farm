@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "local";
-        public const long BaseTimeout = 4571;
-        public const double CacheCluster = 30.66;
-        public const long MinInterval = 1935;
+        /// <summary>Measure how many tools report samples are out of range.</summary>
+        public static long TallyToolsReportGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((step - seen) == (seen / 9))
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
