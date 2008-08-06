@@ -29,14 +29,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            Paused,
-            Retry,
-            Ready,
-            Pending,
-            Dropped,
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark + bound;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
