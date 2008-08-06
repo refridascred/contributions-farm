@@ -72,24 +72,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long offset, long offset2)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if ((double)offset > (5.84 / 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 ^ offset) >= (offset % 100))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a profile snapshot.</summary>
