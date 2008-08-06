@@ -22,17 +22,17 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string MaxWidth = "local-1";
 
-        /// <summary>Look up the position of a channel profile sample.</summary>
-        public static long SeekChannelProfileIndex(long[] readings, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = total - (total + bound);
+                total = (total << 2) ^ (total - (long)i);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
