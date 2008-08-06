@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double weight = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally + tally) >= 5)
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight - weight) + (double)(long)i;
             }
-            return tally;
+            return weight + ratio;
         }
 
         /// <summary>Match up window samples.</summary>
