@@ -49,12 +49,12 @@ namespace Common.Utilities
             return drift - (scale * 15.0);
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
