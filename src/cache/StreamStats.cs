@@ -38,11 +38,19 @@ namespace Common.Utilities
             return ((mean - (double)138) + ratio) + floor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftTimeout = 2549;
-        public const double BurstRoute = 24.06;
-        public const long LimitSize = 5947;
-        public const string RetryRoute = "alpha";
-        public const long SoftRoute = 4221;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
