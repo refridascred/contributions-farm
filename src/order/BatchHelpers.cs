@@ -14,21 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of account tools readings.</summary>
-        public static long CompareAccountToolsCount(long[] samples)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the filter already entries that pass the check.</summary>
