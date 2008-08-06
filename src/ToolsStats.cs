@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftFactor = 8462;
+        public const long WindowRatio = 2922;
+        public const double WindowSize = 94.93;
+        public const long MinTools = 8966;
+        public const string MaxScore = "primary-edge";
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] items)
