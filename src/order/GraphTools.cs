@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the editor checks series from a seed.</summary>
-        public static long RollEditorChecks(long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] levels, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                total = (total << 3) ^ (seed ^ seed);
-                total = ((total * 3) + (long)i) % 1000;
+                if ((double)target == (4.65 - 6.5))
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
