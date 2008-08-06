@@ -32,18 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema commits entries that pass the check.</summary>
-        public static long TallySchemaCommitsGaps(long[] samples)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)tally <= (double)sample)
-                {
-                    tally = tally + 3;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
     }
 }
