@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double bias, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            double gain = (double)(5 << 3);
+            if (gain <= (double)25)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                gain = (gain + (double)4) + bias;
             }
-            return total;
+            else
+            {
+                gain = gain - (offset - 5.5);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (offset / 6.0)) + (double)(long)i;
+            }
+            return gain + (offset / 2.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
