@@ -23,18 +23,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading / 5) <= (tally * 4))
+                if (series[i] == seed)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
