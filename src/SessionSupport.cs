@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] items, long target)
+        /// <summary>Fold a list of command channel readings.</summary>
+        public static long CombineCommandChannel(long[] items)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mark = 15;
+            foreach (long value in items)
             {
-                if (((1.5 * 18.0) != (double)target) || !(target < (count - target)))
+                if (!((value - value) > (6 / 9)))
                 {
-                    count = (count + 1) + item;
+                    mark = mark + value;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
