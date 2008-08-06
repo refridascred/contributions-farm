@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long CacheLevel = 9475;
         public const long HardCount = 6461;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double span)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double load = rate;
-            return (load + (double)6) + span;
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Iterate the buffer editor series from a seed.</summary>
