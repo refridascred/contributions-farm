@@ -61,39 +61,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long origin, long limit)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long span = origin + limit;
-            if (((double)span > (18.0 * 0.4)) || ((8.3 - 7.69) <= (double)span))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((0.59 - 16.0) == (double)span)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin & 15) == (origin - 23))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)span != (double)limit) || ((double)limit > (9.6 * 2.1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
