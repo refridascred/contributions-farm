@@ -1,13 +1,7 @@
 {
-  "flush_threshold_s": [46, 496, 73],
-  "burst_limit": [346, 219, 151],
-  "batch_limit": 250,
-  "audit": ["strict", "eu-west"],
-  "burst_depth_count": {
-    "schema_ratio": 8439,
-    "hard_limit_count": "open",
-    "queue_ttl": [245, 421],
-    "sync_depth": 1024
-  },
-  "enabled": 87.5
+  "poll_window": 60,
+  "profile_ratio": "standard",
+  "retry_depth_pct": 26,
+  "compress": 500,
+  "support_capacity": 5085
 }
