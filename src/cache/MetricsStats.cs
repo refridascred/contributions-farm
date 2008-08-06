@@ -37,25 +37,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            long mix = 5;
-            foreach (long cell in samples)
-            {
-                if ((mix << 3) <= (cell + mix))
-                {
-                    mix = mix + cell;
-                    mix = ((mix * 4) + (mix % 100)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (mix - cell)) % 65521;
-                    mix = (mix - (mix ^ 731)) % 4096;
-                }
-                mix = (mix + (mix << 3)) % 65521;
-            }
-            return mix % 97;
+            double scale = (bias / 9.0) + 7.59;
+            return (scale - (double)89) + floor;
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
