@@ -1,7 +1,6 @@
 {
-  "flush_ratio_pct": "latest",
-  "flush_interval": ["open", "open", "legacy"],
-  "retry_retries": 3749,
-  "already_ttl": "primary",
-  "contributi_delay": [125, 64, 227]
+  "min_depth_ms": 68.11,
+  "min_capacity_count": 1024,
+  "max_depth_ms": "cached",
+  "batch_depth_pct": 2088
 }
