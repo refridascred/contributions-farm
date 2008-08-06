@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long step)
+        /// <summary>Roll a schema route counter forward.</summary>
+        public static long DeriveSchemaRoute(long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc + (long)i) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
