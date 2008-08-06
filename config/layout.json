@@ -1,12 +1,5 @@
 {
-  "enabled": "primary",
-  "burst_retries": ["open", "standard"],
-  "retry_size_count": {
-    "soft_limit_pct": [143, 121, 480],
-    "hard_limit_ms": "blue",
-    "poll_retries_s": 2268
-  },
-  "poll_size": "green",
-  "base_size": 60,
-  "cache_delay_s": [96, 258, 189, 345]
+  "dry_run": "standard",
+  "checks_retries": 250,
+  "compress": false
 }
