@@ -1,6 +1,9 @@
-id,region,weight,level,rank
-1,73.55,legacy,302,primary
-2,650,16,318,primary
-3,open,465,500,300
-4,latest,eu-west,57.96,primary
-5,strict,94.76,39,legacy
+id,count,weight,owner,active
+1,edge,193,edge,31.44
+2,305,985,32.72,fallback
+3,450,87.55,288,local
+4,15.26,89.5,97.02,latest
+5,312,234,486,285
+6,265,97.52,43.71,887
+7,open,36.65,82.85,969
+8,392,33,524,975
