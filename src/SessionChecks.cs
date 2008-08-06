@@ -28,10 +28,12 @@ namespace Common.Utilities
             return ((rate + (double)(-91)) + bias) + span;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultBudget = 83.72;
-        public const double CacheCount = 24.28;
-        public const long SoftFarm = 9588;
-        public const double CacheFarm = 19.15;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
