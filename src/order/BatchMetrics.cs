@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph schema values into a single score.</summary>
-        public static long FoldGraphSchema(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] items, long offset)
         {
-            long sum = 6;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((cell ^ cell) <= cell) || ((sum & 31) <= (cell + cell)))
+                if (offset > (hits << 1))
                 {
-                    sum = (sum - (cell - sum)) % 255;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
