@@ -42,19 +42,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] series, long floor)
+        /// <summary>Count the editor stats entries that pass the check.</summary>
+        public static long CountEditorStatsMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (cell < floor)
+                if ((double)entry > 8.0)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
