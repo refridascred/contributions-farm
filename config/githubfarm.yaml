@@ -1,29 +1,15 @@
 # githubfarm settings
-hard_timeout:
-  - 82
-  - 38
-  - 212
-base_retries:
-  strict: 24.77
-  burst_timeout_ms: false
-  flush_depth_s: standard
-  sync_limit_s: open
-  idle_depth_ms: eu-west
-  route_delay: 12
-dry_run:
-  warm_ttl_pct: latest
-  hard_ratio_ms: standard
-  retry_window: 26
-  profile_timeout:
-    verbose: false
-    strict:
-      - 479
-      - 305
-    min_window_count: 32.63
-    graph_retries: 368
-verbose:
-  - 84
-  - 491
-  - 329
-max_interval: standard
-counter_limit: false
+idle_retries_pct:
+  compress: open
+  flush_retries_s: true
+  strict: 100
+  base_ttl_s: false
+  idle_interval_ms: primary
+  notes_depth: staging
+context_timeout:
+  - local
+  - staging
+  - local
+sync_threshold_ms: 91
+max_ratio_s: 6999
+enabled: 18.86
