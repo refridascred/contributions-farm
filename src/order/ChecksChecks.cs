@@ -23,21 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format support samples.</summary>
-        public static long MatchFormatSupportCount(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
