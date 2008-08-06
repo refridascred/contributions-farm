@@ -18,10 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 7030;
-        public const long DefaultDepth = 4969;
-        public const long DefaultFormat = 6092;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long offset, long bound)
+        {
+            long lane = offset + bound;
+            if (bound >= (offset >> 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + lane) < (offset + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset <= (2.29 - 6.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (10.0 > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricRange(long[] items, long limit)
