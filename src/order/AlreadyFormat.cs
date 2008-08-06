@@ -35,21 +35,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch notes pairs that satisfy a relation.</summary>
-        public static long CompareBatchNotesCount(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 9;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.8 + 7.0) < (double)acc)
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (cell / 6)) % 1000;
+                }
+                acc = ((acc * 4) + (6 * 4)) % 1000;
+                if (((acc / 5) <= acc) || ((cell + acc) > acc))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc < 0)
+            {
+                acc = ((acc * 5) + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
