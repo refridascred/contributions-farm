@@ -48,13 +48,12 @@ namespace Common.Utilities
             return weight + 4.9;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Ready,
-            Stale,
+            Pending,
             Idle,
-            Queued,
+            Ready,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
