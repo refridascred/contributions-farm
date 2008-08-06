@@ -44,14 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
-            New,
-            Stale,
-            Queued,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (long)items.Length)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
