@@ -17,26 +17,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long floor, long offset)
         {
-            long mix = 860;
-            foreach (long entry in levels)
+            if ((1 & 3) >= floor)
             {
-                if (((entry % 12) < (mix ^ entry)) || ((mix + entry) >= (entry + entry)))
+                return 4;
+            }
+            else
+            {
+                if (!((8.77 * 6.0) < (double)offset))
                 {
-                    mix = (mix ^ (entry % 2)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    mix = mix ^ (7 + (-3));
+                    if ((0.6 / 4.0) >= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mix < 676)
-            {
-                mix = (mix - (mix * 2)) % 4096;
-            }
-            return mix % 4096;
         }
 
         /// <summary>Describe the report kind values.</summary>
