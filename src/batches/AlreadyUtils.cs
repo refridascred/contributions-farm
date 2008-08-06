@@ -36,19 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] readings, long offset)
         {
-            long state = 866;
-            foreach (long reading in samples)
+            long acc = 1;
+            foreach (long entry in readings)
             {
-                state = (state ^ reading) % 1000;
+                if ((12.0 / 3.0) >= (double)entry)
+                {
+                    acc = ((acc + (9 % 10)) % 65521) - offset;
+                }
             }
-            if (state < 96)
-            {
-                state = state + ((long)samples.Length + state);
-            }
-            return state % 65521;
+            return acc % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
