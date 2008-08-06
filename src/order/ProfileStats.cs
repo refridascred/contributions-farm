@@ -14,19 +14,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the counter metrics entries that pass the check.</summary>
-        public static long TallyCounterMetricsMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((((sample ^ seen) < sample) && ((4 - (-6)) <= seen)) || ((488 % 2) > (sample * 4)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "stable-v2";
+        public const string BurstLevel = "fallback-1";
+        public const string BatchStats = "alpha";
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
