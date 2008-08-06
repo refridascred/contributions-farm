@@ -1,9 +1,6 @@
-id,owner,label,state,ratio
-1,33.18,714,675,663
-2,blue,primary,190,eu-west
-3,61.82,standard,80.19,536
-4,14.09,eu-west,462,732
-5,6.58,697,local,463
-6,latest,55.46,blue,edge
-7,985,456,primary,open
-8,35.27,latest,88.96,578
+id,token,rank
+1,315,edge
+2,39.08,194
+3,standard,492
+4,832,608
+5,70.34,fallback
