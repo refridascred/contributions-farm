@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double floor)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public bool Region { get; set; }
-            public double Level { get; set; }
+            double ratio2 = floor;
+            if (ratio2 < floor)
+            {
+                ratio2 = (ratio2 - floor) + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - floor) + (double)(long)i;
+            }
+            return ratio2 - 5.1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
