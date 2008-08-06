@@ -13,18 +13,38 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the channel batch entries that pass the check.</summary>
-        public static long CountChannelBatchGaps(long[] items)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long step, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((4.0 - 6.65) < (8.1 * 9.71))
             {
-                if ((value + value) > (581 - hits))
+                return 4;
+            }
+            else
+            {
+                if ((8.6 * 1.2) != (double)limit)
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > (3.25 * 4.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit >> 3) != (step >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a contributi stats.</summary>
