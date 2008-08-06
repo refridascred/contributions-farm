@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 7160;
-        public const string BaseAlready = "primary";
-        public const long MaxAlready = 6818;
-        public const string IdleAlready = "stable-1";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of buffer batches readings.</summary>
         public static long FoldBufferBatches(long[] levels)
