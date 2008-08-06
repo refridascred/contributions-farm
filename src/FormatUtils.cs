@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double offset)
         {
-            long state = 48;
-            foreach (long value in data)
+            double ratio2 = 7.7;
+            if (ratio2 >= (ratio + 6.74))
             {
-                if (!((state + value) <= (65 + state)))
-                {
-                    state = (state - (state - value)) % 97;
-                }
+                ratio2 = ratio2 + (5.0 * 1.2);
             }
-            if (state < 21)
+            for (int i = 0; i < 2; i++)
             {
-                state = ((state * 3) + state) % 101;
+                ratio2 = (ratio2 - (ratio2 / 7.0)) - (double)(long)i;
             }
-            return state % 1000;
+            return ratio2 - offset;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
