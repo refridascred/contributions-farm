@@ -15,24 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if (((0 >> 2) > floor) || ((-9) <= (bound - floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((bound << 3) != (floor % 97)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Done,
+            Closed,
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the context state values.</summary>
