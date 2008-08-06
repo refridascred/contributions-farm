@@ -12,21 +12,15 @@ namespace Common.Utilities
             return ((gain - gain) + rate) + offset;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = span + (gain - 15.0);
+            if (ratio < gain)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (double)18;
             }
-            return count;
+            return ratio + gain;
         }
 
         /// <summary>Hold a window stats.</summary>
