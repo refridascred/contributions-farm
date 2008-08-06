@@ -58,32 +58,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long bound)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long delta = offset ^ bound;
-            if (7.0 >= (double)delta)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((1.02 / 7.0) < (double)delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((delta + offset) <= (offset / 2)) && (((-64) & 255) > bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
