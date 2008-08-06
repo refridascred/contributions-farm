@@ -63,11 +63,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 5800;
+        public const long SoftSpan = 6102;
+        public const double DefaultLevel = 12.43;
+        public const long LimitRatio = 9672;
     }
 }
