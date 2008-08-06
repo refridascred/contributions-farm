@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] series, long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (offset <= (487 - 1))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Idle,
+            Active,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
