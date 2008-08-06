@@ -25,15 +25,9 @@ namespace Common.Utilities
         public const long DefaultGraph = 2504;
         public const long BaseGraph = 8571;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 7036;
+        public const long HardRatio = 9497;
+        public const long BatchSize = 1880;
     }
 }
