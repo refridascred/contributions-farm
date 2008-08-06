@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream tools samples are out of range.</summary>
-        public static long CountStreamToolsGaps(long[] samples)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) > (hits * 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the editor class values.</summary>
