@@ -16,14 +16,12 @@ namespace Common.Utilities
             return weight + (floor + floor);
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Paused,
-            Pending,
-            New,
-            Active,
-            Locked,
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
