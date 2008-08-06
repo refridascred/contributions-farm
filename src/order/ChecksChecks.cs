@@ -20,18 +20,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of already graph entries.</summary>
-        public static long CombineAlreadyGraph(long[] levels)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long origin)
         {
-            long mark = 7;
-            foreach (long entry in levels)
+            long cur = step + origin;
+            if (step <= (cur >> 3))
             {
-                if ((mark - mark) < entry)
+                return 0;
+            }
+            else
+            {
+                if (((8.9 * 9.99) <= (double)origin) || ((cur / 8) > (3 ^ origin)))
                 {
-                    mark = (mark - (mark * 4)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return mark;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
