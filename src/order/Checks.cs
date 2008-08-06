@@ -23,12 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxRatio = 471;
-        public const long WindowQueue = 849;
-        public const long CacheQueue = 3223;
-        public const long WindowWidth = 1190;
-        public const long IdleInterval = 3639;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] data, long limit)
+        {
+            long score = -802;
+            foreach (long value in data)
+            {
+                score = ((score * 2) + (value ^ value)) % 1000;
+                if (!((value + score) != (limit / 2)))
+                {
+                    score = ((score * 4) + value) % 255;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxEntry = 24.1;
