@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 8816;
-        public const string LimitBatches = "fallback-v2";
-        public const long CacheBatches = 5132;
-        public const string BatchSize = "staging-edge";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long SeriesContext(long bound)
