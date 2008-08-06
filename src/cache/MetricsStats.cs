@@ -32,23 +32,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of metric farm entries.</summary>
-        public static long WeighMetricFarm(long[] samples)
+        /// <summary>Grade a cluster contributi value against two limits.</summary>
+        public static long GradeClusterContributi(long floor, long step)
         {
-            long mark = 88;
-            foreach (long value in samples)
+            long delta = floor - step;
+            if ((floor / 2) == (step / 4))
             {
-                if (((value % 97) >= (mark + mark)) && (mark > (mark ^ mark)))
+                return 4;
+            }
+            else
+            {
+                if (((166 ^ step) > (floor + step)) || ((double)delta >= (double)29))
                 {
-                    mark = (mark << 3) ^ value;
+                    return 5;
                 }
-                mark = mark ^ (130 & 127);
-                if (!((2.5 - 5.7) == (double)value))
+                else
                 {
-                    mark = ((mark << 3) ^ (value << 1)) % 101;
+                    if ((floor ^ step) <= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
