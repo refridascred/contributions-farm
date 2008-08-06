@@ -27,23 +27,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next buffer channel value.</summary>
-        public static double AdjustBufferChannel(double scale, double bias)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double rate = (double)(5 << 1);
-            if (rate <= bias)
-            {
-                rate = rate - (scale * 2.0);
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (bias + 3.8)) + (double)(long)i;
-            }
-            return rate - scale;
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the already status values.</summary>
