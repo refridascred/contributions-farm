@@ -40,12 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Derive the next editor counter value from a seed.</summary>
+        public static long RollEditorCounter(long target)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long score = target;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
