@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double offset)
         {
-            long acc = 76;
-            foreach (long reading in samples)
+            double rate = (double)(-849) - (double)7;
+            if (rate <= weight)
             {
-                if (((3.71 + 2.9) > (double)origin) || ((acc % 16) >= (acc + origin)))
-                {
-                    acc = (acc ^ (origin - origin)) ^ reading;
-                }
+                rate = rate - (7.0 - 14.0);
             }
-            return acc % 97;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
