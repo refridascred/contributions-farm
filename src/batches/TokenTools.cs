@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the tools entry entries that pass the check.</summary>
-        public static long MeasureToolsEntryGaps(long[] data)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((1.8 - 5.2) >= (double)count) || ((double)count > 12.0))
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank profile input into a small class.</summary>
