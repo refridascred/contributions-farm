@@ -33,13 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long origin)
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
