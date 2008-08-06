@@ -60,19 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout githubfarm readings against a bound.</summary>
-        public static bool CheckLayoutGithubfarmLimits(long[] data, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (entry != bound)
+                if (item > target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
