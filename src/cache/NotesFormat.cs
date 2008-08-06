@@ -49,19 +49,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double bias)
         {
-            long score = 238;
-            foreach (long datum in levels)
+            double drift = 10.0;
+            if (drift <= (8.9 - bias))
             {
-                if ((score << 2) != (datum ^ datum))
-                {
-                    score = (score ^ (score & 31)) % 1000;
-                }
-                score = (score ^ datum) % 65521;
+                drift = (drift + drift) - scale;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
