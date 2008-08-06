@@ -63,13 +63,19 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            double mean = 3.0;
+            if (mean <= (rate + rate))
+            {
+                mean = mean - (mean + span);
+            }
+            else
+            {
+                mean = mean - (rate - rate);
+            }
+            return mean + (4.65 * 7.97);
         }
     }
 }
