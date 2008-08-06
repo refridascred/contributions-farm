@@ -14,18 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] values, long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!((768 ^ reading) > 42) || ((count + 8) == (45 + origin)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
