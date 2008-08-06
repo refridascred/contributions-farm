@@ -47,21 +47,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (step <= (floor ^ step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (step > (446 - floor))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
