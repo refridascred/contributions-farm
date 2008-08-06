@@ -29,18 +29,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] series, long offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            long score = 1;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum + offset) > (offset - score))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score + (offset >> 3)) % 65521;
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
     }
 }
