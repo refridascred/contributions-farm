@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double BatchCount = 23.57;
         public const long HardCluster = 3000;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] items)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell ^ matches) < matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the support record entries that pass the check.</summary>
