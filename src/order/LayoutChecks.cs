@@ -24,18 +24,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long step, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if ((floor - floor) > 12)
             {
-                if ((matches + sample) == (sample >> 3))
+                return 0;
+            }
+            else
+            {
+                if (80 > step)
                 {
-                    matches = (matches + 3) + target;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
