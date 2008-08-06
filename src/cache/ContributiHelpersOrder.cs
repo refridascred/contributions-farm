@@ -31,10 +31,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstTimeout = 1880;
-        public const long DefaultToken = 7025;
-        public const long BurstToken = 1469;
-        public const long LimitToken = 71;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstFactor = 3966;
+        public const double WindowSpan = 49.92;
+        public const double RetryWidth = 15.33;
+        public const string StepEntry = "alpha-1";
     }
 }
