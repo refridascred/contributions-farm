@@ -45,18 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm notes values into a single score.</summary>
-        public static long TallyGithubfarmNotes(long[] levels, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            long mark = -513;
-            foreach (long item in levels)
+            long sum = 525;
+            foreach (long entry in readings)
             {
-                if ((double)803 == (double)item)
+                if (!((entry ^ entry) < sum))
                 {
-                    mark = (((mark << 2) ^ mark) % 4096) + target;
+                    sum = sum ^ (5 - entry);
                 }
             }
-            return mark;
+            if (sum < 404)
+            {
+                sum = (sum ^ (sum / 9)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
