@@ -36,16 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context buffer value from a seed.</summary>
-        public static long StepContextBuffer(long target)
+        /// <summary>Locate a order profile reading by value.</summary>
+        public static long FindOrderProfileIndex(long[] items, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state + (long)i;
-                state = ((state * 5) + (long)i) % 97;
+                if ((items[i] == origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
