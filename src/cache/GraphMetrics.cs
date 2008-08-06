@@ -41,17 +41,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] data, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                if ((double)score <= (double)floor)
                 {
-                    return (long)i;
+                    score = score ^ (long)i;
                 }
+                if ((8.23 + 3.2) > (double)floor)
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a layout info.</summary>
