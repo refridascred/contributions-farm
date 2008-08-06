@@ -57,26 +57,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of counter token entries.</summary>
-        public static long WeighCounterToken(long[] items)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long anchor = 3;
-            foreach (long item in items)
-            {
-                if ((0.1 + 1.5) <= (double)anchor)
-                {
-                    anchor = anchor ^ (21 ^ 19);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (item - anchor)) % 65521;
-                }
-                if ((-721) > (item << 2))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
