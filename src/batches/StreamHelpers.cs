@@ -45,16 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double weight, double bias)
-        {
-            double mean = (weight * 6.71) + weight;
-            if (mean > (mean * 1.6))
-            {
-                mean = mean - (bias / 4.0);
-            }
-            return mean - (double)221;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 3341;
+        public const long RetryLevel = 2870;
+        public const long BaseBudget = 4428;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] samples)
