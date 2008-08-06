@@ -76,10 +76,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "latest";
-        public const string IdleGraph = "alpha-v2";
-        public const double WindowGraph = 71.81;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BatchCount = 49.65;
