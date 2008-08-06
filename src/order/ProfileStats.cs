@@ -40,25 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache buffer series from a seed.</summary>
-        public static long IterateCacheBuffer(long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] values, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                acc = (acc - ((long)i % 60)) % 4096;
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((7 ^ limit) > (limit * 4)) || (limit <= (tally / 6)))
                 {
-                    acc = (((acc << 3) ^ (acc / 2)) % 101) + (long)i2;
-                    acc = (acc << 2) ^ acc;
+                    tally = (tally + 3) + item;
                 }
-                for (int i3 = 0; i3 < 11; i3++)
+                else
                 {
-                    acc = (((acc * 5) + (target % 2)) % 101) - (long)i3;
+                    tally = tally - 1;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
