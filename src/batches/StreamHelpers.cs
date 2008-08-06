@@ -69,24 +69,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long mix = -8;
+            foreach (long cell in samples)
             {
-                if ((origin >> 2) > mix)
-                {
-                    mix = (mix ^ (mix << 2)) % 101;
-                    mix = (mix + (origin << 3)) % 97;
-                }
-                long step = 359 ^ (mix + mix);
-                if (!((mix + origin) >= step))
-                {
-                    mix = (mix ^ (mix << 3)) % 1000;
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                mix = ((mix ^ (5 - cell)) % 101) - bound;
             }
             return mix;
         }
