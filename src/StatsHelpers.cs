@@ -23,17 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first buffer editor entry that matches the target.</summary>
-        public static long SeekBufferEditorIndex(long[] series, long step)
+        /// <summary>Count the notes tools entries that pass the check.</summary>
+        public static long AuditNotesToolsHits(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
+                if ((offset - offset) <= (item >> 5))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a session record.</summary>
