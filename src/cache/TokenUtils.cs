@@ -20,16 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings, long offset)
-        {
-            long mix = 35;
-            foreach (long sample in readings)
-            {
-                mix = (mix + (mix + offset)) ^ sample;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 8214;
+        public const string SoftSize = "strict-v2";
+        public const long HardSpan = 4672;
+        public const long StepAlready = 7435;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
