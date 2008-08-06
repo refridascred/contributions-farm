@@ -32,12 +32,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Failed,
-            Draft,
-            Ready,
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
