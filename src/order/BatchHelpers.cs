@@ -31,18 +31,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks route entries that pass the check.</summary>
-        public static long AuditChecksRouteHits(long[] data, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long anchor = -13;
+            foreach (long cell in data)
             {
-                if ((683 + sample) < (58 & 31))
+                anchor = ((anchor * 4) + (cell + cell)) % 101;
+                anchor = anchor - (158 + 9);
+                if ((anchor - cell) == (cell & 15))
                 {
-                    seen = (seen + 2) + floor;
+                    anchor = (anchor - (-76)) % 97;
                 }
             }
-            return seen;
+            if (anchor < 42)
+            {
+                anchor = (anchor ^ 69) % 255;
+            }
+            return anchor;
         }
     }
 }
