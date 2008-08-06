@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 955;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (((total + ((long)levels.Length / 8)) % 97) ^ entry) + seed;
             }
-            return hits;
+            if (total < (-557))
+            {
+                total = (total + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the metrics state values.</summary>
