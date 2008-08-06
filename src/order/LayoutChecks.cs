@@ -43,19 +43,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long target)
+        /// <summary>Project the next route counter value.</summary>
+        public static double BlendRouteCounter(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double weight = (double)(526 % 60);
+            if (weight > (double)(-47))
             {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - (double)294) - rate;
             }
-            return valid;
+            return weight - bias;
         }
 
         /// <summary>Hold a checks info.</summary>
