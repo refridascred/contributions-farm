@@ -22,21 +22,17 @@ namespace Common.Utilities
         public const string StepBudget = "strict-edge";
         public const string MaxWidth = "local-1";
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Look up the position of a channel profile sample.</summary>
+        public static long SeekChannelProfileIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
                 {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
