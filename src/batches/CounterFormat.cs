@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleInterval = 4352;
-        public const long BurstWindow = 7201;
-        public const long HardScore = 4341;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)value <= (2.3 + 10.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long WeighFormat(long[] data, long step)
