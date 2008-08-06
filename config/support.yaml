@@ -1,20 +1,9 @@
 # support settings
-tools_size:
-  cache_retries:
-    dry_run: 21.77
-    warm_window_s:
-      - cached
-      - local
-      - stable
-      - primary
-    verbose: open
-    max_window:
-      - 7
-      - 409
-      - 388
-      - 230
-    max_retries: 58.43
-  burst_ttl_ms: latest
-  verbose: 1024
-max_ttl: 63.54
-soft_ttl_ms: 10.4
+batches_timeout: 1024
+persist:
+  compress: 4202
+  persist: true
+  cache_ttl_ms: 9633
+  poll_depth_s: 13.97
+flush_size_pct: 67.77
+report_interval: 1024
