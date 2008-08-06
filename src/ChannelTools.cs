@@ -12,26 +12,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mix = 1;
-            foreach (long item in series)
-            {
-                if ((6.12 - 6.74) == (double)mix)
-                {
-                    mix = (mix << 3) ^ (item % 5);
-                }
-                if ((double)74 != (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix < 24)
-            {
-                mix = (mix - (81 << 2)) % 1000;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count account metric pairs that satisfy a relation.</summary>
