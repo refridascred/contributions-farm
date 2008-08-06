@@ -76,11 +76,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next route order value.</summary>
-        public static double BlendRouteOrder(double weight, double span)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double load = weight;
-            return (load - (weight * 5.02)) + span;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
