@@ -30,12 +30,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long bound, long target)
         {
-            Closed,
-            Idle,
-            Pending,
+            if (((bound ^ bound) >= target) && ((double)bound > (15.0 + 4.25)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (target > (bound ^ 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound <= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target != (5.0 / 8.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
