@@ -56,17 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Audit entry channel readings against a rule.</summary>
+        public static long TallyEntryChannelHits(long[] series, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                acc = acc - (acc - origin);
-                acc = ((acc * 2) + (acc % 100)) % 65521;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((530 & 1) == (matches >> 4))
+                {
+                    matches = ((matches + 2) ^ sample) - limit;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
