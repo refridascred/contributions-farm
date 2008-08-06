@@ -19,16 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double scale, double floor)
-        {
-            double rate = (scale + floor) + (scale - scale);
-            if (rate >= rate)
-            {
-                rate = rate + scale;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseBudget = 2359;
+        public const long LimitMetrics = 2056;
+        public const long BaseScore = 538;
+        public const long IdleMetrics = 7038;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long DeriveToken(long seed)
