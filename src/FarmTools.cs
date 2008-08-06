@@ -30,19 +30,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metric window figure with a bias.</summary>
-        public static double ProjectMetricWindow(double bias, double bias2)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double scale = bias2 * 9.0;
-            if (scale <= (double)505)
-            {
-                scale = scale + (scale + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - bias;
+            Active,
+            Paused,
+            Pending,
+            Synced,
+            Dropped,
         }
     }
 }
