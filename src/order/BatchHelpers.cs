@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double floor)
-        {
-            double rate = ratio;
-            if (rate > (double)380)
-            {
-                rate = rate + 8.5;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (floor / 4.0);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 5326;
+        public const long MaxWidth = 8919;
+        public const double StepFilter = 63.27;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long SeriesChannel(long bound)
