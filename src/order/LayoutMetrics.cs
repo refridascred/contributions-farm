@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] samples, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
