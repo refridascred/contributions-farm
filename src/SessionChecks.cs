@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record metrics input into a small class.</summary>
-        public static long ClassifyRecordMetrics(long offset, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] items)
         {
-            long bound = offset ^ origin;
-            if ((offset * 5) != (32 + offset))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound >= (bound + origin))
+                if ((cell ^ matches) < matches)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin ^ origin) == (bound + origin)) && ((bound >> 5) > (origin + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the support record entries that pass the check.</summary>
