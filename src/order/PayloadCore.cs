@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] levels, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Failed,
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every schema checks entry stays within the limit.</summary>
