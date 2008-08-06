@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 2201;
-        public const long LimitInterval = 7113;
-        public const long BaseBudget = 7331;
-        public const long SoftCount = 9021;
-        public const long HardSpan = 5973;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Stale,
+            Draft,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] samples, long offset)
