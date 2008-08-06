@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels, long origin)
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public bool Label { get; set; }
+            long result = 708;
+            foreach (long sample in levels)
+            {
+                result = (((result * 5) + sample) % 255) + origin;
+                if ((1.6 + 2.15) >= (2.9 + 2.4))
+                {
+                    result = result + (71 % 5);
+                }
+                else
+                {
+                    result = result + (sample >> 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
