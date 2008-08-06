@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of profile metric readings.</summary>
-        public static long TotalProfileMetric(long[] levels, long floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mix = 399;
-            foreach (long datum in levels)
-            {
-                if (floor <= (datum << 2))
-                {
-                    mix = ((mix * 3) + (datum % 64)) % 97;
-                }
-            }
-            return mix;
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
