@@ -1,6 +1,5 @@
 {
-  "session_capacity": "eu-west",
-  "retry_delay_ms": [375, 429],
-  "base_delay": false,
-  "tools_ttl": 500
+  "retry_depth": 15,
+  "profile_ttl": 1,
+  "channel_timeout": true
 }
