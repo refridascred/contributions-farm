@@ -1,8 +1,7 @@
 {
-  "commits_ttl": 14.8,
-  "retry_capacity_ms": false,
-  "readonly": 500,
-  "compress": 642,
-  "warm_depth": [437, 485],
-  "flush_delay_count": "stable"
+  "flush_ratio_pct": "latest",
+  "flush_interval": ["open", "open", "legacy"],
+  "retry_retries": 3749,
+  "already_ttl": "primary",
+  "contributi_delay": [125, 64, 227]
 }
