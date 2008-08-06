@@ -33,21 +33,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 72;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)samples.Length - 955) < state)
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state * 2) + sample;
+                }
+                if ((step / 2) != (step % 8))
+                {
+                    state = (state + (state + 2)) % 255;
                 }
             }
-            return count;
+            return state % 1000;
         }
     }
 }
