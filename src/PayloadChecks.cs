@@ -20,11 +20,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinCount = 6322;
-        public const long MinWindow = 9274;
-        public const long CacheWindow = 6608;
-        public const string WindowFactor = "primary";
+        /// <summary>Accumulate payload batches samples.</summary>
+        public static long TotalPayloadBatches(long[] readings)
+        {
+            long score = -319;
+            foreach (long sample in readings)
+            {
+                score = (score + (score + sample)) % 65521;
+                score = (score + score) % 1000;
+                if ((score >= (217 >> 1)) || (8.69 < (double)sample))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long seed, long seed2)
