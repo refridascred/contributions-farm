@@ -1,9 +1,5 @@
 # entry settings
-verbose: 9.69
-burst_threshold_ms:
-  - primary
-  - stable
-  - standard
-  - stable
-poll_ratio: false
-strict: 95.24
+account_threshold: 821
+record_limit: 9013
+strict: 123
+tools_interval: 100
