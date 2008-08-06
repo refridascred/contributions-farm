@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long seed, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            if ((seed + seed) > (seed ^ 891))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((6.0 + 19.0) != (double)offset) && ((4.0 / 4.0) > (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-313) >> 3) != (offset / 6))
+                    if ((levels[i] - levels[j]) < 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset < (offset + 729))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
