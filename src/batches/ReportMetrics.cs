@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const long BaseAlready = 5336;
         public const double RetryAlready = 6.95;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryInterval = 82.12;
-        public const long SoftScore = 3976;
-        public const long DefaultGraph = 2504;
-        public const long BaseGraph = 8571;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long step, long seed)
+        {
+            if (seed < (step / 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed < 6)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCommits = 7036;
