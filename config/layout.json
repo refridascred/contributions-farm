@@ -1,19 +1,15 @@
 {
-  "readonly": false,
-  "base_capacity_count": {
-    "sync_size_count": [480, 309, 226],
-    "editor_delay": {
-      "warm_size_ms": "green",
-      "hard_limit": "standard",
-      "retry_window_count": "green"
-    },
-    "stats_retries": {
-      "dry_run": 4984,
-      "idle_threshold": true,
-      "contributi_ratio": false,
-      "min_interval_count": "legacy"
+  "burst_timeout_ms": {
+    "metric_threshold": 80.89,
+    "payload_interval": "latest",
+    "cache_retries_ms": "cached",
+    "commits_size": false,
+    "metric_limit": {
+      "idle_window_s": "green",
+      "entry_interval": "legacy",
+      "dry_run": "legacy"
     }
   },
-  "burst_ratio_pct": "standard",
-  "max_ttl": "open"
+  "soft_delay_s": "primary",
+  "hard_ratio_s": 22.77
 }
