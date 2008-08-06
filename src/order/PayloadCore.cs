@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BurstSize = 6911;
         public const long SoftCache = 1468;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
