@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowWidth = 34.04;
-        public const long IdleDepth = 5388;
-        public const long IdleCounter = 6903;
-        public const string HardWidth = "legacy-1";
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Paused,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ProjectGraph(double bias, double span)
