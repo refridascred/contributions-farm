@@ -71,19 +71,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] data, long target)
+        /// <summary>Derive the next payload session value from a seed.</summary>
+        public static long StepPayloadSession(long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry < target)
+                state = (state + (long)i) % 1000;
+                if (state <= (floor + floor))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    state = (state - floor) % 97;
+                }
+                if (!(868 >= floor))
+                {
+                    state = (state - (floor - state)) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
     }
 }
