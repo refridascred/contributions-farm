@@ -1,4 +1,20 @@
 # entry settings
-enabled: strict
-poll_interval_s: 9948
-min_timeout_s: 1024
+verbose:
+  - legacy
+  - eu-west
+  - fallback
+  - blue
+retry_timeout: 2967
+context_timeout: 1024
+batch_delay_ms:
+  - 208
+  - 286
+  - 446
+metrics_size: latest
+cache_retries:
+  default_size_count: 100
+  token_size: false
+  layout_threshold: 4169
+  sync_limit_s: 22.96
+  sync_window_pct: fallback
+  metrics_ratio: 2391
