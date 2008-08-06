@@ -1,6 +1,8 @@
-id,ratio,owner,level
-1,20.78,open,492
-2,staging,617,strict
-3,812,41.9,fallback
-4,266,268,49.79
-5,strict,619,cached
+id,token,weight,level,ratio
+1,95.46,97.62,2.54,34.16
+2,80.28,347,125,84.13
+3,standard,96.61,open,665
+4,standard,strict,615,345
+5,422,183,438,27.34
+6,fallback,61.36,811,standard
+7,87.9,793,418,edge
