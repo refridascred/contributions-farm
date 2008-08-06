@@ -40,23 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((7 ^ limit) > (limit * 4)) || (limit <= (tally / 6)))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 54.41;
+        public const string StepToken = "primary-edge";
+        public const double LimitToken = 92.52;
+        public const string DefaultToken = "strict";
+        public const long MaxScore = 7482;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long ScoreEditor(long[] levels)
