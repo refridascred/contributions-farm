@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const double HardStream = 53.96;
         public const long RetrySize = 2510;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Queued,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
