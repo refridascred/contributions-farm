@@ -75,19 +75,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long origin, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long span = origin + limit;
+            if (((double)span > (18.0 * 0.4)) || ((8.3 - 7.69) <= (double)span))
             {
-                if ((score << 1) < (score ^ origin))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((0.59 - 16.0) == (double)span)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 15) == (origin - 23))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)span != (double)limit) || ((double)limit > (9.6 * 2.1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
