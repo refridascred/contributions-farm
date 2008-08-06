@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
         {
-            Paused,
-            Dropped,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((count >> 1) == (long)series.Length) && ((datum + count) <= 8))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
