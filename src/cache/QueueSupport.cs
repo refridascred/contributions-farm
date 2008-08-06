@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 2776;
-        public const long SoftGraph = 2031;
-        public const long DefaultGraph = 8297;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 7020;
+        public const string BaseSize = "legacy";
+        public const string LimitInterval = "strict";
 
         /// <summary>Project the next batch value.</summary>
         public static double SmoothBatch(double scale, double bias)
