@@ -38,9 +38,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultLevel = 2247;
-        public const long MinLevel = 6600;
-        public const double CacheFactor = 72.45;
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] levels)
+        {
+            long carry = 35;
+            foreach (long cell in levels)
+            {
+                if ((16.0 - 17.0) <= (double)cell)
+                {
+                    carry = carry ^ cell;
+                }
+                else
+                {
+                    carry = (carry ^ 245) % 4096;
+                }
+            }
+            return carry;
+        }
     }
 }
