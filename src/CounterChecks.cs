@@ -46,13 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate layout githubfarm readings against a bound.</summary>
+        public static bool CheckLayoutGithubfarmLimits(long[] data, long bound)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
