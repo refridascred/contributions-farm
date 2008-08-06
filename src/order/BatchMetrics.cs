@@ -48,19 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks farm readings against a bound.</summary>
-        public static bool ValidateChecksFarmLimits(long[] levels, long floor)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long CountFormatCommandHits(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value < floor)
+                if ((item + seen) <= (long)series.Length)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Validate order account readings against a bound.</summary>
