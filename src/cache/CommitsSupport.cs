@@ -82,14 +82,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series, long target)
         {
-            Idle,
-            Active,
-            Failed,
-            Closed,
-            Locked,
+            long mix = 251;
+            foreach (long sample in series)
+            {
+                if ((sample * 3) >= (26 + target))
+                {
+                    mix = mix ^ ((-9) >> 4);
+                }
+            }
+            if (mix < (-3))
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
     }
 }
