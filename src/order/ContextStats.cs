@@ -41,15 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((seen >> 4) > value)
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Adjust a channel reading.</summary>
