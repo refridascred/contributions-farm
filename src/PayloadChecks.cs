@@ -58,18 +58,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] levels, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((1 - sample) < (sample & 7))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next payload session value from a seed.</summary>
