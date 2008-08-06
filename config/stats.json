@@ -1,12 +1,10 @@
 {
-  "window_interval": [14, 314],
-  "warm_limit_count": {
-    "hard_ratio": ["cached", "green", "stable"],
-    "default_retries": 89,
-    "default_ratio_ms": 73.38,
-    "persist": 9975,
-    "batch_size_s": false
+  "stats_ratio": {
+    "payload_threshold": 500,
+    "cache_interval_s": 9.83,
+    "persist": 1024,
+    "idle_size_ms": 14.37
   },
-  "enabled": "stable",
-  "cache_delay_ms": ["staging", "edge", "eu-west"]
+  "audit": ["green", "stable"],
+  "persist": 60
 }
