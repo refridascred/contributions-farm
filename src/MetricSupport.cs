@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepFactor = "standard-v2";
-        public const long MaxSchema = 5628;
-        public const string BurstRatio = "open";
-        public const long SoftSchema = 6858;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Paused,
+            Stale,
+            Closed,
+            Locked,
+            Active,
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
