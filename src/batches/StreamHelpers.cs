@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state + (state - (long)i)) % 1000;
-                state = (state - (state / 2)) % 4096;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitInterval = "cached-1";
+        public const double BaseLayout = 67.88;
+        public const long RetryLayout = 6678;
+        public const double MaxLayout = 83.9;
+        public const long RetrySize = 7361;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] values, long limit)
