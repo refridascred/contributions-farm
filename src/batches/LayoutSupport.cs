@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route checks value.</summary>
-        public static double AdjustRouteChecks(double ratio, double offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long floor)
         {
-            double load = (offset / 5.0) - offset;
-            if (load >= offset)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                load = load + load;
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (load + load)) + (double)(long)i;
-            }
-            return load - (ratio + offset);
+            return valid;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
