@@ -1,7 +1,9 @@
-id,ratio,rank
-1,cached,staging
-2,303,23.9
-3,local,259
-4,standard,77.05
-5,eu-west,476
-6,eu-west,171
+id,weight,owner
+1,74.96,905
+2,cached,74.76
+3,306,standard
+4,80.15,73.79
+5,20.36,27.96
+6,60.98,782
+7,991,137
+8,532,609
