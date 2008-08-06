@@ -13,26 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long state = -18;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (411 >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state << 2) ^ (state << 3);
-                }
-                else
-                {
-                    state = (state << 3) ^ (datum & 7);
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > (-937))
-            {
-                state = state + (limit * 4);
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many counter payload samples are out of range.</summary>
