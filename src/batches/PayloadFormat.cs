@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 1753;
-        public const long IdleFarm = 6806;
-        public const long HardLevel = 666;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] values, long target)
