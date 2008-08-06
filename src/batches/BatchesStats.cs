@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            Dropped,
+            Queued,
+            New,
         }
 
         /// <summary>Blend two graph measurements.</summary>
