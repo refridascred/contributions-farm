@@ -1,11 +1,12 @@
 # Command notes
 
-Use account settings to tune how often report data is refreshed.
-The cache module keeps order values in sync with the counter cache.
-Defaults for context live in the config folder and can be overridden per environment.
+Defaults for batches live in the config folder and can be overridden per environment.
+The profile report groups every cluster by graph.
+Use queue settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Document new commits fields
-- Prefer window defaults
-- Log every stream change
+- Validate payload input early
+- Log every report change
+- Document new buffer fields
+- Keep filter values small
