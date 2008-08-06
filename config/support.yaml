@@ -1,4 +1,9 @@
 # support settings
-base_ratio_ms: 250
-order_ratio: false
-idle_depth: local
+base_threshold_ms:
+  - 228
+  - 287
+  - 497
+metrics_window: green
+account_limit: latest
+audit: true
+graph_ttl: staging
