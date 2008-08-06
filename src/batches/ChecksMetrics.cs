@@ -71,22 +71,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] series)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample >> 1) > sample)
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
