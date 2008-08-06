@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 4176;
-        public const double WindowSpan = 61.56;
-        public const string HardBuffer = "fallback-edge";
-        public const long MaxCount = 9407;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double scale, double floor)
+        {
+            double gain = scale;
+            if (gain <= floor)
+            {
+                gain = gain + (floor * 7.13);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + (scale + gain);
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxRatio = 471;
