@@ -61,11 +61,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftRatio = 254;
-        public const long DefaultSize = 1026;
-        public const long BaseChannel = 214;
-        public const long BurstTimeout = 905;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings)
+        {
+            long acc = 1;
+            foreach (long datum in readings)
+            {
+                acc = ((acc ^ 98) % 97) ^ datum;
+            }
+            if (acc > 4)
+            {
+                acc = (acc - (703 << 1)) % 1000;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long DigestReport(long[] data)
