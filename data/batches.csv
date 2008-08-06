@@ -1,7 +1,10 @@
-id,label,owner,token
-1,43.4,152,green
-2,15.07,542,edge
-3,185,59.95,96.78
-4,30.71,698,11.94
-5,471,40.45,93.09
-6,805,830,33
+id,label,score,level,owner
+1,strict,790,strict,349
+2,stable,cached,884,869
+3,61.03,latest,local,10.79
+4,669,stable,primary,311
+5,490,strict,362,162
+6,fallback,65.1,90.55,41.06
+7,0,846,cached,88.58
+8,blue,442,1.71,primary
+9,912,403,123,primary
