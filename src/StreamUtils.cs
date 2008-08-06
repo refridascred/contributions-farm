@@ -76,13 +76,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Dropped,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardWidth = "cached-edge";
+        public const long DefaultBudget = 7380;
+        public const long BaseCount = 3150;
+        public const long IdleCounter = 9252;
+        public const long BurstRatio = 6876;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double BatchCount = 49.65;
