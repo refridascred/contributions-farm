@@ -18,24 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long step, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double ratio, double span)
         {
-            if (step > origin)
+            double bias = ratio;
+            if (bias < (ratio * 6.8))
             {
-                return 5;
+                bias = bias - (span - ratio);
             }
             else
             {
-                if ((double)origin > (3.7 + 8.9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias = bias - (double)50;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (span / 3.0)) - (double)(long)i;
+            }
+            return bias - (span - ratio);
         }
 
         /// <summary>Fold a list of farm readings.</summary>
