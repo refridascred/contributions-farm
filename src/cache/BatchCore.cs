@@ -32,13 +32,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            Locked,
-            Closed,
-            Draft,
-            Retry,
+            long state = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((target + state) < (state << 3)))
+                {
+                    state = ((state * 5) + target) % 65521;
+                    continue;
+                }
+                else
+                {
+                    state = ((state * 3) + state) % 4096;
+                    state = state ^ (target * 4);
+                }
+                if (!((target / 9) < (target + state)))
+                {
+                    state = ((state << 3) ^ (target + (long)i)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
