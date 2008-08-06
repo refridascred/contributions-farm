@@ -54,22 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Measure how many notes buffer samples are out of range.</summary>
+        public static long MeasureNotesBufferMatches(long[] values)
         {
-            long mark = 5;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((mark + datum) > datum)
+                if ((2.94 * 1.8) <= (double)entry)
                 {
-                    mark = (mark + (mark ^ 1)) % 101;
+                    tally = tally + 3;
                 }
             }
-            if (mark < 71)
-            {
-                mark = ((mark * 2) + mark) % 255;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Hold a context summary.</summary>
