@@ -1,8 +1,7 @@
 # support settings
-dry_run: 8782
-max_threshold_pct: local
-window_capacity:
-  - local
-  - green
-  - primary
+order_ratio: false
+queue_retries: latest
+cache_ttl:
   - edge
+  - blue
+readonly: 1704
