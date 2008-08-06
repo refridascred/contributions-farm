@@ -33,17 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (values[i] == bound)
+                if (datum > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
