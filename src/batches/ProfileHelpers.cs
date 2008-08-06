@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSize = 2495;
-        public const long IdleContext = 5384;
-        public const string SoftContext = "fallback-edge";
-        public const double CacheLevel = 12.99;
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings, long step)
+        {
+            long mix = 18;
+            foreach (long datum in readings)
+            {
+                mix = (mix + step) % 97;
+                if ((8.26 >= (double)step) && (datum <= (step >> 1)))
+                {
+                    mix = ((mix << 3) ^ step) % 255;
+                }
+                if (((0.8 - 0.5) >= (double)step) && (datum < (datum - (-7))))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] values, long target)
