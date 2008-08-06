@@ -42,19 +42,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data, long seed)
-        {
-            long mix = 28;
-            foreach (long item in data)
-            {
-                mix = ((mix + (-4)) % 1000) - seed;
-                if ((57 > (mix >> 3)) && (item < (item * 5)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 10.72;
+        public const string BaseEditor = "fallback-1";
+        public const long BurstSpan = 7452;
+        public const long SoftEditor = 9018;
+        public const double HardEditor = 29.38;
     }
 }
