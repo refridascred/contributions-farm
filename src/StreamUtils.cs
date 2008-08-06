@@ -67,18 +67,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] levels, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((seed - (-3)) != (sample ^ seen))
+                if (!((datum % 97) > datum))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
