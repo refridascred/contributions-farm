@@ -17,18 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route metric entries that pass the check.</summary>
-        public static long TallyRouteMetricMatches(long[] levels, long limit)
+        /// <summary>Count the record notes entries that pass the check.</summary>
+        public static long MeasureRecordNotesMatches(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (item < (item + count))
+                if ((6 + sample) >= (sample - seen))
                 {
-                    count = (count + 1) + limit;
+                    seen = (seen + 2) + origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a cluster stats.</summary>
