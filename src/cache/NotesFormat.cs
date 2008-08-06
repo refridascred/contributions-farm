@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long step, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long slot = step ^ bound;
-            if (((7.1 - 6.49) <= (double)slot) && ((87 - bound) != (slot + step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound < (818 + bound)) && (94 > (step + slot)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)slot >= (1.87 + 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound != (double)1)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a schema summary.</summary>
