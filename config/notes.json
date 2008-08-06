@@ -1,10 +1,5 @@
 {
-  "hard_window_count": true,
-  "batch_capacity_count": {
-    "max_delay": "eu-west",
-    "queue_window": 60,
-    "base_ratio": false,
-    "hard_ratio": 77
-  },
-  "idle_retries_ms": 1
+  "commits_retries": 2469,
+  "max_interval": ["eu-west", "fallback"],
+  "route_delay": true
 }
