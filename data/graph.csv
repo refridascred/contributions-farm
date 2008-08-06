@@ -1,6 +1,7 @@
-id,region,ratio,label,state
-1,staging,staging,stable,58.98
-2,local,open,88.15,266
-3,staging,81.49,27.24,standard
-4,421,86.25,55,370
-5,green,516,32.17,edge
+id,active,count,level
+1,66.04,880,363
+2,primary,935,44.26
+3,26.04,929,standard
+4,fallback,250,29.84
+5,cached,local,587
+6,latest,74.74,45.61
