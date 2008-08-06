@@ -33,18 +33,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] levels, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((matches << 1) < (matches << 2)))
+                if (series[i] > floor)
                 {
-                    matches = ((matches + 1) - item) - step;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a token record.</summary>
