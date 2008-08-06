@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            Pending,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
