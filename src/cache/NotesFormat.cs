@@ -32,18 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] data)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)tally <= (7.9 / 8.0))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
