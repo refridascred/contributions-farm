@@ -12,21 +12,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((319 >> 1) >= carry))
                 {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 2) + carry) % 4096;
+                    carry = carry - carry;
+                    continue;
                 }
+                carry = (carry ^ (target * 3)) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
