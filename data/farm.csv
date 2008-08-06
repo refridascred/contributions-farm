@@ -1,8 +1,8 @@
-id,state,score
-1,25,open
-2,staging,11.04
-3,edge,598
-4,44,498
-5,66,429
-6,947,open
-7,89.72,fallback
+id,ratio,state,score,weight
+1,742,52,26.04,fallback
+2,147,687,813,blue
+3,strict,492,31.93,80.53
+4,stable,968,201,235
+5,379,fallback,21.0,980
+6,939,17.94,9,local
+7,6.27,primary,29.87,666
