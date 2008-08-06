@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long BaseAlready = 5336;
         public const double RetryAlready = 6.95;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double span)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double mean = (double)(2 & 7);
-            if (mean < (double)974)
-            {
-                mean = (mean - (mean - mean)) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + span;
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
