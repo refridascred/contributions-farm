@@ -39,19 +39,20 @@ namespace Common.Utilities
         public const long CacheCount = 841;
         public const long BurstInterval = 3450;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Roll a layout support counter forward.</summary>
+        public static long StepLayoutSupport(long step)
         {
-            double scale = (double)400;
-            if (scale <= (double)17)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                scale = (scale - (double)60) - offset;
+                if ((14.0 + 2.1) >= (double)score)
+                {
+                    continue;
+                }
+                score = score ^ (score + 0);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale + (ratio / 5.0);
+            return score;
         }
     }
 }
