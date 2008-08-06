@@ -21,26 +21,19 @@ namespace Common.Utilities
         public const long LimitContributi = 4912;
         public const long HardRatio = 4653;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Validate stats channel readings against a bound.</summary>
+        public static bool VerifyStatsChannelRange(long[] samples, long seed)
         {
-            long total = 8;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((total + 9) == (long)items.Length)
+                if (reading >= seed)
                 {
-                    total = ((total + total) % 101) ^ entry;
-                }
-                else
-                {
-                    total = (total - (total << 3)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (total < 259)
-            {
-                total = ((total << 3) ^ (total + 321)) % 101;
-            }
-            return total % 65521;
+            return flag;
         }
     }
 }
