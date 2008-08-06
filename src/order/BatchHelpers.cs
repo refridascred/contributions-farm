@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != floor)
                 {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the schema state values.</summary>
