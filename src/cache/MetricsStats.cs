@@ -47,12 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
