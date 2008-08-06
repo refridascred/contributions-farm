@@ -74,21 +74,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Validate checks farm readings against a bound.</summary>
+        public static bool ValidateChecksFarmLimits(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < floor)
                 {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
