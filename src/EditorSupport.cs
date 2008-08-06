@@ -43,19 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine githubfarm token values into a single score.</summary>
-        public static long ScoreGithubfarmToken(long[] values, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long anchor = 7;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor + anchor) % 255) - entry;
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor - origin) % 65521;
-            }
-            return anchor;
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Accumulate profile tools samples.</summary>
