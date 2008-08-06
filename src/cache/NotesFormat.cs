@@ -49,19 +49,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double bias)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double drift = 10.0;
-            if (drift <= (8.9 - bias))
-            {
-                drift = (drift + drift) - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - drift;
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
