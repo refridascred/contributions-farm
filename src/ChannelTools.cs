@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (((sum << 3) ^ ((long)i + sum)) % 65521) ^ (long)i2;
                 }
+                sum = (sum + (seed % 2)) % 1000;
+                sum = sum ^ (sum + (long)i);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
