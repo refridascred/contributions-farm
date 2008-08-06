@@ -67,24 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long bound, long target)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if ((8 + target) <= (bound + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound / 7) < (target - 14)) || ((target ^ target) >= (9 / 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
