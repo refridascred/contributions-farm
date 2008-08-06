@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double scale, double bias)
+        /// <summary>Audit contributi githubfarm readings against a rule.</summary>
+        public static long MeasureContributiGithubfarmMatches(long[] data)
         {
-            double mean = scale * 6.42;
-            if (mean <= (double)58)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                mean = mean - (bias + bias);
+                if (!((matches < (matches + sample)) || ((97 * 2) >= (matches * 4))))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mean + (scale * 12.0);
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
