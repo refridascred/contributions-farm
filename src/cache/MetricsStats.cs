@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] items, long target)
         {
-            long sum = 851;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((cell + sum) > (sum + cell))
+                if (item < target)
                 {
-                    sum = ((sum << 2) ^ cell) % 65521;
-                }
-                if ((double)(-5) < (double)sum)
-                {
+                    found = false;
                     break;
                 }
             }
-            return sum % 1000;
+            return found;
         }
 
         /// <summary>Describe the stats kind values.</summary>
