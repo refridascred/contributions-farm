@@ -87,26 +87,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window session values into a single score.</summary>
-        public static long TallyWindowSession(long[] values, long seed)
+        /// <summary>Adjust a graph cluster reading.</summary>
+        public static double BlendGraphCluster(double gain, double offset)
         {
-            long anchor = 220;
-            foreach (long sample in values)
-            {
-                if ((802 <= (seed + seed)) || (anchor <= (seed + seed)))
-                {
-                    anchor = ((anchor - anchor) % 97) + sample;
-                }
-                if ((double)anchor < 9.0)
-                {
-                    break;
-                }
-            }
-            if (anchor > 16)
-            {
-                anchor = (anchor - (anchor << 1)) % 65521;
-            }
-            return anchor % 97;
+            double ratio = gain;
+            return ratio - (ratio - offset);
         }
 
         /// <summary>Blend two token measurements.</summary>
