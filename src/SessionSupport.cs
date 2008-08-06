@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many cache editor samples are out of range.</summary>
-        public static long MeasureCacheEditorMatches(long[] series, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (seen < (datum + seed))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
