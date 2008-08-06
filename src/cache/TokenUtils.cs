@@ -12,11 +12,27 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultBudget = 8214;
-        public const string SoftSize = "strict-v2";
-        public const long HardSpan = 4672;
-        public const long StepAlready = 7435;
+        /// <summary>Fold a list of format notes readings.</summary>
+        public static long WeighFormatNotes(long[] values)
+        {
+            long sum = 45;
+            foreach (long sample in values)
+            {
+                if (142 >= (sample + sample))
+                {
+                    sum = (sum - (sum >> 2)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 97;
+                }
+            }
+            if (sum > 54)
+            {
+                sum = ((sum * 3) + (sum - sum)) % 4096;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
