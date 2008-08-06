@@ -21,12 +21,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 5329;
-        public const string SoftCounter = "stable-edge";
-        public const long StepRatio = 1775;
-        public const string MinCounter = "alpha-v2";
-        public const long DefaultLevel = 5659;
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double rate, double floor)
+        {
+            double scale = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale + 6.77) + (double)(long)i) + floor;
+            }
+            return scale + (scale / 6.0);
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long ClassifyLayout(long target, long floor)
