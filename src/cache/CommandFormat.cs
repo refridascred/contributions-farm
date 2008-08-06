@@ -13,39 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long floor, long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long span = floor - limit;
-            if ((24 <= (span + floor)) || ((span - span) != (limit + span)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit <= (8.15 - 15.0)) && (7.95 > (double)limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 2) <= (3 >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((80 << 3) != (limit & 63)) && ((637 ^ floor) < (floor ^ (-405))))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many support entry samples are out of range.</summary>
