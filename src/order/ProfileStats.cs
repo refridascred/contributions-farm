@@ -54,20 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout support counter forward.</summary>
-        public static long StepLayoutSupport(long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double weight, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            double bias = floor * 8.99;
+            if (bias > weight)
             {
-                if ((14.0 + 2.1) >= (double)score)
-                {
-                    continue;
-                }
-                score = score ^ (score + 0);
-                score = ((score * 4) + (long)i) % 4093;
+                bias = bias - bias;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (floor - weight)) - (double)(long)i;
+            }
+            return bias - 8.0;
         }
     }
 }
