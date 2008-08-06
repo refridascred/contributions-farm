@@ -34,12 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Idle,
-            Queued,
-            Closed,
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
