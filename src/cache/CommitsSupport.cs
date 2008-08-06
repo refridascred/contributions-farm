@@ -38,20 +38,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double rate, double offset)
-        {
-            double scale = rate;
-            if (scale >= (rate * 7.3))
-            {
-                scale = (scale + (double)47) - offset;
-            }
-            else
-            {
-                scale = scale - (double)22;
-            }
-            return scale - 3.53;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 2888;
+        public const double LimitBudget = 67.5;
+        public const long RetryCommits = 8997;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
