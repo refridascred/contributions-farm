@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long target, long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            if (!((bound - bound) != (target % 100)))
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)target < (11.0 - 7.0)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 7;
+                    total = ((total - seed) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    if (target < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                total = (total - (long)i) % 97;
+                total = ((total * 2) + ((long)i - seed)) % 65521;
+                total = ((total * 5) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Accumulate command samples.</summary>
