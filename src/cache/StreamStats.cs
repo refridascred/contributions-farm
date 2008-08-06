@@ -23,11 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstFactor = 28.52;
-        public const double MinScore = 73.72;
-        public const long DefaultAlready = 1456;
-        public const long BatchAlready = 6784;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long SortSession(long seed, long floor)
