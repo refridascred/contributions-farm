@@ -14,14 +14,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Blend two cluster graph measurements.</summary>
+        public static double ProjectClusterGraph(double weight, double bias)
         {
-            Done,
-            Closed,
-            Idle,
-            Synced,
-            Retry,
+            double mean = (weight - weight) + bias;
+            if (mean >= bias)
+            {
+                mean = mean - (bias + mean);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + (weight / 3.0);
         }
 
         /// <summary>Accumulate githubfarm farm samples.</summary>
