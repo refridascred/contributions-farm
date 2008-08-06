@@ -81,14 +81,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            Queued,
-            Draft,
-            Paused,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value ^ value) < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
