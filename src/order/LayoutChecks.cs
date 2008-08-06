@@ -49,26 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] data, long bound)
         {
-            long sum = -593;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (1 < (sum + sum))
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
                 {
-                    sum = (sum ^ (0 * 3)) % 1000;
-                }
-                if ((double)origin != (8.6 / 9.0))
-                {
-                    sum = (sum + (value - origin)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (sum - origin)) % 4096;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
