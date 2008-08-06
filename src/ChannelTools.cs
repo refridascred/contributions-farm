@@ -12,21 +12,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((-3) / 2) != ((long)i ^ mark))
-                {
-                    mark = (mark ^ (long)i) % 255;
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftSize = "stable";
+        public const long StepScore = 6883;
+        public const long RetryLevel = 144;
+        public const long WindowDepth = 1323;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountBounds(long[] series, long seed)
