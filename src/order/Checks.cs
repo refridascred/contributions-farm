@@ -73,17 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] items, long origin)
+        /// <summary>Blend two metrics batches measurements.</summary>
+        public static double ScaleMetricsBatches(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)654 * 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 + 2.84) - (double)(long)i) + bias;
             }
-            return -1;
+            return bias2 - (rate + rate);
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
