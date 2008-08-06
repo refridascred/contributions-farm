@@ -32,14 +32,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Locked,
-            Closed,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstCount = "standard";
+        public const long CacheChannel = 2182;
+        public const long HardChannel = 7765;
+        public const double WindowChannel = 96.34;
+        public const string RetryScore = "standard";
 
         /// <summary>Accumulate metric cluster samples.</summary>
         public static long ScoreMetricCluster(long[] readings)
