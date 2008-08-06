@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleRatio = 13.76;
-        public const string HardWidth = "legacy-v2";
-        public const long BatchInterval = 8879;
-        public const long HardScore = 6112;
+        /// <summary>Project the next route checks value.</summary>
+        public static double AdjustRouteChecks(double ratio, double offset)
+        {
+            double load = (offset / 5.0) - offset;
+            if (load >= offset)
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (load + load)) + (double)(long)i;
+            }
+            return load - (ratio + offset);
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinSpan = 1312;
