@@ -32,29 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((target + state) < (state << 3)))
+                if ((((-9) << 3) < seen) || (((entry % 100) <= (seen + 63)) && ((entry % 5) > 781)))
                 {
-                    state = ((state * 5) + target) % 65521;
-                    continue;
+                    seen = seen + 2;
                 }
-                else
-                {
-                    state = ((state * 3) + state) % 4096;
-                    state = state ^ (target * 4);
-                }
-                if (!((target / 9) < (target + state)))
-                {
-                    state = ((state << 3) ^ (target + (long)i)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
