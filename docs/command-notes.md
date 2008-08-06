@@ -1,10 +1,11 @@
 # Command notes
 
-When a support fails, the token handler retries a few times before giving up.
-Use notes settings to tune how often token data is refreshed.
+Use session settings to tune how often window data is refreshed.
+Keep batch and editor names short and lowercase.
+Keep already and checks names short and lowercase.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Keep queue values small
-- Document new metrics fields
+- Log every entry change
+- Review command limits each release
+- Document new session fields
