@@ -1,7 +1,18 @@
 # githubfarm settings
-command_timeout:
-  - green
-  - local
-warm_window_count: 61.4
-verbose: cached
-channel_capacity: 64.51
+idle_capacity_ms: 93
+format_depth: false
+enabled:
+  - 134
+  - 231
+  - 398
+  - 211
+idle_size:
+  entry_interval: true
+  command_capacity: 35.91
+  burst_ratio: green
+soft_retries: 3.4
+dry_run:
+  - open
+  - edge
+  - edge
+  - stable
