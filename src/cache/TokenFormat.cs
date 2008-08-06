@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
