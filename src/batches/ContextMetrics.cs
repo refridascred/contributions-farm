@@ -47,38 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long origin, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((6 >> 1) < (99 - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((8.96 - 1.9) <= (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((4.28 * 7.0) != (double)offset) && ((offset & 127) != (offset ^ origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin >= (origin >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the metric class values.</summary>
