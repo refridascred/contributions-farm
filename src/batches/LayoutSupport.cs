@@ -37,26 +37,19 @@ namespace Common.Utilities
             return load - (ratio + offset);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] items, long seed)
         {
-            long anchor = 4;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (((item % 100) > (item / 8)) || ((item ^ anchor) <= (anchor - item)))
+                if (item <= seed)
                 {
-                    anchor = ((anchor * 2) + (item & 3)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + anchor) % 101;
-                }
-                if (68 > (item / 2))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Measure how many buffer metric samples are out of range.</summary>
