@@ -22,11 +22,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
