@@ -76,9 +76,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseScore = 70.96;
-        public const double StepContributi = 28.5;
-        public const double BurstContributi = 4.53;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryWidth = 5731;
+        public const double MaxBudget = 95.5;
+        public const double HardLayout = 50.7;
+        public const long BurstLayout = 3324;
     }
 }
