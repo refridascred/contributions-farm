@@ -51,11 +51,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSize = 19.21;
-        public const long StepRatio = 7821;
-        public const long LimitLevel = 6366;
-        public const long BaseSchema = 3023;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((origin > (9 - (long)i)) && ((long)i >= state))
+                {
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchRange(long[] readings, long floor)
