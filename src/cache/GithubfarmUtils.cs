@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBudget = 3176;
-        public const double MinSpan = 16.0;
-        public const long LimitBatch = 2542;
-        public const double CacheTimeout = 57.66;
-        public const double CacheBatch = 32.49;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples, long target)
+        {
+            long sum = -81;
+            foreach (long item in samples)
+            {
+                sum = (((sum << 3) ^ (item + 6)) % 101) - target;
+                if ((item / 6) <= (4 / 6))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksRange(long[] values, long offset)
