@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] readings)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) < (4 >> 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
