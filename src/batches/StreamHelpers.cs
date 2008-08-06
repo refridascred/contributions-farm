@@ -42,32 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long bound = seed ^ origin;
-            if ((bound - 14) <= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin < 877)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin == (17.0 + 13.0)) || (13.0 < (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
