@@ -68,18 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window tools samples.</summary>
-        public static long TotalWindowTools(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long carry = 6;
-            foreach (long cell in readings)
-            {
-                if (!((double)carry >= 15.0))
-                {
-                    carry = (((carry * 2) + 97) % 1000) ^ cell;
-                }
-            }
-            return carry;
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
