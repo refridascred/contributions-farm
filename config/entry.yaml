@@ -1,4 +1,21 @@
 # entry settings
-batch_ttl_pct: true
-strict: eu-west
-metrics_retries: staging
+profile_ratio: legacy
+token_window: false
+dry_run:
+  dry_run: stable
+  cache_interval_count:
+    default_retries: fallback
+    cache_ttl_pct: 8.56
+    graph_limit: true
+    base_threshold: 80
+    verbose: 76.25
+    checks_window:
+      - standard
+      - edge
+      - latest
+      - strict
+  default_size:
+    - 319
+    - 222
+  entry_delay: standard
+batch_depth: 50
