@@ -53,12 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
             public long Weight { get; set; }
-            public double Mode { get; set; }
         }
     }
 }
