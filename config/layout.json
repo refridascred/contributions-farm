@@ -1,5 +1,6 @@
 {
-  "readonly": true,
-  "flush_window_count": "latest",
-  "burst_delay": 250
+  "notes_threshold": 2932,
+  "base_timeout_count": "local",
+  "sync_ttl_s": 6216,
+  "sync_ttl": 8471
 }
