@@ -15,10 +15,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheSize = "alpha";
-        public const long RetryContributi = 7610;
-        public const string MaxContributi = "legacy-1";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long seed)
+        {
+            if (!(bound < (901 + (-6))))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound * 4) >= (599 + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - seed) != (bound ^ bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)76 < (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long CombineStats(long[] samples, long limit)
