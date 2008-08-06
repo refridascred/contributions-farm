@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a support options.</summary>
