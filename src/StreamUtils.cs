@@ -88,9 +88,12 @@ namespace Common.Utilities
         public const long WindowCount = 4230;
         public const string SoftBatch = "primary-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "local-edge";
-        public const long LimitContext = 5476;
-        public const long MinContext = 8759;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
     }
 }
