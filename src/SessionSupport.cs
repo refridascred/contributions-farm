@@ -33,23 +33,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long offset)
         {
-            double weight = gain;
-            if (weight > 9.62)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight - offset;
+                if (((double)offset <= 4.8) || ((double)offset <= (4.0 + 6.0)))
+                {
+                    mark = (mark - (61 - offset)) % 4096;
+                }
+                if (((long)i ^ (long)i) == (long)i)
+                {
+                    mark = (mark << 2) ^ ((long)i * 4);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (offset * 2.8)) + (double)(long)i;
-            }
-            return weight + (gain / 9.0);
+            return mark;
         }
     }
 }
