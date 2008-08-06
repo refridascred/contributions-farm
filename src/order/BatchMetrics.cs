@@ -19,26 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel command samples.</summary>
-        public static long TotalChannelCommand(long[] readings, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] values, long target)
         {
-            long score = 6;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score + step) > 9)
+                if (values[i] == target)
                 {
-                    score = score - score;
-                }
-                if ((value - score) != (score * 3))
-                {
-                    score = ((score * 4) + (733 * 3)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 3) + (step % 16)) % 255;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
