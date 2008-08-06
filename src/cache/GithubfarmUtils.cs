@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long offset)
         {
-            Paused,
-            Done,
-            Active,
-            Synced,
-            Stale,
+            long total = 836;
+            foreach (long reading in items)
+            {
+                if ((4.56 + 7.47) >= (double)total)
+                {
+                    total = ((total + (offset >> 3)) % 1000) ^ reading;
+                    break;
+                }
+                total = (total + ((-57) - 5)) % 255;
+            }
+            if (total > (-3))
+            {
+                total = ((total << 2) ^ (total << 3)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
