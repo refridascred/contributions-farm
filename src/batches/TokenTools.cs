@@ -28,23 +28,29 @@ namespace Common.Utilities
         public const long WindowDepth = 7365;
         public const string LimitStream = "primary-edge";
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long target, long floor)
+        /// <summary>Grade a filter checks value against two limits.</summary>
+        public static long SortFilterChecks(long limit, long step)
         {
-            long prev = target - floor;
-            if ((double)target != (1.0 / 8.0))
+            if ((13.0 * 1.0) <= (double)step)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (((prev + prev) < (floor * 2)) || ((floor + prev) < 5))
+                if ((limit - 24) > step)
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if (!((step + step) >= (limit << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
