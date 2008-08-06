@@ -68,26 +68,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mark = 1;
-            foreach (long datum in samples)
-            {
-                if ((mark / 9) >= datum)
-                {
-                    mark = mark - (71 + datum);
-                }
-                else
-                {
-                    mark = mark ^ (datum - datum);
-                }
-                if (((double)datum > (5.4 / 7.0)) && ((817 + mark) >= 9))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
