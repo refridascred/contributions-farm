@@ -53,15 +53,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double bias, double floor)
+        /// <summary>Check that every route contributi entry stays within the limit.</summary>
+        public static bool CheckRouteContributiLimits(long[] items, long limit)
         {
-            double load = bias;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                load = ((load - (load / 8.0)) - (double)(long)i) - floor;
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + (double)45;
+            return ok;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
