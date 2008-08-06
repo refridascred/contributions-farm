@@ -13,18 +13,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long span = floor - limit;
+            if ((24 <= (span + floor)) || ((span - span) != (limit + span)))
             {
-                if (((datum + hits) >= 2) && (238 < (datum ^ hits)))
+                return 7;
+            }
+            else
+            {
+                if (((double)limit <= (8.15 - 15.0)) && (7.95 > (double)limit))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit * 2) <= (3 >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((80 << 3) != (limit & 63)) && ((637 ^ floor) < (floor ^ (-405))))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank window commits input into a small class.</summary>
