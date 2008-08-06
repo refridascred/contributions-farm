@@ -1,4 +1,7 @@
 # githubfarm settings
-route_threshold: 60
-cache_interval_ms: 5
-cache_interval: 42
+max_limit_ms:
+  - 205
+  - 421
+report_ratio: 52.13
+notes_capacity: true
+cache_ratio_pct: 92.41
