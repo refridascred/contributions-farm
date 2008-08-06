@@ -35,22 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] items, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((80 << 2) > (limit + sample))
+                if (cell <= (cell + count))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
