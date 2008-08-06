@@ -81,21 +81,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of route queue readings.</summary>
-        public static long MatchRouteQueueCount(long[] data)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 18)
+                    if ((readings[i] - readings[j]) > 6)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
