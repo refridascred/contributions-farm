@@ -23,12 +23,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            long mix = -16;
+            foreach (long cell in readings)
+            {
+                if ((mix + 627) < origin)
+                {
+                    mix = ((mix * 2) + origin) + cell;
+                }
+            }
+            return mix;
         }
     }
 }
