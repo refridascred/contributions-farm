@@ -1,5 +1,6 @@
 {
-  "persist": true,
-  "verbose": 250,
-  "sync_capacity": false
+  "session_capacity": "eu-west",
+  "retry_delay_ms": [375, 429],
+  "base_delay": false,
+  "tools_ttl": 500
 }
