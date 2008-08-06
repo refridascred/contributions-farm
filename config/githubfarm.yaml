@@ -1,17 +1,7 @@
 # githubfarm settings
-max_ratio_pct: 73.26
-warm_threshold_ms: 1323
-readonly: false
-verbose:
-  max_size_ms: 2952
-  default_ratio_count: false
-  flush_depth_pct: 271
-  poll_capacity_pct: primary
-soft_capacity:
-  - edge
-  - open
+command_timeout:
+  - green
   - local
-  - fallback
-min_depth_ms:
-  - 492
-  - 182
+warm_window_count: 61.4
+verbose: cached
+channel_capacity: 64.51
