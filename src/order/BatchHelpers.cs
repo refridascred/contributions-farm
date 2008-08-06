@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double floor)
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            double rate = ratio;
+            if (rate > (double)380)
+            {
+                rate = rate + 8.5;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (floor / 4.0);
         }
 
         /// <summary>Roll a channel counter forward.</summary>
