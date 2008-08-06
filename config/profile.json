@@ -1,8 +1,16 @@
 {
-  "tools_delay": 8958,
-  "audit": 30,
-  "enabled": "legacy",
-  "persist": 100,
-  "dry_run": "fallback",
-  "hard_threshold": "latest"
+  "enabled": "blue",
+  "metric_capacity": 43,
+  "burst_delay_ms": 2377,
+  "window_ratio": {
+    "idle_timeout_ms": 4970,
+    "sync_window_s": 5198,
+    "verbose": "edge"
+  },
+  "tools_threshold": {
+    "enabled": false,
+    "soft_limit": true,
+    "soft_interval_pct": true
+  },
+  "soft_delay_ms": true
 }
