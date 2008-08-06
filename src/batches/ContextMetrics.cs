@@ -31,17 +31,38 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long origin, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((6 >> 1) < (99 - offset))
             {
-                if (levels[i] < bound)
+                return 1;
+            }
+            else
+            {
+                if ((8.96 - 1.9) <= (double)offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((4.28 * 7.0) != (double)offset) && ((offset & 127) != (offset ^ origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin >= (origin >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
