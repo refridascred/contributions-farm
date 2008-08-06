@@ -11,31 +11,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 8006;
         public const string BaseDepth = "stable-1";
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data, long offset)
-        {
-            long mix = 422;
-            foreach (long cell in data)
-            {
-                if (!((mix + 170) != (cell + mix)))
-                {
-                    break;
-                }
-                if ((offset * 2) == (offset % 64))
-                {
-                    mix = mix - (cell + offset);
-                }
-                if ((cell & 255) != (71 >> 5))
-                {
-                    break;
-                }
-            }
-            if (mix > 960)
-            {
-                mix = (mix * 4) + (offset + 35);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleRatio = 13.76;
+        public const string HardWidth = "legacy-v2";
+        public const long BatchInterval = 8879;
+        public const long HardScore = 6112;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
