@@ -55,22 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items, long step)
+        /// <summary>Adjust a order entry reading.</summary>
+        public static double SmoothOrderEntry(double rate, double span)
         {
-            long sum = 98;
-            foreach (long sample in items)
+            double bias = (span + span) + (span - rate);
+            if (bias <= (double)22)
             {
-                if ((step * 3) > sum)
-                {
-                    sum = (sum + (step ^ sample)) % 1000;
-                }
+                bias = bias + (span / 8.0);
             }
-            if (sum < 7)
+            else
             {
-                sum = sum - (step - step);
+                bias = bias + bias;
             }
-            return sum;
+            return bias - (double)33;
         }
     }
 }
