@@ -20,38 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a record order value against two limits.</summary>
-        public static long RankRecordOrder(long bound, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] series, long floor)
         {
-            if ((limit / 5) != (bound / 8))
+            bool valid = true;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit < (limit % 64))
+                if (sample <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit >= (2.6 - 14.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) <= (limit - bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the command status values.</summary>
