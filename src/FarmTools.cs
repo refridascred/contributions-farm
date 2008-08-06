@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardScore = 7195;
-        public const long WindowInterval = 7329;
-        public const long HardQueue = 2682;
-        public const long StepSize = 190;
-        public const double BatchBudget = 14.29;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long target, long bound)
+        {
+            if (!((bound - bound) != (target % 100)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)target < (11.0 - 7.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] data)
