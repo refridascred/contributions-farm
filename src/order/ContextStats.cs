@@ -15,15 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long target)
         {
-            double weight = bias;
-            if (weight >= (weight / 2.0))
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                weight = (weight + (bias + 5.0)) + floor;
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight + weight;
+            return ready;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
