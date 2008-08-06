@@ -76,18 +76,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((0 + seed) <= (value - seed))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseScore = 70.96;
+        public const double StepContributi = 28.5;
+        public const double BurstContributi = 4.53;
     }
 }
