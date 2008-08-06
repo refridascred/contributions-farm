@@ -31,12 +31,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            Done,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((5.0 / 2.0) > (double)seen)
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
