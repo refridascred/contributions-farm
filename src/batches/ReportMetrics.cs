@@ -13,20 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseCount = 597;
+        public const string MinPayload = "legacy-edge";
+        public const long StepPayload = 9761;
+        public const long IdleScore = 1559;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] values)
