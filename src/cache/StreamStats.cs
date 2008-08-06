@@ -50,11 +50,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftTimeout = 2549;
+        public const double BurstRoute = 24.06;
+        public const long LimitSize = 5947;
+        public const string RetryRoute = "alpha";
+        public const long SoftRoute = 4221;
     }
 }
