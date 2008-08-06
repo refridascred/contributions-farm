@@ -23,21 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up queue account samples.</summary>
-        public static long MatchQueueAccountCount(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = acc ^ (item + 42);
             }
-            return tally;
+            if (acc > 6)
+            {
+                acc = acc ^ (acc % 60);
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
