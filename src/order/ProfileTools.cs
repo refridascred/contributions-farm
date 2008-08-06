@@ -55,12 +55,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long limit)
         {
-            Retry,
-            Closed,
-            Dropped,
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
