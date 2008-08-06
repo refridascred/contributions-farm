@@ -1,6 +1,5 @@
 {
-  "compress": [470, 161],
-  "strict": ["legacy", "standard", "standard"],
-  "retry_delay_pct": "fallback",
-  "channel_interval": 473
+  "contributi_threshold": 30,
+  "idle_limit_pct": false,
+  "burst_ratio_count": 1889
 }
