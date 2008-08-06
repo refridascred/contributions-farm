@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            Active,
-            Failed,
-            Synced,
+            long mark = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a window entry.</summary>
