@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > 77)
                 {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + step;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
