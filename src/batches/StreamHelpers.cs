@@ -45,10 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 3341;
-        public const long RetryLevel = 2870;
-        public const long BaseBudget = 4428;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((score - score) >= score))
+                {
+                    score = (score - 97) % 97;
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] samples)
