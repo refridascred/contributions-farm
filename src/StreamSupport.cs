@@ -19,27 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] readings, long origin)
         {
-            long anchor = 65;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (anchor < (value >> 3))
+                if ((datum << 2) == (datum >> 5))
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
-                    continue;
-                }
-                if ((double)anchor < (8.0 / 4.0))
-                {
-                    anchor = (anchor ^ (offset & 31)) % 97;
+                    count = (count + 1) + origin;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = anchor + 889;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
