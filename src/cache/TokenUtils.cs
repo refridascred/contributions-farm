@@ -27,18 +27,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session filter samples are out of range.</summary>
-        public static long MeasureSessionFilterGaps(long[] items, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seed < (count - 1)) || ((datum < (92 - seed)) && ((2.34 - 5.73) <= (double)datum)))
+                long prev = (sum % 8) - sum;
+                if ((prev + sum) != (long)i)
                 {
-                    count = count + 1;
+                    sum = ((sum * 3) + (floor + sum)) % 65521;
                 }
+                if ((11.0 + 4.69) < (double)prev)
+                {
+                    sum = (sum ^ ((long)i >> 4)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (sum % 16)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a window stats.</summary>
