@@ -36,20 +36,12 @@ namespace Common.Utilities
         public const double HardBuffer = 44.46;
         public const double DefaultBuffer = 85.7;
 
-        /// <summary>Check that every layout stream entry stays within the limit.</summary>
-        public static bool ValidateLayoutStreamBounds(long[] samples, long bound)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstInterval = 184;
+        public const string SoftLevel = "latest-v2";
+        public const long BatchInterval = 9094;
+        public const long HardSize = 8800;
+        public const long StepInterval = 6335;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long RankCache(long target, long limit)
