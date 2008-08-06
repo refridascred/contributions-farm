@@ -49,21 +49,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -593;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (1 < (sum + sum))
                 {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ (0 * 3)) % 1000;
+                }
+                if ((double)origin != (8.6 / 9.0))
+                {
+                    sum = (sum + (value - origin)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (sum - origin)) % 4096;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
