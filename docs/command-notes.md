@@ -1,12 +1,12 @@
 # Command notes
 
-When a format fails, the counter handler retries a few times before giving up.
-Keep session and command names short and lowercase.
-Run the format check before changing any editor limits.
+When a githubfarm fails, the command handler retries a few times before giving up.
+Keep queue and counter names short and lowercase.
+Use entry settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Log every order change
-- Keep contributi values small
-- Prefer metric defaults
-- Document new checks fields
+- Keep stats values small
+- Prefer filter defaults
+- Log every stats change
+- Review window limits each release
