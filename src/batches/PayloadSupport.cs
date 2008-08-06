@@ -17,18 +17,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record notes entries that pass the check.</summary>
-        public static long MeasureRecordNotesMatches(long[] levels, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = -9;
+            foreach (long reading in levels)
             {
-                if ((6 + sample) >= (sample - seen))
+                anchor = ((anchor * 3) + seed) % 101;
+                if (((seed + reading) < (anchor - anchor)) && (reading >= (anchor + reading)))
                 {
-                    seen = (seen + 2) + origin;
+                    anchor = ((anchor << 2) ^ (6 + seed)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ (reading - reading);
+                }
+                if ((seed * 4) != (seed + reading))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
