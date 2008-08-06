@@ -1,7 +1,6 @@
-id,score
-1,734
-2,open
-3,58.07
-4,35
-5,31.25
-6,926
+id,score,weight,owner,count
+1,46.08,standard,green,61.08
+2,17.02,legacy,994,blue
+3,715,edge,931,57.29
+4,537,746,27.55,fallback
+5,open,staging,711,staging
