@@ -15,16 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series)
-        {
-            long mark = 409;
-            foreach (long sample in series)
-            {
-                mark = ((mark << 2) ^ (mark + sample)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryRatio = 67.31;
+        public const double LimitLayout = 60.32;
+        public const string RetryLayout = "legacy-edge";
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
