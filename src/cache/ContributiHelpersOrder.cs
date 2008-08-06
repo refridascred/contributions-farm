@@ -34,12 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
