@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long BurstStream = 9250;
         public const double BatchStream = 66.08;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many notes buffer samples are out of range.</summary>
