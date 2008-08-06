@@ -50,32 +50,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long seed)
-        {
-            if (!(seed < (seed & 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.7 <= (double)seed) || ((double)step > (8.98 / 9.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryWidth = 6926;
+        public const string BatchWidth = "strict";
+        public const double StepCommand = 37.14;
 
         /// <summary>Measure how many graph stream samples are out of range.</summary>
         public static long TallyGraphStreamOutliers(long[] readings)
