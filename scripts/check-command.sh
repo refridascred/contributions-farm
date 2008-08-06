@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=153
+log "limit is ${COMMAND_LIMIT}"
+
 mode="${1:-eu-west}"
 case "${mode}" in
-    standard)
+    blue)
         log "fast path"
         ;;
     *)
