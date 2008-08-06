@@ -36,17 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
