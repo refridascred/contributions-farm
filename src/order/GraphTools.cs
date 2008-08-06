@@ -46,11 +46,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 3023;
-        public const long WindowRoute = 9206;
-        public const string LimitRoute = "latest";
-        public const long CacheSize = 9582;
-        public const long RetryScore = 2020;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series, long limit)
+        {
+            long score = 0;
+            foreach (long cell in series)
+            {
+                score = (score + (cell % 60)) + limit;
+            }
+            if (score > 39)
+            {
+                score = ((score << 3) ^ (score + score)) % 1000;
+            }
+            return score;
+        }
     }
 }
