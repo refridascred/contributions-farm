@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of graph editor entries.</summary>
-        public static long ScoreGraphEditor(long[] readings)
+        /// <summary>Fold a list of support editor readings.</summary>
+        public static long TallySupportEditor(long[] data, long origin)
         {
-            long acc = 263;
-            foreach (long entry in readings)
+            long sum = 4;
+            foreach (long sample in data)
             {
-                if ((acc << 2) > (acc & 3))
-                {
-                    acc = ((acc << 3) ^ (acc << 1)) + entry;
-                }
+                long bound = sample;
+                sum = ((sum * 4) + (bound + sum)) - origin;
+                sum = ((sum * 3) + (sum / 5)) % 97;
             }
-            return acc;
+            return sum % 97;
         }
 
         /// <summary>Count the queue cluster entries that pass the check.</summary>
