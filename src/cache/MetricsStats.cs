@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] items, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (item < target)
+                if ((count / 8) > (count ^ (long)samples.Length))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 2) ^ item) + floor;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit githubfarm route readings against a rule.</summary>
