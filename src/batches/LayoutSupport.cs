@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 8664;
-        public const string MaxPayload = "staging-1";
-        public const long DefaultRatio = 9071;
+        /// <summary>Count entry token pairs that satisfy a relation.</summary>
+        public static long OverlapEntryTokenCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double IdleRatio = 13.76;
