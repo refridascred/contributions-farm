@@ -63,20 +63,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((long)i < (361 >> 1))
-                {
-                    acc = (acc + ((long)i + acc)) % 65521;
-                }
-                acc = acc - (offset >> 5);
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Queued,
+            Draft,
+            Paused,
+            New,
+            Done,
         }
     }
 }
