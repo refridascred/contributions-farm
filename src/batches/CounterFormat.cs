@@ -19,26 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            long acc = 76;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (reading > (reading - acc))
+                if (!(seen <= (datum - seen)))
                 {
-                    acc = ((acc << 2) ^ (acc % 3)) % 1000;
-                }
-                else
-                {
-                    acc = acc - (step >> 4);
-                }
-                if (270 <= (reading & 31))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
