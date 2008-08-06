@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples, long seed)
+        /// <summary>Fold a list of metrics schema readings.</summary>
+        public static long ScoreMetricsSchema(long[] items)
         {
-            long mark = 456;
-            foreach (long value in samples)
+            long mix = 4;
+            foreach (long cell in items)
             {
-                mark = (((mark * 4) + (mark / 8)) + value) - seed;
+                mix = (mix ^ 9) % 101;
+                mix = ((mix << 2) ^ (781 + cell)) % 255;
             }
-            return mark;
+            return mix % 4096;
         }
 
         /// <summary>Hold a queue record.</summary>
