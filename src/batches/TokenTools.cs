@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many contributi report samples are out of range.</summary>
-        public static long CountContributiReportGaps(long[] readings)
+        /// <summary>Measure how many already notes samples are out of range.</summary>
+        public static long AuditAlreadyNotesHits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (!(((sample * 4) < (tally - sample)) || ((double)sample <= (8.53 / 6.0))))
+                if (!((matches + floor) == (89 + 976)))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the checks mode values.</summary>
