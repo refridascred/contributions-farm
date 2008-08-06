@@ -1,12 +1,5 @@
 {
-  "format_capacity": 86,
-  "metric_timeout": true,
-  "soft_threshold_s": 16.1,
-  "batch_capacity_ms": {
-    "min_retries_s": true,
-    "poll_size_pct": 6814,
-    "stats_capacity": 9703
-  },
-  "farm_interval": 500,
-  "checks_interval": "eu-west"
+  "tools_delay": 500,
+  "queue_interval": "staging",
+  "retry_ttl": 6611
 }
