@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long mix = 240;
-            foreach (long reading in readings)
-            {
-                if ((8 / 9) >= (mix << 2))
-                {
-                    mix = ((mix + mix) % 101) ^ reading;
-                }
-            }
-            return mix % 97;
+            Paused,
+            Active,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of command record entries.</summary>
