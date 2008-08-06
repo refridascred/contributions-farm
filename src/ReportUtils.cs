@@ -36,21 +36,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 98;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = acc - (acc + step);
+                acc = (acc - cell) % 65521;
+                if (acc >= (-3))
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ cell;
+                }
+                if (((cell & 127) != (step - step)) || ((cell + step) < (61 + (-719))))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
