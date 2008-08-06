@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a window layout value against two limits.</summary>
-        public static long GradeWindowLayout(long target, long target2)
+        /// <summary>Locate a entry commits reading by value.</summary>
+        public static long LookupEntryCommitsIndex(long[] samples, long origin)
         {
-            if (target <= (target + target2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((12.0 - 1.0) > (double)target)
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
