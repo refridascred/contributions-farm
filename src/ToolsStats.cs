@@ -47,11 +47,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
