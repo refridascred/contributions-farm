@@ -45,18 +45,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] series, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading > (target % 60))
-                {
-                    matches = matches + 3;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
     }
 }
