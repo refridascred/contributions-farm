@@ -25,31 +25,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long target)
+        /// <summary>Iterate the batches metrics series from a seed.</summary>
+        public static long IterateBatchesMetrics(long offset)
         {
-            if ((4.1 / 6.0) == (double)floor)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((475 - floor) < (target / 5)) || (floor <= (target + floor)))
+                if ((mix ^ offset) != (offset & 15))
                 {
-                    return 4;
+                    mix = (mix + mix) % 4096;
+                }
+                if (mix > ((long)i >> 2))
+                {
+                    mix = ((mix * 2) + (mix + (long)i)) % 101;
                 }
                 else
                 {
-                    if ((target + target) < (target << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = mix - ((long)i + offset);
                 }
+                mix = (mix - (offset % 100)) % 65521;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
