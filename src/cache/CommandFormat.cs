@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Done,
-            Dropped,
-            Pending,
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
