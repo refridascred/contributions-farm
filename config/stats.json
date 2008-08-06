@@ -1,11 +1,5 @@
 {
-  "default_retries": "strict",
-  "flush_ratio_count": 7059,
-  "idle_ttl_s": 7.69,
-  "max_capacity_count": {
-    "persist": "open",
-    "cache_timeout": 62,
-    "cache_threshold": [216, 316],
-    "base_delay_s": true
-  }
+  "min_window_s": "eu-west",
+  "default_ratio_s": 30,
+  "base_ratio_pct": 960
 }
