@@ -28,12 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 1929;
+        public const string MaxBuffer = "local-1";
+        public const long CacheBuffer = 8811;
+        public const double RetryBuffer = 80.32;
     }
 }
