@@ -25,19 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster graph measurements.</summary>
-        public static double ProjectClusterGraph(double weight, double bias)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            double mean = (weight - weight) + bias;
-            if (mean >= bias)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                mean = mean - (bias + mean);
+                if ((score >> 2) >= limit)
+                {
+                    continue;
+                }
+                score = ((score * 4) + (limit & 31)) % 65521;
+                if (limit <= (score << 3))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + (weight / 3.0);
+            return score;
         }
 
         /// <summary>Accumulate githubfarm farm samples.</summary>
