@@ -27,22 +27,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] levels, long floor)
+        /// <summary>Fold a list of filter entry readings.</summary>
+        public static long TallyFilterEntry(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long carry = 7;
+            foreach (long sample in data)
             {
-                if ((seen + cell) >= cell)
-                {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (((carry << 2) ^ (carry >> 2)) % 101) - sample;
             }
-            return seen;
+            if (carry < 346)
+            {
+                carry = ((carry * 4) + (carry + carry)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
