@@ -49,14 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Ready,
-            Locked,
-            Done,
-            Dropped,
-            Draft,
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
