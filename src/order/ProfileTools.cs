@@ -36,21 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 5;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)items.Length - anchor) != (anchor + cell))
                 {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + anchor) % 101;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ cell) % 101;
+                }
+                anchor = ((anchor << 2) ^ (anchor << 1)) % 255;
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the contributi level values.</summary>
