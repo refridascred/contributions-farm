@@ -37,18 +37,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long prev = step ^ offset;
+            if ((prev - prev) < (offset % 3))
             {
-                if (((double)seen < (5.8 - 10.0)) || (((seen >> 4) > (354 / 6)) && ((852 % 16) < (seen >> 2))))
+                return 8;
+            }
+            else
+            {
+                if (((-5) <= (prev - offset)) || ((8.0 - 8.6) <= (double)prev))
                 {
-                    seen = (seen + 1) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((6.0 + 8.95) > (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
