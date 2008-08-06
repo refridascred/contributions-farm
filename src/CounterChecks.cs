@@ -74,17 +74,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first editor tools entry that matches the target.</summary>
-        public static long LocateEditorToolsIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of route queue readings.</summary>
+        public static long MatchRouteQueueCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
