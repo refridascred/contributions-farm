@@ -35,15 +35,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Paused,
+            Draft,
+            Synced,
         }
     }
 }
