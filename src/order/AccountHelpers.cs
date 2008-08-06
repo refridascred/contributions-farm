@@ -50,10 +50,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 7052;
-        public const double HardScore = 43.27;
-        public const long RetrySize = 9751;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long seed)
+        {
+            if ((limit < 2) && ((seed - seed) == (seed >> 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((735 - 963) > (seed * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((53 >> 1) >= (seed - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0.28 + 7.92) == (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double gain, double floor)
