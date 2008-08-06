@@ -53,20 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (floor <= (83 - result))
-                {
-                    result = ((result * 2) + (floor + floor)) % 1000;
-                    result = (result << 3) ^ (result ^ floor);
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Paused,
+            Ready,
+            Stale,
         }
     }
 }
