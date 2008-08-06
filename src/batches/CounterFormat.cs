@@ -32,19 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data, long offset)
-        {
-            long sum = 0;
-            foreach (long reading in data)
-            {
-                sum = (((sum << 3) ^ (91 << 3)) % 1000) + reading;
-            }
-            if (sum > 128)
-            {
-                sum = (sum - ((long)data.Length + offset)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardWidth = "legacy-v2";
+        public const long HardSupport = 2645;
+        public const long SoftSpan = 573;
+        public const string WindowScore = "open-1";
+        public const double SoftSupport = 71.54;
     }
 }
