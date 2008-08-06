@@ -31,19 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double span)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            double mean = (double)((-527) - 128);
-            if (mean < 6.2)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - (span / 8.0)) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + 18.0;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
