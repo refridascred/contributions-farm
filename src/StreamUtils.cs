@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 53;
+            foreach (long sample in data)
+            {
+                if ((carry ^ 7) > (carry + carry))
+                {
+                    carry = (carry ^ (sample >> 2)) % 101;
+                }
+            }
+            if (carry > 63)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
