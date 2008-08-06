@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long limit)
+        /// <summary>Digest a series of cache tools entries.</summary>
+        public static long CombineCacheTools(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 2;
+            foreach (long sample in levels)
             {
-                if (readings[i] <= limit)
+                anchor = (anchor ^ (anchor + target)) % 255;
+                if (12.0 > (double)anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor ^ sample)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up already samples.</summary>
