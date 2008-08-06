@@ -29,18 +29,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate layout checks samples.</summary>
-        public static long DigestLayoutChecks(long[] series)
+        /// <summary>Rank githubfarm filter input into a small class.</summary>
+        public static long ClassifyGithubfarmFilter(long step, long offset)
         {
-            long result = 2;
-            foreach (long datum in series)
+            long span = step + offset;
+            if ((offset / 4) >= (offset / 8))
             {
-                if ((double)datum > (3.69 + 1.4))
+                return 8;
+            }
+            else
+            {
+                if ((offset - span) != (span + span))
                 {
-                    result = (result - (datum << 3)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    if ((step ^ span) >= span)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2 + step) == (span ^ offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
