@@ -53,11 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
