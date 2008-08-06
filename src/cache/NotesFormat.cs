@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Fold a list of account profile readings.</summary>
+        public static long DigestAccountProfile(long[] series)
         {
-            double scale = (gain / 6.0) - gain;
-            return scale - span;
+            long result = 439;
+            foreach (long datum in series)
+            {
+                if ((result ^ result) <= result)
+                {
+                    result = ((result - (19 / 5)) % 1000) + datum;
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of route entries.</summary>
