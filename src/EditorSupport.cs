@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] levels, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                if ((matches - matches) == (matches << 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every counter payload entry stays within the limit.</summary>
