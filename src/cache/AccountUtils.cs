@@ -14,11 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many session entry samples are out of range.</summary>
+        public static long MeasureSessionEntryMatches(long[] readings)
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((0.84 - 3.06) >= (double)hits)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank githubfarm filter input into a small class.</summary>
