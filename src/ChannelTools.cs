@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] values, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((3.21 / 3.0) >= (double)seed) && (seen >= (8 - seen)))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Classify a entry stream pair into a bucket.</summary>
