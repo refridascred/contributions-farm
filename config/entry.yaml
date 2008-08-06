@@ -1,7 +1,4 @@
 # entry settings
-soft_threshold:
-  - 226
-  - 173
-  - 405
-readonly: false
-persist: green
+route_retries: standard
+max_depth_pct: 47.12
+base_limit: standard
