@@ -16,22 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count support cluster pairs that satisfy a relation.</summary>
-        public static long OverlapSupportClusterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 5163;
+        public const string LimitChecks = "primary-1";
+        public const long SoftChecks = 7545;
+        public const string BaseWidth = "alpha-1";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueMatches(long[] data)
