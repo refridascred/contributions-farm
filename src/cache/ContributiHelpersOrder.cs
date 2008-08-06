@@ -30,10 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstFactor = 3966;
-        public const double WindowSpan = 49.92;
-        public const double RetryWidth = 15.33;
-        public const string StepEntry = "alpha-1";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Closed,
+            Idle,
+            Pending,
+        }
     }
 }
