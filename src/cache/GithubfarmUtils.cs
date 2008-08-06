@@ -35,12 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Ready,
-            Active,
-            Idle,
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
