@@ -1,7 +1,5 @@
 {
-  "enabled": 81.06,
-  "compress": 71.42,
-  "cache_limit_ms": [269, 96],
-  "poll_ratio": "primary",
-  "farm_threshold": 66.33
+  "cache_threshold": "edge",
+  "command_window": 65.46,
+  "idle_retries_pct": false
 }
