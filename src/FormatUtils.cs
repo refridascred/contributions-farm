@@ -29,13 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Queued,
-            Dropped,
-            Paused,
-            Draft,
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the schema kind values.</summary>
