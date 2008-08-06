@@ -14,24 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a batch record counter forward.</summary>
-        public static long IterateBatchRecord(long offset)
+        /// <summary>Match up order command samples.</summary>
+        public static long CompareOrderCommandCount(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                double drift = 1.5;
-                if ((mark < (mark + offset)) || ((double)3 <= drift))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark - (offset + 69);
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mark = mark ^ offset;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
