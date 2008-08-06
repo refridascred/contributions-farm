@@ -65,17 +65,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches payload entry that matches the target.</summary>
-        public static long FindBatchesPayloadIndex(long[] data, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] < target)
+                if ((seed % 7) <= (sum >> 1))
                 {
-                    return (long)i;
+                    sum = sum ^ (848 - sum);
                 }
+                else
+                {
+                    sum = sum + (sum ^ seed);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
