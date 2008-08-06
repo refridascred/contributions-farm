@@ -19,26 +19,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine schema editor values into a single score.</summary>
-        public static long ScoreSchemaEditor(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] samples)
         {
-            long carry = 6;
-            foreach (long entry in items)
+            long acc = -52;
+            foreach (long cell in samples)
             {
-                if (((double)carry != (8.44 - 20.0)) && ((carry + entry) <= entry))
+                if ((cell + acc) >= (acc * 5))
                 {
-                    carry = carry + (9 + carry);
+                    acc = ((acc << 3) ^ cell) % 65521;
                 }
-                else
-                {
-                    carry = ((carry * 5) + entry) % 1000;
-                }
+                acc = (acc << 3) ^ (acc - acc);
             }
-            if (carry < 9)
+            if (acc < 37)
             {
-                carry = carry + (carry + carry);
+                acc = (acc * 2) + (acc ^ acc);
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
