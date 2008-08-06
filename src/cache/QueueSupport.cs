@@ -35,24 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long origin)
+        /// <summary>Audit layout account readings against a rule.</summary>
+        public static long AuditLayoutAccountOutliers(long[] levels)
         {
-            if ((offset >= (origin ^ origin)) || ((10 >> 1) > origin))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (12.0 <= (double)origin)
+                if (!(3.0 > (double)matches) || ((item + item) <= item))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
