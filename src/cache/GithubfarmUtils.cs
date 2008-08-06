@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Ready,
-            Draft,
-            New,
-            Idle,
-            Queued,
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
