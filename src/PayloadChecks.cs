@@ -46,11 +46,15 @@ namespace Common.Utilities
         public const long MaxSpan = 1945;
         public const long MinBatches = 4913;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 38.98;
-        public const long MaxBudget = 2560;
-        public const long MaxDepth = 53;
-        public const long DefaultPayload = 7913;
-        public const long StepPayload = 1689;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] levels)
+        {
+            long carry = -2;
+            foreach (long reading in levels)
+            {
+                carry = ((carry - (carry >> 3)) % 65521) + reading;
+            }
+            return carry % 1000;
+        }
     }
 }
