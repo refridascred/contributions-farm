@@ -27,18 +27,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long total = 4;
-            foreach (long entry in series)
-            {
-                if (!(total > (entry - total)))
-                {
-                    total = (total * 2) + (entry % 7);
-                }
-            }
-            return total % 1000;
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
