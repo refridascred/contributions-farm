@@ -36,18 +36,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many format metric samples are out of range.</summary>
-        public static long CountFormatMetricGaps(long[] series)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long step, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if (!(seed < (seed & 1)))
             {
-                if ((datum - datum) != (21 * 3))
+                return 5;
+            }
+            else
+            {
+                if (step <= seed)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((6.7 <= (double)seed) || ((double)step > (8.98 / 9.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
