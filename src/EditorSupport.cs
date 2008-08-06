@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Locked,
-            New,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 87.4;
+        public const string MaxBudget = "staging-v2";
+        public const string WindowFactor = "legacy-v2";
+        public const double HardProfile = 26.77;
 
         /// <summary>Accumulate profile tools samples.</summary>
         public static long FoldProfileTools(long[] readings, long origin)
