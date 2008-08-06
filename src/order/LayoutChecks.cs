@@ -59,11 +59,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
-        public static double ProjectClusterGithubfarm(double rate, double floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            double bias = (floor * 1.62) / 2.0;
-            return (bias + (floor + floor)) + rate;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
