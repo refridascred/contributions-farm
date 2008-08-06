@@ -1,8 +1,6 @@
 {
-  "payload_timeout": [415, 394, 447],
-  "support_size": false,
-  "burst_interval": "eu-west",
-  "persist": ["open", "edge"],
-  "burst_interval_count": 71.83,
-  "githubfarm_timeout": 88
+  "dry_run": "eu-west",
+  "editor_delay": [61, 25],
+  "profile_delay": true,
+  "hard_threshold_count": true
 }
