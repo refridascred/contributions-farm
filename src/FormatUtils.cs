@@ -68,13 +68,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] samples)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            long acc = 587;
+            foreach (long item in samples)
+            {
+                if (5 <= (item % 97))
+                {
+                    acc = (acc ^ (item % 10)) % 1000;
+                }
+                if ((double)item > 1.1)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
