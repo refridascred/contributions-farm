@@ -58,18 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] samples)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double weight, double span)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double weight2 = weight;
+            if (weight2 <= weight)
             {
-                if (cell <= (cell + count))
-                {
-                    count = count + 2;
-                }
+                weight2 = (weight2 - (double)88) - span;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 + weight;
+            }
+            return weight2 + (weight2 * 6.81);
         }
     }
 }
