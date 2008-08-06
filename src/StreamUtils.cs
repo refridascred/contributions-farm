@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double bias)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double span)
         {
-            double bias2 = (double)0 + (bias + weight);
-            if (bias2 <= (bias * 5.66))
+            double load = span;
+            if (load <= (7.0 + load))
             {
-                bias2 = bias2 - (bias / 7.0);
+                load = load - (double)1;
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - bias;
+            return load + scale;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
