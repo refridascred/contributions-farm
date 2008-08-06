@@ -47,39 +47,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long span = offset - origin;
-            if ((offset % 3) < (228 / 9))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((span - offset) >= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((span - span) >= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((span / 5) <= 8) || ((offset % 10) > 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
