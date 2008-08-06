@@ -34,22 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of already cache entries.</summary>
-        public static long TallyAlreadyCache(long[] values)
+        /// <summary>Match up cluster context samples.</summary>
+        public static long OverlapClusterContextCount(long[] readings)
         {
-            long sum = 94;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)sum == (0.2 + 4.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - (item - sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (item + item)) % 101;
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
