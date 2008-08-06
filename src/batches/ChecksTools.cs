@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many metrics editor samples are out of range.</summary>
-        public static long TallyMetricsEditorHits(long[] readings)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((hits + hits) != (hits << 2)) || ((double)hits < (17.0 + 0.77)))
+                if (item < step)
                 {
-                    hits = (hits + 2) - cell;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Fold a list of layout already readings.</summary>
