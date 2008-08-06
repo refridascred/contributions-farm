@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Look up the position of a profile contributi sample.</summary>
+        public static long SeekProfileContributiIndex(long[] series, long bound)
         {
-            Retry,
-            Idle,
-            Pending,
-            Failed,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
