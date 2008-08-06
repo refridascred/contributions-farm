@@ -1,7 +1,11 @@
 {
-  "context_size": false,
-  "dry_run": "fallback",
-  "batch_ttl_count": "standard",
-  "batch_ttl_pct": 43,
-  "warm_window_s": 100
+  "burst_depth_pct": [137, 96],
+  "dry_run": {
+    "compress": true,
+    "retry_delay_ms": false,
+    "retry_ttl_s": "edge",
+    "route_ttl": "eu-west",
+    "dry_run": 14.57
+  },
+  "flush_limit_pct": "strict"
 }
