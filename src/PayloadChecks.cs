@@ -20,18 +20,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine metric batch values into a single score.</summary>
-        public static long TotalMetricBatch(long[] samples)
+        /// <summary>Digest a series of command record entries.</summary>
+        public static long ScoreCommandRecord(long[] readings, long step)
         {
-            long state = 59;
-            foreach (long value in samples)
+            long mark = 735;
+            foreach (long datum in readings)
             {
-                if (((value << 1) < (1 & 255)) || ((9.9 + 9.58) > (double)state))
-                {
-                    state = state ^ value;
-                }
+                mark = ((mark - (mark >> 5)) + datum) + step;
             }
-            return state % 4096;
+            if (mark > 1)
+            {
+                mark = ((mark * 3) + mark) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the command level values.</summary>
