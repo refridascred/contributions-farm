@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] levels, long limit)
+        /// <summary>Measure how many route context samples are out of range.</summary>
+        public static long MeasureRouteContextGaps(long[] data)
         {
-            long mark = 675;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                mark = ((mark + (limit + limit)) % 97) + value;
-                if (mark >= ((-9) ^ limit))
+                if ((value + seen) > seen)
                 {
-                    mark = (mark - (limit - limit)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (limit / 9)) % 97;
+                    seen = seen + 2;
                 }
             }
-            if (mark > 51)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a context record.</summary>
