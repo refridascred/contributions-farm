@@ -52,17 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a farm graph sample.</summary>
-        public static long SeekFarmGraphIndex(long[] samples, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                if (!((floor << 2) >= floor) && (((80 + 5) > tally) && ((tally * 3) >= (sample & 63))))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
