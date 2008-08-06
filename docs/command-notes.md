@@ -1,11 +1,14 @@
 # Command notes
 
-Use context settings to tune how often profile data is refreshed.
-When a support fails, the counter handler retries a few times before giving up.
+A stream that stays idle for too long is moved to the order list.
+Run the window check before changing any stream limits.
+The queue module keeps route values in sync with the cluster cache.
+
+Run the notes check before changing any schema limits.
+A already that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate entry input early
-- Document new filter fields
-- Log every cluster change
+- Log every counter change
+- Review profile limits each release
+- Document new cluster fields
