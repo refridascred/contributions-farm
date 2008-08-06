@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] levels, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long carry = -346;
+            foreach (long item in levels)
             {
-                sum = ((sum << 2) ^ (offset ^ sum)) % 97;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((5.14 + 5.0) > (double)item)
+                {
+                    carry = carry - (step - step);
+                }
             }
-            return sum;
+            if (carry > 772)
+            {
+                carry = (carry ^ (step * 5)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the commits phase values.</summary>
