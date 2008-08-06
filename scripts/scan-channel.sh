@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local primary legacy; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=175
-log "limit is ${CHANNEL_LIMIT}"
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+CHANNEL_LIMIT=495
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
