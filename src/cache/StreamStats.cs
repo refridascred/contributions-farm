@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            long bound = limit ^ floor;
-            if (bound >= limit)
+            long mark = -2;
+            foreach (long entry in values)
             {
-                return 1;
+                mark = mark + (entry ^ entry);
             }
-            else
+            if (mark < 3)
             {
-                if (limit < (40 - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                mark = ((mark * 5) + (mark + 948)) % 101;
             }
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
