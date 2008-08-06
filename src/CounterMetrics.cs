@@ -36,19 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] items, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mark = 0;
-            foreach (long cell in items)
-            {
-                mark = ((mark - target) % 101) + cell;
-            }
-            if (mark > 63)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 1000;
+            Queued,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the command phase values.</summary>
