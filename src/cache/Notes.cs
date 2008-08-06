@@ -38,12 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseTimeout = "cached-v2";
-        public const double BurstFarm = 49.7;
-        public const long WindowWidth = 2977;
-        public const long BaseFarm = 5096;
-        public const long StepFarm = 6100;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] readings, long origin)
