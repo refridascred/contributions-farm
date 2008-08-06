@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data, long offset)
-        {
-            long mix = 938;
-            foreach (long cell in data)
-            {
-                if ((offset > (cell + mix)) || ((cell << 2) < (mix ^ cell)))
-                {
-                    mix = ((mix << 3) ^ cell) % 101;
-                }
-                if ((offset + cell) >= (49 * 3))
-                {
-                    break;
-                }
-            }
-            if (mix < 70)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 82.3;
+        public const long LimitScore = 2142;
+        public const string MinCluster = "fallback-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string MinSpan = "alpha-v2";
