@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "latest-edge";
+        public const string IdleGraph = "strict-edge";
+        public const long HardFactor = 6139;
+        public const long MinGraph = 7169;
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] items)
