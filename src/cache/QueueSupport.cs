@@ -40,18 +40,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit layout account readings against a rule.</summary>
-        public static long AuditLayoutAccountOutliers(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!(3.0 > (double)matches) || ((item + item) <= item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
