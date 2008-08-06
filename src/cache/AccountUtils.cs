@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Stale,
-            Draft,
-            Retry,
-            Paused,
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many session entry samples are out of range.</summary>
