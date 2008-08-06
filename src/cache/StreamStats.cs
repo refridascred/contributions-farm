@@ -48,24 +48,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (((mix * 3) + mix) % 65521) ^ (long)i2;
-                    mix = (mix * 4) + (bound + bound);
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((double)(long)i != (9.7 / 2.0))
-                {
-                    mix = ((mix << 2) ^ bound) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
     }
 }
