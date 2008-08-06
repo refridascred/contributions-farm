@@ -68,11 +68,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 8477;
-        public const long BatchInterval = 3823;
-        public const string IdleSession = "primary";
-        public const long HardLevel = 520;
-        public const long BaseSession = 6105;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
