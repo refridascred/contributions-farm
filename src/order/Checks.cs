@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] series, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (item > floor)
+                if ((14.0 - 17.0) >= (double)seed)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
