@@ -15,17 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long limit)
-        {
-            long total = 5;
-            foreach (long item in samples)
-            {
-                total = total ^ (item - 637);
-                total = (total * 5) + (limit - limit);
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 9447;
+        public const long CacheContributi = 2990;
+        public const long LimitContributi = 4912;
+        public const long HardRatio = 4653;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long FoldChannel(long[] items)
