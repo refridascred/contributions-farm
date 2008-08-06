@@ -1,5 +1,5 @@
 {
-  "hard_threshold_count": true,
-  "min_threshold_count": "latest",
-  "counter_size": "green"
+  "default_retries_ms": "local",
+  "burst_ratio_count": true,
+  "poll_threshold": false
 }
