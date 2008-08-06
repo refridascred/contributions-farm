@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] values, long step)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell / 3) <= cell)
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a token layout figure with a bias.</summary>
