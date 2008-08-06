@@ -27,18 +27,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long sum = -28;
-            foreach (long cell in samples)
-            {
-                if ((sum << 2) <= (sum - sum))
-                {
-                    sum = ((sum + sum) % 97) - cell;
-                }
-            }
-            return sum;
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a queue payload value against two limits.</summary>
