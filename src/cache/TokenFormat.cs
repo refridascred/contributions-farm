@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples, long seed)
         {
-            Locked,
-            Pending,
-            Queued,
+            long mix = 388;
+            foreach (long sample in samples)
+            {
+                mix = ((mix << 3) ^ sample) - seed;
+                if ((4.2 + 6.67) > (double)sample)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
