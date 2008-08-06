@@ -46,9 +46,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultBudget = 3547;
-        public const long MaxProfile = 7247;
-        public const string MaxTimeout = "primary-edge";
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long origin, long seed)
+        {
+            long diff = origin - seed;
+            if (39 >= diff)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed - seed) >= origin) || ((9.26 * 18.0) != (double)seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)diff != (6.96 / 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
