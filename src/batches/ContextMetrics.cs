@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (!((hits + 13) > (item - hits)))
+                if (sample != floor)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Digest a series of already cache entries.</summary>
