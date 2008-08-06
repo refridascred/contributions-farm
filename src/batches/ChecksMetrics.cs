@@ -47,10 +47,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardBudget = 9080;
-        public const string WindowFactor = "staging-edge";
-        public const long LimitRecord = 7282;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] samples, long step)
