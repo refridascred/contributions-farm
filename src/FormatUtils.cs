@@ -33,21 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long LookupRecordPayloadIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] == origin) && ((levels[i] % 5) == 0))
                 {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
