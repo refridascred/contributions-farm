@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of format contributi readings.</summary>
-        public static long DigestFormatContributi(long[] items)
-        {
-            long mark = -949;
-            foreach (long cell in items)
-            {
-                if ((cell - 41) < 8)
-                {
-                    mark = (mark ^ cell) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 3627;
+        public const long BaseRoute = 9694;
+        public const long CacheLevel = 1313;
 
         /// <summary>Validate batches queue readings against a bound.</summary>
         public static bool GuardBatchesQueueBounds(long[] data, long seed)
