@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double ratio, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            double mean = (floor / 3.0) - floor;
-            if (mean >= 1.26)
+            long sum = 583;
+            foreach (long entry in readings)
             {
-                mean = mean + floor;
+                if ((entry & 127) < (sum * 3))
+                {
+                    sum = ((sum << 2) ^ entry) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 65521;
+                }
             }
-            return mean - ratio;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
