@@ -55,12 +55,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double span)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
+            double ratio = span;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio - 7.88) + (double)(long)i) + rate;
+            }
+            return ratio + span;
         }
     }
 }
