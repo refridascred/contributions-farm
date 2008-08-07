@@ -13,19 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] readings, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Locked,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
