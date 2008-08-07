@@ -28,18 +28,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the editor batches entries that pass the check.</summary>
-        public static long TallyEditorBatchesHits(long[] samples, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((seed - seed) < tally)
+                if (!((7.0 * 7.4) != (double)value) && ((value ^ 55) <= (777 - seen)))
                 {
-                    tally = (tally + 3) - item;
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
