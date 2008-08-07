@@ -43,10 +43,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstRatio = 321;
-        public const double CacheStats = 66.2;
-        public const long IdleTimeout = 4981;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long step)
