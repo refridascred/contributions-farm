@@ -38,21 +38,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 44;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state - state) % 4096) ^ value;
             }
-            return matches;
+            return state % 65521;
         }
     }
 }
