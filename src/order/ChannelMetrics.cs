@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long BatchDepth = 8934;
         public const long MaxPayload = 2898;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] samples, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor * 3) > (cell ^ 6))
-                {
-                    hits = hits + 3;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
     }
 }
