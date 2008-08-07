@@ -36,19 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] series, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(state <= bound))
+                if (series[i] > limit)
                 {
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
