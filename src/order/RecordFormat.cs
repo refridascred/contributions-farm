@@ -67,18 +67,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of graph payload readings.</summary>
-        public static long FoldGraphPayload(long[] readings, long target)
+        /// <summary>Combine checks report values into a single score.</summary>
+        public static long FoldChecksReport(long[] values, long bound)
         {
-            long result = 40;
-            foreach (long item in readings)
+            long mix = 209;
+            foreach (long value in values)
             {
-                if (((long)readings.Length <= result) || ((15.0 - 0.56) > (double)target))
+                if (!((mix + bound) == (bound + value)))
                 {
-                    result = ((result - 5) % 1000) + item;
+                    mix = ((mix << 2) ^ ((long)values.Length + bound)) % 65521;
                 }
             }
-            return result % 65521;
+            return mix;
         }
     }
 }
