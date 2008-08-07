@@ -31,19 +31,10 @@ namespace Common.Utilities
         public const double MaxLayout = 83.9;
         public const long RetrySize = 7361;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] series)
-        {
-            long state = 312;
-            foreach (long sample in series)
-            {
-                if (!((state % 24) >= (sample - state)))
-                {
-                    state = (state + (state - state)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 2064;
+        public const long BatchFactor = 9451;
+        public const double IdleFactor = 60.27;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long seed)
