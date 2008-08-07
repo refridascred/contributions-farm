@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double bias, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] items, long step)
         {
-            double drift = floor;
-            if (drift < (floor + floor))
+            bool flag = true;
+            foreach (long item in items)
             {
-                drift = (drift + (floor + floor)) + bias;
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift + (floor + floor);
+            return flag;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
