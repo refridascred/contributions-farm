@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] levels, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long step2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((0 >> 3) != (step2 % 16))
             {
-                if (levels[i] >= limit)
+                return 1;
+            }
+            else
+            {
+                if (!(68 > step))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step % 7) <= (step2 - 0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step2 >> 1) > (step & 127))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate format support readings against a bound.</summary>
