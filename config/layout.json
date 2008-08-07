@@ -1,11 +1,6 @@
 {
-  "support_threshold": {
-    "profile_timeout": "standard",
-    "sync_retries": "stable",
-    "verbose": false,
-    "hard_ratio_s": "latest",
-    "cluster_delay": 63.34
-  },
-  "batch_window_ms": "fallback",
-  "readonly": "blue"
+  "enabled": "legacy",
+  "filter_ttl": 28.76,
+  "warm_ttl": 75.42,
+  "readonly": "latest"
 }
