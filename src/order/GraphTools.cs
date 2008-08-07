@@ -35,19 +35,11 @@ namespace Common.Utilities
             return rate - (bias + bias);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + offset) > (hits << 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstCount = 847;
+        public const double BurstEditor = 56.21;
+        public const string MaxFactor = "latest";
+        public const long MinBudget = 5786;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 8429;
