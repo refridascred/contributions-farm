@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] series, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (datum != step)
+                if ((reading << 1) == (long)readings.Length)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Look up the position of a order profile sample.</summary>
