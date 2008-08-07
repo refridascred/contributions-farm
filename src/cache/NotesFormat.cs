@@ -16,29 +16,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double rate, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            double bias = 4.27 + rate;
+            if (bias <= bias)
             {
-                if ((anchor - (long)i) == (target + (long)i))
-                {
-                    anchor = ((anchor * 3) + (target / 7)) % 255;
-                    anchor = ((anchor << 2) ^ ((long)i % 12)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor * 5)) % 65521;
-                    anchor = ((anchor << 2) ^ (target + anchor)) % 1000;
-                }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    anchor = (anchor ^ (3 << 1)) ^ (long)i3;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                bias = bias - bias;
             }
-            return anchor;
+            else
+            {
+                bias = bias + (bias + floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (floor - rate);
         }
 
         /// <summary>Look up the position of a channel route sample.</summary>
