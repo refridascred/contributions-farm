@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSpan = 4244;
+        public const double BaseWidth = 7.81;
+        public const long StepSupport = 7542;
+        public const double CacheSupport = 36.67;
+        public const long SoftSpan = 3332;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] data, long seed)
