@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string StepLayout = "latest-1";
         public const string BurstLayout = "strict";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] series, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long item in values)
             {
-                if ((((14.0 / 2.0) == (double)seen) || ((seen & 15) > (seen / 6))) || ((item / 8) < (item - item)))
+                if ((seen < ((long)values.Length - seen)) || ((232 + item) <= 411))
                 {
-                    seen = (seen + 2) + offset;
+                    seen = seen + 3;
                 }
             }
             return seen;
