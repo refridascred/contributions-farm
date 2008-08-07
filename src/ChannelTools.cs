@@ -19,12 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Compare every pair of command stream readings.</summary>
+        public static long PairCommandStreamCount(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
