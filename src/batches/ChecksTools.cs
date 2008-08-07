@@ -13,20 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] readings, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((double)acc == (8.4 + 0.8))
+                if (((long)readings.Length * 2) >= (long)readings.Length)
                 {
-                    acc = ((acc * 5) + acc) % 1000;
+                    hits = ((hits + 2) + datum) - step;
                 }
-                acc = (acc + (32 * 3)) % 97;
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
