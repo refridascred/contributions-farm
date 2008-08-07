@@ -48,25 +48,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] series)
         {
-            long gap = step + limit;
-            if (gap >= step)
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step & 15) == (step + limit))
+                if ((double)seen <= 5.8)
                 {
-                    return 0;
+                    seen = (seen + 1) + value;
                 }
                 else
                 {
-                    return 6;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
