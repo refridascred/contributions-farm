@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long bound, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            long step = bound + offset;
-            if ((bound + bound) > (step + 21))
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((1 >> 1) <= (offset & 15))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset * 2) < step) && ((417 >> 5) != (step - 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
