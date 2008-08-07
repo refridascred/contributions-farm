@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the batch filter entries that pass the check.</summary>
-        public static long AuditBatchFilterOutliers(long[] levels)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits >= entry)
+                if (levels[i] >= limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
