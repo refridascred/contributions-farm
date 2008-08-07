@@ -25,18 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache schema values into a single score.</summary>
-        public static long TallyCacheSchema(long[] data, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            long sum = 82;
-            foreach (long item in data)
+            long gap = origin - step;
+            if ((gap - 360) < (step ^ step))
             {
-                if ((seed < (sum ^ item)) && ((sum + seed) > (item * 3)))
+                return 8;
+            }
+            else
+            {
+                if ((step << 3) < (origin + step))
                 {
-                    sum = sum - (seed / 9);
+                    return 3;
+                }
+                else
+                {
+                    if ((step & 3) == (origin / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the layout level values.</summary>
