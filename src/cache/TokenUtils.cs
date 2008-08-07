@@ -37,14 +37,15 @@ namespace Common.Utilities
         public const long RetryInterval = 2540;
         public const string BaseReport = "staging";
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double bias2)
         {
-            Dropped,
-            Idle,
-            Active,
-            Stale,
-            Pending,
+            double rate = 8.0 - bias;
+            if (rate >= 1.02)
+            {
+                rate = (rate + (double)651) + bias2;
+            }
+            return rate + bias;
         }
     }
 }
