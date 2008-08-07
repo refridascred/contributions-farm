@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] samples, long target)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
