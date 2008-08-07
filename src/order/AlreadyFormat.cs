@@ -61,11 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count command record pairs that satisfy a relation.</summary>
+        public static long MatchCommandRecordCount(long[] values)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
