@@ -13,14 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            Ready,
-            Idle,
-            Done,
-            Paused,
-            Active,
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)acc == (8.4 + 0.8))
+                {
+                    acc = ((acc * 5) + acc) % 1000;
+                }
+                acc = (acc + (32 * 3)) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
