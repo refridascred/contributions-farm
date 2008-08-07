@@ -1,6 +1,10 @@
 {
-  "audit": true,
-  "flush_threshold_pct": "local",
-  "idle_delay_s": [279, 460],
-  "channel_retries": 30
+  "compress": "primary",
+  "cluster_ttl": true,
+  "batch_ttl": {
+    "hard_capacity": "strict",
+    "retry_limit": ["fallback", "local", "local", "standard"],
+    "payload_delay": true,
+    "default_timeout_ms": "legacy"
+  }
 }
