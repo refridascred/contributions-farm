@@ -28,22 +28,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((double)sample > (0.31 + 2.98))
+                if (!(limit <= 84))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) - entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
