@@ -34,19 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine session githubfarm values into a single score.</summary>
-        public static long WeighSessionGithubfarm(long[] samples, long origin)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long state = 76;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 2) ^ (reading >> 2)) + origin;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 0)
-            {
-                state = state - state;
-            }
-            return state;
+            return matches;
         }
     }
 }
