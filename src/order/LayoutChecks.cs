@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (sample > (long)items.Length)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
