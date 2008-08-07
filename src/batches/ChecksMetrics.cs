@@ -51,21 +51,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long span = step ^ seed;
+            if (10.0 >= (double)span)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((span + step) >= (step - 23)) && ((span + span) >= seed))
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
