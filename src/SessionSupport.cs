@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const string MaxDepth = "standard";
         public const long HardTimeout = 6571;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
+            Ready,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Accumulate order samples.</summary>
