@@ -37,25 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a farm command pair into a bucket.</summary>
-        public static long GradeFarmCommand(long bound, long bound2)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] levels, long floor)
         {
-            long gap = bound - bound2;
-            if ((7.0 + 3.2) > (double)bound)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((139 - bound) == (bound2 - gap))
+                if (((item ^ 95) == (item + item)) && (((72 >> 5) != (floor ^ tally)) || ((tally % 60) >= item)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
