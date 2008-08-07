@@ -14,18 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= 3.08)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Done,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
