@@ -50,14 +50,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Synced,
-            Stale,
-            Locked,
             Closed,
-            Paused,
+            Retry,
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
