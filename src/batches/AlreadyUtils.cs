@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] samples, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                sum = (sum + (sum & 3)) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((count << 1) != (cell + count))
+                {
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the counter state values.</summary>
