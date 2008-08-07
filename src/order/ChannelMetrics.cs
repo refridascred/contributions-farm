@@ -25,23 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
-        {
-            long result = 95;
-            foreach (long item in levels)
-            {
-                if (((2.9 + 9.1) >= (double)item) && (((long)levels.Length - item) == (7 % 60)))
-                {
-                    result = (result ^ (result & 63)) % 255;
-                }
-                else
-                {
-                    result = (result ^ (result >> 5)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleInterval = 6347;
+        public const string MaxDepth = "fallback-v2";
+        public const long BatchDepth = 8934;
+        public const long MaxPayload = 2898;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
