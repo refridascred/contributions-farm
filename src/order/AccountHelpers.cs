@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 8091;
-        public const double RetryWidth = 94.31;
-        public const long DefaultLevel = 6917;
-        public const double BaseSpan = 97.74;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstTimeout = 9445;
+        public const double RetrySchema = 5.66;
+        public const double MinScore = 73.98;
+        public const double LimitSchema = 79.26;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] levels)
