@@ -40,10 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowSpan = 61.3;
-        public const long BurstDepth = 9522;
-        public const string WindowAccount = "staging-1";
+        /// <summary>Match up support metric samples.</summary>
+        public static long CompareSupportMetricCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of stream contributi readings.</summary>
         public static long PairStreamContributiCount(long[] levels)
