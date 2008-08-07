@@ -48,12 +48,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Paused,
             Retry,
+            Paused,
+            Pending,
             Idle,
+            Stale,
         }
     }
 }
