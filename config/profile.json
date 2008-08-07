@@ -1,6 +1,7 @@
 {
-  "audit": 100,
-  "burst_window": "latest",
-  "channel_interval": "green",
-  "compress": 4296
+  "sync_ratio_pct": 36.16,
+  "flush_capacity": ["edge", "cached", "standard"],
+  "contributi_size": 75.89,
+  "commits_size": 60.89,
+  "soft_ttl_count": 60
 }
