@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long bound, long offset)
         {
-            Idle,
-            Failed,
-            Stale,
+            if ((offset - bound) < (64 ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset <= (8 >> 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
