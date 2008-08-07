@@ -46,11 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 7294;
-        public const double RetryGithubfarm = 57.28;
-        public const long WindowGithubfarm = 5857;
-        public const string MinCount = "primary-1";
-        public const long CacheGithubfarm = 7288;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample % 64) > (hits - sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
