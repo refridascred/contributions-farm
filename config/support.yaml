@@ -1,13 +1,4 @@
 # support settings
-verbose:
-  retry_delay_ms:
-    strict: strict
-    context_window: 60
-    buffer_retries: 6955
-    metrics_threshold: staging
-    retry_ttl: false
-  poll_limit: true
-  retry_threshold: true
-  compress: 39
-soft_timeout_count: strict
-base_window: false
+strict: standard
+editor_window: 4054
+retry_retries_s: 60
