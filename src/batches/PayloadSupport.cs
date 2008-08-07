@@ -13,22 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] values, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mark = 54;
-            foreach (long reading in values)
-            {
-                if ((step + (-60)) < 68)
-                {
-                    mark = (mark + (step % 97)) ^ reading;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark << 1);
-                }
-            }
-            return mark;
+            Queued,
+            Draft,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
