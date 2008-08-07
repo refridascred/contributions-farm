@@ -31,20 +31,10 @@ namespace Common.Utilities
         public const double MaxLayout = 83.9;
         public const long RetrySize = 7361;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleWidth = "standard";
+        public const long LimitTools = 6374;
+        public const long SoftTimeout = 75;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
