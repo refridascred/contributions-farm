@@ -38,19 +38,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            double bias2 = floor;
+            if (bias2 >= bias2)
             {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = (bias2 - (double)9) - bias;
             }
-            return ok;
+            return bias2 - (floor * 18.0);
         }
 
         /// <summary>Hold a session stats.</summary>
