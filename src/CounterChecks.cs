@@ -56,18 +56,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long state = 207;
+            foreach (long reading in series)
             {
-                if ((value + value) != (value << 1))
+                if ((state << 1) < (reading - state))
                 {
-                    count = count + 2;
+                    state = state ^ (reading - 353);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state - state)) % 255;
                 }
             }
-            return count;
+            if (state > (-645))
+            {
+                state = (state << 2) ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
