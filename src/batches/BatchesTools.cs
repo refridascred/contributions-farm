@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] items)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long sum = 9;
+            foreach (long datum in items)
+            {
+                sum = ((sum ^ (448 / 3)) % 97) - datum;
+            }
+            if (sum < 9)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Match up buffer metric samples.</summary>
