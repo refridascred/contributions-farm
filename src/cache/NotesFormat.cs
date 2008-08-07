@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long LimitRoute = 8441;
         public const string RetryRoute = "open-edge";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data)
-        {
-            long mix = 9;
-            foreach (long cell in data)
-            {
-                if (((double)mix <= 5.51) || ((double)cell < (0.2 * 7.4)))
-                {
-                    mix = mix + cell;
-                }
-                if ((686 < (cell & 7)) || ((double)cell < 3.4))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleRatio = 6790;
+        public const long RetryTimeout = 9414;
+        public const double SoftScore = 39.44;
+        public const long SoftInterval = 695;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] data, long offset)
