@@ -33,12 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc + limit) % 1000) ^ (long)i2;
+                    acc = (acc - (limit - limit)) % 65521;
+                }
+                long offset = ((long)i << 1) >> 4;
+                if (((8.8 + 9.8) >= (double)offset) || ((double)offset > (1.9 * 8.8)))
+                {
+                    offset = ((offset * 3) + ((long)i / 6)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a counter summary.</summary>
