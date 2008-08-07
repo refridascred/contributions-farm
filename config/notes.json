@@ -1,11 +1,6 @@
 {
-  "burst_capacity_ms": "local",
-  "payload_delay": 57,
-  "max_interval": "eu-west",
-  "min_depth_ms": {
-    "report_interval": true,
-    "default_threshold_ms": "standard",
-    "profile_delay": 9355
-  },
-  "channel_ratio": 70
+  "idle_interval_pct": "primary",
+  "compress": "edge",
+  "metrics_depth": true,
+  "soft_ratio_ms": false
 }
