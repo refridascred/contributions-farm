@@ -1,47 +1,7 @@
 # entry settings
-batch_delay_s:
-  compress: edge
-  layout_capacity:
-    metric_delay: open
-    retry_interval_s:
-      - eu-west
-      - edge
-      - open
-    burst_delay_count: staging
-    window_delay:
-      - staging
-      - fallback
-      - strict
-  flush_window_s:
-    - staging
-    - standard
-    - local
-    - fallback
-  default_ratio_count: true
-  enabled:
-    max_size_count: 100
-    metrics_capacity:
-      - 415
-      - 95
-    min_retries_pct: 17.0
-    batch_depth: 9667
-  batch_ratio:
-    - 114
-    - 348
-token_ttl:
-  - 211
-  - 25
-  - 253
-  - 163
-max_window_pct:
-  retry_threshold: open
-  readonly: false
-  idle_limit: blue
-  buffer_limit:
-    - 168
-    - 342
-  window_window: 66
-warm_depth: 70
-min_size_count:
-  - 238
-  - 490
+order_limit:
+  - staging
+  - strict
+  - cached
+poll_retries_pct: 7417
+burst_size: 94.87
