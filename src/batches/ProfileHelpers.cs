@@ -76,21 +76,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Match up batches stats samples.</summary>
+        public static long PairBatchesStatsCount(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor << 2) ^ (anchor - offset);
-                if ((anchor & 15) >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (offset - (long)i)) % 255;
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = anchor - 3;
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
     }
 }
