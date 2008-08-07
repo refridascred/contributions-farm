@@ -34,29 +34,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route editor input into a small class.</summary>
-        public static long SortRouteEditor(long origin, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long bound, long seed)
         {
-            long span = origin - floor;
-            if (floor < (span & 63))
+            if ((bound / 8) > (bound << 3))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((7.0 / 2.0) != (double)origin)
+                if (!((418 ^ 0) > (seed / 7)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((178 - origin) == (span ^ span))
+                    if (!((seed % 16) >= seed))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 3;
+                        return 1;
                     }
                 }
             }
