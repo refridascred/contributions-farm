@@ -20,38 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a filter already pair into a bucket.</summary>
-        public static long GradeFilterAlready(long offset, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values, long floor)
         {
-            if ((offset / 4) <= (offset & 255))
+            long sum = 169;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((16 / 9) != (offset ^ origin))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 0;
+                    sum = ((sum * 2) + (floor + 744)) % 65521;
+                    sum = (sum << 3) ^ ((long)i ^ floor);
                 }
-                else
+                sum = (sum * 5) + (value >> 5);
+                if ((2.0 + 8.25) == (double)floor)
                 {
-                    if ((offset + offset) == (origin - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (3.25 / 8.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = sum ^ (floor << 3);
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
