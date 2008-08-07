@@ -26,19 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double bias, double bias2)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double drift = (double)(50 >> 3);
-            if (drift < drift)
-            {
-                drift = (drift - bias2) - bias;
-            }
-            else
-            {
-                drift = drift + (bias2 + drift);
-            }
-            return drift + (double)1;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a counter editor reading by value.</summary>
