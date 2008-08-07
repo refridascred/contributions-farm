@@ -1,12 +1,5 @@
 {
-  "stats_delay": false,
-  "retry_ttl": 250,
-  "session_depth": false,
-  "window_threshold": {
-    "max_limit_pct": false,
-    "format_size": 66.92,
-    "githubfarm_ttl": 31,
-    "enabled": 90.04
-  },
-  "filter_delay": [257, 170, 444, 207]
+  "cache_window_count": 1024,
+  "tools_delay": 80.86,
+  "githubfarm_threshold": 61
 }
