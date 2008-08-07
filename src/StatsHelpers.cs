@@ -39,12 +39,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long limit)
         {
-            Pending,
-            Queued,
-            Dropped,
+            if ((9.2 / 2.0) > (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset >> 3) <= (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
