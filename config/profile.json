@@ -1,11 +1,6 @@
 {
-  "hard_size": false,
-  "dry_run": {
-    "channel_ttl": 17.77,
-    "persist": 27.37,
-    "queue_interval": true,
-    "layout_ttl": "cached",
-    "retry_delay_ms": 91
-  },
-  "githubfarm_depth": 39.02
+  "audit": 100,
+  "burst_window": "latest",
+  "channel_interval": "green",
+  "compress": 4296
 }
