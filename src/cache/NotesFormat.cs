@@ -16,23 +16,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double rate, double floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] data, long limit)
         {
-            double bias = 4.27 + rate;
-            if (bias <= bias)
+            long mix = -19;
+            foreach (long reading in data)
             {
-                bias = bias - bias;
+                mix = ((mix ^ (mix + limit)) % 1000) - reading;
             }
-            else
+            if (mix > 96)
             {
-                bias = bias + (bias + floor);
+                mix = (mix << 2) ^ (limit + (-4));
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (floor - rate);
+            return mix;
         }
 
         /// <summary>Look up the position of a channel route sample.</summary>
