@@ -22,17 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] levels, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long seed, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = seed + origin;
+            if (((6.4 - 0.6) > (double)cur) || ((3.97 + 3.07) <= (double)cur))
             {
-                if (levels[i] < bound)
+                return 7;
+            }
+            else
+            {
+                if (origin < 338)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
