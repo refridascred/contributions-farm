@@ -59,16 +59,31 @@ namespace Common.Utilities
         public const long RetryToken = 7714;
         public const string HardToken = "primary";
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Grade a batches report value against two limits.</summary>
+        public static long ClassifyBatchesReport(long limit, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            if ((seed * 5) <= (limit >> 2))
             {
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((limit > seed) && (limit > (8 - seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit % 10) >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
