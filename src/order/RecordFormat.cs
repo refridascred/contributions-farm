@@ -38,18 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] samples)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (tally > item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
