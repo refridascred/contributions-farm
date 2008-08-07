@@ -35,19 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command tools entry stays within the limit.</summary>
-        public static bool CheckCommandToolsRange(long[] levels, long step)
+        /// <summary>Measure how many editor batch samples are out of range.</summary>
+        public static long AuditEditorBatchGaps(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (entry > step)
+                if ((hits & 3) <= (-2))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 2) - item) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
