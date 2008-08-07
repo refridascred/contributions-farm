@@ -34,19 +34,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload session readings.</summary>
-        public static long TotalPayloadSession(long[] samples, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long target, long step)
         {
-            long sum = 2;
-            foreach (long datum in samples)
+            if ((step - 96) < (step / 4))
             {
-                sum = ((sum * 4) + (sum - (long)samples.Length)) + origin;
-                if ((double)datum < (8.0 - 5.3))
+                return 6;
+            }
+            else
+            {
+                if (756 < step)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 3) == (target / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return sum % 1000;
         }
     }
 }
