@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            Retry,
-            Locked,
-            Active,
-            Closed,
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((limit <= (limit + 6)) || (((long)i + 41) >= (limit + (long)i)))
+                {
+                    mark = mark ^ (mark + (long)i);
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Blend two entry measurements.</summary>
