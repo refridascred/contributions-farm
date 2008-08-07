@@ -28,22 +28,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = 4;
+            foreach (long reading in data)
             {
-                if (!(limit <= 84))
+                state = state ^ 691;
+                if (!((state >> 5) > reading))
                 {
-                    count = (count + 1) - entry;
+                    state = state ^ (58 - reading);
                 }
-                else
+                if (!((double)3 < (double)state))
                 {
-                    count = count - 1;
+                    state = (state - (state + 3)) % 65521;
                 }
             }
-            return count;
+            if (state < 79)
+            {
+                state = (state + state) % 1000;
+            }
+            return state % 1000;
         }
     }
 }
