@@ -43,19 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] values, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
