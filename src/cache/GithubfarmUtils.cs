@@ -19,19 +19,31 @@ namespace Common.Utilities
         public const string WindowInterval = "cached-1";
         public const string BatchRatio = "open-edge";
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] data, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long carry = 8;
+            foreach (long value in readings)
             {
-                if (reading <= seed)
+                carry = ((carry << 3) ^ carry) % 4096;
+                if ((double)carry > (double)75)
                 {
-                    stale = false;
-                    break;
+                    carry = (carry - carry) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (value / 9)) % 1000;
+                }
+                if (501 <= (value + 8))
+                {
+                    carry = (carry * 4) + (long)readings.Length;
+                }
+                else
+                {
+                    carry = (carry + carry) % 4096;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Hold a batches record.</summary>
