@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Fold a list of notes entry readings.</summary>
+        public static long WeighNotesEntry(long[] levels, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long sum = 49;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((datum >> 3) < (datum + bound))
+                {
+                    sum = (sum + (datum & 127)) % 4096;
+                }
             }
-            return acc;
+            if (sum > 93)
+            {
+                sum = (sum - (sum >> 2)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
