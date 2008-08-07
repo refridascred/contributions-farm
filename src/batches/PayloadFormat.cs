@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate tools command samples.</summary>
-        public static long TallyToolsCommand(long[] series, long bound)
+        /// <summary>Classify a stats batches pair into a bucket.</summary>
+        public static long RankStatsBatches(long bound, long offset)
         {
-            long acc = 27;
-            foreach (long value in series)
+            long delta = bound + offset;
+            if (((offset & 63) > offset) || ((-1) <= (394 - offset)))
             {
-                acc = acc ^ (bound * 2);
-                if (7.0 < (double)bound)
+                return 8;
+            }
+            else
+            {
+                if (!((offset - delta) > 6))
                 {
-                    acc = (acc + (acc - value)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    acc = acc - bound;
+                    return 1;
                 }
             }
-            if (acc > 887)
-            {
-                acc = ((acc * 2) + bound) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Describe the metrics level values.</summary>
