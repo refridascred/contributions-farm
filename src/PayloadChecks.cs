@@ -40,20 +40,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the profile support series from a seed.</summary>
-        public static long StepProfileSupport(long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc > (offset % 10))
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
                 {
-                    acc = (acc - acc) % 255;
-                    acc = ((acc << 2) ^ (offset >> 1)) % 65521;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
