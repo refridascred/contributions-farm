@@ -44,16 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long floor)
         {
-            long total = 8;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - 7) ^ value;
-                total = (total * 5) + (total + total);
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
