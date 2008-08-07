@@ -22,22 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((value - value) == (hits + value)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
