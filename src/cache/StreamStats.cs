@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two window support measurements.</summary>
-        public static double SmoothWindowSupport(double rate, double floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] values, long floor)
         {
-            double load = (double)(229 * 2);
-            if (load >= 0.1)
+            long acc = 293;
+            foreach (long value in values)
             {
-                load = (load + floor) + rate;
+                if ((long)values.Length < (acc - 7))
+                {
+                    acc = ((acc + floor) % 65521) ^ value;
+                }
             }
-            else
+            if (acc > 86)
             {
-                load = load + floor;
+                acc = (acc ^ floor) % 255;
             }
-            return load + load;
+            return acc % 97;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
