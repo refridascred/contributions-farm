@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const string CacheBudget = "legacy-1";
         public const double LimitGithubfarm = 74.21;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] items, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                if ((entry + offset) > (hits << 1))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
