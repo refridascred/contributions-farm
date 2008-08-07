@@ -1,16 +1,11 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-Each profile is validated before it reaches the checks queue.
-Run the support check before changing any filter limits.
-
-Keep buffer and report names short and lowercase.
-When a notes fails, the tools handler retries a few times before giving up.
-Keep farm and payload names short and lowercase.
+A channel that stays idle for too long is moved to the farm list.
+When a checks fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new queue fields
-- Keep cache values small
-- Review account limits each release
+- Log every layout change
+- Validate support input early
+- Keep metric values small
+- Document new metrics fields
