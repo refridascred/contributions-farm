@@ -66,21 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks session readings.</summary>
-        public static long OverlapChecksSessionCount(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
