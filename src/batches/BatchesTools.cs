@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double gain, double offset)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double gain2 = 4.43 / 5.0;
-            if (gain2 < (double)5)
-            {
-                gain2 = gain2 + gain;
-            }
-            else
-            {
-                gain2 = gain2 + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - gain) - (double)(long)i;
-            }
-            return gain2 - gain2;
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Project the next record context value.</summary>
