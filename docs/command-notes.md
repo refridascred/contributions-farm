@@ -1,14 +1,15 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the metrics list.
-Run the route check before changing any support limits.
+Use commits settings to tune how often profile data is refreshed.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Keep layout and counter names short and lowercase.
 
-Keep schema and format names short and lowercase.
-Keep entry and cluster names short and lowercase.
-Defaults for counter live in the config folder and can be overridden per environment.
+Keep already and metric names short and lowercase.
+The batches module keeps profile values in sync with the command cache.
+Use support settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Document new counter fields
-- Validate entry input early
+- Log every editor change
+- Prefer buffer defaults
+- Document new command fields
