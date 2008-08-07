@@ -32,21 +32,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit >> 5) == (5 >> 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (double)limit)
                 {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
