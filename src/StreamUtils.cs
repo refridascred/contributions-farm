@@ -61,11 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] data, long step)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)seen > (14.0 * 2.0))
+                {
+                    seen = ((seen + 1) + reading) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric stats.</summary>
