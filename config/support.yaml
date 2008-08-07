@@ -1,24 +1,9 @@
 # support settings
-default_window_pct:
-  farm_ttl: green
-  max_threshold_ms: 48.21
-  base_window:
-    window_timeout: true
-    notes_limit:
-      - 238
-      - 30
-    hard_size: strict
-    githubfarm_retries:
-      - 466
-      - 426
-      - 344
-      - 396
-    audit: 4286
-    max_capacity: 10
-  sync_timeout_pct: 9549
-commits_depth: 75.5
-githubfarm_ttl:
-  - blue
-  - standard
-  - blue
-dry_run: fallback
+warm_limit: 39.3
+max_ttl_pct:
+  compress: green
+  profile_capacity: 6340
+  audit: primary
+  strict: latest
+  schema_ttl: cached
+hard_timeout_ms: 67.87
