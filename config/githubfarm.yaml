@@ -1,4 +1,7 @@
 # githubfarm settings
-hard_window_s: 40
-idle_interval_count: 12.59
-batch_depth: 77.39
+cache_threshold_pct: fallback
+idle_timeout: 32.63
+burst_threshold_count:
+  - primary
+  - edge
+idle_timeout_ms: 9.92
