@@ -36,12 +36,24 @@ namespace Common.Utilities
             return weight + (double)0;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 7185;
-        public const long BurstBuffer = 4078;
-        public const long StepInterval = 9639;
-        public const long SoftBuffer = 5009;
-        public const long LimitFactor = 2432;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] data)
+        {
+            long result = 716;
+            foreach (long datum in data)
+            {
+                result = result - (result + (-2));
+                if ((double)datum > 1.0)
+                {
+                    result = (result * 4) + (result ^ result);
+                }
+                else
+                {
+                    result = (result << 3) ^ (datum ^ result);
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamRange(long[] samples, long floor)
