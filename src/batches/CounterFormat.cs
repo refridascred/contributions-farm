@@ -30,13 +30,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Classify a farm command pair into a bucket.</summary>
+        public static long GradeFarmCommand(long bound, long bound2)
         {
-            Draft,
-            Stale,
-            Paused,
-            Locked,
+            long gap = bound - bound2;
+            if ((7.0 + 3.2) > (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((139 - bound) == (bound2 - gap))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
