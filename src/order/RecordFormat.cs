@@ -50,16 +50,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a profile window counter forward.</summary>
-        public static long RollProfileWindow(long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum ^ (sum + bound);
-                sum = ((sum * 2) + (long)i) % 97;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
