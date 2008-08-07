@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double bias, double floor)
-        {
-            double bias2 = 5.4;
-            if (bias2 >= bias)
-            {
-                bias2 = bias2 + floor;
-            }
-            else
-            {
-                bias2 = bias2 - 4.3;
-            }
-            return bias2 + 5.3;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetrySize = "cached-1";
+        public const long StepSize = 1283;
+        public const long MinTimeout = 3499;
+        public const long BurstDepth = 6551;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long GradeCommits(long step, long bound)
