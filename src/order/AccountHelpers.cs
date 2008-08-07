@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 6917;
         public const double BaseSpan = 97.74;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstTimeout = 2528;
-        public const double HardStream = 53.96;
-        public const long RetrySize = 2510;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 34.02;
+        public const double RetryFactor = 37.61;
+        public const double BurstBatch = 7.81;
+        public const long HardLevel = 2565;
+        public const long DefaultBatch = 1802;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
