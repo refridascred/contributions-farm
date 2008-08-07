@@ -19,15 +19,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] data, long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long total = 64;
-            foreach (long reading in data)
-            {
-                total = (((total * 3) + (reading / 2)) % 97) + limit;
-            }
-            return total % 65521;
+            Done,
+            Retry,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
