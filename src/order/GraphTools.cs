@@ -19,29 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long floor, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long offset, long step)
         {
-            if ((1 & 3) >= floor)
+            long diff = offset ^ step;
+            if (!(offset > step))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!((8.77 * 6.0) < (double)offset))
+                if ((diff / 8) != (step << 3))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((0.6 / 4.0) >= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 4;
                 }
             }
         }
