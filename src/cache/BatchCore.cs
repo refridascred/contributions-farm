@@ -29,24 +29,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] items, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long total = -363;
+            foreach (long datum in items)
             {
-                if ((mix - seed) <= (mix ^ 90))
+                total = ((total * 4) + (total - datum)) % 65521;
+                if (((datum & 127) != (9 ^ seed)) && ((seed << 2) != (seed - total)))
                 {
-                    mix = mix - mix;
-                    continue;
+                    total = (total - (117 - seed)) % 1000;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
+                else
                 {
-                    mix = ((mix * 4) + mix) - (long)i2;
+                    total = total ^ (34 + 452);
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((double)total != (double)datum)
+                {
+                    break;
+                }
             }
-            return mix;
+            if (total < 9)
+            {
+                total = total ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Hold a profile summary.</summary>
