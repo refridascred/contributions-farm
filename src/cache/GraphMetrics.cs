@@ -28,10 +28,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheLevel = 1137;
-        public const long MaxCommits = 6893;
-        public const double MinCount = 51.0;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] values)
