@@ -29,18 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batches batch samples are out of range.</summary>
-        public static long TallyBatchesBatchOutliers(long[] data, long origin)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum / 5) < origin)
+                if (data[i] < floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
