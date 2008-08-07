@@ -23,15 +23,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a githubfarm checks counter forward.</summary>
-        public static long SeriesGithubfarmChecks(long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] series, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
