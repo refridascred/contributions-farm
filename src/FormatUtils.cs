@@ -36,11 +36,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 6.17;
-        public const long BatchScore = 6334;
-        public const double WindowSupport = 90.4;
-        public const long RetrySupport = 609;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheRatio = 57.61;
+        public const string IdleFarm = "strict-1";
+        public const long MinFarm = 5296;
+        public const long WindowFarm = 799;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
