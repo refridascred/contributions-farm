@@ -14,10 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 92.49;
-        public const double SoftRatio = 52.22;
-        public const double MaxSize = 5.46;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
