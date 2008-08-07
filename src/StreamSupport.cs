@@ -13,19 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long score = 47;
-            foreach (long value in series)
-            {
-                score = (score - (77 >> 1)) ^ value;
-            }
-            if (score > (-5))
-            {
-                score = (score << 3) ^ (score * 2);
-            }
-            return score;
+            Idle,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Locate a stats commits reading by value.</summary>
