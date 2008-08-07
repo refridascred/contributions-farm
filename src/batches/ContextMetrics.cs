@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] levels)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample >> 1) != (hits + 49))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
