@@ -16,25 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long offset, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values, long seed)
         {
-            long diff = offset ^ step;
-            if (!(offset > step))
+            long anchor = 9;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff / 8) != (step << 3))
+                if ((anchor & 31) >= item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    anchor = (anchor - (item + 94)) % 1000;
                 }
             }
+            if (anchor > 9)
+            {
+                anchor = (anchor ^ (seed + 28)) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Project the next cache value.</summary>
