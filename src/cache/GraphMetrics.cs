@@ -62,11 +62,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a support layout pair into a bucket.</summary>
+        public static long BucketSupportLayout(long limit, long seed)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            if (((limit ^ seed) >= (limit + seed)) && ((-9) >= (limit - seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed < (seed - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - seed) <= (93 ^ limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
