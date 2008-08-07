@@ -34,13 +34,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Failed,
-            Pending,
-            Synced,
-            Paused,
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a batches header.</summary>
