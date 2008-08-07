@@ -64,21 +64,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Project the next queue graph value.</summary>
+        public static double BlendQueueGraph(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = (double)(-42);
+            return (mean + (mean + span)) + gain;
         }
     }
 }
