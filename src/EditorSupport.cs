@@ -48,13 +48,39 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double HardProfile = 26.77;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long seed, long target)
         {
-            Failed,
-            Active,
-            Locked,
-            Draft,
+            long next = seed - target;
+            if (((4 - next) <= 3) || ((target / 7) <= seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)next != (6.17 - 9.83)) || ((next - next) < next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target - 5) < target) || ((double)seed >= 9.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7.7 + 1.0) != (double)next)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics state values.</summary>
