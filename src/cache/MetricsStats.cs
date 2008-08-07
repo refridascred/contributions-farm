@@ -46,19 +46,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] samples, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long sum = 30;
+            foreach (long entry in items)
             {
-                if (value <= seed)
+                if ((entry << 2) <= (target / 3))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum ^ target) % 4096;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
