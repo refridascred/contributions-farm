@@ -54,38 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] series, long seed)
         {
-            if ((seed - seed) <= 76)
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 2) > (floor - floor))
+                if (value != seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)floor > (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor % 64) != (floor & 31))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
