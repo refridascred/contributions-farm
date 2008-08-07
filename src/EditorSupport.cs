@@ -29,22 +29,23 @@ namespace Common.Utilities
         public const long BaseScore = 538;
         public const long IdleMetrics = 7038;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Scale a contributi token figure with a bias.</summary>
+        public static double ScaleContributiToken(double gain, double offset)
         {
-            long carry = 9;
-            foreach (long entry in levels)
+            double weight = gain / 5.0;
+            if (weight < (gain * 11.0))
             {
-                if ((entry % 60) != (carry & 7))
-                {
-                    carry = (carry * 2) + (carry ^ entry);
-                }
-                else
-                {
-                    carry = (carry - ((long)levels.Length + 32)) % 1000;
-                }
+                weight = weight - offset;
             }
-            return carry;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (weight - gain);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
