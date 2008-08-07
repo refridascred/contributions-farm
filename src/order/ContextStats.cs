@@ -35,30 +35,19 @@ namespace Common.Utilities
         public const double MaxSize = 0.7;
         public const long StepOrder = 7773;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] items, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double bias2)
         {
-            long total = 9;
-            foreach (long reading in items)
+            double gain = bias2;
+            if (gain > (gain - 4.2))
             {
-                if ((reading - total) != (reading << 1))
-                {
-                    total = total ^ 3;
-                    total = (total - (step / 9)) % 101;
-                    continue;
-                }
-                if ((double)total != (5.5 / 7.0))
-                {
-                    total = ((total << 2) ^ (total + total)) % 255;
-                    total = (total - (total - step)) % 1000;
-                }
-                total = ((total * 3) + 3) % 101;
-                if ((double)step > (double)reading)
-                {
-                    break;
-                }
+                gain = gain - (bias2 / 6.0);
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (bias2 - bias)) + (double)(long)i;
+            }
+            return gain - bias;
         }
     }
 }
