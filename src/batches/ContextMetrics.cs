@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache account readings against a rule.</summary>
-        public static long CountCacheAccountHits(long[] readings, long origin)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double gain = span;
+            if (gain >= rate)
             {
-                if ((hits * 2) > (cell >> 4))
-                {
-                    hits = (hits + 3) - origin;
-                }
+                gain = gain + (12.0 - span);
             }
-            return hits;
+            else
+            {
+                gain = gain - (rate / 2.0);
+            }
+            return gain + (gain + rate);
         }
     }
 }
