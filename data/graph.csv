@@ -1,6 +1,8 @@
-id,count,state
-1,37.34,346
-2,105,open
-3,latest,749
-4,34.28,83
-5,33.11,53.55
+id,owner,token,region
+1,strict,940,66.44
+2,666,83.58,fallback
+3,643,69.33,229
+4,standard,cached,883
+5,599,143,644
+6,fallback,27.76,15
+7,244,987,253
