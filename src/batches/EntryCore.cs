@@ -35,11 +35,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] series, long step)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((3.94 * 0.3) > 19.0))
+                {
+                    hits = ((hits + 3) + value) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
