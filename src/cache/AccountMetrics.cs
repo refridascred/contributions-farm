@@ -15,38 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            if ((offset + 9) >= step)
+            long score = 37;
+            foreach (long reading in samples)
             {
-                return 3;
+                score = score - (reading << 3);
             }
-            else
-            {
-                if ((offset + step) <= (offset ^ 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + step) != (981 - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset << 2) < step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the account notes entries that pass the check.</summary>
