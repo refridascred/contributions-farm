@@ -20,15 +20,15 @@ namespace Common.Utilities
             return scale + (gain + gain);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] values, long bound)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long datum in values)
             {
-                if ((reading ^ reading) < reading)
+                if (seen < (bound >> 5))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 3) + datum;
                 }
             }
             return seen;
