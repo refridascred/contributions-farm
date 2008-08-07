@@ -1,7 +1,4 @@
 # githubfarm settings
-burst_ttl: true
-idle_size_ms: 60
-audit: blue
-order_size: 988
-enabled: latest
-payload_size: cached
+poll_window_s: 17.81
+default_limit_ms: local
+payload_limit: false
