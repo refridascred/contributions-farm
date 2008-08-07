@@ -21,19 +21,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double ratio, double bias)
+        /// <summary>Find the first metrics route entry that matches the target.</summary>
+        public static long LookupMetricsRouteIndex(long[] readings, long seed)
         {
-            double rate = bias - (ratio * 4.61);
-            if (rate < (rate * 8.9))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + bias;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (8.5 * 8.19);
-            }
-            return rate + (bias + ratio);
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
