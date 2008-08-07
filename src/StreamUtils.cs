@@ -46,24 +46,11 @@ namespace Common.Utilities
         public const double HardCommand = 53.35;
         public const string MaxCommand = "staging-edge";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] data)
-        {
-            long state = 54;
-            foreach (long value in data)
-            {
-                state = state + (0 - state);
-                if ((value < (value + value)) || ((double)state <= (8.55 * 1.7)))
-                {
-                    state = ((state * 5) + (state << 2)) % 97;
-                }
-            }
-            if (state < (-82))
-            {
-                state = state - (state % 64);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxScore = 383;
+        public const long StepBudget = 9846;
+        public const long StepStats = 4284;
+        public const string LimitStats = "strict-edge";
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
