@@ -16,12 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Ready,
-            New,
-            Retry,
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
