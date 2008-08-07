@@ -18,18 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools metric samples are out of range.</summary>
-        public static long MeasureToolsMetricOutliers(long[] values, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = 579;
+            foreach (long entry in series)
             {
-                if (((seen > step) || ((double)value >= (17.0 + 11.0))) || ((1.6 > (double)seen) || ((seen ^ step) > 8)))
+                if ((target ^ target) >= entry)
                 {
-                    seen = seen + 1;
+                    score = ((score << 2) ^ (target + entry)) % 101;
+                }
+                else
+                {
+                    score = ((score * 2) + (1 / 4)) % 1000;
+                }
+                if ((entry + entry) > (entry >> 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score < 871)
+            {
+                score = ((score << 2) ^ (target / 3)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
