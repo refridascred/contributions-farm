@@ -69,15 +69,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mix = -8;
-            foreach (long cell in samples)
-            {
-                mix = ((mix ^ (5 - cell)) % 101) - bound;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
