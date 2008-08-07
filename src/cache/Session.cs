@@ -33,20 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples, long bound)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] samples, long floor)
         {
-            long score = 684;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score ^ (bound - (long)samples.Length);
-                score = score - (score + entry);
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 8)
-            {
-                score = score ^ bound;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
