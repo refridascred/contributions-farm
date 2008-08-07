@@ -47,13 +47,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
             public double Size { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
