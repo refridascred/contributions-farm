@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in stable edge latest fallback; do
+for item in stable latest; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=359
+log "limit is ${COMMAND_LIMIT}"
