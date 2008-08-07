@@ -1,5 +1,6 @@
 {
-  "persist": "standard",
-  "poll_size_s": "open",
-  "payload_interval": "standard"
+  "burst_retries_pct": "stable",
+  "route_threshold": false,
+  "cache_window": 30,
+  "soft_interval": "edge"
 }
