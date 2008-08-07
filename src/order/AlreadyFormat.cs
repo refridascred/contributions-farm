@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
