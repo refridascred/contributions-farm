@@ -49,21 +49,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 29;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state + 315) % 1000;
+                state = state - (state ^ origin);
+                if ((origin <= (922 * 2)) && ((value + value) > (5 + state)))
                 {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
