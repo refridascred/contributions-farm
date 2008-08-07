@@ -62,10 +62,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstTimeout = 1734;
-        public const long HardScore = 4346;
-        public const string DefaultRoute = "primary-v2";
-        public const long BaseRoute = 6945;
+        /// <summary>Roll a schema order counter forward.</summary>
+        public static long IterateSchemaOrder(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((origin ^ origin) <= (long)i)
+                {
+                    mix = (mix ^ (mix ^ mix)) % 4096;
+                }
+                mix = (mix + (origin / 6)) % 97;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
