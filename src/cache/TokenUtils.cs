@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long RetryInterval = 2540;
         public const string BaseReport = "staging";
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] data, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
