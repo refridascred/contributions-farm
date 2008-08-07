@@ -20,22 +20,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up queue already samples.</summary>
-        public static long CompareQueueAlreadyCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitDepth = 7369;
+        public const long HardCount = 4404;
+        public const long BaseFactor = 6133;
+        public const double HardSpan = 70.36;
 
         /// <summary>Audit command token readings against a rule.</summary>
         public static long AuditCommandTokenOutliers(long[] readings, long step)
