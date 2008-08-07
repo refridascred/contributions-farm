@@ -77,10 +77,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 3605;
-        public const long CacheMetric = 3705;
-        public const string RetryTimeout = "alpha-v2";
-        public const string BaseMetric = "latest-v2";
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (seed > total)
+                {
+                    total = total ^ (total - total);
+                }
+                total = (total ^ (seed << 3)) % 255;
+                if (total <= (total - seed))
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
