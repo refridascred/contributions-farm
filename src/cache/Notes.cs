@@ -63,22 +63,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = mark - 158;
-                if (((long)i < mark) && (mark >= limit))
-                {
-                    mark = mark - (limit + limit);
-                    mark = (mark ^ (5 + mark)) % 1000;
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
