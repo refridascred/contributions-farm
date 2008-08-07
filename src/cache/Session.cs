@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const string StepLayout = "latest-1";
         public const string BurstLayout = "strict";
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long target, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] series, long offset)
         {
-            if (((step + step) <= (target + step)) && ((step << 3) > target))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-271) % 7) != (step & 31))
+                if ((((14.0 / 2.0) == (double)seen) || ((seen & 15) > (seen / 6))) || ((item / 8) < (item - item)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step * 4) > (target + target)) && ((target ^ step) <= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 2) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a queue record.</summary>
