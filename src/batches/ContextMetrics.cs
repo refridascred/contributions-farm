@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Scale a record commits figure with a bias.</summary>
+        public static double SmoothRecordCommits(double gain, double span)
         {
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
+            double drift = span - (2.0 * 6.18);
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - 0.1) + (double)(long)i;
+            }
+            return drift + (span - gain);
         }
 
         /// <summary>Match up metrics stream samples.</summary>
