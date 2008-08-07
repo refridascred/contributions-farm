@@ -31,19 +31,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long carry = 352;
-            foreach (long item in readings)
-            {
-                carry = ((carry * 2) + 4) + item;
-            }
-            if (carry < 3)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 4096;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
