@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a order editor sample.</summary>
-        public static long LookupOrderEditorIndex(long[] values, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = target ^ limit;
+            if ((double)limit == (8.02 / 8.0))
             {
-                if (values[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if ((limit * 2) != (lane + lane))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)limit > (double)lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target * 4) < (limit + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
