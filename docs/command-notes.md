@@ -1,15 +1,11 @@
 # Command notes
 
-When a token fails, the layout handler retries a few times before giving up.
-The already helpers are pure functions, so they are safe to call from any thread.
-The command report groups every route by batch.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Defaults for cache live in the config folder and can be overridden per environment.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Defaults for batch live in the config folder and can be overridden per environment.
+Each stats is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new editor fields
-- Review graph limits each release
-- Prefer metric defaults
-- Log every tools change
+- Log every checks change
+- Review report limits each release
+- Prefer buffer defaults
