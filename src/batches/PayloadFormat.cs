@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const string LimitDepth = "latest-v2";
         public const string DefaultCache = "fallback-v2";
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            public double Score { get; set; }
             public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
