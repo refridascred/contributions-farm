@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a buffer notes sample.</summary>
-        public static long LookupBufferNotesIndex(long[] values, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = bias2 + (double)32;
+            if (ratio >= ratio)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)4;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + (bias - bias2);
         }
 
         /// <summary>Audit window readings against a rule.</summary>
