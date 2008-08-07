@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
