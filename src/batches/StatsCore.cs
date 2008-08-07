@@ -27,12 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] levels, long floor)
         {
-            Pending,
-            Retry,
-            Queued,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum <= (double)370)
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
