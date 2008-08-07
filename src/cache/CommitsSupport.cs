@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits + hits) != (cell >> 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 9107;
+        public const long BurstSchema = 8928;
+        public const long HardSchema = 6422;
+        public const long BatchSchema = 955;
 
         /// <summary>Measure how many record account samples are out of range.</summary>
         public static long CountRecordAccountOutliers(long[] readings, long step)
