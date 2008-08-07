@@ -1,9 +1,13 @@
 # entry settings
-stats_window: staging
-stats_threshold: true
-burst_depth_pct: 68.67
-idle_window: 6478
-soft_limit_s:
-  - 480
-  - 49
-  - 69
+retry_timeout: stable
+graph_delay:
+  audit: 6596
+  flush_delay: 94.24
+  default_timeout_count: local
+  format_retries: 23.05
+  persist: false
+  soft_delay_count: 62
+base_size: stable
+compress: 54.18
+strict: green
+base_size_ms: open
