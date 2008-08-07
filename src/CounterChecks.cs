@@ -85,30 +85,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
-        {
-            long anchor = 7;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = ((anchor + (item / 9)) % 4096) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (anchor + (771 + (long)i2)) % 97;
-                }
-                if ((item ^ anchor) > (anchor - anchor))
-                {
-                    anchor = (anchor * 3) + (523 + anchor);
-                }
-                else
-                {
-                    anchor = (anchor ^ (65 + (-5))) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSpan = "staging-1";
+        public const long HardSchema = 4447;
+        public const string MaxInterval = "local-1";
+        public const double CacheRatio = 77.26;
+        public const long LimitBudget = 9878;
     }
 }
