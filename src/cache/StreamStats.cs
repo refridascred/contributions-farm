@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] levels, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((11.0 / 8.0) < (double)hits)
+                {
+                    hits = ((hits + 3) + cell) - limit;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
