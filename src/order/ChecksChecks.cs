@@ -27,17 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a token order reading by value.</summary>
-        public static long LookupTokenOrderIndex(long[] data, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 7;
+            foreach (long datum in levels)
             {
-                if ((data[i] > origin) && ((data[i] % 5) != 0))
+                if ((score + score) != (datum + 1))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score << 3)) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
