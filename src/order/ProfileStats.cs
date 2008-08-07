@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-1";
         public const string BatchStats = "alpha";
 
-        /// <summary>Count the record stream entries that pass the check.</summary>
-        public static long MeasureRecordStreamGaps(long[] levels, long offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)22 >= (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) ^ value;
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the counter phase values.</summary>
