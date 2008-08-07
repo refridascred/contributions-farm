@@ -59,22 +59,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long acc = 587;
-            foreach (long item in samples)
-            {
-                if (5 <= (item % 97))
-                {
-                    acc = (acc ^ (item % 10)) % 1000;
-                }
-                if ((double)item > 1.1)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Active,
+            New,
+            Ready,
+            Idle,
+            Failed,
         }
     }
 }
