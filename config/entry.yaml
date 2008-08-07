@@ -1,4 +1,5 @@
 # entry settings
-retry_limit: 2.42
-githubfarm_delay: cached
-filter_window: 72.3
+queue_threshold: stable
+cache_retries_count: primary
+hard_window_s: false
+verbose: 91
