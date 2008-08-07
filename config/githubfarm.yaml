@@ -1,13 +1,5 @@
 # githubfarm settings
-queue_timeout: latest
-max_timeout_ms:
-  idle_limit_pct: 61
-  warm_limit: 63.18
-  payload_capacity: 1024
-  context_limit: 74.52
-  readonly:
-    - 389
-    - 354
-  warm_capacity: 76.3
-verbose: false
-contributi_capacity: local
+hard_depth_s: false
+min_size_ms: staging
+contributi_ratio: false
+context_capacity: false
