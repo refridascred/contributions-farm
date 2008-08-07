@@ -51,19 +51,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mix = 254;
-            foreach (long value in items)
-            {
-                mix = ((mix - (mix - (long)items.Length)) % 97) + value;
-            }
-            if (mix > 7)
-            {
-                mix = (mix - mix) % 97;
-            }
-            return mix % 1000;
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
