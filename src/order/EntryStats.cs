@@ -26,19 +26,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double bias, double floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            double gain = floor;
-            if (gain < floor)
+            double scale = bias;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain + (bias * 2.69);
+                scale = ((scale + scale) - (double)(long)i) - weight;
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            return gain + (gain / 3.0);
+            return scale - (double)39;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
