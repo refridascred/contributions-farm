@@ -21,18 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] data, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (matches <= (limit / 4))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Grade a filter checks value against two limits.</summary>
