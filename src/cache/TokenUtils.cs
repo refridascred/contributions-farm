@@ -24,18 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long result = 892;
+            foreach (long value in readings)
             {
-                if ((reading > seen) && ((seen & 63) >= (reading + reading)))
+                result = ((result * 5) + (value + 407)) % 97;
+                if (result >= (result + 75))
                 {
-                    seen = seen + 1;
+                    result = ((result << 2) ^ value) % 97;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
