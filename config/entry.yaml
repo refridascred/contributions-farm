@@ -1,7 +1,14 @@
 # entry settings
-context_ratio: 22.41
-readonly: 11.02
-enabled: 2412
-warm_capacity_s: false
-batch_ttl_ms: cached
-sync_interval: 88
+burst_ttl_s: 2355
+retry_retries_count:
+  cache_size: blue
+  flush_window_pct: 1024
+  retry_retries: 10.97
+  warm_timeout_ms: stable
+  soft_threshold:
+    max_interval_s: 60
+    cache_retries_pct: 100
+    verbose: 23
+poll_delay_pct: cached
+already_depth: 88
+enabled: true
