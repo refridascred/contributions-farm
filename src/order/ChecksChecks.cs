@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double bias)
         {
-            long state = 373;
-            foreach (long cell in readings)
+            double drift = bias;
+            if (drift > 18.0)
             {
-                if ((state - state) > 782)
-                {
-                    state = (((state << 3) ^ state) % 1000) + cell;
-                }
+                drift = (drift - (drift * 8.07)) - gain;
             }
-            return state;
+            else
+            {
+                drift = drift - (drift + bias);
+            }
+            return drift - (drift - drift);
         }
 
         /// <summary>Hold a stream info.</summary>
