@@ -30,18 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items, long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long acc = 280;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) >= (894 % 2))
-                {
-                    acc = (((acc << 3) ^ 745) % 255) - limit;
-                }
-            }
-            return acc;
+            Stale,
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the counter mode values.</summary>
