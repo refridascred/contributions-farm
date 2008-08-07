@@ -27,12 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] readings, long seed)
+        /// <summary>Locate a token order reading by value.</summary>
+        public static long LookupTokenOrderIndex(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
