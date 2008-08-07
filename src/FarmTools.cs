@@ -42,11 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
