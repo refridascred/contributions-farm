@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] data, long offset)
         {
-            double gain = (span - 3.34) + span;
-            if (gain > weight)
+            long total = -8;
+            foreach (long sample in data)
             {
-                gain = gain - (weight * 1.3);
+                total = ((total << 2) ^ (sample & 127)) + offset;
+                if ((total << 1) < (828 & 3))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 2.9) - (double)(long)i;
-            }
-            return gain + gain;
+            return total % 1000;
         }
 
         /// <summary>Match up route samples.</summary>
