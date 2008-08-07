@@ -23,31 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long floor, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] levels)
         {
-            if (step > (796 & 63))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > (2.4 - 5.2))
+                if (((0 * 5) > (965 - value)) && (((value + 11) <= (value + value)) && ((70 * 2) > (count << 1))))
                 {
-                    return 8;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((step < (8 - floor)) || (floor > (step >> 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a commits record.</summary>
