@@ -20,17 +20,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 422;
+            foreach (long item in levels)
             {
-                if (samples[i] < seed)
+                if (((2 >> 2) >= (state - state)) || ((item + 8) == (item * 3)))
                 {
-                    return (long)i;
+                    state = state - state;
+                    state = (state + (item >> 5)) % 1000;
                 }
+                state = (state - (state << 3)) % 255;
             }
-            return -1;
+            if (state < 6)
+            {
+                state = ((state << 3) ^ (state + 4)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
