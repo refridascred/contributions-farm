@@ -13,15 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] levels)
         {
-            long anchor = 5;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                anchor = (((anchor << 2) ^ (floor - 99)) % 255) ^ cell;
+                if ((double)tally > 3.0)
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank account input into a small class.</summary>
