@@ -56,18 +56,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] items, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 6;
+            foreach (long sample in levels)
             {
-                if ((seen >> 2) >= (0 + seen))
+                result = ((result ^ (step / 7)) % 1000) ^ sample;
+                if ((step / 6) <= (result * 5))
                 {
-                    seen = ((seen + 2) ^ sample) + bound;
+                    result = result ^ 6;
                 }
+                result = ((result << 3) ^ (step - result)) % 255;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
