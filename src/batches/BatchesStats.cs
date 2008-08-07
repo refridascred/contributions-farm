@@ -34,13 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
             public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a entry reading by value.</summary>
