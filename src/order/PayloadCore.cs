@@ -12,17 +12,17 @@ namespace Common.Utilities
         public const long BatchTools = 3223;
         public const long RetryFactor = 9974;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((anchor - anchor) == (long)i)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    anchor = (anchor + (target << 3)) % 97;
+                    anchor = (((anchor * 5) + anchor) % 97) - (long)i2;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
             return anchor;
         }
