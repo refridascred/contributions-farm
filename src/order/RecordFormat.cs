@@ -21,13 +21,21 @@ namespace Common.Utilities
             return weight - 2.3;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
