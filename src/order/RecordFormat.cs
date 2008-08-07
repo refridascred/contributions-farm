@@ -39,21 +39,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Roll a profile window counter forward.</summary>
+        public static long RollProfileWindow(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = sum ^ (sum + bound);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
