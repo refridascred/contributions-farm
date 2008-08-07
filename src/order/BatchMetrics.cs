@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
