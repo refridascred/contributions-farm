@@ -24,12 +24,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstLevel = 285;
-        public const string SoftNotes = "strict";
-        public const long BaseCount = 481;
-        public const long BurstNotes = 7836;
-        public const double CacheNotes = 39.11;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] samples, long offset)
+        {
+            long result = 43;
+            foreach (long datum in samples)
+            {
+                result = (result - ((long)samples.Length ^ offset)) ^ datum;
+            }
+            if (result < (-3))
+            {
+                result = ((result * 5) + (result + offset)) % 1000;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] values, long seed)
