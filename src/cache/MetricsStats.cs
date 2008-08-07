@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long step, long limit)
+        /// <summary>Audit batch counter readings against a rule.</summary>
+        public static long TallyBatchCounterMatches(long[] series)
         {
-            long next = step - limit;
-            if ((double)next != (double)step)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - next) >= (162 >> 3))
+                if (hits <= value)
                 {
-                    return 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((step + step) >= 8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two account measurements.</summary>
