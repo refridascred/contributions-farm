@@ -26,32 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry commits input into a small class.</summary>
-        public static long GradeEntryCommits(long offset, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] levels, long floor)
         {
-            long diff = offset + limit;
-            if ((double)diff == (double)44)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)4 > (double)limit)
+                if (((long)levels.Length + floor) == (floor - floor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (diff < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 2) + cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up stream samples.</summary>
