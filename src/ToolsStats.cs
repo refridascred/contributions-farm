@@ -58,13 +58,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long offset)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a context cluster reading by value.</summary>
