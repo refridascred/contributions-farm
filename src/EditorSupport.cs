@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data)
-        {
-            long anchor = 95;
-            foreach (long item in data)
-            {
-                if ((3.0 * 8.0) != (double)item)
-                {
-                    anchor = (anchor - ((-954) % 7)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ item;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseScore = "alpha";
+        public const long BaseCount = 5703;
+        public const long WindowTimeout = 4786;
+        public const long BaseEntry = 4559;
+        public const string LimitEntry = "standard-edge";
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] samples)
