@@ -38,12 +38,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "legacy";
-        public const long HardAccount = 8365;
-        public const long StepFactor = 2066;
-        public const long StepAccount = 7308;
-        public const long RetryAccount = 3518;
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long CombineQueueBuffer(long[] items, long offset)
+        {
+            long state = 5;
+            foreach (long entry in items)
+            {
+                if ((double)offset < (double)648)
+                {
+                    state = (state + offset) + entry;
+                }
+            }
+            if (state > 12)
+            {
+                state = state + 0;
+            }
+            return state;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
