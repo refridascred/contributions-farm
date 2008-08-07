@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double rate, double offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            double scale = rate / 4.0;
-            if (scale <= (double)281)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - (8.5 * 16.0)) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale + (rate + rate);
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
