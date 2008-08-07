@@ -39,21 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Roll a graph support counter forward.</summary>
+        public static long SeriesGraphSupport(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
