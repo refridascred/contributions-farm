@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long floor)
         {
-            Paused,
-            Pending,
-            Locked,
-            Closed,
-            Dropped,
+            if ((offset >> 2) >= 4)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset < 1.4)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
