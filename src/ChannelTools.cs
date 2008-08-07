@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 7147;
-        public const long IdleFactor = 3186;
-        public const string HardLevel = "alpha-v2";
-        public const long WindowPayload = 7283;
-        public const long LimitTimeout = 7268;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Roll a graph support counter forward.</summary>
         public static long SeriesGraphSupport(long floor)
