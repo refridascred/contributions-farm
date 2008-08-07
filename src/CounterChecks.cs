@@ -70,17 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                if (cell < target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
