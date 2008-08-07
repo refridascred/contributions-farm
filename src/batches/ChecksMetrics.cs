@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchScore = 3.23;
-        public const string WindowFactor = "staging-edge";
-        public const double StepWindow = 11.18;
-        public const double CacheWindow = 16.34;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)(long)i < (2.12 * 12.0))
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result * 3) + (origin + result);
+                    result = result - (result >> 1);
+                }
+                if ((result % 100) <= result)
+                {
+                    result = (result ^ ((long)i & 7)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string RetryLevel = "open-1";
