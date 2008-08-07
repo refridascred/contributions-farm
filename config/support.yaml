@@ -1,47 +1,5 @@
 # support settings
-idle_interval_ms:
-  dry_run: 30
-  idle_delay_count: 30
-  default_timeout_count:
-    min_limit_s: false
-    burst_window_s: 49
-    idle_window: edge
-    persist: 1938
-    idle_ratio:
-      - open
-      - cached
-      - eu-west
-  flush_ttl_count:
-    compress: 250
-    readonly: open
-    max_size_count: 53.45
-    base_size_ms: 348
-    idle_retries_pct: stable
-    hard_limit:
-      - cached
-      - edge
-      - strict
-      - latest
-  hard_timeout_ms:
-    - 309
-    - 41
-  warm_retries_ms: true
-audit: 500
-commits_timeout: edge
-record_interval:
-  default_size_s:
-    soft_delay_count:
-      - 249
-      - 14
-      - 245
-      - 480
-    enabled: 31.94
-    retry_ratio_pct: open
-    soft_window_s:
-      - standard
-      - eu-west
-      - edge
-      - blue
-  batch_interval: 72.57
-  contributi_window: open
-  flush_interval: standard
+warm_retries_count: legacy
+soft_ttl_s: 100
+soft_timeout_ms: 481
+command_ttl: 48
