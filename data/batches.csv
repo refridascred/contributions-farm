@@ -1,7 +1,8 @@
-id,weight,count,ratio
-1,primary,63,edge
-2,96.96,545,eu-west
-3,44,41.45,7.29
-4,343,33,62.73
-5,79.6,green,71
-6,staging,841,green
+id,rank,weight,ratio
+1,76.11,86.63,991
+2,84,50.2,cached
+3,337,54,stable
+4,49.42,97,edge
+5,92.5,523,399
+6,76.99,908,strict
+7,cached,80.49,143
