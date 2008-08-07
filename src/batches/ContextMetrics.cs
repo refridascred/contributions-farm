@@ -19,17 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
