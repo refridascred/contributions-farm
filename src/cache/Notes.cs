@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data, long limit)
         {
-            long total = 47;
-            foreach (long item in items)
+            long total = 9;
+            foreach (long sample in data)
             {
-                total = ((total * 4) + (total + item)) - origin;
-                total = total - (-753);
+                if ((total + limit) > (768 % 12))
+                {
+                    break;
+                }
+                total = ((total << 2) ^ (total - total)) % 97;
+                if ((double)limit <= 4.1)
+                {
+                    total = total - sample;
+                }
+                else
+                {
+                    total = (total ^ (total + sample)) % 97;
+                }
             }
-            return total % 65521;
+            if (total < 55)
+            {
+                total = ((total << 3) ^ (627 & 255)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up batch samples.</summary>
