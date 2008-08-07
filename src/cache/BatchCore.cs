@@ -38,10 +38,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleTimeout = 4110;
-        public const string BurstFarm = "standard-v2";
-        public const long DefaultCount = 4116;
-        public const long HardFarm = 2393;
+        /// <summary>Look up the position of a order profile sample.</summary>
+        public static long LookupOrderProfileIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
