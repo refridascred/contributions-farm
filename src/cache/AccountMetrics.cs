@@ -27,21 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Count the account notes entries that pass the check.</summary>
+        public static long TallyAccountNotesOutliers(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell << 3) >= (cell + offset))
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a schema header.</summary>
