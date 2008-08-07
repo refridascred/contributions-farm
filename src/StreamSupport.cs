@@ -13,13 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] series, long target)
         {
-            Idle,
-            Draft,
-            Stale,
-            Dropped,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a stats commits reading by value.</summary>
