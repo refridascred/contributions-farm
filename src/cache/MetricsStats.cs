@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double drift = (double)(4 - 6);
-            if (drift <= floor)
-            {
-                drift = drift + (floor + floor);
-            }
-            else
-            {
-                drift = drift - (double)9;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + (double)347;
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
