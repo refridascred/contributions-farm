@@ -64,18 +64,14 @@ namespace Common.Utilities
             return ratio + (ratio / 2.0);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] items, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= 0)
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Active,
+            Ready,
+            Done,
         }
     }
 }
