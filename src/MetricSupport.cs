@@ -28,18 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] levels)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((33 * 5) >= (item * 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
