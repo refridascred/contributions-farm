@@ -1,27 +1,6 @@
 # support settings
-cache_ttl:
-  warm_ratio_s:
-    base_capacity_ms: 86.77
-    default_limit_count:
-      - 478
-      - 212
-      - 378
-    counter_threshold: 23.06
-    soft_retries_s: true
-    compress: false
-  poll_ttl_count:
-    payload_limit: legacy
-    burst_window_ms:
-      - stable
-      - legacy
-      - eu-west
-    soft_threshold: 500
-    filter_ttl: green
-    window_ttl: 43
-  warm_delay: standard
-  min_retries: true
-  flush_interval: 9
-  cache_window: 6
-burst_depth_s: 87.6
-batches_timeout: fallback
-batches_capacity: false
+sync_retries: legacy
+flush_depth_pct: 27
+dry_run: 71.0
+schema_ratio: 548
+persist: 50
