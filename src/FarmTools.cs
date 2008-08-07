@@ -21,18 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values, long bound)
+        /// <summary>Audit queue githubfarm readings against a rule.</summary>
+        public static long MeasureQueueGithubfarmHits(long[] items)
         {
-            long result = 3;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (bound >= (bound - entry))
+                if ((31 ^ hits) <= hits)
                 {
-                    result = (result + 26) % 4096;
+                    hits = (hits + 1) - value;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
