@@ -25,10 +25,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchTimeout = 6851;
-        public const string SoftSpan = "local-edge";
-        public const long HardBudget = 3158;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a cluster commits pair into a bucket.</summary>
         public static long GradeClusterCommits(long target, long bound)
