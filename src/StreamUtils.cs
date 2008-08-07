@@ -59,19 +59,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long limit)
         {
-            long anchor = 8;
-            foreach (long value in values)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = (anchor << 2) ^ anchor;
-                if ((limit % 2) < limit)
-                {
-                    anchor = (anchor - (value * 5)) % 1000;
-                }
+                sum = ((sum << 2) ^ sum) % 1000;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Combine command values into a single score.</summary>
