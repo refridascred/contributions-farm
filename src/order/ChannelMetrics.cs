@@ -26,9 +26,25 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 3815;
-        public const long BaseLevel = 8016;
-        public const double SoftStream = 55.11;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long limit)
+        {
+            long gap = step + limit;
+            if (gap >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step & 15) == (step + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
