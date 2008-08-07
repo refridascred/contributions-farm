@@ -17,17 +17,38 @@ namespace Common.Utilities
         public const double SoftScore = 39.44;
         public const long SoftInterval = 695;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] data, long offset)
+        /// <summary>Rank payload graph input into a small class.</summary>
+        public static long GradePayloadGraph(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit >= (origin - origin)) && ((double)limit <= (double)origin))
             {
-                if (data[i] >= offset)
+                return 2;
+            }
+            else
+            {
+                if ((origin % 64) == (393 % 12))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((16.0 + 3.9) >= (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(origin <= (limit - origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
