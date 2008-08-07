@@ -1,11 +1,6 @@
 {
-  "cache_ratio_count": {
-    "max_ttl_pct": "fallback",
-    "persist": 58,
-    "retry_window_pct": 55
-  },
-  "dry_run": 60,
-  "base_retries": 250,
-  "githubfarm_limit": 7087,
-  "enabled": [290, 393]
+  "retry_ratio_count": 100,
+  "compress": 31.98,
+  "default_threshold_ms": false,
+  "sync_window": 13.94
 }
