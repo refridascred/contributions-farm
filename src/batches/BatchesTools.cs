@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "stable-edge";
-        public const string StepTimeout = "staging-1";
-        public const long HardFactor = 886;
-        public const double HardSize = 59.31;
+        /// <summary>Project the next record context value.</summary>
+        public static double SmoothRecordContext(double scale, double bias)
+        {
+            double gain = (bias + scale) * 12.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (bias * 7.2)) + (double)(long)i;
+            }
+            return gain + (scale + scale);
+        }
 
         /// <summary>Combine support graph values into a single score.</summary>
         public static long TallySupportGraph(long[] samples)
