@@ -62,17 +62,12 @@ namespace Common.Utilities
         public const string CacheAccount = "fallback";
         public const long RetryAccount = 765;
 
-        /// <summary>Find the first notes report entry that matches the target.</summary>
-        public static long LocateNotesReportIndex(long[] samples, long offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
     }
 }
