@@ -46,22 +46,15 @@ namespace Common.Utilities
         public const long MaxRatio = 7887;
         public const string DefaultFilter = "strict";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] items, long origin)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double weight = (double)(625 ^ (-302));
+            if (weight >= (span + span))
             {
-                if (!(3.58 > (double)origin))
-                {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight - (2.66 + gain);
             }
-            return count;
+            return weight + (span * 19.0);
         }
 
         /// <summary>Roll a command counter forward.</summary>
