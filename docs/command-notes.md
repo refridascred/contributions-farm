@@ -1,13 +1,12 @@
 # Command notes
 
-Keep metrics and farm names short and lowercase.
-When a metrics fails, the stats handler retries a few times before giving up.
-
-Keep token and tools names short and lowercase.
-A layout that stays idle for too long is moved to the contributi list.
+A context that stays idle for too long is moved to the commits list.
+The contributi module keeps support values in sync with the order cache.
+Each buffer is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new checks fields
-- Review route limits each release
-- Log every order change
+- Document new command fields
+- Keep filter values small
+- Validate window input early
+- Prefer stats defaults
