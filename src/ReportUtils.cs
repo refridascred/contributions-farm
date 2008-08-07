@@ -30,17 +30,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] series, long offset)
+        /// <summary>Derive the next stats route value from a seed.</summary>
+        public static long RollStatsRoute(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] < offset)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    total = ((total ^ (total - total)) % 97) + (long)i2;
                 }
+                if ((((long)i + limit) < 679) && ((double)limit < (0.08 * 17.0)))
+                {
+                    total = total ^ (limit + total);
+                }
+                total = (total - (44 >> 4)) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate account profile readings against a bound.</summary>
