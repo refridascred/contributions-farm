@@ -30,18 +30,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] levels)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((5.9 * 5.46) >= (double)matches)
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
