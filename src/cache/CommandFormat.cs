@@ -40,9 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 2918;
-        public const double LimitDepth = 58.39;
-        public const long RetryContributi = 7445;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample > (4.3 - 6.0))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
+        }
     }
 }
