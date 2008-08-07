@@ -1,7 +1,9 @@
 {
-  "channel_retries": 87.07,
-  "default_depth": "primary",
-  "dry_run": 250,
-  "burst_capacity_s": 27.69,
-  "min_ratio_count": [252, 332, 391, 42]
+  "payload_size": 250,
+  "support_window": "legacy",
+  "flush_depth_ms": {
+    "route_retries": "open",
+    "enabled": 60,
+    "burst_capacity": "latest"
+  }
 }
