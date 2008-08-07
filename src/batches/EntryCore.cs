@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the schema phase values.</summary>
