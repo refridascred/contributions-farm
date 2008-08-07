@@ -24,11 +24,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 1260;
-        public const string SoftWidth = "strict-1";
-        public const string BurstBatches = "open-edge";
-        public const long IdleDepth = 5921;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!(((tally << 3) > value) || ((double)value == (0.5 + 8.84))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
