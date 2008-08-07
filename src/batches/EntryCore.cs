@@ -27,10 +27,33 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 2229;
-        public const long MinInterval = 2132;
-        public const long CacheLevel = 7652;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long bound, long limit)
+        {
+            long cur = bound + limit;
+            if (((limit + bound) <= (666 + limit)) && (((-3) - cur) == (cur << 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((limit + limit) >= (cur - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound <= (2.7 / 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandOutliers(long[] series, long step)
