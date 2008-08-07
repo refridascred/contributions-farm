@@ -17,13 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((8.4 - 5.0) < (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
