@@ -35,13 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 8891;
+        public const long CacheSpan = 9804;
+        public const long LimitLayout = 7053;
+        public const long BurstTimeout = 9239;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandGaps(long[] data)
