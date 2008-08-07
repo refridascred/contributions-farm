@@ -1,11 +1,11 @@
 {
-  "flush_retries_pct": {
-    "hard_size_pct": "eu-west",
-    "max_ratio_s": true,
-    "readonly": "legacy"
+  "batch_capacity": [419, 50, 351],
+  "persist": {
+    "burst_capacity": "green",
+    "readonly": [371, 466],
+    "metrics_depth": true,
+    "flush_ratio_ms": 4.33
   },
-  "support_size": ["green", "legacy"],
-  "report_ratio": 12,
-  "dry_run": "edge",
-  "poll_delay_ms": true
+  "sync_limit_s": ["stable", "blue"],
+  "min_limit_ms": true
 }
