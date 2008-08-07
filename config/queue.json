@@ -1,5 +1,22 @@
 {
-  "retry_depth": 15,
-  "profile_ttl": 1,
-  "channel_timeout": true
+  "idle_ttl_count": {
+    "retry_ratio_ms": "legacy",
+    "poll_interval": "green",
+    "sync_timeout": ["blue", "open"]
+  },
+  "soft_threshold_count": 82.58,
+  "warm_capacity": true,
+  "stream_depth": {
+    "hard_timeout_ms": 22,
+    "flush_capacity": {
+      "compress": 1983,
+      "verbose": "local",
+      "max_delay_ms": [186, 461, 325, 169],
+      "burst_ratio_pct": 30,
+      "soft_depth_count": 29
+    },
+    "sync_capacity": ["green", "primary", "staging", "edge"],
+    "readonly": 8.35,
+    "burst_window_s": "staging"
+  }
 }
