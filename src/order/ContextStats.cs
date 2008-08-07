@@ -33,12 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = scale;
+            if (drift > (double)952)
+            {
+                drift = (drift - scale) + floor;
+            }
+            return drift + (double)86;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
