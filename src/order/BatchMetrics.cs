@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double bias = (double)(267 >> 5);
-            if (bias < (double)9)
-            {
-                bias = (bias - bias) + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (bias / 7.0)) + (double)(long)i;
-            }
-            return bias + (floor + 18.0);
+            Pending,
+            Dropped,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
