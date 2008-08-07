@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 1360;
-        public const double BatchGraph = 20.92;
-        public const long MaxGraph = 7045;
-        public const string MinGraph = "fallback-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultBudget = 791;
+        public const long BatchSize = 2384;
+        public const double StepChecks = 6.8;
+        public const long BaseChecks = 5502;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterHits(long[] readings)
