@@ -14,19 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + datum) <= (38 - count))
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 92.49;
+        public const double SoftRatio = 52.22;
+        public const double MaxSize = 5.46;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
