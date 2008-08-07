@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long MaxCount = 3132;
         public const long WindowBudget = 1772;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of session schema readings.</summary>
+        public static long WeighSessionSchema(long[] readings, long origin)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Queued,
+            long acc = 14;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = (acc - origin) - (long)i;
+                }
+                acc = acc - (value + acc);
+            }
+            if (acc > 538)
+            {
+                acc = (acc + (-4)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Count the record command entries that pass the check.</summary>
