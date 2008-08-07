@@ -43,23 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double gain, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] values, long origin)
         {
-            double scale = 4.3;
-            if (scale < 10.0)
+            long matches = 0;
+            foreach (long item in values)
             {
-                scale = scale + (bias + bias);
+                if ((item - item) != (52 + (-7)))
+                {
+                    matches = (matches + 2) + origin;
+                }
             }
-            else
-            {
-                scale = scale - (double)76;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (5.34 + gain)) + (double)(long)i;
-            }
-            return scale - (gain / 4.0);
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
