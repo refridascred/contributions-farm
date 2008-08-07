@@ -34,15 +34,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            if ((seed - seed) <= 76)
             {
-                state = ((state * 5) + (long)i) % 101;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((floor << 2) > (floor - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)floor > (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor % 64) != (floor & 31))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
