@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] readings)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!(((tally << 3) > value) || ((double)value == (0.5 + 8.84))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
