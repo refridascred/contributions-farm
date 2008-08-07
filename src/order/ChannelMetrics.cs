@@ -22,12 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first counter metrics entry that matches the target.</summary>
