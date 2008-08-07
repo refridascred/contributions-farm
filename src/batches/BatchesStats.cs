@@ -45,30 +45,17 @@ namespace Common.Utilities
             return bias2 - (floor * 18.0);
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] readings, long seed)
         {
-            long acc = -863;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset >> 4) > (246 - offset))
+                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
                 {
-                    acc = ((acc << 3) ^ acc) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc + acc)) % 4096;
-                }
-                if ((datum + 9) < datum)
-                {
-                    acc = acc + acc;
+                    return (long)i;
                 }
             }
-            if (acc > 818)
-            {
-                acc = (acc << 3) ^ offset;
-            }
-            return acc % 65521;
+            return -1;
         }
     }
 }
