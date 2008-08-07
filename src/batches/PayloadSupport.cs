@@ -13,39 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a batch context pair into a bucket.</summary>
-        public static long BucketBatchContext(long origin, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] series)
         {
-            long step = origin + floor;
-            if ((19.0 * 5.26) >= (double)origin)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.21 * 5.5) > (double)step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin < step) && (step >= (465 % 64)))
+                    if ((series[i] + series[j]) == 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + origin) >= (origin + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
