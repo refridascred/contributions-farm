@@ -43,17 +43,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = result - 77;
+                result = result + ((long)i + (long)i);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
