@@ -58,22 +58,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long state = 54;
+            foreach (long value in data)
             {
-                if (!((double)seen != (7.18 * 0.7)))
+                state = state + (0 - state);
+                if ((value < (value + value)) || ((double)state <= (8.55 * 1.7)))
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = ((state * 5) + (state << 2)) % 97;
                 }
             }
-            return seen;
+            if (state < (-82))
+            {
+                state = state - (state % 64);
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a contributi options.</summary>
