@@ -38,13 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Look up the position of a farm filter sample.</summary>
+        public static long LookupFarmFilterIndex(long[] items, long offset)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
