@@ -23,12 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowWidth = 15.36;
-        public const double SoftInterval = 69.03;
-        public const string RetryMetric = "primary-1";
-        public const long MinTimeout = 9080;
-        public const long IdleDepth = 343;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] levels, long limit)
