@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 97.03;
-        public const long HardRatio = 4930;
-        public const long CacheLevel = 9475;
-        public const long HardCount = 6461;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
