@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxSize = "primary-v2";
-        public const long StepChecks = 4675;
-        public const double BaseTimeout = 83.07;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitWidth = 5249;
+        public const string MaxRatio = "open-v2";
+        public const double RetryInterval = 86.37;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long limit)
