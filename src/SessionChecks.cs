@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double StepChecks = 6.8;
         public const long BaseChecks = 5502;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] readings)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((693 << 3) > (tally & 3))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
