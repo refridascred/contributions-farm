@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                sum = sum ^ sum;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
