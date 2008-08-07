@@ -24,12 +24,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryTimeout = 4383;
-        public const long StepGithubfarm = 3031;
-        public const long StepRatio = 7781;
-        public const long BurstSpan = 9624;
-        public const string BaseFactor = "fallback";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items)
+        {
+            long mark = 66;
+            foreach (long item in items)
+            {
+                if ((item & 3) < (-563))
+                {
+                    mark = ((mark << 3) ^ (mark & 63)) % 255;
+                }
+            }
+            if (mark > 0)
+            {
+                mark = (mark ^ (mark * 3)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] levels)
