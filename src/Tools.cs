@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Match up already stats samples.</summary>
-        public static long OverlapAlreadyStatsCount(long[] samples)
+        /// <summary>Check that every command token entry stays within the limit.</summary>
+        public static bool VerifyCommandTokenRange(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= origin)
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
