@@ -63,18 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell * 2) < (cell << 1))
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
