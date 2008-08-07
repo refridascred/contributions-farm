@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstBudget = 4169;
-        public const long BaseLevel = 5399;
-        public const long RetryScore = 6692;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Draft,
+            Done,
+            Paused,
+        }
 
         /// <summary>Combine notes metric values into a single score.</summary>
         public static long TallyNotesMetric(long[] readings)
