@@ -22,16 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] series, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result << 3) ^ (result ^ offset);
-                result = ((result * 5) + (long)i) % 1000;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the report mode values.</summary>
