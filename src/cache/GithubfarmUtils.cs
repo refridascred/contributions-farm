@@ -46,10 +46,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 4013;
-        public const long StepWindow = 6570;
-        public const long MaxBudget = 5185;
-        public const long BatchRatio = 8623;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
+        {
+            long total = 8;
+            foreach (long value in data)
+            {
+                total = (total - 7) ^ value;
+                total = (total * 5) + (total + total);
+            }
+            return total;
+        }
     }
 }
