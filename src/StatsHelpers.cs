@@ -63,18 +63,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (400 >= (entry >> 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Pending,
+            Ready,
+            Stale,
         }
     }
 }
