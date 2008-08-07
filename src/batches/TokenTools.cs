@@ -31,17 +31,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] levels, long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = mix + offset;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
