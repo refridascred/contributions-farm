@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
+        public static long SeekGithubfarmEditorIndex(long[] samples, long floor)
         {
-            Active,
-            Pending,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm info.</summary>
