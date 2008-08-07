@@ -56,11 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)count < 4.0)
+                {
+                    count = ((count + 3) ^ value) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
