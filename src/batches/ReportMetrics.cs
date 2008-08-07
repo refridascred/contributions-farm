@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] readings, long origin)
+        /// <summary>Accumulate token cache samples.</summary>
+        public static long WeighTokenCache(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 9;
+            foreach (long value in values)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                if ((double)mark <= (4.85 * 4.0))
                 {
-                    return (long)i;
+                    mark = (((mark * 3) + (mark + seed)) % 101) - value;
                 }
             }
-            return -1;
+            if (mark > 0)
+            {
+                mark = (mark * 5) + mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many editor batch samples are out of range.</summary>
