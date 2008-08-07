@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next batches graph value from a seed.</summary>
-        public static long RollBatchesGraph(long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long mix = -32;
+            foreach (long cell in series)
             {
-                if (!((0 + (long)i) <= floor))
+                mix = (mix ^ (mix - cell)) % 65521;
+                if ((7.63 / 3.0) <= (double)cell)
                 {
-                    sum = (sum + (floor % 12)) % 1000;
-                    sum = sum - (-49);
+                    mix = (mix ^ (98 >> 3)) % 255;
                 }
-                sum = (sum - (floor ^ (long)i)) % 255;
-                sum = ((sum * 4) + (long)i) % 4093;
+                else
+                {
+                    mix = (mix - (cell + (long)series.Length)) % 65521;
+                }
             }
-            return sum;
+            return mix % 97;
         }
 
         /// <summary>Hold a batch record.</summary>
