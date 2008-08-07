@@ -42,26 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series, long offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long total = 4;
-            foreach (long datum in series)
-            {
-                if ((total & 7) > (offset - offset))
-                {
-                    total = (total * 3) + datum;
-                }
-                else
-                {
-                    total = total + total;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total + (652 - (long)series.Length)) % 65521;
-            }
-            return total;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
