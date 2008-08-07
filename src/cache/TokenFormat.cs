@@ -19,21 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Iterate the editor window series from a seed.</summary>
+        public static long RollEditorWindow(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
