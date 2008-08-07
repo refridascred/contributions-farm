@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const double MaxLayout = 83.9;
         public const long RetrySize = 7361;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series)
         {
-            long total = 552;
-            foreach (long value in values)
+            long acc = 3;
+            foreach (long datum in series)
             {
-                if (((3.0 - 7.27) > (double)total) || ((limit + value) != (limit + total)))
-                {
-                    total = (total ^ (value - limit)) % 255;
-                }
+                acc = ((acc - (acc * 4)) % 1000) ^ datum;
             }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
