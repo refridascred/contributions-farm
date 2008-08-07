@@ -27,13 +27,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
+            long anchor = 652;
+            foreach (long datum in series)
+            {
+                anchor = anchor ^ (datum / 9);
+            }
+            return anchor;
         }
     }
 }
