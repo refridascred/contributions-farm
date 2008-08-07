@@ -61,10 +61,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 5554;
-        public const string BaseTimeout = "primary-v2";
-        public const string DefaultDepth = "latest-1";
-        public const long HardRoute = 3964;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Owner { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
