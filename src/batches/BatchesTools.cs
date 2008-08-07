@@ -29,21 +29,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = origin ^ offset;
+            if ((offset ^ step) == (offset * 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((step >> 3) != (offset / 4)))
                 {
-                    if ((readings[i] + readings[j]) == 8)
+                    return 0;
+                }
+                else
+                {
+                    if (((step - origin) <= (offset >> 3)) || ((19.0 - 4.43) >= (double)offset))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset >= (origin % 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
