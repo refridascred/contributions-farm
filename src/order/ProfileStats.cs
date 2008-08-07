@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Count the entry counter entries that pass the check.</summary>
+        public static long CountEntryCounterGaps(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.9 / 8.0) >= (double)matches)
                 {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ entry;
                 }
             }
             return matches;
