@@ -28,17 +28,12 @@ namespace Common.Utilities
         public const double CacheLevel = 89.32;
         public const long WindowChecks = 8517;
 
-        /// <summary>Look up the position of a cluster entry sample.</summary>
-        public static long FindClusterEntryIndex(long[] series, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
