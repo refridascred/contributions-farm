@@ -40,11 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long score = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((score + step) == (score ^ (long)i))
+                {
+                    score = (score ^ (65 + score)) % 4096;
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of token readings.</summary>
