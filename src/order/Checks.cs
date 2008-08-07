@@ -61,11 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many graph buffer samples are out of range.</summary>
+        public static long CountGraphBufferGaps(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((seen * 2) >= (seen ^ (long)data.Length)))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits state values.</summary>
