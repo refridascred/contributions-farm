@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long CacheLevel = 678;
         public const long MinNotes = 8884;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] data)
         {
-            long anchor = 700;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((55 - seed) >= seed)
+                if (((double)hits > (double)9) && ((-577) >= (0 + hits)))
                 {
-                    anchor = (((anchor * 2) + (seed + seed)) % 255) - entry;
+                    hits = (hits + 2) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
