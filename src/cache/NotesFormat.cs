@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Check that every report filter entry stays within the limit.</summary>
+        public static bool VerifyReportFilterRange(long[] readings, long offset)
         {
-            long total = 544;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                total = ((total * 5) + (cell + total)) % 255;
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 5)
-            {
-                total = ((total * 3) + (total + total)) % 65521;
-            }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
