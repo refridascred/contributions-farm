@@ -80,12 +80,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values, long floor)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            long state = 822;
+            foreach (long sample in values)
+            {
+                if (((sample + sample) > (floor ^ state)) && ((state + sample) == (sample % 3)))
+                {
+                    state = (state - state) % 101;
+                }
+            }
+            if (state < 10)
+            {
+                state = state ^ state;
+            }
+            return state % 65521;
         }
     }
 }
