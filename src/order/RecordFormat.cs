@@ -29,21 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count commits profile pairs that satisfy a relation.</summary>
-        public static long CompareCommitsProfileCount(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a support info.</summary>
