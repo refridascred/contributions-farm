@@ -1,12 +1,9 @@
 # support settings
-support_depth: open
-retry_threshold_pct:
-  - open
-  - blue
-  - latest
-  - standard
-readonly:
-  - 378
-  - 185
-  - 64
-burst_retries: eu-west
+contributi_ttl: edge
+burst_ratio_count: eu-west
+cluster_timeout: 8825
+flush_ttl_count:
+  readonly: 6119
+  poll_threshold_count: primary
+  poll_depth_pct: false
+readonly: staging
