@@ -47,12 +47,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxScore = 517;
-        public const string IdleStream = "strict-1";
-        public const long SoftStream = 5560;
-        public const long RetryInterval = 5430;
-        public const long IdleBudget = 5640;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "standard-edge";
+        public const long RetryToken = 7714;
+        public const string HardToken = "primary";
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long step)
