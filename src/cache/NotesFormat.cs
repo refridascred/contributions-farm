@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] data, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = 39;
+            foreach (long entry in readings)
             {
-                if ((matches * 3) == (limit + limit))
+                anchor = ((anchor ^ anchor) % 1000) + entry;
+                if ((7.43 / 2.0) >= (double)anchor)
                 {
-                    matches = (matches + 3) + cell;
+                    anchor = (anchor - (anchor - anchor)) % 65521;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Rank context input into a small class.</summary>
