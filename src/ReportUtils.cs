@@ -15,12 +15,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            long sum = -490;
+            foreach (long sample in items)
+            {
+                sum = ((sum * 2) + (sum + sample)) % 4096;
+                sum = (sum * 2) + sample;
+            }
+            if (sum > 5)
+            {
+                sum = (sum - (198 - sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
