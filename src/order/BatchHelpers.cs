@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long origin, long origin2)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            if (!((double)origin2 >= (1.08 * 11.0)))
+            long mark = 76;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin >= (origin + 835))
+                mark = (mark ^ (mark - item)) % 4096;
+                if (!((mark - item) == (item * 3)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin / 7) > (9 >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = mark - 864;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
