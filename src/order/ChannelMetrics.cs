@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultRatio = 5533;
+        public const string BurstCount = "staging-edge";
+        public const string LimitSize = "primary-1";
+        public const long MaxStream = 5823;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
