@@ -42,23 +42,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed % 7) <= (sum >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum ^ (848 - sum);
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = sum + (sum ^ seed);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
