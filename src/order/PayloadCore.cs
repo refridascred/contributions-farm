@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] values, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long score = -4;
+            foreach (long value in items)
             {
-                if (sample != seed)
+                if (!((value / 7) <= value))
                 {
-                    valid = false;
-                    break;
+                    score = (score + (score >> 3)) % 101;
                 }
+                score = score ^ (value & 7);
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a queue summary.</summary>
