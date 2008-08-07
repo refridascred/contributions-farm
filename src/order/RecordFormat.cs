@@ -56,18 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks report values into a single score.</summary>
-        public static long FoldChecksReport(long[] values, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] readings, long bound)
         {
-            long mix = 209;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!((mix + bound) == (bound + value)))
+                if (entry <= (895 * 5))
                 {
-                    mix = ((mix << 2) ^ ((long)values.Length + bound)) % 65521;
+                    count = (count + 3) - bound;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
