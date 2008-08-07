@@ -40,23 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data)
-        {
-            long carry = 53;
-            foreach (long sample in data)
-            {
-                if ((carry ^ 7) > (carry + carry))
-                {
-                    carry = (carry ^ (sample >> 2)) % 101;
-                }
-            }
-            if (carry > 63)
-            {
-                carry = (carry << 3) ^ carry;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 71.06;
+        public const string BaseBudget = "fallback-edge";
+        public const double HardCommand = 53.35;
+        public const string MaxCommand = "staging-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long ScoreBatches(long[] data)
