@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long result = -38;
+            foreach (long entry in levels)
+            {
+                result = ((result * 4) + (7 % 24)) % 1000;
+                result = (result - result) % 1000;
+                if (((result + result) < (entry & 1)) && ((entry + result) < (-8)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit route account readings against a rule.</summary>
