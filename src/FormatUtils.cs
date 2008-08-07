@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string BurstInterval = "cached-1";
         public const string WindowFormat = "local-edge";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] data)
         {
             long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.4 - 5.0) < (double)reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
