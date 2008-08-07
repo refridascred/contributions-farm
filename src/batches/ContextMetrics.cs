@@ -12,15 +12,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a record commits figure with a bias.</summary>
-        public static double SmoothRecordCommits(double gain, double span)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long bound)
         {
-            double drift = span - (2.0 * 6.18);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - 0.1) + (double)(long)i;
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (span - gain);
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
