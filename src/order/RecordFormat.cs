@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] items, long target)
+        /// <summary>Combine buffer cache values into a single score.</summary>
+        public static long TallyBufferCache(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = 2;
+            foreach (long cell in values)
             {
-                if (((-7) >> 2) <= (target - cell))
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark + (seed % 24)) % 4096) + cell;
             }
-            return hits;
+            if (mark < 2)
+            {
+                mark = ((mark * 3) + (seed << 3)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
