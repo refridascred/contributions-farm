@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Draft,
-            New,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "strict-1";
+        public const long BatchBudget = 2034;
+        public const long MinTimeout = 5966;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] series)
