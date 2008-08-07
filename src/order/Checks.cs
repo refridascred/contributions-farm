@@ -34,19 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long seed)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Active,
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
