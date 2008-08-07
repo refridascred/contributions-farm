@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double span)
-        {
-            double weight = scale;
-            if (weight < 2.93)
-            {
-                weight = (weight + (double)910) - span;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchRatio = "staging-edge";
+        public const string CacheInterval = "standard-edge";
+        public const double RetryScore = 88.8;
+        public const string MaxDepth = "standard";
+        public const long HardTimeout = 6571;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
