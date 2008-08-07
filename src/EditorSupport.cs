@@ -36,23 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi token figure with a bias.</summary>
-        public static double ScaleContributiToken(double gain, double offset)
+        /// <summary>Measure how many entry counter samples are out of range.</summary>
+        public static long MeasureEntryCounterOutliers(long[] readings)
         {
-            double weight = gain / 5.0;
-            if (weight < (gain * 11.0))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                weight = weight - offset;
+                if ((datum < (datum >> 1)) && ((datum + datum) > hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (weight - gain);
+            return hits;
         }
 
         /// <summary>Hold a profile header.</summary>
