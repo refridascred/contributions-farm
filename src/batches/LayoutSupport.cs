@@ -59,26 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long floor)
         {
-            long mark = 96;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((7 ^ origin) != (reading << 1))
+                if (value < floor)
                 {
-                    mark = (mark ^ (reading / 3)) % 101;
-                }
-                if ((double)reading > (1.7 - 6.9))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mark > 206)
-            {
-                mark = ((mark * 5) + origin) % 4096;
-            }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Hold a notes entry.</summary>
