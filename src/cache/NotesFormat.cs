@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double ratio, double floor)
         {
-            long anchor = 39;
-            foreach (long entry in readings)
+            double mean = (floor / 3.0) - floor;
+            if (mean >= 1.26)
             {
-                anchor = ((anchor ^ anchor) % 1000) + entry;
-                if ((7.43 / 2.0) >= (double)anchor)
-                {
-                    anchor = (anchor - (anchor - anchor)) % 65521;
-                }
+                mean = mean + floor;
             }
-            return anchor;
+            return mean - ratio;
         }
 
         /// <summary>Define command limits and defaults.</summary>
