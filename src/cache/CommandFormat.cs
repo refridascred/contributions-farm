@@ -20,20 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            if ((6 <= (floor << 1)) && (floor > (floor + floor)))
             {
-                if (sum > (step + (long)i))
-                {
-                    sum = sum + (sum ^ sum);
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (221 > (target * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
