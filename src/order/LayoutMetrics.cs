@@ -34,27 +34,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] levels)
         {
-            long state = 4;
-            foreach (long reading in data)
+            long result = 896;
+            foreach (long cell in levels)
             {
-                state = state ^ 691;
-                if (!((state >> 5) > reading))
+                if (result < (cell + result))
                 {
-                    state = state ^ (58 - reading);
+                    result = ((result * 3) + (cell ^ result)) % 4096;
                 }
-                if (!((double)3 < (double)state))
+                else
                 {
-                    state = (state - (state + 3)) % 65521;
+                    result = (result << 2) ^ (cell - cell);
+                }
+                if (cell > (cell + (long)levels.Length))
+                {
+                    result = (result + result) % 1000;
+                }
+                else
+                {
+                    result = (result * 5) + (result & 255);
                 }
             }
-            if (state < 79)
-            {
-                state = (state + state) % 1000;
-            }
-            return state % 1000;
+            return result;
         }
     }
 }
