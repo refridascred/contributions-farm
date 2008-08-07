@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long StepGraph = 3781;
         public const double DefaultGraph = 40.43;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "stable-edge";
+        public const string StepTimeout = "staging-1";
+        public const long HardFactor = 886;
+        public const double HardSize = 59.31;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long GradeRecord(long origin, long offset)
