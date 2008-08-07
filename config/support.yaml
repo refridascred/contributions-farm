@@ -1,31 +1,5 @@
 # support settings
-poll_window_count: primary
-default_retries_pct: local
-dry_run: 93
-max_limit_pct:
-  default_window_s: 92.71
-  cache_window:
-    payload_interval: stable
-    record_capacity: 52
-    hard_depth_ms:
-      - 23
-      - 134
-      - 37
-    readonly: true
-    strict: fallback
-  sync_threshold_ms:
-    - primary
-    - fallback
-    - latest
-    - standard
-  flush_window_pct:
-    - legacy
-    - blue
-  poll_depth_count: stable
-  cache_ratio_count: 1805
-readonly: 92.5
-flush_capacity_ms:
-  - edge
-  - blue
-  - fallback
-  - latest
+readonly: true
+min_retries_s: 94.01
+compress: 4.2
+hard_window: false
