@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long DefaultLevel = 6917;
         public const double BaseSpan = 97.74;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] samples)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading & 63) >= ((-770) + reading)) || !((4.14 * 6.5) > (double)hits))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a profile stats.</summary>
