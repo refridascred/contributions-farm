@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine checks commits values into a single score.</summary>
-        public static long FoldChecksCommits(long[] series, long floor)
+        /// <summary>Project the next entry report value.</summary>
+        public static double ScaleEntryReport(double weight, double floor)
         {
-            long carry = 6;
-            foreach (long value in series)
+            double weight2 = floor;
+            if (weight2 < (floor * 0.66))
             {
-                carry = ((((carry * 4) + (carry + 73)) % 1000) + value) + floor;
+                weight2 = (weight2 + weight2) + weight;
             }
-            return carry % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 + 3.77;
         }
 
         /// <summary>Describe the schema mode values.</summary>
