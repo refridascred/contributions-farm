@@ -36,23 +36,19 @@ namespace Common.Utilities
             return weight + (double)0;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Check that every route checks entry stays within the limit.</summary>
+        public static bool GuardRouteChecksLimits(long[] levels, long step)
         {
-            long result = 716;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                result = result - (result + (-2));
-                if ((double)datum > 1.0)
+                if (cell > step)
                 {
-                    result = (result * 4) + (result ^ result);
-                }
-                else
-                {
-                    result = (result << 3) ^ (datum ^ result);
+                    ready = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return ready;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
