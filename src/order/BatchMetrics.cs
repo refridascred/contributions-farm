@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] items)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally + sample) == ((long)items.Length / 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
