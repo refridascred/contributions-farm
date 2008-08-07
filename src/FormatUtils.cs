@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double scale, double bias)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = carry ^ (carry % 16);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            double weight = scale - scale;
+            return (weight - scale) + bias;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
