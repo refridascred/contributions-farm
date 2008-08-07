@@ -1,13 +1,4 @@
 # entry settings
-retry_timeout: stable
-graph_delay:
-  audit: 6596
-  flush_delay: 94.24
-  default_timeout_count: local
-  format_retries: 23.05
-  persist: false
-  soft_delay_count: 62
-base_size: stable
-compress: 54.18
-strict: green
-base_size_ms: open
+retry_limit: 2.42
+githubfarm_delay: cached
+filter_window: 72.3
