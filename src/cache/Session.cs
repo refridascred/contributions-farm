@@ -55,38 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor support pair into a bucket.</summary>
-        public static long BucketEditorSupport(long target, long target2)
-        {
-            if ((target % 12) == (target2 ^ target2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target2 < (target + target)) || (target2 <= (972 & 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target2 & 255) > (target2 - target2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target2 * 4) == (1 ^ target2)) || ((8 - target2) >= (target & 7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 503;
+        public const double RetryScore = 76.3;
+        public const double BatchDepth = 46.59;
+        public const string RetryWidth = "cached";
+        public const long DefaultCount = 6706;
     }
 }
