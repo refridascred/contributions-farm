@@ -29,11 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Locate a stats command reading by value.</summary>
+        public static long SeekStatsCommandIndex(long[] levels, long floor)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter summary.</summary>
