@@ -30,12 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            New,
-            Queued,
+            Draft,
+            Stale,
             Paused,
+            Locked,
         }
     }
 }
