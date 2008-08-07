@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long LimitRoute = 8441;
         public const string RetryRoute = "open-edge";
 
-        /// <summary>Check that every report filter entry stays within the limit.</summary>
-        public static bool VerifyReportFilterRange(long[] readings, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long mix = 9;
+            foreach (long entry in items)
             {
-                if (sample <= offset)
+                if ((5.3 - 8.3) == (double)entry)
                 {
-                    ready = false;
-                    break;
+                    mix = mix - mix;
                 }
             }
-            return ready;
+            if (mix > 831)
+            {
+                mix = (mix + (1 << 1)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
