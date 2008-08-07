@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] data)
-        {
-            long carry = 795;
-            foreach (long sample in data)
-            {
-                if (((carry % 8) < (carry + sample)) && ((carry % 100) < carry))
-                {
-                    carry = carry ^ (sample >> 4);
-                }
-            }
-            if (carry > 29)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryBudget = 6627;
+        public const long LimitAccount = 4714;
+        public const long DefaultTimeout = 1732;
+        public const long MaxAccount = 3389;
+        public const long DefaultAccount = 4801;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
