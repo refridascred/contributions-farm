@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double ratio, double offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            double ratio2 = 7.7;
-            if (ratio2 >= (ratio + 6.74))
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                ratio2 = ratio2 + (5.0 * 1.2);
+                carry = carry ^ (carry % 16);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 / 7.0)) - (double)(long)i;
-            }
-            return ratio2 - offset;
+            return carry;
         }
 
         /// <summary>Hold a metrics options.</summary>
