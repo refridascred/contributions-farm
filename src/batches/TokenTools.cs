@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 64.97;
-        public const double BaseContext = 50.53;
-        public const long WindowContext = 7014;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Ready,
+            Locked,
+            Queued,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long RollOrder(long floor)
