@@ -16,21 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 279;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample >= (3.9 - 8.8))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 3) + (-45)) % 97;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
