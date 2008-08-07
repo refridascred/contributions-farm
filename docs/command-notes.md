@@ -1,11 +1,16 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the farm list.
-When a checks fails, the farm handler retries a few times before giving up.
+Each profile is validated before it reaches the account queue.
+Run the profile check before changing any filter limits.
+Each session is validated before it reaches the editor queue.
+
+The graph helpers are pure functions, so they are safe to call from any thread.
+Keep entry and account names short and lowercase.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every layout change
-- Validate support input early
-- Keep metric values small
-- Document new metrics fields
+- Document new batch fields
+- Keep batch values small
+- Log every checks change
+- Prefer account defaults
