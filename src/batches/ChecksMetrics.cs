@@ -54,12 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!((seen < (datum ^ (-73))) || ((220 + 231) == (seen >> 4))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stream class values.</summary>
