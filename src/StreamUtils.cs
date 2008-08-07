@@ -50,17 +50,22 @@ namespace Common.Utilities
         public const long StepStats = 4284;
         public const string LimitStats = "strict-edge";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] samples, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
+                if (!(3.58 > (double)origin))
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the schema kind values.</summary>
