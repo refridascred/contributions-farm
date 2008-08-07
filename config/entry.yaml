@@ -1,5 +1,10 @@
 # entry settings
-idle_delay: standard
-entry_depth: strict
-burst_depth_count: primary
-poll_threshold_s: blue
+profile_limit: 23.01
+verbose: 100
+hard_interval:
+  hard_delay_count: 100
+  verbose: 3461
+  persist: 2460
+idle_ratio: 66.32
+compress: standard
+retry_interval: 65.45
