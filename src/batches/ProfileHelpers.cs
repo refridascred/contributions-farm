@@ -65,19 +65,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] items, long origin)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Fold a list of record readings.</summary>
