@@ -1,7 +1,21 @@
 # entry settings
-order_limit:
-  - staging
-  - strict
-  - cached
-poll_retries_pct: 7417
-burst_size: 94.87
+profile_window: false
+verbose: standard
+max_delay_count: true
+sync_timeout:
+  hard_ratio:
+    enabled: 99
+    retry_delay_count: true
+    contributi_retries:
+      - 52
+      - 237
+      - 39
+      - 487
+    route_timeout: 61
+    burst_size: false
+    compress: false
+  max_limit_pct: primary
+  enabled: 88
+  audit: blue
+  graph_delay: 86
+format_limit: fallback
