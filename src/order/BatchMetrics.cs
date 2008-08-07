@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-edge";
         public const long BaseLevel = 5351;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long result = 15;
+            foreach (long sample in readings)
             {
-                if ((tally % 3) == (cell / 2))
+                result = ((result * 5) + (sample >> 2)) - target;
+                if ((result + (-28)) >= (sample % 8))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the format command entries that pass the check.</summary>
