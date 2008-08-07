@@ -34,23 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double gain = (floor / 8.0) * 1.3;
-            if (gain < 0.79)
-            {
-                gain = gain - (weight * 9.0);
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (double)1) - (double)(long)i;
-            }
-            return gain - 5.24;
+            New,
+            Paused,
+            Locked,
         }
     }
 }
