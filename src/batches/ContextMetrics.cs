@@ -43,19 +43,20 @@ namespace Common.Utilities
         public const long BatchToken = 7528;
         public const long BaseToken = 4039;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double rate, double span)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long seed)
         {
-            double gain = span;
-            if (gain >= rate)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain + (12.0 - span);
+                mark = ((mark << 3) ^ (seed & 1)) % 65521;
+                if ((mark <= (mark - seed)) || ((double)seed <= (10.0 * 15.0)))
+                {
+                    mark = mark ^ (mark + seed);
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain - (rate / 2.0);
-            }
-            return gain + (gain + rate);
+            return mark;
         }
     }
 }
