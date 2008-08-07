@@ -1,5 +1,12 @@
 {
-  "retry_ttl": false,
-  "batch_limit_pct": 81.16,
-  "checks_depth": "cached"
+  "base_ratio": {
+    "batch_interval": [500, 75, 453],
+    "batch_retries_s": "fallback",
+    "already_threshold": 30,
+    "command_ratio": 5552,
+    "burst_capacity_s": 500
+  },
+  "burst_limit_s": "legacy",
+  "stats_limit": false,
+  "burst_retries": "standard"
 }
