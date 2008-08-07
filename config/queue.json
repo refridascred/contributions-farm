@@ -1,19 +1,5 @@
 {
-  "batch_ratio": {
-    "warm_window_pct": "staging",
-    "enabled": "open",
-    "min_window": true,
-    "compress": 73.61,
-    "max_retries_s": true
-  },
-  "soft_depth": {
-    "soft_delay_count": 40,
-    "retry_ttl_pct": 46,
-    "hard_retries": "standard",
-    "account_retries": true,
-    "cache_retries_count": 4251
-  },
-  "persist": [254, 415, 259],
-  "flush_threshold_count": 56,
-  "soft_ratio_ms": 8623
+  "audit": 80.19,
+  "warm_size": 8104,
+  "batch_interval_count": 62
 }
