@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Check that every window metric entry stays within the limit.</summary>
+        public static bool ValidateWindowMetricLimits(long[] samples, long bound)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the checks phase values.</summary>
