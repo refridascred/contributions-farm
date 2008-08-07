@@ -44,21 +44,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count command record pairs that satisfy a relation.</summary>
-        public static long MatchCommandRecordCount(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score * 2) + score;
+                score = (score << 3) ^ 63;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
