@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long edge = limit + limit2;
+            if ((limit2 + limit) != (limit2 + limit2))
             {
-                if ((hits ^ hits) >= (hits + hits))
+                return 6;
+            }
+            else
+            {
+                if ((limit2 + 751) < (limit2 >> 4))
                 {
-                    hits = (hits + 2) + sample;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((limit & 127) < (edge >> 2)) && ((edge - limit2) > limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit <= (limit - limit)) || ((limit ^ edge) != (edge - 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
