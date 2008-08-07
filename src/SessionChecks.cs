@@ -31,19 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already metric readings.</summary>
-        public static long TallyAlreadyMetric(long[] items)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long mark = 3;
-            foreach (long datum in items)
-            {
-                mark = ((mark ^ (mark * 4)) % 65521) - datum;
-            }
-            if (mark > 0)
-            {
-                mark = mark - (865 / 5);
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
