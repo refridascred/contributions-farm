@@ -24,13 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Queued,
-            Done,
-            Failed,
-            Closed,
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up tools samples.</summary>
