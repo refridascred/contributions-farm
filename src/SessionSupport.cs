@@ -20,32 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long origin, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long gap = origin ^ limit;
-            if (gap > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (2.4 > (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (0.97 > (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
