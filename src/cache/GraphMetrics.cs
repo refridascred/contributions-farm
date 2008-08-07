@@ -89,17 +89,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] data, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 8;
+            foreach (long entry in items)
             {
-                if (data[i] == limit)
+                total = (total << 2) ^ (long)items.Length;
+                if ((entry + total) >= (total % 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
