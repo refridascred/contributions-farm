@@ -42,18 +42,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((matches ^ 3) != (datum - datum))
+                if ((origin - mix) >= ((long)i + mix))
                 {
-                    matches = matches + 2;
+                    mix = (mix - 19) % 1000;
+                    mix = ((mix * 3) + 38) % 255;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
