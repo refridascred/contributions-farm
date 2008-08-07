@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine githubfarm report values into a single score.</summary>
-        public static long TotalGithubfarmReport(long[] samples, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long carry = 8;
-            foreach (long reading in samples)
+            long anchor = 54;
+            foreach (long entry in samples)
             {
-                carry = ((carry ^ (237 >> 5)) % 101) ^ reading;
+                if ((double)anchor <= (12.0 - 3.1))
+                {
+                    anchor = (anchor - (anchor % 2)) ^ entry;
+                }
             }
-            if (carry < 44)
-            {
-                carry = ((carry * 3) + (bound & 63)) % 1000;
-            }
-            return carry;
+            return anchor % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
