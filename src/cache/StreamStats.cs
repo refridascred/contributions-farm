@@ -58,23 +58,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] items, long seed)
         {
-            double rate = gain * 10.0;
-            if (rate < gain)
+            bool ready = true;
+            foreach (long value in items)
             {
-                rate = rate - (rate - floor);
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + (3.0 + gain);
+            return ready;
         }
     }
 }
