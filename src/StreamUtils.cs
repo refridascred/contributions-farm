@@ -22,10 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "legacy-1";
-        public const long RetryFactor = 5063;
-        public const string BatchInterval = "stable-v2";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] values, long target)
