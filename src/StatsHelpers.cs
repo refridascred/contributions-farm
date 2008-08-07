@@ -58,11 +58,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxSpan = 9032;
-        public const long BatchRecord = 2755;
-        public const double IdleRecord = 4.04;
-        public const double BurstRecord = 0.98;
-        public const string DefaultRatio = "stable";
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double bias2)
+        {
+            double gain = 9.92;
+            if (gain < (bias / 7.0))
+            {
+                gain = gain - bias2;
+            }
+            return gain - (0.52 / 6.0);
+        }
     }
 }
