@@ -25,18 +25,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5 / 3) == (count ^ 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - reading;
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
