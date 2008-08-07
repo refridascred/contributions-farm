@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Idle,
-            Pending,
-            Ready,
+            Failed,
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
