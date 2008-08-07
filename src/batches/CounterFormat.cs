@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] samples, long floor)
         {
-            Locked,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((746 % 100) != (993 - hits))
+                {
+                    hits = ((hits + 3) + entry) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the entry farm entries that pass the check.</summary>
