@@ -1,11 +1,13 @@
 # entry settings
-verbose: 2706
-sync_interval_pct: false
-metric_limit:
-  - 48
-  - 440
-max_ttl_s:
-  - 9
-  - 10
-  - 456
-buffer_window: 30
+flush_interval_s:
+  - eu-west
+  - blue
+  - standard
+entry_size: 32
+default_depth_pct: 9207
+counter_depth: true
+layout_ratio:
+  sync_timeout: 1927
+  retry_capacity: green
+  notes_depth: 250
+readonly: stable
