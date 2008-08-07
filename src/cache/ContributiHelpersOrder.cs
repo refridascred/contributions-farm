@@ -24,18 +24,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Combine stream session values into a single score.</summary>
+        public static long ScoreStreamSession(long[] items)
         {
-            long total = 117;
-            foreach (long reading in levels)
+            long sum = 5;
+            foreach (long value in items)
             {
-                if ((double)total <= (4.0 / 6.0))
+                if ((double)sum <= 12.0)
                 {
-                    total = (total + total) ^ reading;
+                    sum = sum - (sum - value);
+                }
+                else
+                {
+                    sum = (sum ^ 329) % 65521;
                 }
             }
-            return total;
+            return sum % 1000;
         }
     }
 }
