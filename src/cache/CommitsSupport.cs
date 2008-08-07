@@ -53,21 +53,13 @@ namespace Common.Utilities
             return (ratio - ratio) + floor;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Synced,
+            Dropped,
+            Closed,
         }
     }
 }
