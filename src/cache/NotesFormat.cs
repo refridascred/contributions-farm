@@ -29,19 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every farm report entry stays within the limit.</summary>
-        public static bool VerifyFarmReportRange(long[] items, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= bound)
+                if (data[i] >= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
