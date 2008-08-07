@@ -22,18 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] values, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (seen < (bound >> 5))
+                anchor = anchor + floor;
+                if (((34 + anchor) < 632) && (floor <= ((long)i / 5)))
                 {
-                    seen = (seen + 3) + datum;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Match up order samples.</summary>
