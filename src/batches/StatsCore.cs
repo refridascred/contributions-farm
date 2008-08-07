@@ -62,14 +62,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] samples, long bound)
         {
-            Ready,
-            Failed,
-            Paused,
-            Draft,
-            Stale,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally % 3) == (682 << 1))
+                {
+                    tally = ((tally + 2) ^ sample) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph kind values.</summary>
