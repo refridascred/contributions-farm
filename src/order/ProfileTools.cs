@@ -13,13 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Compare every pair of stream contributi readings.</summary>
