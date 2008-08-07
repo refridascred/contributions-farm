@@ -29,21 +29,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -46;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix ^ (mix % 64)) % 65521) + item) + target;
             }
-            return count;
+            if (mix < 35)
+            {
+                mix = (mix ^ (mix & 31)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
