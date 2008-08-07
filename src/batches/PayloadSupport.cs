@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Failed,
-            Queued,
-            Closed,
-            Retry,
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
