@@ -48,10 +48,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 5.01;
-        public const long RetryChannel = 5043;
-        public const long LimitRatio = 9636;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 6.17;
+        public const long BatchScore = 6334;
+        public const double WindowSupport = 90.4;
+        public const long RetrySupport = 609;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
