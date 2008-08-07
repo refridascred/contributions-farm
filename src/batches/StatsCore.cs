@@ -66,21 +66,15 @@ namespace Common.Utilities
         public const string BurstAccount = "alpha-edge";
         public const long DefaultAccount = 4509;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double ratio, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            double weight = (double)(34 - 746);
+            if (weight > weight)
             {
-                long next = 9 & 1;
-                if (((long)i << 2) != (next / 8))
-                {
-                    anchor = anchor - ((long)i ^ limit);
-                    next = next + (next * 2);
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                weight = ((weight + (double)71) + ratio) - offset;
             }
-            return anchor;
+            return weight - 4.6;
         }
     }
 }
