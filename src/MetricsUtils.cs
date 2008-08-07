@@ -36,21 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Measure how many layout report samples are out of range.</summary>
+        public static long CountLayoutReportMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > (count * 5))
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
