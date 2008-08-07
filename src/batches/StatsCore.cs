@@ -38,18 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] levels, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)datum <= (double)370)
+                if ((4.78 * 12.0) >= (double)bound)
                 {
-                    hits = (hits + 2) + floor;
+                    seen = (seen + 3) - item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a layout entry.</summary>
