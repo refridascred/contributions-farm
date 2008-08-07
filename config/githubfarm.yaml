@@ -1,16 +1,4 @@
 # githubfarm settings
-readonly: false
-cache_window_ms:
-  batch_retries:
-    - 377
-    - 37
-  poll_delay:
-    - 423
-    - 137
-  soft_capacity_pct: 60
-  cache_retries_count: true
-  readonly:
-    - 290
-    - 20
-  max_interval_pct: 1024
-burst_window_ms: false
+metrics_ratio: false
+burst_threshold_ms: true
+order_limit: cached
