@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1135;
-        public const long CacheGraph = 4581;
-        public const long StepGraph = 3781;
-        public const double DefaultGraph = 40.43;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string SoftEntry = "stable-edge";
