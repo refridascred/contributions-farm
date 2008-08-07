@@ -29,22 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] data, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long state = 0;
+            foreach (long datum in items)
             {
-                if (!!(origin < (count & 1)))
-                {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 4) + (datum << 3)) - bound;
             }
-            return count;
+            return state;
         }
     }
 }
