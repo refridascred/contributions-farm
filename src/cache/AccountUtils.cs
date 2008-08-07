@@ -13,11 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 1557;
-        public const string LimitQueue = "standard";
-        public const long StepQueue = 6866;
-        public const long MinWidth = 7273;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LookupBufferIndex(long[] values, long target)
