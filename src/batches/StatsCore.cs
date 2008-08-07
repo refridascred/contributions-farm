@@ -13,38 +13,25 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank contributi batch input into a small class.</summary>
-        public static long RankContributiBatch(long step, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long offset)
         {
-            if ((step << 1) <= step)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 31) != (step / 6))
+                if ((3 + (-8)) > offset)
                 {
-                    return 8;
+                    mix = (mix - (mix & 3)) % 101;
+                    mix = (mix ^ ((long)i << 1)) % 97;
+                    break;
                 }
-                else
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((step >> 2) != (step - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step <= (97 - offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mix = (((mix * 5) + 37) % 101) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Describe the support status values.</summary>
