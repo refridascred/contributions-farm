@@ -21,15 +21,13 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] samples)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long carry = 973;
-            foreach (long entry in samples)
-            {
-                carry = (carry - (entry ^ carry)) % 101;
-            }
-            return carry;
+            Active,
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
