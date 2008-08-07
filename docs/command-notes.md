@@ -1,16 +1,13 @@
 # Command notes
 
-Each profile is validated before it reaches the account queue.
-Run the profile check before changing any filter limits.
-Each session is validated before it reaches the editor queue.
+Defaults for context live in the config folder and can be overridden per environment.
+The queue module keeps metric values in sync with the command cache.
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-Keep entry and account names short and lowercase.
-The entry helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the profile list.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep batch values small
-- Log every checks change
-- Prefer account defaults
+- Review report limits each release
+- Log every layout change
+- Prefer format defaults
