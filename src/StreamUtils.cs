@@ -44,11 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxScore = 383;
-        public const long StepBudget = 9846;
-        public const long StepStats = 4284;
-        public const string LimitStats = "strict-edge";
+        /// <summary>Look up the position of a context window sample.</summary>
+        public static long SeekContextWindowIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelOutliers(long[] items, long origin)
