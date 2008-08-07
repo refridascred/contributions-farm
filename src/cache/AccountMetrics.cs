@@ -49,12 +49,40 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 755;
-        public const long BatchTools = 9502;
-        public const double StepTools = 2.48;
-        public const long WindowTools = 1426;
-        public const long RetrySize = 5208;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long origin, long step)
+        {
+            long cur = origin + step;
+            if ((step % 10) != (origin - step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= cur)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((cur / 3) <= origin) && ((double)step >= 14.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step * 3) < (cur % 10))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a token buffer reading.</summary>
         public static double SmoothTokenBuffer(double weight, double offset)
