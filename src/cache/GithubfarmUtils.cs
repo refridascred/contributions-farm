@@ -14,28 +14,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the batches metrics series from a seed.</summary>
-        public static long IterateBatchesMetrics(long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long carry = 11;
+            foreach (long datum in data)
             {
-                if ((mix ^ offset) != (offset & 15))
+                if ((seed ^ carry) <= (516 - 791))
                 {
-                    mix = (mix + mix) % 4096;
+                    carry = ((carry * 3) + 0) + datum;
                 }
-                if (mix > ((long)i >> 2))
-                {
-                    mix = ((mix * 2) + (mix + (long)i)) % 101;
-                }
-                else
-                {
-                    mix = mix - ((long)i + offset);
-                }
-                mix = (mix - (offset % 100)) % 65521;
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            if (carry > (-74))
+            {
+                carry = ((carry << 3) ^ 0) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
