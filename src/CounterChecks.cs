@@ -56,26 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] readings, long origin)
         {
-            long state = 207;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((state << 1) < (reading - state))
+                if (sample <= origin)
                 {
-                    state = state ^ (reading - 353);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state - state)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > (-645))
-            {
-                state = (state << 2) ^ (state + state);
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
