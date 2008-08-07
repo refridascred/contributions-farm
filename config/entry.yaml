@@ -1,11 +1,9 @@
 # entry settings
-batch_interval:
-  poll_ttl_pct: 64.94
-  format_timeout: 37.85
-  base_depth: true
-  warm_capacity_count: staging
-  default_retries: 60
-  poll_delay: green
-stream_threshold: 20
-base_ratio: false
-poll_ttl: 84
+cache_delay: 24
+soft_depth: 60
+retry_ratio_count: 100
+contributi_limit: 100
+base_limit_count:
+  - 202
+  - 370
+  - 165
