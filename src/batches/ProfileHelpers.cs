@@ -15,19 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate format batches readings against a bound.</summary>
-        public static bool ValidateFormatBatchesRange(long[] data, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long result = -8;
+            foreach (long reading in series)
             {
-                if (cell > offset)
+                result = result - ((long)series.Length + result);
+                if ((reading + reading) >= (reading + result))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (result < 4)
+            {
+                result = ((result * 4) + (result - result)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a commits record.</summary>
