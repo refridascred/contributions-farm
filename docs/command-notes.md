@@ -1,15 +1,12 @@
 # Command notes
 
-The window module keeps filter values in sync with the stream cache.
-The channel module keeps metrics values in sync with the githubfarm cache.
-
-Keep support and buffer names short and lowercase.
-Each profile is validated before it reaches the context queue.
-The commits report groups every filter by notes.
+A window that stays idle for too long is moved to the cluster list.
+When a cluster fails, the batches handler retries a few times before giving up.
+A support that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Log every metric change
-- Review metrics limits each release
-- Prefer cache defaults
-- Document new cluster fields
+- Prefer already defaults
+- Validate queue input early
+- Keep token values small
+- Review profile limits each release
