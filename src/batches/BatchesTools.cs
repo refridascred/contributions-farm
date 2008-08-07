@@ -39,19 +39,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values, long seed)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] data, long bound)
         {
-            long acc = 915;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc << 2) ^ (acc * 3)) - item) - seed;
-                if ((double)acc != (8.85 - 4.27))
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
