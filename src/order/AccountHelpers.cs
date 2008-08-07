@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long DefaultLevel = 6917;
         public const double BaseSpan = 97.74;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 34.02;
-        public const double RetryFactor = 37.61;
-        public const double BurstBatch = 7.81;
-        public const long HardLevel = 2565;
-        public const long DefaultBatch = 1802;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading & 63) >= ((-770) + reading)) || !((4.14 * 6.5) > (double)hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
