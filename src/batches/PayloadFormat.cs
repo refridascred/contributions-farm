@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 1983;
-        public const long HardCache = 2936;
-        public const string StepCache = "open-v2";
-        public const string LimitDepth = "latest-v2";
-        public const string DefaultCache = "fallback-v2";
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many session schema samples are out of range.</summary>
         public static long MeasureSessionSchemaGaps(long[] levels, long limit)
