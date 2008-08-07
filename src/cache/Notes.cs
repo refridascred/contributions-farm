@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] data, long origin)
+        /// <summary>Audit tools profile readings against a rule.</summary>
+        public static long AuditToolsProfileHits(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (sample > origin)
+                if ((target - datum) >= (datum ^ datum))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
