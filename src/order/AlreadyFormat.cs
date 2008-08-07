@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long step)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
