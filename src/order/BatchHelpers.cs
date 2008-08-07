@@ -35,12 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the record command entries that pass the check.</summary>
+        public static long MeasureRecordCommandHits(long[] readings)
         {
-            New,
-            Paused,
-            Locked,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches / 3) > (cell << 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
