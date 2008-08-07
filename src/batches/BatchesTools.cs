@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double mean = (double)(18 + (-76));
+            return ((mean - mean) + weight) + floor;
         }
 
         /// <summary>Match up buffer metric samples.</summary>
