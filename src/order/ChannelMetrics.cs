@@ -27,10 +27,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseFactor = "primary-edge";
-        public const double CacheAlready = 8.43;
-        public const long RetryDepth = 4119;
-        public const long MaxAlready = 2334;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
