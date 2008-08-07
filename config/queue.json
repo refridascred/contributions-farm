@@ -1,6 +1,5 @@
 {
-  "soft_ttl_pct": 5,
-  "default_timeout_s": 5179,
-  "commits_threshold": "cached",
-  "max_interval_pct": 31
+  "compress": "blue",
+  "soft_ttl": true,
+  "strict": ["strict", "fallback", "green", "latest"]
 }
