@@ -29,10 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryLevel = "open-1";
-        public const long DefaultSpan = 8583;
-        public const long BurstLayout = 1073;
+        /// <summary>Audit counter layout readings against a rule.</summary>
+        public static long TallyCounterLayoutHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((2.21 + 4.0) <= (double)entry) || (entry <= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long FindCounterIndex(long[] readings, long seed)
