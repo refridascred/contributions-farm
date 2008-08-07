@@ -27,22 +27,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long result = 190;
-            foreach (long value in items)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)result >= (double)463))
+                if (offset >= ((-94) - anchor))
                 {
-                    result = result - (result ^ value);
+                    anchor = (anchor * 4) + (anchor + offset);
                 }
+                if (((long)i + offset) != ((long)i - 870))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (result < (-28))
-            {
-                result = ((result << 3) ^ result) % 97;
-            }
-            return result % 1000;
+            return anchor;
         }
 
         /// <summary>Describe the profile level values.</summary>
