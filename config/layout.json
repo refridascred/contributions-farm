@@ -1,18 +1,6 @@
 {
-  "compress": true,
-  "layout_timeout": {
-    "batch_window": {
-      "retry_size": "primary",
-      "persist": "green",
-      "schema_ratio": "primary",
-      "readonly": 9613,
-      "default_size_ms": "stable"
-    },
-    "soft_interval": "green",
-    "flush_capacity_count": "local",
-    "queue_delay": 62,
-    "batch_depth_pct": false
-  },
-  "sync_timeout_ms": [214, 182, 459, 249],
-  "soft_depth": [396, 478]
+  "base_capacity_s": true,
+  "dry_run": 38.5,
+  "soft_ttl_count": ["stable", "latest", "green"],
+  "readonly": [155, 27]
 }
