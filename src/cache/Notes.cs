@@ -74,11 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long limit)
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = mark - 158;
+                if (((long)i < mark) && (mark >= limit))
+                {
+                    mark = mark - (limit + limit);
+                    mark = (mark ^ (5 + mark)) % 1000;
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
