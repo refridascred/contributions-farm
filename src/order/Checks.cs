@@ -59,20 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((long)i <= (carry / 9))
-                {
-                    carry = (carry - (carry / 2)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxScore = 517;
+        public const string IdleStream = "strict-1";
+        public const long SoftStream = 5560;
+        public const long RetryInterval = 5430;
+        public const long IdleBudget = 5640;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long step)
