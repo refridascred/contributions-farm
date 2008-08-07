@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxBudget = 5992;
-        public const long MaxNotes = 2990;
-        public const long BaseRatio = 7438;
-        public const long CacheLevel = 678;
-        public const long MinNotes = 8884;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((1.5 - 4.0) >= (double)datum)
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
