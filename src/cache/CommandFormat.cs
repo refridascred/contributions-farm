@@ -16,24 +16,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            if ((6 <= (floor << 1)) && (floor > (floor + floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (221 > (target * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
