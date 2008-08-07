@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of order metric entries.</summary>
-        public static long TallyOrderMetric(long[] samples)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long total = 257;
-            foreach (long sample in samples)
-            {
-                total = ((total << 3) ^ (total << 3)) + sample;
-                total = (total + (total * 4)) % 97;
-            }
-            if (total > 365)
-            {
-                total = total - total;
-            }
-            return total;
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
