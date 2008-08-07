@@ -42,12 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values, long limit)
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally + cell) > (cell % 100))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route entry.</summary>
