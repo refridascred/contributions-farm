@@ -31,12 +31,13 @@ namespace Common.Utilities
         public const long MinScore = 3075;
         public const long MaxSize = 1989;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Retry,
-            New,
-            Dropped,
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a batches header.</summary>
