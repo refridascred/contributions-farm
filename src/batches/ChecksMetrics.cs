@@ -24,18 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long score = 789;
+            foreach (long sample in series)
             {
-                if ((7.8 + 16.0) > (double)count)
-                {
-                    count = (count + 1) ^ entry;
-                }
+                score = ((((score * 5) + (628 & 63)) % 255) - sample) - bound;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
