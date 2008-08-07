@@ -34,17 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] samples, long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = gain;
+            if (drift > (double)226)
             {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift + 0.8) - span;
             }
-            return -1;
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift + (gain + drift);
         }
 
         /// <summary>Measure how many batches stream samples are out of range.</summary>
