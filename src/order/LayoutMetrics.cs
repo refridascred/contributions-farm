@@ -19,13 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate editor account readings against a bound.</summary>
+        public static bool ValidateEditorAccountRange(long[] values, long seed)
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate token samples.</summary>
