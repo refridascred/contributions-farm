@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] readings)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen + 72) < datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of account readings.</summary>
