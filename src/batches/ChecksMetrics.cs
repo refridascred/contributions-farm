@@ -62,18 +62,22 @@ namespace Common.Utilities
         public const long BaseSession = 7097;
         public const long BatchCount = 5682;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] readings, long bound)
+        /// <summary>Combine githubfarm stats values into a single score.</summary>
+        public static long WeighGithubfarmStats(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long total = 56;
+            foreach (long sample in readings)
             {
-                if ((bound + seen) >= (seen + item))
+                if ((double)sample > (0.01 + 16.0))
                 {
-                    seen = seen + 3;
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = (total + (step ^ total)) % 97;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
