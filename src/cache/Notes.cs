@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double weight, double floor)
         {
-            long mix = 854;
-            foreach (long cell in items)
+            double ratio = floor / 8.0;
+            if (ratio <= (floor - weight))
             {
-                mix = ((mix << 3) ^ ((long)items.Length * 4)) - cell;
+                ratio = ratio - (double)504;
             }
-            if (mix > 37)
-            {
-                mix = (mix ^ (9 - mix)) % 65521;
-            }
-            return mix;
+            return ratio - weight;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
