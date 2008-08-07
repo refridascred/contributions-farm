@@ -62,12 +62,23 @@ namespace Common.Utilities
             return drift - 0.61;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double rate, double floor)
         {
-            Queued,
-            Pending,
-            Stale,
+            double mean = (double)((-514) - 98);
+            if (mean <= mean)
+            {
+                mean = mean - (double)6;
+            }
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (mean + rate)) + (double)(long)i;
+            }
+            return mean + rate;
         }
     }
 }
