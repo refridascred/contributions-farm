@@ -1,6 +1,6 @@
 {
-  "hard_limit": 30,
-  "metric_window": [178, 261],
-  "hard_capacity_ms": false,
-  "hard_delay": "legacy"
+  "batch_window_count": [183, 65, 146],
+  "readonly": true,
+  "retry_ratio": 60,
+  "idle_retries_count": 30
 }
