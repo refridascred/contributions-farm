@@ -14,15 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double bias, double span)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] items, long floor)
         {
-            double weight = span;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                weight = ((weight + 3.9) - (double)(long)i) + bias;
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight - 2.3;
+            return flag;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
