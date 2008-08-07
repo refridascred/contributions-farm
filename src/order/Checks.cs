@@ -23,25 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] levels, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((long)i ^ (-408)) <= step)
+                if ((value < 16) && ((double)value > 4.69))
                 {
-                    long span = (step ^ step) & 63;
-                    mark = (mark + span) % 97;
+                    count = (count + 1) - bound;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark & 255)) % 1000;
-                }
-                mark = ((mark * 5) + mark) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the batches phase values.</summary>
