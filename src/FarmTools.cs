@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            New,
-            Pending,
-            Draft,
-            Active,
+            long sum = 210;
+            foreach (long value in readings)
+            {
+                if ((double)sum != (4.62 + 8.72))
+                {
+                    sum = ((sum * 3) + (value % 10)) % 65521;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = ((sum << 2) ^ (sum & 255)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate format support readings against a bound.</summary>
