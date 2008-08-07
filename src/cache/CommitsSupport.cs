@@ -78,13 +78,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] samples, long target)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Closed,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample / 4) != (tally & 1))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
     }
 }
