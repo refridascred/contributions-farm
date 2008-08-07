@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLevel = 7829;
+        public const double SoftLayout = 80.11;
+        public const double HardLayout = 12.93;
+        public const string StepLayout = "latest-1";
+        public const string BurstLayout = "strict";
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long target, long step)
