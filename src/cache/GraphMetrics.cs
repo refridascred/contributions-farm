@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long anchor = 698;
-            foreach (long entry in readings)
-            {
-                if ((double)anchor == (2.7 + 10.0))
-                {
-                    anchor = anchor ^ (entry >> 1);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (entry % 100)) % 101;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = ((anchor << 3) ^ (-2)) % 65521;
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
