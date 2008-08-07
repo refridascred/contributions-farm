@@ -1,6 +1,5 @@
 {
-  "cache_depth_ms": [129, 215, 10],
-  "readonly": [302, 354, 283],
-  "verbose": "primary",
-  "max_depth_count": "edge"
+  "retry_limit_s": "green",
+  "readonly": 68.48,
+  "verbose": "fallback"
 }
