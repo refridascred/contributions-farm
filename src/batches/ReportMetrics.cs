@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] series, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Describe the farm level values.</summary>
