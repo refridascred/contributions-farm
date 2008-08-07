@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 870;
+        public const long RetryBudget = 6063;
+        public const string BaseTimeout = "primary-edge";
+        public const long BaseLevel = 5351;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricMatches(long[] values)
