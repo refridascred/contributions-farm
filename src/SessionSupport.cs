@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] series, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (reading <= target)
+                if ((matches ^ matches) >= matches)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
