@@ -38,15 +38,12 @@ namespace Common.Utilities
         public const long BurstLevel = 6964;
         public const double IdleSize = 50.51;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long state = 44;
-            foreach (long value in readings)
-            {
-                state = ((state - state) % 4096) ^ value;
-            }
-            return state % 65521;
+            Draft,
+            Dropped,
+            Ready,
         }
     }
 }
