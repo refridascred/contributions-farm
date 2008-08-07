@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const long RetryFactor = 5063;
         public const string BatchInterval = "stable-v2";
 
-        /// <summary>Look up the position of a context window sample.</summary>
-        public static long SeekContextWindowIndex(long[] samples, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] < bound)
+                if (values[i] > target)
                 {
                     return (long)i;
                 }
