@@ -62,28 +62,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels, long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long result = 63;
-            foreach (long cell in levels)
-            {
-                result = ((result << 2) ^ (result + 55)) % 4096;
-                if (!((result - bound) <= (result << 2)))
-                {
-                    long edge = (cell - 651) + bound;
-                    result = ((result << 3) ^ edge) % 255;
-                }
-                else
-                {
-                    result = ((result * 3) + cell) % 97;
-                }
-                if (((double)result >= 7.07) && (bound > (bound - result)))
-                {
-                    result = result + (12 - bound);
-                }
-            }
-            return result;
+            Failed,
+            Synced,
+            Locked,
+            Pending,
+            Stale,
         }
     }
 }
