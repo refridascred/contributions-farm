@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] series, long origin)
         {
-            Failed,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (sample < (origin >> 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
