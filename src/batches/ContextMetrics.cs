@@ -47,15 +47,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long result = -7;
-            foreach (long cell in series)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result ^ (cell >> 3)) % 255) + limit;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Roll a context counter forward.</summary>
