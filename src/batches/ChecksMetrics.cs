@@ -45,11 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 5358;
-        public const long BatchSession = 2426;
-        public const long BaseSession = 7097;
-        public const long BatchCount = 5682;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!((matches + (-8)) <= (matches * 2)))
+                {
+                    matches = ((matches + 1) + item) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine githubfarm stats values into a single score.</summary>
         public static long WeighGithubfarmStats(long[] readings, long step)
