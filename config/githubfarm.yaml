@@ -1,11 +1,4 @@
 # githubfarm settings
-channel_ratio: blue
-soft_threshold_count: true
-githubfarm_threshold: 100
-persist: 6605
-hard_capacity_pct:
-  - blue
-  - legacy
-  - strict
-  - primary
-strict: 12.58
+hard_window_s: 40
+idle_interval_count: 12.59
+batch_depth: 77.39
