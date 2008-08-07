@@ -1,5 +1,6 @@
 {
-  "warm_size": "standard",
-  "checks_ttl": false,
-  "cache_ratio_ms": ["stable", "open"]
+  "default_size": 27,
+  "hard_delay_pct": 36.21,
+  "cache_interval": 2358,
+  "persist": ["cached", "cached"]
 }
