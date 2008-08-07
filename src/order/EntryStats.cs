@@ -31,14 +31,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Stale,
-            Paused,
-            Idle,
-            Dropped,
-            Closed,
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
