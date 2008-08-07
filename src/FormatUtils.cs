@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] readings, long origin)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
