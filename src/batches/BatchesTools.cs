@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record context value.</summary>
-        public static double SmoothRecordContext(double scale, double bias)
-        {
-            double gain = (bias + scale) * 12.0;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (bias * 7.2)) + (double)(long)i;
-            }
-            return gain + (scale + scale);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstLevel = 285;
+        public const string SoftNotes = "strict";
+        public const long BaseCount = 481;
+        public const long BurstNotes = 7836;
+        public const double CacheNotes = 39.11;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionMatches(long[] readings)
