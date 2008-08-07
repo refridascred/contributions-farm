@@ -1,8 +1,8 @@
-id,active,count,token,state
-1,legacy,697,edge,644
-2,664,17.2,cached,30.52
-3,108,572,617,fallback
-4,edge,675,771,open
-5,518,standard,2.93,edge
-6,legacy,15.17,94.05,76.27
-7,54.89,122,primary,46.66
+id,region,weight,owner
+1,79,56.04,staging
+2,12.11,60.99,edge
+3,primary,primary,primary
+4,40.61,88.75,62.18
+5,88.73,primary,eu-west
+6,488,55.48,114
+7,64,strict,staging
