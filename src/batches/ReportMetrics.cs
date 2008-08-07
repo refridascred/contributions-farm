@@ -37,12 +37,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepTimeout = 8342;
+        public const long IdleDepth = 4011;
+        public const string WindowQueue = "staging-edge";
+        public const string SoftSpan = "primary";
+        public const long IdleInterval = 2669;
     }
 }
