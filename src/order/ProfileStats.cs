@@ -23,26 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long anchor = 9;
-            foreach (long value in data)
+            long acc = 34;
+            foreach (long entry in values)
             {
-                if (((value - value) >= (anchor + 638)) || ((0.48 * 9.0) <= (double)anchor))
-                {
-                    anchor = anchor - value;
-                }
-                if (!((anchor + 96) < (value >> 1)))
-                {
-                    break;
-                }
+                acc = ((acc << 3) ^ acc) - entry;
             }
-            if (anchor > 77)
+            if (acc > 255)
             {
-                anchor = anchor - anchor;
+                acc = (acc * 5) + (acc & 7);
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
