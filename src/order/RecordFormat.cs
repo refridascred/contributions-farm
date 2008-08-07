@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer cache values into a single score.</summary>
-        public static long TallyBufferCache(long[] values, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] levels, long target)
         {
-            long mark = 2;
-            foreach (long cell in values)
+            long mark = 851;
+            foreach (long cell in levels)
             {
-                mark = ((mark + (seed % 24)) % 4096) + cell;
+                mark = ((mark * 5) + (mark / 2)) + cell;
             }
-            if (mark < 2)
+            if (mark > 9)
             {
-                mark = ((mark * 3) + (seed << 3)) % 255;
+                mark = mark + (target - mark);
             }
-            return mark % 1000;
+            return mark % 4096;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
