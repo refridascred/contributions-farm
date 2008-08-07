@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] levels, long offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading >= (reading + 36))
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a format record.</summary>
