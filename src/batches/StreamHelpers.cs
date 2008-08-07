@@ -45,17 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] items, long offset)
+        /// <summary>Scale a schema batches figure with a bias.</summary>
+        public static double SmoothSchemaBatches(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = bias;
+            if (scale >= (rate * 5.1))
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                scale = scale - rate;
             }
-            return -1;
+            else
+            {
+                scale = scale + 20.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (6.49 + 9.8)) + (double)(long)i;
+            }
+            return scale - (6.27 - bias);
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
