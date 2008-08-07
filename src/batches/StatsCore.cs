@@ -55,20 +55,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] series, long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long state = 29;
-            foreach (long value in series)
-            {
-                state = (state + 315) % 1000;
-                state = state - (state ^ origin);
-                if ((origin <= (922 * 2)) && ((value + value) > (5 + state)))
-                {
-                    break;
-                }
-            }
-            return state;
+            New,
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
