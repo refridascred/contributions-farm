@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] samples, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((seen & 15) >= (datum % 24)) && (((long)samples.Length + datum) >= datum)))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
