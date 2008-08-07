@@ -15,15 +15,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long step, long target)
         {
-            long score = 37;
-            foreach (long reading in samples)
+            if (((double)step >= 1.52) || ((target << 1) != (target / 9)))
             {
-                score = score - (reading << 3);
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((target + target) < (target % 24))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the account notes entries that pass the check.</summary>
