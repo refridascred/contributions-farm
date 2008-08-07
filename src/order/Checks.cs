@@ -46,32 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command cluster value against two limits.</summary>
-        public static long RankCommandCluster(long floor, long seed)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long floor)
         {
-            long diff = floor + seed;
-            if ((7.0 * 4.31) >= (double)floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed - diff) < seed) || ((diff - floor) != (diff + 7)))
+                if (values[i] >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff - diff) > (diff & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
