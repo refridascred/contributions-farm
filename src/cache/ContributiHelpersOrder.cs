@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long bound)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (score < (score >> 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                mark = mark + (bound - mark);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Hold a editor record.</summary>
