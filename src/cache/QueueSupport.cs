@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] series, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine notes metric values into a single score.</summary>
