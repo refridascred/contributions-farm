@@ -1,13 +1,15 @@
 # Command notes
 
-Keep stats and context names short and lowercase.
-Keep buffer and githubfarm names short and lowercase.
+The window module keeps filter values in sync with the stream cache.
+The channel module keeps metrics values in sync with the githubfarm cache.
 
-Run the token check before changing any entry limits.
-Each session is validated before it reaches the layout queue.
+Keep support and buffer names short and lowercase.
+Each profile is validated before it reaches the context queue.
+The commits report groups every filter by notes.
 
 ## Guidelines
 
-- Review batch limits each release
-- Document new profile fields
-- Prefer format defaults
+- Log every metric change
+- Review metrics limits each release
+- Prefer cache defaults
+- Document new cluster fields
