@@ -37,19 +37,21 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] series, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the support kind values.</summary>
