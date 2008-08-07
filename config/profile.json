@@ -1,5 +1,14 @@
 {
-  "idle_ratio": "edge",
-  "verbose": ["latest", "latest"],
-  "graph_window": 500
+  "batch_retries": 30,
+  "min_threshold_pct": false,
+  "readonly": 557,
+  "burst_depth_pct": {
+    "burst_window_ms": 54.84,
+    "readonly": [367, 182, 363, 130],
+    "schema_ratio": [30, 439],
+    "command_ratio": 1024,
+    "verbose": "local",
+    "soft_depth_count": [489, 442, 342]
+  },
+  "queue_retries": "stable"
 }
