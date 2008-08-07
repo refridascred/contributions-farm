@@ -16,16 +16,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 8583;
         public const long BurstLayout = 1073;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Match up batches cluster samples.</summary>
+        public static long MatchBatchesClusterCount(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix * 2) + (origin << 2);
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
