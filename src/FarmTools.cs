@@ -38,18 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] data)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((((3 / 9) < seen) || (((-2) - 0) >= (datum % 5))) || (datum >= (datum % 24)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Paused,
+            Done,
         }
     }
 }
