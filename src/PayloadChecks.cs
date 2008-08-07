@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long WindowDepth = 9652;
         public const long CacheDepth = 7730;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Pending,
-            Queued,
+            Failed,
             Retry,
-            Dropped,
-            Ready,
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
