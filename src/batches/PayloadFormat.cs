@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of window githubfarm readings.</summary>
-        public static long TotalWindowGithubfarm(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long score = 734;
-            foreach (long datum in series)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((score < (score >> 4)) && ((score % 2) <= (datum ^ datum)))
+                if (!((carry - 3) < (carry >> 5)))
                 {
-                    score = (score * 3) + (score - score);
-                    continue;
+                    carry = (carry - limit) % 255;
                 }
-                score = score ^ (613 / 9);
-                score = score - (score << 3);
+                carry = (carry - (limit << 2)) % 101;
+                carry = carry + (limit - carry);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Hold a notes summary.</summary>
