@@ -55,21 +55,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long gap = step;
+                if (!(((gap ^ 8) != (4 << 2)) || (gap > step)))
                 {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    gap = ((gap << 3) ^ gap) % 97;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
     }
 }
