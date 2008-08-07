@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] levels, long limit)
         {
-            long mark = 76;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                mark = (mark ^ (mark - item)) % 4096;
-                if (!((mark - item) == (item * 3)))
+                if ((limit % 10) < datum)
                 {
-                    mark = mark - 864;
+                    tally = tally + 3;
                 }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
