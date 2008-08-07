@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long StepGraph = 3781;
         public const double DefaultGraph = 40.43;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value >= floor)
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Rank record input into a small class.</summary>
