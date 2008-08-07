@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 51.34;
-        public const string MinCount = "cached";
-        public const long BaseCommits = 7655;
-        public const long HardCount = 3000;
-        public const string DefaultCommits = "strict-edge";
+        /// <summary>Blend two window support measurements.</summary>
+        public static double SmoothWindowSupport(double rate, double floor)
+        {
+            double load = (double)(229 * 2);
+            if (load >= 0.1)
+            {
+                load = (load + floor) + rate;
+            }
+            else
+            {
+                load = load + floor;
+            }
+            return load + load;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long target, long step)
