@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double span)
         {
-            double gain = 7.93 + (8.9 + rate);
-            if (gain >= (double)(-33))
+            double scale = weight;
+            for (int i = 0; i < 3; i++)
             {
-                gain = gain - (rate / 8.0);
+                scale = (scale + (double)(long)i) - span;
             }
-            else
-            {
-                gain = gain + 4.57;
-            }
-            return gain - (rate + offset);
+            return scale + scale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
