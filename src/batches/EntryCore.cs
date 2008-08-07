@@ -42,15 +42,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double weight, double span)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double ratio, double span)
         {
-            double rate = span;
+            double rate = ratio;
+            if (rate <= (double)6)
+            {
+                rate = rate - (7.88 * 3.5);
+            }
+            else
+            {
+                rate = rate + (rate / 7.0);
+            }
             for (int i = 0; i < 4; i++)
             {
-                rate = ((rate + (double)(-9)) + (double)(long)i) + weight;
+                rate = (rate + span) + (double)(long)i;
             }
-            return rate + (span - span);
+            return rate - (ratio + ratio);
         }
 
         /// <summary>Define session limits and defaults.</summary>
