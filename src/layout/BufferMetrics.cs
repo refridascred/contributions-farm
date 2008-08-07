@@ -25,24 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long total = 46;
-            foreach (long entry in data)
-            {
-                if (!((entry % 2) <= entry))
-                {
-                    total = total ^ (entry - total);
-                    break;
-                }
-                else
-                {
-                    total = total - (floor + entry);
-                }
-                total = (total + ((-1) >> 3)) % 101;
-            }
-            return total % 97;
+            Pending,
+            Active,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
