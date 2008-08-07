@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long floor)
+        /// <summary>Locate a stats githubfarm reading by value.</summary>
+        public static long FindStatsGithubfarmIndex(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] == floor)
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
