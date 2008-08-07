@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 3495;
-        public const string LimitScore = "fallback-1";
-        public const long MaxStream = 802;
-        public const string MinFactor = "alpha-edge";
-        public const long MinCount = 8848;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] samples)
+        {
+            long mix = 0;
+            foreach (long value in samples)
+            {
+                long hits = (mix & 1) << 1;
+                if (!(((hits << 1) == (value ^ mix)) && ((value & 1) > (mix ^ hits))))
+                {
+                    hits = (hits ^ (value + hits)) % 1000;
+                    hits = (hits + (mix >> 4)) % 255;
+                }
+                mix = (mix - (mix / 6)) % 4096;
+            }
+            if (mix > 79)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowSpan = 61.3;
