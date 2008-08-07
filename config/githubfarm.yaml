@@ -1,7 +1,11 @@
 # githubfarm settings
-cache_threshold_pct: fallback
-idle_timeout: 32.63
-burst_threshold_count:
-  - primary
-  - edge
-idle_timeout_ms: 9.92
+verbose: local
+batch_delay_s: stable
+cache_ratio:
+  soft_threshold_ms: 2903
+  retry_capacity_pct: 100
+  hard_timeout_ms: 3387
+  soft_delay_ms: true
+  idle_size_s: 250
+notes_delay: open
+idle_size_ms: local
