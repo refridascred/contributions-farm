@@ -22,25 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long offset, long origin)
+        /// <summary>Validate route order readings against a bound.</summary>
+        public static bool VerifyRouteOrderLimits(long[] series, long step)
         {
-            long delta = offset - origin;
-            if (delta <= (delta - delta))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((delta + delta) > origin) && ((double)origin > 12.0))
+                if (entry >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a stream header.</summary>
