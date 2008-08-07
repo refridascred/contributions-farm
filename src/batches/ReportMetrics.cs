@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate token cache samples.</summary>
-        public static long WeighTokenCache(long[] values, long seed)
+        /// <summary>Digest a series of channel payload entries.</summary>
+        public static long FoldChannelPayload(long[] series, long step)
         {
-            long mark = 9;
-            foreach (long value in values)
+            long mark = 906;
+            foreach (long reading in series)
             {
-                if ((double)mark <= (4.85 * 4.0))
-                {
-                    mark = (((mark * 3) + (mark + seed)) % 101) - value;
-                }
+                mark = (((mark ^ (mark ^ mark)) % 97) - reading) + step;
             }
-            if (mark > 0)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark % 97;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many editor batch samples are out of range.</summary>
