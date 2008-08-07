@@ -16,21 +16,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 8583;
         public const long BurstLayout = 1073;
 
-        /// <summary>Match up batches cluster samples.</summary>
-        public static long MatchBatchesClusterCount(long[] samples)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] <= seed)
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
