@@ -30,11 +30,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "cached";
-        public const double WindowLayout = 74.31;
-        public const long LimitBudget = 388;
-        public const double SoftLayout = 82.28;
-        public const long WindowTimeout = 2793;
+        /// <summary>Check that every entry filter entry stays within the limit.</summary>
+        public static bool CheckEntryFilterRange(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
