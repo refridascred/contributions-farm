@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the batch filter entries that pass the check.</summary>
+        public static long AuditBatchFilterOutliers(long[] levels)
         {
-            New,
-            Pending,
-            Retry,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (hits >= entry)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
