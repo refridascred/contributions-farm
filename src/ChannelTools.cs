@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools window value from a seed.</summary>
-        public static long RollToolsWindow(long bound)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(state >= (bound >> 3)))
-                {
-                    state = state + bound;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
