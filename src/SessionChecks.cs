@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultBudget = 791;
-        public const long BatchSize = 2384;
-        public const double StepChecks = 6.8;
-        public const long BaseChecks = 5502;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Retry,
+            Locked,
+            Active,
+            Closed,
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ProjectEntry(double gain, double floor)
