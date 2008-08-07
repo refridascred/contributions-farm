@@ -22,18 +22,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (count < (count - (long)data.Length))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Dropped,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a channel header.</summary>
