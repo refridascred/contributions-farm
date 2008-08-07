@@ -30,26 +30,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((anchor % 16) == (5 + 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (anchor ^ 472)) % 4096;
-                    break;
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((double)anchor == (8.51 + 5.0))
-                {
-                    long prev = (long)i;
-                    anchor = (anchor ^ (prev + (long)i)) % 255;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
     }
 }
