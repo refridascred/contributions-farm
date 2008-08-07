@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] series, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 935;
+            foreach (long item in samples)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                if ((0 & 63) != ((-7) + item))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ item) % 65521;
                 }
             }
-            return -1;
+            if (result > 972)
+            {
+                result = (result * 4) + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
