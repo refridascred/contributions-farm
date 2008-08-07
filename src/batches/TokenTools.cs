@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long step, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if (((double)limit > (5.99 / 4.0)) && ((limit / 7) < (limit * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step & 3) == (limit << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many tools metric samples are out of range.</summary>
