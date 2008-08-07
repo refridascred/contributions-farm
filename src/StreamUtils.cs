@@ -77,13 +77,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            Active,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the schema kind values.</summary>
