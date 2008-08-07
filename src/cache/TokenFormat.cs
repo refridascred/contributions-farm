@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples, long target)
-        {
-            long anchor = 75;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor << 2) ^ (target - target)) ^ entry;
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor + (anchor / 3)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitTimeout = 8647;
+        public const long BatchWidth = 8576;
+        public const long CacheSpan = 6932;
+        public const long LimitOrder = 3677;
+        public const long BatchOrder = 7253;
     }
 }
