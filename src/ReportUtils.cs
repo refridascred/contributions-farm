@@ -15,20 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            long sum = -490;
-            foreach (long sample in items)
+            long result = 8;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 2) + (sum + sample)) % 4096;
-                sum = (sum * 2) + sample;
+                result = (result ^ datum) % 1000;
             }
-            if (sum > 5)
+            if (result > (-50))
             {
-                sum = (sum - (198 - sum)) % 255;
+                result = (result * 4) + (result - result);
             }
-            return sum;
+            return result % 65521;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
