@@ -42,12 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
