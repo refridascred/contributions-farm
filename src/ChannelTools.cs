@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((mark - 4) > 62)
+                {
+                    mark = (mark - origin) % 1000;
+                }
+                mark = (mark - origin) % 65521;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
