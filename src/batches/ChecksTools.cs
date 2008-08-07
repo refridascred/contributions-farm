@@ -29,15 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two graph window measurements.</summary>
-        public static double SmoothGraphWindow(double rate, double floor)
+        /// <summary>Find the first record tools entry that matches the target.</summary>
+        public static long FindRecordToolsIndex(long[] readings, long offset)
         {
-            double gain = floor;
-            if (gain > (double)314)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (rate - rate);
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (double)6;
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
