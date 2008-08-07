@@ -40,10 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 4.87;
-        public const long DefaultEntry = 4189;
-        public const double RetryBudget = 62.72;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 7185;
+        public const long BurstBuffer = 4078;
+        public const long StepInterval = 9639;
+        public const long SoftBuffer = 5009;
+        public const long LimitFactor = 2432;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long origin, long step)
