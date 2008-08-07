@@ -25,17 +25,23 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] series, long bound)
+        /// <summary>Blend two profile layout measurements.</summary>
+        public static double AdjustProfileLayout(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = rate;
+            if (rate2 >= rate)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 + (1.6 * 2.0);
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 + (double)434;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - floor) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Fold a list of context readings.</summary>
