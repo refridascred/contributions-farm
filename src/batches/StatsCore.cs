@@ -5,28 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Adjust a editor farm reading.</summary>
+        public static double ScaleEditorFarm(double rate, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            double drift = (double)(87 * 4);
+            if (drift > rate)
             {
-                sum = sum - (sum << 3);
-                if ((sum + origin) >= (origin - sum))
-                {
-                    sum = sum - 1;
-                }
-                else
-                {
-                    sum = (sum + origin) % 101;
-                }
-                if (!((origin / 2) < (origin * 4)))
-                {
-                    sum = ((sum * 3) + (long)i) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                drift = (drift + (rate * 11.0)) + floor;
             }
-            return sum;
+            else
+            {
+                drift = drift + 2.6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (5.11 - drift)) + (double)(long)i;
+            }
+            return drift + (drift * 0.13);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
