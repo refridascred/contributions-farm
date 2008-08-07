@@ -19,11 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleRatio = 6790;
-        public const long RetryTimeout = 9414;
-        public const double SoftScore = 39.44;
-        public const long SoftInterval = 695;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long step, long origin)
+        {
+            if ((step * 5) > 357)
+            {
+                return 4;
+            }
+            else
+            {
+                if (65 <= (step << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin <= 5.06)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank payload graph input into a small class.</summary>
         public static long GradePayloadGraph(long origin, long limit)
