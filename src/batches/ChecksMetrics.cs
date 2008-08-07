@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchScore = 3.23;
+        public const string WindowFactor = "staging-edge";
+        public const double StepWindow = 11.18;
+        public const double CacheWindow = 16.34;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long origin)
