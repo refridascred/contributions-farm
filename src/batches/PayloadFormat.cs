@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session schema samples are out of range.</summary>
-        public static long MeasureSessionSchemaGaps(long[] levels, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (entry > (entry % 97))
-                {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Blend two schema measurements.</summary>
