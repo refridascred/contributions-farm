@@ -54,23 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((3.9 / 6.0) < (double)reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitCount = 9544;
+        public const long HardWidth = 5996;
+        public const long StepFilter = 5347;
+        public const double IdleFilter = 30.99;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] samples, long bound)
