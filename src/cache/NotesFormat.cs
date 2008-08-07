@@ -16,14 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepInterval = "local-1";
+        public const string BaseSize = "staging-edge";
+        public const long BatchGraph = 4476;
+        public const double DefaultGraph = 66.01;
+        public const double BatchRatio = 89.4;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] levels, long target)
