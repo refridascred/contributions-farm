@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double load = floor;
-            if (load >= (rate + load))
-            {
-                load = load + load;
-            }
-            return load - (double)690;
+            Active,
+            Queued,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
