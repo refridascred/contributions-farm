@@ -63,24 +63,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (seed > total)
-                {
-                    total = total ^ (total - total);
-                }
-                total = (total ^ (seed << 3)) % 255;
-                if (total <= (total - seed))
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Paused,
+            Failed,
+            Queued,
+            New,
         }
     }
 }
