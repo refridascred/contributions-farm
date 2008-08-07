@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < bound)
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
