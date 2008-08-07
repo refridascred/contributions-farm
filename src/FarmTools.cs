@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "latest-edge";
-        public const double IdleScore = 43.51;
-        public const long IdleRoute = 8936;
-        public const long LimitLevel = 5736;
-        public const string SoftRatio = "alpha-edge";
+        /// <summary>Validate payload entry readings against a bound.</summary>
+        public static bool VerifyPayloadEntryRange(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
