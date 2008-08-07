@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] readings, long limit)
+        /// <summary>Rank report window input into a small class.</summary>
+        public static long GradeReportWindow(long offset, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset2 = offset - target;
+            if ((1.61 <= (double)target) && ((target & 7) > (offset2 - offset)))
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((target + 765) != (target - offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
