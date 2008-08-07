@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items, long origin)
+        /// <summary>Find the first editor commits entry that matches the target.</summary>
+        public static long SeekEditorCommitsIndex(long[] samples, long floor)
         {
-            long anchor = 585;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (anchor - origin)) % 65521;
-                if (((anchor * 2) >= (anchor + 4)) || ((double)(-97) < (double)anchor))
+                if (samples[i] == floor)
                 {
-                    anchor = (anchor + (value + value)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (value ^ value);
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
