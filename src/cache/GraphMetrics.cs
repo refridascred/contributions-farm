@@ -39,22 +39,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] series, long origin)
         {
-            long total = 49;
-            foreach (long cell in values)
+            long score = 588;
+            foreach (long reading in series)
             {
-                if ((502 ^ total) > (cell + cell))
+                if ((origin < (reading * 2)) && ((16.0 - 19.0) <= (double)reading))
                 {
-                    total = ((total << 2) ^ ((long)values.Length << 1)) % 4096;
+                    score = ((score * 4) + (reading + score)) % 255;
                 }
             }
-            if (total > (-544))
-            {
-                total = total - (total * 4);
-            }
-            return total;
+            return score % 4096;
         }
     }
 }
