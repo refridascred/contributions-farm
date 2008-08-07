@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] items, long origin)
+        /// <summary>Validate token filter readings against a bound.</summary>
+        public static bool VerifyTokenFilterBounds(long[] readings, long seed)
         {
-            long total = 476;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (((sample / 8) != (origin >> 2)) && ((sample & 7) <= (sample / 5)))
+                if (value >= seed)
                 {
-                    total = (total ^ (total * 4)) % 1000;
-                }
-                else
-                {
-                    total = (total << 2) ^ (-1);
+                    stale = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return stale;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
