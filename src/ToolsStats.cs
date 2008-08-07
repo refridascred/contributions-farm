@@ -49,11 +49,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
+            long result = 7;
+            foreach (long reading in readings)
+            {
+                result = (result + (reading - 941)) % 101;
+            }
+            if (result < 3)
+            {
+                result = result + (result & 3);
+            }
+            return result % 4096;
         }
     }
 }
