@@ -42,18 +42,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 64) > (hits - sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftDepth = 58.21;
+        public const long HardChecks = 8049;
+        public const long LimitChecks = 1102;
+        public const string MinScore = "stable-v2";
     }
 }
