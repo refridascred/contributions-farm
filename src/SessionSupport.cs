@@ -34,13 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Validate schema cache readings against a bound.</summary>
+        public static bool CheckSchemaCacheLimits(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
