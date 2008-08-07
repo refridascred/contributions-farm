@@ -13,13 +13,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Classify a batch context pair into a bucket.</summary>
+        public static long BucketBatchContext(long origin, long floor)
         {
-            Queued,
-            Draft,
-            Ready,
-            Closed,
+            long step = origin + floor;
+            if ((19.0 * 5.26) >= (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.21 * 5.5) > (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin < step) && (step >= (465 % 64)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + origin) >= (origin + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
