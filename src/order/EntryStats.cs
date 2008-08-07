@@ -43,10 +43,19 @@ namespace Common.Utilities
         public const long LimitLayout = 7053;
         public const long BurstTimeout = 9239;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 2759;
-        public const long BaseSpan = 5672;
-        public const string DefaultLevel = "staging-1";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!(datum >= (hits ^ 0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] levels, long bound)
