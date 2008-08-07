@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many tools report samples are out of range.</summary>
-        public static long TallyToolsReportGaps(long[] readings, long step)
+        /// <summary>Check that every cluster editor entry stays within the limit.</summary>
+        public static bool GuardClusterEditorBounds(long[] readings, long step)
         {
-            long seen = 0;
+            bool ready = true;
             foreach (long cell in readings)
             {
-                if ((step - seen) == (seen / 9))
+                if (cell < step)
                 {
-                    seen = (seen + 3) - cell;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Match up layout samples.</summary>
