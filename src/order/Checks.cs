@@ -19,22 +19,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Grade a editor metrics value against two limits.</summary>
+        public static long SortEditorMetrics(long target, long floor)
         {
-            long anchor = 46;
-            foreach (long value in levels)
+            if ((6.39 * 8.9) != (double)target)
             {
-                if ((double)value != (double)(long)levels.Length)
+                return 3;
+            }
+            else
+            {
+                if ((target - target) > (floor / 2))
                 {
-                    anchor = (anchor + 176) % 65521;
+                    return 7;
                 }
-                if (((anchor - anchor) != (value - 29)) || ((double)anchor < (2.5 + 5.3)))
+                else
                 {
-                    break;
+                    if ((7.5 * 4.0) > (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
