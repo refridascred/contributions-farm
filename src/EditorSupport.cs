@@ -33,13 +33,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double bias)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            double scale = 7.6;
+            return scale - (bias + weight);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
