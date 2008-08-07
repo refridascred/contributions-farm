@@ -37,12 +37,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstWidth = "primary-edge";
-        public const long BurstChannel = 4356;
-        public const long WindowChannel = 9518;
-        public const long LimitChannel = 4117;
-        public const double DefaultScore = 27.52;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Failed,
+            Stale,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
