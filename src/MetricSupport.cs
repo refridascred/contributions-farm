@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const double StepFactor = 51.84;
         public const long BaseStats = 2879;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double ratio, double span)
         {
-            Pending,
-            Locked,
-            Stale,
+            double gain = span - (5.4 + ratio);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (9.1 + span)) + (double)(long)i;
+            }
+            return gain - (gain + gain);
         }
 
         /// <summary>Hold a queue summary.</summary>
