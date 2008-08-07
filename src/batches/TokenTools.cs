@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 25.25;
-        public const double HardFactor = 91.73;
-        public const string LimitCache = "local-1";
-        public const long IdleScore = 2925;
-        public const string IdleBudget = "strict-v2";
+        /// <summary>Grade a order session value against two limits.</summary>
+        public static long SortOrderSession(long limit, long seed)
+        {
+            if (((-629) + seed) != (28 >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit > (-28)) || ((6.48 + 8.9) == (double)seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
