@@ -37,19 +37,13 @@ namespace Common.Utilities
         public const long RetryInterval = 2540;
         public const string BaseReport = "staging";
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] data, long origin)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Closed,
+            Synced,
+            Done,
         }
     }
 }
