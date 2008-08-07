@@ -40,22 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] data, long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell > (long)data.Length) && ((target * 5) >= (cell - target)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
