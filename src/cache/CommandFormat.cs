@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] values, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((datum + seen) != (datum + step)) || (seen <= (datum + datum)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
