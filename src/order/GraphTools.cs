@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheSpan = 39.25;
-        public const long BurstInterval = 4977;
-        public const string CacheBudget = "legacy-1";
-        public const double LimitGithubfarm = 74.21;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double bias)
+        {
+            double rate = (double)(1 - 765);
+            if (rate < (rate * 3.7))
+            {
+                rate = rate + (gain / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (bias + bias);
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] samples, long offset)
