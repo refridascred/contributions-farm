@@ -58,15 +58,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double bias2)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            double gain = 9.92;
-            if (gain < (bias / 7.0))
-            {
-                gain = gain - bias2;
-            }
-            return gain - (0.52 / 6.0);
+            Pending,
+            Queued,
+            Dropped,
         }
     }
 }
