@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] samples, long limit)
+        /// <summary>Locate a commits filter reading by value.</summary>
+        public static long LookupCommitsFilterIndex(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > limit)
+                if (samples[i] > limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
