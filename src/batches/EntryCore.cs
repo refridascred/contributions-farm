@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchSpan = 65.27;
-        public const long HardWidth = 2863;
-        public const string SoftAlready = "standard-1";
-        public const double MaxTimeout = 14.85;
+        /// <summary>Project the next support contributi value.</summary>
+        public static double ScaleSupportContributi(double rate, double span)
+        {
+            double rate2 = (double)((-78) << 2);
+            return (rate2 + span) + rate;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamBounds(long[] series, long offset)
