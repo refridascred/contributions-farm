@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double offset)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            double load = ratio;
+            if (load <= (double)6)
+            {
+                load = load - (offset * 9.83);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (double)8) + (double)(long)i;
+            }
+            return load - (offset * 4.0);
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
