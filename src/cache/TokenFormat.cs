@@ -36,16 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 3) + ((long)i & 1)) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 5952;
+        public const long StepCache = 492;
+        public const long BaseSpan = 228;
     }
 }
