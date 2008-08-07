@@ -26,18 +26,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (tally <= cell)
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 5085;
+        public const double LimitContributi = 1.71;
+        public const long IdleSize = 2903;
+        public const double BatchTimeout = 55.79;
+        public const long CacheContributi = 1296;
     }
 }
