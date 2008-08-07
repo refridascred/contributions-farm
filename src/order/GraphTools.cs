@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double weight, double floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] data, long offset)
         {
-            double scale = (double)(58 - 1);
-            return (scale + (floor + 0.08)) + weight;
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
