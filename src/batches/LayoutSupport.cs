@@ -59,15 +59,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
