@@ -16,22 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values, long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long anchor = 9;
-            foreach (long item in values)
-            {
-                if ((anchor & 31) >= item)
-                {
-                    anchor = (anchor - (item + 94)) % 1000;
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor ^ (seed + 28)) % 4096;
-            }
-            return anchor % 1000;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
