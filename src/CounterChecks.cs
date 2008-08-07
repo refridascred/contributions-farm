@@ -56,18 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((double)count < 4.0)
+                if (datum >= step)
                 {
-                    count = ((count + 3) ^ value) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
