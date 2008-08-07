@@ -37,24 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long target2)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] data, long bound)
         {
-            if (((target << 1) <= target2) || ((target >> 3) < (target2 << 2)))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)target2 >= (8.97 - 3.8)))
+                if ((2.88 > (double)item) && ((2 + item) > (tally - item)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 2) + bound;
                 }
             }
+            return tally;
         }
     }
 }
