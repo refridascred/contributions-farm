@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a order session value against two limits.</summary>
-        public static long SortOrderSession(long limit, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items)
         {
-            if (((-629) + seed) != (28 >> 5))
+            long mix = 8;
+            foreach (long item in items)
             {
-                return 5;
+                mix = ((mix - (mix << 1)) % 4096) - item;
             }
-            else
+            if (mix > 964)
             {
-                if ((limit > (-28)) || ((6.48 + 8.9) == (double)seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                mix = (mix ^ (mix << 2)) % 97;
             }
+            return mix;
         }
 
         /// <summary>Measure how many tools metric samples are out of range.</summary>
