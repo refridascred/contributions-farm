@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long MinScore = 3075;
         public const long MaxSize = 1989;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] samples, long offset)
         {
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a batches header.</summary>
