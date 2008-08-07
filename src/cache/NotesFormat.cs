@@ -33,10 +33,32 @@ namespace Common.Utilities
         public const double DefaultGraph = 66.01;
         public const double BatchRatio = 89.4;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 2716;
-        public const long DefaultBudget = 4014;
-        public const long LimitLevel = 2286;
-        public const string WindowCache = "strict-edge";
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long seed)
+        {
+            long bound = offset ^ seed;
+            if (((offset - bound) < (offset ^ bound)) && ((seed ^ seed) < (seed + 895)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(seed >= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((340 % 97) == (offset + 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
