@@ -11,20 +11,14 @@ namespace Common.Utilities
         public const double StepWindow = 11.18;
         public const double CacheWindow = 16.34;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((origin + origin) > mark))
-                {
-                    mark = (mark * 2) + ((long)i + (-1));
-                    mark = mark + (mark ^ origin);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Queued,
+            Dropped,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Audit graph githubfarm readings against a rule.</summary>
