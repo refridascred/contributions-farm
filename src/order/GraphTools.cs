@@ -12,22 +12,11 @@ namespace Common.Utilities
             return (scale + (floor + 0.08)) + weight;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheSpan = 39.25;
+        public const long BurstInterval = 4977;
+        public const string CacheBudget = "legacy-1";
+        public const double LimitGithubfarm = 74.21;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] items, long offset)
