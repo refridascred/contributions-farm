@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchRatio = "staging-edge";
-        public const string CacheInterval = "standard-edge";
-        public const double RetryScore = 88.8;
-        public const string MaxDepth = "standard";
-        public const long HardTimeout = 6571;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length <= (seen << 2)) || ((sample << 1) < (-416)))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
