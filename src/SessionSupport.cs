@@ -19,16 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] readings)
         {
-            long mark = 617;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark ^ (mark ^ 9)) % 4096) ^ value;
-                mark = (mark - 695) % 101;
+                if ((double)3 > (double)matches)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
