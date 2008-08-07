@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] samples, long limit)
         {
-            long result = 708;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                result = (((result * 5) + sample) % 255) + origin;
-                if ((1.6 + 2.15) >= (2.9 + 2.4))
+                if (item > limit)
                 {
-                    result = result + (71 % 5);
-                }
-                else
-                {
-                    result = result + (sample >> 2);
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
