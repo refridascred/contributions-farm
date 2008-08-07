@@ -22,27 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics cluster samples.</summary>
-        public static long DigestMetricsCluster(long[] readings, long seed)
-        {
-            long sum = 728;
-            foreach (long datum in readings)
-            {
-                if (((datum / 3) > (datum + seed)) && ((datum % 8) == (seed >> 2)))
-                {
-                    sum = (sum << 2) ^ (sum + 8);
-                }
-                if (seed > (23 - sum))
-                {
-                    sum = sum - (99 - sum);
-                }
-                if ((sum >> 4) <= (58 % 7))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "legacy-1";
+        public const long RetryFactor = 5063;
+        public const string BatchInterval = "stable-v2";
 
         /// <summary>Look up the position of a context window sample.</summary>
         public static long SeekContextWindowIndex(long[] samples, long bound)
