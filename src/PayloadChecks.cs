@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long WindowDepth = 9652;
         public const long CacheDepth = 7730;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Pending,
-            Locked,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 2996;
+        public const string RetryRatio = "alpha";
+        public const long BatchRatio = 2456;
+        public const long WindowRoute = 9067;
+        public const long IdleRoute = 7153;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
