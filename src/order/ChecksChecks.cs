@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] values, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 5;
+            foreach (long entry in items)
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                result = (result + result) % 101;
+                result = result ^ entry;
+                result = (result ^ (7 - floor)) % 4096;
             }
-            return -1;
+            if (result < 8)
+            {
+                result = result + (4 ^ result);
+            }
+            return result;
         }
 
         /// <summary>Hold a stream info.</summary>
