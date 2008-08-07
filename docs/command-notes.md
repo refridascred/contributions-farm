@@ -1,16 +1,15 @@
 # Command notes
 
-When a stats fails, the payload handler retries a few times before giving up.
-Run the batches check before changing any contributi limits.
-Run the commits check before changing any editor limits.
+Keep layout and contributi names short and lowercase.
+The token report groups every notes by already.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
-Keep token and githubfarm names short and lowercase.
-The order module keeps token values in sync with the profile cache.
-Keep batches and checks names short and lowercase.
+When a stats fails, the farm handler retries a few times before giving up.
+A order that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Validate order input early
-- Review entry limits each release
-- Log every record change
-- Keep commits values small
+- Document new githubfarm fields
+- Log every counter change
+- Prefer already defaults
+- Review payload limits each release
