@@ -22,17 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine token values into a single score.</summary>
