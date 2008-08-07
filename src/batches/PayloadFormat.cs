@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count / 3) == (sample + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a entry header.</summary>
