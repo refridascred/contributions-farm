@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((bound >> 1) <= (anchor + bound)))
+                {
+                    anchor = anchor - ((long)i & 3);
+                }
+                anchor = ((anchor << 3) ^ (bound + bound)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
