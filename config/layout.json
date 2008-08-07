@@ -1,6 +1,8 @@
 {
-  "buffer_threshold": [152, 274, 66],
-  "contributi_interval": 42,
-  "context_delay": false,
-  "max_ttl_pct": 53.79
+  "batch_delay_s": 54,
+  "warm_capacity_ms": 30,
+  "githubfarm_capacity": [325, 206],
+  "sync_threshold_pct": "edge",
+  "min_ttl": true,
+  "contributi_depth": ["staging", "fallback"]
 }
