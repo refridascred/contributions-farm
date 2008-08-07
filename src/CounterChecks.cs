@@ -42,22 +42,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] levels, long target)
+        /// <summary>Project the next session profile value.</summary>
+        public static double ScaleSessionProfile(double gain, double span)
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry % 64) >= (target - entry))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = (span * 4.9) * 6.81;
+            return (load + (double)9) + gain;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
