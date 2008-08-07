@@ -20,13 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
