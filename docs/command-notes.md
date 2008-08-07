@@ -1,12 +1,13 @@
 # Command notes
 
-Keep token and commits names short and lowercase.
-The githubfarm module keeps layout values in sync with the payload cache.
-Each metrics is validated before it reaches the schema queue.
+Keep stats and context names short and lowercase.
+Keep buffer and githubfarm names short and lowercase.
+
+Run the token check before changing any entry limits.
+Each session is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Keep tools values small
-- Validate layout input early
-- Document new record fields
+- Review batch limits each release
+- Document new profile fields
+- Prefer format defaults
