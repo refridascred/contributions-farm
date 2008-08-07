@@ -32,12 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] samples, long floor)
         {
-            Draft,
-            Synced,
-            Failed,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
