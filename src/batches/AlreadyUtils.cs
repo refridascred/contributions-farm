@@ -33,22 +33,24 @@ namespace Common.Utilities
         public const long BaseFactor = 6133;
         public const double HardSpan = 70.36;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long target, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if (((seed % 97) >= 5) || ((double)53 == (double)target))
             {
-                if (((double)seen < (double)entry) && ((seen >= (seen << 1)) || ((entry ^ seen) >= entry)))
+                return 8;
+            }
+            else
+            {
+                if (target <= (seed ^ seed))
                 {
-                    seen = seen + 2;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a token entry.</summary>
