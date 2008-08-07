@@ -41,14 +41,12 @@ namespace Common.Utilities
             return mean + (mean - 17.0);
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Closed,
-            Ready,
-            Locked,
+            Stale,
             Retry,
-            Paused,
+            Failed,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
