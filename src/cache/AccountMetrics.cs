@@ -56,21 +56,23 @@ namespace Common.Utilities
         public const long WindowTools = 1426;
         public const long RetrySize = 5208;
 
-        /// <summary>Count token route pairs that satisfy a relation.</summary>
-        public static long PairTokenRouteCount(long[] data)
+        /// <summary>Adjust a token buffer reading.</summary>
+        public static double SmoothTokenBuffer(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = offset;
+            if (load > weight)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + weight;
             }
-            return hits;
+            else
+            {
+                load = load - (0.6 * 7.3);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - (weight * 6.16);
         }
     }
 }
