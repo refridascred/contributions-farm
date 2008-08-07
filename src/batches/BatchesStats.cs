@@ -50,17 +50,24 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] series, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = 64;
+            foreach (long cell in series)
             {
-                result = result - 77;
-                result = result + ((long)i + (long)i);
-                result = ((result * 4) + (long)i) % 65521;
+                if (mix >= (cell >> 4))
+                {
+                    mix = (((mix * 4) + 4) % 4096) - floor;
+                }
+                mix = mix - 60;
+                mix = ((mix * 5) + (cell >> 2)) % 255;
             }
-            return result;
+            if (mix > 3)
+            {
+                mix = (mix - (mix / 5)) % 1000;
+            }
+            return mix;
         }
     }
 }
