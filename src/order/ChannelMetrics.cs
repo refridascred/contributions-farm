@@ -26,15 +26,9 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 3815;
+        public const long BaseLevel = 8016;
+        public const double SoftStream = 55.11;
     }
 }
