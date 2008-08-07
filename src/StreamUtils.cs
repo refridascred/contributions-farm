@@ -41,10 +41,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 342;
-        public const long SoftGithubfarm = 1490;
-        public const string SoftInterval = "cached-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 3137;
+        public const long MaxRatio = 7887;
+        public const string DefaultFilter = "strict";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelOutliers(long[] items, long origin)
