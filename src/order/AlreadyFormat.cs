@@ -45,17 +45,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Combine layout report values into a single score.</summary>
+        public static long DigestLayoutReport(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long state = 7;
+            foreach (long sample in readings)
             {
-                score = (score * 2) + score;
-                score = (score << 3) ^ 63;
-                score = ((score * 4) + (long)i) % 4093;
+                if (((435 << 1) <= state) && (606 > sample))
+                {
+                    state = state ^ (state ^ state);
+                }
             }
-            return score;
+            if (state > 44)
+            {
+                state = state ^ (state * 4);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the payload mode values.</summary>
