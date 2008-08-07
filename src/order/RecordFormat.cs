@@ -33,15 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream editor reading.</summary>
-        public static double AdjustStreamEditor(double scale, double span)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            double mean = (double)107 - (span + 17.0);
-            if (mean > span)
-            {
-                mean = (mean + (double)4) + scale;
-            }
-            return mean + 2.07;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
