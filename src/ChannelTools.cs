@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepLevel = 965;
-        public const string DefaultTimeout = "fallback";
-        public const long BurstSupport = 8136;
-        public const double RetrySize = 15.99;
+        /// <summary>Look up the position of a order editor sample.</summary>
+        public static long LookupOrderEditorIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
