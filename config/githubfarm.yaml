@@ -1,12 +1,6 @@
 # githubfarm settings
-burst_interval_s:
-  - eu-west
-  - fallback
-  - eu-west
-  - local
-retry_depth: 20.09
-sync_interval_s:
-  - 419
-  - 166
-  - 13
-  - 66
+warm_limit_ms: true
+hard_window: standard
+verbose: 37.5
+compress: 41.01
+cache_threshold_s: green
