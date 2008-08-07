@@ -1,5 +1,5 @@
 {
-  "burst_window_ms": "primary",
-  "cache_limit": "fallback",
-  "metrics_window": ["cached", "fallback", "strict", "staging"]
+  "queue_retries": ["primary", "strict", "fallback", "standard"],
+  "persist": "stable",
+  "audit": [253, 390]
 }
