@@ -41,10 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardBudget = 9964;
-        public const double CacheInterval = 43.22;
-        public const long CacheWindow = 9337;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items, long limit)
+        {
+            long acc = 280;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) >= (894 % 2))
+                {
+                    acc = (((acc << 3) ^ 745) % 255) - limit;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
