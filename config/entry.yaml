@@ -1,5 +1,5 @@
 # entry settings
-soft_limit_pct: standard
-min_ttl: 5182
-max_capacity_count: 22.21
-hard_size_ms: 8307
+idle_delay: standard
+entry_depth: strict
+burst_depth_count: primary
+poll_threshold_s: blue
