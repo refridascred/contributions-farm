@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Count the batches order entries that pass the check.</summary>
+        public static long CountBatchesOrderOutliers(long[] items, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                score = score - (811 % 10);
-                score = (score * 3) + floor;
-                score = (score ^ 35) % 255;
-                score = ((score * 3) + (long)i) % 97;
+                if ((seen & 3) >= step)
+                {
+                    seen = (seen + 3) ^ value;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
