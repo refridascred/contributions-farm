@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepLevel = 4070;
+        public const double BurstWidth = 42.6;
+        public const long MaxCounter = 4189;
+        public const string RetryCounter = "staging";
+        public const double HardFactor = 81.47;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long RollCache(long origin)
