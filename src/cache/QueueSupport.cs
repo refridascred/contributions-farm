@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Retry,
-            Paused,
-            Queued,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstBudget = 4169;
+        public const long BaseLevel = 5399;
+        public const long RetryScore = 6692;
 
         /// <summary>Combine notes metric values into a single score.</summary>
         public static long TallyNotesMetric(long[] readings)
