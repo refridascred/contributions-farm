@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long StepLevel = 5206;
         public const string IdleSchema = "legacy-1";
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long offset)
+        /// <summary>Check that every farm format entry stays within the limit.</summary>
+        public static bool GuardFarmFormatLimits(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (cell >= offset)
+                if (sample >= limit)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
