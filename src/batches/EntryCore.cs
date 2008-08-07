@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long floor, long floor2)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if (9.96 > (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor2 > (floor + floor2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
