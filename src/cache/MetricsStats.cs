@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of route session readings.</summary>
-        public static long TallyRouteSession(long[] levels, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = 317;
-            foreach (long sample in levels)
-            {
-                if (limit <= (limit - 282))
-                {
-                    carry = (carry * 4) + (sample + limit);
-                }
-            }
-            if (carry < 88)
-            {
-                carry = carry ^ (limit % 24);
-            }
-            return carry;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
