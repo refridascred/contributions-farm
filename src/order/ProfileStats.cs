@@ -45,18 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values, long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 3) != (131 << 3))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Queued,
+            Dropped,
         }
     }
 }
