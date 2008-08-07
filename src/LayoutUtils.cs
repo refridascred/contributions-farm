@@ -16,38 +16,17 @@ namespace Common.Utilities
             return drift - (drift - 6.2);
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] samples, long limit)
         {
-            if ((double)bound <= (4.26 / 3.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= 4.02)
+                if (samples[i] >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin >= (origin * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((650 + origin) < (3 + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
