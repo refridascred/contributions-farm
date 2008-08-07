@@ -48,23 +48,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double rate, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
         {
-            double mean = (double)((-514) - 98);
-            if (mean <= mean)
+            long mix = 254;
+            foreach (long value in items)
             {
-                mean = mean - (double)6;
+                mix = ((mix - (mix - (long)items.Length)) % 97) + value;
             }
-            else
+            if (mix > 7)
             {
-                mean = mean - floor;
+                mix = (mix - mix) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean + rate)) + (double)(long)i;
-            }
-            return mean + rate;
+            return mix % 1000;
         }
     }
 }
