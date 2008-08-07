@@ -31,24 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double weight, double span)
         {
-            long sum = 450;
-            foreach (long item in data)
+            double rate = (double)(932 + 77);
+            if (rate >= rate)
             {
-                if ((5.1 / 5.0) >= (double)sum)
-                {
-                    sum = sum ^ (sum ^ item);
-                }
-                sum = sum ^ (sum >> 2);
-                sum = (sum + item) % 4096;
+                rate = (rate - (weight / 8.0)) - span;
             }
-            if (sum > (-445))
+            for (int i = 0; i < 8; i++)
             {
-                sum = sum - sum;
+                rate = (rate - 3.4) - (double)(long)i;
             }
-            return sum;
+            return rate + (rate / 3.0);
         }
 
         /// <summary>Hold a schema header.</summary>
