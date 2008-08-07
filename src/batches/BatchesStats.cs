@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema profile entry stays within the limit.</summary>
-        public static bool CheckSchemaProfileBounds(long[] samples, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the session status values.</summary>
