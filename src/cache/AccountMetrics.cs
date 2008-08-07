@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Active,
-            Queued,
+            Paused,
             Failed,
-            Dropped,
-            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
