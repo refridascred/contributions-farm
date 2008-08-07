@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultLevel = 2779;
-        public const long SoftLevel = 7261;
-        public const string RetryRatio = "cached-edge";
-        public const long BatchTools = 3223;
-        public const long RetryFactor = 9974;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = ((sum << 2) ^ ((long)i2 % 12)) % 1000;
+                    sum = (sum ^ limit) % 97;
+                }
+                sum = sum + ((long)i + limit);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long origin, long bound)
