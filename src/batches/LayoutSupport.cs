@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] series, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
