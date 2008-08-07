@@ -57,13 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] levels, long target)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
