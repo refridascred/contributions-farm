@@ -58,24 +58,11 @@ namespace Common.Utilities
         public const long BaseRatio = 8351;
         public const double BurstLevel = 16.26;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double rate, double floor)
-        {
-            double mean = floor;
-            if (mean > floor)
-            {
-                mean = (mean - (double)8) - rate;
-            }
-            else
-            {
-                mean = mean - (double)93;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "stable-v2";
+        public const long WindowEditor = 6688;
+        public const long BaseEditor = 8947;
+        public const long BatchEditor = 8031;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
