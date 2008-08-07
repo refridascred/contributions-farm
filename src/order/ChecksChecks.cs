@@ -26,10 +26,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 6625;
-        public const double BurstEditor = 16.67;
-        public const long HardDepth = 8317;
-        public const long RetrySize = 4683;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
