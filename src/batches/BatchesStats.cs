@@ -53,9 +53,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxScore = 61.11;
-        public const long BaseWidth = 3845;
-        public const long IdleCount = 7694;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
