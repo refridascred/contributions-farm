@@ -72,16 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] levels, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] levels, long floor)
         {
-            long anchor = 117;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                anchor = (anchor ^ (long)levels.Length) ^ datum;
-                anchor = anchor + (anchor - offset);
+                if (51 <= (floor / 2))
+                {
+                    count = (count + 2) ^ value;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
