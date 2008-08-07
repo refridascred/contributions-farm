@@ -68,12 +68,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleTimeout = "open-edge";
+        public const double BatchFormat = 74.02;
+        public const long BaseFormat = 4610;
+        public const double LimitScore = 14.63;
+        public const long WindowFactor = 976;
     }
 }
