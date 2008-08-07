@@ -48,18 +48,14 @@ namespace Common.Utilities
         public const long RetryChannel = 5043;
         public const long LimitRatio = 9636;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] readings, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + tally) <= (reading + reading))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Accumulate tools samples.</summary>
