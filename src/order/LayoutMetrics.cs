@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            double gain = (double)((-7) >> 4);
+            if (gain < gain)
             {
-                if ((anchor + 436) <= (seed & 15))
-                {
-                    anchor = (anchor ^ ((long)i << 2)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                gain = ((gain + (double)897) - weight) + floor;
             }
-            return anchor;
+            return gain + (13.0 * 6.92);
         }
 
         /// <summary>Validate editor account readings against a bound.</summary>
