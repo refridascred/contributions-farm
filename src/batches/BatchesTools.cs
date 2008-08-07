@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] items)
-        {
-            long sum = 9;
-            foreach (long datum in items)
-            {
-                sum = ((sum ^ (448 / 3)) % 97) - datum;
-            }
-            if (sum < 9)
-            {
-                sum = sum + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1135;
+        public const long CacheGraph = 4581;
+        public const long StepGraph = 3781;
+        public const double DefaultGraph = 40.43;
 
         /// <summary>Match up buffer metric samples.</summary>
         public static long OverlapBufferMetricCount(long[] readings)
