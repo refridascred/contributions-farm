@@ -47,11 +47,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSpan = 3153;
-        public const string MaxBudget = "alpha-1";
-        public const long IdleTools = 6017;
-        public const double SoftSize = 96.32;
-        public const string StepCount = "primary-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinSize = 7565;
+        public const string CacheBudget = "cached-v2";
+        public const string BurstCommand = "local-v2";
     }
 }
