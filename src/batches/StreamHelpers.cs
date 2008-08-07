@@ -37,15 +37,21 @@ namespace Common.Utilities
         public const double RetryRecord = 11.11;
         public const long BurstRecord = 5870;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                long next = ((long)i ^ carry) ^ (seed + carry);
+                if (((carry - carry) >= (seed % 97)) && ((long)i >= (next >> 3)))
+                {
+                    carry = (carry * 3) + (seed * 5);
+                }
+                carry = (carry - (carry & 31)) % 97;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Combine format values into a single score.</summary>
