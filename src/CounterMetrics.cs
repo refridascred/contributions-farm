@@ -36,22 +36,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            long total = 69;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)offset <= 3.0)
-                {
-                    total = (total + total) % 97;
-                }
-                else
-                {
-                    total = ((total * 2) + (cell - total)) % 4096;
-                }
+                anchor = (anchor * 4) + (offset + anchor);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return total % 65521;
+            return anchor;
         }
     }
 }
