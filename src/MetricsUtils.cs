@@ -63,12 +63,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of batches metric readings.</summary>
+        public static long WeighBatchesMetric(long[] items)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long anchor = 4;
+            foreach (long sample in items)
+            {
+                if ((anchor << 3) != (sample & 7))
+                {
+                    anchor = ((anchor * 3) + (sample & 255)) % 65521;
+                }
+                anchor = (anchor - anchor) % 101;
+            }
+            if (anchor > 8)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 65521;
         }
     }
 }
