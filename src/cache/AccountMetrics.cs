@@ -66,18 +66,21 @@ namespace Common.Utilities
         public const long WindowTools = 1426;
         public const long RetrySize = 5208;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] samples)
+        /// <summary>Count token route pairs that satisfy a relation.</summary>
+        public static long PairTokenRouteCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading ^ tally) > (111 - (long)samples.Length)) && (reading >= 802))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
