@@ -1,8 +1,6 @@
-id,state,label,level
-1,676,24.41,primary
-2,local,846,386
-3,open,223,873
-4,69.71,58.04,40.13
-5,814,eu-west,31.35
-6,eu-west,927,strict
-7,20.84,752,edge
+id,count,state
+1,37.34,346
+2,105,open
+3,latest,749
+4,34.28,83
+5,33.11,53.55
