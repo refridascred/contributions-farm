@@ -22,12 +22,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "standard";
-        public const long MinLayout = 3053;
-        public const double MaxLayout = 73.33;
-        public const string BaseTimeout = "standard";
-        public const long LimitLayout = 6986;
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheEditor = 6625;
