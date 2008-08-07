@@ -24,15 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] series, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] items, long limit)
         {
-            long score = 789;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                score = ((((score * 5) + (628 & 63)) % 255) - sample) - bound;
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
