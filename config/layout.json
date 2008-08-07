@@ -1,6 +1,21 @@
 {
-  "soft_window": "legacy",
-  "cache_limit": "green",
-  "burst_interval_ms": "stable",
-  "soft_interval_count": 15
+  "account_limit": {
+    "format_capacity": "eu-west",
+    "verbose": ["stable", "eu-west", "cached"],
+    "retry_threshold_count": "standard",
+    "batch_size_ms": 100
+  },
+  "min_depth_s": {
+    "persist": "edge",
+    "batch_ttl_pct": 60,
+    "filter_limit": ["edge", "green"],
+    "strict": {
+      "readonly": "stable",
+      "cache_timeout_ms": 387,
+      "soft_ratio": 60.61
+    },
+    "route_window": "edge"
+  },
+  "warm_ttl_s": ["stable", "fallback", "local"],
+  "profile_retries": 6663
 }
