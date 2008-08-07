@@ -12,19 +12,22 @@ namespace Common.Utilities
             return (rate + (4.0 + bias)) + offset;
         }
 
-        /// <summary>Check that every support stream entry stays within the limit.</summary>
-        public static bool ValidateSupportStreamBounds(long[] levels, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long total = 8;
+            foreach (long value in series)
             {
-                if (value < target)
+                if ((total >> 4) == ((long)series.Length + total))
                 {
-                    ok = false;
-                    break;
+                    total = total + value;
                 }
             }
-            return ok;
+            if (total > 68)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
