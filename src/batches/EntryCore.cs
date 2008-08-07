@@ -20,20 +20,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((step + anchor) >= anchor))
-                {
-                    anchor = anchor + (step + (long)i);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 2229;
+        public const long MinInterval = 2132;
+        public const long CacheLevel = 7652;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandOutliers(long[] series, long step)
