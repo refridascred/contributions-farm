@@ -39,13 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((675 & 127) > origin)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
