@@ -66,13 +66,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a filter snapshot.</summary>
