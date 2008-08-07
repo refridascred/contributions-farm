@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((value - value) == (hits + value)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a profile stats.</summary>
