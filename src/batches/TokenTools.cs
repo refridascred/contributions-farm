@@ -29,31 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a filter checks value against two limits.</summary>
-        public static long SortFilterChecks(long limit, long step)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            if ((13.0 * 1.0) <= (double)step)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - 24) > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step + step) >= (limit << 3)))
+                    if ((values[i] - values[j]) < 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
