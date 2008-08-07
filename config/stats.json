@@ -1,14 +1,6 @@
 {
-  "soft_window_pct": "cached",
-  "idle_window": 8.58,
-  "readonly": 15,
-  "cache_capacity": ["strict", "local", "local"],
-  "idle_ttl": {
-    "sync_depth_count": 17.79,
-    "strict": 94.99,
-    "format_timeout": "latest",
-    "cache_ttl_s": [95, 442, 285],
-    "default_timeout_count": 21
-  },
-  "idle_limit_count": "local"
+  "sync_window_count": 100,
+  "base_limit_s": 5964,
+  "readonly": "primary",
+  "max_depth": 66
 }
