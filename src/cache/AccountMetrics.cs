@@ -14,15 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Find the first commits format entry that matches the target.</summary>
+        public static long FindCommitsFormatIndex(long[] samples, long origin)
         {
-            double weight = (double)((-36) & 63);
-            if (weight > rate)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (weight - offset);
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Describe the farm status values.</summary>
