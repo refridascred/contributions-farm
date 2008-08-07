@@ -14,12 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] data, long seed)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) <= (38 - count))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already status values.</summary>
