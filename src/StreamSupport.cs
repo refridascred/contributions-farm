@@ -13,26 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] data, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series)
         {
-            long mix = 7;
-            foreach (long item in data)
+            long score = 47;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = ((mix ^ 0) % 255) ^ (long)i;
-                }
-                if ((seed - seed) >= (mix * 4))
-                {
-                    mix = (mix - item) % 1000;
-                }
-                else
-                {
-                    mix = (mix * 5) + (seed % 100);
-                }
+                score = (score - (77 >> 1)) ^ value;
             }
-            return mix;
+            if (score > (-5))
+            {
+                score = (score << 3) ^ (score * 2);
+            }
+            return score;
         }
 
         /// <summary>Locate a stats commits reading by value.</summary>
