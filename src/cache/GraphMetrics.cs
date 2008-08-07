@@ -71,18 +71,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] values, long step)
+        /// <summary>Grade a command stats value against two limits.</summary>
+        public static long GradeCommandStats(long target, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long span = target + limit;
+            if (limit >= (span * 2))
             {
-                if ((double)step == (8.5 * 3.0))
+                return 8;
+            }
+            else
+            {
+                if ((span & 1) > 0)
                 {
-                    matches = (matches + 3) + datum;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
