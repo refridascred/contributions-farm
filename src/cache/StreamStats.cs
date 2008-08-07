@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] items)
+        /// <summary>Match up commits payload samples.</summary>
+        public static long OverlapCommitsPayloadCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((786 + count) <= (count >> 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a editor record.</summary>
