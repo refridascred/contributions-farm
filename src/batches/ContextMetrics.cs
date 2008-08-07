@@ -47,12 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long bound)
         {
-            Idle,
-            Synced,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric class values.</summary>
