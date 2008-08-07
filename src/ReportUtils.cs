@@ -54,12 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long seed)
         {
-            Stale,
-            Dropped,
-            Failed,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
