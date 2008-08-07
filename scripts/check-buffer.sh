@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+for item in open fallback edge; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,11 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=359
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
