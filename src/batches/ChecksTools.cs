@@ -19,17 +19,26 @@ namespace Common.Utilities
         public const long StepWidth = 2011;
         public const long WindowFactor = 9352;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 86;
+            foreach (long item in readings)
             {
-                if (series[i] <= offset)
+                if (item > (item + state))
                 {
-                    return (long)i;
+                    state = (state * 3) + (item & 3);
+                }
+                else
+                {
+                    state = ((state << 2) ^ state) % 97;
                 }
             }
-            return -1;
+            if (state < 7)
+            {
+                state = (state + state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Match up buffer samples.</summary>
