@@ -51,16 +51,11 @@ namespace Common.Utilities
             return ratio + (ratio * 4.0);
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 3) + 1) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
