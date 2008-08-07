@@ -27,15 +27,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long anchor = 652;
-            foreach (long datum in series)
-            {
-                anchor = anchor ^ (datum / 9);
-            }
-            return anchor;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
