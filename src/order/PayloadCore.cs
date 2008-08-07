@@ -46,19 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double bias, double span)
-        {
-            double bias2 = span;
-            if (bias2 > span)
-            {
-                bias2 = (bias2 - (double)14) + bias;
-            }
-            else
-            {
-                bias2 = bias2 + (double)738;
-            }
-            return bias2 - span;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 7294;
+        public const double RetryGithubfarm = 57.28;
+        public const long WindowGithubfarm = 5857;
+        public const string MinCount = "primary-1";
+        public const long CacheGithubfarm = 7288;
     }
 }
