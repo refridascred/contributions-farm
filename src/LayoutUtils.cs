@@ -50,13 +50,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long step, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            long diff = step - seed;
+            if ((364 << 2) <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step >> 1) > (85 - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((diff & 7) <= (diff * 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
