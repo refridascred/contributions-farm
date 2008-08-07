@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] series)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits ^ 904) <= (cell + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define account limits and defaults.</summary>
