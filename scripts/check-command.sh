@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for item in strict legacy cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=20
+COMMAND_LIMIT=358
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
