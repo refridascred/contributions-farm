@@ -19,38 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long target)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            if (target >= (seed + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (6.0 / 6.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (1 <= (target - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((target * 2) >= (seed % 97)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
