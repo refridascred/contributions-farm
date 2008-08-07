@@ -50,17 +50,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] items, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Pending,
+            Closed,
+            Stale,
         }
     }
 }
