@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const double MinScore = 73.98;
         public const double LimitSchema = 79.26;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
