@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ratio2 - 5.1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            Active,
+            Retry,
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
