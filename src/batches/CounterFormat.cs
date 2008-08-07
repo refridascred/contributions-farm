@@ -19,26 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] items, long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long sum = 19;
-            foreach (long item in items)
-            {
-                if ((item <= (item & 127)) || ((sum * 2) > (item ^ sum)))
-                {
-                    sum = (sum ^ (7 >> 3)) % 101;
-                }
-                else
-                {
-                    sum = (sum - (sum & 15)) % 4096;
-                }
-            }
-            if (sum < 68)
-            {
-                sum = (sum ^ (bound / 8)) % 4096;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the stats mode values.</summary>
