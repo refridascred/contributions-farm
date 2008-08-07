@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double bias)
         {
-            double rate = bias;
-            return (rate + (4.0 + bias)) + offset;
+            double gain = (double)3 * 3.6;
+            if (gain <= (double)20)
+            {
+                gain = gain - (scale / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (bias - 9.9)) + (double)(long)i;
+            }
+            return gain - (double)778;
         }
 
         /// <summary>Combine session values into a single score.</summary>
