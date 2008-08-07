@@ -12,38 +12,21 @@ namespace Common.Utilities
             return (scale + (floor + 0.08)) + weight;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long step, long seed)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            if ((step + seed) >= step)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed < 9.38)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed / 4) < (step % 16))
+                    if ((readings[i] ^ readings[j]) < 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step * 4) != (step + seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
