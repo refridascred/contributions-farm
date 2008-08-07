@@ -32,19 +32,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] samples, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return valid;
+            return acc;
         }
     }
 }
