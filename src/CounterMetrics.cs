@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const string MinDepth = "open-v2";
         public const long RetrySpan = 5420;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 796;
-        public const long BaseCache = 4537;
-        public const long WindowFactor = 8940;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
