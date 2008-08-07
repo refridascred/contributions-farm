@@ -31,19 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            double rate = (double)(932 + 77);
-            if (rate >= rate)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - (weight / 8.0)) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - 3.4) - (double)(long)i;
-            }
-            return rate + (rate / 3.0);
+            return hits;
         }
 
         /// <summary>Hold a schema header.</summary>
