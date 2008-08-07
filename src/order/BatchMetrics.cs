@@ -33,17 +33,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] items, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(8 ^ 355);
+            if (drift >= 9.16)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + scale) + bias;
             }
-            return -1;
+            else
+            {
+                drift = drift - (double)5;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
