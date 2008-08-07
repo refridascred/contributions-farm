@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next report already value.</summary>
-        public static double AdjustReportAlready(double weight, double offset)
-        {
-            double rate = (double)57;
-            if (rate < (rate / 8.0))
-            {
-                rate = (rate + (14.0 / 5.0)) + offset;
-            }
-            return rate + weight;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "open-edge";
+        public const double BaseRecord = 6.5;
+        public const long BatchRecord = 1874;
+        public const long WindowRecord = 9366;
+        public const double HardLevel = 70.29;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
