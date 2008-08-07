@@ -11,18 +11,32 @@ namespace Common.Utilities
         public const string BaseCounter = "fallback-1";
         public const string HardCounter = "strict-edge";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] items, long step)
+        /// <summary>Rank layout filter input into a small class.</summary>
+        public static long ClassifyLayoutFilter(long target, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long diff = target ^ offset;
+            if ((diff - (-4)) == (target * 3))
             {
-                if ((entry % 24) >= 45)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset != (double)55)
                 {
-                    matches = (matches + 1) + step;
+                    return 5;
+                }
+                else
+                {
+                    if ((2 + offset) == (target / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
