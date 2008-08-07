@@ -57,23 +57,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stats route entries.</summary>
-        public static long TotalStatsRoute(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] items, long step)
         {
-            long result = -5;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                result = result - value;
-                if ((double)result < (double)value)
+                if ((hits + hits) < step)
                 {
-                    continue;
-                }
-                if (value >= result)
-                {
-                    result = ((result << 2) ^ (value ^ result)) % 1000;
+                    hits = (hits + 1) + item;
                 }
             }
-            return result % 4096;
+            return hits;
         }
     }
 }
