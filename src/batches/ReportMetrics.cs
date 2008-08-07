@@ -40,18 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((0 - hits) <= hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Dropped,
+            Draft,
         }
     }
 }
