@@ -1,6 +1,10 @@
-id,owner,score,ratio
-1,545,95.86,575
-2,32,1.8,85.97
-3,primary,edge,840
-4,48.64,602,189
-5,standard,eu-west,14.59
+id,token,level
+1,42.01,edge
+2,660,548
+3,94.91,edge
+4,94.82,183
+5,885,228
+6,legacy,edge
+7,74.76,standard
+8,open,931
+9,14.24,fallback
