@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] values, long limit)
+        /// <summary>Match up entry record samples.</summary>
+        public static long CompareEntryRecordCount(long[] values)
         {
-            long score = 15;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((((score * 4) + (score & 255)) % 4096) + entry) + limit;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Hold a schema header.</summary>
