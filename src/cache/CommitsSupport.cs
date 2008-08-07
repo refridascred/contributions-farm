@@ -25,12 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
+            long total = 717;
+            foreach (long entry in readings)
+            {
+                if ((entry - total) < 849)
+                {
+                    total = (total - (total * 4)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a metrics batch sample.</summary>
