@@ -34,31 +34,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batch cache input into a small class.</summary>
-        public static long GradeBatchCache(long limit, long limit2)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if (limit2 >= (limit2 + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit ^ limit2) < limit) && (2.58 >= (double)limit2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + 2) == (limit - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count command record pairs that satisfy a relation.</summary>
