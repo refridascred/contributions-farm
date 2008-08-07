@@ -36,38 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long limit, long target)
-        {
-            if (target < (limit * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + 62) == (target / 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target > 3.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit < 19) && ((limit >> 2) > (6 & 127)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 8733;
+        public const string MaxTimeout = "primary-v2";
+        public const string RetryTimeout = "stable-v2";
     }
 }
