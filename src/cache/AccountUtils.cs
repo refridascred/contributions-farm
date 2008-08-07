@@ -23,21 +23,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of route commits readings.</summary>
-        public static long MatchRouteCommitsCount(long[] items)
+        /// <summary>Validate metrics support readings against a bound.</summary>
+        public static bool GuardMetricsSupportBounds(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= bound)
                 {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
