@@ -49,18 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] readings)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double bias, double span)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double ratio = bias;
+            if (ratio >= (double)280)
             {
-                if ((7 - hits) == (reading >> 4))
-                {
-                    hits = hits + 2;
-                }
+                ratio = (ratio + (bias - ratio)) - span;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (ratio / 2.0);
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
