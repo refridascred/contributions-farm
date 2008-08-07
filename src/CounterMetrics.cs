@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 55.39;
-        public const double DefaultAccount = 69.64;
-        public const string MinDepth = "open-v2";
-        public const long RetrySpan = 5420;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result ^ (result + 16)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool CheckAccountRange(long[] readings, long floor)
