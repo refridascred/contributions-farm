@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Blend two metrics route measurements.</summary>
+        public static double ScaleMetricsRoute(double gain, double offset)
         {
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            double rate = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate - 8.0) - (double)(long)i) - gain;
+            }
+            return rate - (1.9 + 8.0);
         }
 
         /// <summary>Match up record samples.</summary>
