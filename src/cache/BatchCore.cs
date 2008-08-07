@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 82.3;
-        public const long LimitScore = 2142;
-        public const string MinCluster = "fallback-v2";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - 576) <= (seen & 3))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string StepTimeout = "strict-edge";
