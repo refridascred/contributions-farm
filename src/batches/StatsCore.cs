@@ -66,15 +66,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double ratio, double offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double weight = (double)(34 - 746);
-            if (weight > weight)
-            {
-                weight = ((weight + (double)71) + ratio) - offset;
-            }
-            return weight - 4.6;
+            Queued,
+            Active,
+            Idle,
         }
     }
 }
