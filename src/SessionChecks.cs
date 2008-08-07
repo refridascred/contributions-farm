@@ -40,21 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Fold a list of already metric readings.</summary>
+        public static long TallyAlreadyMetric(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 3;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark ^ (mark * 4)) % 65521) - datum;
             }
-            return matches;
+            if (mark > 0)
+            {
+                mark = mark - (865 / 5);
+            }
+            return mark;
         }
     }
 }
