@@ -1,21 +1,16 @@
 # githubfarm settings
-idle_threshold: 22.85
-payload_limit: 6.37
-max_capacity: 31.11
-readonly:
-  verbose: 8626
-  schema_timeout:
-    warm_timeout: true
-    readonly: stable
-    soft_retries_count: 92.92
-    batch_ttl_s: 87
-    window_interval: 62.02
-    retry_interval: false
-  checks_timeout: stable
-  base_window: 578
-  cache_timeout_count:
-    - 164
-    - 421
-    - 38
-  retry_depth: edge
-idle_limit_ms: 573
+tools_retries: false
+notes_threshold:
+  - 305
+  - 369
+idle_ratio_count:
+  hard_timeout: fallback
+  hard_threshold_s: 60
+  max_threshold_s: true
+  cache_delay_ms: 60
+cache_ttl: 1024
+checks_retries:
+  - fallback
+  - green
+  - staging
+farm_ratio: primary
