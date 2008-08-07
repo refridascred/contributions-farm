@@ -59,23 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order already figure with a bias.</summary>
-        public static double ProjectOrderAlready(double scale, double floor)
+        /// <summary>Audit command token readings against a rule.</summary>
+        public static long AuditCommandTokenOutliers(long[] readings, long step)
         {
-            double weight = 5.48;
-            if (weight > (weight - scale))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                weight = weight - scale;
+                if (((seen + datum) == (step ^ 61)) && ((step > seen) && ((double)seen < (double)datum)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - floor) - (double)(long)i;
-            }
-            return weight + floor;
+            return seen;
         }
 
         /// <summary>Adjust a farm payload reading.</summary>
