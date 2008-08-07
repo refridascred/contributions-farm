@@ -47,11 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long step, long step2)
         {
-            double bias = floor;
-            return (bias - bias) + rate;
+            long gap = step ^ step2;
+            if ((step2 >> 1) <= gap)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap & 255) != (9 - gap))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
