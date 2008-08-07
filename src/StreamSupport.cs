@@ -33,18 +33,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit queue farm readings against a rule.</summary>
-        public static long MeasureQueueFarmOutliers(long[] levels, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((value / 4) >= (matches >> 5))
+                if (tally <= cell)
                 {
-                    matches = (matches + 1) + floor;
+                    tally = (tally + 1) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
