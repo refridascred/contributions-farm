@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long offset)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long result = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i - offset) >= result)
+                {
+                    result = ((result << 3) ^ result) % 101;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
