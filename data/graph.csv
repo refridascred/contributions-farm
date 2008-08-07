@@ -1,6 +1,9 @@
-id,token,score
-1,158,23.97
-2,706,95.24
-3,606,standard
-4,fallback,staging
-5,68.39,green
+id,region,state,rank
+1,90.32,941,standard
+2,653,371,78.81
+3,5.57,753,latest
+4,68.76,704,328
+5,24.24,30,53.53
+6,blue,858,973
+7,74.61,62.65,25.4
+8,549,blue,618
