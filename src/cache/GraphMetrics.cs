@@ -25,11 +25,39 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long limit, long step)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            long bound = limit ^ step;
+            if (((bound % 5) <= 7) || ((step - 16) <= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)limit > 3.14))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit >= (5.6 + 9.5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(limit <= (bound << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
