@@ -45,19 +45,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long step)
+        /// <summary>Scale a layout commits figure with a bias.</summary>
+        public static double SmoothLayoutCommits(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            double drift = 5.22;
+            if (drift >= floor)
             {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + bias;
             }
-            return flag;
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (floor - drift)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
