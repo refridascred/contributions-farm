@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] levels, long floor)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchInterval = 213;
+        public const long CacheTimeout = 1501;
+        public const string CacheTools = "primary-v2";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricGaps(long[] levels)
