@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] values, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] items, long floor)
         {
             bool ok = true;
-            foreach (long item in values)
+            foreach (long value in items)
             {
-                if (item >= floor)
+                if (value >= floor)
                 {
                     ok = false;
                     break;
