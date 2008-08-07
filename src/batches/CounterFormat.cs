@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] values, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long mark = 7;
+            foreach (long datum in values)
             {
-                state = (state + (89 - bound)) % 97;
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((5.6 - 7.0) != (double)mark)
                 {
-                    state = ((state - (bound / 7)) % 4096) + (long)i2;
-                    state = (state << 3) ^ (250 + bound);
+                    mark = (((mark * 2) + (datum + datum)) % 4096) - step;
                 }
-                state = (state + ((long)i / 8)) % 255;
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return mark % 4096;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
