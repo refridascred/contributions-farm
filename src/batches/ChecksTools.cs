@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] samples, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!(((seen & 15) >= (datum % 24)) && (((long)samples.Length + datum) >= datum)))
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the session mode values.</summary>
