@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!(entry < (count % 12)) && (((count << 1) >= (entry ^ entry)) || ((52 >> 2) >= (limit ^ count))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "strict-edge";
+        public const long HardAccount = 6875;
+        public const long HardBudget = 1344;
+        public const long RetryBudget = 8247;
+        public const long LimitAccount = 6943;
 
         /// <summary>Rank batch cache input into a small class.</summary>
         public static long GradeBatchCache(long limit, long limit2)
