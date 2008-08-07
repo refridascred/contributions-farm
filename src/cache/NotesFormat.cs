@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] readings)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long sum = 583;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry & 127) < (sum * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum << 2) ^ entry) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 65521;
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
