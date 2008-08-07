@@ -17,19 +17,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] readings, long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            New,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the graph kind values.</summary>
