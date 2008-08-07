@@ -1,5 +1,13 @@
 {
-  "audit": 80.19,
-  "warm_size": 8104,
-  "batch_interval_count": 62
+  "min_window_count": "blue",
+  "already_timeout": {
+    "burst_timeout_count": true,
+    "audit": 83.31,
+    "graph_ttl": 86.26,
+    "default_interval_pct": ["stable", "latest", "primary"],
+    "soft_delay_s": "cached",
+    "verbose": 34
+  },
+  "idle_depth": ["cached", "fallback", "local"],
+  "hard_ratio_pct": "staging"
 }
