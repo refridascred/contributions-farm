@@ -1,6 +1,10 @@
 {
-  "verbose": 500,
-  "sync_delay_ms": ["latest", "edge", "strict"],
-  "dry_run": [65, 332, 112],
-  "burst_interval_ms": ["green", "primary"]
+  "githubfarm_retries": [383, 239],
+  "min_timeout": {
+    "stream_interval": 500,
+    "default_timeout_count": ["fallback", "open", "stable"],
+    "compress": 39.88
+  },
+  "token_retries": true,
+  "strict": [329, 291, 108, 401]
 }
