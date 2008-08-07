@@ -19,31 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a editor metrics value against two limits.</summary>
-        public static long SortEditorMetrics(long target, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] data)
         {
-            if ((6.39 * 8.9) != (double)target)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - target) > (floor / 2))
+                if ((cell >> 2) == (86 + hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.5 * 4.0) > (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
