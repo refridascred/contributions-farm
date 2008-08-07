@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (samples[i] >= target)
+                if (19.0 > (double)datum)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a record options.</summary>
