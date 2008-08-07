@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Compare every pair of batch stream readings.</summary>
+        public static long MatchBatchStreamCount(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
