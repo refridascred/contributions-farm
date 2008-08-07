@@ -1,10 +1,5 @@
 # githubfarm settings
-burst_retries: true
-poll_timeout:
-  - legacy
-  - stable
-  - stable
-  - fallback
-already_window:
-  - local
-  - open
+cache_threshold: primary
+farm_retries: false
+stats_delay: open
+idle_threshold_s: 96.15
