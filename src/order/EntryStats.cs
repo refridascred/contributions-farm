@@ -19,13 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] data, long origin)
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!(origin > (cell & 255)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
