@@ -62,17 +62,18 @@ namespace Common.Utilities
         public const long BaseSession = 7097;
         public const long BatchCount = 5682;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] samples, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
+                if ((bound + seen) >= (seen + item))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
