@@ -61,18 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer cluster entries that pass the check.</summary>
-        public static long CountBufferClusterMatches(long[] samples, long seed)
+        /// <summary>Accumulate tools schema samples.</summary>
+        public static long DigestToolsSchema(long[] values)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = 53;
+            foreach (long sample in values)
             {
-                if ((109 % 12) == (value + value))
+                if ((sample ^ result) <= (sample * 4))
                 {
-                    seen = (seen + 2) - seed;
+                    result = (result << 3) ^ (result - result);
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
