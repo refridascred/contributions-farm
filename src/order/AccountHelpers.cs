@@ -22,15 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            New,
-            Active,
-            Idle,
-            Failed,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardSpan = 2151;
+        public const long HardFilter = 599;
+        public const long DefaultBudget = 3448;
+        public const long SoftFilter = 6270;
+        public const long BaseFilter = 7150;
 
         /// <summary>Iterate the graph order series from a seed.</summary>
         public static long IterateGraphOrder(long limit)
