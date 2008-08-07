@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate graph contributi readings against a bound.</summary>
-        public static bool VerifyGraphContributiBounds(long[] samples, long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
