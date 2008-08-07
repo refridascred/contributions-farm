@@ -40,12 +40,22 @@ namespace Common.Utilities
         public const string CacheLevel = "strict-v2";
         public const long MaxContext = 4943;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine already entry values into a single score.</summary>
+        public static long FoldAlreadyEntry(long[] series, long limit)
         {
-            Pending,
-            Paused,
-            Idle,
+            long result = 4;
+            foreach (long entry in series)
+            {
+                if ((result <= 33) && ((entry % 60) >= limit))
+                {
+                    result = (result << 2) ^ (entry - limit);
+                }
+                if (((limit + limit) != (entry + limit)) && (result >= (limit * 2)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
