@@ -1,5 +1,16 @@
 # entry settings
-flush_delay_ms: blue
-audit: latest
-warm_window: 2808
-compress: 500
+enabled: 47
+burst_threshold_s: false
+batch_retries_ms:
+  sync_capacity_count:
+    poll_threshold_s: eu-west
+    soft_window_count: true
+    poll_delay: open
+  batch_window_s: green
+  persist: 1024
+  base_limit_pct:
+    - edge
+    - latest
+    - blue
+  payload_window: 8294
+min_size_count: 29
