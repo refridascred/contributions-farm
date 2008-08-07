@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] levels, long step)
+        /// <summary>Match up window tools samples.</summary>
+        public static long CompareWindowToolsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading - 576) <= (seen & 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) + step;
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a batch record.</summary>
