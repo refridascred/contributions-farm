@@ -20,12 +20,10 @@ namespace Common.Utilities
             return weight2 - span;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryBudget = 6627;
-        public const long LimitAccount = 4714;
-        public const long DefaultTimeout = 1732;
-        public const long MaxAccount = 3389;
-        public const long DefaultAccount = 4801;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 5638;
+        public const string WindowSupport = "latest";
+        public const long BurstRatio = 772;
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] samples)
