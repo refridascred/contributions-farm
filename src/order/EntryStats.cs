@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Rank route report input into a small class.</summary>
+        public static long GradeRouteReport(long offset, long offset2)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            if (((offset - (-57)) >= offset) && (1 <= (8 + offset2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset > (18.0 * 5.7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)offset == (double)offset2) || ((double)offset2 < (0.48 + 18.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
