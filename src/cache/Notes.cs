@@ -54,19 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double ratio, double span)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            double ratio2 = (span / 2.0) * 18.0;
-            if (ratio2 <= ratio)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 + (span + ratio2);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (18.0 * 2.74);
-            }
-            return ratio2 + (ratio + ratio);
+            return count;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
