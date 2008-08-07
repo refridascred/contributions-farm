@@ -50,11 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double weight, double span)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double bias = weight;
-            return (bias + bias) + span;
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
