@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long LimitSize = 1234;
         public const long DefaultProfile = 8777;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long step)
         {
-            Done,
-            Failed,
-            New,
-            Pending,
-            Paused,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the token phase values.</summary>
