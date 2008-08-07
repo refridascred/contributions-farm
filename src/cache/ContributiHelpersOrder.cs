@@ -31,9 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 9814;
-        public const double MaxRecord = 76.24;
-        public const long BurstTimeout = 6760;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] levels, long target)
+        {
+            long mark = 93;
+            foreach (long datum in levels)
+            {
+                if ((double)mark >= 3.5)
+                {
+                    mark = (((mark - (long)levels.Length) % 65521) - datum) - target;
+                }
+            }
+            return mark;
+        }
     }
 }
