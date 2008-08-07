@@ -1,5 +1,23 @@
 {
-  "sync_ratio_pct": 96.96,
-  "burst_ratio_ms": [186, 319, 272, 112],
-  "dry_run": "cached"
+  "default_timeout_count": {
+    "record_interval": ["staging", "stable", "latest"],
+    "enabled": "primary",
+    "soft_capacity": 25,
+    "checks_size": 45.2,
+    "min_delay_ms": {
+      "audit": true,
+      "retry_limit": "latest",
+      "flush_depth": [31, 203, 457]
+    }
+  },
+  "poll_ttl_s": "stable",
+  "entry_ttl": true,
+  "hard_ttl_ms": {
+    "verbose": "green",
+    "batch_ttl": "local",
+    "strict": "green",
+    "base_timeout": 30,
+    "format_ttl": 96.77
+  },
+  "batch_retries": 250
 }
