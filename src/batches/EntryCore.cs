@@ -73,19 +73,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] levels, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long anchor = 117;
+            foreach (long datum in levels)
             {
-                if (!((result + step) < ((long)i & 255)))
-                {
-                    result = (result ^ (long)i) % 255;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                anchor = (anchor ^ (long)levels.Length) ^ datum;
+                anchor = anchor + (anchor - offset);
             }
-            return result;
+            return anchor;
         }
     }
 }
