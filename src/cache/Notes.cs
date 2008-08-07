@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long total = 9;
-            foreach (long sample in data)
+            long carry = 7;
+            foreach (long sample in values)
             {
-                if ((total + limit) > (768 % 12))
-                {
-                    break;
-                }
-                total = ((total << 2) ^ (total - total)) % 97;
-                if ((double)limit <= 4.1)
-                {
-                    total = total - sample;
-                }
-                else
-                {
-                    total = (total ^ (total + sample)) % 97;
-                }
+                carry = (carry ^ (carry % 60)) % 1000;
+                carry = ((carry * 4) + (sample % 100)) % 4096;
             }
-            if (total < 55)
-            {
-                total = ((total << 3) ^ (627 & 255)) % 65521;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Rank githubfarm batches input into a small class.</summary>
