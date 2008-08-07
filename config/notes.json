@@ -1,6 +1,5 @@
 {
-  "payload_threshold": 2,
-  "route_capacity": "staging",
-  "min_threshold_s": false,
-  "flush_interval_ms": 90.01
+  "profile_retries": [449, 274],
+  "flush_timeout": false,
+  "hard_ttl": 28.57
 }
