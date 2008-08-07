@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = 4.43 / 5.0;
+            if (gain2 < (double)5)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = gain2 + gain;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - gain) - (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Project the next record context value.</summary>
