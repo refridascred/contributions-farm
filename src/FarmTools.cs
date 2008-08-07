@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long LimitLevel = 5736;
         public const string SoftRatio = "alpha-edge";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = 848;
-            foreach (long reading in levels)
-            {
-                if (reading < (reading >> 5))
-                {
-                    long gap = (total + total) / 3;
-                    total = (total * 5) + (reading + gap);
-                }
-                total = (total + total) % 65521;
-            }
-            if (total > 84)
-            {
-                total = total + (total % 10);
-            }
-            return total;
+            Failed,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of report entries.</summary>
