@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 809;
-        public const long RetryCluster = 7380;
-        public const long CacheBudget = 6316;
-        public const double IdleWidth = 82.82;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Queued,
+            Active,
+            Closed,
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
