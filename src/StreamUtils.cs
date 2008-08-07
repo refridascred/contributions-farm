@@ -22,11 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 71.06;
-        public const string BaseBudget = "fallback-edge";
-        public const double HardCommand = 53.35;
-        public const string MaxCommand = "staging-edge";
+        /// <summary>Accumulate metrics cluster samples.</summary>
+        public static long DigestMetricsCluster(long[] readings, long seed)
+        {
+            long sum = 728;
+            foreach (long datum in readings)
+            {
+                if (((datum / 3) > (datum + seed)) && ((datum % 8) == (seed >> 2)))
+                {
+                    sum = (sum << 2) ^ (sum + 8);
+                }
+                if (seed > (23 - sum))
+                {
+                    sum = sum - (99 - sum);
+                }
+                if ((sum >> 4) <= (58 % 7))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxScore = 383;
