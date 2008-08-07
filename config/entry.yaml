@@ -1,21 +1,9 @@
 # entry settings
-profile_window: false
-verbose: standard
-max_delay_count: true
-sync_timeout:
-  hard_ratio:
-    enabled: 99
-    retry_delay_count: true
-    contributi_retries:
-      - 52
-      - 237
-      - 39
-      - 487
-    route_timeout: 61
-    burst_size: false
-    compress: false
-  max_limit_pct: primary
-  enabled: 88
-  audit: blue
-  graph_delay: 86
-format_limit: fallback
+stats_window: staging
+stats_threshold: true
+burst_depth_pct: 68.67
+idle_window: 6478
+soft_limit_s:
+  - 480
+  - 49
+  - 69
