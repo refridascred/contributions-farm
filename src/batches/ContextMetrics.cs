@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of cluster graph entries.</summary>
-        public static long TotalClusterGraph(long[] samples)
+        /// <summary>Check that every stats cache entry stays within the limit.</summary>
+        public static bool CheckStatsCacheRange(long[] levels, long limit)
         {
-            long anchor = 17;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 5; i++)
+                if (datum >= limit)
                 {
-                    anchor = ((anchor << 2) ^ ((long)i >> 4)) % 65521;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (value * 5)) % 101;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
