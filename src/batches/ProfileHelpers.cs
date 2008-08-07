@@ -58,21 +58,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up batches stats samples.</summary>
-        public static long PairBatchesStatsCount(long[] levels)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
                 {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
