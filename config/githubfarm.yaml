@@ -1,7 +1,5 @@
 # githubfarm settings
-buffer_ttl: false
-audit: latest
-batch_interval:
-  - 125
-  - 150
-burst_depth: fallback
+poll_delay: standard
+retry_depth_pct: 78.68
+verbose: stable
+readonly: 73
