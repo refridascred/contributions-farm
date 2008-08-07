@@ -63,11 +63,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 503;
-        public const double RetryScore = 76.3;
-        public const double BatchDepth = 46.59;
-        public const string RetryWidth = "cached";
-        public const long DefaultCount = 6706;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
