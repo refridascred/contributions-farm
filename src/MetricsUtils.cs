@@ -24,31 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long target, long bound)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if ((bound + bound) <= (target - target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - target) <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) > (target / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Roll a account counter forward.</summary>
