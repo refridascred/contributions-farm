@@ -1,6 +1,15 @@
 {
-  "batch_window_count": [183, 65, 146],
-  "readonly": true,
-  "retry_ratio": 60,
-  "idle_retries_count": 30
+  "sync_depth_s": {
+    "batch_threshold_count": ["stable", "edge", "primary"],
+    "idle_ttl_count": {
+      "context_retries": ["blue", "primary", "blue", "stable"],
+      "strict": 9,
+      "flush_delay": "eu-west",
+      "cluster_ratio": 1401
+    },
+    "retry_delay_ms": false
+  },
+  "payload_window": 3.59,
+  "strict": "strict",
+  "min_interval": "green"
 }
