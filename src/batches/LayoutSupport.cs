@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSpan = 5730;
+        public const long DefaultContext = 7802;
+        public const string WindowRatio = "open-v2";
+        public const string CacheLevel = "strict-v2";
+        public const long MaxContext = 4943;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
