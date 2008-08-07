@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Paused,
-            Active,
-            Stale,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstCount = "stable-v2";
+        public const long BurstSpan = 422;
+        public const double HardInterval = 65.94;
+        public const long BurstSession = 6249;
+        public const long BurstInterval = 4240;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
