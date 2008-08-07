@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > bound)
+                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
