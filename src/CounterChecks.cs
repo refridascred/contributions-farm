@@ -19,27 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] levels, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            long state = 804;
-            foreach (long value in levels)
+            long carry = 795;
+            foreach (long sample in data)
             {
-                state = (state + (state - (-8))) % 255;
-                if ((value >> 3) > (23 + state))
+                if (((carry % 8) < (carry + sample)) && ((carry % 100) < carry))
                 {
-                    state = state - (113 ^ state);
-                }
-                if ((3 + (long)levels.Length) < (limit + state))
-                {
-                    break;
+                    carry = carry ^ (sample >> 4);
                 }
             }
-            if (state > 8)
+            if (carry > 29)
             {
-                state = (state + (limit - 143)) % 65521;
+                carry = ((carry << 3) ^ (carry + carry)) % 101;
             }
-            return state % 1000;
+            return carry;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
