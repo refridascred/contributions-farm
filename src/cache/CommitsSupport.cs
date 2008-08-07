@@ -63,15 +63,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
