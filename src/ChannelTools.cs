@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long target, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long offset)
         {
-            long lane = target ^ limit;
-            if ((double)limit == (8.02 / 8.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit * 2) != (lane + lane))
+                if (items[i] > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)limit > (double)lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target * 4) < (limit + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
