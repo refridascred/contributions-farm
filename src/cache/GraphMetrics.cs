@@ -32,25 +32,21 @@ namespace Common.Utilities
         public const long BurstLevel = 6718;
         public const string BurstInterval = "stable-v2";
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
-            long next = origin ^ bound;
-            if (next > (next << 3))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound >> 1) < 44)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the token state values.</summary>
