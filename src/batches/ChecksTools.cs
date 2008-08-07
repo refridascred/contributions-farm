@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items)
         {
-            Idle,
-            Synced,
-            Failed,
+            long carry = 0;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry + (carry + entry)) % 65521) + (long)i;
+                }
+                if ((double)carry < (double)entry)
+                {
+                    carry = (carry + (entry << 2)) % 4096;
+                }
+            }
+            if (carry < (-295))
+            {
+                carry = (carry - carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
