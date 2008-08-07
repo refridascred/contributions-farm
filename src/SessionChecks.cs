@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every checks entry entry stays within the limit.</summary>
-        public static bool GuardChecksEntryBounds(long[] values, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
