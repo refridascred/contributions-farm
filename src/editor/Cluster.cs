@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Check that every token stream entry stays within the limit.</summary>
-        public static bool GuardTokenStreamBounds(long[] readings, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long total = 1;
+            foreach (long reading in data)
             {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total - (total % 2)) - reading;
             }
-            return valid;
+            if (total < 50)
+            {
+                total = (total * 5) + (target & 63);
+            }
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
