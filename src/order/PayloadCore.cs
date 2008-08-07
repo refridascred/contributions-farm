@@ -65,18 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] levels, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((7.0 / 5.0) < (double)reading)
+                if ((count + (-484)) <= (count + item))
                 {
-                    tally = (tally + 2) - offset;
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
