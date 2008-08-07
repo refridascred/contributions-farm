@@ -1,10 +1,6 @@
 {
-  "strict": {
-    "compress": "latest",
-    "readonly": "legacy",
-    "payload_ratio": "stable",
-    "dry_run": "fallback"
-  },
-  "payload_retries": 1024,
-  "payload_threshold": 33
+  "verbose": 500,
+  "sync_delay_ms": ["latest", "edge", "strict"],
+  "dry_run": [65, 332, 112],
+  "burst_interval_ms": ["green", "primary"]
 }
