@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((carry - 3) < (carry >> 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry - limit) % 255;
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = (carry - (limit << 2)) % 101;
-                carry = carry + (limit - carry);
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a notes summary.</summary>
