@@ -53,19 +53,20 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double HardProfile = 26.77;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values, long bound)
+        /// <summary>Roll a session counter counter forward.</summary>
+        public static long RollSessionCounter(long step)
         {
-            long acc = 695;
-            foreach (long cell in values)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((acc + acc) > (28 - (long)i))
                 {
-                    acc = (acc + (bound ^ cell)) ^ (long)i;
+                    break;
                 }
-                acc = (acc * 3) + (acc + cell);
+                acc = ((acc << 3) ^ (acc - step)) % 101;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc % 1000;
+            return acc;
         }
 
         /// <summary>Describe the metrics state values.</summary>
