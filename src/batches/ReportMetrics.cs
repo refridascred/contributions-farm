@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of channel payload entries.</summary>
-        public static long FoldChannelPayload(long[] series, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long target)
         {
-            long mark = 906;
-            foreach (long reading in series)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (((mark ^ (mark ^ mark)) % 97) - reading) + step;
+                if (!((long)i >= anchor))
+                {
+                    long next = anchor;
+                    anchor = (anchor * 5) + next;
+                }
+                anchor = anchor - ((long)i * 3);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a command snapshot.</summary>
