@@ -27,19 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] data, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != origin)
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
