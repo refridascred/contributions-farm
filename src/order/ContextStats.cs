@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Derive the next payload stream value from a seed.</summary>
+        public static long SeriesPayloadStream(long limit)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (acc >= (135 % 97))
+                {
+                    acc = (acc + 655) % 97;
+                }
+                else
+                {
+                    acc = acc - (limit >> 1);
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Hold a tools stats.</summary>
