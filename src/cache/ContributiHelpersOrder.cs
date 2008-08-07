@@ -41,15 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long total = 117;
+            foreach (long reading in levels)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((double)total <= (4.0 / 6.0))
+                {
+                    total = (total + total) ^ reading;
+                }
             }
-            return mix;
+            return total;
         }
     }
 }
