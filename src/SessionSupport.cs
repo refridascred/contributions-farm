@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] data, long target)
+        /// <summary>Validate contributi stream readings against a bound.</summary>
+        public static bool GuardContributiStreamBounds(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (value != target)
+                if (sample > bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the layout status values.</summary>
