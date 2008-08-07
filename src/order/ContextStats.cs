@@ -29,12 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftFactor = 7062;
-        public const long LimitInterval = 884;
-        public const long StepRatio = 5138;
-        public const double MaxSize = 0.7;
-        public const long StepOrder = 7773;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Paused,
+            Failed,
+            Stale,
+            New,
+            Pending,
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double ProjectBatch(double bias, double bias2)
