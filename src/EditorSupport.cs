@@ -55,24 +55,17 @@ namespace Common.Utilities
             return weight - (weight - gain);
         }
 
-        /// <summary>Rank support layout input into a small class.</summary>
-        public static long BucketSupportLayout(long bound, long bound2)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long origin)
         {
-            if (bound > (bound - 0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound2) > (bound % 2))
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
