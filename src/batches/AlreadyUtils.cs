@@ -43,13 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Level { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
