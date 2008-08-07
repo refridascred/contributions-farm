@@ -1,6 +1,11 @@
 # githubfarm settings
-audit: 30
-sync_limit_ms:
+channel_ratio: blue
+soft_threshold_count: true
+githubfarm_threshold: 100
+persist: 6605
+hard_capacity_pct:
+  - blue
+  - legacy
   - strict
-  - staging
-cache_window_pct: strict
+  - primary
+strict: 12.58
