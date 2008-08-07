@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long floor, long floor2)
         {
-            long span = limit + seed;
-            if (((limit % 100) >= limit) && (span >= (span + seed)))
+            if (9.96 > (double)floor)
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((0 + span) == (27 - 975))
+                if (floor2 > (floor + floor2))
                 {
                     return 8;
                 }
                 else
                 {
-                    return 7;
+                    return 4;
                 }
             }
         }
