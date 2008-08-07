@@ -1,6 +1,19 @@
 {
-  "cache_depth_s": 54,
-  "default_ttl_ms": "green",
-  "counter_capacity": "latest",
-  "strict": false
+  "sync_threshold": 851,
+  "enabled": {
+    "cache_delay_ms": 60,
+    "strict": {
+      "base_limit_ms": 90.52,
+      "default_ratio_ms": 500,
+      "metric_size": "primary",
+      "sync_ratio": 99,
+      "order_limit": true
+    },
+    "burst_delay_ms": "blue",
+    "schema_timeout": 8920
+  },
+  "warm_delay_s": 2061,
+  "dry_run": "staging",
+  "warm_size_s": false,
+  "burst_window_pct": ["edge", "staging", "fallback", "legacy"]
 }
