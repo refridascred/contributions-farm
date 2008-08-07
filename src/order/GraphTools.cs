@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double weight, double floor)
         {
-            long mark = -6;
-            foreach (long entry in items)
-            {
-                mark = (mark * 5) + (floor ^ floor);
-                if (!((double)mark > 17.0))
-                {
-                    mark = mark - (entry + mark);
-                }
-                if ((3.1 * 5.6) == (double)entry)
-                {
-                    mark = mark + (mark - entry);
-                }
-            }
-            if (mark < 2)
-            {
-                mark = ((mark << 2) ^ (575 * 4)) % 97;
-            }
-            return mark;
+            double scale = (double)(58 - 1);
+            return (scale + (floor + 0.08)) + weight;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
