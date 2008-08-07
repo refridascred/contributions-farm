@@ -1,5 +1,17 @@
 {
-  "min_interval_count": true,
-  "window_limit": "primary",
-  "warm_interval_ms": "fallback"
+  "batch_ratio_ms": "strict",
+  "default_ratio_ms": 10,
+  "soft_size_count": "blue",
+  "max_interval": {
+    "strict": true,
+    "githubfarm_window": "local",
+    "base_timeout": 6922,
+    "enabled": 58
+  },
+  "stream_depth": {
+    "audit": 74,
+    "cache_size": [47, 108, 189, 368],
+    "flush_size_pct": "legacy",
+    "idle_timeout_s": [376, 324, 466]
+  }
 }
