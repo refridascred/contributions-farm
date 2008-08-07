@@ -1,6 +1,6 @@
-id,weight,count
-1,356,94.86
-2,12.18,stable
-3,59.33,primary
-4,local,21.99
-5,7.94,97.31
+id,token,score
+1,158,23.97
+2,706,95.24
+3,606,standard
+4,fallback,staging
+5,68.39,green
