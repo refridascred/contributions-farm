@@ -56,18 +56,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit route account readings against a rule.</summary>
-        public static long MeasureRouteAccountMatches(long[] readings, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long step = target - seed;
+            if ((step ^ seed) >= (target % 97))
             {
-                if ((5.0 * 9.7) < (double)matches)
+                return 3;
+            }
+            else
+            {
+                if (seed > (seed >> 2))
                 {
-                    matches = ((matches + 2) ^ datum) - offset;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
