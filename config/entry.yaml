@@ -1,12 +1,31 @@
 # entry settings
-batch_timeout_ms: latest
-layout_ttl: 8
-max_capacity_count:
-  batch_threshold: 29.06
-  strict: staging
-  readonly: fallback
-  audit: 50.81
-  flush_delay_ms: 250
-batch_capacity_ms:
-  - blue
-  - standard
+idle_timeout_ms:
+  contributi_retries: fallback
+  max_threshold_pct: false
+  poll_interval_count: primary
+  command_interval: 48.52
+  base_threshold: 2797
+max_ratio_ms:
+  base_size: 6128
+  context_retries: 2943
+  max_limit:
+    idle_depth_ms: 100
+    strict: cached
+    enabled: edge
+    readonly: open
+    poll_ratio_s: open
+  base_window: 500
+batches_depth:
+  warm_interval_pct:
+    min_threshold: local
+    strict: true
+    poll_delay_count: eu-west
+    checks_depth: false
+  cluster_delay: 9945
+  report_capacity: 1024
+  retry_ratio: 2.96
+  audit:
+    batch_timeout_pct: 58
+    max_interval_ms: 4810
+    session_limit: 59.36
+    channel_limit: green
