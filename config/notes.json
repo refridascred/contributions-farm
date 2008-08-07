@@ -1,5 +1,28 @@
 {
-  "profile_retries": [449, 274],
-  "flush_timeout": false,
-  "hard_ttl": 28.57
+  "checks_window": {
+    "sync_depth": {
+      "max_timeout_ms": ["eu-west", "edge"],
+      "account_capacity": 98.99,
+      "commits_window": 6.93
+    },
+    "strict": 8988,
+    "flush_interval": ["local", "standard", "staging"],
+    "metrics_ratio": 57
+  },
+  "dry_run": {
+    "dry_run": "green",
+    "soft_capacity": 75,
+    "already_retries": 44,
+    "sync_timeout": ["fallback", "eu-west"],
+    "flush_size_s": {
+      "base_interval_count": 7315,
+      "max_limit": "open",
+      "report_ttl": 13,
+      "burst_window_s": "open",
+      "audit": "strict",
+      "warm_ratio": "blue"
+    }
+  },
+  "counter_interval": [324, 489, 394],
+  "persist": false
 }
