@@ -1,20 +1,5 @@
 {
-  "idle_limit_pct": {
-    "retry_size": "local",
-    "default_depth_count": {
-      "strict": false,
-      "filter_threshold": 79.92,
-      "idle_delay": 33,
-      "dry_run": 47.19,
-      "cache_capacity_ms": 50,
-      "cache_capacity": 7.0
-    },
-    "batch_depth_ms": 335,
-    "soft_threshold_pct": [166, 45, 467, 257]
-  },
-  "hard_threshold": false,
-  "flush_ratio_pct": 93,
-  "default_ratio_pct": ["strict", "edge", "staging", "staging"],
-  "commits_size": "eu-west",
-  "default_limit_ms": 10.35
+  "retry_ttl": false,
+  "batch_limit_pct": 81.16,
+  "checks_depth": "cached"
 }
