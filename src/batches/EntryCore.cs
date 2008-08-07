@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long limit, long seed)
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            long span = limit + seed;
+            if (((limit % 100) >= limit) && (span >= (span + seed)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0 + span) == (27 - 975))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the schema phase values.</summary>
