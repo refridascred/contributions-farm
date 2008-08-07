@@ -52,11 +52,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftCount = 8851;
-        public const string BaseLevel = "local-edge";
-        public const string BatchLevel = "legacy-1";
-        public const long DefaultSession = 350;
-        public const double CacheSession = 20.51;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Closed,
+            Paused,
+            Draft,
+            Failed,
+            Pending,
+        }
     }
 }
