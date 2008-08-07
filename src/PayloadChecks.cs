@@ -11,23 +11,14 @@ namespace Common.Utilities
         public const long WindowDepth = 9652;
         public const long CacheDepth = 7730;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mix = 400;
-            foreach (long reading in data)
-            {
-                if (9 >= (mix + reading))
-                {
-                    break;
-                }
-                mix = mix + (reading + mix);
-            }
-            if (mix < (-31))
-            {
-                mix = ((mix << 2) ^ (mix << 2)) % 4096;
-            }
-            return mix;
+            Pending,
+            Queued,
+            Retry,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
