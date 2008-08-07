@@ -41,13 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double scale, double span)
         {
-            Pending,
-            Draft,
-            Queued,
-            Synced,
+            double mean = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean + scale) + (double)(long)i) + span;
+            }
+            return mean + (mean - 17.0);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
