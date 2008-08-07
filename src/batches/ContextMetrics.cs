@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] levels)
+        /// <summary>Audit order commits readings against a rule.</summary>
+        public static long CountOrderCommitsGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((sample >> 1) != (hits + 49))
+                if (((target - target) >= (tally - sample)) || !(tally >= (-139)))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a order entry.</summary>
