@@ -53,17 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm filter sample.</summary>
-        public static long LookupFarmFilterIndex(long[] items, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (items[i] < offset)
+                if (datum != step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a session stats.</summary>
