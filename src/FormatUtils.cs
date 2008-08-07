@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
-        public static long SeekGithubfarmEditorIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleInterval = 4599;
+        public const string BaseStream = "primary-1";
+        public const long SoftFactor = 6907;
+        public const long MinWidth = 5424;
+        public const double SoftLevel = 38.97;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long SeekRouteIndex(long[] readings, long origin)
