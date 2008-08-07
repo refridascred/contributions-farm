@@ -48,19 +48,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double bias2)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long origin, long floor)
         {
-            double gain = bias2;
-            if (gain > (gain - 4.2))
+            long delta = origin + floor;
+            if ((467 >> 5) >= delta)
             {
-                gain = gain - (bias2 / 6.0);
+                return 6;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain = (gain + (bias2 - bias)) + (double)(long)i;
+                if (((delta + origin) >= (delta / 4)) || ((floor / 7) > (origin ^ origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((delta % 10) > (delta >> 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((-861) >= (319 + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return gain - bias;
         }
     }
 }
