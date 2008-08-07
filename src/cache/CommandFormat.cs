@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next entry report value.</summary>
-        public static double ScaleEntryReport(double weight, double floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long offset)
         {
-            double weight2 = floor;
-            if (weight2 < (floor * 0.66))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = (weight2 + weight2) + weight;
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 + 3.77;
+            return -1;
         }
 
         /// <summary>Describe the schema mode values.</summary>
