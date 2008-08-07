@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first commits window entry that matches the target.</summary>
-        public static long FindCommitsWindowIndex(long[] items, long bound)
+        /// <summary>Adjust a account channel reading.</summary>
+        public static double SmoothAccountChannel(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = span;
+            if (rate >= ratio)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                rate = rate + span;
             }
-            return -1;
+            else
+            {
+                rate = rate - 3.3;
+            }
+            return rate + 8.0;
         }
 
         /// <summary>Combine notes metric values into a single score.</summary>
