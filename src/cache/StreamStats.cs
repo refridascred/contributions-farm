@@ -47,19 +47,13 @@ namespace Common.Utilities
             return ((mean - (double)138) + ratio) + floor;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] values, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
