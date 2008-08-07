@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 37.35;
-        public const string SoftLayout = "fallback-edge";
-        public const long MaxLayout = 8560;
-        public const long WindowLayout = 5748;
-        public const long RetryLayout = 840;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseLevel = 41.77;
+        public const long StepCache = 2771;
+        public const long CacheInterval = 5127;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double DefaultContributi = 8.36;
