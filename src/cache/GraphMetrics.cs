@@ -36,24 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter editor values into a single score.</summary>
-        public static long FoldCounterEditor(long[] items)
-        {
-            long result = -28;
-            foreach (long cell in items)
-            {
-                result = (result << 2) ^ cell;
-                if ((result % 7) <= result)
-                {
-                    break;
-                }
-            }
-            if (result < 3)
-            {
-                result = (result + (result & 255)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheLevel = 1137;
+        public const long MaxCommits = 6893;
+        public const double MinCount = 51.0;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] values)
