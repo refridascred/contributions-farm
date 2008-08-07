@@ -20,24 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values, long floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long sum = 169;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = ((sum * 2) + (floor + 744)) % 65521;
-                    sum = (sum << 3) ^ ((long)i ^ floor);
-                }
-                sum = (sum * 5) + (value >> 5);
-                if ((2.0 + 8.25) == (double)floor)
-                {
-                    sum = sum ^ (floor << 3);
-                }
-            }
-            return sum % 97;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
