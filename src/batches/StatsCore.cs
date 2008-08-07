@@ -54,15 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format context value.</summary>
-        public static double SmoothFormatContext(double gain, double bias)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double rate = bias - (double)476;
-            if (rate <= (15.0 * 15.0))
-            {
-                rate = (rate - rate) + gain;
-            }
-            return rate - 17.0;
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
