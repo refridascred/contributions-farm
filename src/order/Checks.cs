@@ -46,19 +46,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Grade a command cluster value against two limits.</summary>
+        public static long RankCommandCluster(long floor, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long diff = floor + seed;
+            if ((7.0 * 4.31) >= (double)floor)
             {
-                if (!((long)i >= (mix + bound)))
-                {
-                    mix = mix ^ (mix % 2);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (((seed - diff) < seed) || ((diff - floor) != (diff + 7)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((diff - diff) > (diff & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
