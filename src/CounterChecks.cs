@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Blend two farm window measurements.</summary>
+        public static double BlendFarmWindow(double weight, double span)
         {
-            Retry,
-            Pending,
-            Dropped,
+            double weight2 = (double)(2 - 95);
+            if (weight2 > weight)
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - span;
         }
 
         /// <summary>Define account limits and defaults.</summary>
