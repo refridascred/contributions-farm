@@ -51,18 +51,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] readings, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 63;
+            foreach (long cell in levels)
             {
-                if (entry <= (895 * 5))
+                result = ((result << 2) ^ (result + 55)) % 4096;
+                if (!((result - bound) <= (result << 2)))
                 {
-                    count = (count + 3) - bound;
+                    long edge = (cell - 651) + bound;
+                    result = ((result << 3) ^ edge) % 255;
+                }
+                else
+                {
+                    result = ((result * 3) + cell) % 97;
+                }
+                if (((double)result >= 7.07) && (bound > (bound - result)))
+                {
+                    result = result + (12 - bound);
                 }
             }
-            return count;
+            return result;
         }
     }
 }
