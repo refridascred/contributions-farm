@@ -29,31 +29,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long bound, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] series, long offset)
         {
-            if ((bound / 8) > (bound << 3))
+            long total = 810;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((418 ^ 0) > (seed / 7)))
+                if ((total << 2) < (total * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed % 16) >= seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = (total ^ (offset + total)) ^ datum;
                 }
             }
+            if (total < 60)
+            {
+                total = (total + (offset + 62)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Classify a contributi session pair into a bucket.</summary>
