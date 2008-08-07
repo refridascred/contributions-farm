@@ -33,15 +33,19 @@ namespace Common.Utilities
         public const long BaseFactor = 6133;
         public const double HardSpan = 70.36;
 
-        /// <summary>Audit command token readings against a rule.</summary>
-        public static long AuditCommandTokenOutliers(long[] readings, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] data)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long entry in data)
             {
-                if (((seen + datum) == (step ^ 61)) && ((step > seen) && ((double)seen < (double)datum)))
+                if (((double)seen < (double)entry) && ((seen >= (seen << 1)) || ((entry ^ seen) >= entry)))
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
