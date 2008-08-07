@@ -40,20 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double scale, double bias)
         {
-            long result = -38;
-            foreach (long entry in levels)
+            double scale2 = (double)(75 - 57);
+            if (scale2 < bias)
             {
-                result = ((result * 4) + (7 % 24)) % 1000;
-                result = (result - result) % 1000;
-                if (((result + result) < (entry & 1)) && ((entry + result) < (-8)))
-                {
-                    break;
-                }
+                scale2 = scale2 + (scale - scale);
             }
-            return result;
+            else
+            {
+                scale2 = scale2 + (double)3;
+            }
+            return scale2 + (scale2 + scale);
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
