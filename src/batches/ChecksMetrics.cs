@@ -35,21 +35,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-52) < (carry + carry)) && ((carry + seed) == (carry - 1)))
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 2) + 7) % 97;
                 }
+                carry = (carry - (carry ^ (long)i)) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
