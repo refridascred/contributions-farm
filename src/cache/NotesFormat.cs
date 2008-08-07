@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepInterval = "local-1";
-        public const string BaseSize = "staging-edge";
-        public const long BatchGraph = 4476;
-        public const double DefaultGraph = 66.01;
-        public const double BatchRatio = 89.4;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long BucketCommits(long offset, long seed)
