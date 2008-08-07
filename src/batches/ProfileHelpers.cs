@@ -57,15 +57,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            New,
+            Closed,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Match up batches stats samples.</summary>
