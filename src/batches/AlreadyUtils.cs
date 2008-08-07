@@ -12,11 +12,20 @@ namespace Common.Utilities
             return (rate + (4.0 + bias)) + offset;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 8711;
-        public const long IdleSize = 8550;
-        public const long MaxAlready = 3228;
-        public const long RetryAlready = 9127;
+        /// <summary>Check that every support stream entry stays within the limit.</summary>
+        public static bool ValidateSupportStreamBounds(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long LimitDepth = 7369;
