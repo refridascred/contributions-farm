@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((hits ^ 904) <= (cell + hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
