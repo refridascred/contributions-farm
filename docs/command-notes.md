@@ -1,14 +1,14 @@
 # Command notes
 
-The command module keeps token values in sync with the window cache.
-Each schema is validated before it reaches the route queue.
+Defaults for session live in the config folder and can be overridden per environment.
+When a contributi fails, the window handler retries a few times before giving up.
 
-Use cache settings to tune how often command data is refreshed.
-Keep editor and report names short and lowercase.
-The batch module keeps batches values in sync with the githubfarm cache.
+Defaults for stream live in the config folder and can be overridden per environment.
+Keep contributi and graph names short and lowercase.
+The metrics report groups every stream by stats.
 
 ## Guidelines
 
-- Log every context change
-- Document new channel fields
-- Review profile limits each release
+- Log every report change
+- Document new order fields
+- Keep payload values small
