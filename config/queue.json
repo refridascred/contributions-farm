@@ -1,19 +1,6 @@
 {
-  "poll_ttl_s": {
-    "strict": 6282,
-    "readonly": {
-      "poll_depth": 28,
-      "compress": "legacy",
-      "min_threshold": true,
-      "dry_run": false,
-      "graph_capacity": "cached",
-      "soft_capacity_count": ["blue", "legacy", "cached", "open"]
-    },
-    "hard_ttl_pct": 72,
-    "layout_threshold": [52, 452]
-  },
-  "soft_limit": 3815,
-  "graph_ratio": "latest",
-  "already_depth": 40.56,
-  "persist": 5.12
+  "cache_depth_s": 54,
+  "default_ttl_ms": "green",
+  "counter_capacity": "latest",
+  "strict": false
 }
