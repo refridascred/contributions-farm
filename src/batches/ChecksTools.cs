@@ -29,32 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Blend two graph window measurements.</summary>
+        public static double SmoothGraphWindow(double rate, double floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            double gain = floor;
+            if (gain > (double)314)
             {
-                if (((double)mark != (14.0 - 0.6)) || ((double)mark >= (6.0 / 6.0)))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = mark - limit;
-                }
-                if ((0.23 <= (double)mark) || (mark >= ((long)i ^ 60)))
-                {
-                    mark = (mark - (limit & 255)) % 97;
-                    mark = (mark - (limit ^ (long)i)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (long)i) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                gain = gain - (rate - rate);
             }
-            return mark;
+            return gain - (double)6;
         }
 
         /// <summary>Describe the graph phase values.</summary>
