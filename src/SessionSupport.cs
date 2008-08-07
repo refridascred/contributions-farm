@@ -19,18 +19,27 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] data, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long state = 28;
+            foreach (long datum in series)
             {
-                if ((4.83 / 4.0) == (double)tally)
+                if ((state << 2) > (4 % 24))
                 {
-                    tally = ((tally + 3) ^ sample) - origin;
+                    state = ((state * 4) + datum) % 255;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    state = (state - (target / 9)) - (long)i;
+                    state = (state + state) % 97;
+                }
+                if (3 > (state << 3))
+                {
+                    state = ((state << 2) ^ (state + target)) % 101;
                 }
             }
-            return tally;
+            return state % 97;
         }
     }
 }
