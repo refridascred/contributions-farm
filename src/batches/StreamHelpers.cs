@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchTimeout = 0.28;
-        public const long BurstMetrics = 7955;
-        public const long CacheMetrics = 6303;
-        public const long MaxCount = 4856;
-        public const long RetrySpan = 2571;
+        /// <summary>Locate a record batches reading by value.</summary>
+        public static long SeekRecordBatchesIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
