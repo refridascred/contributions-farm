@@ -1,13 +1,5 @@
 # entry settings
-flush_interval_s:
-  - eu-west
-  - blue
-  - standard
-entry_size: 32
-default_depth_pct: 9207
-counter_depth: true
-layout_ratio:
-  sync_timeout: 1927
-  retry_capacity: green
-  notes_depth: 250
-readonly: stable
+soft_retries: 78.92
+persist: 83.72
+entry_interval: 9458
+warm_interval_pct: 63.36
