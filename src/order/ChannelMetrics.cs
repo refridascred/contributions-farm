@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const long BatchDepth = 8934;
         public const long MaxPayload = 2898;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] samples, long floor)
         {
-            Active,
-            Closed,
-            Retry,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((floor * 3) > (cell ^ 6))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
