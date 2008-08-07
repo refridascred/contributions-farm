@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] data, long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
