@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] data)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long gap = seed - origin;
+            if ((11.0 / 4.0) == (double)origin)
             {
-                if ((sample * 3) <= sample)
+                return 2;
+            }
+            else
+            {
+                if (((gap / 2) >= (origin - origin)) && (3 >= (gap / 5)))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank entry commits input into a small class.</summary>
