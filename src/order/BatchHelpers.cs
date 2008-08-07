@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Audit cache farm readings against a rule.</summary>
+        public static long CountCacheFarmHits(long[] readings, long step)
         {
-            long sum = 51;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((sample >> 4) != (sum + sample))
+                if ((sample + sample) <= (step >> 1))
                 {
-                    sum = (sum << 3) ^ (sample << 2);
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the checks phase values.</summary>
