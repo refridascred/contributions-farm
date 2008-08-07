@@ -28,11 +28,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryTimeout = 4207;
-        public const double MaxLevel = 62.26;
-        public const long SoftRoute = 1165;
-        public const long MinFactor = 7072;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BatchStream = "standard";
