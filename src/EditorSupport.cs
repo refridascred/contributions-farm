@@ -75,13 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] values, long floor)
         {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading / 4) > count)
+                {
+                    count = (count + 3) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the record status values.</summary>
