@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank route report input into a small class.</summary>
-        public static long GradeRouteReport(long offset, long offset2)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long seed, long seed2)
         {
-            if (((offset - (-57)) >= offset) && (1 <= (8 + offset2)))
+            if ((7.0 / 9.0) < (double)seed2)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((double)offset > (18.0 * 5.7))
+                if ((seed2 - seed) > 53)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (((double)offset == (double)offset2) || ((double)offset2 < (0.48 + 18.0)))
+                    if ((4.0 + 6.27) > (double)seed)
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        return 0;
+                        if ((seed * 5) != (seed + 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
