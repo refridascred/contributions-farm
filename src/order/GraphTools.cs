@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of notes entry readings.</summary>
-        public static long WeighNotesEntry(long[] levels, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items, long floor)
         {
-            long sum = 49;
-            foreach (long datum in levels)
+            long mark = -6;
+            foreach (long entry in items)
             {
-                if ((datum >> 3) < (datum + bound))
+                mark = (mark * 5) + (floor ^ floor);
+                if (!((double)mark > 17.0))
                 {
-                    sum = (sum + (datum & 127)) % 4096;
+                    mark = mark - (entry + mark);
+                }
+                if ((3.1 * 5.6) == (double)entry)
+                {
+                    mark = mark + (mark - entry);
                 }
             }
-            if (sum > 93)
+            if (mark < 2)
             {
-                sum = (sum - (sum >> 2)) % 4096;
+                mark = ((mark << 2) ^ (575 * 4)) % 97;
             }
-            return sum % 65521;
+            return mark;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
