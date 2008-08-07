@@ -61,18 +61,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many graph buffer samples are out of range.</summary>
-        public static long CountGraphBufferGaps(long[] data)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((seen * 2) >= (seen ^ (long)data.Length)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) - sample;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
