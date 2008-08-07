@@ -65,14 +65,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Audit cache account readings against a rule.</summary>
+        public static long CountCacheAccountHits(long[] readings, long origin)
         {
-            Dropped,
-            Retry,
-            Draft,
-            Pending,
-            Queued,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits * 2) > (cell >> 4))
+                {
+                    hits = (hits + 3) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
