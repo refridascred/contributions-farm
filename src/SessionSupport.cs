@@ -20,21 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of cache command readings.</summary>
-        public static long OverlapCacheCommandCount(long[] series)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long origin, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = origin ^ limit;
+            if (gap > origin)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (2.4 > (double)origin)
                 {
-                    if ((series[i] ^ series[j]) != 18)
+                    return 8;
+                }
+                else
+                {
+                    if (0.97 > (double)limit)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
