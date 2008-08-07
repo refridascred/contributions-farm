@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of payload account entries.</summary>
-        public static long DigestPayloadAccount(long[] samples, long target)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
         {
-            long anchor = 84;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - (417 >> 3)) % 255;
-                anchor = ((anchor << 3) ^ (target + entry)) % 97;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 408)
-            {
-                anchor = anchor + (anchor << 3);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the queue status values.</summary>
