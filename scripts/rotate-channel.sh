@@ -6,7 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -16,11 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for item in local cached stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
-
-CHANNEL_LIMIT=372
-log "limit is ${CHANNEL_LIMIT}"
