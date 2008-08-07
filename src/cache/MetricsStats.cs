@@ -53,18 +53,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] levels, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((target / 2) < target)
+                if ((sample / 3) <= 87)
                 {
-                    count = (count + 2) + reading;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
