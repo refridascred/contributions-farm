@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter githubfarm samples.</summary>
-        public static long ScoreCounterGithubfarm(long[] series, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mix = 909;
-            foreach (long cell in series)
-            {
-                mix = ((((mix << 3) ^ (mix ^ mix)) % 65521) + cell) - origin;
-                mix = (mix * 2) + (mix >> 5);
-                mix = (mix ^ (178 * 3)) % 65521;
-            }
-            if (mix > 49)
-            {
-                mix = ((mix * 4) + mix) % 4096;
-            }
-            return mix % 65521;
+            Stale,
+            Ready,
+            Active,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
