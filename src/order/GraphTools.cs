@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] samples, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long acc = 7;
-            foreach (long entry in samples)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc << 3) ^ (entry & 1);
-            }
-            if (acc < 95)
-            {
-                acc = (acc ^ floor) % 4096;
+                acc = ((acc * 4) + (long)i) % 97;
             }
             return acc;
         }
