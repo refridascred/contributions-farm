@@ -45,15 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric graph series from a seed.</summary>
-        public static long DeriveMetricGraph(long offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
