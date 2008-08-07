@@ -53,31 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support layout pair into a bucket.</summary>
-        public static long BucketSupportLayout(long limit, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            if (((limit ^ seed) >= (limit + seed)) && ((-9) >= (limit - seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed < (seed - seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - seed) <= (93 ^ limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
