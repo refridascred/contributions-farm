@@ -25,14 +25,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            Stale,
-            Ready,
-            Active,
-            Retry,
-            New,
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc * 5) + acc) - (long)i2;
+                }
+                acc = ((acc * 3) + (seed + (long)i)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
