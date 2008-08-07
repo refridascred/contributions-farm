@@ -55,22 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] series, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((3.94 * 0.3) > 19.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 3) + value) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
