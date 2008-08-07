@@ -20,21 +20,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((33 * 5) >= (item * 2))
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
