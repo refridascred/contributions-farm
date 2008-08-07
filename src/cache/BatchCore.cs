@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up window tools samples.</summary>
-        public static long CompareWindowToolsCount(long[] samples)
+        /// <summary>Derive the next batches graph value from a seed.</summary>
+        public static long RollBatchesGraph(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((0 + (long)i) <= floor))
                 {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (floor % 12)) % 1000;
+                    sum = sum - (-49);
                 }
+                sum = (sum - (floor ^ (long)i)) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a batch record.</summary>
