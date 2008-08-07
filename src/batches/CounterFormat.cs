@@ -37,18 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((item ^ 95) == (item + item)) && (((72 >> 5) != (floor ^ tally)) || ((tally % 60) >= item)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftTimeout = 6212;
+        public const long BatchBatches = 3947;
+        public const long BaseSize = 1090;
+        public const double LimitBatches = 89.81;
+        public const double MinBatches = 59.78;
     }
 }
