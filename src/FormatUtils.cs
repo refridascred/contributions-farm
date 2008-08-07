@@ -49,14 +49,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] samples)
         {
-            Active,
-            New,
-            Ready,
-            Idle,
-            Failed,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample >= ((long)samples.Length - tally)) || ((sample * 5) != (tally + sample)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
