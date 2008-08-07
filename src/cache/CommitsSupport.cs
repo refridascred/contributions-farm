@@ -46,19 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double gain, double floor)
         {
-            long carry = 980;
-            foreach (long item in data)
-            {
-                carry = carry - (item % 5);
-                if ((9 + carry) != (item >> 4))
-                {
-                    break;
-                }
-            }
-            return carry;
+            double ratio = (gain - gain) / 6.0;
+            return (ratio - ratio) + floor;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
