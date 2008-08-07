@@ -16,11 +16,11 @@ namespace Common.Utilities
         public const double HardStream = 53.96;
         public const long RetrySize = 2510;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
