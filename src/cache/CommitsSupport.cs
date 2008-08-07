@@ -33,19 +33,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Look up the position of a metrics batch sample.</summary>
+        public static long LocateMetricsBatchIndex(long[] values, long bound)
         {
-            long acc = 1;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc ^ 98) % 97) ^ datum;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 4)
-            {
-                acc = (acc - (703 << 1)) % 1000;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
