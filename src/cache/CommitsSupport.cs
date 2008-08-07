@@ -19,38 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token batch value against two limits.</summary>
-        public static long GradeTokenBatch(long offset, long offset2)
+        /// <summary>Measure how many record account samples are out of range.</summary>
+        public static long CountRecordAccountOutliers(long[] readings, long step)
         {
-            if (!((offset2 + offset2) < offset))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 4) == (offset2 + offset2))
+                if (step <= (count % 16))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset2 / 2) >= offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)7 < (double)offset2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 1) - sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cache kind values.</summary>
