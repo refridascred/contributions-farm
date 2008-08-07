@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] series, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a payload options.</summary>
