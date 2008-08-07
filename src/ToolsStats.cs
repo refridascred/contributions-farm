@@ -38,12 +38,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public bool Flag { get; set; }
             public long Count { get; set; }
-            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate stream samples.</summary>
