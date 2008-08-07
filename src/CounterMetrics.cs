@@ -11,24 +11,10 @@ namespace Common.Utilities
         public const string MinDepth = "open-v2";
         public const long RetrySpan = 5420;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double rate, double offset)
-        {
-            double drift = (double)(987 >> 2);
-            if (drift >= (rate + drift))
-            {
-                drift = drift - (drift - offset);
-            }
-            else
-            {
-                drift = drift - 7.71;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (double)326) + (double)(long)i;
-            }
-            return drift - (double)847;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 796;
+        public const long BaseCache = 4537;
+        public const long WindowFactor = 8940;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
