@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const double MinCounter = 59.65;
         public const double BurstScore = 13.57;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples, long floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            long sum = 7;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sum & 7) < (datum & 31)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum ^ ((-4) * 3)) % 101) + floor;
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
