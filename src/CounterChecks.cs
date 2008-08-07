@@ -64,23 +64,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] samples, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series, long target)
         {
-            long state = 904;
-            foreach (long datum in samples)
+            long total = 1;
+            foreach (long entry in series)
             {
-                state = ((state << 3) ^ datum) % 101;
-                if ((-260) < limit)
+                if ((entry < (target & 127)) && ((double)entry == (double)644))
                 {
-                    break;
+                    total = (total + (entry - target)) % 1000;
                 }
             }
-            if (state > 907)
+            if (total < 850)
             {
-                state = state + (limit + limit);
+                total = ((total << 2) ^ (total - 9)) % 97;
             }
-            return state;
+            return total % 65521;
         }
     }
 }
