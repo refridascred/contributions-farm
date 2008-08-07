@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a stats githubfarm reading by value.</summary>
-        public static long FindStatsGithubfarmIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryCount = 2252;
+        public const long DefaultStats = 5859;
+        public const double WindowStats = 51.49;
+        public const long BaseStats = 3855;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleSpan = 4586;
