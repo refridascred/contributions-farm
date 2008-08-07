@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Idle,
+            Pending,
+            Queued,
             Closed,
-            Draft,
         }
 
         /// <summary>Hold a payload options.</summary>
