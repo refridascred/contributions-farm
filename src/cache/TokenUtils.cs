@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route order readings against a bound.</summary>
-        public static bool VerifyRouteOrderLimits(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxScore = 6966;
+        public const long RetryInterval = 2540;
+        public const string BaseReport = "staging";
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
