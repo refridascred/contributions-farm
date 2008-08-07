@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Ready,
-            Locked,
-            Queued,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "strict";
+        public const string CacheBudget = "latest";
+        public const double CacheSpan = 19.85;
+        public const long BurstBuffer = 4877;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
