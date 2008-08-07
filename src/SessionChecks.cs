@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] series, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long seed)
         {
-            long mix = 73;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((bound + bound) <= mix)
+                if (datum >= seed)
                 {
-                    mix = (((mix << 2) ^ 565) % 255) + reading;
-                }
-                else
-                {
-                    mix = ((mix * 2) + bound) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
