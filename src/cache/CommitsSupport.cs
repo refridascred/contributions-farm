@@ -53,18 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter payload samples are out of range.</summary>
-        public static long MeasureCounterPayloadOutliers(long[] readings)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches > 3.58)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            Queued,
+            Pending,
         }
 
         /// <summary>Digest a series of support entries.</summary>
