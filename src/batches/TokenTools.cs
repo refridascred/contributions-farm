@@ -23,21 +23,15 @@ namespace Common.Utilities
         public const double BaseContext = 50.53;
         public const long WindowContext = 7014;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
