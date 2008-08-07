@@ -37,14 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Queued,
-            Active,
-            Paused,
-            Done,
-            Draft,
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
