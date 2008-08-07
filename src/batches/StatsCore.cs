@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many contributi account samples are out of range.</summary>
+        public static long AuditContributiAccountGaps(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (count < reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
