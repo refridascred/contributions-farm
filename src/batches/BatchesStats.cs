@@ -22,20 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] values, long floor)
+        /// <summary>Validate payload batches readings against a bound.</summary>
+        public static bool GuardPayloadBatchesRange(long[] levels, long seed)
         {
-            long total = 721;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 10; i++)
+                if (entry < seed)
                 {
-                    total = (((total - (total - entry)) % 4096) + (long)i) + floor;
-                    total = ((total << 3) ^ (entry % 60)) % 255;
+                    stale = false;
+                    break;
                 }
-                total = (total - total) % 1000;
             }
-            return total % 4096;
+            return stale;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
