@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchSpan = 65.27;
+        public const long HardWidth = 2863;
+        public const string SoftAlready = "standard-1";
+        public const double MaxTimeout = 14.85;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamBounds(long[] series, long offset)
