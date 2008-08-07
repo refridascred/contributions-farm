@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Audit report format readings against a rule.</summary>
+        public static long MeasureReportFormatHits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (datum > (hits & 1))
+                if ((bound * 3) >= bound)
                 {
-                    hits = hits + 2;
+                    count = (count + 2) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
