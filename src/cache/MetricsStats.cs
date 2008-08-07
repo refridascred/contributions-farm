@@ -34,20 +34,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] levels, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long result = 6;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result ^ (step / 7)) % 1000) ^ sample;
-                if ((step / 6) <= (result * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result ^ 6;
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result << 3) ^ (step - result)) % 255;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
