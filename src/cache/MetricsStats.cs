@@ -40,11 +40,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstBudget = 6779;
-        public const long IdleFilter = 6732;
-        public const long BaseRatio = 8351;
-        public const double BurstLevel = 16.26;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long SortFormat(long bound, long step)
