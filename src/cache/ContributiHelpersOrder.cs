@@ -41,27 +41,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long step)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (4.6 >= (double)limit)
-                {
-                    score = (score << 3) ^ (long)i;
-                }
-                else
-                {
-                    score = (score ^ 1) % 255;
-                }
-                if ((limit << 2) <= (score ^ limit))
-                {
-                    score = score ^ ((long)i << 3);
-                }
-                score = ((score * 5) + (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
     }
 }
