@@ -39,18 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long total = 717;
-            foreach (long entry in readings)
-            {
-                if ((entry - total) < 849)
-                {
-                    total = (total - (total * 4)) % 65521;
-                }
-            }
-            return total;
+            Ready,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Look up the position of a metrics batch sample.</summary>
