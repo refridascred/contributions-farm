@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            New,
-            Stale,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftDepth = 68.92;
+        public const string BatchInterval = "open-v2";
+        public const long MaxAlready = 7408;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] data)
