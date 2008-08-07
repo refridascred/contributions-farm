@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 8284;
-        public const long MaxFactor = 6620;
-        public const long MaxNotes = 9450;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesHits(long[] series, long origin)
