@@ -54,12 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
