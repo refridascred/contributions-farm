@@ -1,14 +1,7 @@
 {
-  "soft_ratio_count": {
-    "compress": 250,
-    "dry_run": 9038,
-    "soft_retries_count": 1024,
-    "counter_ratio": "local"
-  },
-  "metric_limit": {
-    "tools_depth": 184,
-    "retry_ratio_pct": true,
-    "base_timeout": false
-  },
-  "persist": 82.69
+  "poll_window_pct": "edge",
+  "max_size": "latest",
+  "poll_capacity_pct": 500,
+  "min_threshold_s": "edge",
+  "cache_limit_s": "primary"
 }
