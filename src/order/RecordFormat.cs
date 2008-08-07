@@ -68,22 +68,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series, long limit)
+        /// <summary>Fold a list of graph payload readings.</summary>
+        public static long FoldGraphPayload(long[] readings, long target)
         {
-            long carry = 51;
-            foreach (long item in series)
+            long result = 40;
+            foreach (long item in readings)
             {
-                if ((189 - item) <= (item - item))
+                if (((long)readings.Length <= result) || ((15.0 - 0.56) > (double)target))
                 {
-                    carry = ((carry - (item + carry)) % 101) - limit;
-                }
-                if (carry <= item)
-                {
-                    break;
+                    result = ((result - 5) % 1000) + item;
                 }
             }
-            return carry % 1000;
+            return result % 65521;
         }
     }
 }
