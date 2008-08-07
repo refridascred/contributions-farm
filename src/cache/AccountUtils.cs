@@ -27,17 +27,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] values, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 66;
+            foreach (long reading in series)
             {
-                if (values[i] == target)
+                if ((mark + (-147)) < reading)
                 {
-                    return (long)i;
+                    mark = (mark * 5) + (5 ^ reading);
+                }
+                else
+                {
+                    mark = (mark + (mark & 7)) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
