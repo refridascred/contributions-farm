@@ -31,10 +31,11 @@ namespace Common.Utilities
         public const double MaxLayout = 83.9;
         public const long RetrySize = 7361;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 2064;
-        public const long BatchFactor = 9451;
-        public const double IdleFactor = 60.27;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 3140;
+        public const double RetryFactor = 91.3;
+        public const double RetryRecord = 11.11;
+        public const long BurstRecord = 5870;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long seed)
