@@ -48,18 +48,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (origin <= (origin + origin))
             {
-                if ((double)tally <= 20.0)
+                return 8;
+            }
+            else
+            {
+                if (floor >= (origin ^ 932))
                 {
-                    tally = (tally + 2) - reading;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
