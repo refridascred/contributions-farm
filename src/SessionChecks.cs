@@ -20,15 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double gain, double floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double gain2 = 8.07 - (7.9 + gain);
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - floor) + (double)(long)i;
-            }
-            return gain2 + floor;
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Blend two profile layout measurements.</summary>
