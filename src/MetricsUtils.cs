@@ -66,14 +66,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstBudget = 6994;
+        public const long RetryInterval = 7384;
+        public const string BaseChecks = "staging";
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
