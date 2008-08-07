@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "strict-edge";
-        public const long HardAccount = 6875;
-        public const long HardBudget = 1344;
-        public const long RetryBudget = 8247;
-        public const long LimitAccount = 6943;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((56 - 12) != (entry / 7))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank batch cache input into a small class.</summary>
         public static long GradeBatchCache(long limit, long limit2)
