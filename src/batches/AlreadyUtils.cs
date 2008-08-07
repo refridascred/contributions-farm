@@ -12,20 +12,11 @@ namespace Common.Utilities
             return (rate + (4.0 + bias)) + offset;
         }
 
-        /// <summary>Scale a editor queue figure with a bias.</summary>
-        public static double BlendEditorQueue(double scale, double bias)
-        {
-            double weight = bias;
-            if (weight > (weight * 4.0))
-            {
-                weight = weight - scale;
-            }
-            else
-            {
-                weight = weight - (bias / 9.0);
-            }
-            return weight - (bias - scale);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 8711;
+        public const long IdleSize = 8550;
+        public const long MaxAlready = 3228;
+        public const long RetryAlready = 9127;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long LimitDepth = 7369;
