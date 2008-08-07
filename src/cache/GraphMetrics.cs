@@ -19,21 +19,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
