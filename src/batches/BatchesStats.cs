@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long seed)
+        /// <summary>Find the first batch tools entry that matches the target.</summary>
+        public static long SeekBatchToolsIndex(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > seed)
+                if (data[i] < offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
