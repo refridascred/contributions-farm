@@ -12,10 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftRatio = 3975;
-        public const string IdleDepth = "stable-v2";
-        public const long HardInterval = 3449;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double ScaleOrder(double gain, double span)
