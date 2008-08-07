@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] readings, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
