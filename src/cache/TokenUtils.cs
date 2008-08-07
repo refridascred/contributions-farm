@@ -29,10 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxScore = 6966;
-        public const long RetryInterval = 2540;
-        public const string BaseReport = "staging";
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Failed,
+            Stale,
+            Active,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double AdjustContributi(double bias, double bias2)
