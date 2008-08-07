@@ -38,19 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double bias, double bias2)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double weight = bias;
-            if (weight < (1.9 + bias))
-            {
-                weight = weight - (bias2 / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - bias) - (double)(long)i;
-            }
-            return weight + (weight / 3.0);
+            Failed,
+            Draft,
+            Stale,
+            Idle,
+            Done,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
