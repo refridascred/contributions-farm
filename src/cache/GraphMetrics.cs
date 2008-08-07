@@ -44,22 +44,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] data)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long next = origin ^ bound;
+            if (next > (next << 3))
             {
-                if (((5 / 3) > value) || ((1 >> 2) != (value - (long)data.Length)))
+                return 6;
+            }
+            else
+            {
+                if ((bound >> 1) < 44)
                 {
-                    hits = hits + 3;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a support layout pair into a bucket.</summary>
