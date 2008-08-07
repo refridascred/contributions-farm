@@ -31,22 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items, long limit)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long state = 819;
-            foreach (long reading in items)
-            {
-                if (limit > (reading + reading))
-                {
-                    state = (state + state) % 97;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state + (-468))) % 1000;
-                }
-            }
-            return state % 4096;
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
     }
 }
