@@ -1,9 +1,10 @@
 # support settings
-warm_limit: 39.3
-max_ttl_pct:
-  compress: green
-  profile_capacity: 6340
-  audit: primary
-  strict: latest
-  schema_ttl: cached
-hard_timeout_ms: 67.87
+default_limit: blue
+report_size: staging
+base_ttl_count:
+  - 297
+  - 443
+  - 53
+  - 296
+default_delay_ms: 4763
+buffer_size: 2180
