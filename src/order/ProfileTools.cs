@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const string MinFactor = "alpha-edge";
         public const long MinCount = 8848;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Done,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowSpan = 61.3;
+        public const long BurstDepth = 9522;
+        public const string WindowAccount = "staging-1";
 
         /// <summary>Compare every pair of stream contributi readings.</summary>
         public static long PairStreamContributiCount(long[] levels)
