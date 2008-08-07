@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string DefaultLayout = "strict";
         public const long BurstTimeout = 4152;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] items, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
             long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound >> 1) < value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
