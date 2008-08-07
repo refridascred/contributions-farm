@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchLevel = "local-edge";
-        public const long LimitLevel = 8974;
-        public const double HardSize = 62.78;
-        public const long HardDepth = 8788;
-        public const string BurstTimeout = "legacy-edge";
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Digest a series of metrics metric entries.</summary>
         public static long TallyMetricsMetric(long[] values)
