@@ -40,18 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample > (4.3 - 6.0))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 72.3;
+        public const string HardCommand = "cached-1";
+        public const long LimitCommand = 315;
+        public const long SoftCommand = 5283;
+        public const double BurstInterval = 47.5;
     }
 }
