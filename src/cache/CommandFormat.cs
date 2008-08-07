@@ -37,17 +37,13 @@ namespace Common.Utilities
         public const long IdleScore = 3695;
         public const double HardCount = 16.51;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                state = state ^ (-3);
-                state = (state - (state - state)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Retry,
+            Stale,
+            Paused,
         }
     }
 }
