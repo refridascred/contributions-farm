@@ -1,31 +1,13 @@
 # support settings
-retry_retries_count:
-  - 125
-  - 139
-idle_limit: 6575
-hard_limit_pct: 6121
-idle_threshold: 250
-poll_timeout_count:
-  dry_run:
-    - staging
-    - fallback
-  audit:
-    min_window_ms: true
-    contributi_delay: standard
-    retry_depth_count: true
-    hard_interval: 1024
-    readonly: true
-    strict:
-      - 340
-      - 348
-      - 80
-  support_ratio:
-    default_window_s:
-      - 15
-      - 399
-      - 283
-    max_ratio_pct: 99
-    audit: 7
-  poll_delay_count: eu-west
-  commits_ttl: stable
-sync_retries_count: true
+flush_limit_ms: false
+poll_depth_count: 38.43
+cache_threshold: 250
+readonly: 4.26
+max_interval: stable
+sync_delay_count:
+  default_depth_s: 83
+  idle_size_ms:
+    enabled: false
+    counter_delay: 45.41
+    sync_threshold: fallback
+  command_interval: 58.97
