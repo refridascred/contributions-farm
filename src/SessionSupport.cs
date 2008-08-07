@@ -20,32 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a checks contributi value against two limits.</summary>
-        public static long ClassifyChecksContributi(long limit, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] data, long origin)
         {
-            long gap = limit ^ step;
-            if ((double)limit != (double)691)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (step < (gap >> 1))
+                if ((4.83 / 4.0) == (double)tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit >= (0.58 - 4.46))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = ((tally + 3) ^ sample) - origin;
                 }
             }
+            return tally;
         }
     }
 }
