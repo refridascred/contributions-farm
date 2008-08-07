@@ -1,15 +1,9 @@
 # support settings
-editor_window:
-  - cached
+batch_capacity: 500
+warm_depth:
   - fallback
+  - fallback
+  - strict
   - stable
-default_depth_ms:
-  stream_limit: primary
-  compress: 2.1
-  retry_retries_s: green
-queue_capacity: 9110
-order_ratio: local
-batch_depth:
-  - green
-  - green
-cache_threshold: standard
+verbose: blue
+cache_ratio: latest
