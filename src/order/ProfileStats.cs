@@ -25,21 +25,12 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-1";
         public const string BatchStats = "alpha";
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
