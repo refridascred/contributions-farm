@@ -17,39 +17,18 @@ namespace Common.Utilities
         public const long HardFactor = 886;
         public const double HardSize = 59.31;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long offset)
+        /// <summary>Combine support graph values into a single score.</summary>
+        public static long TallySupportGraph(long[] samples)
         {
-            long step = origin ^ offset;
-            if ((offset ^ step) == (offset * 5))
+            long carry = 2;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step >> 3) != (offset / 4)))
+                if (((item + carry) > carry) && ((carry * 5) <= (item + carry)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step - origin) <= (offset >> 3)) || ((19.0 - 4.43) >= (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset >= (origin % 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = (carry ^ (846 % 64)) % 255;
                 }
             }
+            return carry;
         }
     }
 }
