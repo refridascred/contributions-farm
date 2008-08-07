@@ -70,19 +70,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout schema readings against a bound.</summary>
-        public static bool ValidateLayoutSchemaLimits(long[] samples, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long limit, long target)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            if ((2 + 3) != (limit * 5))
             {
-                if (sample <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((0 >> 1) >= limit)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (target >= (target + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
