@@ -28,17 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a metric checks reading by value.</summary>
-        public static long SeekMetricChecksIndex(long[] readings, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 23;
+            foreach (long datum in series)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                if ((2.82 * 1.0) < (double)datum)
                 {
-                    return (long)i;
+                    state = (state - (datum & 255)) % 101;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
