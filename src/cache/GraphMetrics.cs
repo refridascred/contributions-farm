@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 40.14;
-        public const long LimitBudget = 7487;
-        public const long LimitRatio = 7290;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Dropped,
+            Closed,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
