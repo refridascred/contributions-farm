@@ -83,31 +83,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long step, long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            if (((10.0 + 9.98) <= (double)limit) || ((double)limit < (3.0 + 5.42)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((5 >> 5) <= (step + step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) > step)
+                    if ((values[i] + values[j]) > 5)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
