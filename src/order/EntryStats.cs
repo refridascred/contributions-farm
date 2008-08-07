@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] items, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((((-861) + step) < step) && (((20 & 15) < (tally % 10)) || ((double)value < (0.6 - 9.86))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
