@@ -28,11 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long anchor = 612;
+            foreach (long value in levels)
+            {
+                anchor = anchor ^ (value + 318);
+                if ((8.1 + 9.0) > (double)value)
+                {
+                    anchor = (anchor * 5) + (value ^ value);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
