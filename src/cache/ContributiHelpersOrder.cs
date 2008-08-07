@@ -24,18 +24,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)count != (7.0 + 3.32))
+                acc = ((acc * 5) + ((-8) - acc)) % 255;
+                if ((step * 4) > (acc % 100))
                 {
-                    count = (count + 2) ^ datum;
+                    acc = (acc ^ (5 & 127)) % 65521;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
