@@ -39,15 +39,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 2061;
         public const long MaxLayout = 9641;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double rate, double span)
         {
-            long carry = -2;
-            foreach (long reading in levels)
+            double mean = rate;
+            if (mean >= span)
             {
-                carry = ((carry - (carry >> 3)) % 65521) + reading;
+                mean = mean - (double)59;
             }
-            return carry % 1000;
+            return mean + 2.0;
         }
     }
 }
