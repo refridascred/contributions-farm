@@ -81,19 +81,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate route notes readings against a bound.</summary>
-        public static bool CheckRouteNotesBounds(long[] values, long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
