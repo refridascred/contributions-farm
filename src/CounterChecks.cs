@@ -37,20 +37,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((origin - mix) >= ((long)i + mix))
-                {
-                    mix = (mix - 19) % 1000;
-                    mix = ((mix * 3) + 38) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Draft,
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Match up layout samples.</summary>
