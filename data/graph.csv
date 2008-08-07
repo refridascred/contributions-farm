@@ -1,8 +1,7 @@
-id,score,label,ratio,token
-1,eu-west,83.94,618,545
-2,240,906,local,380
-3,local,local,939,open
-4,24,717,61.18,cached
-5,27.78,582,green,696
-6,932,edge,94.8,blue
-7,326,70.73,strict,215
+id,region,level,token
+1,67.83,393,398
+2,389,665,legacy
+3,5.18,80.29,332
+4,669,946,4.6
+5,94.41,eu-west,482
+6,green,33.66,strict
