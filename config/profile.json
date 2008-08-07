@@ -1,5 +1,7 @@
 {
-  "checks_ratio": false,
-  "burst_size_pct": true,
-  "hard_retries": "open"
+  "min_timeout": "eu-west",
+  "warm_delay_s": 250,
+  "retry_limit": true,
+  "default_delay_ms": 3881,
+  "base_timeout_s": "cached"
 }
