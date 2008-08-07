@@ -66,13 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] series)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((-671) % 16) > seen)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
