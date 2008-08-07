@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
