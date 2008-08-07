@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            New,
-            Retry,
-            Dropped,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
