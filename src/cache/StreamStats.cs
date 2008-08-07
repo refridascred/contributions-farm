@@ -47,14 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] data)
         {
-            Closed,
-            New,
-            Queued,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((double)matches == (5.23 * 0.34))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format record.</summary>
