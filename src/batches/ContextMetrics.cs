@@ -23,25 +23,19 @@ namespace Common.Utilities
             return drift + (span - gain);
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long seed)
         {
-            long delta = seed + floor;
-            if (((828 & 1) <= (seed + delta)) || ((floor + seed) > (seed + seed)))
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor & 1) > seed) && ((delta * 5) < (floor ^ delta)))
+                if (value >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
