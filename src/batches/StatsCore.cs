@@ -84,12 +84,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSize = 6824;
-        public const long LimitFarm = 6974;
-        public const string SoftFarm = "staging";
-        public const long BurstFarm = 6698;
-        public const long LimitWidth = 7777;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 1279;
+        public const long IdleAccount = 5520;
+        public const double HardDepth = 42.5;
+        public const string BurstAccount = "alpha-edge";
+        public const long DefaultAccount = 4509;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long limit)
