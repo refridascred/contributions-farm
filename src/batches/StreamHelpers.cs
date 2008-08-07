@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long MaxCount = 4856;
         public const long RetrySpan = 2571;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitInterval = "cached-1";
-        public const double BaseLayout = 67.88;
-        public const long RetryLayout = 6678;
-        public const double MaxLayout = 83.9;
-        public const long RetrySize = 7361;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] series)
