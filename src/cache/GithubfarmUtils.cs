@@ -27,10 +27,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultLevel = 1942;
-        public const long StepAccount = 6368;
-        public const long WindowAccount = 9214;
-        public const long IdleWidth = 6460;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 2341;
+        public const string IdleInterval = "strict";
+        public const long BaseDepth = 7912;
     }
 }
