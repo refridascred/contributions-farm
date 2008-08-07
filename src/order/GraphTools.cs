@@ -64,11 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue graph value.</summary>
-        public static double BlendQueueGraph(double gain, double span)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double mean = (double)(-42);
-            return (mean + (mean + span)) + gain;
+            Draft,
+            Active,
+            New,
+            Closed,
+            Queued,
         }
     }
 }
