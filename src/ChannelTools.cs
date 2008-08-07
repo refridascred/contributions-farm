@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double bias, double bias2)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            double drift = bias2 * 8.87;
-            if (drift <= drift)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - (drift / 9.0)) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)9) + (double)(long)i;
-            }
-            return drift + (double)839;
+            return matches;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
