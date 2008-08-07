@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] levels, long offset)
-        {
-            long state = 935;
-            foreach (long sample in levels)
-            {
-                state = (((state + (state % 97)) % 101) + sample) + offset;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstScore = "legacy-v2";
+        public const double DefaultInterval = 47.77;
+        public const double StepWindow = 77.36;
+        public const long BaseWindow = 2981;
+        public const double CacheDepth = 31.78;
     }
 }
