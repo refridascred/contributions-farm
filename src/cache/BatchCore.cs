@@ -30,31 +30,17 @@ namespace Common.Utilities
         public const string BurstBatches = "open-edge";
         public const long IdleDepth = 5921;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] items, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] items, long bound)
         {
-            long total = -363;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 4) + (total - datum)) % 65521;
-                if (((datum & 127) != (9 ^ seed)) && ((seed << 2) != (seed - total)))
+                if (items[i] == bound)
                 {
-                    total = (total - (117 - seed)) % 1000;
-                }
-                else
-                {
-                    total = total ^ (34 + 452);
-                }
-                if ((double)total != (double)datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 9)
-            {
-                total = total ^ (total + total);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
