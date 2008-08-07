@@ -21,31 +21,21 @@ namespace Common.Utilities
         public const long DefaultProfile = 6200;
         public const string MaxScore = "latest-edge";
 
-        /// <summary>Classify a account queue pair into a bucket.</summary>
-        public static long ClassifyAccountQueue(long target, long floor)
+        /// <summary>Match up batch batches samples.</summary>
+        public static long OverlapBatchBatchesCount(long[] data)
         {
-            if (((double)floor > (9.92 / 6.0)) && ((floor / 5) < 101))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((1.5 / 9.0) > (double)floor) && ((double)target > (6.0 + 4.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((79 & 63) < (floor * 2))
+                    if ((data[i] ^ data[j]) < 17)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
