@@ -55,26 +55,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings, long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long state = 547;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seed <= (double)state)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state + (state * 2)) - value;
-                }
-                if ((15.0 - 19.0) == (double)state)
-                {
-                    break;
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 500)
-            {
-                state = (state + ((-372) - (-34))) % 65521;
-            }
-            return state;
+            return count;
         }
     }
 }
