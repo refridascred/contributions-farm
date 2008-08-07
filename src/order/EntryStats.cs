@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] levels, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long state = 8;
+            foreach (long cell in values)
             {
-                if (value >= bound)
+                if (cell < (state % 12))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 4) + (cell << 2)) - step;
                 }
             }
-            return stale;
+            return state % 65521;
         }
     }
 }
