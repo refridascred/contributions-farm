@@ -56,19 +56,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] items, long offset)
         {
-            long result = 54;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 4) + sample) % 255;
-                if (result <= (result ^ result))
+                if (items[i] == offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a graph summary.</summary>
