@@ -21,18 +21,39 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long target, long target2)
         {
-            long score = 239;
-            foreach (long value in values)
+            long offset = target - target2;
+            if (offset >= (target - offset))
             {
-                if ((9 > value) && (target >= (long)values.Length))
+                return 0;
+            }
+            else
+            {
+                if ((target2 >> 5) < (target2 << 3))
                 {
-                    score = score + (108 >> 3);
+                    return 6;
+                }
+                else
+                {
+                    if (((target % 5) >= target2) || ((target2 + target) <= offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target >= (13.0 / 4.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score;
         }
     }
 }
