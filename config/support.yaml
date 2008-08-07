@@ -1,14 +1,12 @@
 # support settings
-soft_depth:
-  audit: stable
-  base_timeout_ms: false
-  verbose: eu-west
-  batch_timeout: open
-compress: 19.06
-min_window_ms:
-  - eu-west
-  - edge
-  - cached
-  - cached
-hard_delay_ms: 8343
-poll_capacity: open
+support_depth: open
+retry_threshold_pct:
+  - open
+  - blue
+  - latest
+  - standard
+readonly:
+  - 378
+  - 185
+  - 64
+burst_retries: eu-west
