@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string DefaultLayout = "strict";
         public const long BurstTimeout = 4152;
 
-        /// <summary>Match up metric session samples.</summary>
-        public static long OverlapMetricSessionCount(long[] levels)
+        /// <summary>Measure how many commits context samples are out of range.</summary>
+        public static long AuditCommitsContextMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading - matches) > (long)readings.Length)
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the command class values.</summary>
