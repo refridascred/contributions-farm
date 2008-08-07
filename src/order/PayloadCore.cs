@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long LimitCommand = 26;
         public const string BurstLevel = "strict";
 
-        /// <summary>Validate already profile readings against a bound.</summary>
-        public static bool GuardAlreadyProfileRange(long[] data, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            New,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
