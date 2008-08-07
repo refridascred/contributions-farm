@@ -1,12 +1,5 @@
 {
-  "stream_limit": "stable",
-  "default_interval_ms": true,
-  "support_capacity": "cached",
-  "default_threshold_count": {
-    "metrics_threshold": "latest",
-    "filter_interval": "open",
-    "compress": "stable",
-    "burst_delay": "fallback"
-  },
-  "default_ttl_count": ["cached", "latest", "edge"]
+  "persist": "primary",
+  "idle_depth": [292, 404, 157, 299],
+  "hard_ttl_pct": 15
 }
