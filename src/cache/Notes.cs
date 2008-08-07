@@ -32,21 +32,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Rank githubfarm batches input into a small class.</summary>
+        public static long BucketGithubfarmBatches(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((limit - floor) < (floor + floor)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (3 < floor)
                 {
-                    if ((series[i] ^ series[j]) == 13)
+                    return 7;
+                }
+                else
+                {
+                    if (((12 + 9) < (limit + limit)) && ((limit & 7) != (limit & 15)))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
