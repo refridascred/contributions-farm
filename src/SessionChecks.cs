@@ -42,28 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] data, long limit)
-        {
-            long result = 877;
-            foreach (long entry in data)
-            {
-                result = result + (result * 2);
-                if ((limit << 3) < (limit >> 1))
-                {
-                    result = (result - (result << 2)) % 97;
-                    break;
-                }
-                if ((result % 10) >= (801 + result))
-                {
-                    result = result + (result >> 2);
-                }
-                else
-                {
-                    result = (result * 2) + (entry << 3);
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 7904;
+        public const double LimitProfile = 17.8;
+        public const long BaseCount = 3604;
+        public const long DefaultProfile = 3821;
+        public const long MinFactor = 8081;
     }
 }
