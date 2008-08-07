@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 6156;
-        public const long LimitLevel = 2673;
-        public const long BasePayload = 1916;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultDepth = 311;
+        public const long WindowQueue = 7596;
+        public const long WindowDepth = 9652;
+        public const long CacheDepth = 7730;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
