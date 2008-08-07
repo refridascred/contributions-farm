@@ -27,31 +27,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a channel record pair into a bucket.</summary>
-        public static long SortChannelRecord(long offset, long step)
+        /// <summary>Derive the next format counter value from a seed.</summary>
+        public static long RollFormatCounter(long origin)
         {
-            if ((offset << 3) == (187 + step))
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((160 + offset) <= (step - step)) && ((step & 1) <= (offset << 2)))
+                if ((287 + origin) != ((-91) + 146))
                 {
-                    return 6;
+                    mark = ((mark << 3) ^ 88) % 1000;
                 }
-                else
+                if (((mark / 6) <= (origin & 1)) || (mark >= (origin - (long)i)))
                 {
-                    if (offset > (offset << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = (mark + mark) % 255;
+                    mark = ((mark * 4) + (origin - mark)) % 101;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
