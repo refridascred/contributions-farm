@@ -40,21 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 3) + ((long)i & 1)) % 255;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
     }
 }
