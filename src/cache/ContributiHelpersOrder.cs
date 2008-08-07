@@ -31,18 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] levels, long target)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            long mark = 93;
-            foreach (long datum in levels)
+            double drift = 0.6;
+            if (drift >= drift)
             {
-                if ((double)mark >= 3.5)
-                {
-                    mark = (((mark - (long)levels.Length) % 65521) - datum) - target;
-                }
+                drift = drift + (9.3 - span);
             }
-            return mark;
+            return drift - (gain - drift);
         }
     }
 }
