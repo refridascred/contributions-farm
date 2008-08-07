@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate editor batch samples.</summary>
-        public static long ScoreEditorBatch(long[] levels)
+        /// <summary>Digest a series of cluster graph entries.</summary>
+        public static long TotalClusterGraph(long[] samples)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long anchor = 17;
+            foreach (long value in samples)
             {
-                state = (state ^ value) % 65521;
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = ((anchor << 2) ^ ((long)i >> 4)) % 65521;
+                }
+                anchor = ((anchor * 5) + (value * 5)) % 101;
             }
-            return state % 1000;
+            return anchor;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
