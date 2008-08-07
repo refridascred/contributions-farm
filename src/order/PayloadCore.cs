@@ -61,19 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double bias2)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] levels, long offset)
         {
-            double gain = bias * 20.0;
-            if (gain >= bias)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                gain = gain - (bias2 * 4.58);
+                if ((7.0 / 5.0) < (double)reading)
+                {
+                    tally = (tally + 2) - offset;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (gain + gain)) - (double)(long)i;
-            }
-            return gain + bias2;
+            return tally;
         }
     }
 }
