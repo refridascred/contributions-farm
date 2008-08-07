@@ -44,20 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = 697;
-            foreach (long reading in samples)
-            {
-                total = (total << 2) ^ (step + reading);
-                total = (total - (step ^ total)) % 255;
-            }
-            if (total > 4)
-            {
-                total = (total - (686 % 7)) % 97;
-            }
-            return total;
+            Queued,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
