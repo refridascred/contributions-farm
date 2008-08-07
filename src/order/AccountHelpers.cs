@@ -78,19 +78,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue graph entry stays within the limit.</summary>
-        public static bool CheckQueueGraphRange(long[] levels, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double span)
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = (double)(445 - 465);
+            return (gain - span) + bias;
         }
     }
 }
