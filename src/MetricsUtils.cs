@@ -59,15 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Count the schema account entries that pass the check.</summary>
+        public static long TallySchemaAccountMatches(long[] series)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long entry in series)
             {
-                if (seen <= (seen + 907))
+                if (768 >= (72 - entry))
                 {
-                    seen = (seen + 2) + entry;
+                    seen = seen + 3;
                 }
             }
             return seen;
