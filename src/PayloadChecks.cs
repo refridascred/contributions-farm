@@ -14,14 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Pending,
-            New,
-            Draft,
-            Done,
-            Queued,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
