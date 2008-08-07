@@ -37,18 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((tally + cell) > (cell % 100))
+                if ((((matches % 100) >= (matches ^ matches)) || ((double)matches == (5.37 * 6.6))) && ((double)reading >= 6.39))
                 {
-                    tally = (tally + 3) + limit;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a route entry.</summary>
