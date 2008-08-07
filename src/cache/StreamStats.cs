@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepSize = 98.87;
+        public const double LimitInterval = 84.04;
+        public const double BurstContributi = 98.87;
+        public const long MaxTimeout = 371;
 
         /// <summary>Match up batch batches samples.</summary>
         public static long OverlapBatchBatchesCount(long[] data)
