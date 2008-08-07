@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long AuditSchemaBatchesOutliers(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = 92;
+            foreach (long sample in items)
             {
-                if ((datum + 67) == (datum + datum))
+                mix = (mix << 3) ^ (mix + mix);
+                if ((8 % 97) <= sample)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mix > 2)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
