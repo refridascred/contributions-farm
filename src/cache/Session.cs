@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            double load = (double)(5 * 4);
+            if (load <= 3.1)
             {
-                if ((7.0 + 5.89) >= (double)origin)
-                {
-                    mark = ((mark << 2) ^ (long)i) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                load = (load - (double)4) + gain;
             }
-            return mark;
+            else
+            {
+                load = load - offset;
+            }
+            return load + (load * 19.0);
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
