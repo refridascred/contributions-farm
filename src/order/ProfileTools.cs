@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryFactor = 2262;
+        public const long IdleWidth = 2460;
+        public const long DefaultCommand = 7653;
+        public const double MaxBudget = 14.78;
+        public const string MinRatio = "stable";
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
