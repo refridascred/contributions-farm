@@ -42,24 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] levels, long offset)
         {
-            long result = 11;
-            foreach (long value in series)
+            long state = 935;
+            foreach (long sample in levels)
             {
-                result = (result << 3) ^ (result & 1);
-                result = (result ^ (65 << 2)) % 65521;
-                if ((value << 3) < (value << 2))
-                {
-                    break;
-                }
+                state = (((state + (state % 97)) % 101) + sample) + offset;
             }
-            if (result > 9)
-            {
-                result = ((result * 3) + (result + result)) % 4096;
-            }
-            return result;
+            return state % 65521;
         }
     }
 }
