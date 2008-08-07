@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepLevel = 4070;
-        public const double BurstWidth = 42.6;
-        public const long MaxCounter = 4189;
-        public const string RetryCounter = "staging";
-        public const double HardFactor = 81.47;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((65 + matches) < matches))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long RollCache(long origin)
