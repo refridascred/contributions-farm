@@ -58,18 +58,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] levels, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] values)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = 49;
+            foreach (long cell in values)
             {
-                if (!((value >= (value >> 2)) || ((value << 1) >= matches)))
+                if ((502 ^ total) > (cell + cell))
                 {
-                    matches = (matches + 3) + bound;
+                    total = ((total << 2) ^ ((long)values.Length << 1)) % 4096;
                 }
             }
-            return matches;
+            if (total > (-544))
+            {
+                total = total - (total * 4);
+            }
+            return total;
         }
     }
 }
