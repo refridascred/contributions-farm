@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit metric tools readings against a rule.</summary>
-        public static long TallyMetricToolsOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((9 - 2) >= item)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 30.5;
+        public const string RetryChannel = "strict";
+        public const string BurstScore = "stable-1";
+        public const long MinInterval = 5043;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double bias, double span)
