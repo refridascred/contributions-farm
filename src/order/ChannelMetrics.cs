@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleInterval = 6347;
-        public const string MaxDepth = "fallback-v2";
-        public const long BatchDepth = 8934;
-        public const long MaxPayload = 2898;
+        /// <summary>Digest a series of batches already entries.</summary>
+        public static long DigestBatchesAlready(long[] items, long target)
+        {
+            long anchor = 873;
+            foreach (long datum in items)
+            {
+                if ((datum + datum) <= (anchor / 2))
+                {
+                    anchor = ((anchor * 2) + target) % 97;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long target)
