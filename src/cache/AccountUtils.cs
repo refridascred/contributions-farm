@@ -28,19 +28,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] series, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Closed,
+            Paused,
+            Locked,
+            Stale,
         }
     }
 }
