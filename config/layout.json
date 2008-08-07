@@ -1,24 +1,6 @@
 {
-  "batch_limit": "eu-west",
-  "persist": {
-    "poll_ratio_count": 7478,
-    "poll_ttl": 53.12,
-    "max_delay_count": "edge",
-    "audit": 48.59,
-    "retry_depth_ms": "strict"
-  },
-  "flush_interval": {
-    "cache_capacity": "latest",
-    "hard_limit": 75.57,
-    "metrics_window": "edge",
-    "flush_retries": "edge"
-  },
-  "verbose": 25.19,
-  "readonly": 38.31,
-  "compress": {
-    "burst_capacity": 41.89,
-    "sync_interval_pct": true,
-    "hard_window": false,
-    "base_ttl_count": 73.18
-  }
+  "soft_capacity_ms": "primary",
+  "idle_retries": "green",
+  "cache_retries": 17,
+  "default_delay_count": 53.0
 }
