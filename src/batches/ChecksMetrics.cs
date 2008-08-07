@@ -54,18 +54,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items)
+        /// <summary>Fold a list of commits batches readings.</summary>
+        public static long FoldCommitsBatches(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long total = 50;
+            foreach (long value in series)
             {
-                if (!((seen < (datum ^ (-73))) || ((220 + 231) == (seen >> 4))))
-                {
-                    seen = seen + 2;
-                }
+                total = ((total << 2) ^ (70 % 24)) + value;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the stream class values.</summary>
