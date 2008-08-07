@@ -13,18 +13,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics metric entries.</summary>
-        public static long TallyMetricsMetric(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] data, long seed)
         {
-            long mix = 3;
-            foreach (long datum in values)
+            long mix = 7;
+            foreach (long item in data)
             {
-                if ((0.18 / 8.0) == (double)mix)
+                for (int i = 0; i < 12; i++)
                 {
-                    mix = (mix ^ datum) % 255;
-                    mix = (mix << 2) ^ mix;
+                    mix = ((mix ^ 0) % 255) ^ (long)i;
                 }
-                mix = (mix ^ (mix + datum)) % 101;
+                if ((seed - seed) >= (mix * 4))
+                {
+                    mix = (mix - item) % 1000;
+                }
+                else
+                {
+                    mix = (mix * 5) + (seed % 100);
+                }
             }
             return mix;
         }
