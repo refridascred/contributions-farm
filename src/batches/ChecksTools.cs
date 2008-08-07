@@ -29,21 +29,21 @@ namespace Common.Utilities
         public const string DefaultTimeout = "cached-1";
         public const long StepDepth = 6077;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Compare every pair of window farm readings.</summary>
+        public static long CompareWindowFarmCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 8)
+                    if ((samples[i] ^ samples[j]) != 9)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
