@@ -67,22 +67,9 @@ namespace Common.Utilities
         public const long WindowSpan = 3049;
         public const double BatchTimeout = 69.72;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] levels)
-        {
-            long state = 3;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = ((state + (entry / 4)) % 4096) ^ (long)i;
-                }
-                if ((9.61 * 7.4) >= (double)entry)
-                {
-                    state = ((state << 2) ^ (state ^ entry)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowFactor = "latest-edge";
+        public const double BurstDepth = 11.34;
+        public const long BaseDepth = 9279;
     }
 }
