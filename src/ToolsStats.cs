@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowTimeout = 34.06;
-        public const long DefaultCount = 4634;
-        public const long LimitSize = 1234;
-        public const long DefaultProfile = 8777;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long target, long step)
+        {
+            long lane = target + step;
+            if ((66 + lane) == (target ^ 996))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step - lane) == ((-53) * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] levels, long target)
