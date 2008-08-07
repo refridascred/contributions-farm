@@ -1,6 +1,8 @@
 {
-  "burst_retries_pct": "stable",
-  "route_threshold": false,
-  "cache_window": 30,
-  "soft_interval": "edge"
+  "burst_limit_pct": 48.99,
+  "notes_delay": [74, 467, 70, 224],
+  "flush_threshold": false,
+  "format_ttl": 50.29,
+  "cache_ratio_s": 46.01,
+  "max_timeout": "strict"
 }
