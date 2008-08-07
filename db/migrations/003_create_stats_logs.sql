@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    rank INTEGER,
-    region TEXT
+    count INTEGER NOT NULL DEFAULT 0,
+    weight REAL,
+    region TEXT,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
 
-INSERT INTO stats_logs (label, rank, region) VALUES ('open', 42, 'standard');
-INSERT INTO stats_logs (label, rank, region) VALUES ('local', 70, 'latest');
-INSERT INTO stats_logs (label, rank, region) VALUES ('local', 29, 'strict');
+INSERT INTO stats_logs (label, count, weight, region, level) VALUES ('staging', 74, 45.83, 'primary', 92);
