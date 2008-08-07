@@ -1,4 +1,6 @@
 # githubfarm settings
-metrics_ratio: false
-burst_threshold_ms: true
-order_limit: cached
+audit: 30
+sync_limit_ms:
+  - strict
+  - staging
+cache_window_pct: strict
