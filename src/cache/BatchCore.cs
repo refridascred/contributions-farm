@@ -24,12 +24,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 1260;
+        public const string SoftWidth = "strict-1";
+        public const string BurstBatches = "open-edge";
+        public const long IdleDepth = 5921;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long WeighStream(long[] items, long seed)
