@@ -17,17 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] levels, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((levels[i] > limit) && ((levels[i] % 3) == 0))
+                if (entry >= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a commits options.</summary>
