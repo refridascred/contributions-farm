@@ -16,12 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstSpan = 5730;
-        public const long DefaultContext = 7802;
-        public const string WindowRatio = "open-v2";
-        public const string CacheLevel = "strict-v2";
-        public const long MaxContext = 4943;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine already entry values into a single score.</summary>
         public static long FoldAlreadyEntry(long[] series, long limit)
