@@ -44,16 +44,19 @@ namespace Common.Utilities
             return mean + (gain / 9.0);
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] readings, long origin)
         {
-            long total = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                total = total - (datum / 5);
-                total = (total * 4) + (0 & 7);
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 97;
+            return ready;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
