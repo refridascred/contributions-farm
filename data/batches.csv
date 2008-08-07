@@ -1,9 +1,7 @@
-id,active,ratio,owner
-1,968,700,40.09
-2,19.4,31.63,693
-3,169,local,537
-4,652,833,556
-5,762,local,54.68
-6,standard,blue,917
-7,81.06,591,118
-8,cached,368,69.5
+id,region,state,weight,count
+1,43.82,517,fallback,947
+2,593,14,560,fallback
+3,71.88,primary,560,51.83
+4,956,edge,17.82,103
+5,676,331,577,67.06
+6,74.31,74.39,primary,open
