@@ -49,18 +49,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] samples)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample >= ((long)samples.Length - tally)) || ((sample * 5) != (tally + sample)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Done,
+            Failed,
         }
     }
 }
