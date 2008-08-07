@@ -1,16 +1,9 @@
 # support settings
-poll_size: 51.2
-min_retries_count: legacy
-persist:
-  max_ttl_pct: 500
-  base_size_ms:
-    - latest
-    - cached
-    - strict
-    - latest
-  flush_timeout: standard
-  flush_delay_count: 8629
-  payload_delay: 46.82
-readonly: latest
-cache_ttl: 33
-retry_interval: standard
+persist: true
+base_threshold_ms:
+  audit: 7482
+  cache_retries_count: 19.87
+  verbose: false
+context_delay: staging
+base_window: 44
+flush_delay_ms: 4145
