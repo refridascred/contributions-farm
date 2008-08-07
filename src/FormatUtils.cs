@@ -13,17 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a report notes reading by value.</summary>
-        public static long LocateReportNotesIndex(long[] data, long limit)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
