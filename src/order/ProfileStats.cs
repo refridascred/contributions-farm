@@ -23,13 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] data)
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 9;
+            foreach (long value in data)
+            {
+                if (((value - value) >= (anchor + 638)) || ((0.48 * 9.0) <= (double)anchor))
+                {
+                    anchor = anchor - value;
+                }
+                if (!((anchor + 96) < (value >> 1)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 77)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
