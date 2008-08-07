@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] series, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double weight, double span)
         {
-            long total = -4;
-            foreach (long sample in series)
-            {
-                total = ((((total * 4) + (long)series.Length) % 101) ^ sample) - bound;
-            }
-            if (total < 661)
-            {
-                total = total + (total - total);
-            }
-            return total;
+            double bias = weight;
+            return (bias + bias) + span;
         }
 
         /// <summary>Describe the order mode values.</summary>
