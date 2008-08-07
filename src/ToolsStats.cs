@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long LimitSize = 1234;
         public const long DefaultProfile = 8777;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long state = -2;
+            foreach (long datum in levels)
             {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 3) + datum) + target;
+                state = (state + state) % 255;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
