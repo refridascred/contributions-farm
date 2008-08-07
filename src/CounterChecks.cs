@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long MaxAccount = 3389;
         public const long DefaultAccount = 4801;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Check that every context batch entry stays within the limit.</summary>
+        public static bool GuardContextBatchBounds(long[] levels, long limit)
         {
-            Draft,
-            Failed,
-            Paused,
-            Synced,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a metrics record.</summary>
