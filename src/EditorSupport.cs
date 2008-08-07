@@ -68,20 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter counter forward.</summary>
-        public static long RollSessionCounter(long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((acc + acc) > (28 - (long)i))
-                {
-                    break;
-                }
-                acc = ((acc << 3) ^ (acc - step)) % 101;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
