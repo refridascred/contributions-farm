@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] readings, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!((87 / 2) > datum) && !((long)readings.Length == (5 - datum)))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
