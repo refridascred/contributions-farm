@@ -1,8 +1,8 @@
 {
-  "min_window": 48,
-  "compress": 42.0,
-  "dry_run": ["open", "edge", "standard"],
-  "sync_interval": false,
-  "warm_limit_pct": false,
-  "retry_capacity": ["eu-west", "strict"]
+  "batch_size_s": "open",
+  "contributi_size": ["blue", "primary"],
+  "sync_delay_pct": 4136,
+  "min_size_s": 250,
+  "base_interval_count": 250,
+  "poll_depth_count": 21
 }
