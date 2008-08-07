@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)(long)i < (2.12 * 12.0))
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result * 3) + (origin + result);
-                    result = result - (result >> 1);
-                }
-                if ((result % 100) <= result)
-                {
-                    result = (result ^ ((long)i & 7)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
