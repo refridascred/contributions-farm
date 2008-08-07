@@ -1,42 +1,31 @@
 # githubfarm settings
-soft_capacity: primary
-retry_ttl_count:
-  enabled:
-    hard_interval: latest
-    counter_capacity: 1076
-    hard_window_s: 4
-  route_ratio:
-    poll_timeout: cached
-    hard_ratio_pct: fallback
-    batch_threshold: stable
-    batch_threshold_s: 1024
-    route_ttl: false
-    poll_interval_pct: true
-  schema_delay: 6688
-  route_ttl:
-    schema_ttl: 25.93
-    batch_depth: 30
-    burst_delay_pct: stable
-    order_threshold: 46.7
-    enabled:
-      - blue
-      - latest
+soft_window_s: 43.03
+batch_ttl_ms:
+  - green
+  - cached
+  - strict
+default_delay_count:
+  base_delay_s: true
+  default_delay_ms:
+    - blue
+    - stable
+    - strict
+  report_window: fallback
+  persist: strict
+  commits_capacity:
+    - 388
+    - 375
+    - 241
+retry_delay_pct:
+  idle_ttl_ms:
+    hard_delay_pct: 33.87
+    githubfarm_limit:
+      - primary
       - stable
-      - local
-  retry_threshold:
-    order_window: 80
-    burst_ttl_s: green
-    hard_ttl_s: 892
-    stats_limit: 41.79
-    compress: false
-sync_window_s:
-  schema_depth: 97.94
-  audit: fallback
-  retry_window_ms: 250
-  min_timeout_count: false
-  burst_ttl_pct: 55.2
-  poll_ttl:
-    metrics_timeout: strict
-    cache_ratio: 66
-    idle_ratio_ms: blue
-    persist: false
+    batch_limit_s: 88
+    base_depth_pct: 7922
+    flush_window_s: open
+    min_timeout: 83
+  min_size_ms: eu-west
+  max_ratio: 91
+retry_window: 88
