@@ -75,13 +75,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit checks cluster readings against a rule.</summary>
+        public static long TallyChecksClusterGaps(long[] series, long bound)
         {
-            Retry,
-            Locked,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits / 3) > entry)
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
