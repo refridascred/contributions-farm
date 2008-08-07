@@ -26,15 +26,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data, long target)
         {
-            double scale = bias;
-            for (int i = 0; i < 8; i++)
+            long acc = 323;
+            foreach (long datum in data)
             {
-                scale = ((scale + scale) - (double)(long)i) - weight;
+                acc = ((acc << 2) ^ target) % 255;
+                acc = (acc << 3) ^ (datum >> 2);
+                if ((double)target >= (6.4 - 5.0))
+                {
+                    acc = ((acc * 4) + (datum + target)) % 101;
+                }
             }
-            return scale - (double)39;
+            return acc % 1000;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
