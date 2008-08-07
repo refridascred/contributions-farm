@@ -54,24 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            if ((double)bound >= (1.5 * 7.75))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound + bound) == (bound / 6)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
