@@ -27,19 +27,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double weight, double floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long seed)
         {
-            double scale = weight;
-            if (scale < (double)81)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                scale = scale - (double)478;
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (weight + scale);
-            }
-            return scale + (floor - 5.0);
+            return stale;
         }
     }
 }
