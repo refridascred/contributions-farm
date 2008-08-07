@@ -32,20 +32,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Iterate the graph order series from a seed.</summary>
+        public static long IterateGraphOrder(long limit)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((score + step) == (score ^ (long)i))
-                {
-                    score = (score ^ (65 + score)) % 4096;
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Fold a list of token readings.</summary>
