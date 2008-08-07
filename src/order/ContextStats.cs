@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] items)
         {
-            double rate = weight;
-            if (rate <= weight)
+            long total = 363;
+            foreach (long cell in items)
             {
-                rate = rate - offset;
+                if ((2.25 * 3.95) > (double)total)
+                {
+                    total = ((total * 4) + (cell >> 2)) % 255;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (weight / 8.0);
+            return total % 65521;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
