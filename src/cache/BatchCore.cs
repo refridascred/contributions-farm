@@ -29,17 +29,24 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a githubfarm format reading by value.</summary>
-        public static long FindGithubfarmFormatIndex(long[] levels, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] == bound)
+                if ((mix - seed) <= (mix ^ 90))
                 {
-                    return (long)i;
+                    mix = mix - mix;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix * 4) + mix) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a profile summary.</summary>
