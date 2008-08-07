@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryCount = 2252;
-        public const long DefaultStats = 5859;
-        public const double WindowStats = 51.49;
-        public const long BaseStats = 3855;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileOutliers(long[] samples, long bound)
