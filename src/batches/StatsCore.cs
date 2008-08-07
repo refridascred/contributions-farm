@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many contributi account samples are out of range.</summary>
-        public static long AuditContributiAccountGaps(long[] readings)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (count < reading)
+                sum = sum - (sum << 3);
+                if ((sum + origin) >= (origin - sum))
                 {
-                    count = count + 2;
+                    sum = sum - 1;
                 }
+                else
+                {
+                    sum = (sum + origin) % 101;
+                }
+                if (!((origin / 2) < (origin * 4)))
+                {
+                    sum = ((sum * 3) + (long)i) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
