@@ -21,11 +21,16 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 870;
-        public const long RetryBudget = 6063;
-        public const string BaseTimeout = "primary-edge";
-        public const long BaseLevel = 5351;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] samples)
+        {
+            long carry = 973;
+            foreach (long entry in samples)
+            {
+                carry = (carry - (entry ^ carry)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] items, long origin)
