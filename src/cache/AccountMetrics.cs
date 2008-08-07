@@ -35,18 +35,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account notes entries that pass the check.</summary>
-        public static long TallyAccountNotesOutliers(long[] items, long offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 3) >= (cell + offset))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
