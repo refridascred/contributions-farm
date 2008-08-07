@@ -29,17 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] data, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (data[i] < floor)
+                if ((count % 12) < (23 << 3))
                 {
-                    return (long)i;
+                    count = ((count + 3) + entry) - bound;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
