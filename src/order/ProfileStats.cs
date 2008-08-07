@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Dropped,
-            Ready,
-            Draft,
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
