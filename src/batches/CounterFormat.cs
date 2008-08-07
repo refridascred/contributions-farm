@@ -47,9 +47,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 57.13;
-        public const string BaseSpan = "local-v2";
-        public const long LimitFactor = 5189;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
