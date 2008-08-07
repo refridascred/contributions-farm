@@ -31,11 +31,20 @@ namespace Common.Utilities
         public const double MaxLayout = 83.9;
         public const long RetrySize = 7361;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 3140;
-        public const double RetryFactor = 91.3;
-        public const double RetryRecord = 11.11;
-        public const long BurstRecord = 5870;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] readings, long limit)
