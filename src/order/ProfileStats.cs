@@ -24,19 +24,17 @@ namespace Common.Utilities
             return scale + (double)50;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] samples, long limit)
         {
-            long acc = 34;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc << 3) ^ acc) - entry;
+                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 255)
-            {
-                acc = (acc * 5) + (acc & 7);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine queue buffer values into a single score.</summary>
