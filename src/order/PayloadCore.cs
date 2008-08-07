@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = ((sum << 2) ^ ((long)i2 % 12)) % 1000;
-                    sum = (sum ^ limit) % 97;
-                }
-                sum = sum + ((long)i + limit);
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
