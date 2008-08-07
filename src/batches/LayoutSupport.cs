@@ -66,18 +66,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] items)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((count / 3) >= cell) || (((cell ^ cell) < 71) || ((double)cell < (6.4 + 15.0))))
+                if (readings[i] == bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
