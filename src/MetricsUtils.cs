@@ -55,18 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema account entries that pass the check.</summary>
-        public static long TallySchemaAccountMatches(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (768 >= (72 - entry))
+                if (((double)sample == (12.0 * 8.22)) && (((matches ^ matches) < (matches & 127)) || ((matches / 7) >= (matches >> 1))))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
