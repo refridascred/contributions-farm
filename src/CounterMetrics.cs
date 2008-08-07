@@ -35,24 +35,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate entry record samples.</summary>
-        public static long DigestEntryRecord(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data, long offset)
         {
-            long acc = 99;
-            foreach (long datum in items)
+            long total = 69;
+            foreach (long cell in data)
             {
-                acc = (acc - (datum ^ datum)) % 4096;
-                acc = ((acc * 5) + datum) % 1000;
-                if (((acc + acc) != (datum - acc)) && ((acc & 31) >= acc))
+                if ((double)offset <= 3.0)
                 {
-                    acc = acc + (acc - datum);
+                    total = (total + total) % 97;
+                }
+                else
+                {
+                    total = ((total * 2) + (cell - total)) % 4096;
                 }
             }
-            if (acc > 7)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc % 4096;
+            return total % 65521;
         }
     }
 }
