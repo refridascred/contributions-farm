@@ -1,6 +1,6 @@
 {
-  "cache_capacity_count": 500,
-  "soft_timeout": "legacy",
-  "poll_limit": "green",
-  "enabled": 60
+  "burst_threshold_s": [48, 247, 280],
+  "flush_size": 8745,
+  "hard_size_count": [146, 348],
+  "dry_run": "eu-west"
 }
