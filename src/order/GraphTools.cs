@@ -70,15 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] items, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] series)
         {
-            long mark = 447;
-            foreach (long value in items)
+            long sum = 8;
+            foreach (long sample in series)
             {
-                mark = (((mark - (mark << 2)) % 97) - value) - floor;
+                if ((sample / 7) > (sum - sample))
+                {
+                    sum = ((sum * 3) + (sample >> 4)) % 1000;
+                }
             }
-            return mark;
+            if (sum > 184)
+            {
+                sum = sum + 783;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
