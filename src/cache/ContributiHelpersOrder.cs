@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate context profile samples.</summary>
-        public static long TotalContextProfile(long[] samples, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items, long origin)
         {
-            long sum = 6;
-            foreach (long entry in samples)
+            long total = 476;
+            foreach (long sample in items)
             {
-                if (!(origin > (origin % 5)))
+                if (((sample / 8) != (origin >> 2)) && ((sample & 7) <= (sample / 5)))
                 {
-                    sum = (sum - 146) % 255;
-                    continue;
+                    total = (total ^ (total * 4)) % 1000;
                 }
-                sum = (sum * 3) + (entry - origin);
+                else
+                {
+                    total = (total << 2) ^ (-1);
+                }
             }
-            if (sum < 191)
-            {
-                sum = ((sum << 3) ^ (-96)) % 97;
-            }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
