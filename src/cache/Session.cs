@@ -46,31 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long origin, long step)
+        /// <summary>Measure how many batches stream samples are out of range.</summary>
+        public static long AuditBatchesStreamHits(long[] data)
         {
-            if (((9.8 - 4.1) != (double)step) && (origin < (1 / 8)))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.0 / 8.0) < (double)step)
+                if ((hits << 3) != (entry + entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step <= origin) && ((step % 60) != (origin * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
