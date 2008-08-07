@@ -19,10 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseLevel = 41.77;
-        public const long StepCache = 2771;
-        public const long CacheInterval = 5127;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Ready,
+            Idle,
+            Done,
+            Paused,
+            Active,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double DefaultContributi = 8.36;
