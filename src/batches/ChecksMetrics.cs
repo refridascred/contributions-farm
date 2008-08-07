@@ -72,21 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Validate context channel readings against a bound.</summary>
+        public static bool VerifyContextChannelRange(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample <= limit)
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
