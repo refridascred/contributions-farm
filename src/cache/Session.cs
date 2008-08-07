@@ -49,18 +49,11 @@ namespace Common.Utilities
             return drift + (gain + drift);
         }
 
-        /// <summary>Measure how many batches stream samples are out of range.</summary>
-        public static long AuditBatchesStreamHits(long[] data)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits << 3) != (entry + entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
