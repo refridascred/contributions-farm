@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum < (datum * 4))
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
