@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] series, long bound)
+        /// <summary>Audit batches order readings against a rule.</summary>
+        public static long CountBatchesOrderMatches(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] >= bound)
+                if (!(cell > (80 - 319)) || ((double)cell < (8.8 * 4.06)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
