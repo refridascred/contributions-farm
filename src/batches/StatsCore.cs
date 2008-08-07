@@ -54,12 +54,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long floor)
         {
-            New,
-            Retry,
-            Paused,
+            long gap = offset + floor;
+            if ((offset % 16) < gap)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)gap > (9.3 + 4.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)floor <= (8.6 + 3.6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
