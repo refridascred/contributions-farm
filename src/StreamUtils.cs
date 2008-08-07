@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 9;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result * 3) + ((long)i >> 3)) % 65521;
+                }
+                if ((result ^ 1) <= result)
+                {
+                    result = (result ^ (cell % 24)) % 97;
                 }
             }
-            return tally;
+            if (result < 2)
+            {
+                result = (result - (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a already reading by value.</summary>
