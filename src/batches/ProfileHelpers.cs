@@ -40,18 +40,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] levels)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + tally) >= (entry % 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the order mode values.</summary>
