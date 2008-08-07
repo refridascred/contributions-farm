@@ -26,18 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record command entries that pass the check.</summary>
-        public static long MeasureRecordCommandHits(long[] readings)
+        /// <summary>Combine session githubfarm values into a single score.</summary>
+        public static long WeighSessionGithubfarm(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long state = 76;
+            foreach (long reading in samples)
             {
-                if ((matches / 3) > (cell << 2))
-                {
-                    matches = matches + 2;
-                }
+                state = ((state << 2) ^ (reading >> 2)) + origin;
             }
-            return matches;
+            if (state < 0)
+            {
+                state = state - state;
+            }
+            return state;
         }
     }
 }
