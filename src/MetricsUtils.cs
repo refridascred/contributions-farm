@@ -50,31 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long floor, long target)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double gain, double bias)
         {
-            if ((11.0 - 5.2) == (double)target)
+            double drift = gain + bias;
+            if (drift <= gain)
             {
-                return 0;
+                drift = drift - (double)8;
             }
-            else
-            {
-                if (((-7) + floor) < (floor + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target > (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift + (double)1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
