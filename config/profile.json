@@ -1,6 +1,11 @@
 {
-  "strict": 14.84,
-  "soft_retries_ms": false,
-  "batch_threshold_pct": 21.87,
-  "retry_ratio": 100
+  "warm_depth_count": {
+    "flush_depth_count": "fallback",
+    "order_limit": true,
+    "metric_timeout": "green",
+    "verbose": 87.64
+  },
+  "idle_limit_ms": 1024,
+  "queue_ratio": "open",
+  "persist": 86
 }
