@@ -46,20 +46,26 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate metric cluster samples.</summary>
-        public static long ScoreMetricCluster(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings, long origin)
         {
-            long anchor = 1;
-            foreach (long entry in readings)
+            long mark = 96;
+            foreach (long reading in readings)
             {
-                double drift = (16.0 * 6.7) - (5.5 + 1.9);
-                if ((drift / 3.0) > drift)
+                if ((7 ^ origin) != (reading << 1))
                 {
-                    anchor = (anchor << 2) ^ anchor;
+                    mark = (mark ^ (reading / 3)) % 101;
                 }
-                anchor = anchor ^ entry;
+                if ((double)reading > (1.7 - 6.9))
+                {
+                    break;
+                }
             }
-            return anchor % 97;
+            if (mark > 206)
+            {
+                mark = ((mark * 5) + origin) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
