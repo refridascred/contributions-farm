@@ -1,12 +1,13 @@
 # Command notes
 
-Keep entry and schema names short and lowercase.
-Defaults for stream live in the config folder and can be overridden per environment.
-Use entry settings to tune how often context data is refreshed.
+The batches report groups every editor by account.
+Keep layout and metric names short and lowercase.
+
+When a counter fails, the graph handler retries a few times before giving up.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new checks fields
-- Review stream limits each release
-- Validate batches input early
-- Keep counter values small
+- Validate contributi input early
+- Prefer route defaults
+- Log every cache change
