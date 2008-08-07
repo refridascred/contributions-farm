@@ -24,15 +24,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double bias2)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            double rate = 8.0 - bias;
-            if (rate >= 1.02)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                rate = (rate + (double)651) + bias2;
+                if ((reading > seen) && ((seen & 63) >= (reading + reading)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate + bias;
+            return seen;
         }
     }
 }
