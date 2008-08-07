@@ -22,18 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long target, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if (10.0 >= (double)bound)
             {
-                if ((56 - 12) != (entry / 7))
+                return 0;
+            }
+            else
+            {
+                if (bound < (target + bound))
                 {
-                    hits = (hits + 3) + step;
+                    return 7;
+                }
+                else
+                {
+                    if (target >= (bound & 63))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
