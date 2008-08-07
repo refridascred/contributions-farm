@@ -17,24 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the session farm series from a seed.</summary>
-        public static long SeriesSessionFarm(long limit)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result ^ (result >> 3)) % 4096;
-                if ((long)i != ((long)i >> 4))
-                {
-                    result = (result - (60 + result)) % 255;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = (((result << 2) ^ result) % 97) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Locked,
+            Pending,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
