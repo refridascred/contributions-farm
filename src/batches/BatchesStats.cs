@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of tools commits readings.</summary>
-        public static long MatchToolsCommitsCount(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -776;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = ((state * 4) + (5 / 2)) % 97;
+                if (((-62) / 2) >= (sample * 3))
                 {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state - (sample % 64);
                 }
             }
-            return matches;
+            if (state > 372)
+            {
+                state = (state - state) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate payload batches readings against a bound.</summary>
