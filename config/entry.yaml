@@ -1,5 +1,37 @@
 # entry settings
-queue_threshold: stable
-cache_retries_count: primary
-hard_window_s: false
-verbose: 91
+audit: false
+burst_retries_s:
+  poll_ttl:
+    entry_limit:
+      - 453
+      - 122
+    dry_run:
+      - blue
+      - stable
+      - open
+    flush_threshold: stable
+    idle_size_s:
+      - stable
+      - edge
+    stats_ratio:
+      - latest
+      - fallback
+      - latest
+      - blue
+    flush_window_ms: true
+  max_threshold:
+    - standard
+    - staging
+    - edge
+    - edge
+  already_retries: 1024
+  min_interval_count:
+    persist: true
+    soft_capacity_ms:
+      - blue
+      - latest
+      - eu-west
+    default_limit_s: true
+  sync_capacity_s: true
+sync_depth_ms: 20
+profile_limit: 100
