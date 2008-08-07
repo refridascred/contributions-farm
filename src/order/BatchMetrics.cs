@@ -47,22 +47,17 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-edge";
         public const long BaseLevel = 5351;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] items, long origin)
         {
-            long result = 70;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.91 / 9.0) <= (double)cell)
+                if ((items[i] <= origin) && ((items[i] % 3) == 0))
                 {
-                    result = ((result * 5) + (result % 97)) - target;
+                    return (long)i;
                 }
             }
-            if (result < 8)
-            {
-                result = ((result * 2) + (20 + result)) % 97;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the format command entries that pass the check.</summary>
