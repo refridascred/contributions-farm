@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double weight, double offset)
         {
-            Active,
-            Dropped,
-            Stale,
-            Retry,
-            Queued,
+            double ratio = weight * 6.33;
+            return ratio + offset;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
