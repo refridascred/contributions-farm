@@ -1,9 +1,16 @@
 # support settings
-batch_capacity: 500
-warm_depth:
-  - fallback
-  - fallback
-  - strict
-  - stable
-verbose: blue
-cache_ratio: latest
+poll_size: 51.2
+min_retries_count: legacy
+persist:
+  max_ttl_pct: 500
+  base_size_ms:
+    - latest
+    - cached
+    - strict
+    - latest
+  flush_timeout: standard
+  flush_delay_count: 8629
+  payload_delay: 46.82
+readonly: latest
+cache_ttl: 33
+retry_interval: standard
