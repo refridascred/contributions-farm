@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Locked,
-            Draft,
-            Failed,
-            Active,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowTimeout = 34.06;
+        public const long DefaultCount = 4634;
+        public const long LimitSize = 1234;
+        public const long DefaultProfile = 8777;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
