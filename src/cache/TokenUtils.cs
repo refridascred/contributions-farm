@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Retry,
-            Synced,
-            Done,
-            Failed,
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
