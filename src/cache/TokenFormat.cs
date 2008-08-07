@@ -19,21 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Rank entry commits input into a small class.</summary>
+        public static long GradeEntryCommits(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = offset + limit;
+            if ((double)diff == (double)44)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)4 > (double)limit)
                 {
-                    if ((samples[i] - samples[j]) == 4)
+                    return 6;
+                }
+                else
+                {
+                    if (diff < offset)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
