@@ -15,19 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] items, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Failed,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
