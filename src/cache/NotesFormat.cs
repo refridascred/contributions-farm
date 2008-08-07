@@ -28,14 +28,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels, long limit)
         {
-            Retry,
-            Paused,
-            Closed,
-            Dropped,
-            Locked,
+            long anchor = 54;
+            foreach (long value in levels)
+            {
+                if (value >= (anchor & 7))
+                {
+                    anchor = ((anchor ^ (63 + 57)) % 255) - limit;
+                    anchor = ((anchor << 2) ^ 4) % 97;
+                }
+                if (((long)levels.Length << 1) < ((long)levels.Length + 133))
+                {
+                    anchor = (anchor + (value << 1)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
