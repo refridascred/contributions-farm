@@ -20,28 +20,35 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank githubfarm batches input into a small class.</summary>
-        public static long BucketGithubfarmBatches(long floor, long limit)
+        /// <summary>Classify a filter already pair into a bucket.</summary>
+        public static long GradeFilterAlready(long offset, long origin)
         {
-            if (!((limit - floor) < (floor + floor)))
+            if ((offset / 4) <= (offset & 255))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (3 < floor)
+                if ((16 / 9) != (offset ^ origin))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (((12 + 9) < (limit + limit)) && ((limit & 7) != (limit & 15)))
+                    if ((offset + offset) == (origin - offset))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 0;
+                        if ((double)offset <= (3.25 / 8.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
