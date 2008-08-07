@@ -33,11 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            New,
+            Retry,
+            Locked,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
