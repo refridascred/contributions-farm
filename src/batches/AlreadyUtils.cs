@@ -63,15 +63,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double span)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long step)
         {
-            double ratio = span;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ((ratio - 7.88) + (double)(long)i) + rate;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + span;
+            return -1;
         }
     }
 }
