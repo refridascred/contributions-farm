@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (rate + (4.0 + bias)) + offset;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] readings)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count ^ reading) == (count / 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
