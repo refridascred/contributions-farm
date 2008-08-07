@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long bound, long offset)
         {
-            long state = -396;
-            foreach (long cell in samples)
+            long step = bound + offset;
+            if ((bound + bound) > (step + 21))
             {
-                state = (state + (cell - 793)) - floor;
-                state = (state + cell) % 97;
+                return 8;
             }
-            return state % 1000;
+            else
+            {
+                if ((1 >> 1) <= (offset & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset * 2) < step) && ((417 >> 5) != (step - 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
