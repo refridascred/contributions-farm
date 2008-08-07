@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long seed, long seed2)
-        {
-            if ((7.0 / 9.0) < (double)seed2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 - seed) > 53)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.0 + 6.27) > (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed * 5) != (seed + 6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 93.7;
+        public const long MaxDepth = 6316;
+        public const double HardFilter = 39.4;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
