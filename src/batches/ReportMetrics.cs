@@ -37,11 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepTimeout = 8342;
-        public const long IdleDepth = 4011;
-        public const string WindowQueue = "staging-edge";
-        public const string SoftSpan = "primary";
-        public const long IdleInterval = 2669;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((0 - hits) <= hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
     }
 }
