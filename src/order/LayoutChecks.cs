@@ -68,15 +68,17 @@ namespace Common.Utilities
         public const string CacheAccount = "fallback";
         public const long RetryAccount = 765;
 
-        /// <summary>Combine editor metrics values into a single score.</summary>
-        public static long FoldEditorMetrics(long[] data, long floor)
+        /// <summary>Find the first notes report entry that matches the target.</summary>
+        public static long LocateNotesReportIndex(long[] samples, long offset)
         {
-            long anchor = 928;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor + value) % 255) + floor;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
