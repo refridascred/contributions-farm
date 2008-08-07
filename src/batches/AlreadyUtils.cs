@@ -20,22 +20,24 @@ namespace Common.Utilities
             return gain - (double)778;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Iterate the session farm series from a seed.</summary>
+        public static long SeriesSessionFarm(long limit)
         {
-            long total = 8;
-            foreach (long value in series)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((total >> 4) == ((long)series.Length + total))
+                result = (result ^ (result >> 3)) % 4096;
+                if ((long)i != ((long)i >> 4))
                 {
-                    total = total + value;
+                    result = (result - (60 + result)) % 255;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (((result << 2) ^ result) % 97) + (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (total > 68)
-            {
-                total = total - total;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
