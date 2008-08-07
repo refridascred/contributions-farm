@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRatio = 6850;
+        public const string BatchRoute = "legacy-v2";
+        public const long LimitRoute = 8441;
+        public const string RetryRoute = "open-edge";
 
         /// <summary>Check that every report filter entry stays within the limit.</summary>
         public static bool VerifyReportFilterRange(long[] readings, long offset)
