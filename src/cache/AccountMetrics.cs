@@ -16,15 +16,38 @@ namespace Common.Utilities
             return load - (double)690;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            if ((offset + 9) >= step)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((offset + step) <= (offset ^ 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + step) != (981 - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset << 2) < step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the account notes entries that pass the check.</summary>
