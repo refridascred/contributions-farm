@@ -44,13 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Validate account profile readings against a bound.</summary>
+        public static bool CheckAccountProfileBounds(long[] items, long floor)
         {
-            Queued,
-            Closed,
-            Failed,
-            Pending,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
