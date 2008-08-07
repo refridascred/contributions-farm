@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double rate, double span)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double mean = span;
-            if (mean < mean)
-            {
-                mean = mean + (rate + mean);
-            }
-            else
-            {
-                mean = mean - (2.1 * 9.0);
-            }
-            return mean - (mean * 3.31);
+            Idle,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a commits options.</summary>
