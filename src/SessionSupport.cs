@@ -20,18 +20,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] data, long bound)
+        /// <summary>Grade a checks contributi value against two limits.</summary>
+        public static long ClassifyChecksContributi(long limit, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long gap = limit ^ step;
+            if ((double)limit != (double)691)
             {
-                if ((2.88 > (double)item) && ((2 + item) > (tally - item)))
+                return 4;
+            }
+            else
+            {
+                if (step < (gap >> 1))
                 {
-                    tally = (tally + 2) + bound;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit >= (0.58 - 4.46))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
