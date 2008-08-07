@@ -13,24 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Count the entry farm entries that pass the check.</summary>
+        public static long CountEntryFarmGaps(long[] values, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)floor == (double)total)
+                if ((6.78 / 7.0) < (double)offset)
                 {
-                    total = (total - ((long)i % 7)) % 255;
+                    hits = (hits + 3) - datum;
                 }
-                if ((total > (floor + floor)) && (floor > (long)i))
-                {
-                    total = (total * 4) + ((long)i ^ (-88));
-                }
-                total = total - total;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Classify a farm command pair into a bucket.</summary>
