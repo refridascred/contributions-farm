@@ -25,19 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] readings, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > target)
+                if (series[i] < bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Fold a list of already metric readings.</summary>
