@@ -1,17 +1,5 @@
 # support settings
-burst_interval_ms:
-  batch_threshold:
-    - staging
-    - standard
-    - edge
-    - cached
-  cache_window:
-    hard_interval: 100
-    idle_delay_ms: 60.44
-    default_depth: 5.56
-    filter_size: 53.75
-  persist: 1796
-  queue_limit: 30
-window_limit: 1650
-strict: 284
-sync_size_s: 9727
+verbose: 6.38
+poll_threshold_pct: blue
+burst_ttl_pct: 36.49
+sync_delay_count: open
