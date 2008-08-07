@@ -62,27 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRecordLimits(long[] values, long offset)
         {
-            long total = 54;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((item % 8) == (total - 735))
+                if (cell >= offset)
                 {
-                    total = total - (item - total);
-                }
-                total = total ^ item;
-                if (10.0 <= (double)total)
-                {
-                    total = (total * 2) + (item >> 2);
+                    flag = false;
+                    break;
                 }
             }
-            if (total > (-143))
-            {
-                total = (total ^ (total >> 3)) % 1000;
-            }
-            return total;
+            return flag;
         }
     }
 }
