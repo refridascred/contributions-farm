@@ -34,11 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Iterate the profile support series from a seed.</summary>
+        public static long StepProfileSupport(long offset)
         {
-            double bias = (double)(831 ^ 855);
-            return (bias - (weight * 2.0)) + floor;
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (acc > (offset % 10))
+                {
+                    acc = (acc - acc) % 255;
+                    acc = ((acc << 2) ^ (offset >> 1)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
