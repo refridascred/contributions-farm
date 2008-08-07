@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long step, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] values, long floor)
         {
-            if (target <= (step ^ step))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - target) <= (step & 31))
+                if (values[i] <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step << 1) != (127 >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
