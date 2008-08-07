@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a format schema reading by value.</summary>
-        public static long SeekFormatSchemaIndex(long[] levels, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((21 >> 4) <= (step * 2))
             {
-                if (levels[i] == origin)
+                return 8;
+            }
+            else
+            {
+                if (62 > offset)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a queue record.</summary>
