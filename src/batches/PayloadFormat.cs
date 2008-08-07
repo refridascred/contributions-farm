@@ -31,12 +31,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxTimeout = 6798;
-        public const long HardCount = 9849;
-        public const string StepSession = "primary-v2";
-        public const long BatchRatio = 917;
-        public const long WindowSession = 3964;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double offset)
+        {
+            double ratio = (weight / 6.0) * 0.7;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + (ratio * 4.0);
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long limit)
