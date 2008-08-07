@@ -27,32 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long bound, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] data, long origin)
         {
-            long cur = bound + limit;
-            if (((limit + bound) <= (666 + limit)) && (((-3) - cur) == (cur << 2)))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((limit + limit) >= (cur - bound)))
+                if (sample != origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound <= (2.7 / 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next graph value.</summary>
