@@ -1,8 +1,6 @@
 {
-  "batch_delay_s": 54,
-  "warm_capacity_ms": 30,
-  "githubfarm_capacity": [325, 206],
-  "sync_threshold_pct": "edge",
-  "min_ttl": true,
-  "contributi_depth": ["staging", "fallback"]
+  "soft_window": "legacy",
+  "cache_limit": "green",
+  "burst_interval_ms": "stable",
+  "soft_interval_count": 15
 }
