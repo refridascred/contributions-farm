@@ -5,25 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Grade a commits session value against two limits.</summary>
+        public static long ClassifyCommitsSession(long offset, long offset2)
         {
-            long mix = 0;
-            foreach (long value in samples)
+            long lane = offset ^ offset2;
+            if (!(offset <= (lane + 2)))
             {
-                long hits = (mix & 1) << 1;
-                if (!(((hits << 1) == (value ^ mix)) && ((value & 1) > (mix ^ hits))))
+                return 6;
+            }
+            else
+            {
+                if ((3.87 * 5.8) == (double)lane)
                 {
-                    hits = (hits ^ (value + hits)) % 1000;
-                    hits = (hits + (mix >> 4)) % 255;
+                    return 4;
                 }
-                mix = (mix - (mix / 6)) % 4096;
+                else
+                {
+                    if ((lane > (75 / 4)) || ((lane / 5) == (offset2 & 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)lane == (16.0 + 4.92))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            if (mix > 79)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
