@@ -27,21 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((8.0 - 17.0) == (double)seen)
                 {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
