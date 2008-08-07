@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 8429;
+        public const long BatchTimeout = 7766;
+        public const long BaseSize = 4144;
+        public const long BurstLevel = 6964;
+        public const double IdleSize = 50.51;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] readings)
