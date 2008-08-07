@@ -31,22 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long sum = 8;
-            foreach (long sample in series)
-            {
-                if ((sample / 7) > (sum - sample))
-                {
-                    sum = ((sum * 3) + (sample >> 4)) % 1000;
-                }
-            }
-            if (sum > 184)
-            {
-                sum = sum + 783;
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Compare every pair of account readings.</summary>
