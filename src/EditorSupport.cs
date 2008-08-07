@@ -23,11 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseBudget = 2359;
-        public const long LimitMetrics = 2056;
-        public const long BaseScore = 538;
-        public const long IdleMetrics = 7038;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double gain, double bias)
+        {
+            double scale = gain;
+            if (scale < (scale / 8.0))
+            {
+                scale = scale + (double)1;
+            }
+            else
+            {
+                scale = scale + (bias / 4.0);
+            }
+            return scale - (double)88;
+        }
 
         /// <summary>Scale a contributi token figure with a bias.</summary>
         public static double ScaleContributiToken(double gain, double offset)
