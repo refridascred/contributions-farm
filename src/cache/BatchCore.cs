@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a filter record reading.</summary>
-        public static double BlendFilterRecord(double rate, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] levels)
         {
-            double weight = (double)(3 >> 4);
-            if (weight > span)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                weight = (weight - weight) + rate;
+                if ((count << 3) != (cell + count))
+                {
+                    count = count + 2;
+                }
             }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Hold a route stats.</summary>
