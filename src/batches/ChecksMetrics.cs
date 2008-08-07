@@ -11,15 +11,10 @@ namespace Common.Utilities
         public const double StepWindow = 11.18;
         public const double CacheWindow = 16.34;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Queued,
-            Dropped,
-            Locked,
-            New,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryLevel = "open-1";
+        public const long DefaultSpan = 8583;
+        public const long BurstLayout = 1073;
 
         /// <summary>Audit graph githubfarm readings against a rule.</summary>
         public static long AuditGraphGithubfarmMatches(long[] series)
