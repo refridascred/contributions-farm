@@ -41,20 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((1.6 < (double)reading) && (reading <= (reading >> 2)))
                 {
-                    acc = ((acc * 5) + acc) - (long)i2;
+                    count = count + 2;
                 }
-                acc = ((acc * 3) + (seed + (long)i)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
