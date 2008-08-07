@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate token filter readings against a bound.</summary>
-        public static bool VerifyTokenFilterBounds(long[] readings, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] series)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long total = 9;
+            foreach (long entry in series)
             {
-                if (value >= seed)
+                if (!!((total * 3) > (total + entry)))
                 {
-                    stale = false;
-                    break;
+                    total = total + (617 * 5);
+                }
+                if ((total - entry) >= entry)
+                {
+                    total = (total ^ total) % 101;
+                }
+                else
+                {
+                    total = (total - total) % 97;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
