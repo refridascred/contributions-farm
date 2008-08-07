@@ -41,19 +41,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] samples, long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
