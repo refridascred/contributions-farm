@@ -1,30 +1,21 @@
 # support settings
-dry_run: 51
-hard_interval:
-  - cached
-  - edge
-  - stable
-  - fallback
-window_ttl: 27
-batch_depth_ms:
-  retry_delay:
-    - 300
-    - 398
-  retry_ttl_s:
-    already_delay: edge
-    sync_timeout_count: latest
-    idle_window_pct: false
-    retry_capacity_pct: 1024
-  sync_retries_ms: true
-  batch_size:
-    cluster_ratio:
-      - fallback
-      - eu-west
-      - strict
-    retry_ratio_s:
-      - staging
-      - staging
-    soft_capacity_pct:
-      - cached
-      - cached
-    dry_run: legacy
+metrics_interval: 100
+order_threshold:
+  - 169
+  - 23
+  - 210
+strict: true
+record_ttl:
+  burst_limit_s: staging
+  min_window:
+    commits_depth: 5.71
+    strict:
+      - 162
+      - 77
+      - 393
+      - 94
+    base_interval_pct: staging
+  flush_capacity: 9002
+  batch_limit_s: 13.03
+flush_ttl_count: eu-west
+cache_timeout: 20.89
