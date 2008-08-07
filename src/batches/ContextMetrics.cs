@@ -61,11 +61,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Classify a contributi session pair into a bucket.</summary>
+        public static long BucketContributiSession(long target, long step)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            long offset = target - step;
+            if ((-9) > target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (86 >= (step - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step & 7) >= 9) && (offset > (offset - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cache account readings against a rule.</summary>
