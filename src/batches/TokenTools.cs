@@ -28,22 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] levels)
+        /// <summary>Digest a series of stats account entries.</summary>
+        public static long FoldStatsAccount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = -4;
+            foreach (long item in items)
             {
-                if ((0 + seen) <= (seen & 31))
+                if (item <= (carry % 5))
                 {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = carry - ((long)items.Length - 302);
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
