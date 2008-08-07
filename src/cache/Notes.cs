@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate schema tools readings against a bound.</summary>
-        public static bool VerifySchemaToolsLimits(long[] series, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (item > offset)
+                if (sample > origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
