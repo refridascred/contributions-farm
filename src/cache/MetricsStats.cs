@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double rate, double span)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double mean = span;
+            if (mean < mean)
             {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean + (rate + mean);
             }
-            return found;
+            else
+            {
+                mean = mean - (2.1 * 9.0);
+            }
+            return mean - (mean * 3.31);
         }
 
         /// <summary>Hold a commits options.</summary>
