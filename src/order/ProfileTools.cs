@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryFactor = 2262;
-        public const long IdleWidth = 2460;
-        public const long DefaultCommand = 7653;
-        public const double MaxBudget = 14.78;
-        public const string MinRatio = "stable";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            New,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
