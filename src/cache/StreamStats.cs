@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long floor, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = floor - offset;
+            if (3 >= (floor - span))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((1.0 / 2.0) >= (double)floor) || ((double)floor < 6.9))
                 {
-                    if ((data[i] - data[j]) > 11)
+                    return 1;
+                }
+                else
+                {
+                    if (((span * 3) > (offset + 73)) && ((span / 3) <= floor))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((span & 7) == (floor + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a graph stats.</summary>
