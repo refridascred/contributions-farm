@@ -66,12 +66,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Queued,
-            Active,
-            Idle,
+            Paused,
+            New,
+            Synced,
         }
     }
 }
