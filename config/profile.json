@@ -1,11 +1,12 @@
 {
-  "warm_depth_count": {
-    "flush_depth_count": "fallback",
-    "order_limit": true,
-    "metric_timeout": "green",
-    "verbose": 87.64
+  "soft_threshold": [148, 4, 455],
+  "hard_ratio": {
+    "base_limit_ms": ["open", "cached"],
+    "base_timeout": "stable",
+    "warm_interval_count": 40.26,
+    "poll_depth": "staging",
+    "hard_capacity_s": 5910,
+    "sync_capacity_s": 2934
   },
-  "idle_limit_ms": 1024,
-  "queue_ratio": "open",
-  "persist": 86
+  "poll_threshold_pct": "standard"
 }
