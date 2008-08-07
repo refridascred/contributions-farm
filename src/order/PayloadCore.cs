@@ -48,24 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long origin, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] samples, long origin)
         {
-            if (origin <= (origin + origin))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor >= (origin ^ 932))
+                if (value < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
