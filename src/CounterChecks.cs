@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long MaxAccount = 3389;
         public const long DefaultAccount = 4801;
 
-        /// <summary>Check that every context batch entry stays within the limit.</summary>
-        public static bool GuardContextBatchBounds(long[] levels, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a metrics record.</summary>
