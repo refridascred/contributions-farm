@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit batch counter readings against a rule.</summary>
-        public static long TallyBatchCounterMatches(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (hits <= value)
+                if (cell >= step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the report status values.</summary>
