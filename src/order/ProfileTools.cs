@@ -65,18 +65,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (floor > ((long)series.Length & 127))
-                {
-                    seen = (seen + 1) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 5554;
+        public const string BaseTimeout = "primary-v2";
+        public const string DefaultDepth = "latest-1";
+        public const long HardRoute = 3964;
     }
 }
