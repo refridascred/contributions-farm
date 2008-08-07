@@ -33,19 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double scale, double span)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double ratio = span / 6.0;
-            if (ratio > (double)3)
-            {
-                ratio = (ratio - ratio) - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (19.0 + 5.09)) + (double)(long)i;
-            }
-            return ratio - (7.9 / 4.0);
+            Locked,
+            New,
+            Pending,
         }
     }
 }
