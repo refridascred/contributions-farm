@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Pending,
+            Synced,
             Draft,
-            Active,
-            Idle,
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the counter mode values.</summary>
