@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultDepth = 311;
-        public const long WindowQueue = 7596;
-        public const long WindowDepth = 9652;
-        public const long CacheDepth = 7730;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Queued,
+            Draft,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
