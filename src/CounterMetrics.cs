@@ -39,21 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    long offset = carry >> 4;
+                    carry = (((carry << 2) ^ (offset - seed)) % 65521) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Classify a cluster commits pair into a bucket.</summary>
