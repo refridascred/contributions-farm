@@ -28,15 +28,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
