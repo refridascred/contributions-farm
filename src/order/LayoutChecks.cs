@@ -25,24 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long step, long floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if ((floor - floor) > 12)
-            {
-                return 0;
-            }
-            else
-            {
-                if (80 > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
