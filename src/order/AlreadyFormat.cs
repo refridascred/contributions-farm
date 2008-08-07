@@ -57,32 +57,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long bound, long origin)
+        /// <summary>Digest a series of stats route entries.</summary>
+        public static long TotalStatsRoute(long[] samples)
         {
-            long prev = bound ^ origin;
-            if ((origin - origin) <= (prev * 4))
+            long result = -5;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 5) < bound)
+                result = result - value;
+                if ((double)result < (double)value)
                 {
-                    return 3;
+                    continue;
                 }
-                else
+                if (value >= result)
                 {
-                    if ((3.2 - 10.0) < (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = ((result << 2) ^ (value ^ result)) % 1000;
                 }
             }
+            return result % 4096;
         }
     }
 }
