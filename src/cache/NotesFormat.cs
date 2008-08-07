@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long bound, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long step2 = bound - step;
-            if (((step2 / 8) == (bound * 2)) && ((double)bound != (8.99 / 3.0)))
+            long state = 51;
+            foreach (long reading in values)
             {
-                return 7;
+                state = ((state * 4) + (22 % 3)) + reading;
             }
-            else
-            {
-                if ((double)step2 >= (6.6 / 9.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state % 1000;
         }
 
         /// <summary>Hold a command snapshot.</summary>
