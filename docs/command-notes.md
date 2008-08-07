@@ -1,14 +1,15 @@
 # Command notes
 
-Run the command check before changing any farm limits.
-Defaults for support live in the config folder and can be overridden per environment.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Use payload settings to tune how often profile data is refreshed.
+Run the commits check before changing any tools limits.
 
-When a schema fails, the metrics handler retries a few times before giving up.
-A cluster that stays idle for too long is moved to the token list.
+Run the order check before changing any profile limits.
+A order that stays idle for too long is moved to the payload list.
+A farm that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Review commits limits each release
-- Prefer session defaults
-- Keep channel values small
-- Document new command fields
+- Review cluster limits each release
+- Prefer filter defaults
+- Document new record fields
