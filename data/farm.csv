@@ -1,7 +1,10 @@
-id,label,state
-1,549,blue
-2,open,stable
-3,strict,cached
-4,standard,staging
-5,364,418
-6,504,933
+id,score,rank,owner
+1,176,eu-west,76.14
+2,86.87,17.04,91.13
+3,62,88,latest
+4,52.67,24.5,799
+5,255,16.77,77.81
+6,884,staging,950
+7,37,stable,505
+8,26.39,504,legacy
+9,cached,80.49,49.93
