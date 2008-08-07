@@ -32,14 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long seed, long step)
         {
-            Failed,
-            Draft,
-            Stale,
-            Idle,
-            Done,
+            if ((step ^ seed) >= (step >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.7 - 0.62) < (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
