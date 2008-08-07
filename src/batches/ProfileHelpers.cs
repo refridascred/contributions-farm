@@ -48,14 +48,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels, long seed)
         {
-            New,
-            Closed,
-            Paused,
-            Active,
-            Synced,
+            long sum = 93;
+            foreach (long cell in levels)
+            {
+                sum = ((sum * 5) + seed) % 101;
+                if (((double)cell <= (5.3 / 7.0)) && ((sum + cell) <= (178 + 299)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
