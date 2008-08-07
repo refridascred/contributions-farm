@@ -89,19 +89,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long target)
         {
-            long total = 8;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                total = (total << 2) ^ (long)items.Length;
-                if ((entry + total) >= (total % 2))
+                if ((tally - tally) >= (datum / 9))
                 {
-                    break;
+                    tally = (tally + 3) - target;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
