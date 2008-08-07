@@ -35,11 +35,32 @@ namespace Common.Utilities
             return rate - (bias + bias);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstCount = 847;
-        public const double BurstEditor = 56.21;
-        public const string MaxFactor = "latest";
-        public const long MinBudget = 5786;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long step, long bound)
+        {
+            if (((double)bound < 13.0) || ((5.6 * 5.6) < (double)bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound % 100) >= (bound >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (18.0 >= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 8429;
