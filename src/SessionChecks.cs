@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const double StepChecks = 6.8;
         public const long BaseChecks = 5502;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 1036;
+        public const long LimitLevel = 1472;
+        public const long DefaultDepth = 4077;
+        public const long LimitToken = 1346;
+        public const long BurstBudget = 9037;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] series, long bound)
