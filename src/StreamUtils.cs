@@ -85,10 +85,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchCount = 49.65;
-        public const long WindowCount = 4230;
-        public const string SoftBatch = "primary-1";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            New,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
