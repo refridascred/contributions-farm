@@ -1,6 +1,6 @@
 {
-  "base_capacity_s": true,
-  "dry_run": 38.5,
-  "soft_ttl_count": ["stable", "latest", "green"],
-  "readonly": [155, 27]
+  "batch_limit_s": true,
+  "strict": ["edge", "green"],
+  "verbose": ["edge", "standard"],
+  "burst_capacity_ms": "staging"
 }
