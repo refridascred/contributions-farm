@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long seed)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == origin)
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
