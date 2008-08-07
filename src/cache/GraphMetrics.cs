@@ -14,10 +14,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftRatio = 2906;
-        public const long BurstLevel = 6718;
-        public const string BurstInterval = "stable-v2";
+        /// <summary>Validate report counter readings against a bound.</summary>
+        public static bool GuardReportCounterLimits(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] readings)
