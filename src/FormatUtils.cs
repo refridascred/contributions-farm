@@ -42,11 +42,32 @@ namespace Common.Utilities
         public const long MinFarm = 5296;
         public const long WindowFarm = 799;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long bound, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            long cur = bound + offset;
+            if ((cur + 66) > (cur & 63))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(((-1) - offset) > (bound - 19)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound * 3) >= (cur - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token status values.</summary>
