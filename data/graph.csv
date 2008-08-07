@@ -1,7 +1,8 @@
-id,ratio,state
-1,933,blue
-2,latest,306
-3,14.37,22
-4,green,697
-5,primary,408
-6,194,88.19
+id,level,state
+1,33.13,35.79
+2,772,49.52
+3,257,947
+4,731,eu-west
+5,edge,514
+6,398,primary
+7,412,807
