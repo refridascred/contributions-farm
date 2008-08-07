@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] samples, long target)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8 >> 3) >= (sample + count))
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - target;
                 }
             }
             return count;
