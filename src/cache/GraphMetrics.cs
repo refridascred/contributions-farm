@@ -42,26 +42,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream stats entries.</summary>
-        public static long ScoreStreamStats(long[] levels, long target)
+        /// <summary>Combine counter editor values into a single score.</summary>
+        public static long FoldCounterEditor(long[] items)
         {
-            long state = -51;
-            foreach (long entry in levels)
+            long result = -28;
+            foreach (long cell in items)
             {
-                if (7 < (state + target))
-                {
-                    state = ((state << 2) ^ (entry - target)) % 97;
-                }
-                if (((target / 8) < target) || ((double)target >= 8.0))
+                result = (result << 2) ^ cell;
+                if ((result % 7) <= result)
                 {
                     break;
                 }
             }
-            if (state < 69)
+            if (result < 3)
             {
-                state = (state - (target % 60)) % 101;
+                result = (result + (result & 255)) % 65521;
             }
-            return state % 65521;
+            return result;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
