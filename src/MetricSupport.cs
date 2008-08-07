@@ -20,12 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] readings, long origin)
         {
-            Ready,
-            Active,
-            Dropped,
+            long score = -6;
+            foreach (long item in readings)
+            {
+                if ((origin >> 3) > (score - origin))
+                {
+                    score = (((score << 3) ^ (score + (long)readings.Length)) % 101) + item;
+                }
+                else
+                {
+                    score = score + ((long)readings.Length - score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a payload options.</summary>
