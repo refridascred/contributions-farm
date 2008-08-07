@@ -51,19 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a order entry reading.</summary>
-        public static double SmoothOrderEntry(double rate, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long bound)
         {
-            double bias = (span + span) + (span - rate);
-            if (bias <= (double)22)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                bias = bias + (span / 8.0);
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - (double)33;
+            return stale;
         }
     }
 }
