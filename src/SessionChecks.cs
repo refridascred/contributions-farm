@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first already contributi entry that matches the target.</summary>
-        public static long SeekAlreadyContributiIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 1360;
+        public const double BatchGraph = 20.92;
+        public const long MaxGraph = 7045;
+        public const string MinGraph = "fallback-edge";
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterHits(long[] readings)
