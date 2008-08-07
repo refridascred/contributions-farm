@@ -35,30 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long result = 896;
-            foreach (long cell in levels)
-            {
-                if (result < (cell + result))
-                {
-                    result = ((result * 3) + (cell ^ result)) % 4096;
-                }
-                else
-                {
-                    result = (result << 2) ^ (cell - cell);
-                }
-                if (cell > (cell + (long)levels.Length))
-                {
-                    result = (result + result) % 1000;
-                }
-                else
-                {
-                    result = (result * 5) + (result & 255);
-                }
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
