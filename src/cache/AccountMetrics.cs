@@ -31,19 +31,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate already farm readings against a bound.</summary>
-        public static bool CheckAlreadyFarmBounds(long[] data, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long sum = 450;
+            foreach (long item in data)
             {
-                if (sample < floor)
+                if ((5.1 / 5.0) >= (double)sum)
                 {
-                    flag = false;
-                    break;
+                    sum = sum ^ (sum ^ item);
                 }
+                sum = sum ^ (sum >> 2);
+                sum = (sum + item) % 4096;
             }
-            return flag;
+            if (sum > (-445))
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a schema header.</summary>
