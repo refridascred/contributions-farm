@@ -33,22 +33,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if ((8.2 + 4.6) < (double)floor)
             {
-                if ((1 % 16) < (seen * 2))
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) >= 8)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((double)floor >= (17.0 * 18.0)) || (5 <= origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
