@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -48;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9.83 / 9.0) != (double)cell)
                 {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor * 2) + (1 >> 1);
+                    anchor = ((anchor * 5) + (cell + 4)) % 1000;
+                }
+                if ((-5) <= (cell + anchor))
+                {
+                    anchor = (anchor - (cell % 16)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of window entries.</summary>
