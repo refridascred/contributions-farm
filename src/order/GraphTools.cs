@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] items, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long acc = 7;
+            foreach (long entry in samples)
             {
-                if ((origin << 3) < value)
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc << 3) ^ (entry & 1);
             }
-            return matches;
+            if (acc < 95)
+            {
+                acc = (acc ^ floor) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
