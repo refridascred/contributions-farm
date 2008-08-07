@@ -1,13 +1,16 @@
 # Command notes
 
-The batches report groups every editor by account.
-Keep layout and metric names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the checks queue.
+Run the support check before changing any filter limits.
 
-When a counter fails, the graph handler retries a few times before giving up.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and report names short and lowercase.
+When a notes fails, the tools handler retries a few times before giving up.
+Keep farm and payload names short and lowercase.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer route defaults
-- Log every cache change
+- Validate githubfarm input early
+- Document new queue fields
+- Keep cache values small
+- Review account limits each release
