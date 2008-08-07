@@ -1,5 +1,4 @@
 # githubfarm settings
-cache_threshold: primary
-farm_retries: false
-stats_delay: open
-idle_threshold_s: 96.15
+burst_size_ms: 49
+base_ttl_count: blue
+dry_run: 7772
