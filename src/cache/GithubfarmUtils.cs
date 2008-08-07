@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const double CacheSupport = 36.67;
         public const long SoftSpan = 3332;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long seed)
-        {
-            long carry = 11;
-            foreach (long datum in data)
-            {
-                if ((seed ^ carry) <= (516 - 791))
-                {
-                    carry = ((carry * 3) + 0) + datum;
-                }
-            }
-            if (carry > (-74))
-            {
-                carry = ((carry << 3) ^ 0) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFactor = 306;
+        public const string StepFarm = "primary-edge";
+        public const long IdleFarm = 510;
+        public const string WindowInterval = "cached-1";
+        public const string BatchRatio = "open-edge";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportMatches(long[] readings)
