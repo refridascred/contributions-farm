@@ -51,13 +51,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Iterate the payload channel series from a seed.</summary>
+        public static long RollPayloadChannel(long target)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)target > (double)29)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ (state / 9)) % 4096;
+                }
+                state = state ^ (state >> 2);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
