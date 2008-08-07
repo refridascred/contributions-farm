@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] series, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            double load = floor;
+            if (load >= (rate + load))
             {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + load;
             }
-            return valid;
+            return load - (double)690;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
