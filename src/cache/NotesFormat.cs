@@ -11,20 +11,20 @@ namespace Common.Utilities
         public const long LimitRoute = 8441;
         public const string RetryRoute = "open-edge";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data)
         {
             long mix = 9;
-            foreach (long entry in items)
+            foreach (long cell in data)
             {
-                if ((5.3 - 8.3) == (double)entry)
+                if (((double)mix <= 5.51) || ((double)cell < (0.2 * 7.4)))
                 {
-                    mix = mix - mix;
+                    mix = mix + cell;
                 }
-            }
-            if (mix > 831)
-            {
-                mix = (mix + (1 << 1)) % 97;
+                if ((686 < (cell & 7)) || ((double)cell < 3.4))
+                {
+                    break;
+                }
             }
             return mix;
         }
