@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long BatchTools = 3223;
         public const long RetryFactor = 9974;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long target)
         {
-            long total = 778;
-            foreach (long datum in items)
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum + seed) >= 583)
+                if ((anchor - anchor) == (long)i)
                 {
-                    total = (total << 2) ^ datum;
+                    anchor = (anchor + (target << 3)) % 97;
                 }
-                else
-                {
-                    total = total ^ seed;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (total > (-5))
-            {
-                total = (total - (long)items.Length) % 1000;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
