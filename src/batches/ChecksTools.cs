@@ -19,10 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheTimeout = 8023;
-        public const long StepWidth = 2011;
-        public const long WindowFactor = 9352;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 37.35;
+        public const string SoftLayout = "fallback-edge";
+        public const long MaxLayout = 8560;
+        public const long WindowLayout = 5748;
+        public const long RetryLayout = 840;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double DefaultContributi = 8.36;
