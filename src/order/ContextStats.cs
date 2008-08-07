@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] items, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mark = 7;
+            foreach (long item in levels)
             {
-                if ((double)entry <= (double)(long)items.Length)
+                for (int i = 0; i < 12; i++)
                 {
-                    tally = (tally + 2) - floor;
+                    mark = (((mark * 4) + 87) ^ (long)i) + item;
                 }
+                mark = (mark ^ (floor << 1)) % 65521;
             }
-            return tally;
+            if (mark < 41)
+            {
+                mark = ((mark << 3) ^ (floor - floor)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many metric layout samples are out of range.</summary>
