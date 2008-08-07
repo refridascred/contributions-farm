@@ -33,12 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((item ^ item) < (item + matches)) || ((9 * 5) > (item >> 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank format counter input into a small class.</summary>
