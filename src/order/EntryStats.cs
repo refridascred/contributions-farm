@@ -60,15 +60,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mix = 1;
-            foreach (long entry in values)
-            {
-                mix = (mix + 54) ^ entry;
-            }
-            return mix;
+            Stale,
+            Paused,
+            Idle,
+            Dropped,
+            Closed,
         }
     }
 }
