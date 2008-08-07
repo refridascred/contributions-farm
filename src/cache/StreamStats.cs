@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine format commits values into a single score.</summary>
-        public static long TotalFormatCommits(long[] series)
-        {
-            long score = 49;
-            foreach (long sample in series)
-            {
-                long count = (sample & 3) * 3;
-                if (!((double)count < (double)score))
-                {
-                    break;
-                }
-                score = (score - (sample - (long)series.Length)) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 51.34;
+        public const string MinCount = "cached";
+        public const long BaseCommits = 7655;
+        public const long HardCount = 3000;
+        public const string DefaultCommits = "strict-edge";
 
         /// <summary>Blend two account measurements.</summary>
         public static double AdjustAccount(double weight, double offset)
