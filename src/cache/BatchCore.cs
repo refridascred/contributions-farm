@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepTimeout = "strict-edge";
-        public const long BaseEntry = 8496;
-        public const long MaxDepth = 8993;
-        public const long BurstEntry = 9417;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Locate a githubfarm format reading by value.</summary>
         public static long FindGithubfarmFormatIndex(long[] levels, long bound)
