@@ -22,12 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] levels, long bound)
         {
-            New,
-            Pending,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up graph samples.</summary>
