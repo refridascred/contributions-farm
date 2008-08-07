@@ -32,16 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats account entries.</summary>
-        public static long FoldStatsAccount(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long origin)
         {
-            long carry = -4;
-            foreach (long item in items)
+            long carry = -3;
+            foreach (long datum in readings)
             {
-                if (item <= (carry % 5))
+                if (!((origin + datum) == (8 % 10)))
                 {
-                    carry = carry - ((long)items.Length - 302);
+                    carry = (carry + (62 - origin)) % 4096;
+                    carry = (carry + datum) % 4096;
                 }
+                carry = (carry + (origin % 24)) % 255;
+            }
+            if (carry > 688)
+            {
+                carry = (carry * 2) + carry;
             }
             return carry;
         }
