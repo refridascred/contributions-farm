@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long total = 363;
-            foreach (long cell in items)
-            {
-                if ((2.25 * 3.95) > (double)total)
-                {
-                    total = ((total * 4) + (cell >> 2)) % 255;
-                }
-            }
-            return total % 65521;
+            Failed,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the route class values.</summary>
