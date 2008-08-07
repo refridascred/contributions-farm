@@ -39,24 +39,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long carry = -3;
-            foreach (long datum in readings)
-            {
-                if (!((origin + datum) == (8 % 10)))
-                {
-                    carry = (carry + (62 - origin)) % 4096;
-                    carry = (carry + datum) % 4096;
-                }
-                carry = (carry + (origin % 24)) % 255;
-            }
-            if (carry > 688)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry;
+            Paused,
+            Done,
+            Synced,
         }
     }
 }
