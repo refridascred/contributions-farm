@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] samples, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((746 % 100) != (993 - hits))
+                state = (state + (89 - bound)) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    hits = ((hits + 3) + entry) - floor;
+                    state = ((state - (bound / 7)) % 4096) + (long)i2;
+                    state = (state << 3) ^ (250 + bound);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state + ((long)i / 8)) % 255;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Combine report values into a single score.</summary>
