@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] series, long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double scale = gain;
+            if (scale >= gain)
             {
-                if ((6 - count) < reading)
-                {
-                    count = (count + 1) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = scale - 14.0;
             }
-            return count;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (gain * 3.9)) + (double)(long)i;
+            }
+            return scale + (double)50;
         }
 
         /// <summary>Accumulate queue samples.</summary>
