@@ -53,13 +53,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Active,
-            Pending,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxScore = 61.11;
+        public const long BaseWidth = 3845;
+        public const long IdleCount = 7694;
     }
 }
