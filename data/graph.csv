@@ -1,8 +1,8 @@
-id,level,state
-1,33.13,35.79
-2,772,49.52
-3,257,947
-4,731,eu-west
-5,edge,514
-6,398,primary
-7,412,807
+id,score,label,ratio,token
+1,eu-west,83.94,618,545
+2,240,906,local,380
+3,local,local,939,open
+4,24,717,61.18,cached
+5,27.78,582,green,696
+6,932,edge,94.8,blue
+7,326,70.73,strict,215
