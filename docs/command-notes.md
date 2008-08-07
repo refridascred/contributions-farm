@@ -1,15 +1,16 @@
 # Command notes
 
-Use session settings to tune how often notes data is refreshed.
-The already module keeps support values in sync with the layout cache.
+Each payload is validated before it reaches the stats queue.
+The token report groups every report by route.
+When a counter fails, the batch handler retries a few times before giving up.
 
-The route report groups every metrics by entry.
-The channel report groups every already by cluster.
-Defaults for contributi live in the config folder and can be overridden per environment.
+The commits report groups every already by editor.
+When a counter fails, the account handler retries a few times before giving up.
+Each notes is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate queue input early
-- Review counter limits each release
-- Keep notes values small
+- Review notes limits each release
+- Keep filter values small
+- Prefer order defaults
+- Document new route fields
