@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] levels, long limit)
-        {
-            long anchor = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)datum <= (18.0 / 2.0)) && ((16.0 + 1.0) > (double)anchor))
-                {
-                    anchor = ((anchor * 3) + (limit + limit)) % 97;
-                }
-                if ((datum - datum) < 424)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 6256;
+        public const long StepInterval = 3873;
+        public const long SoftTools = 786;
+        public const string RetryCount = "fallback-edge";
+        public const long BurstFactor = 6215;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long DigestFilter(long[] levels, long offset)
