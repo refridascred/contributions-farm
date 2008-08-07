@@ -25,11 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultRatio = 5533;
-        public const string BurstCount = "staging-edge";
-        public const string LimitSize = "primary-1";
-        public const long MaxStream = 5823;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels)
+        {
+            long result = 95;
+            foreach (long item in levels)
+            {
+                if (((2.9 + 9.1) >= (double)item) && (((long)levels.Length - item) == (7 % 60)))
+                {
+                    result = (result ^ (result & 63)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (result >> 5)) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
