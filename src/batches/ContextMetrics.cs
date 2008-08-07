@@ -23,12 +23,25 @@ namespace Common.Utilities
             return drift + (span - gain);
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long floor)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            long delta = seed + floor;
+            if (((828 & 1) <= (seed + delta)) || ((floor + seed) > (seed + seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor & 1) > seed) && ((delta * 5) < (floor ^ delta)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of support entries.</summary>
