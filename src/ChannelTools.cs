@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 6256;
-        public const long StepInterval = 3873;
-        public const long SoftTools = 786;
-        public const string RetryCount = "fallback-edge";
-        public const long BurstFactor = 6215;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long DigestFilter(long[] levels, long offset)
