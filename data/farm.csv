@@ -1,7 +1,10 @@
-id,count,owner,rank
-1,94.55,edge,21
-2,65.36,734,86
-3,52.71,strict,990
-4,cached,670,702
-5,659,75.01,green
-6,standard,747,706
+id,score,state
+1,750,544
+2,cached,stable
+3,67.58,eu-west
+4,498,primary
+5,cached,173
+6,17.26,743
+7,50.27,standard
+8,staging,89.31
+9,20.83,primary
