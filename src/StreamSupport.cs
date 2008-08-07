@@ -29,19 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Locate a stats commits reading by value.</summary>
+        public static long SeekStatsCommitsIndex(long[] values, long offset)
         {
-            double mean = (5.83 * 7.18) + 10.0;
-            if (mean <= (7.0 + span))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (span / 8.0);
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + span;
+            return -1;
         }
     }
 }
