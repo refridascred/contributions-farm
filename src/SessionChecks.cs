@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long limit)
+        /// <summary>Find the first already contributi entry that matches the target.</summary>
+        public static long SeekAlreadyContributiIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
+                if (samples[i] >= limit)
                 {
                     return (long)i;
                 }
