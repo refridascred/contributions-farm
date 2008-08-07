@@ -36,13 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Iterate the context order series from a seed.</summary>
+        public static long StepContextOrder(long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
