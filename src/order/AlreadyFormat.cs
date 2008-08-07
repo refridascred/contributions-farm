@@ -68,9 +68,32 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowFactor = "latest-edge";
-        public const double BurstDepth = 11.34;
-        public const long BaseDepth = 9279;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long bound, long origin)
+        {
+            long prev = bound ^ origin;
+            if ((origin - origin) <= (prev * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound / 5) < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.2 - 10.0) < (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
