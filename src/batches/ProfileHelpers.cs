@@ -40,14 +40,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] data, long origin)
         {
-            Paused,
-            Locked,
-            Synced,
-            Failed,
-            Stale,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the commits state values.</summary>
