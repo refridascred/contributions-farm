@@ -52,12 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            public double Total { get; set; }
             public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
