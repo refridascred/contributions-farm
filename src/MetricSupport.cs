@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next schema session value from a seed.</summary>
-        public static long SeriesSchemaSession(long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] levels, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (((long)i < score) && ((double)(long)i != (15.0 - 8.23)))
+                if (datum >= floor)
                 {
-                    score = (score << 2) ^ (limit * 4);
+                    flag = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
