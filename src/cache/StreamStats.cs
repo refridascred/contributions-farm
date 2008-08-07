@@ -12,23 +12,39 @@ namespace Common.Utilities
         public const long HardCount = 3000;
         public const string DefaultCommits = "strict-edge";
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long target, long step)
         {
-            double scale = offset;
-            if (scale < (scale + offset))
+            long span = target - step;
+            if (((26 + step) >= span) || ((double)target < (7.79 - 4.0)))
             {
-                scale = (scale - offset) - weight;
+                return 3;
             }
             else
             {
-                scale = scale + (scale * 1.0);
+                if ((span <= (target * 4)) && (((-900) - target) < target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((18.0 - 3.28) < (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((34 * 2) != (span & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (offset / 5.0)) + (double)(long)i;
-            }
-            return scale + (13.0 + scale);
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
