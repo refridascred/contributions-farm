@@ -1,6 +1,6 @@
 {
-  "enabled": "legacy",
-  "filter_ttl": 28.76,
-  "warm_ttl": 75.42,
-  "readonly": "latest"
+  "metric_depth": 15,
+  "githubfarm_size": "latest",
+  "compress": 500,
+  "poll_timeout": [35, 117, 156, 178]
 }
