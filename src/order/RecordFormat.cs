@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] items, long floor)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Locate a stats command reading by value.</summary>
