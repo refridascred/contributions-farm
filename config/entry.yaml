@@ -1,9 +1,8 @@
 # entry settings
-cache_capacity_count:
-  - 483
-  - 483
-  - 270
-hard_ttl:
-  - staging
-  - eu-west
-retry_size_pct: stable
+batch_interval_ms:
+  - 417
+  - 433
+  - 466
+burst_limit_ms: 1024
+flush_timeout: 100
+burst_size_count: false
