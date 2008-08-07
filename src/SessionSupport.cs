@@ -20,18 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((9.7 / 6.0) >= (double)item)
+                if (count < (count - count))
                 {
-                    tally = tally + 1;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
