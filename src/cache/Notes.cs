@@ -29,19 +29,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] readings, long offset)
         {
-            long mix = -46;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mix = (((mix ^ (mix % 64)) % 65521) + item) + target;
+                if ((432 + cell) == (offset + cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (mix < 35)
-            {
-                mix = (mix ^ (mix & 31)) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
