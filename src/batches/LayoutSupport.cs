@@ -33,19 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double gain, double bias)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double mean = bias - bias;
-            if (mean > (double)(-636))
-            {
-                mean = (mean + mean) + gain;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (mean / 7.0);
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank format counter input into a small class.</summary>
