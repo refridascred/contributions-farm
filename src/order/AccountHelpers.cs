@@ -83,13 +83,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Check that every queue graph entry stays within the limit.</summary>
+        public static bool CheckQueueGraphRange(long[] levels, long limit)
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
