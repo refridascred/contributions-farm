@@ -15,13 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate format batches readings against a bound.</summary>
+        public static bool ValidateFormatBatchesRange(long[] data, long offset)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a commits record.</summary>
