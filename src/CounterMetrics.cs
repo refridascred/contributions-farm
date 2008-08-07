@@ -39,20 +39,22 @@ namespace Common.Utilities
             return bias + (double)7;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((cell + seen) <= (seen - cell))
                 {
-                    long offset = carry >> 4;
-                    carry = (((carry << 2) ^ (offset - seed)) % 65521) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the channel mode values.</summary>
