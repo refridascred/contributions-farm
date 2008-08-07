@@ -40,23 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double ratio, double span)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double rate = ratio;
-            if (rate <= (double)6)
-            {
-                rate = rate - (7.88 * 3.5);
-            }
-            else
-            {
-                rate = rate + (rate / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate - (ratio + ratio);
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
