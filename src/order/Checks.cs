@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstScore = "staging";
+        public const long BurstCluster = 1924;
+        public const long HardCluster = 4276;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TotalChannel(long[] levels)
