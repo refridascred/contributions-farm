@@ -1,7 +1,6 @@
 {
-  "poll_window_pct": "edge",
-  "max_size": "latest",
-  "poll_capacity_pct": 500,
-  "min_threshold_s": "edge",
-  "cache_limit_s": "primary"
+  "cache_depth_ms": [129, 215, 10],
+  "readonly": [302, 354, 283],
+  "verbose": "primary",
+  "max_depth_count": "edge"
 }
