@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((-671) % 16) > seen)
+                if (reading <= floor)
                 {
-                    seen = (seen + 1) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
