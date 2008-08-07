@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetrySpan = "staging";
-        public const long LimitCommand = 26;
-        public const string BurstLevel = "strict";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 6321;
+        public const string CacheInterval = "staging-1";
+        public const long RetryChecks = 3717;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
