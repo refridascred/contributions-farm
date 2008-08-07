@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Find the first metrics session entry that matches the target.</summary>
+        public static long FindMetricsSessionIndex(long[] data, long step)
         {
-            long mix = 44;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + sample) % 65521;
-                for (int i = 0; i < 7; i++)
+                if (data[i] > step)
                 {
-                    mix = ((mix ^ 9) % 255) ^ (long)i;
-                }
-                if (sample <= (sample + mix))
-                {
-                    mix = (mix << 3) ^ (sample >> 2);
-                }
-                else
-                {
-                    mix = (mix * 2) + (mix - 1);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many metric layout samples are out of range.</summary>
