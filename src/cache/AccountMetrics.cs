@@ -25,31 +25,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long seed, long origin)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            if ((46 ^ origin) != (19 + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 4) > origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin / 7) < (origin ^ origin)) && (18.0 < (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Accumulate report samples.</summary>
