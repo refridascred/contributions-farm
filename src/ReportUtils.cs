@@ -22,14 +22,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Roll a githubfarm checks counter forward.</summary>
+        public static long SeriesGithubfarmChecks(long bound)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Closed,
-            Pending,
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a channel header.</summary>
