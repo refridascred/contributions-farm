@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first support contributi entry that matches the target.</summary>
-        public static long SeekSupportContributiIndex(long[] items, long step)
+        /// <summary>Iterate the notes buffer series from a seed.</summary>
+        public static long RollNotesBuffer(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                acc = acc + acc;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
