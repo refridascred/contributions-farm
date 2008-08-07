@@ -48,15 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double gain, double bias)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            double drift = gain + bias;
-            if (drift <= gain)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                drift = drift - (double)8;
+                if (seen <= (seen + 907))
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            return drift + (double)1;
+            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
