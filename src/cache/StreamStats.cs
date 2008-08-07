@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            long result = 624;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin + result) > (208 & 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 2) + (reading / 2);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (-37)) % 101;
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
