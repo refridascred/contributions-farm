@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const double MinCounter = 59.65;
         public const double BurstScore = 13.57;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > target)
                 {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
