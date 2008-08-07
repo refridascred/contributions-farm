@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const long StepChecks = 4675;
         public const double BaseTimeout = 83.07;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] data, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            long mix = -19;
-            foreach (long reading in data)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix ^ (mix + limit)) % 1000) - reading;
+                if (!(((state - limit) < (state ^ 21)) && ((long)i < state)))
+                {
+                    state = ((state * 5) + (limit / 3)) % 97;
+                }
+                state = (state + (state >> 1)) % 101;
+                state = ((state * 4) + (long)i) % 97;
             }
-            if (mix > 96)
-            {
-                mix = (mix << 2) ^ (limit + (-4));
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Look up the position of a channel route sample.</summary>
