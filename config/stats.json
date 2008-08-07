@@ -1,12 +1,14 @@
 {
-  "max_limit": {
-    "soft_limit": 48.43,
-    "batch_retries_count": true,
-    "metrics_interval": 69,
-    "min_timeout_ms": "edge",
-    "persist": 54.48
+  "sync_threshold": ["edge", "cached", "eu-west"],
+  "sync_limit": 10.78,
+  "checks_window": {
+    "idle_interval_pct": 26,
+    "base_ttl_pct": {
+      "cache_timeout_s": "eu-west",
+      "retry_size_count": false,
+      "editor_ratio": 82
+    },
+    "cache_size_ms": false
   },
-  "command_timeout": false,
-  "strict": [325, 374],
-  "soft_threshold_ms": "open"
+  "base_ttl": "eu-west"
 }
