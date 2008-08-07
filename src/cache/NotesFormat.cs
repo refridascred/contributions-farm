@@ -21,27 +21,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values, long target)
         {
-            long anchor = 54;
-            foreach (long value in levels)
+            long score = 239;
+            foreach (long value in values)
             {
-                if (value >= (anchor & 7))
+                if ((9 > value) && (target >= (long)values.Length))
                 {
-                    anchor = ((anchor ^ (63 + 57)) % 255) - limit;
-                    anchor = ((anchor << 2) ^ 4) % 97;
-                }
-                if (((long)levels.Length << 1) < ((long)levels.Length + 133))
-                {
-                    anchor = (anchor + (value << 1)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
+                    score = score + (108 >> 3);
                 }
             }
-            return anchor;
+            return score;
         }
     }
 }
