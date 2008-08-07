@@ -48,16 +48,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] items, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mark = (mark + (87 << 3)) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((seen >> 2) >= (0 + seen))
+                {
+                    seen = ((seen + 2) ^ sample) + bound;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
