@@ -1,7 +1,6 @@
-id,region,state,weight,count
-1,43.82,517,fallback,947
-2,593,14,560,fallback
-3,71.88,primary,560,51.83
-4,956,edge,17.82,103
-5,676,331,577,67.06
-6,74.31,74.39,primary,open
+id,count,level,owner
+1,49.25,265,10.47
+2,911,28.52,59.33
+3,123,strict,898
+4,86,legacy,80.86
+5,798,staging,554
