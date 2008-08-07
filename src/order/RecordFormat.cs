@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((long)levels.Length + seen) > (value + seen))
+                if ((tally + reading) > tally)
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
