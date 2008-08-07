@@ -1,21 +1,20 @@
 # support settings
-metrics_interval: 100
-order_threshold:
-  - 169
-  - 23
-  - 210
-strict: true
-record_ttl:
-  burst_limit_s: staging
-  min_window:
-    commits_depth: 5.71
-    strict:
-      - 162
-      - 77
-      - 393
-      - 94
-    base_interval_pct: staging
-  flush_capacity: 9002
-  batch_limit_s: 13.03
-flush_ttl_count: eu-west
-cache_timeout: 20.89
+verbose:
+  queue_depth: 79
+  default_delay_ms: standard
+  stream_window: 97.19
+  idle_depth_pct:
+    audit: local
+    batch_delay_pct: 500
+    readonly: green
+  compress: 97
+  cache_window_pct:
+    - 351
+    - 57
+    - 338
+retry_window_s:
+  - 213
+  - 213
+metrics_ratio: false
+idle_retries_pct: 1024
+burst_window_count: true
