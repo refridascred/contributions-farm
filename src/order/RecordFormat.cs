@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally + reading) > tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 433;
+        public const string LimitSession = "open-1";
+        public const long LimitTimeout = 2458;
+        public const long BaseSession = 6581;
 
         /// <summary>Validate cluster farm readings against a bound.</summary>
         public static bool ValidateClusterFarmLimits(long[] series, long target)
