@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (rate + (4.0 + bias)) + offset;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Scale a editor queue figure with a bias.</summary>
+        public static double BlendEditorQueue(double scale, double bias)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            double weight = bias;
+            if (weight > (weight * 4.0))
             {
-                total = ((total * 4) + (long)i) % 4093;
+                weight = weight - scale;
             }
-            return total;
+            else
+            {
+                weight = weight - (bias / 9.0);
+            }
+            return weight - (bias - scale);
         }
 
         /// <summary>Define already limits and defaults.</summary>
