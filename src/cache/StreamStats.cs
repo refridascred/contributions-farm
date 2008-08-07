@@ -49,18 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data, long offset)
+        /// <summary>Combine cache editor values into a single score.</summary>
+        public static long CombineCacheEditor(long[] samples, long bound)
         {
-            long mark = 80;
-            foreach (long reading in data)
+            long sum = 9;
+            foreach (long cell in samples)
             {
-                if (((2 + mark) > (offset % 5)) && ((17.0 / 8.0) < (double)reading))
+                if ((sum - cell) <= (bound - sum))
                 {
-                    mark = (mark * 4) + (reading - mark);
+                    sum = ((sum * 2) + (sum & 255)) % 101;
                 }
             }
-            return mark % 1000;
+            return sum;
         }
     }
 }
