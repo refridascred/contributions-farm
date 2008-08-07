@@ -77,12 +77,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] data, long offset)
         {
-            Pending,
-            Queued,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
