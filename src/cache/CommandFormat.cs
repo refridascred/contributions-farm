@@ -27,19 +27,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] values, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (sample <= origin)
+                if (!((tally + tally) >= (tally ^ tally)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
