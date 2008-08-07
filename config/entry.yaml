@@ -1,9 +1,7 @@
 # entry settings
-cache_delay: 24
-soft_depth: 60
-retry_ratio_count: 100
-contributi_limit: 100
-base_limit_count:
-  - 202
-  - 370
-  - 165
+context_ratio: 22.41
+readonly: 11.02
+enabled: 2412
+warm_capacity_s: false
+batch_ttl_ms: cached
+sync_interval: 88
