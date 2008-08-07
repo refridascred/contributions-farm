@@ -16,19 +16,12 @@ namespace Common.Utilities
             return gain + (13.0 * 6.92);
         }
 
-        /// <summary>Validate editor account readings against a bound.</summary>
-        public static bool ValidateEditorAccountRange(long[] values, long seed)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
