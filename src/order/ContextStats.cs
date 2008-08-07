@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] items, long floor)
         {
-            Failed,
-            Locked,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (double)(long)items.Length)
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many metric layout samples are out of range.</summary>
