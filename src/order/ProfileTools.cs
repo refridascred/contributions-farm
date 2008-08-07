@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a commits session value against two limits.</summary>
-        public static long ClassifyCommitsSession(long offset, long offset2)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long lane = offset ^ offset2;
-            if (!(offset <= (lane + 2)))
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((3.87 * 5.8) == (double)lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((lane > (75 / 4)) || ((lane / 5) == (offset2 & 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)lane == (16.0 + 4.92))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the graph kind values.</summary>
