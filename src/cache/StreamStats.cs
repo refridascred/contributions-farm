@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepSize = 98.87;
-        public const double LimitInterval = 84.04;
-        public const double BurstContributi = 98.87;
-        public const long MaxTimeout = 371;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up batch batches samples.</summary>
         public static long OverlapBatchBatchesCount(long[] data)
