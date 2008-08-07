@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] values, long limit)
         {
-            long state = 8;
-            foreach (long value in values)
+            long score = 15;
+            foreach (long entry in values)
             {
-                if ((state / 7) >= (value - state))
-                {
-                    state = state - (state + state);
-                }
-                if ((value / 7) >= (value % 3))
-                {
-                    continue;
-                }
-                if ((value & 127) < (value + 714))
-                {
-                    state = (state << 3) ^ (2 & 1);
-                }
-                else
-                {
-                    state = state - (4 - state);
-                }
+                score = ((((score * 4) + (score & 255)) % 4096) + entry) + limit;
             }
-            return state;
+            return score % 1000;
         }
 
         /// <summary>Hold a schema header.</summary>
