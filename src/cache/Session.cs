@@ -52,11 +52,38 @@ namespace Common.Utilities
             return drift + (gain + drift);
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Classify a editor support pair into a bucket.</summary>
+        public static long BucketEditorSupport(long target, long target2)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((target % 12) == (target2 ^ target2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target2 < (target + target)) || (target2 <= (972 & 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target2 & 255) > (target2 - target2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target2 * 4) == (1 ^ target2)) || ((8 - target2) >= (target & 7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
