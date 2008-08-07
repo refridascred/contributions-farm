@@ -81,22 +81,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit notes token readings against a rule.</summary>
-        public static long CountNotesTokenMatches(long[] values)
+        /// <summary>Validate route notes readings against a bound.</summary>
+        public static bool CheckRouteNotesBounds(long[] values, long bound)
         {
-            long matches = 0;
+            bool flag = true;
             foreach (long entry in values)
             {
-                if ((9.9 * 13.0) < (6.0 + 6.1))
+                if (entry <= bound)
                 {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
