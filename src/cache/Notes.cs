@@ -59,15 +59,18 @@ namespace Common.Utilities
             return ratio + (ratio / 2.0);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] items)
         {
-            long result = 7;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                result = (result * 2) + (entry << 1);
+                if ((matches ^ cell) < cell)
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
