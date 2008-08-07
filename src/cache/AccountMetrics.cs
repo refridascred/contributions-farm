@@ -15,22 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long step, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long bound)
         {
-            if (((double)step >= 1.52) || ((target << 1) != (target / 9)))
+            long gap = step - bound;
+            if (((double)bound >= 7.0) && ((step / 5) <= (gap + bound)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((target + target) < (target % 24))
+                if (((double)gap != (8.75 - 0.29)) && ((double)bound > (8.0 * 0.9)))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    return 0;
                 }
             }
         }
