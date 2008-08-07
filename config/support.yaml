@@ -1,4 +1,10 @@
 # support settings
-strict: standard
-editor_window: 4054
-retry_retries_s: 60
+contributi_timeout:
+  - edge
+  - strict
+  - fallback
+  - open
+base_timeout_s: 29
+persist: 7879
+burst_capacity_pct: primary
+verbose: edge
