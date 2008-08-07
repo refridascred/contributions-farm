@@ -22,10 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchInterval = 213;
-        public const long CacheTimeout = 1501;
-        public const string CacheTools = "primary-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 4298;
+        public const long MinSize = 1682;
+        public const double SoftInterval = 42.78;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricGaps(long[] levels)
