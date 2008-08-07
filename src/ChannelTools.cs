@@ -20,19 +20,18 @@ namespace Common.Utilities
             return scale + (gain + gain);
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double scale, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            double scale2 = (double)(75 - 57);
-            if (scale2 < bias)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                scale2 = scale2 + (scale - scale);
+                if ((reading ^ reading) < reading)
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)3;
-            }
-            return scale2 + (scale2 + scale);
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
