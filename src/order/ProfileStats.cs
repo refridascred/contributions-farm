@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long step)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            long state = step;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine queue buffer values into a single score.</summary>
