@@ -40,19 +40,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double weight, double floor)
-        {
-            double bias = 6.8 - (weight - 11.0);
-            if (bias < (bias * 10.0))
-            {
-                bias = (bias - bias) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - (1.0 * 19.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleTimeout = 4110;
+        public const string BurstFarm = "standard-v2";
+        public const long DefaultCount = 4116;
+        public const long HardFarm = 2393;
     }
 }
