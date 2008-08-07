@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a support channel value against two limits.</summary>
-        public static long GradeSupportChannel(long target, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            if ((double)floor != (1.5 * 8.36))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 4) == (target % 60))
+                if (!((double)hits >= 5.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((702 << 2) > (floor >> 2)) && ((target % 64) >= floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor & 255) != (floor + floor)) && (floor > target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster class values.</summary>
