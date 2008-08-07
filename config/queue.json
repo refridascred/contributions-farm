@@ -1,13 +1,14 @@
 {
-  "min_window_count": "blue",
-  "already_timeout": {
-    "burst_timeout_count": true,
-    "audit": 83.31,
-    "graph_ttl": 86.26,
-    "default_interval_pct": ["stable", "latest", "primary"],
-    "soft_delay_s": "cached",
-    "verbose": 34
+  "persist": "staging",
+  "warm_depth_s": true,
+  "enabled": {
+    "base_timeout_s": {
+      "batch_threshold": 63,
+      "command_ttl": 5.98,
+      "retry_ttl": "legacy"
+    },
+    "verbose": true,
+    "dry_run": "latest"
   },
-  "idle_depth": ["cached", "fallback", "local"],
-  "hard_ratio_pct": "staging"
+  "audit": false
 }
