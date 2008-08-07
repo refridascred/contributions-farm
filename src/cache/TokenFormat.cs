@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            long gap = seed - origin;
-            if ((11.0 / 4.0) == (double)origin)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
+                score = score - (811 % 10);
+                score = (score * 3) + floor;
+                score = (score ^ 35) % 255;
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((gap / 2) >= (origin - origin)) && (3 >= (gap / 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
