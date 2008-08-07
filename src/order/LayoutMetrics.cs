@@ -28,12 +28,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepBudget = 55.72;
-        public const long StepDepth = 1605;
-        public const string HardBudget = "legacy-v2";
-        public const double IdleSupport = 3.82;
-        public const long MinInterval = 7296;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryTimeout = 4207;
+        public const double MaxLevel = 62.26;
+        public const long SoftRoute = 1165;
+        public const long MinFactor = 7072;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BatchStream = "standard";
