@@ -1,15 +1,12 @@
 {
-  "default_size": "staging",
-  "stream_size": 83,
-  "dry_run": {
-    "checks_limit": false,
-    "farm_limit": "legacy",
-    "min_retries_count": {
-      "persist": "primary",
-      "warm_depth": 2171,
-      "burst_capacity": false,
-      "max_capacity_pct": "edge",
-      "min_capacity_pct": true
-    }
-  }
+  "stats_delay": false,
+  "retry_ttl": 250,
+  "session_depth": false,
+  "window_threshold": {
+    "max_limit_pct": false,
+    "format_size": 66.92,
+    "githubfarm_ttl": 31,
+    "enabled": 90.04
+  },
+  "filter_delay": [257, 170, 444, 207]
 }
