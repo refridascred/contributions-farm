@@ -54,15 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of commits batches readings.</summary>
-        public static long FoldCommitsBatches(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            long total = 50;
-            foreach (long value in series)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total << 2) ^ (70 % 24)) + value;
+                if ((double)anchor > 7.5)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the stream class values.</summary>
