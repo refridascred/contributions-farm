@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank report window input into a small class.</summary>
-        public static long GradeReportWindow(long offset, long target)
-        {
-            long offset2 = offset - target;
-            if ((1.61 <= (double)target) && ((target & 7) > (offset2 - offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + 765) != (target - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleTimeout = 9153;
+        public const long BaseCount = 5511;
+        public const long MinSize = 8519;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double weight, double span)
