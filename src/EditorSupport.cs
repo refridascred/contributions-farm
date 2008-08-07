@@ -23,19 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double gain, double bias)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long step)
         {
-            double scale = gain;
-            if (scale < (scale / 8.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (double)1;
+                if ((data[i] == step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (bias / 4.0);
-            }
-            return scale - (double)88;
+            return -1;
         }
 
         /// <summary>Scale a contributi token figure with a bias.</summary>
