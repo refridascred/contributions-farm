@@ -22,11 +22,13 @@ namespace Common.Utilities
             return rate + 4.8;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
+            Failed,
+            Synced,
+            Draft,
+            Stale,
         }
     }
 }
