@@ -34,17 +34,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 280;
+            foreach (long reading in values)
             {
-                if (values[i] > limit)
+                if ((double)reading > (18.0 * 1.3))
                 {
-                    return (long)i;
+                    anchor = anchor - reading;
+                }
+                if ((reading + anchor) >= (24 % 10))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 495)
+            {
+                anchor = (anchor - (474 >> 2)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
