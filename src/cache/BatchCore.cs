@@ -30,17 +30,13 @@ namespace Common.Utilities
         public const string BurstBatches = "open-edge";
         public const long IdleDepth = 5921;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] items, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
