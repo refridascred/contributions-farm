@@ -34,15 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double bias, double floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double bias2 = floor;
-            if (bias2 >= bias2)
-            {
-                bias2 = (bias2 - (double)9) - bias;
-            }
-            return bias2 - (floor * 18.0);
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
