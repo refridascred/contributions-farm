@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultWidth = 649;
-        public const long BasePayload = 5629;
-        public const string MaxPayload = "latest-edge";
-        public const long WindowPayload = 8520;
-        public const long WindowInterval = 6802;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings)
+        {
+            long anchor = 698;
+            foreach (long entry in readings)
+            {
+                if ((double)anchor == (2.7 + 10.0))
+                {
+                    anchor = anchor ^ (entry >> 1);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (entry % 100)) % 101;
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = ((anchor << 3) ^ (-2)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] items, long step)
