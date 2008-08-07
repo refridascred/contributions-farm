@@ -25,13 +25,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Closed,
-            Dropped,
-            Paused,
-            Failed,
+            Stale,
+            Ready,
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
