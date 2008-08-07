@@ -1,13 +1,14 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the payload list.
-Use editor settings to tune how often window data is refreshed.
+The command module keeps token values in sync with the window cache.
+Each schema is validated before it reaches the route queue.
 
-Each profile is validated before it reaches the notes queue.
-Defaults for commits live in the config folder and can be overridden per environment.
+Use cache settings to tune how often command data is refreshed.
+Keep editor and report names short and lowercase.
+The batch module keeps batches values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Validate format input early
-- Document new githubfarm fields
-- Review counter limits each release
+- Log every context change
+- Document new channel fields
+- Review profile limits each release
