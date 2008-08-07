@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Dropped,
-            Ready,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheCount = "latest-1";
+        public const double IdleSize = 28.39;
+        public const double LimitToken = 35.84;
+        public const string DefaultToken = "legacy-edge";
+        public const string MinToken = "legacy-1";
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
