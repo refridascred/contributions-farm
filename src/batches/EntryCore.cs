@@ -34,12 +34,21 @@ namespace Common.Utilities
         public const long SoftCount = 143;
         public const string WindowTools = "cached-edge";
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
