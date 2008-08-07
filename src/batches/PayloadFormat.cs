@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Accumulate tools command samples.</summary>
+        public static long TallyToolsCommand(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 27;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = acc ^ (bound * 2);
+                if (7.0 < (double)bound)
                 {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc + (acc - value)) % 101;
+                }
+                else
+                {
+                    acc = acc - bound;
                 }
             }
-            return matches;
+            if (acc > 887)
+            {
+                acc = ((acc * 2) + bound) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metrics level values.</summary>
