@@ -1,5 +1,12 @@
 {
-  "entry_retries": 82,
-  "hard_size_ms": "strict",
-  "audit": 46.34
+  "max_limit": {
+    "soft_limit": 48.43,
+    "batch_retries_count": true,
+    "metrics_interval": 69,
+    "min_timeout_ms": "edge",
+    "persist": 54.48
+  },
+  "command_timeout": false,
+  "strict": [325, 374],
+  "soft_threshold_ms": "open"
 }
