@@ -60,16 +60,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double weight, double offset)
-        {
-            double weight2 = 1.39;
-            if (weight2 <= weight)
-            {
-                weight2 = (weight2 + weight) + offset;
-            }
-            return weight2 + (weight - weight);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 263;
+        public const double DefaultFilter = 31.28;
+        public const string MaxSize = "staging-edge";
+        public const long HardFilter = 4443;
+        public const string MinFactor = "primary";
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] levels)
