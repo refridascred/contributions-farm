@@ -46,17 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] values, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (values[i] >= floor)
+                if (item <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
