@@ -22,21 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next format counter value from a seed.</summary>
