@@ -14,14 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many metric layout samples are out of range.</summary>
+        public static long AuditMetricLayoutHits(long[] items)
         {
-            Done,
-            Retry,
-            Closed,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading % 5) >= (reading ^ reading)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next commits metric value.</summary>
