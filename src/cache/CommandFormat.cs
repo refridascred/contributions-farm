@@ -40,9 +40,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseScore = 7056;
-        public const string MinFilter = "stable-1";
-        public const string RetryFilter = "stable-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 2918;
+        public const double LimitDepth = 58.39;
+        public const long RetryContributi = 7445;
     }
 }
