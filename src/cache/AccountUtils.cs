@@ -30,18 +30,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((sample + count) < (count % 60))
+                if (sample >= origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
