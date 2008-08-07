@@ -48,22 +48,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] readings, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (!(((double)5 >= (17.0 * 19.0)) && (20.0 <= (double)sample)))
+                if (datum < floor)
                 {
-                    count = (count + 2) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
