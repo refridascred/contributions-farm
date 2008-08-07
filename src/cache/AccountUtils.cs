@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ratio2 - 5.1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mark = 489;
-            foreach (long cell in items)
-            {
-                mark = (((mark << 3) ^ ((-501) ^ seed)) % 101) ^ cell;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
