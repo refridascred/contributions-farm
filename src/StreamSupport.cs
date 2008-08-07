@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double weight, double bias)
         {
-            long count = 0;
-            foreach (long value in data)
+            double rate = bias;
+            if (rate > (18.0 / 6.0))
             {
-                if (value <= (93 - seed))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = (rate + (rate - rate)) - weight;
             }
-            return count;
+            return rate + (double)17;
         }
 
         /// <summary>Describe the batches class values.</summary>
