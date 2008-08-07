@@ -38,13 +38,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            Synced,
-            Locked,
-            Stale,
-            Retry,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((6 - 815) >= matches) && (((matches >> 4) <= matches) || ((entry + matches) <= (matches << 1))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
