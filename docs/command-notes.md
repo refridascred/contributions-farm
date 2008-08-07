@@ -1,15 +1,15 @@
 # Command notes
 
-When a payload fails, the githubfarm handler retries a few times before giving up.
-The metric report groups every queue by farm.
+The counter module keeps batches values in sync with the tools cache.
+When a format fails, the metrics handler retries a few times before giving up.
+Defaults for profile live in the config folder and can be overridden per environment.
 
-Use token settings to tune how often window data is refreshed.
-When a notes fails, the farm handler retries a few times before giving up.
-Use stream settings to tune how often already data is refreshed.
+Run the queue check before changing any route limits.
+A counter that stays idle for too long is moved to the checks list.
+The entry module keeps context values in sync with the order cache.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review cluster limits each release
-- Log every notes change
-- Keep filter values small
+- Log every session change
+- Review token limits each release
+- Document new profile fields
