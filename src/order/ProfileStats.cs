@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] values, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i - offset) >= result)
+                if ((values[i] <= target) && ((values[i] % 5) != 0))
                 {
-                    result = ((result << 3) ^ result) % 101;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
