@@ -63,13 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] levels, long target)
         {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((target / 2) < target)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
     }
 }
