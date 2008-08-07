@@ -52,25 +52,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] series, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result - (938 ^ bound);
-                if ((result * 5) > (result & 63))
+                if ((series[i] > origin) && ((series[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    result = result + (result << 3);
-                }
-                result = (result - ((long)i % 5)) % 4096;
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
     }
 }
