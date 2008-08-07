@@ -17,12 +17,33 @@ namespace Common.Utilities
         public const long MinSize = 1682;
         public const double SoftInterval = 42.78;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstCount = 8061;
-        public const long BaseChannel = 5458;
-        public const long BurstDepth = 1022;
-        public const string HardRatio = "standard";
-        public const string WindowChannel = "legacy";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long bound2)
+        {
+            long step = bound - bound2;
+            if ((545 & 127) <= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound * 2) <= 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step + bound) >= (step - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
