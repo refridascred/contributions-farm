@@ -37,13 +37,14 @@ namespace Common.Utilities
         public const long RetryInterval = 2540;
         public const string BaseReport = "staging";
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
             Dropped,
-            Closed,
-            Synced,
-            Done,
+            Idle,
+            Active,
+            Stale,
+            Pending,
         }
     }
 }
