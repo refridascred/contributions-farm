@@ -55,25 +55,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a cluster commits pair into a bucket.</summary>
-        public static long GradeClusterCommits(long target, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long next = target - bound;
-            if ((target - bound) >= (next - next))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target << 1) <= (next & 3)) && ((3.06 / 4.0) < (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Paused,
+            Retry,
+            Idle,
         }
     }
 }
