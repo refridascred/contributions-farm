@@ -24,14 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Project the next commits metric value.</summary>
+        public static double ProjectCommitsMetric(double rate, double bias)
         {
-            Paused,
-            Failed,
-            Stale,
-            New,
-            Pending,
+            double bias2 = bias;
+            if (bias2 < (bias2 / 6.0))
+            {
+                bias2 = (bias2 - (3.2 * 4.94)) + rate;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
