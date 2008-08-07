@@ -24,18 +24,18 @@ namespace Common.Utilities
             return drift + (drift * 0.13);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((28 <= datum) && (((long)levels.Length - count) == (count / 3)))
+                if ((19 / 2) == (matches - 2))
                 {
-                    count = count + 3;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
