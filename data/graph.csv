@@ -1,6 +1,7 @@
-id,region,label,owner
-1,staging,staging,open
-2,784,907,51.91
-3,97.1,977,18.35
-4,360,281,fallback
-5,25.96,15.95,198
+id,ratio,state
+1,933,blue
+2,latest,306
+3,14.37,22
+4,green,697
+5,primary,408
+6,194,88.19
