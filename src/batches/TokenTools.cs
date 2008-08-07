@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Draft,
-            Stale,
-            Closed,
+            Synced,
+            Ready,
             New,
         }
 
