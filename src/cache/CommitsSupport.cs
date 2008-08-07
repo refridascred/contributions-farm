@@ -92,22 +92,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series, long target)
-        {
-            long mix = 251;
-            foreach (long sample in series)
-            {
-                if ((sample * 3) >= (26 + target))
-                {
-                    mix = mix ^ ((-9) >> 4);
-                }
-            }
-            if (mix < (-3))
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 3605;
+        public const long CacheMetric = 3705;
+        public const string RetryTimeout = "alpha-v2";
+        public const string BaseMetric = "latest-v2";
     }
 }
