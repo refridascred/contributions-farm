@@ -48,10 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 9130;
-        public const long DefaultRecord = 7199;
-        public const long BaseRatio = 5317;
-        public const double WindowRecord = 4.31;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinTools = "fallback-v2";
+        public const long RetryTools = 7773;
+        public const string WindowTools = "local";
+        public const double BurstTools = 23.28;
+        public const long CacheSize = 1314;
     }
 }
