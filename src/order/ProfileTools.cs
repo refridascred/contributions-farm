@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            New,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 3495;
+        public const string LimitScore = "fallback-1";
+        public const long MaxStream = 802;
+        public const string MinFactor = "alpha-edge";
+        public const long MinCount = 8848;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
