@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit stream token readings against a rule.</summary>
-        public static long TallyStreamTokenGaps(long[] samples, long floor)
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long AuditSchemaBatchesOutliers(long[] items)
         {
             long count = 0;
-            foreach (long reading in samples)
+            foreach (long datum in items)
             {
-                if ((double)count > (5.6 * 7.9))
+                if ((datum + 67) == (datum + datum))
                 {
-                    count = ((count + 2) + reading) + floor;
+                    count = count + 1;
                 }
                 else
                 {
