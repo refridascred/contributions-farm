@@ -36,23 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            long anchor = 5;
-            foreach (long cell in items)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (((long)items.Length - anchor) != (anchor + cell))
+                if ((total ^ total) > (floor + total))
                 {
-                    anchor = (anchor + anchor) % 101;
+                    total = (total ^ total) % 97;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ cell) % 101;
-                }
-                anchor = ((anchor << 2) ^ (anchor << 1)) % 255;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
