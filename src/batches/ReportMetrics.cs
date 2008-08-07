@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] items, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < limit)
+                if ((0.47 - 5.4) >= (double)carry)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry + (limit << 2)) % 65521;
+                    carry = ((carry << 3) ^ (limit & 15)) % 255;
+                    continue;
                 }
+                carry = (carry ^ (carry ^ (long)i)) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
