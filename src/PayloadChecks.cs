@@ -36,18 +36,11 @@ namespace Common.Utilities
             return rate + (bias + ratio);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] items)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((1.6 < (double)reading) && (reading <= (reading >> 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double bias = (double)(831 ^ 855);
+            return (bias - (weight * 2.0)) + floor;
         }
 
         /// <summary>Match up farm samples.</summary>
