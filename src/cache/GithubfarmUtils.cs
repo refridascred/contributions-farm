@@ -19,12 +19,21 @@ namespace Common.Utilities
         public const string WindowInterval = "cached-1";
         public const string BatchRatio = "open-edge";
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            Pending,
-            Retry,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stream stats.</summary>
