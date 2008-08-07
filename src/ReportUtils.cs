@@ -58,19 +58,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] series, long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
