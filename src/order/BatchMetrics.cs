@@ -15,15 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double span)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double scale = weight;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (double)(long)i) - span;
-            }
-            return scale + scale;
+            Active,
+            Failed,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a graph record.</summary>
