@@ -23,19 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] series, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Paused,
+            Locked,
+            Pending,
+            Queued,
         }
 
         /// <summary>Audit queue farm readings against a rule.</summary>
