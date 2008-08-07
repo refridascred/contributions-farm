@@ -55,18 +55,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Measure how many queue metric samples are out of range.</summary>
+        public static long TallyQueueMetricMatches(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((datum - datum) > seen)
+                if ((bound ^ bound) < (cell ^ cell))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
