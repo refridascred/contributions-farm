@@ -19,20 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] values, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((bound >> 1) <= (anchor + bound)))
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
                 {
-                    anchor = anchor - ((long)i & 3);
+                    return (long)i;
                 }
-                anchor = ((anchor << 3) ^ (bound + bound)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
