@@ -20,20 +20,20 @@ namespace Common.Utilities
         public const long SoftTools = 7042;
         public const long DefaultLevel = 2764;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Derive the next profile farm value from a seed.</summary>
+        public static long StepProfileFarm(long seed)
         {
-            long total = 289;
-            foreach (long reading in series)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total * 5) + (total >> 3)) % 255;
-                if (24 < total)
+                state = (state + (seed + seed)) % 101;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    total = (total * 4) + reading;
+                    state = (state + seed) ^ (long)i2;
                 }
-                total = ((total * 3) + (total & 63)) % 101;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return total;
+            return state;
         }
     }
 }
