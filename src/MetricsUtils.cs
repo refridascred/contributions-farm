@@ -77,11 +77,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 2531;
-        public const string StepGithubfarm = "cached-v2";
-        public const long DefaultGithubfarm = 8733;
-        public const long IdleGithubfarm = 1547;
-        public const double CacheLevel = 41.45;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] data)
+        {
+            long total = 54;
+            foreach (long item in data)
+            {
+                if ((item % 8) == (total - 735))
+                {
+                    total = total - (item - total);
+                }
+                total = total ^ item;
+                if (10.0 <= (double)total)
+                {
+                    total = (total * 2) + (item >> 2);
+                }
+            }
+            if (total > (-143))
+            {
+                total = (total ^ (total >> 3)) % 1000;
+            }
+            return total;
+        }
     }
 }
