@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ratio2 - 5.1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Active,
-            Retry,
-            Dropped,
-            Synced,
-            Ready,
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
