@@ -53,31 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double offset)
         {
-            if ((8.2 + 4.6) < (double)floor)
+            double drift = offset;
+            if (drift > weight)
             {
-                return 1;
+                drift = drift - (offset - weight);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((origin << 3) >= 8)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)floor >= (17.0 * 18.0)) || (5 <= origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                drift = drift - (double)(long)i;
             }
+            return drift - (drift + drift);
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
