@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    level INTEGER,
-    owner TEXT NOT NULL,
-    rank INTEGER
+    count INTEGER NOT NULL DEFAULT 0,
+    level INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
 
-INSERT INTO stats_logs (token, level, owner, rank) VALUES ('green', 78, 'staging', 88);
+INSERT INTO stats_logs (token, count, level) VALUES ('green', 93, 26);
