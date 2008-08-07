@@ -22,17 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch tools entry that matches the target.</summary>
-        public static long SeekBatchToolsIndex(long[] data, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 721;
+            foreach (long entry in values)
             {
-                if (data[i] < offset)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    total = (((total - (total - entry)) % 4096) + (long)i) + floor;
+                    total = ((total << 3) ^ (entry % 60)) % 255;
                 }
+                total = (total - total) % 1000;
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
