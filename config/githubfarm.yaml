@@ -1,6 +1,4 @@
 # githubfarm settings
-warm_limit_ms: true
-hard_window: standard
-verbose: 37.5
-compress: 41.01
-cache_threshold_s: green
+poll_depth: 47.57
+queue_size: 6210
+base_timeout_ms: 59.18
