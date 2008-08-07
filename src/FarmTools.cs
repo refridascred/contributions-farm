@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
