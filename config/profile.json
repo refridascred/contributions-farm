@@ -1,10 +1,6 @@
 {
-  "githubfarm_retries": [383, 239],
-  "min_timeout": {
-    "stream_interval": 500,
-    "default_timeout_count": ["fallback", "open", "stable"],
-    "compress": 39.88
-  },
-  "token_retries": true,
-  "strict": [329, 291, 108, 401]
+  "graph_interval": 250,
+  "schema_capacity": [392, 285, 230],
+  "sync_delay_ms": 5841,
+  "default_interval": 57.8
 }
