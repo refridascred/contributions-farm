@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] items, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state - (origin ^ state)) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Describe the report status values.</summary>
