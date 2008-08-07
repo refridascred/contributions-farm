@@ -1,20 +1,12 @@
 # entry settings
-checks_depth: blue
-enabled: 9913
-strict:
-  min_window:
-    - 359
-    - 471
-    - 495
-    - 456
-  persist: open
-  githubfarm_retries:
-    - 230
-    - 65
-    - 22
-    - 362
-  already_timeout: legacy
-  metric_ttl: standard
-  min_depth: latest
-cache_depth_pct: 5121
-hard_ttl_s: open
+batch_timeout_ms: latest
+layout_ttl: 8
+max_capacity_count:
+  batch_threshold: 29.06
+  strict: staging
+  readonly: fallback
+  audit: 50.81
+  flush_delay_ms: 250
+batch_capacity_ms:
+  - blue
+  - standard
