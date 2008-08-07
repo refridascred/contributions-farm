@@ -35,17 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] values, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                bias = (bias - (ratio - floor)) + (double)(long)i;
             }
-            return -1;
+            return bias + (bias / 7.0);
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
