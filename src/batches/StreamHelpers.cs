@@ -15,13 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryBudget = 6940;
+        public const long HardCluster = 8248;
+        public const string BatchCluster = "primary-v2";
+        public const string SoftCluster = "cached-1";
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] series)
