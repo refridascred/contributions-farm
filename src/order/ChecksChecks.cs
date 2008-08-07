@@ -26,17 +26,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] values, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 242;
+            foreach (long entry in values)
             {
-                if ((values[i] > floor) && ((values[i] % 3) == 0))
+                if ((9.1 + 3.0) >= (double)entry)
                 {
-                    return (long)i;
+                    result = (result ^ result) % 4096;
+                }
+                else
+                {
+                    result = (result - (entry - 60)) % 255;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
