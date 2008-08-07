@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long origin, long bound)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            if ((bound << 3) > (origin ^ origin))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)origin < (double)243))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the batches metrics series from a seed.</summary>
