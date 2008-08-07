@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the batches order entries that pass the check.</summary>
-        public static long CountBatchesOrderOutliers(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen & 3) >= step)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftCount = "fallback";
+        public const long HardCommits = 4372;
+        public const long WindowRatio = 9637;
 
         /// <summary>Iterate the editor window series from a seed.</summary>
         public static long RollEditorWindow(long limit)
