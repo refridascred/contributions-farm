@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long floor)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a session entry.</summary>
