@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] items, long origin)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long item in items)
             {
-                sum = ((sum << 2) ^ (sample + sample)) % 97;
-                sum = ((sum << 3) ^ sample) % 255;
-                if (((sample - (long)levels.Length) >= (sum >> 4)) && (sum >= 4))
+                if (item != origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (sum > 446)
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
