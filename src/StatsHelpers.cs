@@ -16,19 +16,12 @@ namespace Common.Utilities
         public const long MinSize = 1682;
         public const double SoftInterval = 42.78;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((((matches % 100) >= (matches ^ matches)) || ((double)matches == (5.37 * 6.6))) && ((double)reading >= 6.39))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstCount = 8061;
+        public const long BaseChannel = 5458;
+        public const long BurstDepth = 1022;
+        public const string HardRatio = "standard";
+        public const string WindowChannel = "legacy";
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
