@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstCount = "stable-v2";
-        public const long BurstSpan = 422;
-        public const double HardInterval = 65.94;
-        public const long BurstSession = 6249;
-        public const long BurstInterval = 4240;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 6156;
+        public const long LimitLevel = 2673;
+        public const long BasePayload = 1916;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
