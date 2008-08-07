@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Synced,
-            Ready,
-            New,
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
