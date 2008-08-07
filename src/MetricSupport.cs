@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two account checks measurements.</summary>
-        public static double SmoothAccountChecks(double gain, double bias)
-        {
-            double load = bias;
-            if (load < (gain + load))
-            {
-                load = load - (gain - gain);
-            }
-            return load - (load / 4.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxBudget = 5992;
+        public const long MaxNotes = 2990;
+        public const long BaseRatio = 7438;
+        public const long CacheLevel = 678;
+        public const long MinNotes = 8884;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long DigestContributi(long[] samples, long seed)
