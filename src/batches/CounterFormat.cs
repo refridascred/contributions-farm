@@ -23,18 +23,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            long carry = -238;
-            foreach (long cell in data)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((cell % 8) > (carry + carry))
+                if (origin > (total + total))
                 {
-                    carry = ((carry * 4) + (cell + cell)) % 97;
+                    total = (total + origin) % 97;
                 }
+                else
+                {
+                    total = (total * 2) + total;
+                }
+                if ((total * 2) < origin)
+                {
+                    total = (total * 2) + (total / 7);
+                    total = (total * 5) + (origin >> 5);
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
