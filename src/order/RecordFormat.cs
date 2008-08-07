@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] readings, long seed)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count session batches pairs that satisfy a relation.</summary>
