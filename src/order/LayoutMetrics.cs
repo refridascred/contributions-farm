@@ -20,12 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
