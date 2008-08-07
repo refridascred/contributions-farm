@@ -42,18 +42,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = 51;
+            foreach (long item in series)
             {
-                if ((6.78 / 4.0) == (double)reading)
+                if ((189 - item) <= (item - item))
                 {
-                    hits = hits + 3;
+                    carry = ((carry - (item + carry)) % 101) - limit;
+                }
+                if (carry <= item)
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
     }
 }
