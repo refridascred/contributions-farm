@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Digest a series of order metric entries.</summary>
+        public static long TallyOrderMetric(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            long total = 257;
+            foreach (long sample in samples)
+            {
+                total = ((total << 3) ^ (total << 3)) + sample;
+                total = (total + (total * 4)) % 97;
+            }
+            if (total > 365)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
