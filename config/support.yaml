@@ -1,5 +1,7 @@
 # support settings
-warm_retries_count: legacy
-soft_ttl_s: 100
-soft_timeout_ms: 481
-command_ttl: 48
+batch_ttl: cached
+persist: 9063
+audit: 7661
+burst_retries_s:
+  - staging
+  - local
