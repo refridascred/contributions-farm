@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            Stale,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a commits options.</summary>
