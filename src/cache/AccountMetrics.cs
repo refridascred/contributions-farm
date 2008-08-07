@@ -88,22 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] samples, long bound)
+        /// <summary>Check that every graph support entry stays within the limit.</summary>
+        public static bool CheckGraphSupportLimits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (((bound + entry) != (count + bound)) && ((count - (-505)) < (8 % 10)))
+                if (datum >= target)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
