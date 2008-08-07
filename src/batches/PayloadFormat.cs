@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine counter account values into a single score.</summary>
-        public static long TotalCounterAccount(long[] samples)
-        {
-            long anchor = 85;
-            foreach (long item in samples)
-            {
-                if ((anchor % 10) >= (anchor >> 1))
-                {
-                    anchor = (anchor - (anchor - (-913))) ^ item;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxTimeout = 6798;
+        public const long HardCount = 9849;
+        public const string StepSession = "primary-v2";
+        public const long BatchRatio = 917;
+        public const long WindowSession = 3964;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long limit)
