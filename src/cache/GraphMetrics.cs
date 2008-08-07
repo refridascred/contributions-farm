@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long LimitBudget = 7487;
         public const long LimitRatio = 7290;
 
-        /// <summary>Validate report counter readings against a bound.</summary>
-        public static bool GuardReportCounterLimits(long[] series, long offset)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
