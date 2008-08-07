@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] data, long seed)
         {
-            Done,
-            Retry,
-            New,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many tools metric samples are out of range.</summary>
