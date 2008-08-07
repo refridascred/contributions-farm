@@ -20,10 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "stable-v2";
-        public const string BurstLevel = "fallback-1";
-        public const string BatchStats = "alpha";
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long floor)
