@@ -65,11 +65,12 @@ namespace Common.Utilities
             return drift - 0.61;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinCount = 9064;
-        public const long RetryInterval = 575;
-        public const double BatchSchema = 38.4;
-        public const double BaseCount = 40.22;
-        public const long DefaultWidth = 5632;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Queued,
+            Pending,
+            Stale,
+        }
     }
 }
