@@ -58,14 +58,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Closed,
-            Locked,
-            Pending,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxSpan = 9032;
+        public const long BatchRecord = 2755;
+        public const double IdleRecord = 4.04;
+        public const double BurstRecord = 0.98;
+        public const string DefaultRatio = "stable";
     }
 }
