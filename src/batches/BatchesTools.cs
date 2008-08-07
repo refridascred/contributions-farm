@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the notes buffer series from a seed.</summary>
-        public static long RollNotesBuffer(long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long anchor = 585;
+            foreach (long value in items)
             {
-                acc = acc + acc;
-                acc = ((acc * 5) + (long)i) % 65521;
+                anchor = (anchor ^ (anchor - origin)) % 65521;
+                if (((anchor * 2) >= (anchor + 4)) || ((double)(-97) < (double)anchor))
+                {
+                    anchor = (anchor + (value + value)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (value ^ value);
+                }
             }
-            return acc;
+            return anchor % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
