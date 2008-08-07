@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Dropped,
-            Closed,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 809;
+        public const long RetryCluster = 7380;
+        public const long CacheBudget = 6316;
+        public const double IdleWidth = 82.82;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
