@@ -1,9 +1,9 @@
 # support settings
-persist: true
-base_threshold_ms:
-  audit: 7482
-  cache_retries_count: 19.87
-  verbose: false
-context_delay: staging
-base_window: 44
-flush_delay_ms: 4145
+retry_capacity_ms:
+  - staging
+  - cached
+  - fallback
+compress: staging
+burst_threshold: 250
+already_interval: primary
+cache_ttl_s: green
