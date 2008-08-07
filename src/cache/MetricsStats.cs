@@ -56,19 +56,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] readings, long floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
