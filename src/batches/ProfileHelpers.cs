@@ -15,22 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] levels)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((0 * 5) > (965 - value)) && (((value + 11) <= (value + value)) && ((70 * 2) > (count << 1))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
