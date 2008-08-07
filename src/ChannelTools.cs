@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = origin - floor;
+            if (((5.9 / 5.0) >= (double)floor) && ((1 - slot) <= 93))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((5.2 * 3.0) != (double)floor)
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
