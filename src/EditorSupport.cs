@@ -25,12 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two account measurements.</summary>
