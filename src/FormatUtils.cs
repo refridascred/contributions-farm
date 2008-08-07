@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double scale, double bias)
-        {
-            double weight = scale - scale;
-            return (weight - scale) + bias;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 90.01;
+        public const long RetryFormat = 7461;
+        public const long BurstFormat = 8884;
+        public const string BurstInterval = "cached-1";
+        public const string WindowFormat = "local-edge";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] data)
