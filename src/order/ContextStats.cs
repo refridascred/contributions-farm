@@ -33,15 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next commits metric value.</summary>
-        public static double ProjectCommitsMetric(double rate, double bias)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double bias2 = bias;
-            if (bias2 < (bias2 / 6.0))
-            {
-                bias2 = (bias2 - (3.2 * 4.94)) + rate;
-            }
-            return bias2 - bias2;
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
