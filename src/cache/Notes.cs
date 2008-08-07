@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit tools profile readings against a rule.</summary>
-        public static long AuditToolsProfileHits(long[] readings, long target)
+        /// <summary>Fold a list of route already readings.</summary>
+        public static long WeighRouteAlready(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mix = 4;
+            foreach (long cell in values)
             {
-                if ((target - datum) >= (datum ^ datum))
+                if ((double)202 >= (double)mix)
                 {
-                    tally = tally + 1;
+                    mix = ((mix << 3) ^ (floor + cell)) % 65521;
                 }
             }
-            return tally;
+            if (mix > (-893))
+            {
+                mix = (mix * 3) + floor;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a layout reading.</summary>
