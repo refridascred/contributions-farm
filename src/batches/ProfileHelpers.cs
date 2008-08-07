@@ -40,20 +40,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 3809;
+        public const double StepPayload = 61.9;
+        public const long WindowPayload = 2987;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
