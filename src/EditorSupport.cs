@@ -45,15 +45,13 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double HardProfile = 26.77;
 
-        /// <summary>Accumulate profile tools samples.</summary>
-        public static long FoldProfileTools(long[] readings, long origin)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mark = 18;
-            foreach (long sample in readings)
-            {
-                mark = ((mark << 3) ^ (sample << 2)) + origin;
-            }
-            return mark % 65521;
+            Failed,
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the metrics state values.</summary>
