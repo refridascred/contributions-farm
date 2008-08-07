@@ -59,12 +59,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Scale a order already figure with a bias.</summary>
+        public static double ProjectOrderAlready(double scale, double floor)
         {
-            Paused,
-            Closed,
-            Failed,
+            double weight = 5.48;
+            if (weight > (weight - scale))
+            {
+                weight = weight - scale;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - floor) - (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Adjust a farm payload reading.</summary>
