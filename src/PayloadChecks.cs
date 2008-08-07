@@ -65,12 +65,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepInterval = 1769;
-        public const long SoftScore = 5654;
-        public const long RetrySize = 213;
-        public const double DefaultBatch = 63.32;
-        public const long LimitSize = 9063;
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long IterateAlready(long origin)
