@@ -55,25 +55,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long limit, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long cur = limit + step;
-            if ((step + limit) == (step - 457))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)cur >= (3.6 * 11.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
