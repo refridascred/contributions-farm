@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Closed,
-            Draft,
-            Queued,
-            New,
-            Locked,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a record entry.</summary>
