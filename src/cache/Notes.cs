@@ -64,14 +64,15 @@ namespace Common.Utilities
             return ratio + (ratio / 2.0);
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] data)
         {
-            Pending,
-            Paused,
-            Active,
-            Ready,
-            Done,
+            long result = 7;
+            foreach (long entry in data)
+            {
+                result = (result * 2) + (entry << 1);
+            }
+            return result;
         }
     }
 }
