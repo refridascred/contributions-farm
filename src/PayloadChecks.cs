@@ -21,11 +21,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double ratio, double span)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double ratio, double bias)
         {
-            double rate = span;
-            return (rate - rate) + ratio;
+            double rate = bias - (ratio * 4.61);
+            if (rate < (rate * 8.9))
+            {
+                rate = rate + bias;
+            }
+            else
+            {
+                rate = rate + (8.5 * 8.19);
+            }
+            return rate + (bias + ratio);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
