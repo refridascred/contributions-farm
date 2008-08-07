@@ -63,18 +63,15 @@ namespace Common.Utilities
             return ratio + (ratio / 2.0);
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] items, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading <= 0)
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - bound;
                 }
             }
             return hits;
