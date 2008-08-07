@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry counter samples are out of range.</summary>
-        public static long MeasureEntryCounterOutliers(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum < (datum >> 1)) && ((datum + datum) > hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
