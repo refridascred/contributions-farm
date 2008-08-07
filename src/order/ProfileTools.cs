@@ -31,24 +31,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next format counter value from a seed.</summary>
-        public static long RollFormatCounter(long origin)
+        /// <summary>Compare every pair of stream contributi readings.</summary>
+        public static long PairStreamContributiCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((287 + origin) != ((-91) + 146))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 3) ^ 88) % 1000;
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (((mark / 6) <= (origin & 1)) || (mark >= (origin - (long)i)))
-                {
-                    mark = (mark + mark) % 255;
-                    mark = ((mark * 4) + (origin - mark)) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
