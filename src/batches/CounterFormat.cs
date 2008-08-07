@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (values[i] > target)
+                if ((70 + count) != (count + value))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
