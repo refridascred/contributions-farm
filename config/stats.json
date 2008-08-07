@@ -1,6 +1,12 @@
 {
-  "sync_window_count": 100,
-  "base_limit_s": 5964,
-  "readonly": "primary",
-  "max_depth": 66
+  "batches_capacity": 97.45,
+  "compress": 74,
+  "soft_depth_count": {
+    "dry_run": "cached",
+    "max_window": "latest",
+    "idle_limit_count": false
+  },
+  "tools_retries": "fallback",
+  "commits_retries": 30,
+  "warm_interval_pct": "staging"
 }
