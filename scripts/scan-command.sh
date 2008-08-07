@@ -6,24 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-strict}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=263
+log "limit is ${COMMAND_LIMIT}"
