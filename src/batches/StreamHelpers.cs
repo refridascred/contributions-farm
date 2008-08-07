@@ -15,11 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryBudget = 6940;
-        public const long HardCluster = 8248;
-        public const string BatchCluster = "primary-v2";
-        public const string SoftCluster = "cached-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardLevel = 9708;
+        public const double HardRecord = 83.08;
+        public const long WindowScore = 1117;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] series)
