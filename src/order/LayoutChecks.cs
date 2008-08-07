@@ -14,11 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
