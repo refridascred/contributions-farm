@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] items, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((6 * 2) < (hits >> 5))
+                if (!((double)sample == (18.0 / 7.0)))
                 {
-                    hits = ((hits + 1) + value) - step;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the record level values.</summary>
