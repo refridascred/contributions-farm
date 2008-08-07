@@ -16,13 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (tally < entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
