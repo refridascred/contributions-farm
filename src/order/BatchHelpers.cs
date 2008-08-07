@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels)
-        {
-            long sum = 48;
-            foreach (long value in levels)
-            {
-                if ((sum + value) >= (value - value))
-                {
-                    sum = sum + value;
-                    continue;
-                }
-                else
-                {
-                    sum = sum ^ (value - value);
-                }
-                sum = (sum ^ (value / 5)) % 1000;
-                if (!(sum < (sum & 3)))
-                {
-                    sum = (sum ^ 3) % 4096;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = (sum * 4) + (sum - 84);
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 424;
+        public const long BatchStream = 906;
+        public const string BurstDepth = "stable-edge";
+        public const string MaxDepth = "cached-edge";
+        public const double LimitSpan = 51.09;
 
         /// <summary>Fold a list of session schema readings.</summary>
         public static long WeighSessionSchema(long[] readings, long origin)
