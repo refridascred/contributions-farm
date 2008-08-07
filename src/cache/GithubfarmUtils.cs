@@ -36,11 +36,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long limit, long target)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            if (target < (limit * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + 62) == (target / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target > 3.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit < 19) && ((limit >> 2) > (6 & 127)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
