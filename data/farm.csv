@@ -1,10 +1,6 @@
-id,level,active
-1,944,657
-2,342,cached
-3,967,684
-4,staging,886
-5,997,518
-6,local,816
-7,658,latest
-8,66.14,stable
-9,733,36.51
+id,ratio,owner
+1,74.4,23.2
+2,830,legacy
+3,654,225
+4,407,edge
+5,37.75,standard
