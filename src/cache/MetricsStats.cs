@@ -41,15 +41,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Closed,
-            Ready,
-            Locked,
-            Queued,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstBudget = 6779;
+        public const long IdleFilter = 6732;
+        public const long BaseRatio = 8351;
+        public const double BurstLevel = 16.26;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double AdjustStream(double rate, double floor)
