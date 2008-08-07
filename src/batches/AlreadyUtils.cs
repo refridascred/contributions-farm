@@ -37,13 +37,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] items)
         {
-            Failed,
-            Stale,
-            Ready,
-            Synced,
+            long result = 190;
+            foreach (long value in items)
+            {
+                if (!((double)result >= (double)463))
+                {
+                    result = result - (result ^ value);
+                }
+            }
+            if (result < (-28))
+            {
+                result = ((result << 3) ^ result) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the layout kind values.</summary>
