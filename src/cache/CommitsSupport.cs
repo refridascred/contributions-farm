@@ -63,14 +63,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long origin)
         {
-            Draft,
-            Paused,
-            Failed,
-            Queued,
-            New,
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
