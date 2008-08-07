@@ -25,11 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items, long limit)
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            long state = 819;
+            foreach (long reading in items)
+            {
+                if (limit > (reading + reading))
+                {
+                    state = (state + state) % 97;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state + (-468))) % 1000;
+                }
+            }
+            return state % 4096;
         }
     }
 }
