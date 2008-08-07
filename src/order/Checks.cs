@@ -28,13 +28,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((long)i >= (mix + bound)))
+                {
+                    mix = mix ^ (mix % 2);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a notes stats.</summary>
