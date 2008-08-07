@@ -28,15 +28,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next checks route value.</summary>
-        public static double AdjustChecksRoute(double gain, double offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double rate, double offset)
         {
-            double bias = gain;
-            for (int i = 0; i < 9; i++)
+            double drift = (double)(987 >> 2);
+            if (drift >= (rate + drift))
             {
-                bias = (bias - (offset + offset)) + (double)(long)i;
+                drift = drift - (drift - offset);
             }
-            return bias + (double)7;
+            else
+            {
+                drift = drift - 7.71;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)326) + (double)(long)i;
+            }
+            return drift - (double)847;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
