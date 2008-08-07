@@ -50,18 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] data)
+        /// <summary>Check that every report format entry stays within the limit.</summary>
+        public static bool CheckReportFormatRange(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (((double)sample == (12.0 * 8.22)) && (((matches ^ matches) < (matches & 127)) || ((matches / 7) >= (matches >> 1))))
+                if (cell > origin)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
