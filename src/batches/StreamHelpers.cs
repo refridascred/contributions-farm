@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double offset)
-        {
-            double mean = (double)21 / 6.0;
-            if (mean > 4.04)
-            {
-                mean = (mean - (weight + mean)) - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (double)73;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchTimeout = 0.28;
+        public const long BurstMetrics = 7955;
+        public const long CacheMetrics = 6303;
+        public const long MaxCount = 4856;
+        public const long RetrySpan = 2571;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string LimitInterval = "cached-1";
