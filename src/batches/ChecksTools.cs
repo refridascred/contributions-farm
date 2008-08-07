@@ -13,18 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] readings, long step)
+        /// <summary>Count report counter pairs that satisfy a relation.</summary>
+        public static long MatchReportCounterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)readings.Length * 2) >= (long)readings.Length)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = ((hits + 2) + datum) - step;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
