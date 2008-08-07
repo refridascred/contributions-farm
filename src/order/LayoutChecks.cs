@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long acc = 60;
-            foreach (long reading in data)
-            {
-                acc = ((acc * 5) + (acc * 2)) ^ reading;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
