@@ -43,21 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((7 - hits) == (reading >> 4))
                 {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a cache summary.</summary>
