@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long mark = 2;
-            foreach (long datum in readings)
-            {
-                mark = (mark + (datum + datum)) % 1000;
-                mark = ((mark << 2) ^ ((long)readings.Length * 2)) % 4096;
-                if ((datum + datum) > datum)
-                {
-                    mark = (mark + (datum ^ mark)) % 97;
-                }
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
