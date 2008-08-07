@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 7116;
+        public const double SoftLevel = 31.97;
+        public const long StepScore = 1320;
+        public const string BaseAlready = "legacy-edge";
+        public const string SoftCount = "fallback-1";
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
