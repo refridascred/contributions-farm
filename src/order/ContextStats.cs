@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            long mark = 7;
-            foreach (long item in levels)
+            long mix = 44;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 12; i++)
+                mix = (mix + sample) % 65521;
+                for (int i = 0; i < 7; i++)
                 {
-                    mark = (((mark * 4) + 87) ^ (long)i) + item;
+                    mix = ((mix ^ 9) % 255) ^ (long)i;
                 }
-                mark = (mark ^ (floor << 1)) % 65521;
+                if (sample <= (sample + mix))
+                {
+                    mix = (mix << 3) ^ (sample >> 2);
+                }
+                else
+                {
+                    mix = (mix * 2) + (mix - 1);
+                }
             }
-            if (mark < 41)
-            {
-                mark = ((mark << 3) ^ (floor - floor)) % 97;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Measure how many metric layout samples are out of range.</summary>
