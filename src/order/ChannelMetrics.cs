@@ -23,13 +23,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Locate a tools buffer reading by value.</summary>
+        public static long LookupToolsBufferIndex(long[] items, long offset)
         {
-            Active,
-            Dropped,
-            Idle,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
