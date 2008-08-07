@@ -21,18 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] readings)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((((long)readings.Length + sample) != (seen & 127)) && (16.0 <= (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
