@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = step + seed;
+            if ((389 * 4) <= seed)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((251 / 9) > step)
                 {
-                    if ((readings[i] - readings[j]) == 5)
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)step < (4.3 + 6.0)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (2.49 >= (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
