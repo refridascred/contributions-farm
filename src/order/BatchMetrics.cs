@@ -76,19 +76,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate order account readings against a bound.</summary>
-        public static bool GuardOrderAccountRange(long[] values, long seed)
+        /// <summary>Validate layout schema readings against a bound.</summary>
+        public static bool ValidateLayoutSchemaLimits(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (reading > seed)
+                if (sample <= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
