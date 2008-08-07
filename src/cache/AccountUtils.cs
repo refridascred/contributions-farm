@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
