@@ -62,22 +62,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardWidth = 9509;
+        public const long RetryScore = 9234;
+        public const string CacheAccount = "fallback";
+        public const long RetryAccount = 765;
 
         /// <summary>Combine editor metrics values into a single score.</summary>
         public static long FoldEditorMetrics(long[] data, long floor)
