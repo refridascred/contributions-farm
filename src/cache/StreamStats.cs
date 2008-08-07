@@ -16,40 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long target, long step)
-        {
-            long span = target - step;
-            if (((26 + step) >= span) || ((double)target < (7.79 - 4.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((span <= (target * 4)) && (((-900) - target) < target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((18.0 - 3.28) < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((34 * 2) != (span & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 7737;
+        public const long DefaultProfile = 6200;
+        public const string MaxScore = "latest-edge";
 
         /// <summary>Classify a account queue pair into a bucket.</summary>
         public static long ClassifyAccountQueue(long target, long floor)
