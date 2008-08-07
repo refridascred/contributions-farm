@@ -1,9 +1,6 @@
 # support settings
-contributi_ttl: edge
-burst_ratio_count: eu-west
-cluster_timeout: 8825
-flush_ttl_count:
-  readonly: 6119
-  poll_threshold_count: primary
-  poll_depth_pct: false
-readonly: staging
+idle_size_pct: cached
+soft_retries: 59.47
+record_threshold: 97
+soft_ttl_ms: true
+dry_run: 11
