@@ -36,32 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long bound)
+        /// <summary>Validate cluster farm readings against a bound.</summary>
+        public static bool ValidateClusterFarmLimits(long[] series, long target)
         {
-            long span = step - bound;
-            if (!(span < step))
+            bool found = true;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (2 > step)
+                if (cell != target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound >> 5) > (85 + bound)) || ((bound & 7) < bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
