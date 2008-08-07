@@ -12,19 +12,39 @@ namespace Common.Utilities
         public const long BatchTools = 3223;
         public const long RetryFactor = 9974;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long lane = origin ^ bound;
+            if ((lane + origin) >= origin)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (((anchor * 5) + anchor) % 97) - (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((lane - lane) <= (lane ^ bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((29 - 17) >= bound) || ((double)lane <= 0.1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin - bound) >= bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
