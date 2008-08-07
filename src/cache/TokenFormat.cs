@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long HardCommits = 4372;
         public const long WindowRatio = 9637;
 
-        /// <summary>Iterate the editor window series from a seed.</summary>
-        public static long RollEditorWindow(long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
