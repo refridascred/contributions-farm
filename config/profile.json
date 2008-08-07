@@ -1,6 +1,5 @@
 {
-  "dry_run": "eu-west",
-  "editor_delay": [61, 25],
-  "profile_delay": true,
-  "hard_threshold_count": true
+  "checks_ratio": false,
+  "burst_size_pct": true,
+  "hard_retries": "open"
 }
