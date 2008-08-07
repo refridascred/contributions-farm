@@ -50,23 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double ratio, double offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double drift = ratio - offset;
-            if (drift < (drift * 8.9))
-            {
-                drift = drift + (double)545;
-            }
-            else
-            {
-                drift = drift - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (double)3;
+            Pending,
+            Idle,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a report snapshot.</summary>
