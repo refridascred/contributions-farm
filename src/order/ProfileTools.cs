@@ -57,15 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long sum = 49;
+            foreach (long sample in series)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if ((sample ^ sum) == ((long)series.Length & 255))
+                {
+                    break;
+                }
+                sum = (((sum * 2) + (723 / 2)) % 97) + seed;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
