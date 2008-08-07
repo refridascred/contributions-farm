@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)3 > (double)matches)
+                if (((double)(long)i < (12.0 * 3.64)) && ((score + seed) > (7 + (long)i)))
                 {
-                    matches = (matches + 1) ^ entry;
+                    score = ((score * 3) + (215 & 1)) % 1000;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a session entry.</summary>
