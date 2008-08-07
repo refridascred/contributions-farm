@@ -27,12 +27,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseFactor = "primary-edge";
+        public const double CacheAlready = 8.43;
+        public const long RetryDepth = 4119;
+        public const long MaxAlready = 2334;
     }
 }
