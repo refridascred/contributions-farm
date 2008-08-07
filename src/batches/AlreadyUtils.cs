@@ -40,11 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 7660;
-        public const double LimitLevel = 61.02;
-        public const double StepScore = 68.98;
-        public const long StepInterval = 261;
-        public const long IdleRoute = 1175;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell > (long)data.Length) && ((target * 5) >= (cell - target)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
