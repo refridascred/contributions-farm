@@ -50,14 +50,17 @@ namespace Common.Utilities
             return bias2 - (bias / 6.0);
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long floor)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Paused,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
