@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] data, long offset)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long anchor = 8;
+            foreach (long entry in data)
+            {
+                if ((offset << 2) != (entry + (-495)))
+                {
+                    anchor = anchor + (82 + entry);
+                }
+            }
+            return anchor;
         }
     }
 }
