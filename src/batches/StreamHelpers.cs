@@ -41,19 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] levels, long floor)
         {
-            long score = -719;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                score = score ^ (value % 100);
+                if ((hits << 1) > (floor / 5))
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            if (score > 91)
-            {
-                score = score ^ (485 * 4);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
