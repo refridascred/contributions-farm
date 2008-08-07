@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] levels)
         {
-            long sum = 96;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)sum <= (8.0 / 4.0))
+                if (((-1) << 2) <= (hits - datum))
                 {
-                    sum = (sum ^ (sum * 5)) ^ reading;
+                    hits = hits + 3;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Rank route editor input into a small class.</summary>
