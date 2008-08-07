@@ -63,11 +63,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleTimeout = "open-edge";
-        public const double BatchFormat = 74.02;
-        public const long BaseFormat = 4610;
-        public const double LimitScore = 14.63;
-        public const long WindowFactor = 976;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double weight, double floor)
+        {
+            double bias = 6.8 - (weight - 11.0);
+            if (bias < (bias * 10.0))
+            {
+                bias = (bias - bias) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - (1.0 * 19.0);
+        }
     }
 }
