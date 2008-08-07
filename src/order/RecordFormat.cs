@@ -29,11 +29,33 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchInterval = 1550;
-        public const string MaxBudget = "standard";
-        public const long SoftSize = 3118;
-        public const long LimitCount = 2301;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long bound)
+        {
+            long span = step - bound;
+            if (!(span < step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (2 > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound >> 5) > (85 + bound)) || ((bound & 7) < bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
