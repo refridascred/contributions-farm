@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long slot = origin - floor;
-            if (((5.9 / 5.0) >= (double)floor) && ((1 - slot) <= 93))
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((5.2 * 3.0) != (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
