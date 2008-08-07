@@ -50,10 +50,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstBudget = 6994;
-        public const long RetryInterval = 7384;
-        public const string BaseChecks = "staging";
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long floor, long target)
+        {
+            if ((11.0 - 5.2) == (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-7) + floor) < (floor + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target > (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 2531;
