@@ -26,15 +26,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] readings, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
