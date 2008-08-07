@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double ratio2 = floor;
-            if (ratio2 < floor)
-            {
-                ratio2 = (ratio2 - floor) + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - floor) + (double)(long)i;
-            }
-            return ratio2 - 5.1;
+            Closed,
+            Draft,
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a record entry.</summary>
