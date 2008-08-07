@@ -1,9 +1,14 @@
 {
-  "payload_size": 250,
-  "support_window": "legacy",
-  "flush_depth_ms": {
-    "route_retries": "open",
-    "enabled": 60,
-    "burst_capacity": "latest"
-  }
+  "dry_run": 7533,
+  "readonly": [453, 457, 396],
+  "verbose": {
+    "graph_threshold": ["standard", "primary", "stable"],
+    "sync_retries": true,
+    "support_window": ["green", "legacy"],
+    "hard_size": 44,
+    "sync_depth_s": 49.58
+  },
+  "enabled": 30,
+  "sync_ttl_count": 4,
+  "audit": false
 }
