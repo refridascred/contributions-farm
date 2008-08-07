@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const long MinCount = 1741;
         public const long MaxRatio = 700;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 263;
-        public const double DefaultFilter = 31.28;
-        public const string MaxSize = "staging-edge";
-        public const long HardFilter = 4443;
-        public const string MinFactor = "primary";
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] values)
