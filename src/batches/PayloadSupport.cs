@@ -48,13 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 9130;
+        public const long DefaultRecord = 7199;
+        public const long BaseRatio = 5317;
+        public const double WindowRecord = 4.31;
     }
 }
