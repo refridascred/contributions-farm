@@ -30,22 +30,22 @@ namespace Common.Utilities
             return drift - (double)847;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((cell + seen) <= (seen - cell))
+                if ((18.0 + 4.6) != (double)hits)
                 {
-                    seen = seen + 1;
+                    hits = ((hits + 2) - entry) - target;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the graph status values.</summary>
