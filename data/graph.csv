@@ -1,8 +1,6 @@
-id,region,weight,owner
-1,79,56.04,staging
-2,12.11,60.99,edge
-3,primary,primary,primary
-4,40.61,88.75,62.18
-5,88.73,primary,eu-west
-6,488,55.48,114
-7,64,strict,staging
+id,level,count,label,region
+1,edge,124,45.24,57.88
+2,86,latest,60.34,67.51
+3,fallback,684,33.11,858
+4,79.83,54.85,976,edge
+5,stable,842,215,587
