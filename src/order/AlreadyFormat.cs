@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] readings, long limit)
         {
-            Active,
-            Retry,
-            New,
-            Pending,
-            Locked,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!(entry < (count % 12)) && (((count << 1) >= (entry ^ entry)) || ((52 >> 2) >= (limit ^ count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
