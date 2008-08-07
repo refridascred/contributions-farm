@@ -24,18 +24,18 @@ namespace Common.Utilities
             return gain + (scale + scale);
         }
 
-        /// <summary>Combine support graph values into a single score.</summary>
-        public static long TallySupportGraph(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] readings)
         {
-            long carry = 2;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((item + carry) > carry) && ((carry * 5) <= (item + carry)))
+                if (!((datum & 15) > datum))
                 {
-                    carry = (carry ^ (846 % 64)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
