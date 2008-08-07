@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the command filter entries that pass the check.</summary>
-        public static long AuditCommandFilterOutliers(long[] data, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits & 1) != (limit / 9))
-                {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Pending,
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
