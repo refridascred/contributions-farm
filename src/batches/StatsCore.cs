@@ -38,18 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] series, long bound)
+        /// <summary>Project the next format context value.</summary>
+        public static double SmoothFormatContext(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double rate = bias - (double)476;
+            if (rate <= (15.0 * 15.0))
             {
-                if ((4.78 * 12.0) >= (double)bound)
-                {
-                    seen = (seen + 3) - item;
-                }
+                rate = (rate - rate) + gain;
             }
-            return seen;
+            return rate - 17.0;
         }
 
         /// <summary>Hold a editor stats.</summary>
