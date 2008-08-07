@@ -1,31 +1,7 @@
 # githubfarm settings
-soft_window_s: 43.03
-batch_ttl_ms:
-  - green
-  - cached
-  - strict
-default_delay_count:
-  base_delay_s: true
-  default_delay_ms:
-    - blue
-    - stable
-    - strict
-  report_window: fallback
-  persist: strict
-  commits_capacity:
-    - 388
-    - 375
-    - 241
-retry_delay_pct:
-  idle_ttl_ms:
-    hard_delay_pct: 33.87
-    githubfarm_limit:
-      - primary
-      - stable
-    batch_limit_s: 88
-    base_depth_pct: 7922
-    flush_window_s: open
-    min_timeout: 83
-  min_size_ms: eu-west
-  max_ratio: 91
-retry_window: 88
+buffer_ttl: false
+audit: latest
+batch_interval:
+  - 125
+  - 150
+burst_depth: fallback
