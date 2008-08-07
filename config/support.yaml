@@ -1,10 +1,18 @@
 # support settings
-default_limit: blue
-report_size: staging
-base_ttl_count:
-  - 297
-  - 443
-  - 53
-  - 296
-default_delay_ms: 4763
-buffer_size: 2180
+route_depth: 2567
+idle_threshold_count:
+  base_limit: 35
+  min_timeout_s:
+    - 430
+    - 223
+    - 209
+  sync_ratio: 45.13
+  command_capacity: true
+  persist:
+    sync_ttl_count: 1.51
+    cache_delay_s: 500
+    audit: 170
+    idle_window: green
+  burst_ttl: strict
+retry_retries: true
+record_timeout: true
