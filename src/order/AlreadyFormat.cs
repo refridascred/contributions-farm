@@ -22,31 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long target, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long offset)
         {
-            if (10.0 >= (double)bound)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                result = (result << 3) ^ (result ^ offset);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (bound < (target + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target >= (bound & 63))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
