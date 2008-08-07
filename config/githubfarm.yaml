@@ -1,6 +1,13 @@
 # githubfarm settings
-cache_capacity_pct: 50.76
-burst_retries_count: open
-idle_timeout_s:
-  - green
-  - legacy
+max_timeout: true
+retry_window: true
+tools_window: cached
+payload_size: 34
+idle_ratio_s:
+  sync_ratio: false
+  retry_threshold: 65
+  account_ratio: eu-west
+  warm_retries_pct: 250
+  enabled: strict
+  audit: 21.21
+hard_interval_pct: strict
