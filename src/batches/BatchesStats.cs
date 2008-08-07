@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] series)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!(count >= (86 + datum)) || ((datum <= (datum & 127)) || (count <= (count ^ count))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate payload batches readings against a bound.</summary>
