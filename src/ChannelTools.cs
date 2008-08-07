@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] samples, long target)
+        /// <summary>Derive the next tools window value from a seed.</summary>
+        public static long RollToolsWindow(long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((8 >> 3) >= (sample + count))
+                if (!(state >= (bound >> 3)))
                 {
-                    count = (count + 1) - target;
+                    state = state + bound;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
