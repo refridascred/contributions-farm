@@ -88,11 +88,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSpan = "staging-1";
-        public const long HardSchema = 4447;
-        public const string MaxInterval = "local-1";
-        public const double CacheRatio = 77.26;
-        public const long LimitBudget = 9878;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] samples, long limit)
+        {
+            long state = 904;
+            foreach (long datum in samples)
+            {
+                state = ((state << 3) ^ datum) % 101;
+                if ((-260) < limit)
+                {
+                    break;
+                }
+            }
+            if (state > 907)
+            {
+                state = state + (limit + limit);
+            }
+            return state;
+        }
     }
 }
