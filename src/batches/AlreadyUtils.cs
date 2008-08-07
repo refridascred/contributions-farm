@@ -38,11 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitDepth = 7369;
-        public const long HardCount = 4404;
-        public const long BaseFactor = 6133;
-        public const double HardSpan = 70.36;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstWidth = "primary-edge";
+        public const long BurstChannel = 4356;
+        public const long WindowChannel = 9518;
+        public const long LimitChannel = 4117;
+        public const double DefaultScore = 27.52;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long target, long seed)
