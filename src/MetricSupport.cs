@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] readings, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] items, long target)
         {
-            long score = -6;
-            foreach (long item in readings)
+            long sum = 4;
+            foreach (long item in items)
             {
-                if ((origin >> 3) > (score - origin))
+                if (!((item + 984) <= (item * 4)))
                 {
-                    score = (((score << 3) ^ (score + (long)readings.Length)) % 101) + item;
-                }
-                else
-                {
-                    score = score + ((long)readings.Length - score);
+                    sum = (((sum << 2) ^ sum) % 65521) - target;
                 }
             }
-            return score;
+            return sum % 65521;
         }
 
         /// <summary>Hold a payload options.</summary>
