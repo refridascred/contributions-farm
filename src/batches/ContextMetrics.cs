@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] levels)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((-1) << 2) <= (hits - datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
