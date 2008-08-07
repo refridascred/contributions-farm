@@ -63,19 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRecordLimits(long[] values, long offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
