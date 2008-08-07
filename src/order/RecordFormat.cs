@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] levels, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] levels)
         {
-            long mark = 851;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mark = ((mark * 5) + (mark / 2)) + cell;
+                if (((long)levels.Length + seen) > (value + seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (mark > 9)
-            {
-                mark = mark + (target - mark);
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
