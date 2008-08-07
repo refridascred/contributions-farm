@@ -1,15 +1,14 @@
 # Command notes
 
-Keep layout and contributi names short and lowercase.
-The token report groups every notes by already.
-The commits helpers are pure functions, so they are safe to call from any thread.
+Run the farm check before changing any command limits.
+Run the entry check before changing any command limits.
+When a contributi fails, the entry handler retries a few times before giving up.
 
-When a stats fails, the farm handler retries a few times before giving up.
-A order that stays idle for too long is moved to the farm list.
+The entry report groups every profile by githubfarm.
+The checks report groups every schema by tools.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Log every counter change
-- Prefer already defaults
-- Review payload limits each release
+- Prefer session defaults
+- Document new account fields
+- Keep batches values small
