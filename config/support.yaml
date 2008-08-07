@@ -1,19 +1,8 @@
 # support settings
-support_timeout:
-  profile_capacity: 30
-  channel_depth: 54
-  burst_retries_ms: 5571
-  filter_retries: standard
-  verbose: 41.51
-  warm_delay: 12.93
-cache_timeout_ms: latest
-verbose:
-  base_ttl_s: eu-west
-  command_depth:
-    enabled: cached
-    stream_depth: false
-    sync_size: 81.7
-    base_timeout_count: 15.06
-    retry_ratio_count: eu-west
-  route_retries: 72.31
-  burst_depth: 500
+batch_threshold: fallback
+min_ttl:
+  - cached
+  - open
+  - edge
+  - staging
+account_window: false
