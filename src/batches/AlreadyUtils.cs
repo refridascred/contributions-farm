@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double bias)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double ratio, double bias)
         {
-            double gain = (double)3 * 3.6;
-            if (gain <= (double)20)
+            double scale = (double)(10 + 432);
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - (scale / 7.0);
+                scale = ((scale - bias) + (double)(long)i) - ratio;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (bias - 9.9)) + (double)(long)i;
-            }
-            return gain - (double)778;
+            return scale + scale;
         }
 
         /// <summary>Iterate the session farm series from a seed.</summary>
