@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] data, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (sample >= limit)
+                if ((seen + 72) < datum)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
