@@ -22,25 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long seed, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data)
         {
-            long cur = seed + origin;
-            if (((6.4 - 0.6) > (double)cur) || ((3.97 + 3.07) <= (double)cur))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin < 338)
+                if (matches <= (matches << 2))
                 {
-                    return 2;
+                    matches = (matches + 1) + value;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
