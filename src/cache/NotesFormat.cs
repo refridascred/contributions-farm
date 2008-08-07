@@ -25,39 +25,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long target, long target2)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] levels, long target)
         {
-            long offset = target - target2;
-            if (offset >= (target - offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target2 >> 5) < (target2 << 3))
+                if (levels[i] > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target % 5) >= target2) || ((target2 + target) <= offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target >= (13.0 / 4.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
