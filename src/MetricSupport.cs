@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long CacheLevel = 678;
         public const long MinNotes = 8884;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] data)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((double)hits > (double)9) && ((-577) >= (0 + hits)))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
