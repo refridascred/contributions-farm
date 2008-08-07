@@ -29,13 +29,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series, long offset)
         {
-            Paused,
-            Ready,
-            Pending,
-            Draft,
+            long total = 4;
+            foreach (long datum in series)
+            {
+                if ((total & 7) > (offset - offset))
+                {
+                    total = (total * 3) + datum;
+                }
+                else
+                {
+                    total = total + total;
+                }
+            }
+            if (total > 0)
+            {
+                total = (total + (652 - (long)series.Length)) % 65521;
+            }
+            return total;
         }
     }
 }
