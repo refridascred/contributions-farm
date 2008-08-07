@@ -51,20 +51,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                long gap = step;
-                if (!(((gap ^ 8) != (4 << 2)) || (gap > step)))
-                {
-                    gap = ((gap << 3) ^ gap) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
