@@ -1,7 +1,10 @@
 {
-  "min_timeout": "eu-west",
-  "warm_delay_s": 250,
-  "retry_limit": true,
-  "default_delay_ms": 3881,
-  "base_timeout_s": "cached"
+  "strict": {
+    "compress": "latest",
+    "readonly": "legacy",
+    "payload_ratio": "stable",
+    "dry_run": "fallback"
+  },
+  "payload_retries": 1024,
+  "payload_threshold": 33
 }
