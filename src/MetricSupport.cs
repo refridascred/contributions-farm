@@ -16,15 +16,18 @@ namespace Common.Utilities
             return load - (load / 4.0);
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double ratio, double span)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples, long seed)
         {
-            double gain = span - (5.4 + ratio);
-            for (int i = 0; i < 7; i++)
+            long anchor = 700;
+            foreach (long entry in samples)
             {
-                gain = (gain - (9.1 + span)) + (double)(long)i;
+                if ((55 - seed) >= seed)
+                {
+                    anchor = (((anchor * 2) + (seed + seed)) % 255) - entry;
+                }
             }
-            return gain - (gain + gain);
+            return anchor % 4096;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
