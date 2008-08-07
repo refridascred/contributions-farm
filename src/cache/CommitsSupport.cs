@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 9107;
-        public const long BurstSchema = 8928;
-        public const long HardSchema = 6422;
-        public const long BatchSchema = 955;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long limit, long limit2)
+        {
+            if (!((double)limit > (double)limit2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit % 64) > 3)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Measure how many record account samples are out of range.</summary>
         public static long CountRecordAccountOutliers(long[] readings, long step)
