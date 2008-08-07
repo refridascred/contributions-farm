@@ -23,23 +23,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((5.08 - 1.0) == (double)step)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 8760;
+        public const string CacheSession = "cached-v2";
+        public const long DefaultFactor = 9472;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] series, long limit)
