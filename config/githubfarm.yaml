@@ -1,13 +1,7 @@
 # githubfarm settings
-min_delay:
-  compress: 16.03
-  verbose:
-    - latest
-    - stable
-    - legacy
-    - latest
-  max_capacity: false
-  min_size_pct: strict
-counter_retries: 60
-support_threshold: true
-layout_interval: green
+tools_threshold: 36
+cache_window:
+  - edge
+  - primary
+  - strict
+verbose: 1024
