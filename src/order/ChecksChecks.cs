@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items, long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] samples, long limit)
         {
-            long result = 5;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result + result) % 101;
-                result = result ^ entry;
-                result = (result ^ (7 - floor)) % 4096;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 8)
-            {
-                result = result + (4 ^ result);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
