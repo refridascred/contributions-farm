@@ -58,11 +58,25 @@ namespace Common.Utilities
         public const long BaseRatio = 8351;
         public const double BurstLevel = 16.26;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "stable-v2";
-        public const long WindowEditor = 6688;
-        public const long BaseEditor = 8947;
-        public const long BatchEditor = 8031;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long bound, long step)
+        {
+            if ((step * 2) == (step + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (double)776)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
