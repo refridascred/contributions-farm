@@ -33,19 +33,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((-88) <= (score / 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
