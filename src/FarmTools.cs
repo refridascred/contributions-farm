@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] levels, long target)
         {
-            if ((offset >> 2) >= 4)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset < 1.4)
+                if (levels[i] <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
