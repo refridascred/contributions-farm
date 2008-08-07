@@ -31,13 +31,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 9814;
+        public const double MaxRecord = 76.24;
+        public const long BurstTimeout = 6760;
     }
 }
