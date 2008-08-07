@@ -19,18 +19,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many editor metrics samples are out of range.</summary>
-        public static long AuditEditorMetricsGaps(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((double)reading < (2.1 - 2.61)) || ((hits % 24) < (255 << 1))) || ((reading + 6) > (reading % 97)))
+                if (!((step + anchor) >= anchor))
                 {
-                    hits = hits + 1;
+                    anchor = anchor + (step + (long)i);
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a metrics options.</summary>
