@@ -37,18 +37,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] levels, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((hits << 1) > (floor / 5))
+                if ((sample & 127) != (sample * 4))
                 {
-                    hits = (hits + 2) + datum;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a schema batches figure with a bias.</summary>
