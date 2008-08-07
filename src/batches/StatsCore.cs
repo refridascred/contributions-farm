@@ -59,12 +59,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 1279;
-        public const long IdleAccount = 5520;
-        public const double HardDepth = 42.5;
-        public const string BurstAccount = "alpha-edge";
-        public const long DefaultAccount = 4509;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double BlendGithubfarm(double ratio, double offset)
