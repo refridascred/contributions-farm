@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] values, long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
