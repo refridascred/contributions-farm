@@ -13,17 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 54;
+            foreach (long reading in values)
             {
-                if (readings[i] < target)
+                if ((step + (-60)) < 68)
                 {
-                    return (long)i;
+                    mark = (mark + (step % 97)) ^ reading;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark << 1);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
