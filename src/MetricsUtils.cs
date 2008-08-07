@@ -50,19 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report format entry stays within the limit.</summary>
-        public static bool CheckReportFormatRange(long[] values, long origin)
+        /// <summary>Look up the position of a stats command sample.</summary>
+        public static long LookupStatsCommandIndex(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > origin)
+                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
