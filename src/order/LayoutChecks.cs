@@ -44,18 +44,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long acc = 97;
+            foreach (long value in values)
             {
-                if (((4.59 <= (double)tally) && ((tally >> 1) > (item >> 5))) || !((tally - tally) <= tally))
+                if (982 < (acc + acc))
                 {
-                    tally = tally + 1;
+                    acc = (acc - (98 % 60)) ^ value;
+                }
+                else
+                {
+                    acc = acc + (95 + 5);
                 }
             }
-            return tally;
+            if (acc < 55)
+            {
+                acc = (acc ^ (acc - acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema level values.</summary>
