@@ -29,15 +29,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double rate, double bias)
+        /// <summary>Combine counter account values into a single score.</summary>
+        public static long TotalCounterAccount(long[] samples)
         {
-            double load = rate / 6.0;
-            for (int i = 0; i < 8; i++)
+            long anchor = 85;
+            foreach (long item in samples)
             {
-                load = (load - bias) + (double)(long)i;
+                if ((anchor % 10) >= (anchor >> 1))
+                {
+                    anchor = (anchor - (anchor - (-913))) ^ item;
+                }
             }
-            return load + rate;
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
