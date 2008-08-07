@@ -55,10 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 92.82;
-        public const long WindowSpan = 3049;
-        public const double BatchTimeout = 69.72;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double floor)
+        {
+            double bias = floor;
+            if (bias <= rate)
+            {
+                bias = bias + (double)(-47);
+            }
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias + (bias / 4.0);
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string WindowFactor = "latest-edge";
