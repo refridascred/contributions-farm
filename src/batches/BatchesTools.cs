@@ -39,18 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] data, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((entry + bound) < (seen % 64)) || ((305 << 1) > (bound >> 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
