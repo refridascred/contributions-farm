@@ -53,19 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)value == (0.32 + 6.9)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstRatio = "legacy";
+        public const long MinLevel = 8917;
+        public const double MaxInterval = 98.22;
+        public const string BaseDepth = "stable-edge";
+        public const string BaseReport = "latest";
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
