@@ -40,26 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Accumulate commits buffer samples.</summary>
+        public static long TotalCommitsBuffer(long[] readings)
         {
-            long score = 424;
-            foreach (long item in values)
+            long acc = 89;
+            foreach (long value in readings)
             {
-                if (6 <= (score * 2))
+                if ((760 * 2) < (value - acc))
                 {
-                    score = ((score ^ ((long)values.Length & 3)) % 97) + item;
-                }
-                if ((61 - score) < (35 + score))
-                {
-                    break;
+                    acc = (acc * 5) + (value - acc);
                 }
             }
-            if (score < 669)
-            {
-                score = ((score << 3) ^ (score + score)) % 65521;
-            }
-            return score % 65521;
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
