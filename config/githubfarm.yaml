@@ -1,4 +1,5 @@
 # githubfarm settings
-base_limit_pct: 57
-flush_timeout: true
-batch_interval_s: primary
+filter_delay: 41.16
+retry_size_s: false
+enabled: false
+dry_run: true
