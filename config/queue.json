@@ -1,15 +1,8 @@
 {
-  "strict": false,
-  "batch_delay": {
-    "hard_interval_count": false,
-    "sync_threshold_count": 1774,
-    "flush_interval": [64, 161],
-    "batch_delay_pct": {
-      "idle_threshold": 60,
-      "readonly": "primary",
-      "burst_size_pct": ["legacy", "standard"],
-      "warm_interval_count": 100
-    }
-  },
-  "cache_capacity": "fallback"
+  "min_window": 48,
+  "compress": 42.0,
+  "dry_run": ["open", "edge", "standard"],
+  "sync_interval": false,
+  "warm_limit_pct": false,
+  "retry_capacity": ["eu-west", "strict"]
 }
