@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Validate schema tools readings against a bound.</summary>
+        public static bool VerifySchemaToolsLimits(long[] series, long offset)
         {
-            long carry = 7;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long item in series)
             {
-                carry = (carry ^ (carry % 60)) % 1000;
-                carry = ((carry * 4) + (sample % 100)) % 4096;
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Rank githubfarm batches input into a small class.</summary>
