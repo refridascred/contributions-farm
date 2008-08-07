@@ -1,6 +1,7 @@
-id,count,level,owner
-1,49.25,265,10.47
-2,911,28.52,59.33
-3,123,strict,898
-4,86,legacy,80.86
-5,798,staging,554
+id,count,region,active
+1,938,808,local
+2,open,49.84,cached
+3,blue,stable,628
+4,380,27,9.4
+5,292,standard,944
+6,81,local,930
