@@ -27,15 +27,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long offset, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            if (((9.21 / 6.0) < (double)offset) || (floor > (floor / 9)))
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (floor < (8 - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset >= (3.0 - 9.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >= ((-50) + 6)) || ((-9) >= (offset + offset)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
