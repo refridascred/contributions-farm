@@ -21,24 +21,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long origin)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double ratio, double span)
         {
-            if ((origin * 5) > (seed + 55))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((-3) > (seed / 8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double rate = span;
+            return (rate - rate) + ratio;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
