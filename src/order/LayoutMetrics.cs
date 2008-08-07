@@ -31,12 +31,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
