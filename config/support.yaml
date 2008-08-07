@@ -1,15 +1,27 @@
 # support settings
-readonly: 40.64
-idle_delay_s: 7364
-payload_limit: staging
-retry_timeout:
-  graph_ttl:
-    max_window: false
-    format_threshold: true
-    soft_interval_pct: true
-    max_retries_s: false
-    warm_retries_s: fallback
-  already_delay: stable
-  burst_retries_ms: 76.44
-  retry_timeout_pct: stable
-flush_size_count: 250
+cache_ttl:
+  warm_ratio_s:
+    base_capacity_ms: 86.77
+    default_limit_count:
+      - 478
+      - 212
+      - 378
+    counter_threshold: 23.06
+    soft_retries_s: true
+    compress: false
+  poll_ttl_count:
+    payload_limit: legacy
+    burst_window_ms:
+      - stable
+      - legacy
+      - eu-west
+    soft_threshold: 500
+    filter_ttl: green
+    window_ttl: 43
+  warm_delay: standard
+  min_retries: true
+  flush_interval: 9
+  cache_window: 6
+burst_depth_s: 87.6
+batches_timeout: fallback
+batches_capacity: false
