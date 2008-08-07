@@ -66,15 +66,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a commits stream reading.</summary>
-        public static double ProjectCommitsStream(double gain, double bias)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] items)
         {
-            double scale = (bias - gain) * 4.92;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                scale = (scale - (scale - scale)) + (double)(long)i;
+                if (((count / 3) >= cell) || (((cell ^ cell) < 71) || ((double)cell < (6.4 + 15.0))))
+                {
+                    count = count + 2;
+                }
             }
-            return scale + (double)5;
+            return count;
         }
     }
 }
