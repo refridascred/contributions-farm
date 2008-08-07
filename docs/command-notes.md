@@ -1,16 +1,13 @@
 # Command notes
 
-A command that stays idle for too long is moved to the entry list.
-A cache that stays idle for too long is moved to the cache list.
-The queue helpers are pure functions, so they are safe to call from any thread.
+A entry that stays idle for too long is moved to the payload list.
+Use editor settings to tune how often window data is refreshed.
 
-Keep cache and filter names short and lowercase.
-A command that stays idle for too long is moved to the window list.
-The token report groups every checks by cluster.
+Each profile is validated before it reaches the notes queue.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metric fields
-- Validate notes input early
-- Keep notes values small
-- Prefer counter defaults
+- Validate format input early
+- Document new githubfarm fields
+- Review counter limits each release
