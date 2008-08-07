@@ -1,18 +1,15 @@
 # support settings
-route_depth: 2567
-idle_threshold_count:
-  base_limit: 35
-  min_timeout_s:
-    - 430
-    - 223
-    - 209
-  sync_ratio: 45.13
-  command_capacity: true
-  persist:
-    sync_ttl_count: 1.51
-    cache_delay_s: 500
-    audit: 170
-    idle_window: green
-  burst_ttl: strict
-retry_retries: true
-record_timeout: true
+readonly: 40.64
+idle_delay_s: 7364
+payload_limit: staging
+retry_timeout:
+  graph_ttl:
+    max_window: false
+    format_threshold: true
+    soft_interval_pct: true
+    max_retries_s: false
+    warm_retries_s: fallback
+  already_delay: stable
+  burst_retries_ms: 76.44
+  retry_timeout_pct: stable
+flush_size_count: 250
