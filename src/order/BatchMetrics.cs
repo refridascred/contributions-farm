@@ -26,13 +26,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Active,
-            Pending,
-            Done,
-            Failed,
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
