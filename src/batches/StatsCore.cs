@@ -62,11 +62,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepSize = 3016;
-        public const long BaseInterval = 7974;
-        public const double RetryRatio = 33.33;
-        public const string StepBudget = "local-v2";
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Ready,
+            Failed,
+            Paused,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
