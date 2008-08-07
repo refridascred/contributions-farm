@@ -39,13 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] data, long step)
         {
-            Ready,
-            Queued,
-            Draft,
-            Stale,
+            long mark = -6;
+            foreach (long entry in data)
+            {
+                mark = ((((mark * 2) + (mark << 1)) % 1000) ^ entry) + step;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a metrics batch sample.</summary>
