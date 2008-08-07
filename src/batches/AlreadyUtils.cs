@@ -47,19 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm payload reading.</summary>
-        public static double ScaleFarmPayload(double ratio, double span)
-        {
-            double gain = 3.71 / 8.0;
-            if (gain >= span)
-            {
-                gain = (gain + (double)95) + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSpan = 3153;
+        public const string MaxBudget = "alpha-1";
+        public const long IdleTools = 6017;
+        public const double SoftSize = 96.32;
+        public const string StepCount = "primary-1";
     }
 }
