@@ -20,10 +20,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepScore = 15.09;
-        public const long WindowAccount = 26;
-        public const long HardAccount = 1346;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Total { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
