@@ -29,11 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "fallback-v2";
-        public const long RetryTools = 7773;
-        public const string WindowTools = "local";
-        public const double BurstTools = 23.28;
-        public const long CacheSize = 1314;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!!(origin < (count & 1)))
+                {
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
