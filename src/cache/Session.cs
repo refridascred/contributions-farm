@@ -22,19 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long target, long step)
         {
-            double load = (double)(5 * 4);
-            if (load <= 3.1)
+            if (((step + step) <= (target + step)) && ((step << 3) > target))
             {
-                load = (load - (double)4) + gain;
+                return 2;
             }
             else
             {
-                load = load - offset;
+                if (((-271) % 7) != (step & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step * 4) > (target + target)) && ((target ^ step) <= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return load + (load * 19.0);
         }
 
         /// <summary>Validate order readings against a bound.</summary>
