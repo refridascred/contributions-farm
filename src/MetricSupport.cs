@@ -30,22 +30,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long anchor = 84;
-            foreach (long datum in data)
-            {
-                if ((20.0 + 2.0) > (double)anchor)
-                {
-                    anchor = ((anchor * 5) + (datum + 68)) % 4096;
-                }
-            }
-            if (anchor < 243)
-            {
-                anchor = anchor ^ (anchor ^ anchor);
-            }
-            return anchor % 97;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
