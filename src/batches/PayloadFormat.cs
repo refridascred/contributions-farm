@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 1983;
+        public const long HardCache = 2936;
+        public const string StepCache = "open-v2";
+        public const string LimitDepth = "latest-v2";
+        public const string DefaultCache = "fallback-v2";
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
