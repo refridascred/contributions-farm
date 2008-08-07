@@ -1,11 +1,7 @@
 {
-  "command_limit": {
-    "default_ttl": true,
-    "strict": "strict",
-    "entry_threshold": 32.79,
-    "dry_run": 500,
-    "burst_depth": 70
-  },
-  "sync_depth": ["green", "primary", "fallback"],
-  "command_ttl": true
+  "channel_retries": 87.07,
+  "default_depth": "primary",
+  "dry_run": 250,
+  "burst_capacity_s": 27.69,
+  "min_ratio_count": [252, 332, 391, 42]
 }
