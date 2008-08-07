@@ -51,19 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long step, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long limit, long step)
         {
-            long span = step ^ seed;
-            if (10.0 >= (double)span)
+            long cur = limit + step;
+            if ((step + limit) == (step - 457))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (((span + step) >= (step - 23)) && ((span + span) >= seed))
+                if ((double)cur >= (3.6 * 11.0))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
