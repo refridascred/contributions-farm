@@ -19,18 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] levels, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)levels.Length + floor) == (floor - floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + cell;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
