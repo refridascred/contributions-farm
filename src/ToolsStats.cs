@@ -48,27 +48,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of metric command entries.</summary>
-        public static long CombineMetricCommand(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long acc = 465;
-            foreach (long item in samples)
-            {
-                acc = (acc - (item + 2)) % 255;
-                if ((double)acc > (20.0 - 10.0))
-                {
-                    acc = (acc - (acc << 2)) % 97;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc << 2);
-                }
-            }
-            if (acc > 83)
-            {
-                acc = acc + (acc % 8);
-            }
-            return acc % 65521;
+            Closed,
+            Paused,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
