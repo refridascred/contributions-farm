@@ -53,18 +53,11 @@ namespace Common.Utilities
             return rate + (span - span);
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (51 <= (floor / 2))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinDepth = 8286;
+        public const long LimitSession = 1383;
+        public const string BatchSession = "standard-1";
+        public const double HardSession = 58.64;
+        public const long BatchInterval = 4003;
     }
 }
