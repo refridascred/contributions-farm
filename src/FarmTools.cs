@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Validate format support readings against a bound.</summary>
+        public static bool ValidateFormatSupportRange(long[] items, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
