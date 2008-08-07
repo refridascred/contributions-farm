@@ -41,18 +41,14 @@ namespace Common.Utilities
             return mean + (mean - 17.0);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] values, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((9.4 + 9.53) != (double)step)
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
