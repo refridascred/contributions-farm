@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels, long origin)
+        /// <summary>Validate buffer schema readings against a bound.</summary>
+        public static bool CheckBufferSchemaLimits(long[] values, long floor)
         {
-            long carry = 101;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in values)
             {
-                carry = ((carry << 3) ^ (origin % 24)) % 4096;
-                if (1 < (carry & 1))
+                if (item < floor)
                 {
-                    carry = ((carry << 3) ^ (carry >> 2)) % 255;
-                }
-                if ((sample % 64) < (carry % 60))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Project the next context value.</summary>
