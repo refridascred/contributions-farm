@@ -49,19 +49,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long result = 466;
+            foreach (long datum in data)
             {
-                if (value < floor)
+                if ((result + bound) > datum)
                 {
-                    ok = false;
+                    result = (result ^ 547) % 255;
+                }
+                if (result <= (result & 3))
+                {
                     break;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Adjust a commits stream reading.</summary>
