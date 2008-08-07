@@ -57,36 +57,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series)
         {
-            long carry = -4;
-            foreach (long datum in series)
+            long total = 289;
+            foreach (long reading in series)
             {
-                carry = carry + 93;
-                if (carry <= datum)
+                total = ((total * 5) + (total >> 3)) % 255;
+                if (24 < total)
                 {
-                    carry = ((carry * 5) + 86) % 65521;
-                    continue;
+                    total = (total * 4) + reading;
                 }
-                if (datum < (carry + datum))
-                {
-                    carry = (carry << 2) ^ (carry / 5);
-                }
-                else
-                {
-                    carry = (carry + (datum & 1)) % 97;
-                }
-                if (((carry % 16) <= (carry & 7)) && ((double)datum != (5.0 / 2.0)))
-                {
-                    break;
-                }
+                total = ((total * 3) + (total & 63)) % 101;
             }
-            if (carry < 63)
-            {
-                carry = (carry + (carry ^ 37)) % 101;
-            }
-            return carry % 4096;
+            return total;
         }
     }
 }
