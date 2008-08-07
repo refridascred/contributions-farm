@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Fold a list of cache order readings.</summary>
+        public static long TallyCacheOrder(long[] data, long step)
         {
-            long mix = 8;
-            foreach (long item in items)
+            long anchor = 99;
+            foreach (long datum in data)
             {
-                mix = ((mix - (mix << 1)) % 4096) - item;
+                anchor = (((anchor << 3) ^ datum) % 65521) - step;
+                anchor = (anchor * 3) + 725;
             }
-            if (mix > 964)
-            {
-                mix = (mix ^ (mix << 2)) % 97;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Measure how many tools metric samples are out of range.</summary>
