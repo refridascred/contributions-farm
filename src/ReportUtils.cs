@@ -30,18 +30,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (count < (count - (long)data.Length))
                 {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) ^ value;
                 }
             }
             return count;
