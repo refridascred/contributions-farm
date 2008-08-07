@@ -35,19 +35,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster farm readings against a bound.</summary>
-        public static bool ValidateClusterFarmLimits(long[] series, long target)
+        /// <summary>Accumulate layout schema samples.</summary>
+        public static long DigestLayoutSchema(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long mark = 4;
+            foreach (long cell in samples)
             {
-                if (cell != target)
+                if ((mark ^ (long)samples.Length) > step)
                 {
-                    found = false;
+                    mark = ((mark << 2) ^ step) % 65521;
+                }
+                mark = (mark * 2) + mark;
+                if (!((cell >> 1) == (cell + cell)))
+                {
+                    mark = ((mark * 5) + mark) % 255;
+                }
+                if ((step * 2) >= (cell % 10))
+                {
                     break;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
