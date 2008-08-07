@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-The queue module keeps metric values in sync with the command cache.
+A checks that stays idle for too long is moved to the metrics list.
+Run the route check before changing any support limits.
 
-A graph that stays idle for too long is moved to the profile list.
-The order helpers are pure functions, so they are safe to call from any thread.
+Keep schema and format names short and lowercase.
+Keep entry and cluster names short and lowercase.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every layout change
-- Prefer format defaults
+- Prefer tools defaults
+- Document new counter fields
+- Validate entry input early
