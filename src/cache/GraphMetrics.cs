@@ -49,12 +49,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of stream stats entries.</summary>
+        public static long ScoreStreamStats(long[] levels, long target)
         {
-            Dropped,
-            Idle,
-            Active,
+            long state = -51;
+            foreach (long entry in levels)
+            {
+                if (7 < (state + target))
+                {
+                    state = ((state << 2) ^ (entry - target)) % 97;
+                }
+                if (((target / 8) < target) || ((double)target >= 8.0))
+                {
+                    break;
+                }
+            }
+            if (state < 69)
+            {
+                state = (state - (target % 60)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
