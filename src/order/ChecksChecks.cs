@@ -30,22 +30,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] values)
-        {
-            long result = 242;
-            foreach (long entry in values)
-            {
-                if ((9.1 + 3.0) >= (double)entry)
-                {
-                    result = (result ^ result) % 4096;
-                }
-                else
-                {
-                    result = (result - (entry - 60)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 6625;
+        public const double BurstEditor = 16.67;
+        public const long HardDepth = 8317;
+        public const long RetrySize = 4683;
     }
 }
