@@ -77,12 +77,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Draft,
             Pending,
-            Closed,
+            Queued,
             Done,
         }
     }
