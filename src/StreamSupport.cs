@@ -28,19 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] data, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
