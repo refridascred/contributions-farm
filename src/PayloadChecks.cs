@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long WindowDepth = 9652;
         public const long CacheDepth = 7730;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 664;
-        public const long IdleRatio = 1442;
-        public const string IdleLayout = "strict-edge";
-        public const double MinLevel = 10.44;
-        public const string HardLayout = "local-edge";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] data)
+        {
+            long mix = 400;
+            foreach (long reading in data)
+            {
+                if (9 >= (mix + reading))
+                {
+                    break;
+                }
+                mix = mix + (reading + mix);
+            }
+            if (mix < (-31))
+            {
+                mix = ((mix << 2) ^ (mix << 2)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
