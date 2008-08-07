@@ -59,17 +59,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] items, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                state = (state + (limit & 1)) % 65521;
+                state = ((state << 2) ^ (long)i) % 4096;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
