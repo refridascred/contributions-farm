@@ -33,17 +33,10 @@ namespace Common.Utilities
         public const double DefaultGraph = 66.01;
         public const double BatchRatio = 89.4;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 2716;
+        public const long DefaultBudget = 4014;
+        public const long LimitLevel = 2286;
+        public const string WindowCache = "strict-edge";
     }
 }
