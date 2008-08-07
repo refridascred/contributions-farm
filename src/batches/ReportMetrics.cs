@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every command tools entry stays within the limit.</summary>
+        public static bool CheckCommandToolsRange(long[] levels, long step)
         {
-            Dropped,
-            Retry,
-            Failed,
-            Synced,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
