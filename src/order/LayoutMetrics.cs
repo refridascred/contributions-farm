@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "open-edge";
-        public const double BaseRecord = 6.5;
-        public const long BatchRecord = 1874;
-        public const long WindowRecord = 9366;
-        public const double HardLevel = 70.29;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    result = (((result << 3) ^ (floor ^ floor)) % 1000) ^ (long)i3;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
