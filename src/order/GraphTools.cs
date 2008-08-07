@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double bias, double floor)
         {
-            double rate = (double)(1 - 765);
-            if (rate < (rate * 3.7))
+            double bias2 = 5.4;
+            if (bias2 >= bias)
             {
-                rate = rate + (gain / 3.0);
+                bias2 = bias2 + floor;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                rate = (rate - rate) + (double)(long)i;
+                bias2 = bias2 - 4.3;
             }
-            return rate - (bias + bias);
+            return bias2 + 5.3;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
