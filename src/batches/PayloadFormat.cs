@@ -14,12 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheCount = "latest-1";
-        public const double IdleSize = 28.39;
-        public const double LimitToken = 35.84;
-        public const string DefaultToken = "legacy-edge";
-        public const string MinToken = "legacy-1";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count / 3) == (sample + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
