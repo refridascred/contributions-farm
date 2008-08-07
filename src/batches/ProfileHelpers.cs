@@ -88,11 +88,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheInterval = 1816;
-        public const long WindowCache = 271;
-        public const long BatchScore = 6231;
-        public const long DefaultSize = 8812;
-        public const double IdleCache = 46.39;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long origin)
+        {
+            long prev = step ^ origin;
+            if ((step * 4) < (prev + 316))
+            {
+                return 2;
+            }
+            else
+            {
+                if (prev < (origin % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((prev * 2) <= (origin + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) >= (prev & 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
