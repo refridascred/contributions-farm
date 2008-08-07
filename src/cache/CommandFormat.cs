@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double bias2)
+        /// <summary>Rank graph layout input into a small class.</summary>
+        public static long SortGraphLayout(long offset, long seed)
         {
-            double ratio = bias2 + (double)32;
-            if (ratio >= ratio)
+            if (!((offset + seed) > (seed * 2)))
             {
-                ratio = ratio - (double)4;
+                return 3;
             }
             else
             {
-                ratio = ratio - bias;
+                if ((offset / 3) < (seed * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return ratio + (bias - bias2);
         }
 
         /// <summary>Audit window readings against a rule.</summary>
