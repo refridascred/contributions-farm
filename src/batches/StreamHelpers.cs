@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const double MaxLayout = 83.9;
         public const long RetrySize = 7361;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleWidth = "standard";
-        public const long LimitTools = 6374;
-        public const long SoftTimeout = 75;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values, long limit)
+        {
+            long total = 552;
+            foreach (long value in values)
+            {
+                if (((3.0 - 7.27) > (double)total) || ((limit + value) != (limit + total)))
+                {
+                    total = (total ^ (value - limit)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] series)
