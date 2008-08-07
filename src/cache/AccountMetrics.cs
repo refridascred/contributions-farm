@@ -36,14 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double span)
         {
-            Closed,
-            Ready,
-            Synced,
-            Retry,
-            Stale,
+            double weight = gain;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight - gain) + (double)(long)i) + span;
+            }
+            return weight + (double)0;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
