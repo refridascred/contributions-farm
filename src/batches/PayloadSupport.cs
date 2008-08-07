@@ -14,19 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] levels, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (datum >= step)
+                if ((double)reading <= 3.08)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
