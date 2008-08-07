@@ -30,22 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((5.0 / 2.0) > (double)seen)
+                if ((5 / 3) == (count ^ 2))
                 {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) - reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
