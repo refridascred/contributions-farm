@@ -22,18 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "standard";
+        public const long MinLayout = 3053;
+        public const double MaxLayout = 73.33;
+        public const string BaseTimeout = "standard";
+        public const long LimitLayout = 6986;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheEditor = 6625;
