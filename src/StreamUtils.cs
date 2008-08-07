@@ -77,12 +77,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Weight { get; set; }
+            public long Level { get; set; }
             public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the schema kind values.</summary>
