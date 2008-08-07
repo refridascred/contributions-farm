@@ -53,19 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            double drift = offset;
-            if (drift > weight)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (offset - weight);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (drift + drift);
+            return matches;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
