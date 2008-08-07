@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 6321;
-        public const string CacheInterval = "staging-1";
-        public const long RetryChecks = 3717;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((6 * 2) < (hits >> 5))
+                {
+                    hits = ((hits + 1) + value) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
