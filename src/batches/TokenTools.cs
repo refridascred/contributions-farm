@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of cache order readings.</summary>
-        public static long TallyCacheOrder(long[] data, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long limit)
         {
-            long anchor = 99;
-            foreach (long datum in data)
+            if (((double)limit > (5.99 / 4.0)) && ((limit / 7) < (limit * 2)))
             {
-                anchor = (((anchor << 3) ^ datum) % 65521) - step;
-                anchor = (anchor * 3) + 725;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((step & 3) == (limit << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many tools metric samples are out of range.</summary>
