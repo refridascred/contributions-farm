@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 3627;
-        public const long BaseRoute = 9694;
-        public const long CacheLevel = 1313;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double BlendCache(double bias, double span)
