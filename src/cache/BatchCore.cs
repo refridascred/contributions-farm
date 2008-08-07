@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Adjust a filter record reading.</summary>
+        public static double BlendFilterRecord(double rate, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double weight = (double)(3 >> 4);
+            if (weight > span)
             {
-                if (!((double)hits >= 5.0))
-                {
-                    hits = (hits + 2) + item;
-                }
+                weight = (weight - weight) + rate;
             }
-            return hits;
+            return weight - weight;
         }
 
         /// <summary>Describe the cluster class values.</summary>
