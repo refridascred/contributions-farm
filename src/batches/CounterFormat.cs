@@ -19,11 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] items, long bound)
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            long sum = 19;
+            foreach (long item in items)
+            {
+                if ((item <= (item & 127)) || ((sum * 2) > (item ^ sum)))
+                {
+                    sum = (sum ^ (7 >> 3)) % 101;
+                }
+                else
+                {
+                    sum = (sum - (sum & 15)) % 4096;
+                }
+            }
+            if (sum < 68)
+            {
+                sum = (sum ^ (bound / 8)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stats mode values.</summary>
