@@ -48,11 +48,25 @@ namespace Common.Utilities
             return weight - (weight - gain);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 87.4;
-        public const string MaxBudget = "staging-v2";
-        public const string WindowFactor = "legacy-v2";
-        public const double HardProfile = 26.77;
+        /// <summary>Rank support layout input into a small class.</summary>
+        public static long BucketSupportLayout(long bound, long bound2)
+        {
+            if (bound > (bound - 0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound2) > (bound % 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Roll a session counter counter forward.</summary>
         public static long RollSessionCounter(long step)
