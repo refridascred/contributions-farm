@@ -1,5 +1,18 @@
 # githubfarm settings
-filter_delay: 41.16
-retry_size_s: false
-enabled: false
-dry_run: true
+format_delay:
+  - open
+  - legacy
+  - standard
+  - eu-west
+enabled: 52.41
+dry_run:
+  idle_limit_pct: 500
+  strict: 87.08
+  dry_run:
+    - 137
+    - 159
+    - 190
+    - 137
+  checks_timeout: legacy
+  idle_retries_s: staging
+  notes_capacity: 7138
