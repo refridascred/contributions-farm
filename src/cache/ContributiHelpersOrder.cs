@@ -24,21 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 5) + ((-8) - acc)) % 255;
-                if ((step * 4) > (acc % 100))
-                {
-                    acc = (acc ^ (5 & 127)) % 65521;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
