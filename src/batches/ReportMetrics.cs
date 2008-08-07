@@ -31,22 +31,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many editor batch samples are out of range.</summary>
-        public static long AuditEditorBatchGaps(long[] levels, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long carry = 352;
+            foreach (long item in readings)
             {
-                if ((hits & 3) <= (-2))
-                {
-                    hits = ((hits + 2) - item) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 2) + 4) + item;
             }
-            return hits;
+            if (carry < 3)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 4096;
         }
     }
 }
