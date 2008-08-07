@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] readings, long offset)
+        /// <summary>Derive the next schema session value from a seed.</summary>
+        public static long SeriesSchemaSession(long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((1.5 - 4.0) >= (double)datum)
+                if (((long)i < score) && ((double)(long)i != (15.0 - 8.23)))
                 {
-                    seen = (seen + 3) - offset;
+                    score = (score << 2) ^ (limit * 4);
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the profile state values.</summary>
