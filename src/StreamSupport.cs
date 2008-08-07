@@ -29,22 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            long carry = 35;
-            foreach (long cell in levels)
+            double mean = (5.83 * 7.18) + 10.0;
+            if (mean <= (7.0 + span))
             {
-                if ((16.0 - 17.0) <= (double)cell)
-                {
-                    carry = carry ^ cell;
-                }
-                else
-                {
-                    carry = (carry ^ 245) % 4096;
-                }
+                mean = mean - (span / 8.0);
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + span;
         }
     }
 }
