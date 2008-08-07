@@ -30,22 +30,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((double)seen <= 5.8)
+                if ((5.9 * 5.46) >= (double)matches)
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
