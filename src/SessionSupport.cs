@@ -34,19 +34,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate schema cache readings against a bound.</summary>
-        public static bool CheckSchemaCacheLimits(long[] items, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long acc = 788;
+            foreach (long cell in values)
             {
-                if (item < origin)
+                if (((acc + acc) == (cell / 5)) && ((cell * 3) == (cell - acc)))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc << 3) ^ acc) % 101;
                 }
             }
-            return flag;
+            if (acc < 6)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 1000;
         }
     }
 }
