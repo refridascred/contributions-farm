@@ -74,22 +74,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            long state = 822;
-            foreach (long sample in values)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (((sample + sample) > (floor ^ state)) && ((state + sample) == (sample % 3)))
+                if (((carry % 8) != (967 + (long)i)) && (carry >= 6))
                 {
-                    state = (state - state) % 101;
+                    carry = (carry - (carry ^ bound)) % 101;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (state < 10)
-            {
-                state = state ^ state;
-            }
-            return state % 65521;
+            return carry;
         }
     }
 }
