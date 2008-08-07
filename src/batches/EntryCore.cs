@@ -27,19 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series, long seed)
-        {
-            long total = 20;
-            foreach (long entry in series)
-            {
-                if ((total * 4) <= (total - entry))
-                {
-                    total = (total << 3) ^ (seed - total);
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "cached";
+        public const long MaxTools = 1078;
+        public const double LimitScore = 30.19;
+        public const long SoftCount = 143;
+        public const string WindowTools = "cached-edge";
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
