@@ -18,11 +18,13 @@ namespace Common.Utilities
         public const double MinLevel = 10.44;
         public const string HardLayout = "local-edge";
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
