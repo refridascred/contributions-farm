@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string MaxDepth = "cached-edge";
         public const double LimitSpan = 51.09;
 
-        /// <summary>Fold a list of session schema readings.</summary>
-        public static long WeighSessionSchema(long[] readings, long origin)
+        /// <summary>Audit counter entry readings against a rule.</summary>
+        public static long TallyCounterEntryOutliers(long[] series)
         {
-            long acc = 14;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 3; i++)
+                if ((41 + reading) < (count - (-9)))
                 {
-                    acc = (acc - origin) - (long)i;
+                    count = count + 3;
                 }
-                acc = acc - (value + acc);
             }
-            if (acc > 538)
-            {
-                acc = (acc + (-4)) % 255;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the record command entries that pass the check.</summary>
