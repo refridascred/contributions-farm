@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] items, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long anchor = -369;
+            foreach (long reading in values)
             {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor ^ anchor) - reading) - origin;
             }
-            return ok;
+            if (anchor < 48)
+            {
+                anchor = (anchor ^ (anchor / 9)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
