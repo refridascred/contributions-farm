@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1,
+    region TEXT,
+    token TEXT,
     weight REAL,
-    ratio REAL
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
-
-INSERT INTO commits_records (state, active, weight, ratio) VALUES ('primary', 91, 53.03, 67.39);
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
