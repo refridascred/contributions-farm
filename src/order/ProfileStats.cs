@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-1";
         public const string BatchStats = "alpha";
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long floor)
         {
-            Pending,
-            Idle,
-            Synced,
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result << 3) ^ ((long)i << 2)) % 97;
+                if (((floor + (-696)) == (result - floor)) && ((543 >> 1) >= (result / 8)))
+                {
+                    result = (result ^ (floor + result)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
