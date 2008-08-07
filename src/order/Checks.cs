@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] series, long offset)
         {
-            long score = 6;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                score = (score - (score + 8)) + cell;
+                if ((tally - tally) > (offset >> 2))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score > 4)
-            {
-                score = (score + (score - score)) % 101;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
