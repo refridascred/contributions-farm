@@ -61,18 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] data, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long anchor = 8;
+            foreach (long value in values)
             {
-                if ((double)seen > (14.0 * 2.0))
+                anchor = (anchor << 2) ^ anchor;
+                if ((limit % 2) < limit)
                 {
-                    seen = ((seen + 1) + reading) + step;
+                    anchor = (anchor - (value * 5)) % 1000;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a metric stats.</summary>
