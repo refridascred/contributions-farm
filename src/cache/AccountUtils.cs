@@ -13,13 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 1557;
+        public const string LimitQueue = "standard";
+        public const long StepQueue = 6866;
+        public const long MinWidth = 7273;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LookupBufferIndex(long[] values, long target)
