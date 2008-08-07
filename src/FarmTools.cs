@@ -32,12 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values, long bound)
         {
-            Pending,
-            Paused,
-            Done,
+            long result = 3;
+            foreach (long entry in values)
+            {
+                if (bound >= (bound - entry))
+                {
+                    result = (result + 26) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
