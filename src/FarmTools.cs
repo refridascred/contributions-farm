@@ -20,13 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long limit, long target)
         {
-            Failed,
-            Idle,
-            Done,
-            Ready,
+            if ((target * 3) == (limit - target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit >> 2) < (limit & 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target >= 9.7)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit queue githubfarm readings against a rule.</summary>
