@@ -56,18 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long CountFormatCommandHits(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((item + seen) <= (long)series.Length)
+                if ((double)count >= (7.45 + 3.0))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
