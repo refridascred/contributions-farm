@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count < (4.06 / 8.0))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 25.25;
+        public const double HardFactor = 91.73;
+        public const string LimitCache = "local-1";
+        public const long IdleScore = 2925;
+        public const string IdleBudget = "strict-v2";
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
