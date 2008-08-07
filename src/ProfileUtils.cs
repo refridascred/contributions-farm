@@ -20,19 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a context info.</summary>
