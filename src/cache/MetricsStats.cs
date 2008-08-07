@@ -41,17 +41,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a layout session sample.</summary>
-        public static long LocateLayoutSessionIndex(long[] items, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Adjust a stream reading.</summary>
