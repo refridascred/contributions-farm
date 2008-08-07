@@ -48,15 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Idle,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
