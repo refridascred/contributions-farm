@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Derive the next cache context value from a seed.</summary>
+        public static long SeriesCacheContext(long offset)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks summary.</summary>
