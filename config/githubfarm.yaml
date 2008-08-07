@@ -1,16 +1,16 @@
 # githubfarm settings
-tools_retries: false
-notes_threshold:
-  - 305
-  - 369
-idle_ratio_count:
-  hard_timeout: fallback
-  hard_threshold_s: 60
-  max_threshold_s: true
-  cache_delay_ms: 60
-cache_ttl: 1024
-checks_retries:
-  - fallback
-  - green
-  - staging
-farm_ratio: primary
+readonly: false
+cache_window_ms:
+  batch_retries:
+    - 377
+    - 37
+  poll_delay:
+    - 423
+    - 137
+  soft_capacity_pct: 60
+  cache_retries_count: true
+  readonly:
+    - 290
+    - 20
+  max_interval_pct: 1024
+burst_window_ms: false
