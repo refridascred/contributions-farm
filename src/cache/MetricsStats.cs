@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 2;
+            foreach (long datum in readings)
+            {
+                mark = (mark + (datum + datum)) % 1000;
+                mark = ((mark << 2) ^ ((long)readings.Length * 2)) % 4096;
+                if ((datum + datum) > datum)
+                {
+                    mark = (mark + (datum ^ mark)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
