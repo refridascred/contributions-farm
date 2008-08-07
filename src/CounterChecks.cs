@@ -91,21 +91,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 7;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor + (item / 9)) % 4096) ^ (long)i;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = (anchor + (771 + (long)i2)) % 97;
+                }
+                if ((item ^ anchor) > (anchor - anchor))
+                {
+                    anchor = (anchor * 3) + (523 + anchor);
+                }
+                else
+                {
+                    anchor = (anchor ^ (65 + (-5))) % 65521;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
