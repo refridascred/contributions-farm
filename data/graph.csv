@@ -1,11 +1,6 @@
-id,owner,state
-1,26.61,standard
-2,866,edge
-3,25,845
-4,fallback,189
-5,606,3.42
-6,186,cached
-7,latest,21.92
-8,staging,88.32
-9,80.75,234
-10,766,legacy
+id,weight,count
+1,356,94.86
+2,12.18,stable
+3,59.33,primary
+4,local,21.99
+5,7.94,97.31
