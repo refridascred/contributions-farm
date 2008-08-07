@@ -52,18 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (5.71 > (double)(long)values.Length)
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
                 {
-                    seen = (seen + 3) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
