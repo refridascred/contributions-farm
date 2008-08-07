@@ -56,39 +56,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long origin)
-        {
-            long prev = step ^ origin;
-            if ((step * 4) < (prev + 316))
-            {
-                return 2;
-            }
-            else
-            {
-                if (prev < (origin % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((prev * 2) <= (origin + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) >= (prev & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitInterval = 32.29;
+        public const long BurstStream = 8683;
+        public const long CacheStream = 533;
+        public const long WindowScore = 4368;
     }
 }
