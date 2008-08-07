@@ -28,16 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mix = mix + offset;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((0 + seen) <= (seen & 31))
+                {
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
