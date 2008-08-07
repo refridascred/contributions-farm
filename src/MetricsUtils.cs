@@ -24,13 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a account counter forward.</summary>
