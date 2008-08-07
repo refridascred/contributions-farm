@@ -56,19 +56,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels, long seed)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long sum = 93;
-            foreach (long cell in levels)
-            {
-                sum = ((sum * 5) + seed) % 101;
-                if (((double)cell <= (5.3 / 7.0)) && ((sum + cell) <= (178 + 299)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
