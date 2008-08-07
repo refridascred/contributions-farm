@@ -42,21 +42,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 11;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result << 3) ^ (result & 1);
+                result = (result ^ (65 << 2)) % 65521;
+                if ((value << 3) < (value << 2))
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (result > 9)
+            {
+                result = ((result * 3) + (result + result)) % 4096;
+            }
+            return result;
         }
     }
 }
