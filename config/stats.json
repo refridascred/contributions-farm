@@ -1,6 +1,8 @@
 {
-  "retry_ratio_count": 100,
-  "compress": 31.98,
-  "default_threshold_ms": false,
-  "sync_window": 13.94
+  "soft_delay_ms": "latest",
+  "soft_window": "open",
+  "default_retries_count": false,
+  "burst_window_pct": 63,
+  "metrics_ratio": "fallback",
+  "sync_timeout_s": false
 }
