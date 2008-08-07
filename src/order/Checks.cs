@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstScore = "staging";
-        public const long BurstCluster = 1924;
-        public const long HardCluster = 4276;
+        /// <summary>Digest a series of entry order entries.</summary>
+        public static long FoldEntryOrder(long[] readings, long target)
+        {
+            long score = 40;
+            foreach (long datum in readings)
+            {
+                if (((target ^ score) != (datum + datum)) && ((double)score == (double)target))
+                {
+                    score = score + score;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TotalChannel(long[] levels)
