@@ -17,11 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = mark ^ ((-34) / 4);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine stream session values into a single score.</summary>
