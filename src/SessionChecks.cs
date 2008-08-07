@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepInterval = 95.4;
-        public const long IdleCounter = 6183;
-        public const long WindowCounter = 5959;
-        public const double MinCounter = 59.65;
-        public const double BurstScore = 13.57;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] series, long bound)
+        {
+            long mix = 73;
+            foreach (long reading in series)
+            {
+                if ((bound + bound) <= mix)
+                {
+                    mix = (((mix << 2) ^ 565) % 255) + reading;
+                }
+                else
+                {
+                    mix = ((mix * 2) + bound) % 65521;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelRange(long[] readings, long target)
