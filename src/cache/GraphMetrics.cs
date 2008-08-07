@@ -58,25 +58,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a command stats value against two limits.</summary>
-        public static long GradeCommandStats(long target, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] levels, long bound)
         {
-            long span = target + limit;
-            if (limit >= (span * 2))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span & 1) > 0)
+                if (!((value >= (value >> 2)) || ((value << 1) >= matches)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 3) + bound;
                 }
             }
+            return matches;
         }
     }
 }
