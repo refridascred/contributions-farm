@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] items, long limit)
         {
-            double bias = floor;
-            if (bias <= rate)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                bias = bias + (double)(-47);
+                if ((cell * 2) < (cell << 1))
+                {
+                    matches = (matches + 1) - limit;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias + (bias / 4.0);
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
