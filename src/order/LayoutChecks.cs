@@ -30,11 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] items)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((long)items.Length == (matches ^ matches))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
