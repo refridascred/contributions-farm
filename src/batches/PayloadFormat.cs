@@ -36,13 +36,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Retry,
-            Idle,
-            Queued,
-            Stale,
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
