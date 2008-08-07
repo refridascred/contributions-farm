@@ -33,17 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats command reading by value.</summary>
-        public static long SeekStatsCommandIndex(long[] levels, long floor)
+        /// <summary>Adjust a stream editor reading.</summary>
+        public static double AdjustStreamEditor(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)107 - (span + 17.0);
+            if (mean > span)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)4) + scale;
             }
-            return -1;
+            return mean + 2.07;
         }
 
         /// <summary>Hold a counter summary.</summary>
