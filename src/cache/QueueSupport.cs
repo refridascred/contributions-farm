@@ -42,15 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor counter value from a seed.</summary>
-        public static long RollEditorCounter(long target)
+        /// <summary>Count commits cache pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCacheCount(long[] values)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
