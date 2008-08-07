@@ -23,17 +23,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 7;
+            foreach (long reading in samples)
             {
-                if ((data[i] == step) && ((data[i] % 3) != 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    total = total ^ ((long)i - total);
                 }
+                total = ((total * 5) + (reading & 1)) % 255;
             }
-            return -1;
+            if (total > 0)
+            {
+                total = (total - total) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many entry counter samples are out of range.</summary>
