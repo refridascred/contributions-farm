@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next stats session value from a seed.</summary>
-        public static long RollStatsSession(long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a contributi header.</summary>
