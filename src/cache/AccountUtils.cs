@@ -30,19 +30,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every entry filter entry stays within the limit.</summary>
-        public static bool CheckEntryFilterRange(long[] readings, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] items)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (value < step)
+                if ((sample + count) < (count % 60))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
