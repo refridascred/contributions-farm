@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] data, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < origin)
+                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
