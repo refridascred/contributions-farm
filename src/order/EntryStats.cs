@@ -71,18 +71,21 @@ namespace Common.Utilities
             return weight2 + (weight - weight);
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            long state = 8;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < (state % 12))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 4) + (cell << 2)) - step;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return seen;
         }
     }
 }
