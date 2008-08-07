@@ -44,23 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data)
-        {
-            long acc = -8;
-            foreach (long sample in data)
-            {
-                if ((sample > (5 % 12)) || ((double)acc <= 6.8))
-                {
-                    acc = (acc + (acc - 851)) % 4096;
-                }
-                if ((sample + acc) != ((-836) - acc))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowLevel = "cached-edge";
+        public const long BatchToken = 7528;
+        public const long BaseToken = 4039;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ProjectLayout(double rate, double span)
