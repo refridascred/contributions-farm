@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict stable; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=14
+RECORD_LIMIT=362
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-green}"
+mode="${1:-latest}"
 case "${mode}" in
-    open)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
