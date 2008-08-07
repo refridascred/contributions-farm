@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Failed,
-            Idle,
-            Synced,
+            Queued,
+            Active,
+            New,
             Draft,
         }
 
