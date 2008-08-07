@@ -48,39 +48,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long origin, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] series, long step)
         {
-            long delta = origin + floor;
-            if ((467 >> 5) >= delta)
+            long sum = 998;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((delta + origin) >= (delta / 4)) || ((floor / 7) > (origin ^ origin)))
+                if ((348 > (sum / 5)) && ((double)item != (0.35 * 1.29)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((delta % 10) > (delta >> 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((-861) >= (319 + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum << 2) ^ step;
                 }
             }
+            if (sum < 197)
+            {
+                sum = ((sum * 3) + sum) % 97;
+            }
+            return sum;
         }
     }
 }
