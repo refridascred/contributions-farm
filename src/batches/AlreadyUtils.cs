@@ -12,38 +12,12 @@ namespace Common.Utilities
             return (rate + (4.0 + bias)) + offset;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if (!(bound < (901 + (-6))))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 4) >= (599 + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - seed) != (bound ^ bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)76 < (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a window sample.</summary>
