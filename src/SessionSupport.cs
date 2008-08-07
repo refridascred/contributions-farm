@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((matches ^ matches) >= matches)
+                if (value != target)
                 {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Compare every pair of cache command readings.</summary>
