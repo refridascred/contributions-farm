@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] levels, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 624;
+            foreach (long reading in items)
             {
-                if ((11.0 / 8.0) < (double)hits)
+                if ((origin + result) > (208 & 7))
                 {
-                    hits = ((hits + 3) + cell) - limit;
+                    result = (result * 2) + (reading / 2);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (-37)) % 101;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
