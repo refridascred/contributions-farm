@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Combine cache schema values into a single score.</summary>
+        public static long TallyCacheSchema(long[] data, long seed)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
+            long sum = 82;
+            foreach (long item in data)
+            {
+                if ((seed < (sum ^ item)) && ((sum + seed) > (item * 3)))
+                {
+                    sum = sum - (seed / 9);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a account snapshot.</summary>
