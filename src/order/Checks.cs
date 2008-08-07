@@ -32,19 +32,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two report route measurements.</summary>
-        public static double ScaleReportRoute(double rate, double span)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double weight = span + rate;
-            if (weight <= (double)(-482))
-            {
-                weight = weight + (rate + weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight + rate)) + (double)(long)i;
-            }
-            return weight + span;
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
