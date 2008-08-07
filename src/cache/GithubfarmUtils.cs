@@ -19,18 +19,22 @@ namespace Common.Utilities
         public const string WindowInterval = "cached-1";
         public const string BatchRatio = "open-edge";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long anchor = 1;
+            foreach (long cell in levels)
             {
-                if (!((double)(-58) < (double)cell))
+                if (anchor < ((long)levels.Length >> 5))
                 {
-                    count = count + 3;
+                    anchor = ((anchor + cell) % 255) - step;
                 }
             }
-            return count;
+            if (anchor > 50)
+            {
+                anchor = (anchor << 3) ^ (736 + (-51));
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batches record.</summary>
