@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] values, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            long acc = 293;
-            foreach (long value in values)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((long)values.Length < (acc - 7))
-                {
-                    acc = ((acc + floor) % 65521) ^ value;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            if (acc > 86)
-            {
-                acc = (acc ^ floor) % 255;
-            }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
