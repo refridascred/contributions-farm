@@ -49,19 +49,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Locate a context cluster reading by value.</summary>
+        public static long SeekContextClusterIndex(long[] levels, long target)
         {
-            long result = 7;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result + (reading - 941)) % 101;
+                if ((levels[i] == target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < 3)
-            {
-                result = result + (result & 3);
-            }
-            return result % 4096;
+            return -1;
         }
     }
 }
