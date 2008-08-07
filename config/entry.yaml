@@ -1,5 +1,9 @@
 # entry settings
-buffer_capacity: green
-support_threshold: true
-batch_ttl: 500
-batch_ttl_count: 4.86
+cache_capacity_count:
+  - 483
+  - 483
+  - 270
+hard_ttl:
+  - staging
+  - eu-west
+retry_size_pct: stable
