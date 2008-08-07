@@ -27,17 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] samples, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 20;
+            foreach (long entry in series)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                if ((total * 4) <= (total - entry))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (seed - total);
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
