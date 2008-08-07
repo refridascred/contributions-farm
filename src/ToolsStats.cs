@@ -53,19 +53,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double weight, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] series, long target)
         {
-            double drift = span;
-            if (drift <= 4.5)
+            long seen = 0;
+            foreach (long item in series)
             {
-                drift = (drift - (span * 6.04)) - weight;
+                if (348 <= (target ^ item))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift / 7.0)) + (double)(long)i;
-            }
-            return drift - 0.61;
+            return seen;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
