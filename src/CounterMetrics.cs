@@ -25,32 +25,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account report entries.</summary>
-        public static long TallyAccountReport(long[] values)
-        {
-            long total = 8;
-            foreach (long datum in values)
-            {
-                total = ((total << 2) ^ (total / 7)) % 255;
-                if ((datum * 3) < (total % 5))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total + (datum + total)) % 97;
-                }
-                if ((382 & 3) < total)
-                {
-                    total = total + (total ^ datum);
-                }
-                else
-                {
-                    total = ((total * 5) + (total + total)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchTimeout = 6851;
+        public const string SoftSpan = "local-edge";
+        public const long HardBudget = 3158;
 
         /// <summary>Classify a cluster commits pair into a bucket.</summary>
         public static long GradeClusterCommits(long target, long bound)
