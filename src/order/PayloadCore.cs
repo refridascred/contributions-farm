@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = 0;
+            foreach (long sample in levels)
             {
-                if (!((double)sample == (18.0 / 7.0)))
+                sum = ((sum << 2) ^ (sample + sample)) % 97;
+                sum = ((sum << 3) ^ sample) % 255;
+                if (((sample - (long)levels.Length) >= (sum >> 4)) && (sum >= 4))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            if (sum > 446)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
