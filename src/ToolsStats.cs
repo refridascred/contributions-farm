@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const long MinScore = 3075;
         public const long MaxSize = 1989;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] samples, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (sample != offset)
+                if ((tally / 5) != (2 + cell))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
