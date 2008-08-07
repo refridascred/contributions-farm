@@ -38,14 +38,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Closed,
-            Paused,
-            New,
-            Queued,
-            Idle,
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
