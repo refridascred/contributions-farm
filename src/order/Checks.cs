@@ -75,18 +75,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks cluster readings against a rule.</summary>
-        public static long TallyChecksClusterGaps(long[] series, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((hits / 3) > entry)
-                {
-                    hits = (hits + 2) + bound;
-                }
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
