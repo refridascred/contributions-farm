@@ -35,13 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] series, long limit)
         {
-            Dropped,
-            Ready,
-            Synced,
-            Queued,
+            long total = 6;
+            foreach (long value in series)
+            {
+                long count = total - (value ^ total);
+                total = (total - (count & 31)) % 101;
+                if (((double)value == (19.0 * 1.8)) || ((value * 5) != (2 & 255)))
+                {
+                    total = ((total * 5) + limit) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the tools level values.</summary>
