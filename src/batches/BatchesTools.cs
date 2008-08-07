@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long BurstNotes = 7836;
         public const double CacheNotes = 39.11;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] readings)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (!((datum & 15) > datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
