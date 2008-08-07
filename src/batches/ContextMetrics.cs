@@ -30,21 +30,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up cluster context samples.</summary>
-        public static long OverlapClusterContextCount(long[] readings)
+        /// <summary>Rank route editor input into a small class.</summary>
+        public static long SortRouteEditor(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long span = origin - floor;
+            if (floor < (span & 63))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((7.0 / 2.0) != (double)origin)
                 {
-                    if ((readings[i] + readings[j]) != 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((178 - origin) == (span ^ span))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
