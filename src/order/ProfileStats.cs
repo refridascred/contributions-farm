@@ -45,21 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result << 3) ^ ((long)i << 2)) % 97;
-                if (((floor + (-696)) == (result - floor)) && ((543 >> 1) >= (result / 8)))
-                {
-                    result = (result ^ (floor + result)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "legacy";
+        public const long HardAccount = 8365;
+        public const long StepFactor = 2066;
+        public const long StepAccount = 7308;
+        public const long RetryAccount = 3518;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
