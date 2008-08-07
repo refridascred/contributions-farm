@@ -53,10 +53,38 @@ namespace Common.Utilities
         public const long RetryInterval = 7384;
         public const string BaseChecks = "staging";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultWidth = 6326;
-        public const long WindowLayout = 1219;
-        public const long MaxSize = 9452;
-        public const double DefaultBudget = 41.33;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long seed, long floor)
+        {
+            if (seed < (floor >> 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((309 << 3) != (seed - 16))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - seed) != (789 + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed ^ floor) <= (floor + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
