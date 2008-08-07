@@ -33,31 +33,21 @@ namespace Common.Utilities
         public const long StepScore = 1645;
         public const long StepFactor = 1331;
 
-        /// <summary>Grade a contributi format value against two limits.</summary>
-        public static long ClassifyContributiFormat(long limit, long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            if ((8 >= (limit + floor)) && (floor <= (floor + floor)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (1 < (limit + floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - limit) >= limit)
+                    if ((values[i] - values[j]) < 8)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
