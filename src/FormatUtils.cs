@@ -43,23 +43,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count + 8) > ((-818) & 127))
-                {
-                    count = ((count + 2) - entry) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 5.01;
+        public const long RetryChannel = 5043;
+        public const long LimitRatio = 9636;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] readings, long origin)
