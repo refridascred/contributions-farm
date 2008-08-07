@@ -20,13 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Stale,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "stable-1";
+        public const long MinCommand = 9747;
+        public const long MaxLevel = 3777;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] levels, long limit)
