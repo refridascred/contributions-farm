@@ -45,19 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] series, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
