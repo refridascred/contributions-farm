@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const string BaseAlready = "legacy-edge";
         public const string SoftCount = "fallback-1";
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            New,
-            Draft,
-            Locked,
-            Done,
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
