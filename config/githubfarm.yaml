@@ -1,5 +1,15 @@
 # githubfarm settings
-poll_delay: standard
-retry_depth_pct: 78.68
-verbose: stable
-readonly: 73
+audit: 6684
+compress: legacy
+already_limit: 379
+flush_ratio: 48.76
+sync_ttl:
+  persist: false
+  soft_window_count: 10.88
+  buffer_window: latest
+  compress: false
+soft_size_s:
+  burst_delay_ms: 68.18
+  sync_ttl_pct: local
+  payload_depth: local
+  cluster_limit: green
