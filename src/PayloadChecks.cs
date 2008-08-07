@@ -21,30 +21,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long floor, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long origin)
         {
-            long step = floor - origin;
-            if ((floor / 2) > 23)
+            if ((origin * 5) > (seed + 55))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (!(origin < (origin + floor)))
+                if (!((-3) > (seed / 8)))
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((origin + 9) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 1;
                 }
             }
         }
