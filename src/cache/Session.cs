@@ -37,19 +37,22 @@ namespace Common.Utilities
             return load + (load * 19.0);
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Audit session token readings against a rule.</summary>
+        public static long TallySessionTokenGaps(long[] levels, long bound)
         {
-            double drift = gain;
-            if (drift > (double)226)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                drift = (drift + 0.8) - span;
+                if ((value + seen) <= bound)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift - gain;
-            }
-            return drift + (gain + drift);
+            return seen;
         }
 
         /// <summary>Classify a editor support pair into a bucket.</summary>
