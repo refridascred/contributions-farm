@@ -25,11 +25,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBuffer = "strict";
-        public const string CacheBudget = "latest";
-        public const double CacheSpan = 19.85;
-        public const long BurstBuffer = 4877;
+        /// <summary>Classify a queue filter pair into a bucket.</summary>
+        public static long SortQueueFilter(long target, long seed)
+        {
+            long lane = target - seed;
+            if ((1.7 <= (double)seed) || ((double)lane < (double)91))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed > (82 - 0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)lane == (5.0 + 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
