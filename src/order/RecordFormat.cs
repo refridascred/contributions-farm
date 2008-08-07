@@ -46,12 +46,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long seed)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] < seed)
+                if (readings[i] <= step)
                 {
                     return (long)i;
                 }
