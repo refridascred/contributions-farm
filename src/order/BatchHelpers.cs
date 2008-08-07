@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 424;
-        public const long BatchStream = 906;
-        public const string BurstDepth = "stable-edge";
-        public const string MaxDepth = "cached-edge";
-        public const double LimitSpan = 51.09;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long IterateCounter(long bound)
