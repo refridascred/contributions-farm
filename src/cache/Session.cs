@@ -26,13 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            double drift = (double)(50 >> 3);
+            if (drift < drift)
+            {
+                drift = (drift - bias2) - bias;
+            }
+            else
+            {
+                drift = drift + (bias2 + drift);
+            }
+            return drift + (double)1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
