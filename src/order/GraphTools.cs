@@ -64,14 +64,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Draft,
-            Active,
-            New,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 5835;
+        public const long MaxRoute = 3356;
+        public const double BaseLevel = 32.05;
     }
 }
