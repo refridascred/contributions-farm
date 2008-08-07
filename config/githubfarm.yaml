@@ -1,9 +1,4 @@
 # githubfarm settings
-burst_depth_s: legacy
-flush_size_ms: 14.77
-batch_timeout_s: edge
-min_delay:
-  - 417
-  - 15
-retry_interval_s: 46.28
-flush_delay: 2.88
+base_limit_pct: 57
+flush_timeout: true
+batch_interval_s: primary
