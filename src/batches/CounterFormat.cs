@@ -47,11 +47,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftTimeout = 6212;
-        public const long BatchBatches = 3947;
-        public const long BaseSize = 1090;
-        public const double LimitBatches = 89.81;
-        public const double MinBatches = 59.78;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 57.13;
+        public const string BaseSpan = "local-v2";
+        public const long LimitFactor = 5189;
     }
 }
