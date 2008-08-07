@@ -36,16 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double floor)
-        {
-            double bias = ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (ratio - floor)) + (double)(long)i;
-            }
-            return bias + (bias / 7.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 342;
+        public const long SoftGithubfarm = 1490;
+        public const string SoftInterval = "cached-v2";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelOutliers(long[] items, long origin)
