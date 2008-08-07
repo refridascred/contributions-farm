@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=459
-log "limit is ${RECORD_LIMIT}"
-
-for item in edge green primary cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=183
+log "limit is ${RECORD_LIMIT}"
