@@ -30,13 +30,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long floor, long origin)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            long step = floor - origin;
+            if ((floor / 2) > 23)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(origin < (origin + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + 9) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
