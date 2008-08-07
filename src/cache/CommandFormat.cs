@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every cache tools entry stays within the limit.</summary>
-        public static bool GuardCacheToolsLimits(long[] series, long offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Draft,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
