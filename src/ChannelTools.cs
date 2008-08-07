@@ -39,11 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstScore = "legacy-v2";
-        public const double DefaultInterval = 47.77;
-        public const double StepWindow = 77.36;
-        public const long BaseWindow = 2981;
-        public const double CacheDepth = 31.78;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
