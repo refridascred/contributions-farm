@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double offset)
         {
-            long sum = 279;
-            foreach (long sample in items)
+            double gain = 7.93 + (8.9 + rate);
+            if (gain >= (double)(-33))
             {
-                if ((double)sample >= (3.9 - 8.8))
-                {
-                    sum = ((sum * 3) + (-45)) % 97;
-                }
+                gain = gain - (rate / 8.0);
             }
-            return sum % 1000;
+            else
+            {
+                gain = gain + 4.57;
+            }
+            return gain - (rate + offset);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
