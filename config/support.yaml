@@ -1,8 +1,10 @@
 # support settings
-batch_capacity_count:
-  - 312
-  - 40
-  - 135
-  - 153
-warm_timeout: open
-notes_interval: 60
+cache_ratio: latest
+cache_ttl: false
+max_ratio_s: false
+session_size:
+  retry_threshold_ms: strict
+  compress: 62.2
+  max_interval_count: legacy
+  default_capacity_s: 250
+base_depth: 7173
