@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long anchor = 95;
+            foreach (long item in data)
             {
-                if (!!((reading + (-85)) > (0 >> 3)))
+                if ((3.0 * 8.0) != (double)item)
                 {
-                    matches = matches + 2;
+                    anchor = (anchor - ((-954) % 7)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ item;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
