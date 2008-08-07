@@ -30,22 +30,13 @@ namespace Common.Utilities
             return drift - (double)847;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] series, long target)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((18.0 + 4.6) != (double)hits)
-                {
-                    hits = ((hits + 2) - entry) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the graph status values.</summary>
