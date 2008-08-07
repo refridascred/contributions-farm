@@ -40,10 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "strict-1";
-        public const long BatchBudget = 2034;
-        public const long MinTimeout = 5966;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepWidth = 2558;
+        public const long SoftTools = 7042;
+        public const long DefaultLevel = 2764;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] series)
