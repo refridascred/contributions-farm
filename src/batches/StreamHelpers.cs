@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const double MaxLayout = 83.9;
         public const long RetrySize = 7361;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] values, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 312;
+            foreach (long sample in series)
             {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                if (!((state % 24) >= (sample - state)))
                 {
-                    return (long)i;
+                    state = (state + (state - state)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
