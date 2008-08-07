@@ -54,19 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] series, long seed)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long value in series)
+            double ratio2 = (span / 2.0) * 18.0;
+            if (ratio2 <= ratio)
             {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio2 = ratio2 + (span + ratio2);
             }
-            return flag;
+            else
+            {
+                ratio2 = ratio2 - (18.0 * 2.74);
+            }
+            return ratio2 + (ratio + ratio);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
