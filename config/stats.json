@@ -1,5 +1,8 @@
 {
-  "default_delay": 9415,
-  "profile_size": "fallback",
-  "retry_ttl": false
+  "retry_size": 6078,
+  "farm_timeout": 500,
+  "layout_delay": 30,
+  "burst_window_ms": ["stable", "standard", "blue", "staging"],
+  "retry_depth_ms": 4055,
+  "entry_limit": 6444
 }
