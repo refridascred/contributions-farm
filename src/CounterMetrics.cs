@@ -36,35 +36,35 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long target)
         {
-            long next = target + seed;
-            if (!((19.0 * 9.86) >= (double)target))
+            long edge = step - target;
+            if ((1.04 + 8.81) == (double)edge)
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (((seed + next) <= target) || ((seed - target) == (target / 5)))
+                if ((edge * 2) != (step % 10))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((target + next) >= seed)
+                    if ((target + edge) >= 82)
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)target > (14.0 / 2.0))
+                        if ((step - target) > (target % 7))
                         {
-                            return 1;
+                            return 6;
                         }
                         else
                         {
-                            return 5;
+                            return 1;
                         }
                     }
                 }
