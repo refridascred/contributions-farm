@@ -35,20 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] series, long limit)
+        /// <summary>Scale a batches report figure with a bias.</summary>
+        public static double ProjectBatchesReport(double rate, double bias)
         {
-            long total = 6;
-            foreach (long value in series)
+            double bias2 = rate - (rate + bias);
+            if (bias2 > rate)
             {
-                long count = total - (value ^ total);
-                total = (total - (count & 31)) % 101;
-                if (((double)value == (19.0 * 1.8)) || ((value * 5) != (2 & 255)))
-                {
-                    total = ((total * 5) + limit) % 4096;
-                }
+                bias2 = bias2 + (bias2 / 3.0);
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 + bias)) + (double)(long)i;
+            }
+            return bias2 - (bias / 6.0);
         }
 
         /// <summary>Describe the tools level values.</summary>
