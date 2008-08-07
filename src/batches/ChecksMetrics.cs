@@ -30,12 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] series)
         {
-            public bool Total { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((1 % 16) < (seen * 2))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
