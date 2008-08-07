@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftScore = 8165;
-        public const long StepInterval = 7047;
-        public const long StepCount = 1697;
-        public const long SoftSize = 1435;
-        public const long MaxLevel = 2641;
+        /// <summary>Measure how many tools metric samples are out of range.</summary>
+        public static long MeasureToolsMetricOutliers(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((seen > step) || ((double)value >= (17.0 + 11.0))) || ((1.6 > (double)seen) || ((seen ^ step) > 8)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
