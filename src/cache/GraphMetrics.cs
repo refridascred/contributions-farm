@@ -50,12 +50,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] data, long limit)
         {
-            Dropped,
-            Pending,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
