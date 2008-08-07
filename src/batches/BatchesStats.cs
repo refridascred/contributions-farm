@@ -55,12 +55,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] series, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                if (items[i] >= limit)
                 {
                     return (long)i;
                 }
