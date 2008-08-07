@@ -12,25 +12,13 @@ namespace Common.Utilities
         public const long MaxCount = 3132;
         public const long WindowBudget = 1772;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long origin2)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long lane = origin + origin2;
-            if ((double)origin != (12.0 + 13.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane < (origin2 % 12)) || ((origin - origin) != (8 ^ origin2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count the record command entries that pass the check.</summary>
