@@ -43,23 +43,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine githubfarm stats values into a single score.</summary>
-        public static long WeighGithubfarmStats(long[] readings, long step)
-        {
-            long total = 56;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > (0.01 + 16.0))
-                {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = (total + (step ^ total)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstRatio = 321;
+        public const double CacheStats = 66.2;
+        public const long IdleTimeout = 4981;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long step)
