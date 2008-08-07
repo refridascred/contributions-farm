@@ -1,6 +1,6 @@
-id,count,label
-1,295,local
-2,latest,17.96
-3,primary,580
-4,189,28.06
-5,local,491
+id,region,score,label
+1,latest,681,453
+2,411,primary,655
+3,81.11,702,258
+4,62.95,edge,64.6
+5,latest,29.62,416
