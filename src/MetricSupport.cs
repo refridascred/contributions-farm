@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitDepth = "strict-v2";
-        public const double StepFactor = 51.84;
-        public const long BaseStats = 2879;
+        /// <summary>Blend two account checks measurements.</summary>
+        public static double SmoothAccountChecks(double gain, double bias)
+        {
+            double load = bias;
+            if (load < (gain + load))
+            {
+                load = load - (gain - gain);
+            }
+            return load - (load / 4.0);
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double SmoothFormat(double ratio, double span)
