@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] values, long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double gain, double offset)
         {
-            long anchor = -369;
-            foreach (long reading in values)
+            double weight = (double)(11 / 7);
+            if (weight >= (double)39)
             {
-                anchor = ((anchor ^ anchor) - reading) - origin;
+                weight = (weight - offset) + gain;
             }
-            if (anchor < 48)
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor ^ (anchor / 9)) % 1000;
+                weight = (weight - (offset - 5.4)) + (double)(long)i;
             }
-            return anchor;
+            return weight - offset;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
