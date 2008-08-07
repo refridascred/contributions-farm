@@ -49,18 +49,19 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double HardProfile = 26.77;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = 695;
+            foreach (long cell in values)
             {
-                if ((double)matches < (2.1 * 8.63))
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = ((matches + 3) ^ datum) + origin;
+                    acc = (acc + (bound ^ cell)) ^ (long)i;
                 }
+                acc = (acc * 3) + (acc + cell);
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Describe the metrics state values.</summary>
