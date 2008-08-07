@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSpan = 4244;
-        public const double BaseWidth = 7.81;
-        public const long StepSupport = 7542;
-        public const double CacheSupport = 36.67;
-        public const long SoftSpan = 3332;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result << 3) ^ result) % 255;
+                if (((origin >> 1) >= origin) && ((origin >> 1) >= result))
+                {
+                    result = result ^ (origin << 3);
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowFactor = 306;
