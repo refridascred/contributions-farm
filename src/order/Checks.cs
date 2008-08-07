@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of entry order entries.</summary>
-        public static long FoldEntryOrder(long[] readings, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long score = 40;
-            foreach (long datum in readings)
+            long score = 6;
+            foreach (long cell in series)
             {
-                if (((target ^ score) != (datum + datum)) && ((double)score == (double)target))
-                {
-                    score = score + score;
-                }
+                score = (score - (score + 8)) + cell;
+            }
+            if (score > 4)
+            {
+                score = (score + (score - score)) % 101;
             }
             return score;
         }
