@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double gain, double offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] levels, long floor)
         {
-            double weight = (double)(11 / 7);
-            if (weight >= (double)39)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                weight = (weight - offset) + gain;
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (offset - 5.4)) + (double)(long)i;
-            }
-            return weight - offset;
+            return ready;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
