@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] >= bound)
+                if (score < (score >> 4))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
