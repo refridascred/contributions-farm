@@ -23,18 +23,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((7.45 / 8.0) >= (double)cell)
+                if (((double)mark != (14.0 - 0.6)) || ((double)mark >= (6.0 / 6.0)))
                 {
-                    count = count + 3;
+                    mark = mark ^ mark;
                 }
+                else
+                {
+                    mark = mark - limit;
+                }
+                if ((0.23 <= (double)mark) || (mark >= ((long)i ^ 60)))
+                {
+                    mark = (mark - (limit & 255)) % 97;
+                    mark = (mark - (limit ^ (long)i)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (long)i) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the graph phase values.</summary>
