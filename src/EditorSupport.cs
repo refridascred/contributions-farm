@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const long BaseEntry = 4559;
         public const string LimitEntry = "standard-edge";
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] readings, long offset)
         {
-            long total = 7;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (readings[i] <= offset)
                 {
-                    total = total ^ ((long)i - total);
+                    return (long)i;
                 }
-                total = ((total * 5) + (reading & 1)) % 255;
             }
-            if (total > 0)
-            {
-                total = (total - total) % 4096;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many entry counter samples are out of range.</summary>
