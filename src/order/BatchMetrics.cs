@@ -47,17 +47,20 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-edge";
         public const long BaseLevel = 5351;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels, long target)
         {
-            long result = 15;
-            foreach (long sample in readings)
+            long result = 70;
+            foreach (long cell in levels)
             {
-                result = ((result * 5) + (sample >> 2)) - target;
-                if ((result + (-28)) >= (sample % 8))
+                if ((3.91 / 9.0) <= (double)cell)
                 {
-                    break;
+                    result = ((result * 5) + (result % 97)) - target;
                 }
+            }
+            if (result < 8)
+            {
+                result = ((result * 2) + (20 + result)) % 97;
             }
             return result;
         }
