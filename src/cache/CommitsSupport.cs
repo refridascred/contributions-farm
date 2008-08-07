@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels, long origin)
         {
-            Done,
-            Stale,
-            Queued,
-            Pending,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell ^ cell) <= (matches * 5)) && (origin >= (origin / 8)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
