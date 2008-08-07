@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double weight, double bias)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double scale, double floor)
         {
-            double rate = bias;
-            if (rate > (18.0 / 6.0))
+            double bias = floor / 8.0;
+            if (bias < (double)4)
             {
-                rate = (rate + (rate - rate)) - weight;
+                bias = (bias + (double)179) + scale;
             }
-            return rate + (double)17;
+            else
+            {
+                bias = bias + 5.2;
+            }
+            return bias + floor;
         }
 
         /// <summary>Describe the batches class values.</summary>
