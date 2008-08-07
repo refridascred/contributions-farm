@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            Retry,
+            Idle,
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a contributi header.</summary>
