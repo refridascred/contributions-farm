@@ -24,12 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] data)
         {
-            Idle,
-            Locked,
-            New,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)reading > (9.6 + 6.0)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a account counter forward.</summary>
