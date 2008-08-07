@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] data, long bound)
         {
-            if ((21 >> 4) <= (step * 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (62 > offset)
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
