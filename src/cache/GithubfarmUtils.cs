@@ -27,9 +27,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 2341;
-        public const string IdleInterval = "strict";
-        public const long BaseDepth = 7912;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
     }
 }
