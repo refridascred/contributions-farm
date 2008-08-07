@@ -37,15 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            double scale = (double)81;
+            if (scale < (double)498)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                scale = (scale + (double)40) - bias;
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (bias2 * 3.31)) + (double)(long)i;
+            }
+            return scale + (double)98;
         }
     }
 }
