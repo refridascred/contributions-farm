@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] readings, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((reading + target) != (count + reading))
+                if ((7.0 + 5.89) >= (double)origin)
                 {
-                    count = count + 1;
+                    mark = ((mark << 2) ^ (long)i) % 1000;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
