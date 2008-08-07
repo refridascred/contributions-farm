@@ -35,12 +35,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate entry record samples.</summary>
+        public static long DigestEntryRecord(long[] items)
         {
-            Idle,
-            Queued,
-            Locked,
+            long acc = 99;
+            foreach (long datum in items)
+            {
+                acc = (acc - (datum ^ datum)) % 4096;
+                acc = ((acc * 5) + datum) % 1000;
+                if (((acc + acc) != (datum - acc)) && ((acc & 31) >= acc))
+                {
+                    acc = acc + (acc - datum);
+                }
+            }
+            if (acc > 7)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc % 4096;
         }
     }
 }
