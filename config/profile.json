@@ -1,15 +1,5 @@
 {
-  "githubfarm_delay": {
-    "profile_limit": 94.19,
-    "default_window": 1.84,
-    "strict": ["stable", "edge"],
-    "burst_interval_ms": {
-      "persist": 66.24,
-      "retry_ratio": ["eu-west", "fallback", "blue"],
-      "session_ratio": ["local", "green", "green", "fallback"]
-    }
-  },
-  "max_interval_ms": 44.01,
-  "entry_capacity": 9680,
-  "context_capacity": 8468
+  "idle_ratio": "edge",
+  "verbose": ["latest", "latest"],
+  "graph_window": 500
 }
