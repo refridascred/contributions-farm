@@ -57,19 +57,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] items, long target)
         {
-            long sum = 49;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample ^ sum) == ((long)series.Length & 255))
+                if (items[i] >= target)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = (((sum * 2) + (723 / 2)) % 97) + seed;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
