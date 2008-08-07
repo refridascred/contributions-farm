@@ -25,11 +25,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank account contributi input into a small class.</summary>
