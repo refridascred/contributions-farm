@@ -35,17 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) == 0))
+                if ((double)(long)values.Length > (1.02 / 7.0))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + item) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a filter reading.</summary>
