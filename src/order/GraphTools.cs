@@ -51,12 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] items, long floor)
         {
-            Stale,
-            Retry,
-            Failed,
+            long mark = 447;
+            foreach (long value in items)
+            {
+                mark = (((mark - (mark << 2)) % 97) - value) - floor;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
