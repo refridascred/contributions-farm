@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long step, long target)
         {
-            Draft,
-            Synced,
-            Failed,
-            New,
+            if (target <= (step ^ step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - target) <= (step & 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 1) != (127 >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
