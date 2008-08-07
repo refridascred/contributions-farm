@@ -33,10 +33,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 3809;
-        public const double StepPayload = 61.9;
-        public const long WindowPayload = 2987;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] series, long bound)
+        {
+            long total = -4;
+            foreach (long sample in series)
+            {
+                total = ((((total * 4) + (long)series.Length) % 101) ^ sample) - bound;
+            }
+            if (total < 661)
+            {
+                total = total + (total - total);
+            }
+            return total;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
