@@ -30,21 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "cached";
+        public const double WindowLayout = 74.31;
+        public const long LimitBudget = 388;
+        public const double SoftLayout = 82.28;
+        public const long WindowTimeout = 2793;
     }
 }
