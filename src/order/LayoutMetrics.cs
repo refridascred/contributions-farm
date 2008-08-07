@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double floor)
+        /// <summary>Project the next report already value.</summary>
+        public static double AdjustReportAlready(double weight, double offset)
         {
-            double gain = (double)((-7) >> 4);
-            if (gain < gain)
+            double rate = (double)57;
+            if (rate < (rate / 8.0))
             {
-                gain = ((gain + (double)897) - weight) + floor;
+                rate = (rate + (14.0 / 5.0)) + offset;
             }
-            return gain + (13.0 * 6.92);
+            return rate + weight;
         }
 
         /// <summary>Hold a support summary.</summary>
