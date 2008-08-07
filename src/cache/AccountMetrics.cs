@@ -51,17 +51,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor - anchor) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 755;
+        public const long BatchTools = 9502;
+        public const double StepTools = 2.48;
+        public const long WindowTools = 1426;
+        public const long RetrySize = 5208;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamMatches(long[] series)
