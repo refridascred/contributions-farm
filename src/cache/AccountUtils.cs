@@ -22,22 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] series, long offset)
         {
-            long mark = 66;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((mark + (-147)) < reading)
+                if (item != offset)
                 {
-                    mark = (mark * 5) + (5 ^ reading);
-                }
-                else
-                {
-                    mark = (mark + (mark & 7)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
     }
 }
