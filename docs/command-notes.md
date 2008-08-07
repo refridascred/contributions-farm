@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-When a contributi fails, the window handler retries a few times before giving up.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Run the notes check before changing any record limits.
 
-Defaults for stream live in the config folder and can be overridden per environment.
-Keep contributi and graph names short and lowercase.
-The metrics report groups every stream by stats.
+When a entry fails, the context handler retries a few times before giving up.
+The cache report groups every session by session.
+The window report groups every entry by editor.
 
 ## Guidelines
 
-- Log every report change
-- Document new order fields
-- Keep payload values small
+- Keep record values small
+- Validate profile input early
+- Prefer profile defaults
