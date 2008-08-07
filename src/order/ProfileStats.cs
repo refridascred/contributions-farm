@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] levels, long offset)
         {
-            double scale = gain;
-            if (scale >= gain)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                scale = scale - 14.0;
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (gain * 3.9)) + (double)(long)i;
-            }
-            return scale + (double)50;
+            return stale;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
