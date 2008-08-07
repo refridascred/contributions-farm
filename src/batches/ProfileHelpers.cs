@@ -65,14 +65,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] items, long origin)
         {
-            Closed,
-            Retry,
-            Queued,
-            Ready,
-            Stale,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of record readings.</summary>
