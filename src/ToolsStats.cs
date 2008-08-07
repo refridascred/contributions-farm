@@ -44,11 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheLevel = 1373;
-        public const long WindowStream = 3217;
-        public const double DefaultStream = 58.35;
-        public const long MaxStream = 1052;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Failed,
+            Pending,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double weight, double span)
