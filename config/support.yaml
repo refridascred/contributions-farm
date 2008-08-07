@@ -1,8 +1,31 @@
 # support settings
-batch_threshold: fallback
-min_ttl:
-  - cached
-  - open
-  - edge
-  - staging
-account_window: false
+profile_delay:
+  - 481
+  - 344
+  - 115
+base_depth: 93
+min_timeout_count:
+  burst_ratio_s: false
+  base_ratio_ms: 27.98
+  cache_retries_ms:
+    context_interval:
+      - standard
+      - open
+      - legacy
+      - open
+    audit: 60
+    idle_interval: edge
+    compress: true
+  retry_capacity_pct:
+    - legacy
+    - latest
+    - primary
+  cache_threshold_pct:
+    editor_threshold:
+      - open
+      - edge
+      - edge
+    batches_limit: 1944
+    contributi_retries: true
+    flush_limit_pct: 4516
+    persist: 250
