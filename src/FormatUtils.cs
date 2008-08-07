@@ -13,21 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Locate a report notes reading by value.</summary>
+        public static long LocateReportNotesIndex(long[] data, long limit)
         {
-            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] >= limit)
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
