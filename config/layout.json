@@ -1,21 +1,8 @@
 {
-  "account_limit": {
-    "format_capacity": "eu-west",
-    "verbose": ["stable", "eu-west", "cached"],
-    "retry_threshold_count": "standard",
-    "batch_size_ms": 100
-  },
-  "min_depth_s": {
-    "persist": "edge",
-    "batch_ttl_pct": 60,
-    "filter_limit": ["edge", "green"],
-    "strict": {
-      "readonly": "stable",
-      "cache_timeout_ms": 387,
-      "soft_ratio": 60.61
-    },
-    "route_window": "edge"
-  },
-  "warm_ttl_s": ["stable", "fallback", "local"],
-  "profile_retries": 6663
+  "compress": "blue",
+  "retry_ttl_pct": ["stable", "standard", "latest", "open"],
+  "dry_run": "open",
+  "poll_ttl_ms": "latest",
+  "retry_interval_pct": [273, 10],
+  "audit": 32
 }
