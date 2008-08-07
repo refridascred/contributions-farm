@@ -20,20 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor << 3) ^ 1;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor * 4) + offset) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next cluster value.</summary>
