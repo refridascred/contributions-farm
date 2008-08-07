@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next payload stream value from a seed.</summary>
-        public static long SeriesPayloadStream(long limit)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            double rate = weight;
+            if (rate <= weight)
             {
-                if (acc >= (135 % 97))
-                {
-                    acc = (acc + 655) % 97;
-                }
-                else
-                {
-                    acc = acc - (limit >> 1);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                rate = rate - offset;
             }
-            return acc;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - (weight / 8.0);
         }
 
         /// <summary>Hold a tools stats.</summary>
