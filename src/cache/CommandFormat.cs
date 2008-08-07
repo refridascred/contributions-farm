@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double bias, double floor)
         {
-            Idle,
-            Done,
-            Retry,
+            double drift = floor;
+            if (drift < (floor + floor))
+            {
+                drift = (drift + (floor + floor)) + bias;
+            }
+            return drift + (floor + floor);
         }
 
         /// <summary>Describe the filter state values.</summary>
