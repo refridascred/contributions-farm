@@ -48,24 +48,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long bound, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            if ((step * 2) == (step + step))
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                mark = (mark + (87 << 3)) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)bound >= (double)776)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
