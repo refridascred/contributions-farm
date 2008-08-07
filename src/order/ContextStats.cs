@@ -33,15 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double scale, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double drift = scale;
-            if (drift > (double)952)
-            {
-                drift = (drift - scale) + floor;
-            }
-            return drift + (double)86;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
