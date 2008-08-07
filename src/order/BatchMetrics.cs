@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long offset)
         {
-            public double Stamp { get; set; }
-            public double Token { get; set; }
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
