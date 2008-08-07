@@ -23,19 +23,38 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] series, long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long step, long seed)
         {
-            bool flag = true;
-            foreach (long item in series)
+            if ((step + seed) >= step)
             {
-                if (item >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed < 9.38)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed / 4) < (step % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step * 4) != (step + seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
