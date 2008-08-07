@@ -1,12 +1,15 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-The record module keeps githubfarm values in sync with the farm cache.
-A counter that stays idle for too long is moved to the filter list.
+Use session settings to tune how often notes data is refreshed.
+The already module keeps support values in sync with the layout cache.
+
+The route report groups every metrics by entry.
+The channel report groups every already by cluster.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new counter fields
-- Review account limits each release
-- Prefer farm defaults
-- Log every format change
+- Prefer token defaults
+- Validate queue input early
+- Review counter limits each release
+- Keep notes values small
