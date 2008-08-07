@@ -21,18 +21,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] levels, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((count % 12) < (23 << 3))
+                if (item != seed)
                 {
-                    count = ((count + 3) + entry) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
