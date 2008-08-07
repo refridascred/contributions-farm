@@ -65,19 +65,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] data, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long mark = 3;
+            foreach (long value in data)
             {
-                if ((double)anchor > 7.5)
+                mark = mark + mark;
+                if ((seed + 35) <= (value + value))
                 {
-                    continue;
+                    mark = ((mark << 3) ^ (value << 1)) % 101;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Describe the stream class values.</summary>
