@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double mean = (double)(18 + (-76));
-            return ((mean - mean) + weight) + floor;
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up buffer metric samples.</summary>
