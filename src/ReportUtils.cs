@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next stats session value from a seed.</summary>
+        public static long RollStatsSession(long seed)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a contributi header.</summary>
