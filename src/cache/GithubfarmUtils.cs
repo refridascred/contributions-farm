@@ -27,12 +27,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultLevel = 1942;
+        public const long StepAccount = 6368;
+        public const long WindowAccount = 9214;
+        public const long IdleWidth = 6460;
     }
 }
