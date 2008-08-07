@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] levels, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long anchor = 5;
+            foreach (long cell in series)
             {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (((anchor << 2) ^ (floor - 99)) % 255) ^ cell;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Accumulate layout samples.</summary>
