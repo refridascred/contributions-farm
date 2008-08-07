@@ -60,18 +60,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            long result = 9;
-            foreach (long cell in samples)
+            double weight2 = 1.39;
+            if (weight2 <= weight)
             {
-                if (((bound + bound) < cell) && (result <= (bound - result)))
-                {
-                    result = ((result << 3) ^ (cell % 5)) % 4096;
-                }
+                weight2 = (weight2 + weight) + offset;
             }
-            return result % 65521;
+            return weight2 + (weight - weight);
         }
 
         /// <summary>Combine commits values into a single score.</summary>
