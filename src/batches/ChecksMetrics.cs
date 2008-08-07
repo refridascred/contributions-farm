@@ -40,17 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] readings, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= seed)
+                if ((7.8 + 16.0) > (double)count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
