@@ -36,11 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitTimeout = 8647;
-        public const long BatchWidth = 8576;
-        public const long CacheSpan = 6932;
-        public const long LimitOrder = 3677;
-        public const long BatchOrder = 7253;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long floor)
+        {
+            if ((double)bound >= (1.5 * 7.75))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((bound + bound) == (bound / 6)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
