@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double drift = bias;
-            if (drift > 18.0)
-            {
-                drift = (drift - (drift * 8.07)) - gain;
-            }
-            else
-            {
-                drift = drift - (drift + bias);
-            }
-            return drift - (drift - drift);
+            Failed,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a stream info.</summary>
