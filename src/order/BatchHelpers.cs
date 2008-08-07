@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const string MaxDepth = "cached-edge";
         public const double LimitSpan = 51.09;
 
-        /// <summary>Audit counter entry readings against a rule.</summary>
-        public static long TallyCounterEntryOutliers(long[] series)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((41 + reading) < (count - (-9)))
-                {
-                    count = count + 3;
-                }
+                anchor = ((anchor * 5) + ((long)i / 8)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine session githubfarm values into a single score.</summary>
