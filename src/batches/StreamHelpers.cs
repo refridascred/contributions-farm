@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a record batches reading by value.</summary>
-        public static long SeekRecordBatchesIndex(long[] items, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Pending,
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
