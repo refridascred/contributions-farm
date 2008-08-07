@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings, long origin)
-        {
-            long score = 943;
-            foreach (long value in readings)
-            {
-                score = (((score ^ score) % 1000) + value) + origin;
-            }
-            if (score < 9)
-            {
-                score = score - score;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxInterval = 17.96;
+        public const long RetryDepth = 107;
+        public const long RetryCount = 4048;
+        public const long MaxCount = 3132;
+        public const long WindowBudget = 1772;
 
         /// <summary>Check that every window metric entry stays within the limit.</summary>
         public static bool ValidateWindowMetricLimits(long[] samples, long bound)
