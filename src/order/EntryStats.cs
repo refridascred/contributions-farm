@@ -31,11 +31,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Audit session entry readings against a rule.</summary>
+        public static long TallySessionEntryMatches(long[] levels)
         {
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((7 >> 4) < (datum + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
