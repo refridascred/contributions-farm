@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a metrics tools pair into a bucket.</summary>
-        public static long BucketMetricsTools(long seed, long target)
+        /// <summary>Fold a list of checks notes readings.</summary>
+        public static long CombineChecksNotes(long[] items)
         {
-            if ((seed & 255) >= (seed / 5))
+            long score = 4;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target >= (target ^ target)) && ((seed * 2) <= (seed + target)))
+                score = (score + score) % 65521;
+                if ((score - entry) == (entry * 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target - 993) == (target + 63)) && ((double)target != (double)(-2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target / 3) > (seed % 16))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
