@@ -79,14 +79,11 @@ namespace Common.Utilities
         public const double WindowSupport = 90.4;
         public const long RetrySupport = 609;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Ready,
-            New,
-            Draft,
-            Retry,
-            Stale,
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
