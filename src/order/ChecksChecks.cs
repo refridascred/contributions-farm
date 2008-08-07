@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardScore = 1615;
-        public const long StepInterval = 3005;
-        public const long StepLevel = 5206;
-        public const string IdleSchema = "legacy-1";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryInterval = 8601;
+        public const long BaseLevel = 4075;
+        public const long MaxCounter = 5264;
+        public const long BurstCounter = 526;
+        public const string BaseCounter = "legacy-edge";
 
         /// <summary>Check that every farm format entry stays within the limit.</summary>
         public static bool GuardFarmFormatLimits(long[] data, long limit)
