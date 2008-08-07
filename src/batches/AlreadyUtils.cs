@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double ratio, double bias)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            double scale = (double)(10 + 432);
-            for (int i = 0; i < 5; i++)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                scale = ((scale - bias) + (double)(long)i) - ratio;
+                sum = (sum + (sum & 3)) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return scale + scale;
+            return sum;
         }
 
         /// <summary>Iterate the session farm series from a seed.</summary>
