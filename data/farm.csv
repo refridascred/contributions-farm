@@ -1,7 +1,9 @@
-id,label,active,level
-1,984,legacy,local
-2,stable,494,6.12
-3,latest,698,525
-4,edge,291,72
-5,edge,15.29,343
-6,487,759,green
+id,token,score
+1,236,strict
+2,78.55,75
+3,531,fallback
+4,33.92,standard
+5,37.3,612
+6,59.59,95
+7,74.85,strict
+8,617,835
