@@ -35,9 +35,9 @@ namespace Common.Utilities
         public const double IdleSupport = 3.82;
         public const long MinInterval = 7296;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowBudget = 3308;
-        public const long LimitTools = 9369;
-        public const string WindowScore = "open-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "standard";
+        public const long IdleStream = 2504;
+        public const double BaseStream = 44.4;
     }
 }
