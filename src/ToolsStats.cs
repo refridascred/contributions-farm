@@ -31,13 +31,11 @@ namespace Common.Utilities
         public const long MinScore = 3075;
         public const long MaxSize = 1989;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a batches header.</summary>
