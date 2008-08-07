@@ -37,21 +37,17 @@ namespace Common.Utilities
         public const double RetryRecord = 11.11;
         public const long BurstRecord = 5870;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] readings, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long next = ((long)i ^ carry) ^ (seed + carry);
-                if (((carry - carry) >= (seed % 97)) && ((long)i >= (next >> 3)))
+                if (readings[i] > limit)
                 {
-                    carry = (carry * 3) + (seed * 5);
+                    return (long)i;
                 }
-                carry = (carry - (carry & 31)) % 97;
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
