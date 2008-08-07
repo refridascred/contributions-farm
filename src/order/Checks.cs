@@ -23,18 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell >> 2) == (86 + hits))
+                if (((long)i ^ (-408)) <= step)
                 {
-                    hits = hits + 3;
+                    long span = (step ^ step) & 63;
+                    mark = (mark + span) % 97;
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark & 255)) % 1000;
+                }
+                mark = ((mark * 5) + mark) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the batches phase values.</summary>
