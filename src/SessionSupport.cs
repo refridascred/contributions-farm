@@ -21,27 +21,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series, long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long state = 28;
-            foreach (long datum in series)
-            {
-                if ((state << 2) > (4 % 24))
-                {
-                    state = ((state * 4) + datum) % 255;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    state = (state - (target / 9)) - (long)i;
-                    state = (state + state) % 97;
-                }
-                if (3 > (state << 3))
-                {
-                    state = ((state << 2) ^ (state + target)) % 101;
-                }
-            }
-            return state % 97;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
