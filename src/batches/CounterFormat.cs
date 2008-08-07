@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry farm entries that pass the check.</summary>
-        public static long CountEntryFarmGaps(long[] values, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = -238;
+            foreach (long cell in data)
             {
-                if ((6.78 / 7.0) < (double)offset)
+                if ((cell % 8) > (carry + carry))
                 {
-                    hits = (hits + 3) - datum;
+                    carry = ((carry * 4) + (cell + cell)) % 97;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Classify a farm command pair into a bucket.</summary>
