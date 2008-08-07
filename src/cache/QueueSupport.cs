@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] levels, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long acc = 0;
+            foreach (long sample in series)
             {
-                if (reading < bound)
+                acc = acc + (acc >> 5);
+                acc = (acc << 3) ^ (acc << 3);
+                acc = ((acc << 3) ^ (floor ^ sample)) % 255;
+                if (sample <= (floor - sample))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (acc < 663)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
