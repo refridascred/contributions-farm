@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleTimeout = 9153;
-        public const long BaseCount = 5511;
-        public const long MinSize = 8519;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double weight, double floor)
+        {
+            double bias = (double)(267 >> 5);
+            if (bias < (double)9)
+            {
+                bias = (bias - bias) + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (bias / 7.0)) + (double)(long)i;
+            }
+            return bias + (floor + 18.0);
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double weight, double span)
