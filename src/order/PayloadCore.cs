@@ -28,22 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] data, long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double bias, double span)
         {
-            long count = 0;
-            foreach (long item in data)
+            double bias2 = span;
+            if (bias2 > span)
             {
-                if ((count + (-484)) <= (count + item))
-                {
-                    count = (count + 2) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = (bias2 - (double)14) + bias;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + (double)738;
+            }
+            return bias2 - span;
         }
     }
 }
