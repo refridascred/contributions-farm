@@ -33,20 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((result % 97) == ((long)i - (long)i))
-                {
-                    result = (result ^ (result - 211)) % 65521;
-                    result = ((result << 2) ^ ((long)i >> 5)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            Ready,
+            Pending,
+            Draft,
         }
     }
 }
