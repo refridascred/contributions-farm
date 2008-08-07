@@ -34,13 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] samples, long target)
         {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
