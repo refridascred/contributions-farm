@@ -41,15 +41,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 2061;
         public const long MaxLayout = 9641;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double rate, double span)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            double mean = rate;
-            if (mean >= span)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean - (double)59;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return mean + 2.0;
+            return result;
         }
     }
 }
