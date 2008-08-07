@@ -1,12 +1,15 @@
 {
-  "soft_threshold": [148, 4, 455],
-  "hard_ratio": {
-    "base_limit_ms": ["open", "cached"],
-    "base_timeout": "stable",
-    "warm_interval_count": 40.26,
-    "poll_depth": "staging",
-    "hard_capacity_s": 5910,
-    "sync_capacity_s": 2934
+  "githubfarm_delay": {
+    "profile_limit": 94.19,
+    "default_window": 1.84,
+    "strict": ["stable", "edge"],
+    "burst_interval_ms": {
+      "persist": 66.24,
+      "retry_ratio": ["eu-west", "fallback", "blue"],
+      "session_ratio": ["local", "green", "green", "fallback"]
+    }
   },
-  "poll_threshold_pct": "standard"
+  "max_interval_ms": 44.01,
+  "entry_capacity": 9680,
+  "context_capacity": 8468
 }
