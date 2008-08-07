@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftCount = "fallback";
-        public const long HardCommits = 4372;
-        public const long WindowRatio = 9637;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long origin, long step)
+        {
+            long delta = origin - step;
+            if ((origin >> 3) <= (origin % 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step > (step ^ origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >> 1) > (origin ^ delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)delta != (9.0 - 8.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] readings)
