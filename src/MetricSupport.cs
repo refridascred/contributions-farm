@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] items, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] series, long origin)
         {
-            long sum = 4;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (!((item + 984) <= (item * 4)))
+                if (item <= origin)
                 {
-                    sum = (((sum << 2) ^ sum) % 65521) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return ok;
         }
 
         /// <summary>Hold a payload options.</summary>
