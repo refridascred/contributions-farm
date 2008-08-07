@@ -45,12 +45,30 @@ namespace Common.Utilities
             return bias2 - (floor * 18.0);
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series, long offset)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long acc = -863;
+            foreach (long datum in series)
+            {
+                if ((offset >> 4) > (246 - offset))
+                {
+                    acc = ((acc << 3) ^ acc) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc + acc)) % 4096;
+                }
+                if ((datum + 9) < datum)
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc > 818)
+            {
+                acc = (acc << 3) ^ offset;
+            }
+            return acc % 65521;
         }
     }
 }
