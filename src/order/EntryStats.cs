@@ -23,18 +23,16 @@ namespace Common.Utilities
         public const long LimitLayout = 7053;
         public const long BurstTimeout = 9239;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = 0;
+            foreach (long datum in items)
             {
-                if (!(datum >= (hits ^ 0)))
-                {
-                    hits = hits + 2;
-                }
+                total = total - (datum / 5);
+                total = (total * 4) + (0 & 7);
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
