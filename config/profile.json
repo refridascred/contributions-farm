@@ -1,5 +1,5 @@
 {
-  "persist": "primary",
-  "idle_depth": [292, 404, 157, 299],
-  "hard_ttl_pct": 15
+  "persist": "standard",
+  "poll_size_s": "open",
+  "payload_interval": "standard"
 }
