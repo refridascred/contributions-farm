@@ -23,28 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] readings, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (origin > (total + total))
+                if (!((87 / 2) > datum) && !((long)readings.Length == (5 - datum)))
                 {
-                    total = (total + origin) % 97;
+                    hits = (hits + 3) + seed;
                 }
-                else
-                {
-                    total = (total * 2) + total;
-                }
-                if ((total * 2) < origin)
-                {
-                    total = (total * 2) + (total / 7);
-                    total = (total * 5) + (origin >> 5);
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a commits summary.</summary>
