@@ -28,12 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit queue farm readings against a rule.</summary>
+        public static long MeasureQueueFarmOutliers(long[] levels, long floor)
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value / 4) >= (matches >> 5))
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
