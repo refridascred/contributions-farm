@@ -24,18 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long state = 23;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.82 * 1.0) < (double)datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state - (datum & 255)) % 101;
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
