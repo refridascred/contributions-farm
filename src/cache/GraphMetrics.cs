@@ -39,18 +39,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] series, long origin)
+        /// <summary>Match up record buffer samples.</summary>
+        public static long PairRecordBufferCount(long[] data)
         {
-            long score = 588;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin < (reading * 2)) && ((16.0 - 19.0) <= (double)reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score * 4) + (reading + score)) % 255;
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
