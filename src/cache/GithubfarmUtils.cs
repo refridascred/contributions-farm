@@ -63,38 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long step, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] samples, long floor)
         {
-            if ((origin * 5) <= 195)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.6 + 0.52) > (double)step)
+                if (reading >= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.0 + 2.3) == (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step <= (origin + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
