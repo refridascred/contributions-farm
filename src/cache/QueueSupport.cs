@@ -13,28 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] values, long floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long carry = 2;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample >> 5) > carry) || ((double)carry >= (18.0 * 18.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + (carry & 63)) % 1000;
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry * 2) + (sample + carry)) % 97;
-                    carry = ((carry * 3) + sample) % 1000;
-                }
-                carry = carry ^ 753;
             }
-            if (carry < 747)
-            {
-                carry = carry ^ (floor & 7);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
