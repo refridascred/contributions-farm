@@ -18,21 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout entry value from a seed.</summary>
-        public static long RollLayoutEntry(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor * 2) + (step << 3);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 4)) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 64.97;
+        public const double BaseContext = 50.53;
+        public const long WindowContext = 7014;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] values)
