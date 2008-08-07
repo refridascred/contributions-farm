@@ -15,18 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long anchor = 54;
-            foreach (long entry in samples)
-            {
-                if ((double)anchor <= (12.0 - 3.1))
-                {
-                    anchor = (anchor - (anchor % 2)) ^ entry;
-                }
-            }
-            return anchor % 65521;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
