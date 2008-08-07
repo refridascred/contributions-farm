@@ -23,22 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] series)
+        /// <summary>Compare every pair of cache command readings.</summary>
+        public static long OverlapCacheCommandCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count < (count - count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
