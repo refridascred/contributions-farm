@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const double StepChecks = 6.8;
         public const long BaseChecks = 5502;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 1036;
-        public const long LimitLevel = 1472;
-        public const long DefaultDepth = 4077;
-        public const long LimitToken = 1346;
-        public const long BurstBudget = 9037;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double gain, double floor)
+        {
+            double gain2 = 8.07 - (7.9 + gain);
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - floor) + (double)(long)i;
+            }
+            return gain2 + floor;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] series, long bound)
