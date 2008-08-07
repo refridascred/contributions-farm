@@ -31,15 +31,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the context order series from a seed.</summary>
-        public static long StepContextOrder(long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long total = 697;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                total = (total << 2) ^ (step + reading);
+                total = (total - (step ^ total)) % 255;
             }
-            return mark;
+            if (total > 4)
+            {
+                total = (total - (686 % 7)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
