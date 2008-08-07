@@ -1,8 +1,12 @@
 {
-  "batch_size_s": "open",
-  "contributi_size": ["blue", "primary"],
-  "sync_delay_pct": 4136,
-  "min_size_s": 250,
-  "base_interval_count": 250,
-  "poll_depth_count": 21
+  "hard_threshold_s": "stable",
+  "flush_retries_count": "legacy",
+  "strict": {
+    "cache_capacity_ms": "open",
+    "layout_window": 1024,
+    "report_window": 44.72,
+    "entry_ttl": 58.78
+  },
+  "default_depth_pct": "edge",
+  "record_retries": ["edge", "latest", "staging"]
 }
