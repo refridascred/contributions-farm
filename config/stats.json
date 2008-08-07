@@ -1,14 +1,8 @@
 {
-  "sync_threshold": ["edge", "cached", "eu-west"],
-  "sync_limit": 10.78,
-  "checks_window": {
-    "idle_interval_pct": 26,
-    "base_ttl_pct": {
-      "cache_timeout_s": "eu-west",
-      "retry_size_count": false,
-      "editor_ratio": 82
-    },
-    "cache_size_ms": false
-  },
-  "base_ttl": "eu-west"
+  "editor_capacity": 27,
+  "cache_delay_count": ["strict", "legacy"],
+  "payload_ratio": 22.72,
+  "entry_window": ["primary", "green"],
+  "base_interval": "cached",
+  "flush_delay_s": 1024
 }
