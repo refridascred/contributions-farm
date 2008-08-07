@@ -23,18 +23,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] samples, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((bound - datum) >= seen)
+                if (sample <= origin)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
