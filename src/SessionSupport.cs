@@ -41,29 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long target, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long target2)
         {
-            if ((step - 96) < (step / 4))
+            if (((target << 1) <= target2) || ((target >> 3) < (target2 << 2)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (756 < step)
+                if (!((double)target2 >= (8.97 - 3.8)))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((target << 3) == (target / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 0;
                 }
             }
         }
