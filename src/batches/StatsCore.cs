@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a editor farm reading.</summary>
-        public static double ScaleEditorFarm(double rate, double floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            double drift = (double)(87 * 4);
-            if (drift > rate)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift + (rate * 11.0)) + floor;
+                if ((hits ^ hits) >= (hits + hits))
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                drift = drift + 2.6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (5.11 - drift)) + (double)(long)i;
-            }
-            return drift + (drift * 0.13);
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
