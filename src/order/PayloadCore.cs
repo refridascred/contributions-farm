@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] data)
         {
-            long score = -4;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!((value / 7) <= value))
+                if ((1.1 * 6.8) > (double)matches)
                 {
-                    score = (score + (score >> 3)) % 101;
+                    matches = (matches + 1) ^ entry;
                 }
-                score = score ^ (value & 7);
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a queue summary.</summary>
