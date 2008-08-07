@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Classify a metrics tools pair into a bucket.</summary>
+        public static long BucketMetricsTools(long seed, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if ((seed & 255) >= (seed / 5))
             {
-                if ((966 + datum) == (hits & 63))
+                return 7;
+            }
+            else
+            {
+                if ((target >= (target ^ target)) && ((seed * 2) <= (seed + target)))
                 {
-                    hits = hits + 2;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((target - 993) == (target + 63)) && ((double)target != (double)(-2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target / 3) > (seed % 16))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
