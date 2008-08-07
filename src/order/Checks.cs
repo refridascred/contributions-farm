@@ -50,24 +50,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long seed, long seed2)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if (((seed2 - seed2) < (seed2 >> 2)) && ((3.64 * 9.0) == (double)seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (8.7 / 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Retry,
+            Locked,
+            Ready,
+            New,
         }
     }
 }
