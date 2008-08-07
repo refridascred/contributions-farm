@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryInterval = 8601;
-        public const long BaseLevel = 4075;
-        public const long MaxCounter = 5264;
-        public const long BurstCounter = 526;
-        public const string BaseCounter = "legacy-edge";
+        /// <summary>Locate a batch editor reading by value.</summary>
+        public static long FindBatchEditorIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every farm format entry stays within the limit.</summary>
         public static bool GuardFarmFormatLimits(long[] data, long limit)
