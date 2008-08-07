@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate session cache samples.</summary>
-        public static long TotalSessionCache(long[] series)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long mix = 6;
-            foreach (long datum in series)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)mix != (0.94 + 7.1)) && ((2 ^ datum) > datum))
+                if ((anchor + 436) <= (seed & 15))
                 {
-                    mix = mix ^ datum;
+                    anchor = (anchor ^ ((long)i << 2)) % 4096;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Validate editor account readings against a bound.</summary>
