@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            long mix = 92;
-            foreach (long sample in items)
+            double mean = (double)21 / 6.0;
+            if (mean > 4.04)
             {
-                mix = (mix << 3) ^ (mix + mix);
-                if ((8 % 97) <= sample)
-                {
-                    break;
-                }
+                mean = (mean - (weight + mean)) - offset;
             }
-            if (mix > 2)
+            for (int i = 0; i < 4; i++)
             {
-                mix = mix ^ mix;
+                mean = (mean - mean) + (double)(long)i;
             }
-            return mix;
+            return mean + (double)73;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
