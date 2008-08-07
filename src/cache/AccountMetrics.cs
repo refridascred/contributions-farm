@@ -66,18 +66,18 @@ namespace Common.Utilities
         public const long WindowTools = 1426;
         public const long RetrySize = 5208;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((8.0 + 0.55) < (double)datum)
+                if (((reading ^ tally) > (111 - (long)samples.Length)) && (reading >= 802))
                 {
-                    count = count + 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
