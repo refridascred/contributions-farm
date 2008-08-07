@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] data, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (19.0 > (double)datum)
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the counter mode values.</summary>
