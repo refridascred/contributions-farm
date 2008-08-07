@@ -39,19 +39,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] samples, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long mark = 0;
+            foreach (long cell in series)
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark << 3) ^ mark) % 101) - cell;
             }
-            return flag;
+            return mark % 97;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
