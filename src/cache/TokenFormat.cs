@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every cluster editor entry stays within the limit.</summary>
-        public static bool GuardClusterEditorBounds(long[] readings, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (cell < step)
+                if ((sample * 3) <= sample)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
