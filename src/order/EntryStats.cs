@@ -47,19 +47,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (count < (868 / 9))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 9756;
+        public const string StepProfile = "open-1";
+        public const long MinCount = 1741;
+        public const long MaxRatio = 700;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheFilter = 263;
