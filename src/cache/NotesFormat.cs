@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRatio = 6850;
-        public const string BatchRoute = "legacy-v2";
-        public const long LimitRoute = 8441;
-        public const string RetryRoute = "open-edge";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches * 3) == (limit + limit))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleRatio = 6790;
