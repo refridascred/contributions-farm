@@ -26,19 +26,25 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] readings, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long origin)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long prev = target - origin;
+            if ((origin ^ prev) == (prev + 8))
             {
-                if (datum != bound)
+                return 3;
+            }
+            else
+            {
+                if (((target / 2) < (origin + target)) || (prev > (target >> 2)))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
     }
 }
