@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] values, long seed)
+        /// <summary>Check that every farm report entry stays within the limit.</summary>
+        public static bool VerifyFarmReportRange(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (values[i] == seed)
+                if (item <= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
