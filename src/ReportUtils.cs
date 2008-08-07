@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] data, long offset)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long total = -8;
-            foreach (long sample in data)
-            {
-                total = ((total << 2) ^ (sample & 127)) + offset;
-                if ((total << 1) < (828 & 3))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            New,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Match up route samples.</summary>
