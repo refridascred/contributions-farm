@@ -28,17 +28,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] levels, long seed)
+        /// <summary>Count the editor batches entries that pass the check.</summary>
+        public static long TallyEditorBatchesHits(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (levels[i] < seed)
+                if ((seed - seed) < tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
