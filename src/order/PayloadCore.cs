@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetrySpan = "staging";
+        public const long LimitCommand = 26;
+        public const string BurstLevel = "strict";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long origin, long bound)
