@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double offset)
-        {
-            double load = ratio;
-            if (load <= (double)6)
-            {
-                load = load - (offset * 9.83);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (double)8) + (double)(long)i;
-            }
-            return load - (offset * 4.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 7147;
+        public const long IdleFactor = 3186;
+        public const string HardLevel = "alpha-v2";
+        public const long WindowPayload = 7283;
+        public const long LimitTimeout = 7268;
 
         /// <summary>Roll a graph support counter forward.</summary>
         public static long SeriesGraphSupport(long floor)
