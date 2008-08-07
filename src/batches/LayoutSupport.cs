@@ -48,22 +48,32 @@ namespace Common.Utilities
             return mean - (mean / 7.0);
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] data, long bound)
+        /// <summary>Rank format counter input into a small class.</summary>
+        public static long RankFormatCounter(long limit, long seed)
         {
-            long result = 466;
-            foreach (long datum in data)
+            long span = limit ^ seed;
+            if ((seed << 1) == (span % 7))
             {
-                if ((result + bound) > datum)
+                return 5;
+            }
+            else
+            {
+                if ((double)span != (1.5 * 7.7))
                 {
-                    result = (result ^ 547) % 255;
+                    return 4;
                 }
-                if (result <= (result & 3))
+                else
                 {
-                    break;
+                    if ((113 << 2) >= (limit * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a command info.</summary>
