@@ -48,14 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Retry,
-            Paused,
-            Pending,
             Idle,
-            Stale,
+            Queued,
+            Locked,
         }
     }
 }
