@@ -27,19 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((8.0 - 17.0) == (double)seen)
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftRatio = 2906;
+        public const long BurstLevel = 6718;
+        public const string BurstInterval = "stable-v2";
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long RankBatch(long origin, long bound)
