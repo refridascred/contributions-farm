@@ -11,32 +11,15 @@ namespace Common.Utilities
         public const string BaseCounter = "fallback-1";
         public const string HardCounter = "strict-edge";
 
-        /// <summary>Rank layout filter input into a small class.</summary>
-        public static long ClassifyLayoutFilter(long target, long offset)
+        /// <summary>Project the next checks route value.</summary>
+        public static double AdjustChecksRoute(double gain, double offset)
         {
-            long diff = target ^ offset;
-            if ((diff - (-4)) == (target * 3))
+            double bias = gain;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                bias = (bias - (offset + offset)) + (double)(long)i;
             }
-            else
-            {
-                if ((double)offset != (double)55)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 + offset) == (target / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return bias + (double)7;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
