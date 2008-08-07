@@ -12,9 +12,5 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=173
+CHANNEL_LIMIT=462
 log "limit is ${CHANNEL_LIMIT}"
-
-for item in staging green; do
-    log "checking ${item}"
-done
