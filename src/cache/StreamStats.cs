@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] items)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((786 + count) <= (count >> 5))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a editor record.</summary>
