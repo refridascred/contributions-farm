@@ -15,13 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] items, long step)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
