@@ -48,14 +48,18 @@ namespace Common.Utilities
         public const string WindowFactor = "legacy-v2";
         public const double HardProfile = 26.77;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long origin)
         {
-            Ready,
-            Paused,
-            Queued,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches < (2.1 * 8.63))
+                {
+                    matches = ((matches + 3) ^ datum) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics state values.</summary>
