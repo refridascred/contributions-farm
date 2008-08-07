@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long bound, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long step2 = bound - step;
+            if (((step2 / 8) == (bound * 2)) && ((double)bound != (8.99 / 3.0)))
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((double)step2 >= (6.6 / 9.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
