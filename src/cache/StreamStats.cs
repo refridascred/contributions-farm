@@ -55,18 +55,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] data)
+        /// <summary>Classify a account queue pair into a bucket.</summary>
+        public static long ClassifyAccountQueue(long target, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            if (((double)floor > (9.92 / 6.0)) && ((floor / 5) < 101))
             {
-                if ((double)matches == (5.23 * 0.34))
+                return 5;
+            }
+            else
+            {
+                if (((1.5 / 9.0) > (double)floor) && ((double)target > (6.0 + 4.0)))
                 {
-                    matches = (matches + 3) ^ datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((79 & 63) < (floor * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
