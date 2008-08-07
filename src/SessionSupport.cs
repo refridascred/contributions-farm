@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long TallyFilterReportGaps(long[] data)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double span)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double weight = scale;
+            if (weight < 2.93)
             {
-                if ((double)(long)data.Length >= (double)value)
-                {
-                    hits = hits + 2;
-                }
+                weight = (weight + (double)910) - span;
             }
-            return hits;
+            return weight + weight;
         }
 
         /// <summary>Describe the layout status values.</summary>
