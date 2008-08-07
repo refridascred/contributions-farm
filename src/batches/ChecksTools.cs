@@ -23,11 +23,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 8.36;
-        public const long MinTimeout = 6634;
-        public const string DefaultTimeout = "cached-1";
-        public const long StepDepth = 6077;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinScore = 9942;
+        public const long BatchTools = 5704;
+        public const long BurstTools = 5713;
+        public const double BaseDepth = 95.02;
+        public const double DefaultTools = 52.44;
 
         /// <summary>Compare every pair of window farm readings.</summary>
         public static long CompareWindowFarmCount(long[] samples)
