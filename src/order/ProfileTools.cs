@@ -15,21 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
