@@ -16,24 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long limit, long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            if ((783 ^ limit) > (limit * 5))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((8.4 - 2.6) <= (double)seed) && (limit > (seed + seed)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
