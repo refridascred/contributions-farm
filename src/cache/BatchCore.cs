@@ -23,18 +23,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] readings, long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading << 1) == (long)readings.Length)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + bound;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a order profile sample.</summary>
