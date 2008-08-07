@@ -1,5 +1,8 @@
 {
-  "queue_retries": ["primary", "strict", "fallback", "standard"],
-  "persist": "stable",
-  "audit": [253, 390]
+  "sync_window": 8420,
+  "graph_ttl": 81.2,
+  "filter_ttl": 3.68,
+  "audit": 67,
+  "max_retries_ms": "standard",
+  "readonly": 6065
 }
