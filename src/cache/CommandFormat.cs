@@ -33,21 +33,9 @@ namespace Common.Utilities
         public const long StepScore = 1645;
         public const long StepFactor = 1331;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseScore = 7056;
+        public const string MinFilter = "stable-1";
+        public const string RetryFilter = "stable-v2";
     }
 }
