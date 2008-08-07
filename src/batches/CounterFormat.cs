@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
