@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit report format readings against a rule.</summary>
-        public static long MeasureReportFormatHits(long[] levels, long bound)
+        /// <summary>Validate graph contributi readings against a bound.</summary>
+        public static bool VerifyGraphContributiBounds(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((bound * 3) >= bound)
+                if (cell != seed)
                 {
-                    count = (count + 2) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
