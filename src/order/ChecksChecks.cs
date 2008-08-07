@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long StepLevel = 5206;
         public const string IdleSchema = "legacy-1";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] samples)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (!!(6.33 < (double)cell))
+                if (cell >= offset)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
