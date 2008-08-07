@@ -13,19 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] readings, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Synced,
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
