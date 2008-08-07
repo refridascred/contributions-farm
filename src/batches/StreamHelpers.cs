@@ -48,23 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema batches figure with a bias.</summary>
-        public static double SmoothSchemaBatches(double rate, double bias)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double floor)
         {
-            double scale = bias;
-            if (scale >= (rate * 5.1))
-            {
-                scale = scale - rate;
-            }
-            else
-            {
-                scale = scale + 20.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (6.49 + 9.8)) + (double)(long)i;
-            }
-            return scale - (6.27 - bias);
+            double bias = floor;
+            return (bias - bias) + rate;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
