@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest edge blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-stable}"
 case "${mode}" in
-    staging)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -21,7 +17,10 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=372
+log "limit is ${CHANNEL_LIMIT}"
