@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            long anchor = -48;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.83 / 9.0) != (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor * 2) + (1 >> 1);
-                    anchor = ((anchor * 5) + (cell + 4)) % 1000;
-                }
-                if ((-5) <= (cell + anchor))
-                {
-                    anchor = (anchor - (cell % 16)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
