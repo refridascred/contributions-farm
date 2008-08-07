@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 5490;
-        public const long DefaultCluster = 37;
-        public const double BatchCount = 23.57;
-        public const long HardCluster = 3000;
+        /// <summary>Check that every checks entry entry stays within the limit.</summary>
+        public static bool GuardChecksEntryBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double StepInterval = 95.4;
