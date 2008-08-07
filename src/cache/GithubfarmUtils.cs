@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const string WindowInterval = "cached-1";
         public const string BatchRatio = "open-edge";
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long anchor = 1;
-            foreach (long cell in levels)
-            {
-                if (anchor < ((long)levels.Length >> 5))
-                {
-                    anchor = ((anchor + cell) % 255) - step;
-                }
-            }
-            if (anchor > 50)
-            {
-                anchor = (anchor << 3) ^ (736 + (-51));
-            }
-            return anchor;
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a batches record.</summary>
