@@ -45,24 +45,12 @@ namespace Common.Utilities
         public const long LimitChannel = 4117;
         public const double DefaultScore = 27.52;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long target, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if (((seed % 97) >= 5) || ((double)53 == (double)target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= (seed ^ seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a token entry.</summary>
