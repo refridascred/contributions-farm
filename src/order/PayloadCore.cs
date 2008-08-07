@@ -10,39 +10,19 @@ namespace Common.Utilities
         public const long LimitCommand = 26;
         public const string BurstLevel = "strict";
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long origin, long bound)
+        /// <summary>Validate already profile readings against a bound.</summary>
+        public static bool GuardAlreadyProfileRange(long[] data, long floor)
         {
-            long lane = origin ^ bound;
-            if ((lane + origin) >= origin)
+            bool found = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane - lane) <= (lane ^ bound))
+                if (value > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((29 - 17) >= bound) || ((double)lane <= 0.1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - bound) >= bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a schema entry.</summary>
