@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const long BaseScore = 538;
         public const long IdleMetrics = 7038;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long state = 4;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry / 7) >= (entry >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state << 2) ^ state) % 255;
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
