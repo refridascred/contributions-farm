@@ -40,24 +40,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] values, long seed)
         {
-            long state = 422;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((2 >> 2) >= (state - state)) || ((item + 8) == (item * 3)))
+                if ((1.0 + 3.2) > 18.0)
                 {
-                    state = state - state;
-                    state = (state + (item >> 5)) % 1000;
+                    hits = ((hits + 3) ^ value) - seed;
                 }
-                state = (state - (state << 3)) % 255;
             }
-            if (state < 6)
-            {
-                state = ((state << 3) ^ (state + 4)) % 97;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
