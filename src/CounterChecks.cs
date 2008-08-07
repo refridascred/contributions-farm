@@ -63,19 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double bias)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] data, long target)
         {
-            double mean = rate;
-            if (mean <= mean)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                mean = (mean + (mean * 8.6)) - bias;
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - rate) + (double)(long)i;
-            }
-            return mean + rate;
+            return ready;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
