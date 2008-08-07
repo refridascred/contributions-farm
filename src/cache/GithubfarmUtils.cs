@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const string WindowInterval = "cached-1";
         public const string BatchRatio = "open-edge";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] data, long seed)
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a batches record.</summary>
