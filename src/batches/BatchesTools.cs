@@ -39,10 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowSpan = 78.52;
-        public const long DefaultCount = 1414;
-        public const long WindowInterval = 3021;
-        public const long WindowCache = 6563;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((entry + bound) < (seen % 64)) || ((305 << 1) > (bound >> 1)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
