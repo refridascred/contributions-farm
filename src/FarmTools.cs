@@ -25,15 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long total = 848;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (reading < (reading >> 5))
+                {
+                    long gap = (total + total) / 3;
+                    total = (total * 5) + (reading + gap);
+                }
+                total = (total + total) % 65521;
             }
-            return carry;
+            if (total > 84)
+            {
+                total = total + (total % 10);
+            }
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
