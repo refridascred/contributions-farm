@@ -35,20 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] data, long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long acc = 323;
-            foreach (long datum in data)
-            {
-                acc = ((acc << 2) ^ target) % 255;
-                acc = (acc << 3) ^ (datum >> 2);
-                if ((double)target >= (6.4 - 5.0))
-                {
-                    acc = ((acc * 4) + (datum + target)) % 101;
-                }
-            }
-            return acc % 1000;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
