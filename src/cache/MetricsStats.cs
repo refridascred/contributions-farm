@@ -38,18 +38,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] items, long target)
+        /// <summary>Check that every cache queue entry stays within the limit.</summary>
+        public static bool GuardCacheQueueLimits(long[] data, long target)
         {
-            long sum = 30;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((entry << 2) <= (target / 3))
+                if (reading >= target)
                 {
-                    sum = (sum ^ target) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
