@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long WindowDepth = 9652;
         public const long CacheDepth = 7730;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 2996;
-        public const string RetryRatio = "alpha";
-        public const long BatchRatio = 2456;
-        public const long WindowRoute = 9067;
-        public const long IdleRoute = 7153;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 664;
+        public const long IdleRatio = 1442;
+        public const string IdleLayout = "strict-edge";
+        public const double MinLevel = 10.44;
+        public const string HardLayout = "local-edge";
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
