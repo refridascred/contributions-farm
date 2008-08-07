@@ -68,21 +68,15 @@ namespace Common.Utilities
         public const long HardFilter = 4443;
         public const string MinFactor = "primary";
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 1;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix + 54) ^ entry;
             }
-            return seen;
+            return mix;
         }
     }
 }
