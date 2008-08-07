@@ -24,14 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryTimeout = 4383;
+        public const long StepGithubfarm = 3031;
+        public const long StepRatio = 7781;
+        public const long BurstSpan = 9624;
+        public const string BaseFactor = "fallback";
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] levels)
