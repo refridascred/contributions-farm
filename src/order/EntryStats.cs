@@ -17,12 +17,23 @@ namespace Common.Utilities
         public const string IdleDepth = "stable-v2";
         public const long HardInterval = 3449;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            Paused,
-            Draft,
-            Idle,
+            double mean = gain;
+            if (mean <= (mean / 5.0))
+            {
+                mean = (mean + mean) + span;
+            }
+            else
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 2.98) - (double)(long)i;
+            }
+            return mean + (gain / 9.0);
         }
 
         /// <summary>Digest a series of batches entries.</summary>
