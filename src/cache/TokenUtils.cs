@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long limit)
         {
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((168 <= (step * 2)) && ((double)step != (double)1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 5) > 132)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((0.62 * 7.0) != (double)limit) && ((6 * 2) > step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate route order readings against a bound.</summary>
