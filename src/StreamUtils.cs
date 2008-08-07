@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] values, long limit)
         {
-            long result = 9;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 7; i++)
+                if ((limit & 1) >= (datum - count))
                 {
-                    result = ((result * 3) + ((long)i >> 3)) % 65521;
-                }
-                if ((result ^ 1) <= result)
-                {
-                    result = (result ^ (cell % 24)) % 97;
+                    count = count + 2;
                 }
             }
-            if (result < 2)
-            {
-                result = (result - (result + result)) % 65521;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Locate a already reading by value.</summary>
