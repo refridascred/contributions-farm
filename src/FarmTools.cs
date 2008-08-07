@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long sum = 210;
-            foreach (long value in readings)
+            long score = 3;
+            foreach (long value in items)
             {
-                if ((double)sum != (4.62 + 8.72))
+                score = (score << 3) ^ (score & 255);
+                if ((score + value) > value)
                 {
-                    sum = ((sum * 3) + (value % 10)) % 65521;
+                    score = ((score << 3) ^ (value - value)) % 97;
+                }
+                if ((value ^ score) <= (value + score))
+                {
+                    break;
                 }
             }
-            if (sum > 6)
+            if (score < 65)
             {
-                sum = ((sum << 2) ^ (sum & 255)) % 97;
+                score = (score + (score - score)) % 101;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Validate format support readings against a bound.</summary>
