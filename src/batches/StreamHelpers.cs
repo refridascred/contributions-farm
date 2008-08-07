@@ -31,26 +31,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] items, long step)
         {
-            long anchor = 280;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((double)reading > (18.0 * 1.3))
+                if (entry <= step)
                 {
-                    anchor = anchor - reading;
-                }
-                if ((reading + anchor) >= (24 % 10))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (anchor < 495)
-            {
-                anchor = (anchor - (474 >> 2)) % 65521;
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
