@@ -49,21 +49,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Rank farm graph input into a small class.</summary>
+        public static long BucketFarmGraph(long step, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = step - bound;
+            if ((step ^ diff) == (diff * 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((1 + bound) <= (diff - step))
                 {
-                    if ((series[i] - series[j]) < 5)
+                    return 6;
+                }
+                else
+                {
+                    if (!((diff + bound) > ((-5) - diff)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step == (8.6 * 9.11))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
