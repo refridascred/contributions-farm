@@ -13,25 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((3 + (-8)) > offset)
+                if ((28 <= datum) && (((long)levels.Length - count) == (count / 3)))
                 {
-                    mix = (mix - (mix & 3)) % 101;
-                    mix = (mix ^ ((long)i << 1)) % 97;
-                    break;
+                    count = count + 3;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (((mix * 5) + 37) % 101) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the support status values.</summary>
