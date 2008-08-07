@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] values, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] values, long target)
         {
-            long mark = 7;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.6 - 7.0) != (double)mark)
+                if (values[i] > target)
                 {
-                    mark = (((mark * 2) + (datum + datum)) % 4096) - step;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
