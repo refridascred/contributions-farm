@@ -52,15 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if (5.71 > (double)(long)values.Length)
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
