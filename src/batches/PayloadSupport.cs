@@ -29,15 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] items, long bound)
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long TallyBatchesBatchOutliers(long[] data, long origin)
         {
-            long state = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 4) + (datum << 3)) - bound;
+                if ((datum / 5) < origin)
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
