@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a tools batches value against two limits.</summary>
-        public static long ClassifyToolsBatches(long step, long origin)
+        /// <summary>Count the command filter entries that pass the check.</summary>
+        public static long AuditCommandFilterOutliers(long[] data, long limit)
         {
-            if ((double)step > (0.3 - 1.56))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + origin) < (step & 15))
+                if ((hits & 1) != (limit / 9))
                 {
-                    return 2;
+                    hits = (hits + 1) - entry;
                 }
                 else
                 {
-                    if ((8.0 - 9.41) == (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
