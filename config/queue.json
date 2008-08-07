@@ -1,5 +1,5 @@
 {
-  "compress": "blue",
-  "soft_ttl": true,
-  "strict": ["strict", "fallback", "green", "latest"]
+  "min_interval_count": true,
+  "window_limit": "primary",
+  "warm_interval_ms": "fallback"
 }
