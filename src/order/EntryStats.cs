@@ -47,18 +47,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] values, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((1.0 + 3.2) > 18.0)
+                if (count < (868 / 9))
                 {
-                    hits = ((hits + 3) ^ value) - seed;
+                    count = (count + 1) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
