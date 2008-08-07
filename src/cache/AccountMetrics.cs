@@ -75,19 +75,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every graph support entry stays within the limit.</summary>
-        public static bool CheckGraphSupportLimits(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepSpan = 1474;
+        public const string RetryBudget = "legacy-v2";
+        public const string WindowWidth = "standard-v2";
+        public const long HardAlready = 2590;
     }
 }
