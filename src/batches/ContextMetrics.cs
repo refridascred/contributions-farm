@@ -40,10 +40,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowLevel = "cached-edge";
-        public const long BatchToken = 7528;
-        public const long BaseToken = 4039;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series, long limit)
+        {
+            long result = -7;
+            foreach (long cell in series)
+            {
+                result = ((result ^ (cell >> 3)) % 255) + limit;
+            }
+            return result;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long seed)
