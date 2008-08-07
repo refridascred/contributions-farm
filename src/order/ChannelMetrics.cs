@@ -39,18 +39,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] data, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((675 & 127) > origin)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            Active,
+            Closed,
+            Retry,
+            Done,
+            Stale,
         }
     }
 }
