@@ -1,6 +1,19 @@
 # githubfarm settings
-dry_run: strict
-flush_size: 81.27
-enabled: 30
-strict: true
-token_capacity: open
+max_window:
+  - latest
+  - cached
+  - staging
+  - local
+readonly: 60
+burst_ttl:
+  burst_timeout: green
+  route_interval: 13.7
+  burst_retries: latest
+  burst_size: 1024
+dry_run:
+  - 305
+  - 302
+persist: blue
+cache_delay:
+  - edge
+  - primary
