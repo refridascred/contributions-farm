@@ -63,13 +63,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 4.87;
+        public const long DefaultEntry = 4189;
+        public const double RetryBudget = 62.72;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long origin, long step)
