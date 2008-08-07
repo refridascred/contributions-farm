@@ -1,8 +1,8 @@
-id,owner,count,region
-1,494,68.28,87.76
-2,907,7.78,70.24
-3,fallback,12.09,542
-4,603,318,727
-5,880,592,76.49
-6,751,941,primary
-7,eu-west,71.82,cached
+id,weight,score
+1,latest,green
+2,852,413
+3,3.51,957
+4,243,fallback
+5,74,47
+6,85.96,latest
+7,181,primary
