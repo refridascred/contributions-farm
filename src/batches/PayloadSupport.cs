@@ -14,14 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] levels, long floor)
         {
-            Retry,
-            Done,
-            Closed,
-            Dropped,
-            Stale,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
