@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const string IdleDepth = "stable-v2";
         public const long HardInterval = 3449;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 8891;
-        public const long CacheSpan = 9804;
-        public const long LimitLayout = 7053;
-        public const long BurstTimeout = 9239;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Paused,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] items)
