@@ -42,11 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] data)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((((3 / 9) < seen) || (((-2) - 0) >= (datum % 5))) || (datum >= (datum % 24)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
