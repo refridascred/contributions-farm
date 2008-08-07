@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long seed)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
