@@ -1,8 +1,7 @@
 {
-  "editor_capacity": 27,
-  "cache_delay_count": ["strict", "legacy"],
-  "payload_ratio": 22.72,
-  "entry_window": ["primary", "green"],
-  "base_interval": "cached",
-  "flush_delay_s": 1024
+  "retry_window_ms": false,
+  "hard_size_pct": 1865,
+  "tools_window": 250,
+  "readonly": 86,
+  "audit": "primary"
 }
