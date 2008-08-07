@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm format entry stays within the limit.</summary>
-        public static bool GuardFarmFormatLimits(long[] data, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
