@@ -44,19 +44,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cache metric readings against a bound.</summary>
-        public static bool GuardCacheMetricBounds(long[] values, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (entry <= seed)
+                if (((4.59 <= (double)tally) && ((tally >> 1) > (item >> 5))) || !((tally - tally) <= tally))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the schema level values.</summary>
