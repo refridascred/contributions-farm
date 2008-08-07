@@ -31,21 +31,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up batch batches samples.</summary>
-        public static long OverlapBatchBatchesCount(long[] data)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
