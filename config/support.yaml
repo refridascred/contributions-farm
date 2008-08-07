@@ -1,7 +1,14 @@
 # support settings
-batch_ttl: cached
-persist: 9063
-audit: 7661
-burst_retries_s:
-  - staging
-  - local
+soft_depth:
+  audit: stable
+  base_timeout_ms: false
+  verbose: eu-west
+  batch_timeout: open
+compress: 19.06
+min_window_ms:
+  - eu-west
+  - edge
+  - cached
+  - cached
+hard_delay_ms: 8343
+poll_capacity: open
