@@ -28,17 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stats commits reading by value.</summary>
-        public static long SeekStatsCommitsIndex(long[] values, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (values[i] == offset)
+                if (entry <= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
