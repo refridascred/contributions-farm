@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 40.14;
+        public const long LimitBudget = 7487;
+        public const long LimitRatio = 7290;
 
         /// <summary>Validate report counter readings against a bound.</summary>
         public static bool GuardReportCounterLimits(long[] series, long offset)
