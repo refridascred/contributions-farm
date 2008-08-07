@@ -38,19 +38,10 @@ namespace Common.Utilities
         public const long LimitLayout = 7053;
         public const long BurstTimeout = 9239;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((matches - matches) != (sample + matches)) || !((matches / 3) >= (sample & 15)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 2759;
+        public const long BaseSpan = 5672;
+        public const string DefaultLevel = "staging-1";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] levels, long bound)
