@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Compare every pair of counter checks readings.</summary>
+        public static long PairCounterChecksCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 7)
+                    if ((readings[i] + readings[j]) > 2)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
