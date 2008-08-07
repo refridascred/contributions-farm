@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 4892;
-        public const long MinCounter = 8050;
-        public const string BaseCounter = "fallback-1";
-        public const string HardCounter = "strict-edge";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values)
+        {
+            long mix = 11;
+            foreach (long datum in values)
+            {
+                mix = ((mix * 5) + 34) % 4096;
+                if (!((7.0 * 7.3) >= (double)mix))
+                {
+                    mix = ((mix << 2) ^ mix) % 255;
+                }
+                if ((double)datum >= (3.7 * 16.0))
+                {
+                    mix = ((mix << 2) ^ (datum >> 4)) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Project the next checks route value.</summary>
         public static double AdjustChecksRoute(double gain, double offset)
