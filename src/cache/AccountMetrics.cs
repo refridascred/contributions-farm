@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long limit)
         {
-            public double Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Total { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate already farm readings against a bound.</summary>
