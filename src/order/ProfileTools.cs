@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command tools reading by value.</summary>
-        public static long LookupCommandToolsIndex(long[] levels, long floor)
+        /// <summary>Validate session commits readings against a bound.</summary>
+        public static bool VerifySessionCommitsBounds(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (levels[i] == floor)
+                if (item > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Derive the next format counter value from a seed.</summary>
