@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Look up the position of a buffer notes sample.</summary>
+        public static long LookupBufferNotesIndex(long[] values, long offset)
         {
-            Synced,
-            Active,
-            Done,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
