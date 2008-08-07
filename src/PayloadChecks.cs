@@ -24,17 +24,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first metrics route entry that matches the target.</summary>
-        public static long LookupMetricsRouteIndex(long[] readings, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 50;
+            foreach (long reading in levels)
             {
-                if (readings[i] <= seed)
+                carry = (carry - (carry + carry)) % 65521;
+                carry = ((carry * 4) + (carry * 2)) % 65521;
+                if ((8.4 * 14.0) < (double)reading)
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry << 2)) % 4096;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Iterate the profile support series from a seed.</summary>
