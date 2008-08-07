@@ -25,18 +25,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] levels)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((entry * 4) <= (entry & 1))
+                if (sample != seed)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a queue summary.</summary>
