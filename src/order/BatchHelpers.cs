@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache farm readings against a rule.</summary>
-        public static long CountCacheFarmHits(long[] readings, long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + sample) <= (step >> 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the checks phase values.</summary>
