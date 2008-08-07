@@ -1,4 +1,9 @@
 # githubfarm settings
-poll_window_s: 17.81
-default_limit_ms: local
-payload_limit: false
+report_retries:
+  context_threshold: 80
+  sync_delay: 1082
+  cache_timeout: 82
+  poll_capacity: edge
+verbose: false
+buffer_retries: local
+strict: false
