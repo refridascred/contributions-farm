@@ -26,13 +26,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] readings, long bound)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
