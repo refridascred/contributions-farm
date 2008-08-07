@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long BaseEntry = 4559;
         public const string LimitEntry = "standard-edge";
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] readings, long offset)
+        /// <summary>Iterate the queue schema series from a seed.</summary>
+        public static long RollQueueSchema(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] <= offset)
+                if ((anchor + anchor) == ((long)i - step))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (723 >> 5);
+                    anchor = anchor ^ step;
                 }
+                anchor = (anchor ^ (anchor / 8)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up counter samples.</summary>
