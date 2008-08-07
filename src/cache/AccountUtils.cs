@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ratio2 - 5.1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long mark = 489;
+            foreach (long cell in items)
             {
-                carry = carry - (offset / 6);
-                if ((double)offset == (4.71 / 6.0))
-                {
-                    carry = (carry ^ (1 * 3)) % 101;
-                }
-                carry = (carry - carry) % 101;
-                carry = ((carry * 3) + (long)i) % 4093;
+                mark = (((mark << 3) ^ ((-501) ^ seed)) % 101) ^ cell;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
