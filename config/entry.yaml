@@ -1,5 +1,5 @@
 # entry settings
-soft_retries: 78.92
-persist: 83.72
-entry_interval: 9458
-warm_interval_pct: 63.36
+soft_limit_pct: standard
+min_ttl: 5182
+max_capacity_count: 22.21
+hard_size_ms: 8307
