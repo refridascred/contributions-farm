@@ -36,15 +36,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double ratio = (weight / 6.0) * 0.7;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + (ratio * 4.0);
+            Retry,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
