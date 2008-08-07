@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchCount = 9408;
+        public const long IdleInterval = 1932;
+        public const string SoftAlready = "standard-1";
+        public const double BurstAlready = 48.85;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 4298;
