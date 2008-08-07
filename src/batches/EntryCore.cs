@@ -43,24 +43,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] levels, long floor)
         {
-            long mix = 1;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (limit < (mix * 2))
+                if (cell != floor)
                 {
-                    mix = ((mix << 2) ^ 38) % 4096;
-                    continue;
-                }
-                mix = (mix << 3) ^ (mix + mix);
-                if (limit >= (entry % 3))
-                {
-                    mix = ((mix << 3) ^ (mix + (long)series.Length)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
     }
 }
