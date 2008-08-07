@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a stats batches pair into a bucket.</summary>
-        public static long RankStatsBatches(long bound, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] values, long floor)
         {
-            long delta = bound + offset;
-            if (((offset & 63) > offset) || ((-1) <= (394 - offset)))
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset - delta) > 6))
+                if (item < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the metrics level values.</summary>
