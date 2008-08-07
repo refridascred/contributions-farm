@@ -28,12 +28,17 @@ namespace Common.Utilities
         public const double CacheLevel = 89.32;
         public const long WindowChecks = 8517;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                state = state ^ (-3);
+                state = (state - (state - state)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
