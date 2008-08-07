@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Fold a list of route session readings.</summary>
+        public static long TallyRouteSession(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 317;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (limit <= (limit - 282))
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry * 4) + (sample + limit);
                 }
             }
-            return seen;
+            if (carry < 88)
+            {
+                carry = carry ^ (limit % 24);
+            }
+            return carry;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
