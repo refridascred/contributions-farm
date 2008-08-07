@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardScore = 1615;
+        public const long StepInterval = 3005;
+        public const long StepLevel = 5206;
+        public const string IdleSchema = "legacy-1";
 
         /// <summary>Match up record samples.</summary>
         public static long PairRecordCount(long[] readings)
