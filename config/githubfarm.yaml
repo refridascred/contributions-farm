@@ -1,8 +1,21 @@
 # githubfarm settings
-soft_timeout_ms: 76.62
-profile_retries:
-  - 489
-  - 113
-  - 363
-hard_window_pct: edge
-notes_timeout: false
+idle_threshold: 22.85
+payload_limit: 6.37
+max_capacity: 31.11
+readonly:
+  verbose: 8626
+  schema_timeout:
+    warm_timeout: true
+    readonly: stable
+    soft_retries_count: 92.92
+    batch_ttl_s: 87
+    window_interval: 62.02
+    retry_interval: false
+  checks_timeout: stable
+  base_window: 578
+  cache_timeout_count:
+    - 164
+    - 421
+    - 38
+  retry_depth: edge
+idle_limit_ms: 573
