@@ -14,25 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            long gap = step - bound;
-            if (((double)bound >= 7.0) && ((step / 5) <= (gap + bound)))
+            double weight = (double)((-36) & 63);
+            if (weight > rate)
             {
-                return 5;
+                weight = weight + (weight - offset);
             }
-            else
-            {
-                if (((double)gap != (8.75 - 0.29)) && ((double)bound > (8.0 * 0.9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return weight - weight;
         }
 
         /// <summary>Project the next queue value.</summary>
