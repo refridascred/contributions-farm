@@ -16,18 +16,16 @@ namespace Common.Utilities
         public const long DefaultSpan = 8583;
         public const long BurstLayout = 1073;
 
-        /// <summary>Audit graph githubfarm readings against a rule.</summary>
-        public static long AuditGraphGithubfarmMatches(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((tally - item) <= 6) && ((tally % 5) != (tally << 2))) || (tally > (item / 5)))
-                {
-                    tally = tally + 1;
-                }
+                mix = (mix * 2) + (origin << 2);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
