@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const double WindowStats = 51.49;
         public const long BaseStats = 3855;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSpan = 4586;
-        public const long SoftCount = 5131;
-        public const long StepProfile = 78;
-        public const long StepScore = 1645;
-        public const long StepFactor = 1331;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((bound - datum) >= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseScore = 7056;
