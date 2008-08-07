@@ -16,14 +16,20 @@ namespace Common.Utilities
             return drift + (floor + floor);
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            Active,
-            Synced,
-            Stale,
-            Locked,
-            Failed,
+            long sum = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (sum > (step + (long)i))
+                {
+                    sum = sum + (sum ^ sum);
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
