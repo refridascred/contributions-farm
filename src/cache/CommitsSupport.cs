@@ -66,12 +66,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double gain, double floor)
-        {
-            double ratio = (gain - gain) / 6.0;
-            return (ratio - ratio) + floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftSpan = 8548;
+        public const long DefaultSpan = 2664;
+        public const long BaseCache = 3503;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
