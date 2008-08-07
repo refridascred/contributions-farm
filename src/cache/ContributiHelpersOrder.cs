@@ -32,15 +32,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            double drift = 0.6;
-            if (drift >= drift)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                drift = drift + (9.3 - span);
+                if (4.6 >= (double)limit)
+                {
+                    score = (score << 3) ^ (long)i;
+                }
+                else
+                {
+                    score = (score ^ 1) % 255;
+                }
+                if ((limit << 2) <= (score ^ limit))
+                {
+                    score = score ^ ((long)i << 3);
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return drift - (gain - drift);
+            return score;
         }
     }
 }
