@@ -53,18 +53,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] series, long target)
+        /// <summary>Digest a series of metric command entries.</summary>
+        public static long CombineMetricCommand(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long acc = 465;
+            foreach (long item in samples)
             {
-                if (348 <= (target ^ item))
+                acc = (acc - (item + 2)) % 255;
+                if ((double)acc > (20.0 - 10.0))
                 {
-                    seen = seen + 1;
+                    acc = (acc - (acc << 2)) % 97;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc << 2);
                 }
             }
-            return seen;
+            if (acc > 83)
+            {
+                acc = acc + (acc % 8);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
