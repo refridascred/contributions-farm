@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string MaxDepth = "standard";
         public const long HardTimeout = 6571;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Idle,
-            Closed,
-            Active,
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
