@@ -12,18 +12,15 @@ namespace Common.Utilities
             return (rate + (4.0 + bias)) + offset;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] readings)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count ^ reading) == (count / 2))
-                {
-                    count = count + 3;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
