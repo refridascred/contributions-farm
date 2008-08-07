@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] levels)
         {
-            Dropped,
-            New,
-            Done,
-            Failed,
-            Queued,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry * 4) <= (entry & 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
