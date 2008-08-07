@@ -56,13 +56,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] readings, long seed)
         {
-            Synced,
-            Ready,
-            Queued,
-            Dropped,
+            long state = 547;
+            foreach (long value in readings)
+            {
+                if ((double)seed <= (double)state)
+                {
+                    state = (state + (state * 2)) - value;
+                }
+                if ((15.0 - 19.0) == (double)state)
+                {
+                    break;
+                }
+            }
+            if (state > 500)
+            {
+                state = (state + ((-372) - (-34))) % 65521;
+            }
+            return state;
         }
     }
 }
