@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches already entries.</summary>
-        public static long DigestBatchesAlready(long[] items, long target)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long anchor = 873;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) <= (anchor / 2))
-                {
-                    anchor = ((anchor * 2) + target) % 97;
-                }
-            }
-            return anchor % 97;
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
