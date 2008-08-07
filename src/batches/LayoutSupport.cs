@@ -33,22 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already entry values into a single score.</summary>
-        public static long FoldAlreadyEntry(long[] series, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double gain, double bias)
         {
-            long result = 4;
-            foreach (long entry in series)
+            double mean = bias - bias;
+            if (mean > (double)(-636))
             {
-                if ((result <= 33) && ((entry % 60) >= limit))
-                {
-                    result = (result << 2) ^ (entry - limit);
-                }
-                if (((limit + limit) != (entry + limit)) && (result >= (limit * 2)))
-                {
-                    break;
-                }
+                mean = (mean + mean) + gain;
             }
-            return result;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (mean / 7.0);
         }
 
         /// <summary>Fold a list of editor readings.</summary>
