@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values)
-        {
-            long state = 51;
-            foreach (long reading in values)
-            {
-                state = ((state * 4) + (22 % 3)) + reading;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxSize = "primary-v2";
+        public const long StepChecks = 4675;
+        public const double BaseTimeout = 83.07;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] data, long limit)
