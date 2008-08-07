@@ -1,5 +1,8 @@
 # support settings
-verbose: 6.38
-poll_threshold_pct: blue
-burst_ttl_pct: 36.49
-sync_delay_count: open
+retry_size_s: 61.2
+warm_ttl:
+  - blue
+  - local
+  - blue
+enabled: 59
+readonly: 5.41
