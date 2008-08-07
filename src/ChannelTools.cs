@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two account command measurements.</summary>
-        public static double SmoothAccountCommand(double gain, double span)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            double scale = gain;
-            if (scale <= gain)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - (gain - span);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (double)282;
-            }
-            return scale + (gain + gain);
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
