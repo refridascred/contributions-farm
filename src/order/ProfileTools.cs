@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Locate a command tools reading by value.</summary>
+        public static long LookupCommandToolsIndex(long[] levels, long floor)
         {
-            Idle,
-            Dropped,
-            Done,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next format counter value from a seed.</summary>
