@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable legacy; do
+for item in latest primary edge; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
