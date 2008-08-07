@@ -1,9 +1,11 @@
 # entry settings
-editor_delay: 11
-burst_ratio_pct: fallback
-compress:
-  max_retries_ms: 92.86
-  sync_limit: edge
-  batch_interval: 6717
-  burst_retries: stable
-readonly: 72.6
+verbose: 2706
+sync_interval_pct: false
+metric_limit:
+  - 48
+  - 440
+max_ttl_s:
+  - 9
+  - 10
+  - 456
+buffer_window: 30
