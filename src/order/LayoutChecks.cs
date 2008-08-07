@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long bound, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if ((offset - bound) < (64 ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (8 >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a support stats.</summary>
