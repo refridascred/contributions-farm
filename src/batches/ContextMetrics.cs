@@ -58,17 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
