@@ -78,18 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((hits ^ hits) <= (hits * 4))
+                if ((origin << 3) > seen)
                 {
-                    hits = (hits + 2) ^ entry;
+                    seen = (seen + 3) - datum;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
