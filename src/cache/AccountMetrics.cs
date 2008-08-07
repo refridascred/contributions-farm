@@ -52,19 +52,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route checks entry stays within the limit.</summary>
-        public static bool GuardRouteChecksLimits(long[] levels, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long mix = 3;
+            foreach (long item in series)
             {
-                if (cell > step)
+                if ((item % 60) <= item)
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix + (mix - item)) % 255) + offset;
+                }
+                if ((2 << 2) == (mix + 0))
+                {
+                    mix = (mix + item) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 65521;
                 }
             }
-            return ready;
+            if (mix < 3)
+            {
+                mix = ((mix << 3) ^ mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
