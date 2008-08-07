@@ -13,26 +13,28 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine notes metric values into a single score.</summary>
-        public static long TallyNotesMetric(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] values, long floor)
         {
-            long anchor = 32;
-            foreach (long datum in readings)
+            long carry = 2;
+            foreach (long sample in values)
             {
-                if ((9.0 / 8.0) > (double)anchor)
+                if (((sample >> 5) > carry) || ((double)carry >= (18.0 * 18.0)))
                 {
-                    anchor = (anchor - (datum >> 5)) % 101;
+                    carry = (carry + (carry & 63)) % 1000;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (datum % 5)) % 65521;
+                    carry = ((carry * 2) + (sample + carry)) % 97;
+                    carry = ((carry * 3) + sample) % 1000;
                 }
+                carry = carry ^ 753;
             }
-            if (anchor > 83)
+            if (carry < 747)
             {
-                anchor = (anchor ^ (anchor / 3)) % 101;
+                carry = carry ^ (floor & 7);
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
