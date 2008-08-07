@@ -37,22 +37,19 @@ namespace Common.Utilities
             return load + (load * 19.0);
         }
 
-        /// <summary>Audit session token readings against a rule.</summary>
-        public static long TallySessionTokenGaps(long[] levels, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((value + seen) <= bound)
+                if (sample >= limit)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
