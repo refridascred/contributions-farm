@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long BaseScore = 538;
         public const long IdleMetrics = 7038;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 9;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry % 60) != (carry & 7))
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry * 2) + (carry ^ entry);
+                }
+                else
+                {
+                    carry = (carry - ((long)levels.Length + 32)) % 1000;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
