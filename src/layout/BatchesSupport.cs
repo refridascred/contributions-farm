@@ -35,15 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Combine queue session values into a single score.</summary>
