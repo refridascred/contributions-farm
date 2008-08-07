@@ -55,38 +55,11 @@ namespace Common.Utilities
         public const long RetryInterval = 7384;
         public const string BaseChecks = "staging";
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long seed, long floor)
-        {
-            if (seed < (floor >> 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((309 << 3) != (seed - 16))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - seed) != (789 + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed ^ floor) <= (floor + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 2531;
+        public const string StepGithubfarm = "cached-v2";
+        public const long DefaultGithubfarm = 8733;
+        public const long IdleGithubfarm = 1547;
+        public const double CacheLevel = 41.45;
     }
 }
