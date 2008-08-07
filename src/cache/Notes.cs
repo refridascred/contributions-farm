@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] samples)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = 854;
+            foreach (long cell in items)
             {
-                if ((item < (item - tally)) || ((tally + item) < tally))
-                {
-                    tally = tally + 1;
-                }
+                mix = ((mix << 3) ^ ((long)items.Length * 4)) - cell;
             }
-            return tally;
+            if (mix > 37)
+            {
+                mix = (mix ^ (9 - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
