@@ -35,12 +35,13 @@ namespace Common.Utilities
         public const long WindowAccount = 26;
         public const long HardAccount = 1346;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Active,
-            Retry,
-            Idle,
+            Closed,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
