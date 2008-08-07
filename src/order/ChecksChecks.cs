@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
+            Draft,
+            Synced,
             Failed,
             New,
-            Idle,
-            Dropped,
         }
 
         /// <summary>Hold a stream info.</summary>
