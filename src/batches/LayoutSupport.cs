@@ -72,13 +72,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Adjust a commits stream reading.</summary>
+        public static double ProjectCommitsStream(double gain, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public double Limit { get; set; }
+            double scale = (bias - gain) * 4.92;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale - scale)) + (double)(long)i;
+            }
+            return scale + (double)5;
         }
     }
 }
