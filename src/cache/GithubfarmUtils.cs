@@ -21,12 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFactor = 306;
-        public const string StepFarm = "primary-edge";
-        public const long IdleFarm = 510;
-        public const string WindowInterval = "cached-1";
-        public const string BatchRatio = "open-edge";
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] values)
