@@ -35,27 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout schema samples.</summary>
-        public static long DigestLayoutSchema(long[] samples, long step)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            long mark = 4;
-            foreach (long cell in samples)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((mark ^ (long)samples.Length) > step)
+                if (!(offset > (result % 3)))
                 {
-                    mark = ((mark << 2) ^ step) % 65521;
+                    result = ((result * 3) + 705) % 255;
                 }
-                mark = (mark * 2) + mark;
-                if (!((cell >> 1) == (cell + cell)))
-                {
-                    mark = ((mark * 5) + mark) % 255;
-                }
-                if ((step * 2) >= (cell % 10))
-                {
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
