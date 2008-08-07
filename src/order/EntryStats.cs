@@ -60,13 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long bound)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long result = 9;
+            foreach (long cell in samples)
+            {
+                if (((bound + bound) < cell) && (result <= (bound - result)))
+                {
+                    result = ((result << 3) ^ (cell % 5)) % 4096;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
