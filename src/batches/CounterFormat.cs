@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxMetric = 39.57;
-        public const string WindowTimeout = "stable";
-        public const long LimitLevel = 906;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Locked,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long IterateBatches(long floor)
