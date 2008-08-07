@@ -61,11 +61,22 @@ namespace Common.Utilities
             return rate - (ratio + ratio);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinDepth = 8286;
-        public const long LimitSession = 1383;
-        public const string BatchSession = "standard-1";
-        public const double HardSession = 58.64;
-        public const long BatchInterval = 4003;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((double)5 >= (17.0 * 19.0)) && (20.0 <= (double)sample)))
+                {
+                    count = (count + 2) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
