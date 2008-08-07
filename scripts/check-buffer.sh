@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging cached green eu-west; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=445
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=361
+log "limit is ${BUFFER_LIMIT}"
