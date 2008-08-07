@@ -23,14 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long floor, long step)
         {
-            Idle,
-            Draft,
-            Dropped,
-            Stale,
-            Failed,
+            if (step > (796 & 63))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor > (2.4 - 5.2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step < (8 - floor)) || (floor > (step >> 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
