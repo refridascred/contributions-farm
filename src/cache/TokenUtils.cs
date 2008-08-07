@@ -47,13 +47,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
