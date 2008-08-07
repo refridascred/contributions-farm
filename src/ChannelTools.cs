@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long offset)
+        /// <summary>Blend two account command measurements.</summary>
+        public static double SmoothAccountCommand(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = gain;
+            if (scale <= gain)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                scale = scale - (gain - span);
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)282;
+            }
+            return scale + (gain + gain);
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
