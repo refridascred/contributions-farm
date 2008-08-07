@@ -69,13 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] data)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits ^ hits) <= (hits * 4))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
     }
 }
