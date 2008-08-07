@@ -1,10 +1,6 @@
 {
-  "compress": "primary",
-  "cluster_ttl": true,
-  "batch_ttl": {
-    "hard_capacity": "strict",
-    "retry_limit": ["fallback", "local", "local", "standard"],
-    "payload_delay": true,
-    "default_timeout_ms": "legacy"
-  }
+  "strict": 14.84,
+  "soft_retries_ms": false,
+  "batch_threshold_pct": 21.87,
+  "retry_ratio": 100
 }
