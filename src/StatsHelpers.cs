@@ -17,32 +17,13 @@ namespace Common.Utilities
         public const long MinSize = 1682;
         public const double SoftInterval = 42.78;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long bound2)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long step = bound - bound2;
-            if ((545 & 127) <= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound * 2) <= 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + bound) >= (step - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the context mode values.</summary>
