@@ -28,32 +28,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metrics channel value against two limits.</summary>
-        public static long SortMetricsChannel(long target, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long lane = target - floor;
-            if (target < (target % 100))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor > (24 ^ floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target >> 1) > (target - lane)) || ((2.7 - 7.6) == (double)floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
