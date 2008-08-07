@@ -21,11 +21,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchScore = 4819;
-        public const long SoftGithubfarm = 2631;
-        public const long BatchGithubfarm = 9922;
-        public const long DefaultCount = 4841;
-        public const long CacheLevel = 6662;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
