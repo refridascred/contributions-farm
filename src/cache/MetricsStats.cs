@@ -28,12 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Locate a metric checks reading by value.</summary>
+        public static long SeekMetricChecksIndex(long[] readings, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
