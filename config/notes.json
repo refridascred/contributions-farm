@@ -1,13 +1,7 @@
 {
-  "soft_depth": {
-    "farm_capacity": 4.85,
-    "batch_depth_count": "fallback",
-    "entry_depth": 100,
-    "dry_run": false,
-    "sync_threshold": 83,
-    "burst_ratio_s": "local"
-  },
-  "batches_depth": "stable",
-  "persist": true,
-  "default_size_count": false
+  "flush_ratio_ms": [433, 178, 295],
+  "strict": [282, 121, 464],
+  "max_threshold_ms": 1024,
+  "readonly": 6936,
+  "burst_capacity": "stable"
 }
