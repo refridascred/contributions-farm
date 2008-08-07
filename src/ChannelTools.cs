@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((3 - limit) < (tally % 10))
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepLevel = 965;
+        public const string DefaultTimeout = "fallback";
+        public const long BurstSupport = 8136;
+        public const double RetrySize = 15.99;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
