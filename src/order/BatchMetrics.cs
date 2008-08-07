@@ -12,12 +12,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long limit, long seed)
         {
-            Locked,
-            Failed,
-            Active,
+            if ((783 ^ limit) > (limit * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((8.4 - 2.6) <= (double)seed) && (limit > (seed + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
