@@ -32,21 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count commits cache pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCacheCount(long[] values)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Synced,
+            Failed,
         }
     }
 }
