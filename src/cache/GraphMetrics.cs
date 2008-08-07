@@ -57,19 +57,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] items, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] values, long step)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long datum in values)
             {
-                if ((matches + sample) >= (sample + offset))
+                if ((double)step == (8.5 * 3.0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) + datum;
                 }
             }
             return matches;
