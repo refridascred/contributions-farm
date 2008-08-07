@@ -30,12 +30,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Find the first counter metrics entry that matches the target.</summary>
+        public static long LocateCounterMetricsIndex(long[] data, long offset)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
