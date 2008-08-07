@@ -23,19 +23,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate metrics support readings against a bound.</summary>
-        public static bool GuardMetricsSupportBounds(long[] data, long bound)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
