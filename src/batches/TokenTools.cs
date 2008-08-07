@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] < floor)
+                if ((double)count < (4.06 / 8.0))
                 {
-                    return (long)i;
+                    count = (count + 3) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the stats level values.</summary>
