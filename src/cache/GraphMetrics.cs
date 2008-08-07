@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            Queued,
-            Active,
-            Closed,
+            long state = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the payload kind values.</summary>
