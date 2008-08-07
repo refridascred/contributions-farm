@@ -35,15 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Done,
-            Failed,
-            Queued,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowRatio = 469;
+        public const long StepInterval = 7990;
+        public const double BaseOrder = 49.04;
+        public const double BurstOrder = 14.53;
+        public const string SoftTimeout = "staging";
 
         /// <summary>Combine layout report values into a single score.</summary>
         public static long DigestLayoutReport(long[] readings)
