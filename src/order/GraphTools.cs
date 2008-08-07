@@ -64,9 +64,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 5835;
-        public const long MaxRoute = 3356;
-        public const double BaseLevel = 32.05;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
