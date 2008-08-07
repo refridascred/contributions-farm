@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] items, long step)
+        /// <summary>Combine checks commits values into a single score.</summary>
+        public static long FoldChecksCommits(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long carry = 6;
+            foreach (long value in series)
             {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((((carry * 4) + (carry + 73)) % 1000) + value) + floor;
             }
-            return flag;
+            return carry % 97;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
