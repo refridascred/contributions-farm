@@ -30,21 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = (scale + 3.77) + (bias * 2.0);
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale2 = (scale2 + (4.0 + scale)) - (double)(long)i;
             }
-            return hits;
+            return scale2 + scale2;
         }
 
         /// <summary>Define support limits and defaults.</summary>
