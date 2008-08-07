@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] values, long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long item in values)
+            if (!((double)origin2 >= (1.08 * 11.0)))
             {
-                if (item <= offset)
+                return 6;
+            }
+            else
+            {
+                if (origin >= (origin + 835))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin / 7) > (9 >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
