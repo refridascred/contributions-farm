@@ -1,7 +1,12 @@
 {
-  "sync_ratio_pct": 36.16,
-  "flush_capacity": ["edge", "cached", "standard"],
-  "contributi_size": 75.89,
-  "commits_size": 60.89,
-  "soft_ttl_count": 60
+  "stream_limit": "stable",
+  "default_interval_ms": true,
+  "support_capacity": "cached",
+  "default_threshold_count": {
+    "metrics_threshold": "latest",
+    "filter_interval": "open",
+    "compress": "stable",
+    "burst_delay": "fallback"
+  },
+  "default_ttl_count": ["cached", "latest", "edge"]
 }
