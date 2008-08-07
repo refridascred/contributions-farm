@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] data, long origin)
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
