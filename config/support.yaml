@@ -1,10 +1,15 @@
 # support settings
-contributi_timeout:
+min_delay_ms: false
+session_limit:
+  strict: 2231
+  hard_delay_pct: cached
+  buffer_threshold: eu-west
+order_depth: true
+enabled:
+  min_limit_ms: staging
+  warm_window_ms: strict
+  hard_ratio: 85.55
+base_retries_s:
   - edge
   - strict
-  - fallback
-  - open
-base_timeout_s: 29
-persist: 7879
-burst_capacity_pct: primary
-verbose: edge
+  - green
