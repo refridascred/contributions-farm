@@ -13,21 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count report counter pairs that satisfy a relation.</summary>
-        public static long MatchReportCounterCount(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 31;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((long)levels.Length & 255) != ((-59) + acc)) || ((9.9 * 1.0) != (double)entry))
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - 9) % 65521;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
