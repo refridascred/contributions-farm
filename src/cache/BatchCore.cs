@@ -16,14 +16,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Failed,
-            Locked,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "legacy";
+        public const string IdleSize = "strict-v2";
+        public const double RetryDepth = 74.68;
+        public const string DefaultSize = "legacy";
+        public const string BaseInterval = "cached";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportLimits(long[] series, long step)
