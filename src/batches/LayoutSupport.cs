@@ -40,13 +40,12 @@ namespace Common.Utilities
         public const string CacheLevel = "strict-v2";
         public const long MaxContext = 4943;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
+            Pending,
+            Paused,
             Idle,
-            Stale,
-            Failed,
-            Dropped,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
