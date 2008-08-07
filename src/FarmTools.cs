@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string DefaultLayout = "strict";
         public const long BurstTimeout = 4152;
 
-        /// <summary>Measure how many commits context samples are out of range.</summary>
-        public static long AuditCommitsContextMatches(long[] readings, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((reading - matches) > (long)readings.Length)
+                if ((bound >> 1) < value)
                 {
-                    matches = (matches + 3) + floor;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the command class values.</summary>
