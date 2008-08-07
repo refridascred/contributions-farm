@@ -23,12 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinScore = 9942;
-        public const long BatchTools = 5704;
-        public const long BurstTools = 5713;
-        public const double BaseDepth = 95.02;
-        public const double DefaultTools = 52.44;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((7.45 / 8.0) >= (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of window farm readings.</summary>
         public static long CompareWindowFarmCount(long[] samples)
