@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer checks measurements.</summary>
-        public static double SmoothBufferChecks(double ratio, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] levels, long offset)
         {
-            double mean = 3.04;
-            return ((mean - (double)138) + ratio) + floor;
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading >= (reading + 36))
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format record.</summary>
