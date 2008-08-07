@@ -78,15 +78,31 @@ namespace Common.Utilities
             return ratio - (ratio - offset);
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long step, long limit)
         {
-            double drift = (double)(498 - 47);
-            if (drift > (span * 2.73))
+            if (((10.0 + 9.98) <= (double)limit) || ((double)limit < (3.0 + 5.42)))
             {
-                drift = (drift + drift) - weight;
+                return 6;
             }
-            return drift - drift;
+            else
+            {
+                if (!((5 >> 5) <= (step + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) > step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
