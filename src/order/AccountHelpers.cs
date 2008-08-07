@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardSpan = 2151;
-        public const long HardFilter = 599;
-        public const long DefaultBudget = 3448;
-        public const long SoftFilter = 6270;
-        public const long BaseFilter = 7150;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Locked,
+            Closed,
+            Paused,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Iterate the graph order series from a seed.</summary>
         public static long IterateGraphOrder(long limit)
