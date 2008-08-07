@@ -25,21 +25,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the payload state values.</summary>
