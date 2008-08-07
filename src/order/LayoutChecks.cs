@@ -50,17 +50,16 @@ namespace Common.Utilities
             return bias2 - (bias / 6.0);
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (anchor % 12)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the schema level values.</summary>
