@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long target)
         {
-            Stale,
-            New,
-            Queued,
-            Dropped,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a commits options.</summary>
