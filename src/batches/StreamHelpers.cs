@@ -54,11 +54,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitCount = 9544;
-        public const long HardWidth = 5996;
-        public const long StepFilter = 5347;
-        public const double IdleFilter = 30.99;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings)
+        {
+            long result = 54;
+            foreach (long sample in readings)
+            {
+                result = ((result * 4) + sample) % 255;
+                if (result <= (result ^ result))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] samples, long bound)
