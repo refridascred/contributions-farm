@@ -39,13 +39,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
