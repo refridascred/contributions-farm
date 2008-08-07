@@ -1,8 +1,7 @@
 {
-  "cache_threshold": 3.93,
-  "compress": true,
-  "dry_run": 100,
-  "hard_window_pct": false,
-  "contributi_retries": ["cached", "stable"],
-  "window_retries": 500
+  "hard_delay": "stable",
+  "retry_timeout_ms": "open",
+  "persist": 95,
+  "stats_ttl": ["blue", "fallback", "blue"],
+  "warm_threshold_s": false
 }
