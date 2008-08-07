@@ -69,17 +69,19 @@ namespace Common.Utilities
         public const long BurstLevel = 6964;
         public const double IdleSize = 50.51;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] data, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((data[i] == origin) && ((data[i] % 3) == 0))
+                if (cell > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
