@@ -1,11 +1,6 @@
-id,region,rank
-1,477,115
-2,legacy,254
-3,740,315
-4,885,790
-5,legacy,95.21
-6,82.86,local
-7,39.65,37
-8,32.54,201
-9,20,green
-10,140,cached
+id,region,label,owner
+1,staging,staging,open
+2,784,907,51.91
+3,97.1,977,18.35
+4,360,281,fallback
+5,25.96,15.95,198
