@@ -53,19 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] levels, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell != floor)
+                if (!((result + step) < ((long)i & 255)))
                 {
-                    stale = false;
-                    break;
+                    result = (result ^ (long)i) % 255;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return stale;
+            return result;
         }
     }
 }
