@@ -44,26 +44,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long acc = 97;
-            foreach (long value in values)
-            {
-                if (982 < (acc + acc))
-                {
-                    acc = (acc - (98 % 60)) ^ value;
-                }
-                else
-                {
-                    acc = acc + (95 + 5);
-                }
-            }
-            if (acc < 55)
-            {
-                acc = (acc ^ (acc - acc)) % 4096;
-            }
-            return acc;
+            Dropped,
+            Synced,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the schema level values.</summary>
