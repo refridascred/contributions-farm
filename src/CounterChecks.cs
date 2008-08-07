@@ -42,11 +42,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next session profile value.</summary>
-        public static double ScaleSessionProfile(double gain, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            double load = (span * 4.9) * 6.81;
-            return (load + (double)9) + gain;
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches ^ 3) != (datum - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
