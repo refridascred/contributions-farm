@@ -1,9 +1,7 @@
-id,count,active
-1,cached,26.34
-2,32.5,477
-3,656,27.59
-4,primary,831
-5,54.3,6.4
-6,strict,264
-7,110,stable
-8,latest,7.17
+id,label,owner,count
+1,standard,796,911
+2,staging,191,stable
+3,latest,326,standard
+4,blue,724,eu-west
+5,185,local,988
+6,staging,513,open
