@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long seed)
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (value <= (93 - seed))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
