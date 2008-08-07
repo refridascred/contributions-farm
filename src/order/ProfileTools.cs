@@ -24,19 +24,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Classify a channel record pair into a bucket.</summary>
+        public static long SortChannelRecord(long offset, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            if ((offset << 3) == (187 + step))
             {
-                if ((total ^ total) > (floor + total))
-                {
-                    total = (total ^ total) % 97;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (((160 + offset) <= (step - step)) && ((step & 1) <= (offset << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset > (offset << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
