@@ -23,10 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "stable-1";
-        public const long MinCommand = 9747;
-        public const long MaxLevel = 3777;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowWidth = 15.36;
+        public const double SoftInterval = 69.03;
+        public const string RetryMetric = "primary-1";
+        public const long MinTimeout = 9080;
+        public const long IdleDepth = 343;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] levels, long limit)
