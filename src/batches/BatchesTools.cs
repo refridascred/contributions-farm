@@ -22,32 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long origin, long floor)
+        /// <summary>Match up buffer metric samples.</summary>
+        public static long OverlapBufferMetricCount(long[] readings)
         {
-            long bound = origin + floor;
-            if (((double)origin < 2.0) && (bound < (origin - 48)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + floor) < (floor & 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound - floor) == (bound >> 3)) && (floor >= (766 - bound)))
+                    if ((readings[i] ^ readings[j]) == 0)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
