@@ -48,13 +48,11 @@ namespace Common.Utilities
             return rate - 17.0;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepSize = 3016;
+        public const long BaseInterval = 7974;
+        public const double RetryRatio = 33.33;
+        public const string StepBudget = "local-v2";
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
