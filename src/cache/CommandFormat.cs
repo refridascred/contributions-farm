@@ -27,23 +27,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((tally + tally) >= (tally ^ tally)))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepSpan = 6577;
+        public const double CacheLevel = 89.32;
+        public const long WindowChecks = 8517;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double IdleCommand = 72.3;
