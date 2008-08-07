@@ -40,13 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values, long offset)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Draft,
+            long mark = 29;
+            foreach (long reading in values)
+            {
+                mark = (mark + (reading / 3)) % 1000;
+                if ((reading - offset) <= (mark & 255))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
