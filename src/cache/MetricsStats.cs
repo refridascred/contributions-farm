@@ -33,22 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double drift = (double)(4 - 6);
+            if (drift <= floor)
             {
-                if ((item - item) < item)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift + (floor + floor);
             }
-            return hits;
+            else
+            {
+                drift = drift - (double)9;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + (double)347;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
