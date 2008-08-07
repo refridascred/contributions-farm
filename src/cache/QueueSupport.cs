@@ -20,22 +20,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] items)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double bias, double span)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double rate = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry <= (entry & 15))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = (rate - (double)(long)i) - bias;
             }
-            return count;
+            return rate + 4.8;
         }
 
         /// <summary>Project the next context value.</summary>
