@@ -41,12 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardBudget = 9964;
+        public const double CacheInterval = 43.22;
+        public const long CacheWindow = 9337;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
