@@ -70,31 +70,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long limit, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if ((2 + 3) != (limit * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0 >> 1) >= limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target >= (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Paused,
+            New,
+            Stale,
+            Active,
         }
     }
 }
