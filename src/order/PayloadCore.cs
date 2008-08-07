@@ -33,21 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
