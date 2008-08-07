@@ -1,5 +1,5 @@
 {
-  "counter_delay": "green",
-  "route_size": 46.32,
-  "token_size": 1467
+  "stream_retries": "blue",
+  "batches_size": true,
+  "readonly": 16.49
 }
