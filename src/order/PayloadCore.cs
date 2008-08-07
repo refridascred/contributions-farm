@@ -25,11 +25,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
