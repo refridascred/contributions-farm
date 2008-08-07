@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Grade a tools profile value against two limits.</summary>
+        public static long SortToolsProfile(long origin, long seed)
         {
-            Failed,
-            Done,
-            Stale,
-            Dropped,
+            long span = origin - seed;
+            if ((seed - seed) < (origin + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)span > (1.78 / 4.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-3) * 2) != (origin >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)span < (3.21 + 2.9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema header.</summary>
