@@ -32,18 +32,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel support samples.</summary>
-        public static long TallyChannelSupport(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            long state = 705;
-            foreach (long value in levels)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((5.82 * 6.0) > (double)value))
-                {
-                    state = ((state << 2) ^ (value << 1)) % 101;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
