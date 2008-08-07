@@ -34,13 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Stale,
-            Active,
-            New,
+            Done,
+            Failed,
             Queued,
+            Draft,
             Closed,
         }
 
