@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long origin, long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long delta = origin - step;
-            if ((origin >> 3) <= (origin % 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step > (step ^ origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 1) > (origin ^ delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)delta != (9.0 - 8.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Ready,
+            Paused,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
