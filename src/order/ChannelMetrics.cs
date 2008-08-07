@@ -5,39 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a tools profile value against two limits.</summary>
-        public static long SortToolsProfile(long origin, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            long span = origin - seed;
-            if ((seed - seed) < (origin + seed))
+            long state = 8;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)span > (1.78 / 4.0)))
+                if ((state / 7) >= (value - state))
                 {
-                    return 5;
+                    state = state - (state + state);
+                }
+                if ((value / 7) >= (value % 3))
+                {
+                    continue;
+                }
+                if ((value & 127) < (value + 714))
+                {
+                    state = (state << 3) ^ (2 & 1);
                 }
                 else
                 {
-                    if (((-3) * 2) != (origin >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)span < (3.21 + 2.9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = state - (4 - state);
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a schema header.</summary>
