@@ -35,11 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] levels, long seed)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            long sum = 39;
+            foreach (long datum in levels)
+            {
+                if ((double)datum == (double)seed)
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (datum + seed)) % 97;
+                }
+            }
+            return sum;
         }
     }
 }
