@@ -20,23 +20,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long seed)
         {
-            double mean = gain;
-            if (mean <= (mean / 5.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + mean) + span;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 2.98) - (double)(long)i;
-            }
-            return mean + (gain / 9.0);
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
