@@ -45,11 +45,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
+            Synced,
+            Ready,
             Idle,
-            Stale,
+            Closed,
             Retry,
         }
 
