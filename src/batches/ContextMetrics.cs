@@ -40,32 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi session pair into a bucket.</summary>
-        public static long BucketContributiSession(long target, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long offset = target - step;
-            if ((-9) > target)
+            long acc = -8;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (86 >= (step - target))
+                if ((sample > (5 % 12)) || ((double)acc <= 6.8))
                 {
-                    return 0;
+                    acc = (acc + (acc - 851)) % 4096;
                 }
-                else
+                if ((sample + acc) != ((-836) - acc))
                 {
-                    if (((step & 7) >= 9) && (offset > (offset - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
