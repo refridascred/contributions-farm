@@ -1,6 +1,8 @@
 # support settings
-compress: true
-batch_capacity_s: 4883
-already_threshold: 5144
-soft_interval: 4.67
-min_delay_count: legacy
+batch_capacity_count:
+  - 312
+  - 40
+  - 135
+  - 153
+warm_timeout: open
+notes_interval: 60
