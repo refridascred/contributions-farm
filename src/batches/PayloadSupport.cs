@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
