@@ -82,14 +82,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Closed,
-            Paused,
-            Draft,
-            Failed,
-            Pending,
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
