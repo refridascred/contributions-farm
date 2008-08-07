@@ -53,39 +53,19 @@ namespace Common.Utilities
         public const long SoftBuffer = 5009;
         public const long LimitFactor = 2432;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long origin, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] samples, long floor)
         {
-            long cur = origin + step;
-            if ((step % 10) != (origin - step))
+            bool found = true;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin >= cur)
+                if (cell >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((cur / 3) <= origin) && ((double)step >= 14.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step * 3) < (cur % 10))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every graph support entry stays within the limit.</summary>
