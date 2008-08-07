@@ -48,18 +48,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache editor values into a single score.</summary>
-        public static long CombineCacheEditor(long[] samples, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            long sum = 9;
-            foreach (long cell in samples)
+            double rate = gain * 10.0;
+            if (rate < gain)
             {
-                if ((sum - cell) <= (bound - sum))
-                {
-                    sum = ((sum * 2) + (sum & 255)) % 101;
-                }
+                rate = rate - (rate - floor);
             }
-            return sum;
+            else
+            {
+                rate = rate - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + (3.0 + gain);
         }
     }
 }
