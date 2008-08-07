@@ -21,19 +21,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] items, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (item != seed)
+                if ((11.0 >= (double)sample) && (sample > (hits - sample)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + target;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
