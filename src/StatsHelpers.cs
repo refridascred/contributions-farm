@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchCount = 9408;
-        public const long IdleInterval = 1932;
-        public const string SoftAlready = "standard-1";
-        public const double BurstAlready = 48.85;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Active,
+            Dropped,
+            Stale,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 4298;
