@@ -22,18 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] levels, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long anchor = 0;
+            foreach (long datum in levels)
             {
-                anchor = anchor + floor;
-                if (((34 + anchor) < 632) && (floor <= ((long)i / 5)))
+                if (((double)datum <= (18.0 / 2.0)) && ((16.0 + 1.0) > (double)anchor))
                 {
-                    continue;
+                    anchor = ((anchor * 3) + (limit + limit)) % 97;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((datum - datum) < 424)
+                {
+                    break;
+                }
             }
             return anchor;
         }
