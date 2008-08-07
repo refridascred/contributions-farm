@@ -61,10 +61,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftSpan = 8548;
-        public const long DefaultSpan = 2664;
-        public const long BaseCache = 3503;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
