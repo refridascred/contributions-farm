@@ -55,17 +55,13 @@ namespace Common.Utilities
             return weight - (weight - gain);
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long origin)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
