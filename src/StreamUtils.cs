@@ -57,16 +57,21 @@ namespace Common.Utilities
             return weight + (span * 19.0);
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 2) ^ sum) % 1000;
-                sum = ((sum * 5) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
