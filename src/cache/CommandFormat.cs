@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 7116;
-        public const double SoftLevel = 31.97;
-        public const long StepScore = 1320;
-        public const string BaseAlready = "legacy-edge";
-        public const string SoftCount = "fallback-1";
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Synced,
+            Active,
+            Done,
+            Idle,
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
