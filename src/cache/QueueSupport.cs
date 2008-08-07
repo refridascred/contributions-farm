@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a account channel reading.</summary>
-        public static double SmoothAccountChannel(double ratio, double span)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] series, long offset)
         {
-            double rate = span;
-            if (rate >= ratio)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                rate = rate + span;
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - 3.3;
-            }
-            return rate + 8.0;
+            return ready;
         }
 
         /// <summary>Combine notes metric values into a single score.</summary>
