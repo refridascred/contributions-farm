@@ -32,10 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepSpan = 6577;
-        public const double CacheLevel = 89.32;
-        public const long WindowChecks = 8517;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseFactor = "legacy";
+        public const long IdleScore = 3695;
+        public const double HardCount = 16.51;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long IterateFilter(long floor)
