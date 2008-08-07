@@ -44,19 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
