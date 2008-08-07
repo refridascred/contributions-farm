@@ -1,10 +1,7 @@
-id,count,label,region,ratio
-1,eu-west,legacy,154,green
-2,stable,101,39.92,295
-3,66.66,461,87.57,26.69
-4,legacy,36.15,primary,23.22
-5,eu-west,cached,924,331
-6,staging,24,607,701
-7,538,428,63.53,staging
-8,85.01,712,879,32
-9,local,open,17.42,52.67
+id,label,active,level
+1,984,legacy,local
+2,stable,494,6.12
+3,latest,698,525
+4,edge,291,72
+5,edge,15.29,343
+6,487,759,green
