@@ -19,13 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values)
         {
-            Ready,
-            Draft,
-            Stale,
-            Dropped,
+            long mark = 617;
+            foreach (long value in values)
+            {
+                mark = ((mark ^ (mark ^ 9)) % 4096) ^ value;
+                mark = (mark - 695) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a session entry.</summary>
