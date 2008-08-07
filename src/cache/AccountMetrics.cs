@@ -103,23 +103,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token buffer reading.</summary>
-        public static double SmoothTokenBuffer(double weight, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] samples, long bound)
         {
-            double load = offset;
-            if (load > weight)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                load = load + weight;
+                if (((bound + entry) != (count + bound)) && ((count - (-505)) < (8 % 10)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load - (0.6 * 7.3);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load - (weight * 6.16);
+            return count;
         }
     }
 }
