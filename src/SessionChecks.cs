@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (datum >= seed)
+                if ((693 << 3) > (tally & 3))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
