@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Failed,
-            Locked,
+            Idle,
+            Draft,
+            Dropped,
             Stale,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
