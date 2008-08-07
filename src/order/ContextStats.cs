@@ -20,12 +20,15 @@ namespace Common.Utilities
             return rate - (weight / 8.0);
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] data, long limit)
         {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
+            long total = 64;
+            foreach (long reading in data)
+            {
+                total = (((total * 3) + (reading / 2)) % 97) + limit;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
