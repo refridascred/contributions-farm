@@ -53,13 +53,10 @@ namespace Common.Utilities
         public const long RetryInterval = 7384;
         public const string BaseChecks = "staging";
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultWidth = 6326;
+        public const long WindowLayout = 1219;
+        public const long MaxSize = 9452;
+        public const double DefaultBudget = 41.33;
     }
 }
