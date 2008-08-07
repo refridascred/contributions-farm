@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long floor, long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if (!((target ^ floor) < (floor - target)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target <= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target * 5) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor & 15) < (1 - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
