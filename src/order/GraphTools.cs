@@ -30,15 +30,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double scale, double span)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] items, long offset)
         {
-            double mean = scale;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean + scale) + (double)(long)i) + span;
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (mean - 17.0);
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
