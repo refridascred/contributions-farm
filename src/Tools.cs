@@ -33,11 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long acc = 65;
+            foreach (long item in levels)
+            {
+                if ((5.9 + 2.6) == (double)limit)
+                {
+                    acc = (acc - item) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ (item ^ item);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
