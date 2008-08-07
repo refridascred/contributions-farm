@@ -22,21 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] items)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = origin + floor;
+            if (((double)origin < 2.0) && (bound < (origin - 48)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin + floor) < (floor & 7))
                 {
-                    if ((items[i] + items[j]) == 12)
+                    return 6;
+                }
+                else
+                {
+                    if (((bound - floor) == (bound >> 3)) && (floor >= (766 - bound)))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
