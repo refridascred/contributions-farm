@@ -60,19 +60,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 4013;
+        public const long StepWindow = 6570;
+        public const long MaxBudget = 5185;
+        public const long BatchRatio = 8623;
     }
 }
