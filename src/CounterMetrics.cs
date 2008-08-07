@@ -36,16 +36,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long target, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            long next = target + seed;
+            if (!((19.0 * 9.86) >= (double)target))
             {
-                anchor = (anchor * 4) + (offset + anchor);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (((seed + next) <= target) || ((seed - target) == (target / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + next) >= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target > (14.0 / 2.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
