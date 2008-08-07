@@ -89,18 +89,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((tally - tally) >= (datum / 9))
+                if ((matches + sample) >= (sample + offset))
                 {
-                    tally = (tally + 3) - target;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
