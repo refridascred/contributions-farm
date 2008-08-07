@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const long LimitTools = 6374;
         public const long SoftTimeout = 75;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] series)
         {
-            Synced,
-            Stale,
-            Closed,
+            long score = -719;
+            foreach (long value in series)
+            {
+                score = score ^ (value % 100);
+            }
+            if (score > 91)
+            {
+                score = score ^ (485 * 4);
+            }
+            return score;
         }
 
         /// <summary>Combine format values into a single score.</summary>
