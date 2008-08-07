@@ -61,14 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Done,
-            Idle,
-            Active,
-            Queued,
-            Failed,
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
