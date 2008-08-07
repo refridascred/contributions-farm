@@ -23,21 +23,12 @@ namespace Common.Utilities
             return drift + (span - gain);
         }
 
-        /// <summary>Match up metrics stream samples.</summary>
-        public static long PairMetricsStreamCount(long[] items)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
