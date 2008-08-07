@@ -23,10 +23,27 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 8760;
-        public const string CacheSession = "cached-v2";
-        public const long DefaultFactor = 9472;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values)
+        {
+            long score = 424;
+            foreach (long item in values)
+            {
+                if (6 <= (score * 2))
+                {
+                    score = ((score ^ ((long)values.Length & 3)) % 97) + item;
+                }
+                if ((61 - score) < (35 + score))
+                {
+                    break;
+                }
+            }
+            if (score < 669)
+            {
+                score = ((score << 3) ^ (score + score)) % 65521;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] series, long limit)
