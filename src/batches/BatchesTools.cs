@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long BurstNotes = 7836;
         public const double CacheNotes = 39.11;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 915;
+            foreach (long item in values)
+            {
+                acc = (((acc << 2) ^ (acc * 3)) - item) - seed;
+                if ((double)acc != (8.85 - 4.27))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
