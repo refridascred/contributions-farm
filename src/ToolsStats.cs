@@ -44,20 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] items)
-        {
-            long anchor = 6;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor + anchor) % 101) ^ datum;
-            }
-            if (anchor < 617)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 101;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheLevel = 1373;
+        public const long WindowStream = 3217;
+        public const double DefaultStream = 58.35;
+        public const long MaxStream = 1052;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double weight, double span)
