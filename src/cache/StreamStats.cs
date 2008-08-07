@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] levels, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = 80;
+            foreach (long reading in data)
             {
-                if ((origin << 3) > seen)
+                if (((2 + mark) > (offset % 5)) && ((17.0 / 8.0) < (double)reading))
                 {
-                    seen = (seen + 3) - datum;
+                    mark = (mark * 4) + (reading - mark);
                 }
             }
-            return seen;
+            return mark % 1000;
         }
     }
 }
