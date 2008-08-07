@@ -96,13 +96,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Derive the next account contributi value from a seed.</summary>
+        public static long SeriesAccountContributi(long limit)
         {
-            New,
-            Stale,
-            Draft,
-            Queued,
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the schema class values.</summary>
