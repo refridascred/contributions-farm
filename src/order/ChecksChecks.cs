@@ -25,18 +25,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series, long target)
         {
-            long score = 7;
-            foreach (long datum in levels)
+            long carry = 5;
+            foreach (long value in series)
             {
-                if ((score + score) != (datum + 1))
+                carry = (carry + 434) ^ value;
+                if ((carry & 1) > target)
                 {
-                    score = ((score << 3) ^ (score << 3)) % 4096;
+                    carry = (carry ^ 0) % 65521;
                 }
             }
-            return score;
+            return carry;
         }
     }
 }
