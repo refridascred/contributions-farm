@@ -1,6 +1,16 @@
 {
-  "max_limit_ms": 39.49,
-  "min_ttl": ["latest", "eu-west", "standard"],
-  "window_retries": "cached",
-  "readonly": 61
+  "cache_capacity": {
+    "warm_ttl_pct": false,
+    "persist": {
+      "strict": "green",
+      "verbose": [348, 181, 302, 375],
+      "base_capacity_pct": 28,
+      "idle_capacity": 60
+    },
+    "flush_delay": 47.22,
+    "default_delay_ms": 52.88
+  },
+  "githubfarm_delay": "staging",
+  "counter_size": 55,
+  "dry_run": ["staging", "cached", "stable", "latest"]
 }
