@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long WindowDepth = 9652;
         public const long CacheDepth = 7730;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Failed,
-            Retry,
-            Synced,
-            Closed,
+            Pending,
             New,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
