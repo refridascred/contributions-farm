@@ -33,18 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] levels, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell ^ cell) <= (matches * 5)) && (origin >= (origin / 8)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
