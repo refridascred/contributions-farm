@@ -41,32 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long seed)
+        /// <summary>Look up the position of a channel route sample.</summary>
+        public static long LocateChannelRouteIndex(long[] readings, long step)
         {
-            long bound = offset ^ seed;
-            if (((offset - bound) < (offset ^ bound)) && ((seed ^ seed) < (seed + 895)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(seed >= offset))
+                if (readings[i] < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((340 % 97) == (offset + 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
