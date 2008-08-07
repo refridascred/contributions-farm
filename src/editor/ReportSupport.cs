@@ -79,19 +79,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long seed, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long step = seed ^ offset;
+            if ((seed ^ step) < (offset / 3))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (mix - (mix ^ step)) - (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((double)offset < (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step != (8.1 + 3.51))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
