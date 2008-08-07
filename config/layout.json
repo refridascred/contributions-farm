@@ -1,6 +1,18 @@
 {
-  "burst_threshold_s": [48, 247, 280],
-  "flush_size": 8745,
-  "hard_size_count": [146, 348],
-  "dry_run": "eu-west"
+  "compress": true,
+  "layout_timeout": {
+    "batch_window": {
+      "retry_size": "primary",
+      "persist": "green",
+      "schema_ratio": "primary",
+      "readonly": 9613,
+      "default_size_ms": "stable"
+    },
+    "soft_interval": "green",
+    "flush_capacity_count": "local",
+    "queue_delay": 62,
+    "batch_depth_pct": false
+  },
+  "sync_timeout_ms": [214, 182, 459, 249],
+  "soft_depth": [396, 478]
 }
