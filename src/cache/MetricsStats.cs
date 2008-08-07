@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item - item) < item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
