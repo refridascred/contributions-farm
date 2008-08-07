@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] levels, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long score = 943;
+            foreach (long value in readings)
             {
-                if ((limit % 10) < datum)
-                {
-                    tally = tally + 3;
-                }
+                score = (((score ^ score) % 1000) + value) + origin;
             }
-            return tally;
+            if (score < 9)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Check that every window metric entry stays within the limit.</summary>
