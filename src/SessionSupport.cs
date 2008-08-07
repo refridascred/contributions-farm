@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate contributi stream readings against a bound.</summary>
-        public static bool GuardContributiStreamBounds(long[] readings, long bound)
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long TallyFilterReportGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (sample > bound)
+                if ((double)(long)data.Length >= (double)value)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
