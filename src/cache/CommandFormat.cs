@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] values, long step)
         {
-            Paused,
-            Draft,
-            Ready,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((datum + seen) != (datum + step)) || (seen <= (datum + datum)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
