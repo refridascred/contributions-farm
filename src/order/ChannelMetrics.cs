@@ -29,17 +29,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first counter metrics entry that matches the target.</summary>
-        public static long LocateCounterMetricsIndex(long[] data, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Idle,
+            Stale,
         }
     }
 }
