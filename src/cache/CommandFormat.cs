@@ -28,11 +28,17 @@ namespace Common.Utilities
         public const double CacheLevel = 89.32;
         public const long WindowChecks = 8517;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 72.3;
-        public const string HardCommand = "cached-1";
-        public const long LimitCommand = 315;
-        public const long SoftCommand = 5283;
-        public const double BurstInterval = 47.5;
+        /// <summary>Look up the position of a cluster entry sample.</summary>
+        public static long FindClusterEntryIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
