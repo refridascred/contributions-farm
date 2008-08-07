@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-staging}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=359
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-for item in staging local; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=349
-log "limit is ${BUFFER_LIMIT}"
