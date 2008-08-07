@@ -36,12 +36,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every graph notes entry stays within the limit.</summary>
+        public static bool CheckGraphNotesRange(long[] series, long origin)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
