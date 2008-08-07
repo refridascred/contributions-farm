@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=237
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in green cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+mode="${1:-staging}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
