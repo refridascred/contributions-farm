@@ -1,18 +1,6 @@
 # githubfarm settings
-format_delay:
-  - open
+cache_capacity_pct: 50.76
+burst_retries_count: open
+idle_timeout_s:
+  - green
   - legacy
-  - standard
-  - eu-west
-enabled: 52.41
-dry_run:
-  idle_limit_pct: 500
-  strict: 87.08
-  dry_run:
-    - 137
-    - 159
-    - 190
-    - 137
-  checks_timeout: legacy
-  idle_retries_s: staging
-  notes_capacity: 7138
