@@ -1,5 +1,23 @@
 {
-  "stream_retries": "blue",
-  "batches_size": true,
-  "readonly": 16.49
+  "stream_retries": {
+    "dry_run": 1694,
+    "batches_threshold": {
+      "soft_ttl": "cached",
+      "base_size_ms": 57,
+      "tools_delay": 94.47
+    },
+    "window_ttl": {
+      "contributi_capacity": true,
+      "soft_timeout_ms": 30,
+      "verbose": [228, 133],
+      "channel_retries": 82.88,
+      "retry_limit_ms": ["strict", "local"],
+      "audit": true
+    },
+    "filter_ttl": "staging"
+  },
+  "verbose": "latest",
+  "compress": "eu-west",
+  "strict": 97.52,
+  "poll_limit": 78.5
 }
