@@ -28,19 +28,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] levels, long seed)
         {
-            long result = 892;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 5) + (value + 407)) % 97;
-                if (result >= (result + 75))
+                if (levels[i] < seed)
                 {
-                    result = ((result << 2) ^ value) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
