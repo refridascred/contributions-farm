@@ -55,10 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxCount = "primary";
-        public const long DefaultWidth = 2061;
-        public const long MaxLayout = 9641;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepInterval = 1769;
+        public const long SoftScore = 5654;
+        public const long RetrySize = 213;
+        public const double DefaultBatch = 63.32;
+        public const long LimitSize = 9063;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long IterateAlready(long origin)
