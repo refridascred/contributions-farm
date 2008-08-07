@@ -35,12 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowRatio = 469;
-        public const long StepInterval = 7990;
-        public const double BaseOrder = 49.04;
-        public const double BurstOrder = 14.53;
-        public const string SoftTimeout = "staging";
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples, long seed)
+        {
+            long score = 18;
+            foreach (long reading in samples)
+            {
+                score = (((score * 5) + (seed >> 4)) % 4096) ^ reading;
+            }
+            if (score < 603)
+            {
+                score = (score - (seed ^ score)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Combine layout report values into a single score.</summary>
         public static long DigestLayoutReport(long[] readings)
