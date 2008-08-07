@@ -16,11 +16,29 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long target)
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((anchor - (long)i) == (target + (long)i))
+                {
+                    anchor = ((anchor * 3) + (target / 7)) % 255;
+                    anchor = ((anchor << 2) ^ ((long)i % 12)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor * 5)) % 65521;
+                    anchor = ((anchor << 2) ^ (target + anchor)) % 1000;
+                }
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    anchor = (anchor ^ (3 << 1)) ^ (long)i3;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
