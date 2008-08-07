@@ -1,11 +1,11 @@
 {
-  "batch_capacity": [419, 50, 351],
-  "persist": {
-    "burst_capacity": "green",
-    "readonly": [371, 466],
-    "metrics_depth": true,
-    "flush_ratio_ms": 4.33
-  },
-  "sync_limit_s": ["stable", "blue"],
-  "min_limit_ms": true
+  "min_timeout": "green",
+  "audit": ["primary", "eu-west", "stable", "legacy"],
+  "warm_size_pct": [306, 71, 31, 204],
+  "max_capacity": {
+    "layout_depth": "edge",
+    "default_timeout_count": "eu-west",
+    "cache_timeout_ms": 47.88,
+    "idle_retries": 8593
+  }
 }
