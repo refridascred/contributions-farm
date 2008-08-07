@@ -54,21 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = span;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = ((rate + (double)(-9)) + (double)(long)i) + weight;
             }
-            return matches;
+            return rate + (span - span);
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
