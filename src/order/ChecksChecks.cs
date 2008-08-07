@@ -19,15 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
