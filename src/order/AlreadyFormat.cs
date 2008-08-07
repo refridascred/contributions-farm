@@ -57,18 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] items, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits + hits) < step)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Ready,
         }
     }
 }
