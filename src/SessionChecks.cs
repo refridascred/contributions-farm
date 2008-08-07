@@ -18,13 +18,18 @@ namespace Common.Utilities
         public const double MinCounter = 59.65;
         public const double BurstScore = 13.57;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples, long floor)
         {
-            Paused,
-            Active,
-            Idle,
-            Queued,
+            long sum = 7;
+            foreach (long datum in samples)
+            {
+                if (!((sum & 7) < (datum & 31)))
+                {
+                    sum = ((sum ^ ((-4) * 3)) % 101) + floor;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
