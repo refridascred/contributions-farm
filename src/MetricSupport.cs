@@ -20,25 +20,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long prev = target - origin;
-            if ((origin ^ prev) == (prev + 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target / 2) < (origin + target)) || (prev > (target >> 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
     }
 }
