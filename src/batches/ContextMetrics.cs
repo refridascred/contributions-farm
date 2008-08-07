@@ -29,22 +29,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] series, long offset)
+        /// <summary>Match up metrics stream samples.</summary>
+        public static long PairMetricsStreamCount(long[] items)
         {
-            long total = 810;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total << 2) < (total * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ (offset + total)) ^ datum;
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 60)
-            {
-                total = (total + (offset + 62)) % 255;
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Classify a contributi session pair into a bucket.</summary>
