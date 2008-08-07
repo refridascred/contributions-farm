@@ -49,15 +49,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series, long limit)
         {
-            double scale = span;
-            if (scale >= scale)
+            long mix = 1;
+            foreach (long entry in series)
             {
-                scale = scale - (ratio / 6.0);
+                if (limit < (mix * 2))
+                {
+                    mix = ((mix << 2) ^ 38) % 4096;
+                    continue;
+                }
+                mix = (mix << 3) ^ (mix + mix);
+                if (limit >= (entry % 3))
+                {
+                    mix = ((mix << 3) ^ (mix + (long)series.Length)) % 255;
+                }
             }
-            return scale - span;
+            return mix;
         }
     }
 }
