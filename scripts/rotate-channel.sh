@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=17
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in green fallback; do
+for item in fallback standard staging; do
     log "checking ${item}"
 done
