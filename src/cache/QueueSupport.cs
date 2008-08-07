@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of checks notes readings.</summary>
-        public static long CombineChecksNotes(long[] items)
+        /// <summary>Audit metric tools readings against a rule.</summary>
+        public static long TallyMetricToolsOutliers(long[] levels)
         {
-            long score = 4;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                score = (score + score) % 65521;
-                if ((score - entry) == (entry * 4))
+                if ((9 - 2) >= item)
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
