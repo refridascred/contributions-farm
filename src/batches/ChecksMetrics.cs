@@ -35,18 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] series, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((matches + (-8)) <= (matches * 2)))
-                {
-                    matches = ((matches + 1) + item) + offset;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine githubfarm stats values into a single score.</summary>
