@@ -44,18 +44,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] items)
+        /// <summary>Validate cache metric readings against a bound.</summary>
+        public static bool GuardCacheMetricBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((long)items.Length == (matches ^ matches))
+                if (entry <= seed)
                 {
-                    matches = (matches + 2) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the schema level values.</summary>
