@@ -23,11 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] series, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
