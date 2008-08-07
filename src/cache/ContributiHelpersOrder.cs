@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Accumulate context profile samples.</summary>
+        public static long TotalContextProfile(long[] samples, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long sum = 6;
+            foreach (long entry in samples)
             {
-                mark = mark + (bound - mark);
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (!(origin > (origin % 5)))
+                {
+                    sum = (sum - 146) % 255;
+                    continue;
+                }
+                sum = (sum * 3) + (entry - origin);
             }
-            return mark;
+            if (sum < 191)
+            {
+                sum = ((sum << 3) ^ (-96)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
