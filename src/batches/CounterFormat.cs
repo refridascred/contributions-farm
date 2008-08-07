@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((70 + count) != (count + value))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
