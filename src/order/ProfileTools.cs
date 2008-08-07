@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] series, long offset)
         {
-            Locked,
-            Dropped,
-            New,
-            Paused,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
