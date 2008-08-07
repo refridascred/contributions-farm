@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order command samples.</summary>
-        public static long CompareOrderCommandCount(long[] data)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Retry,
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Rank batch cache input into a small class.</summary>
