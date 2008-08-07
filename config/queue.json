@@ -1,12 +1,8 @@
 {
-  "base_ratio": {
-    "batch_interval": [500, 75, 453],
-    "batch_retries_s": "fallback",
-    "already_threshold": 30,
-    "command_ratio": 5552,
-    "burst_capacity_s": 500
-  },
-  "burst_limit_s": "legacy",
-  "stats_limit": false,
-  "burst_retries": "standard"
+  "audit": 15.69,
+  "warm_size": 6541,
+  "cache_ttl_s": 75,
+  "verbose": "standard",
+  "strict": 1893,
+  "burst_ttl_s": 27
 }
