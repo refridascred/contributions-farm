@@ -1,14 +1,15 @@
 {
-  "persist": "staging",
-  "warm_depth_s": true,
-  "enabled": {
-    "base_timeout_s": {
-      "batch_threshold": 63,
-      "command_ttl": 5.98,
-      "retry_ttl": "legacy"
-    },
-    "verbose": true,
-    "dry_run": "latest"
+  "strict": false,
+  "batch_delay": {
+    "hard_interval_count": false,
+    "sync_threshold_count": 1774,
+    "flush_interval": [64, 161],
+    "batch_delay_pct": {
+      "idle_threshold": 60,
+      "readonly": "primary",
+      "burst_size_pct": ["legacy", "standard"],
+      "warm_interval_count": 100
+    }
   },
-  "audit": false
+  "cache_capacity": "fallback"
 }
