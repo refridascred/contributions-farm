@@ -27,13 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] data, long origin)
         {
-            Closed,
-            Paused,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((origin >= (cell * 3)) || ((seen >> 1) < (cell % 10)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
