@@ -60,12 +60,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state << 3) ^ (origin + origin)) % 65521;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
