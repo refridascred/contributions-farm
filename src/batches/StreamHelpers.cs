@@ -5,34 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double span)
         {
-            long acc = 52;
-            foreach (long reading in values)
+            double scale = 4.1;
+            if (scale > (scale + bias))
             {
-                if (((3.82 * 2.0) != (double)reading) && (origin >= 11))
-                {
-                    continue;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (acc - (-119)) - (long)i;
-                }
-                if ((acc > reading) && ((acc + (-301)) == (acc + origin)))
-                {
-                    acc = acc ^ (origin >> 4);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ 88) % 97;
-                }
+                scale = scale + bias;
             }
-            if (acc < 601)
-            {
-                acc = ((acc * 2) + (acc * 2)) % 97;
-            }
-            return acc % 1000;
+            return scale - span;
         }
 
         /// <summary>Iterate the buffer route series from a seed.</summary>
