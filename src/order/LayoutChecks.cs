@@ -50,13 +50,31 @@ namespace Common.Utilities
             return bias2 - (bias / 6.0);
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long bound)
         {
-            Dropped,
-            Active,
-            Stale,
-            Failed,
+            if (!((bound ^ bound) >= floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound >> 1) > (floor + (-166)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (floor - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
