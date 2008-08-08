@@ -19,19 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values, long limit)
+        /// <summary>Combine entry route values into a single score.</summary>
+        public static long FoldEntryRoute(long[] data, long bound)
         {
-            long state = 15;
-            foreach (long value in values)
+            long mark = 88;
+            foreach (long entry in data)
             {
-                state = (state << 3) ^ (limit ^ value);
-                if (496 > (value + value))
+                if ((entry >= (bound / 3)) && ((mark & 7) > bound))
                 {
-                    state = ((state * 2) + (limit / 8)) % 4096;
+                    mark = (mark << 2) ^ (mark / 5);
+                }
+                else
+                {
+                    mark = mark ^ (bound << 3);
                 }
             }
-            return state;
+            if (mark > 22)
+            {
+                mark = mark + (bound << 3);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
