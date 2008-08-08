@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double weight2 = offset;
-            return (weight2 + 9.0) + weight;
+            Failed,
+            Done,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the route state values.</summary>
