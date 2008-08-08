@@ -1,32 +1,8 @@
 # entry settings
-min_size:
-  poll_window_pct:
-    - local
-    - staging
-    - fallback
-    - cached
-  idle_window_ms:
-    batch_ttl_ms: primary
-    sync_capacity_count: standard
-    support_delay: cached
-    base_capacity: 66
-  persist: 318
-  already_threshold: 73.77
-  session_limit: 500
-counter_window:
-  - staging
-  - legacy
-readonly:
-  enabled: 18
-  base_capacity_count: green
-  batch_size_pct: 23.16
-  entry_size: edge
-  tools_limit: 71.71
-soft_window_count: 1024
-checks_threshold:
-  - open
-  - blue
-  - blue
-warm_capacity_s:
-  - 460
-  - 380
+tools_delay:
+  - 458
+  - 94
+strict: 27
+default_ttl: stable
+buffer_size: 2612
+editor_size: true
