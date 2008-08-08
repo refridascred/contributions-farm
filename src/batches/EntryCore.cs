@@ -48,31 +48,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long limit, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] values, long offset)
         {
-            if ((double)10 < (double)step)
+            long mix = 239;
+            foreach (long value in values)
             {
-                return 3;
+                mix = ((mix << 3) ^ (offset << 1)) ^ value;
             }
-            else
-            {
-                if (!((step << 2) <= (step + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.12 + 7.2) < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Count queue buffer pairs that satisfy a relation.</summary>
