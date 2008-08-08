@@ -40,18 +40,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long origin)
         {
-            long anchor = -5;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor - anchor) == (cell >> 1))
+                if (values[i] < origin)
                 {
-                    anchor = anchor ^ (cell - (long)values.Length);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the channel class values.</summary>
