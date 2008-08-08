@@ -1,5 +1,5 @@
 {
-  "token_timeout": 69.88,
-  "poll_size": 3121,
-  "idle_capacity_ms": 92.67
+  "dry_run": "strict",
+  "tools_ratio": 19.85,
+  "idle_capacity_count": "latest"
 }
