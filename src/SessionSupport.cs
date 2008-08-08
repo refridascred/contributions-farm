@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Idle,
-            Retry,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 94.0;
+        public const long CacheSpan = 4065;
+        public const long StepBudget = 9756;
+        public const long BurstGraph = 7383;
 
         /// <summary>Project the next tools value.</summary>
         public static double SmoothTools(double ratio, double offset)
