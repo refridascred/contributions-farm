@@ -75,19 +75,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)target < (double)7)
-                {
-                    carry = (carry - (target << 1)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return carry;
+            return total;
         }
     }
 }
