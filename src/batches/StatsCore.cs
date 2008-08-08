@@ -39,19 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count + count) != (count - count))
-                {
-                    count = ((count + 2) ^ item) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 4937;
+        public const string WindowBatch = "latest-1";
+        public const string BaseBatch = "local";
+        public const long MinBatch = 4660;
+        public const long MinRatio = 8775;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
