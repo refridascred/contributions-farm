@@ -22,18 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record account samples are out of range.</summary>
-        public static long CountRecordAccountOutliers(long[] readings, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (step <= (count % 16))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            Failed,
+            Active,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a entry record.</summary>
