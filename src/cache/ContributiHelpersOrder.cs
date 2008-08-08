@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((item + seen) >= (seen ^ item))
+                if ((target * 4) <= (count & 1))
                 {
-                    seen = seen + 3;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
