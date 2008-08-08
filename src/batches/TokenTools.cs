@@ -22,10 +22,23 @@ namespace Common.Utilities
         public const string DefaultReport = "strict";
         public const long StepReport = 2836;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 46.34;
-        public const double RetryDepth = 61.76;
-        public const string WindowWidth = "open-edge";
-        public const string HardDepth = "local-edge";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] items, long target)
+        {
+            long total = 3;
+            foreach (long entry in items)
+            {
+                total = ((total - (target << 2)) % 97) - entry;
+                if ((target >= (target / 4)) && (target >= (91 & 1)))
+                {
+                    break;
+                }
+            }
+            if (total > 23)
+            {
+                total = total ^ (target / 4);
+            }
+            return total % 4096;
+        }
     }
 }
