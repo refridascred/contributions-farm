@@ -26,15 +26,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine graph farm values into a single score.</summary>
-        public static long TallyGraphFarm(long[] data)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long origin)
         {
-            long anchor = -7;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor ^ (anchor % 12)) % 1000) + item;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
