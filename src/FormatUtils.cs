@@ -73,32 +73,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items)
         {
-            long next = offset ^ step;
-            if ((offset <= step) && ((14.0 * 4.3) <= (double)offset))
+            long total = 33;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((next * 4) > (8 + next)))
+                if ((cell / 5) > 8)
                 {
-                    return 2;
+                    total = (total + total) % 1000;
                 }
-                else
+                if (cell >= (cell & 63))
                 {
-                    if (((offset * 3) < (offset % 10)) && ((next ^ step) < (next + 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return total;
         }
     }
 }
