@@ -35,11 +35,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchTimeout = 6843;
+        public const long CacheReport = 7975;
+        public const double BatchReport = 25.3;
     }
 }
