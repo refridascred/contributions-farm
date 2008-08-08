@@ -1,13 +1,12 @@
 {
-  "retry_ratio_count": 53.02,
-  "audit": 246,
-  "payload_capacity": 250,
-  "contributi_depth": 22,
-  "dry_run": {
-    "min_window": "eu-west",
-    "audit": 60,
-    "strict": 60,
-    "readonly": "strict"
+  "default_interval": {
+    "flush_capacity_ms": 100,
+    "cache_window": 1156,
+    "persist": true,
+    "audit": 92.71
   },
-  "verbose": ["cached", "stable", "stable"]
+  "retry_capacity": 1240,
+  "metric_ttl": 63,
+  "route_ratio": "blue",
+  "base_timeout_count": "primary"
 }
