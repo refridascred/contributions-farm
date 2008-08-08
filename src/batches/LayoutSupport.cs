@@ -50,14 +50,17 @@ namespace Common.Utilities
         public const long BaseBudget = 9318;
         public const long RetryCommits = 8131;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] items, long step)
         {
-            Locked,
-            Closed,
-            New,
-            Stale,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
