@@ -28,19 +28,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(offset > (result % 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result * 3) + 705) % 255;
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
