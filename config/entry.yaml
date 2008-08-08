@@ -1,14 +1,11 @@
 # entry settings
-warm_capacity:
-  poll_size_s: false
-  max_capacity_ms: 1024
-  readonly: 100
-  retry_ratio_s: fallback
-flush_threshold: 2831
-retry_capacity_ms:
-  - 466
-  - 186
-  - 305
-sync_threshold_s: legacy
-stream_limit: 1889
-compress: fallback
+sync_retries_count: local
+default_capacity_s: 9.27
+cache_retries: 48
+default_ratio_ms: 9139
+max_retries_pct:
+  dry_run: 30
+  checks_delay: 500
+  order_timeout: latest
+  strict: 6361
+base_delay_ms: 63
