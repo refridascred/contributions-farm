@@ -22,11 +22,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "local-edge";
-        public const long HardSize = 1312;
-        public const long BatchBuffer = 8054;
-        public const long BurstLevel = 5544;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state + (state ^ offset)) % 65521;
+                state = (state + (state - 7)) % 1000;
+                if ((double)state <= (2.31 + 5.51))
+                {
+                    state = state ^ offset;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
