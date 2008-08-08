@@ -54,19 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] data, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] samples, long origin)
         {
-            long mark = 3;
-            foreach (long value in data)
+            long result = 402;
+            foreach (long sample in samples)
             {
-                mark = mark + mark;
-                if ((seed + 35) <= (value + value))
+                if (origin <= (origin - result))
                 {
-                    mark = ((mark << 3) ^ (value << 1)) % 101;
+                    result = (result - 68) + sample;
+                }
+                else
+                {
+                    result = (result - origin) % 255;
                 }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Check that every session checks entry stays within the limit.</summary>
