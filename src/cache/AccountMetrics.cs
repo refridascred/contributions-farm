@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Done,
-            Synced,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleCount = "local-v2";
+        public const long BaseLevel = 9644;
+        public const long StepSchema = 5355;
+        public const long RetryDepth = 9518;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionOutliers(long[] readings)
