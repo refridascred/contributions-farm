@@ -73,22 +73,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] data, long origin)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long state = -96;
-            foreach (long item in data)
-            {
-                if (((73 - origin) > state) || ((item + 618) <= (item - item)))
-                {
-                    state = (state << 2) ^ (origin - state);
-                }
-                else
-                {
-                    state = state + (item + state);
-                }
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
