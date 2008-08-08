@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (rate2 + span) + rate;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (sample >= offset)
+                if (sample <= origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
