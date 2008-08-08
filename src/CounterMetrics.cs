@@ -13,17 +13,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series)
-        {
-            long result = -69;
-            foreach (long entry in series)
-            {
-                result = result + (entry + result);
-                result = result - entry;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultTimeout = 8507;
+        public const long MaxCommand = 3937;
+        public const long MinLevel = 7028;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchFactor = 5022;
