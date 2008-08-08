@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest strict primary standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+RECORD_LIMIT=406
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    green)
+    stable)
         log "fast path"
         ;;
     *)
