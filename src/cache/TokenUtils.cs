@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long result = 4;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    result = (((result << 3) ^ (value + result)) - (long)i) - target;
-                }
-                result = ((result << 3) ^ 113) % 65521;
-                result = ((result * 4) + (result % 3)) % 101;
-            }
-            if (result < 44)
-            {
-                result = (result + (result / 9)) % 4096;
-            }
-            return result % 65521;
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a token snapshot.</summary>
