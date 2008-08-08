@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long HardContributi = 3079;
         public const string LimitContributi = "standard-v2";
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the command status values.</summary>
