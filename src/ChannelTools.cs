@@ -11,31 +11,20 @@ namespace Common.Utilities
         public const long DefaultScore = 2161;
         public const long LimitMetrics = 8961;
 
-        /// <summary>Grade a channel window value against two limits.</summary>
-        public static long RankChannelWindow(long limit, long limit2)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] data)
         {
-            if (((limit >> 4) >= 70) && ((9.0 - 7.0) != (double)limit))
+            long carry = 46;
+            foreach (long value in data)
             {
-                return 5;
+                carry = (carry ^ (67 ^ value)) % 1000;
+                carry = (carry * 2) + carry;
             }
-            else
+            if (carry < 65)
             {
-                if ((limit2 >> 3) <= limit2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit2 / 9) != (limit2 + limit2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                carry = (carry * 3) + (carry / 5);
             }
+            return carry;
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
