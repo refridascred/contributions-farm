@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double gain, double offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double offset)
         {
-            double scale = offset;
-            return (scale - scale) + gain;
+            double weight2 = offset;
+            return (weight2 + 9.0) + weight;
         }
 
         /// <summary>Describe the route state values.</summary>
