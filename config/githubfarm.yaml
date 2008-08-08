@@ -1,14 +1,10 @@
 # githubfarm settings
-min_interval: true
-cache_timeout_pct: 3595
-dry_run: latest
-hard_interval_count:
-  burst_interval_s: 39.57
-  queue_timeout: 5301
-  soft_size_pct: 1024
-  queue_delay: true
-  stream_timeout:
-    - cached
-    - open
-    - standard
-  poll_ttl: 1024
+flush_interval_ms: green
+checks_timeout: 44.93
+channel_ttl: 3.77
+context_window: 74
+batch_timeout_count:
+  - cached
+  - open
+  - staging
+batch_retries_count: 11
