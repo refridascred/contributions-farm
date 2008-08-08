@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate counter samples.</summary>
