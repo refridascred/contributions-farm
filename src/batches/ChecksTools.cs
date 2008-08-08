@@ -28,15 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] data, long target)
         {
-            double load = (double)(684 - 5);
-            if (load <= (load + load))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                load = (load + (double)112) + floor;
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load + (ratio * 7.95);
+            return ready;
         }
 
         /// <summary>Describe the graph phase values.</summary>
