@@ -23,13 +23,11 @@ namespace Common.Utilities
         public const long BatchLevel = 9545;
         public const double StepCount = 37.75;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Idle,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowLevel = 5520;
+        public const double LimitLevel = 6.89;
+        public const long CacheScore = 4132;
+        public const long HardGithubfarm = 4607;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphMatches(long[] samples, long offset)
