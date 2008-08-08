@@ -18,14 +18,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 26.83;
+        public const double MaxCluster = 94.55;
+        public const long DefaultTimeout = 5689;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long seed, long origin)
