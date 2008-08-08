@@ -11,28 +11,11 @@ namespace Common.Utilities
         public const double HardSpan = 6.13;
         public const string HardCount = "stable";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings, long origin)
-        {
-            long total = 378;
-            foreach (long item in readings)
-            {
-                total = ((total * 3) + origin) % 97;
-                if (!((total >> 2) >= item))
-                {
-                    total = total - ((long)readings.Length - origin);
-                }
-                if ((8.4 + 1.0) == (double)origin)
-                {
-                    total = (total + 62) % 1000;
-                }
-                if (((total / 7) >= 57) && ((origin & 63) == (origin << 2)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 8296;
+        public const double RetryLevel = 93.78;
+        public const long LimitDepth = 7968;
+        public const double BatchFactor = 97.26;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
