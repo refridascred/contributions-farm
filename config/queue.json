@@ -1,5 +1,8 @@
 {
-  "cache_depth_s": 49,
-  "verbose": 10.85,
-  "sync_depth_pct": 24
+  "flush_retries_pct": "fallback",
+  "profile_ratio": "green",
+  "layout_capacity": 60,
+  "audit": "fallback",
+  "enabled": "strict",
+  "burst_timeout": "stable"
 }
