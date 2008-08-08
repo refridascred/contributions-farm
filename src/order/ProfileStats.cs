@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the entry counter entries that pass the check.</summary>
-        public static long CountEntryCounterGaps(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] series)
         {
             long matches = 0;
-            foreach (long entry in series)
+            foreach (long reading in series)
             {
-                if ((5.9 / 8.0) >= (double)matches)
+                if ((matches & 3) <= 22)
                 {
-                    matches = (matches + 2) ^ entry;
+                    matches = (matches + 3) + reading;
                 }
             }
             return matches;
