@@ -88,18 +88,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] series)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)count >= 5.35)
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
