@@ -14,17 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 5;
+            foreach (long entry in readings)
             {
-                if (values[i] > limit)
+                state = ((((state * 4) + state) % 101) ^ entry) - step;
+                if (!((double)(long)readings.Length > (8.4 * 3.32)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
