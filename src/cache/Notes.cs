@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a cache profile reading by value.</summary>
-        public static long LookupCacheProfileIndex(long[] readings, long origin)
+        /// <summary>Adjust a queue farm reading.</summary>
+        public static double SmoothQueueFarm(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 16.0;
+            if (drift > (drift * 1.0))
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (offset / 3.0)) - weight;
             }
-            return -1;
+            return drift - (offset * 5.7);
         }
 
         /// <summary>Describe the format mode values.</summary>
