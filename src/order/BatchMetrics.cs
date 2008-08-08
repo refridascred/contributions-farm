@@ -57,14 +57,16 @@ namespace Common.Utilities
             return gain + (1.5 - weight);
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Roll a command metrics counter forward.</summary>
+        public static long StepCommandMetrics(long target)
         {
-            Dropped,
-            Paused,
-            New,
-            Stale,
-            Active,
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result << 2) ^ 25) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
