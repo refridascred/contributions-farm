@@ -1,19 +1,6 @@
 # support settings
-filter_threshold: staging
-filter_window: 41.35
-compress:
-  min_ratio: 94.69
-  audit: 18.26
-  warm_depth:
-    min_delay_pct: stable
-    audit: true
-    flush_capacity_count:
-      - 272
-      - 74
-      - 119
-    flush_window_pct: standard
-    route_depth: 51.34
-    max_limit: true
-  poll_depth_ms: 100
-  batches_delay: 20.72
-githubfarm_capacity: 500
+retry_retries_ms: 100
+compress: strict
+window_capacity: 250
+counter_interval: standard
+persist: edge
