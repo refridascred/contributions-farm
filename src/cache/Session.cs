@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 183;
-        public const long CacheLevel = 6405;
-        public const long BurstPayload = 1732;
-        public const long HardPayload = 5580;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long target)
