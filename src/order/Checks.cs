@@ -43,10 +43,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "standard-edge";
-        public const long RetryToken = 7714;
-        public const string HardToken = "primary";
+        /// <summary>Count the support token entries that pass the check.</summary>
+        public static long CountSupportTokenHits(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (bound < 441)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a contributi metrics value against two limits.</summary>
         public static long RankContributiMetrics(long offset, long seed)
