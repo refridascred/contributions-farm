@@ -31,14 +31,17 @@ namespace Common.Utilities
         public const string RetryScore = "alpha-edge";
         public const long MinDepth = 6386;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] readings, long bound)
         {
-            Failed,
-            Active,
-            Stale,
-            Pending,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
