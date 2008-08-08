@@ -38,13 +38,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Ready,
-            Locked,
-            Done,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheTimeout = 9400;
+        public const long BatchSpan = 8808;
+        public const long LimitAlready = 5971;
+        public const long HardAlready = 4210;
+        public const long IdleSize = 9866;
     }
 }
