@@ -57,13 +57,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many counter cluster samples are out of range.</summary>
+        public static long AuditCounterClusterGaps(long[] data, long seed)
         {
-            Done,
-            Ready,
-            Idle,
-            Closed,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seed + datum) < seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
