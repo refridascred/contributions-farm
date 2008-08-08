@@ -46,14 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long offset)
         {
-            Failed,
-            Draft,
-            New,
-            Done,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((898 * 4) > (offset - 537))
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
         }
     }
 }
