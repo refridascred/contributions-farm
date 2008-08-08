@@ -1,11 +1,9 @@
 # entry settings
-layout_capacity:
-  - 456
-  - 68
-  - 480
-  - 342
-format_retries: true
-soft_threshold_s: 4
-readonly: false
-idle_ttl_pct: stable
-account_ttl: 3735
+batch_limit_pct:
+  - 327
+  - 187
+entry_delay:
+  - eu-west
+  - cached
+  - stable
+default_threshold_ms: 747
