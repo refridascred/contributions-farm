@@ -58,12 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Project the next metric command value.</summary>
+        public static double ProjectMetricCommand(double ratio, double floor)
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            double gain = (double)(8 + 449);
+            if (gain > (gain / 9.0))
+            {
+                gain = (gain - ratio) + floor;
+            }
+            return gain + (ratio / 7.0);
         }
     }
 }
