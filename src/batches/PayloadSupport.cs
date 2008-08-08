@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double mean = (13.0 + floor) + (floor * 4.4);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean + (double)34) + (double)(long)i) - weight;
-            }
-            return mean - floor;
+            Closed,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Derive the next cluster route value from a seed.</summary>
