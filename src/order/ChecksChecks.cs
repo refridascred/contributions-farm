@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 76.03;
-        public const long SoftSupport = 637;
-        public const string HardInterval = "alpha";
-        public const string MinSize = "legacy-1";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string SoftTimeout = "fallback";
