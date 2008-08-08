@@ -1,5 +1,8 @@
 {
-  "soft_capacity_pct": "standard",
-  "burst_ttl": 22,
-  "counter_delay": 30
+  "sync_size_ms": ["strict", "blue"],
+  "compress": 64.39,
+  "max_threshold_count": "cached",
+  "token_threshold": [16, 43],
+  "strict": 8105,
+  "hard_size_s": 1024
 }
