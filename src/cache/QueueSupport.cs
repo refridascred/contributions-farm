@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = 857;
+            foreach (long entry in series)
             {
-                if ((9 << 2) == ((long)levels.Length / 9))
-                {
-                    seen = (seen + 3) + item;
-                }
+                score = ((score - entry) % 65521) + seed;
             }
-            return seen;
+            if (score > 814)
+            {
+                score = score - (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Combine context values into a single score.</summary>
