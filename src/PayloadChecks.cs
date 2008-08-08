@@ -46,11 +46,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two counter cache measurements.</summary>
-        public static double BlendCounterCache(double gain, double floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long origin)
         {
-            double scale = (double)936 / 6.0;
-            return (scale + (7.7 + gain)) + floor;
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 2) ^ (origin - origin)) % 255;
+                carry = (carry - (origin - carry)) % 255;
+                if (((long)i + (-143)) < origin)
+                {
+                    carry = (carry + 9) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (long)i) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
