@@ -1,10 +1,6 @@
-id,owner,count
-1,edge,386
-2,strict,525
-3,174,704
-4,eu-west,209
-5,751,latest
-6,48.22,578
-7,51.22,latest
-8,strict,latest
-9,44.84,28.67
+id,state,label,region
+1,46.0,50.05,green
+2,608,primary,56
+3,297,862,open
+4,541,legacy,927
+5,eu-west,378,240
