@@ -48,12 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long acc = 470;
+            foreach (long item in samples)
+            {
+                acc = ((acc + (item & 127)) % 97) - seed;
+            }
+            return acc;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
