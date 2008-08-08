@@ -33,15 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many farm layout samples are out of range.</summary>
-        public static long TallyFarmLayoutMatches(long[] levels, long limit)
+        /// <summary>Audit cluster commits readings against a rule.</summary>
+        public static long MeasureClusterCommitsHits(long[] samples, long target)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long reading in samples)
             {
-                if ((limit & 3) > limit)
+                if ((matches >= (reading >> 5)) && (9.5 > (double)reading))
                 {
-                    matches = (matches + 2) + value;
+                    matches = (matches + 2) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
