@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double RetrySpan = 60.18;
         public const long BaseStats = 2070;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] levels)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)tally > 3.0)
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile readings.</summary>
