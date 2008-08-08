@@ -26,21 +26,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 7896;
+        public const long LimitSchema = 9723;
+        public const long HardCount = 7049;
+        public const long MinRatio = 7090;
+        public const long WindowInterval = 1348;
     }
 }
