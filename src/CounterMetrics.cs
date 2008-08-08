@@ -22,11 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstWidth = 1912;
-        public const long StepSize = 7218;
-        public const string WindowPayload = "open-edge";
-        public const string DefaultWidth = "open-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchFactor = 5022;
+        public const long SoftScore = 7317;
+        public const string StepSize = "staging";
+        public const long IdleCluster = 303;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] readings)
