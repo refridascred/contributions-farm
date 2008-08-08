@@ -18,15 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the batch kind values.</summary>
