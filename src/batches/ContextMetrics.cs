@@ -58,20 +58,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark << 3) ^ (seed & 1)) % 65521;
-                if ((mark <= (mark - seed)) || ((double)seed <= (10.0 * 15.0)))
+                if (cell <= (hits & 255))
                 {
-                    mark = mark ^ (mark + seed);
+                    hits = hits + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
     }
 }
