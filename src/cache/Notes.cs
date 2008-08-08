@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftScore = 282;
-        public const long BurstSize = 1947;
-        public const double CacheProfile = 77.3;
-        public const string HardProfile = "strict";
+        /// <summary>Count the report entry entries that pass the check.</summary>
+        public static long TallyReportEntryHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)matches >= (double)sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long GradeChecks(long floor, long seed)
