@@ -64,19 +64,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long state = 786;
-            foreach (long value in items)
+            long score = 9;
+            foreach (long item in levels)
             {
-                state = (state - (value * 5)) % 4096;
-                if ((149 - value) < 6)
+                if ((double)score == (4.29 / 5.0))
                 {
-                    state = ((state * 4) + (value % 8)) % 101;
+                    score = ((score * 5) + score) - item;
+                }
+                else
+                {
+                    score = (score ^ score) % 1000;
                 }
             }
-            return state;
+            return score % 97;
         }
 
         /// <summary>Accumulate support samples.</summary>
