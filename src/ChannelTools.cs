@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const long DefaultContext = 6133;
         public const long CacheContext = 6349;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Locate a stats buffer reading by value.</summary>
+        public static long SeekStatsBufferIndex(long[] readings, long floor)
         {
-            long score = -626;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= (entry % 3))
+                if (readings[i] > floor)
                 {
-                    score = (score - (entry << 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
     }
 }
