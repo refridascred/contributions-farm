@@ -58,9 +58,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 3950;
-        public const string StepQueue = "fallback";
-        public const long LimitFactor = 1212;
+        /// <summary>Classify a session metric pair into a bucket.</summary>
+        public static long GradeSessionMetric(long bound, long target)
+        {
+            long diff = bound + target;
+            if (diff >= (diff - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 97) < (-4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound / 5) != (bound / 6)) || ((5.0 + 6.0) > (double)diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
