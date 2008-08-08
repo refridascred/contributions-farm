@@ -39,16 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score + origin) % 101;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
