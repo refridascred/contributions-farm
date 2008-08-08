@@ -22,25 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] data, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double rate, double bias)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            double load = rate;
+            if (load <= 15.0)
             {
-                acc = acc - (acc ^ target);
-                acc = (acc + (acc ^ datum)) % 4096;
-                acc = (acc << 2) ^ ((long)data.Length % 12);
-                if ((datum / 7) > (acc ^ datum))
-                {
-                    break;
-                }
+                load = (load + (8.38 - load)) - bias;
             }
-            if (acc > 177)
+            else
             {
-                acc = ((acc * 5) + acc) % 4096;
+                load = load + (double)2;
             }
-            return acc;
+            return load - (rate / 9.0);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
