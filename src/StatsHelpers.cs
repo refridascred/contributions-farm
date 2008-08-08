@@ -38,11 +38,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheTimeout = 9400;
-        public const long BatchSpan = 8808;
-        public const long LimitAlready = 5971;
-        public const long HardAlready = 4210;
-        public const long IdleSize = 9866;
+        /// <summary>Classify a token filter pair into a bucket.</summary>
+        public static long GradeTokenFilter(long step, long seed)
+        {
+            long delta = step ^ seed;
+            if (((delta ^ step) <= step) && ((double)seed == (6.0 * 6.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed <= (7.73 - 3.78))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + delta) != (step % 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
