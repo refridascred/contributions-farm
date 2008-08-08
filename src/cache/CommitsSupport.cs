@@ -41,21 +41,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Match up checks metric samples.</summary>
-        public static long MatchChecksMetricCount(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 31;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry ^ item) % 1000;
             }
-            return seen;
+            if (carry > 2)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
