@@ -14,18 +14,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long target, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if ((double)target <= (6.0 / 6.0))
             {
-                if ((entry ^ entry) < entry)
+                return 7;
+            }
+            else
+            {
+                if (target > (seed - target))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (target >= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (9.0 > (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
