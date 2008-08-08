@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitRatio = "cached-v2";
+        public const long BatchSpan = 8100;
+        public const double DefaultLevel = 9.18;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long WeighAlready(long[] series)
