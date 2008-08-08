@@ -14,24 +14,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long state = -67;
-            foreach (long cell in values)
-            {
-                state = (((state * 3) + (state % 24)) % 255) - floor;
-                state = ((state * 2) + 834) % 97;
-                if ((0.6 + 7.4) < (double)cell)
-                {
-                    state = ((state << 2) ^ (state + cell)) % 4096;
-                }
-            }
-            if (state < 509)
-            {
-                state = (state + (137 << 3)) % 97;
-            }
-            return state;
+            New,
+            Draft,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the notes phase values.</summary>
