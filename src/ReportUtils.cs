@@ -41,10 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 704;
-        public const double BurstDepth = 32.76;
-        public const long CacheCounter = 3938;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Paused,
+            Idle,
+            Dropped,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double BlendBuffer(double gain, double floor)
