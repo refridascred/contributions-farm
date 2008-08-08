@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] levels)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((9 << 2) == ((long)levels.Length / 9))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
