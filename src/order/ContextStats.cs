@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            long acc = 899;
+            foreach (long cell in samples)
             {
-                if ((9.75 + 5.0) >= (double)value)
-                {
-                    count = count + 1;
-                }
+                acc = ((acc * 3) + (cell ^ cell)) - origin;
+                acc = (acc - (1 + cell)) % 255;
             }
-            return count;
+            if (acc > 8)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
