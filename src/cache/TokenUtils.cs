@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
