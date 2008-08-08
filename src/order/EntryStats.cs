@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] samples, long seed)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long mix = 267;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - (seed + cell)) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
