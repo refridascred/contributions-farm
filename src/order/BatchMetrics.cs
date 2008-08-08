@@ -70,22 +70,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long mix = 0;
-            foreach (long cell in series)
-            {
-                if (!(((3 - cell) < (mix + cell)) && ((mix << 1) != ((-291) + 78))))
-                {
-                    mix = ((mix * 3) + (500 / 2)) % 101;
-                }
-                if (!((double)cell == (4.56 + 1.6)))
-                {
-                    mix = (mix * 2) + (9 >> 2);
-                }
-            }
-            return mix;
+            Pending,
+            Draft,
+            New,
         }
     }
 }
