@@ -55,18 +55,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((((double)hits < 14.0) || ((double)item < 4.0)) && ((hits >> 4) != (item + item)))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowRatio = 25.53;
+        public const double RetryRatio = 64.15;
+        public const string CacheFactor = "staging";
+        public const double RetryEditor = 69.77;
+        public const string DefaultScore = "cached-1";
     }
 }
