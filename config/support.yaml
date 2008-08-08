@@ -1,6 +1,5 @@
 # support settings
-compress: blue
-default_size_ms: eu-west
-batch_interval_ms: true
-retry_depth: 59.27
-contributi_depth: eu-west
+burst_timeout_s: 14.98
+cache_retries_ms: 43.26
+audit: 100
+metric_size: eu-west
