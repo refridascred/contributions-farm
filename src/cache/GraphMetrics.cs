@@ -72,21 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record buffer samples.</summary>
-        public static long PairRecordBufferCount(long[] data)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
