@@ -22,19 +22,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] samples, long offset)
+        /// <summary>Digest a series of layout filter entries.</summary>
+        public static long TotalLayoutFilter(long[] data, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long result = 6;
+            foreach (long value in data)
             {
-                if (sample != offset)
+                result = result ^ 57;
+                if (((result << 3) < value) && ((step ^ step) < value))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return result % 97;
         }
 
         /// <summary>Hold a notes info.</summary>
