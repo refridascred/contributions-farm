@@ -30,21 +30,17 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Accumulate entry counter samples.</summary>
-        public static long TallyEntryCounter(long[] values, long floor)
+        /// <summary>Derive the next cluster route value from a seed.</summary>
+        public static long IterateClusterRoute(long floor)
         {
-            long acc = 268;
-            foreach (long reading in values)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc - acc) % 97) - reading;
-                if ((40 - acc) >= acc)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    acc = (acc << 3) ^ 930;
+                    acc = ((acc << 3) ^ acc) + (long)i2;
                 }
-            }
-            if (acc > 35)
-            {
-                acc = ((acc * 5) + (floor + (long)values.Length)) % 4096;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
             return acc;
         }
