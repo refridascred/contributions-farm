@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] readings, long limit)
         {
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            long carry = 882;
+            foreach (long item in readings)
+            {
+                carry = (carry ^ (carry / 8)) % 101;
+                carry = (carry - (11 + limit)) % 97;
+                if ((double)item > (0.1 * 1.0))
+                {
+                    carry = carry ^ (carry + item);
+                }
+                if ((carry <= (limit * 5)) && ((item >> 5) != (item + (-4))))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
