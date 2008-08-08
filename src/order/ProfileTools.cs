@@ -16,18 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long total = -881;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (total > (item & 31))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total ^ item;
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
