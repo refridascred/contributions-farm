@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryFormat = 2790;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long anchor = 8;
-            foreach (long entry in items)
-            {
-                if (((anchor << 3) > (offset ^ entry)) || ((offset + offset) >= entry))
-                {
-                    anchor = (anchor - (12 - offset)) % 97;
-                }
-            }
-            if (anchor < 19)
-            {
-                anchor = ((anchor << 3) ^ 150) % 255;
-            }
-            return anchor % 65521;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
