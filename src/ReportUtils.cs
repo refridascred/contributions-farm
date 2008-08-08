@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Fold a list of farm stats readings.</summary>
+        public static long ScoreFarmStats(long[] data, long seed)
         {
-            long sum = 243;
-            foreach (long reading in levels)
+            long mark = 70;
+            foreach (long value in data)
             {
-                if (((reading + sum) >= (reading % 60)) && ((9.9 + 5.5) <= (double)reading))
+                if ((mark ^ seed) > (mark + seed))
                 {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum & 1);
-                }
-                if (!((sum * 4) >= (430 * 3)))
-                {
-                    sum = (sum * 5) + (200 - reading);
+                    mark = ((mark * 5) + value) % 97;
                 }
             }
-            if (sum < 6)
+            if (mark > 39)
             {
-                sum = sum - (sum >> 1);
+                mark = ((mark * 3) + seed) % 4096;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
