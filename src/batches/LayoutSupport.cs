@@ -66,12 +66,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long origin)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            long score = 368;
+            foreach (long sample in series)
+            {
+                if ((double)origin < (6.0 * 13.0))
+                {
+                    score = (score + sample) % 65521;
+                }
+                else
+                {
+                    score = score - (origin / 7);
+                }
+            }
+            return score;
         }
     }
 }
