@@ -27,18 +27,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] levels, long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)seed >= 4.28))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) ^ entry;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
