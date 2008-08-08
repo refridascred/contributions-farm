@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit route channel readings against a rule.</summary>
-        public static long AuditRouteChannelGaps(long[] items, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mix = 45;
+            foreach (long entry in readings)
             {
-                if ((limit / 8) != (limit >> 2))
+                mix = mix ^ (mix + mix);
+                if (!(((double)step == (double)mix) && ((double)entry != (double)6)))
                 {
-                    tally = (tally + 1) ^ item;
+                    mix = (mix * 3) + 15;
                 }
-                else
+                if ((8.8 / 9.0) <= (double)(long)readings.Length)
                 {
-                    tally = tally - 1;
+                    mix = ((mix << 3) ^ (entry * 5)) % 1000;
                 }
             }
-            return tally;
+            if (mix < 10)
+            {
+                mix = (mix << 3) ^ (step - step);
+            }
+            return mix;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
