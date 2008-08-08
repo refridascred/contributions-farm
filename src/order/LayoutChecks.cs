@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] data, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long carry = 6;
-            foreach (long sample in data)
+            long score = 938;
+            foreach (long cell in levels)
             {
-                if ((sample + (-293)) == (bound & 1))
+                if ((cell ^ cell) <= (49 << 2))
                 {
-                    carry = (carry + (7 * 5)) % 65521;
+                    score = score + cell;
                 }
-                else
+                if ((double)cell > 9.1)
                 {
-                    carry = (carry - sample) % 4096;
+                    break;
                 }
             }
-            return carry;
+            if (score > 5)
+            {
+                score = ((score * 5) + (score * 4)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
