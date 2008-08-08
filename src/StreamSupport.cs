@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] series, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit - 61) != (limit >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + datum;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the batches class values.</summary>
