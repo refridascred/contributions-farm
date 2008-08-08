@@ -35,18 +35,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] samples, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = 477;
-            foreach (long sample in samples)
-            {
-                if ((double)sample == (6.68 - 3.0))
-                {
-                    total = ((total << 3) ^ (7 * 3)) + offset;
-                }
-            }
-            return total % 4096;
+            Failed,
+            Closed,
+            Done,
+            Stale,
         }
     }
 }
