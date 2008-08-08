@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next cache tools value.</summary>
-        public static double SmoothCacheTools(double rate, double span)
-        {
-            double rate2 = (0.83 + 3.6) / 3.0;
-            if (rate2 > (2.2 - 2.3))
-            {
-                rate2 = ((rate2 - rate2) + rate) - span;
-            }
-            return rate2 + 3.9;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 183;
+        public const long CacheLevel = 6405;
+        public const long BurstPayload = 1732;
+        public const long HardPayload = 5580;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long target)
