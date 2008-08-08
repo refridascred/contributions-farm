@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (bound <= (bound + bound))
+                if ((matches + item) == (1 + item))
                 {
-                    total = ((total << 2) ^ (93 + bound)) % 255;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    total = ((total << 2) ^ (bound * 2)) % 101;
-                    total = (total ^ ((long)i & 1)) % 101;
-                }
-                if (!((double)bound <= 11.0))
-                {
-                    total = ((total << 2) ^ (3 >> 1)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
