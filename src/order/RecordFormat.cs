@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count session batches pairs that satisfy a relation.</summary>
