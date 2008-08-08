@@ -88,21 +88,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)anchor != (double)718)
                 {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - anchor) % 1000;
                 }
+                else
+                {
+                    anchor = (anchor << 2) ^ (origin + anchor);
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (anchor + ((long)i2 % 8)) % 101;
+                }
+                anchor = (anchor << 3) ^ ((long)i - anchor);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
