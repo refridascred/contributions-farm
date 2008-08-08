@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] values)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + count) <= (count & 7))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
