@@ -14,11 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
