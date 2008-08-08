@@ -83,11 +83,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 8566;
-        public const long MaxSchema = 9518;
-        public const string MinSchema = "open";
-        public const string RetryBudget = "open-v2";
-        public const long HardSchema = 6643;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long step)
+        {
+            long next = offset ^ step;
+            if ((offset <= step) && ((14.0 * 4.3) <= (double)offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((next * 4) > (8 + next)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset * 3) < (offset % 10)) && ((next ^ step) < (next + 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
