@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout report samples are out of range.</summary>
-        public static long CountLayoutReportMatches(long[] values)
+        /// <summary>Measure how many farm layout samples are out of range.</summary>
+        public static long TallyFarmLayoutMatches(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (entry > (count * 5))
+                if ((limit & 3) > limit)
                 {
-                    count = count + 2;
+                    matches = (matches + 2) + value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
