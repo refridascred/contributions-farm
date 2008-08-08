@@ -1,24 +1,17 @@
 # githubfarm settings
-cache_capacity:
-  - eu-west
-  - stable
-  - strict
-  - green
-flush_limit_s: true
-flush_interval_count:
-  sync_ratio_s: false
-  cache_limit: true
-  audit: fallback
-commits_limit:
-  sync_retries_s: 2605
-  report_timeout:
-    - eu-west
-    - open
-    - edge
-  max_interval_ms:
-    - primary
-    - staging
-    - eu-west
-  contributi_delay: 91
-  report_depth: true
-batch_timeout: 2981
+record_threshold:
+  graph_threshold: 1843
+  enabled:
+    - 289
+    - 3
+    - 152
+  session_limit: false
+  contributi_timeout: cached
+persist: false
+metrics_window: false
+payload_size: false
+flush_retries_count: blue
+min_ratio_pct:
+  burst_threshold: true
+  min_threshold_ms: cached
+  flush_depth: 4.63
