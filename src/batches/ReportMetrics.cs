@@ -56,19 +56,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long total = -4;
-            foreach (long value in samples)
-            {
-                total = total ^ value;
-            }
-            if (total > 86)
-            {
-                total = total ^ (60 ^ total);
-            }
-            return total;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
