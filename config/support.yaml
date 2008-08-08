@@ -1,23 +1,5 @@
 # support settings
-batch_threshold:
-  cache_window:
-    base_depth: fallback
-    min_window_s: 8888
-    idle_size_pct: true
-    cluster_interval: 8294
-  order_timeout: 4195
-  batch_threshold_count:
-    stats_timeout: open
-    sync_limit_count: 4256
-    already_depth: 500
-    soft_timeout: eu-west
-    warm_limit: staging
-    idle_depth_ms: fallback
-  payload_timeout: 4
-  queue_delay: fallback
-  record_timeout: 73.77
-strict:
-  - fallback
-  - open
-  - latest
-queue_threshold: eu-west
+payload_delay: 1024
+base_timeout_pct: 1522
+base_depth_pct: latest
+commits_threshold: 68.67
