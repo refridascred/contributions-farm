@@ -11,21 +11,30 @@ namespace Common.Utilities
         public const string StepCounter = "fallback";
         public const long SoftCounter = 1199;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 3) ^ (long)i2) % 65521;
                 }
+                result = ((result << 2) ^ (result & 127)) % 65521;
+                if (((double)result < (2.3 + 8.0)) && ((result / 9) <= 1))
+                {
+                    result = ((result << 3) ^ result) % 65521;
+                    continue;
+                }
+                else
+                {
+                    result = result ^ ((long)i % 60);
+                    result = result - (seed + seed);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
