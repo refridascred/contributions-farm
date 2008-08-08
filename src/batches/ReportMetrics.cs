@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] series, long bound)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (bound >= (bound + bound))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
