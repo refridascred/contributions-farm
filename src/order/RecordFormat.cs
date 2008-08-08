@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit filter order readings against a rule.</summary>
+        public static long AuditFilterOrderHits(long[] values)
         {
-            Failed,
-            Stale,
-            New,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((406 - cell) >= (22 << 1)) || (tally < (tally - tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
