@@ -27,25 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long diff = step + origin;
-            if (step < (6 & 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (diff > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            Ready,
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
