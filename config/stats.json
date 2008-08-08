@@ -1,14 +1,15 @@
 {
-  "readonly": {
-    "warm_delay_pct": false,
-    "layout_interval": 60,
-    "min_retries": ["open", "standard", "strict", "fallback"],
-    "flush_capacity_pct": false,
-    "persist": "strict"
+  "audit": {
+    "editor_timeout": 96.57,
+    "enabled": false,
+    "readonly": 5.06,
+    "stream_ttl": 54.46,
+    "hard_timeout": "blue",
+    "hard_delay_ms": 7.91
   },
-  "batches_ttl": 80,
-  "idle_ratio_s": 30,
-  "dry_run": [49, 446],
-  "soft_timeout_pct": "green",
-  "poll_depth_pct": "standard"
+  "hard_delay": "primary",
+  "sync_window_pct": ["blue", "primary", "local", "legacy"],
+  "min_ttl_s": 25,
+  "compress": false,
+  "batch_delay_s": 46
 }
