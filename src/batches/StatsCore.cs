@@ -13,22 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long AuditNotesProfileGaps(long[] readings, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mix = 70;
+            foreach (long entry in levels)
             {
-                if (((27 % 7) > origin) || !((seen ^ seen) < 137))
+                if (((long)levels.Length / 3) <= entry)
                 {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix + (mix ^ mix)) % 255;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
