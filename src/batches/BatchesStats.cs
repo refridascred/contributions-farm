@@ -43,31 +43,23 @@ namespace Common.Utilities
             return bias + (rate / 8.0);
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long offset, long origin)
+        /// <summary>Accumulate account support samples.</summary>
+        public static long WeighAccountSupport(long[] values, long bound)
         {
-            if ((origin - offset) == (35 & 255))
+            long sum = 92;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((2.06 / 7.0) != (double)origin) && (offset >= (offset / 8)))
+                sum = sum ^ bound;
+                if (653 < (12 + datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (9.0 + 0.1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum ^ (datum - 77)) % 255;
                 }
             }
+            if (sum < 64)
+            {
+                sum = sum - bound;
+            }
+            return sum;
         }
     }
 }
