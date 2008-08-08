@@ -58,15 +58,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a context githubfarm reading.</summary>
-        public static double AdjustContextGithubfarm(double scale, double floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            double gain = scale;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain - (0.6 * 1.0)) + (double)(long)i) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return tally;
         }
     }
 }
