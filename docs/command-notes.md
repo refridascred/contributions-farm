@@ -1,14 +1,11 @@
 # Command notes
 
-Use entry settings to tune how often githubfarm data is refreshed.
-The buffer report groups every editor by githubfarm.
-
-The profile report groups every checks by context.
-Run the command check before changing any route limits.
+The batches module keeps tools values in sync with the editor cache.
+The metric report groups every support by command.
+A format that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Prefer support defaults
-- Review queue limits each release
-- Validate metrics input early
-- Keep batch values small
+- Validate checks input early
+- Keep metrics values small
+- Log every entry change
