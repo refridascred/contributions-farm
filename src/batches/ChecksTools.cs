@@ -27,18 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long acc = 31;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)levels.Length & 255) != ((-59) + acc)) || ((9.9 * 1.0) != (double)entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc - 9) % 65521;
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
