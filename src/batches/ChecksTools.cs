@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long carry = 0;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = ((carry + (carry + entry)) % 65521) + (long)i;
-                }
-                if ((double)carry < (double)entry)
-                {
-                    carry = (carry + (entry << 2)) % 4096;
-                }
-            }
-            if (carry < (-295))
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry;
+            Active,
+            Closed,
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
