@@ -39,15 +39,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long mark = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark << 3) ^ mark) % 101) - cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
