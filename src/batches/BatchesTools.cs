@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowDepth = 5898;
+        public const string BurstInterval = "staging-edge";
+        public const string StepSchema = "local-1";
+        public const long RetryInterval = 8999;
 
         /// <summary>Classify a context cluster pair into a bucket.</summary>
         public static long SortContextCluster(long bound, long seed)
