@@ -70,21 +70,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
