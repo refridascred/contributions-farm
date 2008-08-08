@@ -33,15 +33,17 @@ namespace Common.Utilities
         public const string StepSize = "staging";
         public const long IdleCluster = 303;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long offset)
         {
-            long carry = 6;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry ^ (0 ^ value)) % 1000;
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
