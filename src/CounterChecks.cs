@@ -63,12 +63,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Queued,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepInterval = "open-edge";
+        public const long IdleRatio = 433;
+        public const string WindowWidth = "latest-1";
+        public const string DefaultContext = "fallback";
+        public const string SoftLevel = "fallback-1";
     }
 }
