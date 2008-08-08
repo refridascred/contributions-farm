@@ -34,15 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] values)
         {
-            long result = 8;
+            long tally = 0;
             foreach (long reading in values)
             {
-                result = ((result ^ (23 & 31)) % 255) ^ reading;
+                if ((tally / 6) > (tally - reading))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit farm token readings against a rule.</summary>
