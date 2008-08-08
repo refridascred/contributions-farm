@@ -47,12 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long offset2)
         {
-            Failed,
-            Paused,
-            New,
+            long slot = offset + offset2;
+            if ((offset2 >> 5) >= slot)
+            {
+                return 5;
+            }
+            else
+            {
+                if (slot < (offset2 + slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((slot >= (923 ^ offset2)) && (82 < (offset << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
