@@ -27,16 +27,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a session checks counter forward.</summary>
-        public static long SeriesSessionChecks(long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                state = state + (long)i;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Draft,
+            Closed,
+            Queued,
+            Paused,
+            New,
         }
     }
 }
