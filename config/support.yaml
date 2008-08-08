@@ -1,5 +1,6 @@
 # support settings
-compress: stable
-max_limit: 1
-batch_limit: false
-batch_timeout_count: fallback
+compress: blue
+default_size_ms: eu-west
+batch_interval_ms: true
+retry_depth: 59.27
+contributi_depth: eu-west
