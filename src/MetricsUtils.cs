@@ -48,17 +48,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitLevel = 8271;
+        public const long IdleTimeout = 274;
+        public const long SoftCommits = 2229;
+        public const long StepCommits = 4319;
+        public const long MaxLevel = 2172;
     }
 }
