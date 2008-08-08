@@ -70,17 +70,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context cluster reading by value.</summary>
-        public static long SeekContextClusterIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 7337;
+        public const double MinInterval = 73.75;
+        public const long CacheRatio = 4600;
+        public const long BaseSession = 4929;
+        public const long StepScore = 9871;
     }
 }
