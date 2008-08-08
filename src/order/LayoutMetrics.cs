@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] readings, long bound)
         {
-            long mark = 612;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((double)item == (5.57 + 1.4))
+                if (sample >= bound)
                 {
-                    mark = (mark + (seed + seed)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 877)
-            {
-                mark = (mark ^ (seed ^ mark)) % 1000;
-            }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Hold a metric record.</summary>
