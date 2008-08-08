@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (value > step)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Describe the payload status values.</summary>
