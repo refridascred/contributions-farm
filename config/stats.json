@@ -1,7 +1,12 @@
 {
-  "poll_timeout": "staging",
-  "retry_limit": "legacy",
-  "verbose": false,
-  "warm_ratio_s": "eu-west",
-  "readonly": 74
+  "counter_size": 36.24,
+  "readonly": {
+    "max_timeout_count": 60,
+    "cache_size_count": "fallback",
+    "base_threshold": false
+  },
+  "dry_run": "open",
+  "hard_threshold_s": 20.33,
+  "entry_timeout": 60,
+  "audit": true
 }
