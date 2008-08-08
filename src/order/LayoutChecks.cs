@@ -55,13 +55,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Paused,
-            Closed,
-            Dropped,
-            Idle,
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a layout entry.</summary>
