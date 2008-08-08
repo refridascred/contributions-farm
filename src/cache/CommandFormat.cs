@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 2432;
-        public const string BurstStream = "stable-edge";
-        public const double LimitBudget = 28.1;
-        public const long MaxStream = 9213;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double rate, double floor)
+        {
+            double bias = (double)6 - (rate + 7.7);
+            if (bias <= 5.0)
+            {
+                bias = bias + (bias + floor);
+            }
+            return bias - (rate * 12.0);
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] samples, long step)
