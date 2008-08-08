@@ -28,18 +28,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] series, long target)
-        {
-            long score = 0;
-            foreach (long value in series)
-            {
-                if ((score & 1) <= (value + 326))
-                {
-                    score = (score + (target + target)) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardBudget = 942;
+        public const string MinProfile = "staging-edge";
+        public const double RetryProfile = 35.15;
+        public const long StepBudget = 7053;
     }
 }
