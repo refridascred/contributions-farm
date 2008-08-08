@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] readings, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit <= (limit + 6)) || (((long)i + 41) >= (limit + (long)i)))
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
                 {
-                    mark = mark ^ (mark + (long)i);
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a already header.</summary>
