@@ -35,13 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
