@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in stable eu-west; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
