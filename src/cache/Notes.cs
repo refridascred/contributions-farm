@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the report entry entries that pass the check.</summary>
