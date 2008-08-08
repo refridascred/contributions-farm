@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] readings, long bound)
+        /// <summary>Scale a support checks figure with a bias.</summary>
+        public static double ProjectSupportChecks(double bias, double floor)
         {
-            long acc = 68;
-            foreach (long value in readings)
-            {
-                if ((bound >> 4) > (value >> 4))
-                {
-                    acc = (acc * 2) + (bound & 127);
-                }
-            }
-            if (acc < 7)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            double ratio = 1.5;
+            return ((ratio + 19.0) + bias) + floor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
