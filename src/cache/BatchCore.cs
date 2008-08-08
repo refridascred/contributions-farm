@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Blend two stats entry measurements.</summary>
+        public static double ScaleStatsEntry(double gain, double span)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark << 3) ^ (bound - mark)) % 1000;
-                if ((double)mark != (19.0 + 3.4))
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            double bias = (double)477 - span;
+            return (bias + (double)578) + gain;
         }
 
         /// <summary>Hold a buffer entry.</summary>
