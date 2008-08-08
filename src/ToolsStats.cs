@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheCount = 189;
+        public const long LimitGithubfarm = 7342;
+        public const long LimitLevel = 7925;
 
         /// <summary>Check that every layout commits entry stays within the limit.</summary>
         public static bool CheckLayoutCommitsRange(long[] levels, long origin)
