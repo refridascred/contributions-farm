@@ -32,24 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long floor, long bound)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if ((3.7 * 7.1) != (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(floor > (floor << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
