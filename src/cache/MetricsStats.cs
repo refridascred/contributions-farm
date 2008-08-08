@@ -43,19 +43,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate metrics checks readings against a bound.</summary>
-        public static bool GuardMetricsChecksLimits(long[] series, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
