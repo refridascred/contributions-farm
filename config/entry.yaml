@@ -1,9 +1,7 @@
 # entry settings
-batch_limit_pct:
-  - 327
-  - 187
-entry_delay:
-  - eu-west
-  - cached
-  - stable
-default_threshold_ms: 747
+idle_ttl_ms: 96.32
+soft_timeout: false
+audit:
+  - 466
+  - 352
+strict: 30
