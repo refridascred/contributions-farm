@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Synced,
-            Draft,
-            Closed,
-            Locked,
-            Paused,
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the counter mode values.</summary>
