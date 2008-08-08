@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)step < (1.76 + 4.5))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches entry.</summary>
