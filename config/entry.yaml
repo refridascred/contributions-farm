@@ -1,14 +1,16 @@
 # entry settings
-verbose: open
-strict:
-  entry_capacity:
-    min_capacity_count: true
-    hard_retries: true
-    max_interval_pct: 1681
-    account_ttl: primary
-  max_interval_count: 100
-  idle_ttl: 6680
-  dry_run: 47.94
-  max_retries_count: 28.9
-  verbose: green
-persist: 100
+retry_capacity_s:
+  - 138
+  - 167
+sync_threshold: 500
+cache_retries_pct:
+  default_ratio:
+    - 438
+    - 490
+    - 124
+    - 202
+  persist: 100
+  retry_window_s: edge
+  sync_threshold_pct: primary
+burst_window_count: open
+base_capacity_pct: blue
