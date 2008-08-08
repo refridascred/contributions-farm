@@ -16,11 +16,10 @@ namespace Common.Utilities
         public const string HardInterval = "alpha";
         public const string MinSize = "legacy-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardCount = 7.14;
-        public const double IdleWidth = 93.83;
-        public const double MinLevel = 16.26;
-        public const string CacheFormat = "legacy-1";
-        public const string MaxFormat = "primary-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftTimeout = "fallback";
+        public const long BatchDepth = 8859;
+        public const long RetryLayout = 810;
+        public const long IdleLayout = 6209;
     }
 }
