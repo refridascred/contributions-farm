@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account command samples are out of range.</summary>
-        public static long MeasureAccountCommandGaps(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((double)reading > (3.0 * 17.0))
+                if ((tally + sample) == (floor & 7))
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
