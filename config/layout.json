@@ -1,17 +1,7 @@
 {
-  "warm_timeout_s": [256, 407, 241, 28],
-  "base_ttl_pct": {
-    "dry_run": "cached",
-    "channel_interval": {
-      "max_ratio_count": 3,
-      "poll_limit_count": [405, 156, 172, 177],
-      "warm_retries_s": "fallback",
-      "readonly": "eu-west"
-    },
-    "min_limit_pct": "strict"
-  },
-  "contributi_capacity": [242, 308],
-  "githubfarm_window": 51,
-  "payload_ttl": 88.65,
-  "layout_timeout": 43.77
+  "sync_limit_ms": 250,
+  "sync_depth_ms": "standard",
+  "verbose": 36,
+  "profile_size": "blue",
+  "enabled": 51.69
 }
