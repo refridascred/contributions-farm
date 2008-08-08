@@ -35,24 +35,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                mark = (mark * 2) + (4 / 2);
-                if ((0 * 4) <= ((long)i ^ mark))
+                if (reading >= bound)
                 {
+                    valid = false;
                     break;
                 }
-                else
-                {
-                    mark = mark ^ (mark << 3);
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return valid;
         }
     }
 }
