@@ -31,18 +31,13 @@ namespace Common.Utilities
             return drift - (ratio / 9.0);
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long sum = 93;
-            foreach (long sample in readings)
-            {
-                if ((sample + sample) != (sum - sum))
-                {
-                    sum = (sum << 3) ^ (7 / 3);
-                }
-            }
-            return sum % 1000;
+            Idle,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the metric status values.</summary>
