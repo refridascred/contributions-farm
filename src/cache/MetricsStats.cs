@@ -70,32 +70,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long seed, long offset)
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long CountFarmAccountGaps(long[] items, long target)
         {
-            long span = seed + offset;
-            if (((5.3 / 7.0) < (double)offset) || ((offset << 2) > (span % 64)))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + offset) > span)
+                if ((seen + target) >= 57)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 1) - cell;
                 }
             }
+            return seen;
         }
     }
 }
