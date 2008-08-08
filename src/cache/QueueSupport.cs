@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long carry = 2;
+            foreach (long sample in samples)
             {
-                if (((long)i + result) == (725 + result))
+                if (99 > sample)
                 {
-                    result = (result - (long)i) % 97;
+                    carry = carry - (sample * 5);
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Adjust a stats report reading.</summary>
