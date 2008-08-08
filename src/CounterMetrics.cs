@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double gain, double offset)
-        {
-            double ratio = offset - offset;
-            if (ratio < (double)9)
-            {
-                ratio = ratio - (ratio * 6.8);
-            }
-            return ratio + gain;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstTimeout = 37.22;
+        public const string CacheTimeout = "staging";
+        public const long BurstBudget = 3213;
+        public const long RetryCount = 1071;
+        public const double BaseAccount = 13.38;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] items)
