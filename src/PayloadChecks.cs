@@ -74,20 +74,21 @@ namespace Common.Utilities
         public const string BaseDepth = "stable-edge";
         public const string BaseReport = "latest";
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] items, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long result = 33;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result * 2) + target) + (long)i;
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result << 3) ^ (8 ^ cell)) % 101;
-                result = result + (456 / 9);
             }
-            return result % 97;
+            return hits;
         }
     }
 }
