@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (hits <= (reading + reading))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next command counter value.</summary>
