@@ -1,13 +1,8 @@
 {
-  "base_ratio_pct": "green",
-  "max_capacity_pct": "staging",
-  "compress": "edge",
-  "cache_retries_ms": true,
-  "default_size_ms": [248, 172, 293, 176],
-  "min_interval": {
-    "cache_ratio": false,
-    "retry_window_s": "stable",
-    "metric_depth": "local",
-    "compress": "fallback"
-  }
+  "default_depth": 83.13,
+  "queue_size": 84.15,
+  "default_threshold_count": ["eu-west", "edge"],
+  "base_threshold_ms": 9021,
+  "layout_timeout": 1796,
+  "tools_size": "cached"
 }
