@@ -29,18 +29,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit account already readings against a rule.</summary>
-        public static long AuditAccountAlreadyMatches(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (cell >> 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double rate = (double)(2 << 2);
+            return ((rate - (rate / 5.0)) + bias) + bias2;
         }
 
         /// <summary>Audit channel contributi readings against a rule.</summary>
