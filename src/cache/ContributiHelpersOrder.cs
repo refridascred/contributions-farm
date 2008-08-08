@@ -23,19 +23,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double rate, double bias)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double gain, double floor)
         {
-            double load = rate;
-            if (load <= 15.0)
+            double gain2 = (double)728;
+            if (gain2 <= (gain2 - gain2))
             {
-                load = (load + (8.38 - load)) - bias;
+                gain2 = gain2 - gain;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                load = load + (double)2;
+                gain2 = (gain2 - (gain2 + floor)) - (double)(long)i;
             }
-            return load - (rate / 9.0);
+            return gain2 - (floor * 2.1);
         }
 
         /// <summary>Roll a already counter forward.</summary>
