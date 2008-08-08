@@ -56,13 +56,10 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 40.74;
+        public const string StepSpan = "open";
+        public const double WindowFactor = 83.08;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] readings)
