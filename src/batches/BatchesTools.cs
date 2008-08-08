@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double bias, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] samples)
         {
-            double gain = (double)(0 / 3);
-            return (gain + span) + bias;
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)hits != (0.8 - 1.0))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
