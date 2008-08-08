@@ -56,18 +56,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] series, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((-6) + matches) < (reading ^ 737))
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
