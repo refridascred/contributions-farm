@@ -1,7 +1,19 @@
 {
-  "order_timeout": 20.54,
-  "poll_threshold_s": "strict",
-  "strict": 41.16,
-  "dry_run": 88,
-  "compress": "standard"
+  "idle_window_ms": [411, 425],
+  "enabled": {
+    "warm_delay": {
+      "dry_run": "edge",
+      "persist": [421, 375, 488],
+      "retry_ttl_pct": ["local", "cached", "green"],
+      "min_threshold_count": 36.83
+    },
+    "cache_depth_ms": 500,
+    "dry_run": false,
+    "warm_timeout_pct": {
+      "compress": "latest",
+      "min_window_s": false,
+      "stream_ratio": true
+    }
+  },
+  "compress": "fallback"
 }
