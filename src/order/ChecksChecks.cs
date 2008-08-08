@@ -39,10 +39,21 @@ namespace Common.Utilities
             return load - 15.0;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftTimeout = "fallback";
-        public const long BatchDepth = 8859;
-        public const long RetryLayout = 810;
-        public const long IdleLayout = 6209;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
