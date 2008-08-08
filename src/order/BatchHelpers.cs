@@ -36,9 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8882;
-        public const long BatchToken = 2242;
-        public const long IdleSpan = 6653;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheInterval = 9455;
+        public const double MaxNotes = 98.48;
+        public const double RetryWidth = 19.33;
+        public const long RetryRatio = 6806;
     }
 }
