@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const string RetryScore = "alpha-edge";
         public const long MinDepth = 6386;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Paused,
-            Queued,
-            Dropped,
+            Failed,
+            Active,
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
