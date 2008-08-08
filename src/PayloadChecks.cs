@@ -21,12 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Locked,
-            Retry,
-            Closed,
+            Draft,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
