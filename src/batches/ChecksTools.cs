@@ -41,17 +41,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first record tools entry that matches the target.</summary>
-        public static long FindRecordToolsIndex(long[] readings, long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(684 - 5);
+            if (load <= (load + load))
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                load = (load + (double)112) + floor;
             }
-            return -1;
+            return load + (ratio * 7.95);
         }
 
         /// <summary>Describe the graph phase values.</summary>
