@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            Pending,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the counter mode values.</summary>
