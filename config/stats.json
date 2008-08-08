@@ -1,6 +1,13 @@
 {
-  "default_interval": 250,
-  "editor_retries": ["eu-west", "stable", "standard"],
-  "sync_capacity_s": "latest",
-  "idle_threshold_count": "strict"
+  "retry_ratio_count": 53.02,
+  "audit": 246,
+  "payload_capacity": 250,
+  "contributi_depth": 22,
+  "dry_run": {
+    "min_window": "eu-west",
+    "audit": 60,
+    "strict": 60,
+    "readonly": "strict"
+  },
+  "verbose": ["cached", "stable", "stable"]
 }
