@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] readings, long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
