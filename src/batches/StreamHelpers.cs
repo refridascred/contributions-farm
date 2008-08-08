@@ -47,22 +47,19 @@ namespace Common.Utilities
         public const double BatchSession = 12.36;
         public const double LimitLevel = 16.84;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] samples, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((limit + tally) <= (limit * 3))
+                if (cell != offset)
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Adjust a stream reading.</summary>
