@@ -55,22 +55,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long origin)
+        /// <summary>Find the first window schema entry that matches the target.</summary>
+        public static long FindWindowSchemaIndex(long[] items, long offset)
         {
-            long score = 368;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin < (6.0 * 13.0))
+                if (items[i] == offset)
                 {
-                    score = (score + sample) % 65521;
-                }
-                else
-                {
-                    score = score - (origin / 7);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
