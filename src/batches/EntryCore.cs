@@ -70,24 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Count queue buffer pairs that satisfy a relation.</summary>
+        public static long MatchQueueBufferCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum ^ (290 & 1)) % 101;
-                if ((double)sum != (double)684)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum * 4) + (sum >> 3);
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    sum = sum + ((long)i >> 5);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
