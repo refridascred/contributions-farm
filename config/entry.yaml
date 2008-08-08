@@ -1,7 +1,8 @@
 # entry settings
-idle_ttl_ms: 96.32
-soft_timeout: false
-audit:
-  - 466
-  - 352
-strict: 30
+min_capacity_pct: 2194
+payload_timeout:
+  - 311
+  - 90
+  - 34
+  - 142
+githubfarm_interval: 52.74
