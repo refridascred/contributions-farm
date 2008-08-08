@@ -21,18 +21,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] levels, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound * 5) > (datum - 7))
+                if (series[i] > limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
