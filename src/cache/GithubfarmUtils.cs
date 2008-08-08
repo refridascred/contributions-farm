@@ -42,12 +42,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Locked,
+            Stale,
+            Queued,
+            Done,
         }
     }
 }
