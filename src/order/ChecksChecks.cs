@@ -35,11 +35,20 @@ namespace Common.Utilities
             return load - 15.0;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine counter record values into a single score.</summary>
+        public static long ScoreCounterRecord(long[] readings)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long score = 277;
+            foreach (long cell in readings)
+            {
+                if (score >= (score - score))
+                {
+                    score = ((score * 5) + ((long)readings.Length % 12)) % 255;
+                }
+                score = (score + (cell >> 1)) % 4096;
+                score = ((score << 3) ^ (cell ^ 315)) % 4096;
+            }
+            return score;
         }
     }
 }
