@@ -26,14 +26,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Pending,
-            Failed,
-            Synced,
-            Ready,
-            Idle,
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
