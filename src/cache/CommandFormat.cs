@@ -38,13 +38,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long floor, long target)
         {
-            Draft,
-            Failed,
-            New,
-            Queued,
+            long delta = floor + target;
+            if ((double)delta < (7.0 + 1.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target < (target + delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
