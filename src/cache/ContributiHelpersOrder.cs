@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] data, long origin)
         {
-            long total = 9;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (!!((total * 3) > (total + entry)))
+                if (value != origin)
                 {
-                    total = total + (617 * 5);
-                }
-                if ((total - entry) >= entry)
-                {
-                    total = (total ^ total) % 101;
-                }
-                else
-                {
-                    total = (total - total) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
