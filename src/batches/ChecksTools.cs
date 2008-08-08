@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Rank channel record input into a small class.</summary>
+        public static long GradeChannelRecord(long step, long limit)
         {
-            Failed,
-            Closed,
-            Synced,
+            if ((limit ^ limit) < (limit << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit & 31) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((7.31 + 6.96) >= (double)step) && ((step / 8) >= (step - limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window options.</summary>
