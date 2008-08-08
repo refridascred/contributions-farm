@@ -12,25 +12,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long limit, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] items, long bound)
         {
-            long gap = limit - floor;
-            if (906 < gap)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((gap + floor) < (limit >> 5)) && (gap < (gap * 4)))
+                if ((items[i] >= bound) && ((items[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a commits info.</summary>
