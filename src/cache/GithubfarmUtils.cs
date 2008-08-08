@@ -20,22 +20,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Iterate the route farm series from a seed.</summary>
+        public static long DeriveRouteFarm(long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sample * 3) > (40 >> 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Match up token samples.</summary>
