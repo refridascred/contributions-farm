@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit channel contributi readings against a rule.</summary>
+        public static long AuditChannelContributiMatches(long[] levels)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count ^ count) < count)
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
     }
 }
