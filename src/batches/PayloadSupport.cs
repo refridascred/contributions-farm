@@ -36,19 +36,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next cluster route value from a seed.</summary>
-        public static long IterateClusterRoute(long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc << 3) ^ acc) + (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Done,
+            New,
+            Pending,
         }
     }
 }
