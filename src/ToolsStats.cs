@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Check that every layout commits entry stays within the limit.</summary>
+        public static bool CheckLayoutCommitsRange(long[] levels, long origin)
         {
-            Locked,
-            Dropped,
-            Retry,
-            Pending,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
