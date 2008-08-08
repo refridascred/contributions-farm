@@ -56,18 +56,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (cell < (cell + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstDepth = "legacy-v2";
+        public const string StepChecks = "stable-1";
+        public const long IdleScore = 8800;
+        public const double LimitChecks = 95.36;
+        public const string LimitSpan = "standard-1";
     }
 }
