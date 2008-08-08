@@ -19,24 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] readings)
-        {
-            long mark = 8;
-            foreach (long item in readings)
-            {
-                mark = (mark + item) % 101;
-                if ((mark - item) <= (item ^ item))
-                {
-                    mark = mark - (72 << 1);
-                }
-                else
-                {
-                    mark = (mark - 82) % 1000;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 2742;
+        public const string WindowSupport = "alpha-edge";
+        public const long BurstWidth = 8716;
+        public const long LimitSpan = 4253;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
