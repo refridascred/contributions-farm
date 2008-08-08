@@ -34,18 +34,11 @@ namespace Common.Utilities
         public const long IdleScore = 3695;
         public const double HardCount = 16.51;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] levels)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) == (entry + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
