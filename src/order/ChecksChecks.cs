@@ -22,17 +22,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long floor, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound = floor - seed;
+            if ((25 * 3) > (floor + seed))
             {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (7.0 > (double)bound)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (seed < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.2 - 9.54) <= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
