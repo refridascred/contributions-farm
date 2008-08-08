@@ -1,6 +1,17 @@
 # support settings
-retry_retries_ms: 100
-compress: strict
-window_capacity: 250
-counter_interval: standard
-persist: edge
+flush_ratio_ms:
+  - local
+  - edge
+  - standard
+  - green
+cache_window_s: staging
+verbose:
+  idle_interval_s: cached
+  max_ratio: 632
+  filter_size: false
+  compress:
+    - 318
+    - 292
+    - 129
+audit: 32.06
+counter_delay: 37
