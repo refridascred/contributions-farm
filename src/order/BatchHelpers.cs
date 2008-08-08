@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double offset)
-        {
-            double mean = (ratio + ratio) / 6.0;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean + mean) + (double)(long)i) + offset;
-            }
-            return mean + ratio;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 88.86;
+        public const double HardRoute = 70.99;
+        public const long DefaultRoute = 6034;
+        public const long CacheRoute = 1765;
+        public const long BatchRoute = 8422;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinCount = 6397;
