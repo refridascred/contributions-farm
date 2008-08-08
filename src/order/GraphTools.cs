@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long SoftFormat = 6566;
         public const string CacheFormat = "latest-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetrySize = "cached-1";
-        public const long StepSize = 1283;
-        public const long MinTimeout = 3499;
-        public const long BurstDepth = 6551;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (matches > (sample >> 4))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] data)
