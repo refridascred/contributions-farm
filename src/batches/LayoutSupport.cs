@@ -70,20 +70,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "latest-1";
+        public const double BaseRecord = 5.41;
+        public const string CacheRecord = "cached-edge";
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] readings)
