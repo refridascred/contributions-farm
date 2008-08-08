@@ -58,31 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long limit, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            if (limit <= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.4 / 3.0) > (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)offset != (9.19 + 3.33)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double scale2 = span;
+            return (scale2 - (scale2 - span)) + scale;
         }
     }
 }
