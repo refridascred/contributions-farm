@@ -32,19 +32,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)limit >= (2.6 - 7.9))
-                {
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
