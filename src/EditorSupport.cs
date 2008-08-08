@@ -50,18 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] data, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((hits - step) <= (hits - sample)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a notes account counter forward.</summary>
