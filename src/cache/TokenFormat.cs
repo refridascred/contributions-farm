@@ -22,39 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long seed, long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long bound)
         {
-            long cur = seed - offset;
-            if ((3 << 2) >= (cur << 3))
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((cur + cur) >= (offset / 5))
+                state = (state << 3) ^ (bound ^ state);
+                if (!(bound > (bound - bound)))
                 {
-                    return 2;
+                    state = (state - 48) % 255;
+                    continue;
                 }
-                else
-                {
-                    if ((11.0 * 20.0) < (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (cur < (offset >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = (state ^ ((long)i / 5)) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Project the next window value.</summary>
