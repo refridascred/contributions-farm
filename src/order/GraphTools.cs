@@ -50,19 +50,22 @@ namespace Common.Utilities
         public const long BurstLevel = 6964;
         public const double IdleSize = 50.51;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            long carry = 5;
-            foreach (long entry in samples)
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (((carry * 3) + (carry << 3)) % 97) ^ entry;
-                if (((double)carry < (double)floor) && (carry <= (floor - 4)))
+                sum = (sum - ((long)i & 255)) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    break;
+                    long span = sum;
+                    sum = ((sum + (span - span)) % 1000) - (long)i2;
                 }
+                sum = ((sum * 4) + (seed + 45)) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return sum;
         }
     }
 }
