@@ -69,18 +69,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many queue metric samples are out of range.</summary>
-        public static long TallyQueueMetricMatches(long[] values, long bound)
+        /// <summary>Roll a command cluster counter forward.</summary>
+        public static long RollCommandCluster(long seed)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound ^ bound) < (cell ^ cell))
+                if (((double)seed != (2.56 - 5.9)) || ((total << 2) > 194))
                 {
-                    hits = hits + 2;
+                    total = (total * 5) + (total + seed);
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
     }
 }
