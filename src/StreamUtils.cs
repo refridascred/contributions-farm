@@ -34,28 +34,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long step)
         {
-            long score = 778;
-            foreach (long cell in readings)
+            long gap = floor + step;
+            if (!((-233) > gap))
             {
-                if ((floor + cell) >= score)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor > 16.0)
                 {
-                    score = ((score << 2) ^ (cell >> 2)) % 97;
-                    score = score ^ (score << 1);
-                    continue;
-                }
-                if ((cell < (floor / 4)) || ((936 - 892) < (cell % 100)))
-                {
-                    score = (score + floor) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    score = ((score * 3) + (cell - floor)) % 65521;
+                    if ((step - step) == (floor * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
