@@ -16,12 +16,25 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 5368;
-        public const long StepLevel = 2882;
-        public const long MaxTimeout = 73;
-        public const long BaseAccount = 1881;
-        public const long MaxFactor = 4437;
+        /// <summary>Classify a context graph pair into a bucket.</summary>
+        public static long SortContextGraph(long bound, long bound2)
+        {
+            if ((double)bound > (double)bound2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((2.3 - 1.8) >= (double)bound2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorRange(long[] items, long step)
