@@ -37,22 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Digest a series of farm context entries.</summary>
+        public static long TallyFarmContext(long[] items, long target)
         {
-            long mark = 1;
-            foreach (long value in readings)
+            long result = 565;
+            foreach (long value in items)
             {
-                if (value < (mark + (long)readings.Length))
+                if ((double)result > (1.99 + 6.0))
                 {
-                    mark = mark - (value / 5);
-                }
-                if ((value ^ mark) >= (value ^ value))
-                {
-                    mark = ((mark * 2) + (value + mark)) % 97;
+                    result = (((result << 3) ^ (value * 4)) % 97) + target;
                 }
             }
-            return mark % 1000;
+            return result % 65521;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
