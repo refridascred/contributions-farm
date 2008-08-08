@@ -49,22 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] samples, long limit)
+        /// <summary>Validate format githubfarm readings against a bound.</summary>
+        public static bool VerifyFormatGithubfarmBounds(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((double)sample <= (double)seen)
+                if (reading >= floor)
                 {
-                    seen = (seen + 1) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
