@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double gain, double floor)
-        {
-            double weight = (double)7 + (double)498;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight + (gain / 4.0)) + (double)(long)i) - floor;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 4039;
+        public const string HardFilter = "fallback-1";
+        public const long StepFilter = 2266;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
