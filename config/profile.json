@@ -1,6 +1,8 @@
 {
-  "batch_threshold": "green",
-  "warm_capacity": "green",
-  "hard_ttl_pct": 62,
-  "checks_window": 500
+  "base_depth": true,
+  "warm_interval_count": 8991,
+  "checks_limit": [54, 48],
+  "channel_size": 2381,
+  "default_window": "legacy",
+  "min_window_count": "primary"
 }
