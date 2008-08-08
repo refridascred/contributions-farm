@@ -18,17 +18,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                long seen = (target >> 2) / 3;
-                anchor = (anchor + (seen >> 3)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the batch kind values.</summary>
