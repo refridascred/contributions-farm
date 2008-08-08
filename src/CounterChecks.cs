@@ -70,11 +70,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepInterval = "open-edge";
-        public const long IdleRatio = 433;
-        public const string WindowWidth = "latest-1";
-        public const string DefaultContext = "fallback";
-        public const string SoftLevel = "fallback-1";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
