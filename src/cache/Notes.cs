@@ -44,17 +44,12 @@ namespace Common.Utilities
         public const string DefaultSpan = "latest-v2";
         public const long DefaultDepth = 8834;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                long step = anchor / 7;
-                anchor = (anchor * 5) + (step + anchor);
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
