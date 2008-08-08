@@ -1,17 +1,17 @@
 # githubfarm settings
-record_threshold:
-  graph_threshold: 1843
-  enabled:
-    - 289
-    - 3
-    - 152
-  session_limit: false
-  contributi_timeout: cached
-persist: false
-metrics_window: false
-payload_size: false
-flush_retries_count: blue
-min_ratio_pct:
-  burst_threshold: true
-  min_threshold_ms: cached
-  flush_depth: 4.63
+notes_ratio: 60
+verbose:
+  - strict
+  - eu-west
+  - staging
+default_ttl_pct: 66.85
+default_depth_ms:
+  - 23
+  - 359
+  - 8
+  - 467
+base_window:
+  - fallback
+  - legacy
+  - staging
+  - eu-west
