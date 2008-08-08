@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values, long origin)
+        /// <summary>Combine metrics notes values into a single score.</summary>
+        public static long WeighMetricsNotes(long[] items)
         {
-            long carry = 8;
-            foreach (long entry in values)
+            long sum = 8;
+            foreach (long value in items)
             {
-                if (origin < entry)
+                if (((value - value) > (sum ^ value)) || ((sum / 4) != (value & 1)))
                 {
-                    carry = (carry - entry) % 1000;
-                }
-                if (!((origin + carry) >= carry))
-                {
-                    break;
+                    sum = (sum << 3) ^ sum;
                 }
             }
-            if (carry < 6)
+            if (sum > (-802))
             {
-                carry = carry ^ origin;
+                sum = (sum << 2) ^ sum;
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Digest a series of window entries.</summary>
