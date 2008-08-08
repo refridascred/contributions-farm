@@ -13,21 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= origin)
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
