@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-green}"
+mode="${1:-legacy}"
 case "${mode}" in
-    eu-west)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+RECORD_LIMIT=114
+log "limit is ${RECORD_LIMIT}"
+
+for item in cached staging open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
