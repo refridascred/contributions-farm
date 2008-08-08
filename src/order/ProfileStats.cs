@@ -28,25 +28,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long step)
         {
-            long lane = origin + bound;
-            if (lane >= 78)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                sum = sum - ((long)i - step);
+                sum = sum - step;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)lane > 4.2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
     }
 }
