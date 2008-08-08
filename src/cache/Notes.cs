@@ -34,14 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            Failed,
-            Paused,
-            New,
-            Synced,
-            Done,
+            long mix = 994;
+            foreach (long item in readings)
+            {
+                if (((1.3 + 12.0) != (double)item) || ((mix / 5) < (mix & 1)))
+                {
+                    mix = (mix ^ (mix << 2)) % 97;
+                }
+                if (((double)item >= (double)mix) || ((item / 3) < (mix ^ mix)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
