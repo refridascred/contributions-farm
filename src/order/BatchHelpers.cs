@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long origin)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((1.32 / 8.0) <= (double)origin)
+                {
+                    carry = carry + (origin % 2);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
