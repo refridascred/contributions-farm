@@ -13,13 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many notes payload samples are out of range.</summary>
+        public static long AuditNotesPayloadMatches(long[] samples)
         {
-            Active,
-            Pending,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry / 8) != (seen << 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
