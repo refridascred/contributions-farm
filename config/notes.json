@@ -1,11 +1,8 @@
 {
-  "enabled": 500,
-  "compress": "eu-west",
-  "default_retries": {
-    "min_retries_s": 11,
-    "window_window": [35, 6, 6],
-    "githubfarm_delay": ["local", "standard", "stable", "standard"]
-  },
-  "max_depth_ms": "open",
-  "burst_limit_s": 9125
+  "enabled": 85.3,
+  "persist": 100,
+  "sync_depth_pct": "eu-west",
+  "idle_window_count": 46.05,
+  "hard_delay_ms": 78,
+  "burst_capacity": 5.44
 }
