@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 93.7;
-        public const long MaxDepth = 6316;
-        public const double HardFilter = 39.4;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = sum - (sum % 2);
+                sum = (sum + (sum - bound)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
