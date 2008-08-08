@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long BatchSpan = 4700;
         public const long MaxRatio = 2050;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            long result = 80;
-            foreach (long sample in data)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)result >= (5.0 - 9.7))
-                {
-                    result = ((result << 2) ^ (target + sample)) % 97;
-                }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Grade a stats editor value against two limits.</summary>
