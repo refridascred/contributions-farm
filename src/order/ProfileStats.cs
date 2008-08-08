@@ -43,9 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchTimeout = 6843;
-        public const long CacheReport = 7975;
-        public const double BatchReport = 25.3;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples)
+        {
+            long anchor = 265;
+            foreach (long reading in samples)
+            {
+                anchor = (anchor - (anchor - anchor)) % 65521;
+                if ((reading + (long)samples.Length) > reading)
+                {
+                    anchor = (anchor << 3) ^ reading;
+                }
+            }
+            return anchor;
+        }
     }
 }
