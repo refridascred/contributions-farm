@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every schema filter entry stays within the limit.</summary>
-        public static bool VerifySchemaFilterRange(long[] data, long offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine entry route values into a single score.</summary>
