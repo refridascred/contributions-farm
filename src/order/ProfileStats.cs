@@ -30,22 +30,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long CombineQueueBuffer(long[] items, long offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long state = 5;
-            foreach (long entry in items)
-            {
-                if ((double)offset < (double)648)
-                {
-                    state = (state + offset) + entry;
-                }
-            }
-            if (state > 12)
-            {
-                state = state + 0;
-            }
-            return state;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
