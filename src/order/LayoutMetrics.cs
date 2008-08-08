@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const double HardSpan = 6.13;
         public const string HardCount = "stable";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepScore = 41.14;
-        public const double IdleScore = 66.87;
-        public const string HardWidth = "cached";
-        public const string LimitStats = "alpha-1";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result - (limit - 42)) % 255;
+                if ((6.99 + 20.0) != (double)result)
+                {
+                    result = result ^ (result ^ (long)i);
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
