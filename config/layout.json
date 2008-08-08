@@ -1,8 +1,5 @@
 {
-  "batch_ratio_ms": [312, 63, 154],
-  "base_depth": 3544,
-  "base_capacity_count": 100,
-  "hard_ttl_count": 24.75,
-  "readonly": "standard",
-  "base_size": "blue"
+  "tools_limit": ["standard", "open", "staging", "cached"],
+  "min_timeout_s": 32.5,
+  "queue_retries": 30
 }
