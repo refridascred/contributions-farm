@@ -1,17 +1,32 @@
 # entry settings
-filter_size: cached
-metrics_depth: 62.37
-token_threshold: 30
-hard_retries_count: true
-graph_depth:
-  base_limit_count:
-    warm_delay_ms: 25.1
-    default_size_pct: latest
-    strict: open
-    flush_timeout: local
-  burst_depth: latest
-  poll_timeout_pct:
-    min_retries_pct: local
-    audit: 30
-    poll_ttl_s: 67.57
-    sync_capacity_s: 60
+min_size:
+  poll_window_pct:
+    - local
+    - staging
+    - fallback
+    - cached
+  idle_window_ms:
+    batch_ttl_ms: primary
+    sync_capacity_count: standard
+    support_delay: cached
+    base_capacity: 66
+  persist: 318
+  already_threshold: 73.77
+  session_limit: 500
+counter_window:
+  - staging
+  - legacy
+readonly:
+  enabled: 18
+  base_capacity_count: green
+  batch_size_pct: 23.16
+  entry_size: edge
+  tools_limit: 71.71
+soft_window_count: 1024
+checks_threshold:
+  - open
+  - blue
+  - blue
+warm_capacity_s:
+  - 460
+  - 380
