@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((1.1 * 6.8) > (double)matches)
+                if (entry > seed)
                 {
-                    matches = (matches + 1) ^ entry;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Fold a list of window readings.</summary>
