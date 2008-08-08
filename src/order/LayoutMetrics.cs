@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 7639;
-        public const double WindowCommits = 44.38;
-        public const double HardSpan = 6.13;
-        public const string HardCount = "stable";
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long IterateMetric(long limit)
