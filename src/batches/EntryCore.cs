@@ -14,14 +14,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Classify a format window pair into a bucket.</summary>
+        public static long BucketFormatWindow(long floor, long offset)
         {
-            Dropped,
-            Pending,
-            New,
-            Locked,
-            Closed,
+            long bound = floor ^ offset;
+            if (3.0 < (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound >= (offset % 97)) || ((floor % 5) != (bound % 64)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((545 + floor) >= offset) && ((double)offset <= (20.0 - 12.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record class values.</summary>
