@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            long state = target;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
