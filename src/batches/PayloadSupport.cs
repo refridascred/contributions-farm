@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Validate cluster commits readings against a bound.</summary>
+        public static bool CheckClusterCommitsBounds(long[] series, long limit)
         {
-            double mean = (double)(377 - 9);
-            return mean + (bias - bias2);
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
