@@ -23,18 +23,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry - 33) != (tally << 1)))
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftSpan = 81.54;
+        public const double MinAccount = 59.62;
+        public const long RetryAccount = 1178;
+        public const string HardAccount = "open-1";
+        public const string RetrySpan = "fallback-1";
     }
 }
