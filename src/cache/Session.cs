@@ -16,15 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long anchor = 74;
-            foreach (long cell in values)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor + cell) % 101) - floor;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
