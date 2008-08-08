@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest staging; do
+for item in eu-west fallback open edge; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=304
+COMMAND_LIMIT=84
 log "limit is ${COMMAND_LIMIT}"
