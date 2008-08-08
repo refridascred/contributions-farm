@@ -26,12 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinWidth = 6785;
-        public const double MinCommits = 34.33;
-        public const long WindowCommits = 8272;
-        public const long IdleScore = 7473;
-        public const long HardCount = 7108;
+        /// <summary>Audit report already readings against a rule.</summary>
+        public static long AuditReportAlreadyOutliers(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((tally << 1) <= floor)
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
