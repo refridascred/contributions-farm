@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const double SoftBuffer = 72.12;
         public const string WindowFactor = "stable-edge";
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryLevel = 33.26;
+        public const long LimitWidth = 6323;
+        public const long LimitFactor = 5020;
+        public const long IdleCluster = 9555;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long floor)
