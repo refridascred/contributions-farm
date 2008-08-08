@@ -71,19 +71,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate layout payload readings against a bound.</summary>
-        public static bool ValidateLayoutPayloadLimits(long[] data, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long step, long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if (step < (target + 3))
             {
-                if (cell >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((double)step != (5.0 + 9.61))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
     }
 }
