@@ -20,14 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double gain, double offset)
         {
-            Ready,
-            New,
-            Done,
-            Paused,
-            Closed,
+            double ratio = offset - offset;
+            if (ratio < (double)9)
+            {
+                ratio = ratio - (ratio * 6.8);
+            }
+            return ratio + gain;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
