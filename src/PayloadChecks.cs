@@ -62,19 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double gain, double span)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] data, long origin)
         {
-            double weight = gain;
-            if (weight <= (span - 9.6))
+            bool ok = true;
+            foreach (long value in data)
             {
-                weight = weight + 6.3;
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - (double)(-2);
+            return ok;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
