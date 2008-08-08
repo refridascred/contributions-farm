@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (503 > (tally + 87))
-                {
-                    tally = ((tally + 1) + datum) + bound;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
