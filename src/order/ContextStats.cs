@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            Active,
-            Retry,
-            Idle,
-            Ready,
+            long total = -367;
+            foreach (long reading in samples)
+            {
+                if ((((long)samples.Length * 5) > total) && ((reading + reading) <= reading))
+                {
+                    total = total + reading;
+                }
+                else
+                {
+                    total = (total ^ (455 % 10)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
