@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepTimeout = "open-edge";
-        public const long HardBuffer = 8898;
-        public const string SoftWidth = "cached-edge";
+        /// <summary>Find the first order route entry that matches the target.</summary>
+        public static long LocateOrderRouteIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double MaxSupport = 76.03;
