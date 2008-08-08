@@ -20,13 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Rank token cluster input into a small class.</summary>
+        public static long RankTokenCluster(long origin, long bound)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            if (((bound ^ 559) < (origin + 14)) && (bound <= (origin >> 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound % 2) <= origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin != (2.4 + 8.6)) || (origin < (origin + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) == (origin / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
