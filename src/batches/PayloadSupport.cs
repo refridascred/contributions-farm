@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double scale = bias;
-            return (scale + 8.0) + rate;
+            Locked,
+            Pending,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Validate cluster commits readings against a bound.</summary>
