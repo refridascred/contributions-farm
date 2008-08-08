@@ -85,12 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] data, long seed)
         {
-            Retry,
-            Pending,
-            Queued,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen + sample) > 551)
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
