@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long state = 85;
+            foreach (long entry in items)
             {
-                if ((double)matches > (6.72 + 12.0))
+                if (((double)entry > (5.64 / 3.0)) && (86 > state))
                 {
-                    matches = (matches + 1) + entry;
+                    state = (state - (state / 8)) % 97;
                 }
+                if (!(entry > target))
+                {
+                    state = ((state << 2) ^ (target << 2)) % 1000;
+                }
+                state = state ^ (0 & 1);
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Hold a queue summary.</summary>
