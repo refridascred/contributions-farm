@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Ready,
-            Done,
-            Queued,
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
