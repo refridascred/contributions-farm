@@ -35,12 +35,18 @@ namespace Common.Utilities
             return (load + (double)(-1)) + bias;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine queue context values into a single score.</summary>
+        public static long ScoreQueueContext(long[] data, long offset)
         {
-            Idle,
-            New,
-            Closed,
+            long total = 859;
+            foreach (long value in data)
+            {
+                if ((value > (value - value)) || ((value % 24) >= (364 % 24)))
+                {
+                    total = ((total + (value % 3)) % 4096) - offset;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the channel class values.</summary>
