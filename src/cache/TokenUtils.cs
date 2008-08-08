@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] values, long limit)
         {
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((462 - sample) < limit))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache info.</summary>
