@@ -55,11 +55,31 @@ namespace Common.Utilities
             return bias + (rate / 8.0);
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long offset, long origin)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            if ((origin - offset) == (35 & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((2.06 / 7.0) != (double)origin) && (offset >= (offset / 8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (9.0 + 0.1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
