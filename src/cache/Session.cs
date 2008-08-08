@@ -22,14 +22,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] levels, long origin)
         {
-            Retry,
-            Ready,
-            Active,
-            Draft,
-            Failed,
+            long sum = 709;
+            foreach (long sample in levels)
+            {
+                if (sample <= (sum ^ 28))
+                {
+                    sum = sum - origin;
+                }
+            }
+            if (sum < (-43))
+            {
+                sum = ((sum * 4) + origin) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many queue metric samples are out of range.</summary>
