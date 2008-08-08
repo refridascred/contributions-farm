@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const long BurstDepth = 1974;
         public const long BurstCounter = 7146;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] readings)
         {
-            long result = 509;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                result = ((result + result) ^ item) - origin;
-                if (result >= (result & 1))
+                if ((double)hits < (5.8 + 9.01))
                 {
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
