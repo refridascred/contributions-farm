@@ -64,22 +64,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long limit, long target)
         {
-            long total = 1;
-            foreach (long entry in series)
+            if (limit <= (limit - target))
             {
-                if ((entry < (target & 127)) && ((double)entry == (double)644))
+                return 5;
+            }
+            else
+            {
+                if (!((double)target > (5.3 * 13.0)))
                 {
-                    total = (total + (entry - target)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((164 + target) == (target >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)target != (7.36 * 6.5)) && (limit <= (limit * 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total < 850)
-            {
-                total = ((total << 2) ^ (total - 9)) % 97;
-            }
-            return total % 65521;
         }
     }
 }
