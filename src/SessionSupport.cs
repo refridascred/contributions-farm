@@ -24,21 +24,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Rank command token input into a small class.</summary>
+        public static long ClassifyCommandToken(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((5.6 / 3.0) > (double)offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((3.72 * 3.45) >= (double)offset)
                 {
-                    if ((values[i] + values[j]) != 16)
+                    return 6;
+                }
+                else
+                {
+                    if (offset > (offset ^ step))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (13.0 <= (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
