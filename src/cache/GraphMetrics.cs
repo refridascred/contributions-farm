@@ -20,18 +20,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many notes payload samples are out of range.</summary>
-        public static long AuditNotesPayloadMatches(long[] samples)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry / 8) != (seen << 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Failed,
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
