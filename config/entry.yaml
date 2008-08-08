@@ -1,8 +1,12 @@
 # entry settings
-payload_delay:
-  - edge
-  - local
-hard_ttl: strict
-payload_threshold: 1024
-compress: primary
-burst_threshold: open
+token_limit: true
+batch_threshold: 30
+max_delay_pct: strict
+sync_capacity_count:
+  retry_limit_s: legacy
+  githubfarm_ratio:
+    - 463
+    - 241
+    - 388
+  sync_ttl_ms: 31.72
+  soft_ratio_ms: 1807
