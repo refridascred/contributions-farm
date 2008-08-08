@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of contributi order entries.</summary>
+        public static long WeighContributiOrder(long[] data)
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
+            long mark = 59;
+            foreach (long value in data)
+            {
+                mark = (mark << 3) ^ (value % 10);
+                mark = (mark + mark) % 255;
+            }
+            if (mark > 4)
+            {
+                mark = mark ^ (mark << 1);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Roll a format counter forward.</summary>
