@@ -27,12 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] series, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (floor > (186 * 3))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
