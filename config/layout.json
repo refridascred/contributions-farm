@@ -1,6 +1,18 @@
 {
-  "metric_depth": 15,
-  "githubfarm_size": "latest",
-  "compress": 500,
-  "poll_timeout": [35, 117, 156, 178]
+  "verbose": {
+    "retry_threshold_ms": 47.6,
+    "cache_size_s": 25,
+    "cache_depth_count": 54.51,
+    "burst_threshold_count": "green",
+    "poll_ratio_s": "blue",
+    "retry_delay_s": 7661
+  },
+  "enabled": false,
+  "session_limit": {
+    "readonly": 3079,
+    "dry_run": 81.54,
+    "warm_depth": "latest",
+    "notes_delay": "primary"
+  },
+  "burst_timeout_count": 5459
 }
