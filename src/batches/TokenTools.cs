@@ -38,13 +38,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
