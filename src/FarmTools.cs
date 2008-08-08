@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            Dropped,
-            Done,
-            Ready,
-            New,
+            long total = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
