@@ -53,12 +53,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = carry - carry;
+                carry = (carry ^ ((long)i >> 4)) % 255;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
