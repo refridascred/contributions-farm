@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate payload batches readings against a bound.</summary>
-        public static bool GuardPayloadBatchesRange(long[] levels, long seed)
+        /// <summary>Check that every entry format entry stays within the limit.</summary>
+        public static bool GuardEntryFormatBounds(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (entry < seed)
+                if (sample > target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
