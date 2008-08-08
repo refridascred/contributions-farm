@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double scale, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] series, long limit)
         {
-            double bias = floor / 8.0;
-            if (bias < (double)4)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                bias = (bias + (double)179) + scale;
+                if ((limit - 61) != (limit >> 2))
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            else
-            {
-                bias = bias + 5.2;
-            }
-            return bias + floor;
+            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
