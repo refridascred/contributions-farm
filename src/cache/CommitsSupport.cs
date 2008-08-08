@@ -56,21 +56,19 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = 1.81 * 8.65;
+            if (weight >= (scale - weight))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - offset;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - offset) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
