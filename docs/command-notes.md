@@ -1,16 +1,16 @@
 # Command notes
 
-Run the buffer check before changing any payload limits.
-Keep cluster and command names short and lowercase.
-Each counter is validated before it reaches the token queue.
+Keep command and already names short and lowercase.
+The payload report groups every checks by filter.
+Run the channel check before changing any stats limits.
 
-The counter module keeps support values in sync with the filter cache.
-Defaults for cache live in the config folder and can be overridden per environment.
-Each layout is validated before it reaches the contributi queue.
+Run the payload check before changing any profile limits.
+Each stream is validated before it reaches the stats queue.
+Use record settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Log every metric change
-- Keep cache values small
-- Validate route input early
-- Review report limits each release
+- Prefer editor defaults
+- Log every queue change
+- Validate schema input early
+- Review counter limits each release
