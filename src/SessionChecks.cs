@@ -24,18 +24,13 @@ namespace Common.Utilities
             return mean + (double)(-37);
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] samples, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long state = 217;
-            foreach (long datum in samples)
-            {
-                if (6.9 >= (double)state)
-                {
-                    state = (((state << 3) ^ (datum - state)) % 255) - floor;
-                }
-            }
-            return state;
+            Closed,
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the metric kind values.</summary>
