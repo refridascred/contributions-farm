@@ -23,12 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 81.48;
-        public const string BatchSupport = "fallback-v2";
-        public const long MaxSupport = 6924;
-        public const string WindowScore = "legacy-edge";
-        public const double DefaultScore = 75.76;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftBudget = 42.36;
+        public const double BurstStats = 39.88;
+        public const string MaxSpan = "staging-v2";
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double ratio, double floor)
