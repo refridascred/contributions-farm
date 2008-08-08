@@ -43,11 +43,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double gain, double offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double load = offset;
-            return (load + offset) + gain;
+            Stale,
+            Draft,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a layout entry.</summary>
