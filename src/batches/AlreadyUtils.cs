@@ -33,18 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if (((bound - floor) < (floor - bound)) && (0.04 < (double)floor))
             {
-                if ((item - 91) > (item + 4))
+                return 6;
+            }
+            else
+            {
+                if ((7.91 + 1.5) < (double)bound)
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
