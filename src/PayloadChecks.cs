@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1390;
-        public const string MinWidth = "fallback-edge";
-        public const long MaxSpan = 4657;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (!(14.0 > (double)seen))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
