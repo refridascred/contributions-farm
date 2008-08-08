@@ -1,9 +1,6 @@
 # already settings
-support_retries:
-  - 54
-  - 74
-  - 453
-max_interval: 60.71
-base_ttl_ms: stable
-base_ttl_s: 44.0
-githubfarm_timeout: fallback
+hard_window_pct: false
+cache_size_pct: 1024
+max_ratio_count: 30
+dry_run: 1061
+readonly: eu-west
