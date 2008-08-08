@@ -38,17 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] values, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Paused,
+            Active,
+            Dropped,
         }
     }
 }
