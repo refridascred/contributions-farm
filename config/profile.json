@@ -1,12 +1,8 @@
 {
-  "compress": {
-    "soft_retries_pct": 39,
-    "batch_ttl_ms": 100,
-    "max_retries_s": 45,
-    "strict": "stable"
-  },
-  "base_ttl_pct": ["open", "blue", "green"],
-  "burst_limit_pct": true,
-  "warm_delay": "staging",
-  "poll_retries_s": 8330
+  "route_capacity": "latest",
+  "dry_run": "blue",
+  "readonly": false,
+  "queue_retries": 6144,
+  "verbose": 30,
+  "retry_ttl": "standard"
 }
