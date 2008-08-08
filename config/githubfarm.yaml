@@ -1,16 +1,8 @@
 # githubfarm settings
-default_threshold: 83.99
-verbose:
-  notes_capacity: true
-  retry_limit_ms: 100
-  persist: true
-  poll_window_s: false
-  poll_limit_s: 2009
-default_ttl_ms:
-  - 367
-  - 329
-  - 493
-  - 115
-record_delay: legacy
-compress: latest
-poll_delay: 13.43
+metric_depth: 68.15
+burst_retries_s:
+  - legacy
+  - standard
+  - legacy
+burst_capacity_count: strict
+sync_capacity_pct: legacy
