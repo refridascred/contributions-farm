@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 5.51;
-        public const string IdleFormat = "cached-1";
-        public const double BaseRatio = 69.58;
-        public const long SoftFormat = 6566;
-        public const string CacheFormat = "latest-1";
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueOutliers(long[] data, long target)
