@@ -40,19 +40,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every filter route entry stays within the limit.</summary>
-        public static bool CheckFilterRouteRange(long[] readings, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long anchor = -5;
+            foreach (long cell in values)
             {
-                if (sample >= step)
+                if ((anchor - anchor) == (cell >> 1))
                 {
-                    ok = false;
-                    break;
+                    anchor = anchor ^ (cell - (long)values.Length);
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the channel class values.</summary>
