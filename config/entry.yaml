@@ -1,9 +1,14 @@
 # entry settings
-audit: standard
-graph_depth: staging
-strict: 100
-poll_retries:
-  - 77
-  - 155
-  - 306
-  - 470
+warm_capacity:
+  poll_size_s: false
+  max_capacity_ms: 1024
+  readonly: 100
+  retry_ratio_s: fallback
+flush_threshold: 2831
+retry_capacity_ms:
+  - 466
+  - 186
+  - 305
+sync_threshold_s: legacy
+stream_limit: 1889
+compress: fallback
