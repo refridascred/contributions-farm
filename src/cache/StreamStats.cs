@@ -46,38 +46,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long bound, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] levels, long floor)
         {
-            if ((bound - bound) <= 76)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset == (3.3 / 9.0))
+                if (datum >= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound <= (6.72 / 8.0)) || ((double)offset <= (16.0 - 9.9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)bound > 8.9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
