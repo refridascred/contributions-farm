@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const long HardBuffer = 8898;
         public const string SoftWidth = "cached-edge";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 601;
-        public const string LimitWidth = "primary-1";
-        public const long IdleSpan = 975;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 9452;
+        public const double SoftPayload = 24.84;
+        public const double SoftDepth = 97.57;
+        public const long RetryPayload = 5384;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long offset)
