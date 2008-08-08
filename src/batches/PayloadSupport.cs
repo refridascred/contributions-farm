@@ -24,19 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Locked,
+            Queued,
         }
     }
 }
