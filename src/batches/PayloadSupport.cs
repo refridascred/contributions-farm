@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] series, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = 98;
+            foreach (long reading in levels)
             {
-                if (floor > (186 * 3))
-                {
-                    count = (count + 1) + sample;
-                }
+                result = ((result - reading) % 255) + offset;
             }
-            return count;
+            if (result < 1)
+            {
+                result = ((result << 3) ^ (892 ^ 5)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
