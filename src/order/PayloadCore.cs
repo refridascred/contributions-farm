@@ -52,17 +52,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = offset + step;
+            if ((cur + step) <= step)
             {
-                if (items[i] < seed)
+                return 4;
+            }
+            else
+            {
+                if ((offset + 47) > (51 % 60))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
