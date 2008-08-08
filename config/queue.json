@@ -1,8 +1,7 @@
 {
-  "min_window": 15.46,
-  "retry_size": 500,
-  "sync_interval_count": "edge",
-  "flush_depth_pct": 33.6,
-  "sync_delay_pct": [82, 323, 10],
-  "stream_window": "cached"
+  "min_retries_s": 60,
+  "persist": false,
+  "poll_interval_s": [447, 275, 234, 241],
+  "burst_retries": "eu-west",
+  "profile_delay": ["blue", "cached", "blue"]
 }
