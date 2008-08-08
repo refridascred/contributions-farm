@@ -39,18 +39,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepDepth = 766;
+        public const double WindowMetric = 43.7;
+        public const string DefaultSpan = "standard-edge";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorGaps(long[] values, long offset)
