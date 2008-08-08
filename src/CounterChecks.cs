@@ -57,21 +57,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count context schema pairs that satisfy a relation.</summary>
-        public static long OverlapContextSchemaCount(long[] values)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
