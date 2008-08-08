@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] data, long seed)
         {
-            Active,
-            Idle,
-            Pending,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((((seed & 15) > (reading / 3)) || ((double)hits >= (2.5 - 6.5))) && ((seed / 3) >= (hits - seed)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
