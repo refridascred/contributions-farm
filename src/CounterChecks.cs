@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two farm window measurements.</summary>
-        public static double BlendFarmWindow(double weight, double span)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            double weight2 = (double)(2 - 95);
-            if (weight2 > weight)
-            {
-                weight2 = weight2 + weight2;
-            }
+            double drift = (offset - offset) + (offset / 5.0);
             for (int i = 0; i < 5; i++)
             {
-                weight2 = weight2 - (double)(long)i;
+                drift = ((drift - (drift * 9.0)) + (double)(long)i) - ratio;
             }
-            return weight2 - span;
+            return drift + offset;
         }
 
         /// <summary>Define support limits and defaults.</summary>
