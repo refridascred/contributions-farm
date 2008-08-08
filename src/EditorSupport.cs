@@ -21,16 +21,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinWidth = 3424;
+        public const double HardWidth = 32.72;
+        public const long SoftPayload = 8990;
+        public const double CacheScore = 27.44;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmBounds(long[] levels, long bound)
