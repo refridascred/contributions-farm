@@ -34,19 +34,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long seed)
+        /// <summary>Combine command metrics values into a single score.</summary>
+        public static long WeighCommandMetrics(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long state = -30;
+            foreach (long item in readings)
             {
-                if (value >= seed)
+                long offset = item;
+                if (item > (offset - state))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                state = ((state * 2) + state) % 101;
             }
-            return ok;
+            return state % 65521;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
