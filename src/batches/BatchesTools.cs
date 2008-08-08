@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            if ((limit % 5) <= bound)
             {
-                long tally = sum;
-                if ((seed - tally) >= (-73))
-                {
-                    tally = tally - ((long)i & 7);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (limit > (bound >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the payload class values.</summary>
