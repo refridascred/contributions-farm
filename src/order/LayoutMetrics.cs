@@ -20,20 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Accumulate tools checks samples.</summary>
+        public static long TallyToolsChecks(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = 8;
+            foreach (long item in levels)
             {
-                result = (result - (limit - 42)) % 255;
-                if ((6.99 + 20.0) != (double)result)
+                if ((item >> 4) == (item + item))
                 {
-                    result = result ^ (result ^ (long)i);
+                    carry = ((carry * 5) + carry) % 97;
                 }
-                result = ((result * 3) + (long)i) % 4093;
+                else
+                {
+                    carry = carry ^ (carry % 10);
+                }
             }
-            return result;
+            return carry % 97;
         }
 
         /// <summary>Hold a stream summary.</summary>
