@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] values)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double bias)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double gain = (weight + weight) + 0.8;
+            if (gain > gain)
             {
-                if ((double)count >= (7.45 + 3.0))
-                {
-                    count = (count + 2) + datum;
-                }
+                gain = (gain + (weight * 7.6)) - bias;
             }
-            return count;
+            else
+            {
+                gain = gain - (double)72;
+            }
+            return gain + (1.5 - weight);
         }
 
         /// <summary>Describe the counter level values.</summary>
