@@ -45,16 +45,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report schema counter forward.</summary>
-        public static long DeriveReportSchema(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry << 3) ^ (carry & 7)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseTimeout = "latest-v2";
+        public const long IdleBatch = 4863;
+        public const long BaseBudget = 2398;
     }
 }
