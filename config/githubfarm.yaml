@@ -1,6 +1,25 @@
 # githubfarm settings
-warm_ttl_pct: eu-west
-max_retries: 100
-hard_ttl: cached
-strict: 6930
-burst_window_ms: true
+readonly:
+  buffer_window:
+    readonly: eu-west
+    min_delay_ms: open
+    sync_limit: open
+    burst_timeout: strict
+    idle_ttl_s: false
+  retry_ttl_ms:
+    - 240
+    - 110
+    - 329
+  cache_window:
+    - local
+    - cached
+    - fallback
+verbose: latest
+persist:
+  - stable
+  - local
+idle_threshold_ms:
+  stream_timeout: 60
+  soft_threshold: 1024
+  enabled: 8898
+  flush_ttl: true
