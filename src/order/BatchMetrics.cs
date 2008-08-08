@@ -33,12 +33,17 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Locate a cluster checks reading by value.</summary>
+        public static long LookupClusterChecksIndex(long[] samples, long limit)
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of editor commits readings.</summary>
