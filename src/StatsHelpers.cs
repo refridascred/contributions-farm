@@ -16,10 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 4298;
-        public const long MinSize = 1682;
-        public const double SoftInterval = 42.78;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels)
+        {
+            long mark = 39;
+            foreach (long cell in levels)
+            {
+                mark = (mark + (mark + cell)) % 1000;
+                mark = (mark + (cell << 1)) % 1000;
+                mark = ((mark << 2) ^ (mark / 5)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
