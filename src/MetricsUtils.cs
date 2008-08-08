@@ -23,25 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stats editor value against two limits.</summary>
-        public static long ClassifyStatsEditor(long target, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series)
         {
-            long prev = target - limit;
-            if (!((7.2 + 8.0) < (double)target))
+            long mark = -8;
+            foreach (long entry in series)
             {
-                return 1;
+                mark = (mark ^ (mark << 1)) ^ entry;
             }
-            else
+            if (mark > 645)
             {
-                if ((prev / 3) > (target >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                mark = (mark - mark) % 101;
             }
+            return mark;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
