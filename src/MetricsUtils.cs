@@ -63,23 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches metric readings.</summary>
-        public static long WeighBatchesMetric(long[] items)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] samples, long limit)
         {
-            long anchor = 4;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((anchor << 3) != (sample & 7))
+                if (sample != limit)
                 {
-                    anchor = ((anchor * 3) + (sample & 255)) % 65521;
+                    stale = false;
+                    break;
                 }
-                anchor = (anchor - anchor) % 101;
             }
-            if (anchor > 8)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 65521;
+            return stale;
         }
     }
 }
