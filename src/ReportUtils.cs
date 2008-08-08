@@ -81,22 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples, long floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double mean = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if ((floor / 3) < (matches - matches))
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + rate) + (double)(long)i;
             }
-            return matches;
+            return mean + rate;
         }
     }
 }
