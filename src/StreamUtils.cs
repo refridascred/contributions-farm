@@ -89,19 +89,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((carry % 8) != (967 + (long)i)) && (carry >= 6))
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    carry = (carry - (carry ^ bound)) % 101;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
     }
 }
