@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] items, long step)
+        /// <summary>Roll a window format counter forward.</summary>
+        public static long DeriveWindowFormat(long origin)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > step)
+                if (!((double)sum <= (2.8 / 8.0)))
                 {
-                    ready = false;
-                    break;
+                    sum = sum - (sum / 9);
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Look up the position of a profile schema sample.</summary>
