@@ -53,18 +53,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order batches samples are out of range.</summary>
-        public static long MeasureOrderBatchesOutliers(long[] samples, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (3.3 >= (double)tally)
+                if (!(((long)i << 3) > (result + origin)))
                 {
-                    tally = ((tally + 3) + entry) + target;
+                    result = result ^ ((long)i >> 4);
+                    result = (result - (result - result)) % 101;
+                    break;
                 }
+                else
+                {
+                    result = (result ^ (result - result)) % 255;
+                    result = result - (result + origin);
+                }
+                result = (result + (long)i) % 255;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
