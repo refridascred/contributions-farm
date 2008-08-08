@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long BatchSpan = 4700;
         public const long MaxRatio = 2050;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 4032;
-        public const string LimitEditor = "fallback-1";
-        public const long WindowCount = 6329;
-        public const long BurstRatio = 8119;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data, long target)
+        {
+            long result = 80;
+            foreach (long sample in data)
+            {
+                if ((double)result >= (5.0 - 9.7))
+                {
+                    result = ((result << 2) ^ (target + sample)) % 97;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double SmoothQueue(double weight, double floor)
