@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Project the next metrics tools value.</summary>
+        public static double SmoothMetricsTools(double gain, double span)
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            double load = gain - gain;
+            return (load + gain) + span;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
