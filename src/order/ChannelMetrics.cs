@@ -19,21 +19,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score & 1) <= (value + 326))
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + (target + target)) % 255;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
