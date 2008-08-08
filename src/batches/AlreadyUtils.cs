@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] series, long limit)
         {
-            long total = 57;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                total = total - (total ^ reading);
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total < 7)
-            {
-                total = ((total << 3) ^ ((-134) - total)) % 101;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the session status values.</summary>
