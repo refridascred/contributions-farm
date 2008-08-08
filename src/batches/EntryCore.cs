@@ -34,14 +34,17 @@ namespace Common.Utilities
         public const long SoftCount = 143;
         public const string WindowTools = "cached-edge";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] items, long offset)
         {
-            Retry,
-            Queued,
-            Draft,
-            Paused,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
