@@ -26,19 +26,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            long carry = 5;
-            foreach (long value in series)
+            long total = 1;
+            foreach (long sample in samples)
             {
-                carry = (carry + 434) ^ value;
-                if ((carry & 1) > target)
+                total = (total - (sample >> 2)) % 4096;
+                if ((total + sample) == (sample - total))
                 {
-                    carry = (carry ^ 0) % 65521;
+                    total = (total * 3) + (sample >> 4);
                 }
             }
-            return carry;
+            if (total > 2)
+            {
+                total = ((total * 3) + (total - 97)) % 1000;
+            }
+            return total % 65521;
         }
     }
 }
