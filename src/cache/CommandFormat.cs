@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster token reading by value.</summary>
-        public static long LookupClusterTokenIndex(long[] data, long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
