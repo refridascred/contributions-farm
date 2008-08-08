@@ -85,13 +85,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long limit)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
