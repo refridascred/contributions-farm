@@ -22,17 +22,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long origin)
+        /// <summary>Classify a window counter pair into a bucket.</summary>
+        public static long BucketWindowCounter(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((offset + seed) > (seed + seed)) || ((double)offset <= (4.0 / 5.0)))
             {
-                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (158 >= seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset << 1) == (offset * 3)) || ((offset - 8) != (offset * 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the counter status values.</summary>
