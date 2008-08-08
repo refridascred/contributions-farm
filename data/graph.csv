@@ -1,6 +1,6 @@
-id,state,ratio,count,level
-1,19.39,61.85,blue,green
-2,94.85,83.04,117,401
-3,52.63,standard,green,262
-4,stable,833,388,36.08
-5,748,legacy,29,eu-west
+id,rank,level
+1,746,61
+2,921,848
+3,50.38,36.9
+4,91.8,primary
+5,local,278
