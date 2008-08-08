@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Paused,
-            Queued,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchSpan = "primary-edge";
+        public const long IdleSpan = 7828;
+        public const string BurstStats = "stable-v2";
+        public const double RetrySpan = 60.18;
+        public const long BaseStats = 2070;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsOutliers(long[] levels)
