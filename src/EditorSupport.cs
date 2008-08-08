@@ -27,19 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
