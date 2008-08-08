@@ -31,21 +31,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 45;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                long delta = (sum + sum) & 255;
+                if (23 < (sum + delta))
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
+                }
+                if ((713 & 15) == (sum ^ sum))
+                {
+                    sum = (sum ^ entry) % 101;
+                }
+                if ((sum << 3) >= (entry + 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
