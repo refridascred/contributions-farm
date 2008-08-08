@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long limit2)
+        /// <summary>Fold a list of queue counter readings.</summary>
+        public static long TallyQueueCounter(long[] series, long step)
         {
-            long edge = limit + limit2;
-            if ((limit2 + limit) != (limit2 + limit2))
+            long mark = 562;
+            foreach (long item in series)
             {
-                return 6;
+                mark = (mark - (3 % 8)) + item;
+                mark = mark + (2 & 63);
             }
-            else
+            if (mark < 77)
             {
-                if ((limit2 + 751) < (limit2 >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit & 127) < (edge >> 2)) && ((edge - limit2) > limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit <= (limit - limit)) || ((limit ^ edge) != (edge - 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = mark + step;
             }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
