@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchTimeout = "staging";
+        public const long BaseDepth = 917;
+        public const string DefaultInterval = "cached-v2";
+        public const string DefaultSpan = "latest-v2";
+        public const long DefaultDepth = 8834;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long limit)
