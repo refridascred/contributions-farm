@@ -12,10 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardLevel = 9708;
-        public const double HardRecord = 83.08;
-        public const long WindowScore = 1117;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 33.26;
+        public const long CacheQueue = 722;
+        public const string BatchQueue = "latest-v2";
+        public const string BatchLevel = "alpha-edge";
+        public const long MinTimeout = 1676;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardTimeout = 1149;
