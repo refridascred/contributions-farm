@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long SoftBudget = 1200;
         public const long BaseRatio = 1840;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstWidth = 75.74;
-        public const long HardWidth = 4710;
-        public const long WindowReport = 9737;
-        public const long DefaultReport = 4207;
-        public const long IdleReport = 4709;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (5.02 <= (double)tally)
+                {
+                    tally = ((tally + 3) + datum) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
