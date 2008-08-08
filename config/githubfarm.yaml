@@ -1,4 +1,4 @@
 # githubfarm settings
-min_ratio_pct: strict
-layout_size: fallback
-idle_window: 32.49
+batches_ratio: cached
+retry_size_s: 48.53
+batches_retries: fallback
