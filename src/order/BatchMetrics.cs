@@ -46,19 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double bias)
+        /// <summary>Adjust a editor stream reading.</summary>
+        public static double ScaleEditorStream(double rate, double span)
         {
-            double gain = (weight + weight) + 0.8;
-            if (gain > gain)
+            double mean = (rate * 8.93) * 9.0;
+            if (mean >= rate)
             {
-                gain = (gain + (weight * 7.6)) - bias;
+                mean = (mean - mean) - span;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - (double)72;
+                mean = (mean + mean) - (double)(long)i;
             }
-            return gain + (1.5 - weight);
+            return mean + (mean - 4.0);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
