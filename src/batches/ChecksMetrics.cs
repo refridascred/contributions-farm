@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 4321;
-        public const long HardBudget = 26;
-        public const long SoftFarm = 1815;
-        public const long SoftCount = 3121;
-        public const long StepInterval = 7354;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((39 ^ cell) > (hits + (long)samples.Length))
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MaxBuffer = "local-edge";
