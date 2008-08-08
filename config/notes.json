@@ -1,8 +1,6 @@
 {
-  "cache_window_ms": "primary",
-  "retry_retries_pct": 60,
-  "burst_capacity": ["primary", "legacy", "eu-west", "strict"],
-  "warm_ratio": 41.26,
-  "min_threshold_pct": true,
-  "retry_retries_s": 26
+  "soft_threshold_count": 8364,
+  "burst_threshold": "edge",
+  "cache_window": 30,
+  "contributi_depth": ["strict", "local", "strict"]
 }
