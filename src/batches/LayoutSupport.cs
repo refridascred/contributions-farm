@@ -61,22 +61,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many account format samples are out of range.</summary>
-        public static long TallyAccountFormatMatches(long[] readings, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((49 / 7) < (11 + hits))
+                if (entry != floor)
                 {
-                    hits = ((hits + 1) - value) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Find the first window schema entry that matches the target.</summary>
