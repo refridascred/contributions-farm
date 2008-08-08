@@ -33,12 +33,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long acc = -383;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) == (6 - acc))
+                {
+                    acc = (acc + (datum * 2)) % 255;
+                }
+            }
+            if (acc < 524)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
