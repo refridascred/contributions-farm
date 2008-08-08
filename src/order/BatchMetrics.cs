@@ -69,12 +69,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            Pending,
-            Draft,
-            New,
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
