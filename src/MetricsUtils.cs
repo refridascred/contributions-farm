@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowFactor = 73.94;
-        public const long BurstOrder = 3330;
-        public const long HardLevel = 4654;
-        public const long HardOrder = 9228;
-        public const double RetryOrder = 36.51;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Stale,
+            Locked,
+            Ready,
+            Done,
+            Queued,
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] items)
