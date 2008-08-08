@@ -37,18 +37,15 @@ namespace Common.Utilities
             return load - (rate / 9.0);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] series, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long result = 3;
+            foreach (long reading in samples)
             {
-                if ((double)seen == (6.1 - 1.44))
-                {
-                    seen = ((seen + 2) + datum) + step;
-                }
+                result = (result + bound) ^ reading;
             }
-            return seen;
+            return result % 97;
         }
     }
 }
