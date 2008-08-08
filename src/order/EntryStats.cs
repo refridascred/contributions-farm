@@ -63,18 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] data, long origin)
+        /// <summary>Accumulate farm checks samples.</summary>
+        public static long WeighFarmChecks(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mark = 9;
+            foreach (long sample in readings)
             {
-                if ((double)datum > (0.37 * 5.7))
+                if (((long)readings.Length / 4) > (725 + 2))
                 {
-                    tally = (tally + 2) + origin;
+                    mark = ((mark ^ mark) % 4096) - sample;
                 }
             }
-            return tally;
+            if (mark > (-3))
+            {
+                mark = (mark ^ (mark + 55)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit session entry readings against a rule.</summary>
