@@ -19,23 +19,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double span)
         {
-            long total = 1;
-            foreach (long sample in samples)
+            double gain = 1.0;
+            if (gain > span)
             {
-                total = (total - (sample >> 2)) % 4096;
-                if ((total + sample) == (sample - total))
-                {
-                    total = (total * 3) + (sample >> 4);
-                }
+                gain = (gain + gain) - ratio;
             }
-            if (total > 2)
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 3) + (total - 97)) % 1000;
+                gain = (gain + (gain / 7.0)) + (double)(long)i;
             }
-            return total % 65521;
+            return gain - (gain - 6.0);
         }
     }
 }
