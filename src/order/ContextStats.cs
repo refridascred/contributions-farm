@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] values)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3 + count) < (count % 97))
+                if ((items[i] >= floor) && ((items[i] % 5) == 0))
                 {
-                    count = (count + 1) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every payload queue entry stays within the limit.</summary>
