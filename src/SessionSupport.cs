@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] levels, long target)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((target <= (633 * 4)) && ((sample << 1) < 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
