@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long BaseAccount = 1881;
         public const long MaxFactor = 4437;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] items, long step)
         {
-            Ready,
-            New,
-            Failed,
-            Pending,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
