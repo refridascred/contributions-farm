@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long total = -6;
-            foreach (long item in readings)
+            long sum = 4;
+            foreach (long sample in items)
             {
-                if ((item % 97) > item)
+                if (!((sum ^ 7) < (sum ^ sum)))
                 {
-                    total = (total << 2) ^ (item + item);
+                    sum = (sum * 4) + (long)items.Length;
+                }
+                else
+                {
+                    sum = (sum ^ (sample - sample)) % 97;
                 }
             }
-            if (total < 521)
-            {
-                total = (total + total) % 65521;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Measure how many context checks samples are out of range.</summary>
