@@ -102,15 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account contributi value from a seed.</summary>
-        public static long SeriesAccountContributi(long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] values, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long state = 6;
+            foreach (long value in values)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                state = (((state << 2) ^ (state / 6)) ^ value) - origin;
             }
-            return score;
+            if (state < 5)
+            {
+                state = (state ^ (state % 2)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the schema class values.</summary>
