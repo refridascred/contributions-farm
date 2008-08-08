@@ -66,18 +66,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((4.0 / 9.0) < (double)tally)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepFactor = "legacy-edge";
+        public const long BaseRoute = 5332;
+        public const string WindowFactor = "stable-edge";
+        public const long WindowRoute = 1778;
     }
 }
