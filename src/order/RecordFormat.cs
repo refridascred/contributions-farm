@@ -23,16 +23,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long score = 77;
-            foreach (long value in samples)
-            {
-                score = ((score + (value / 5)) % 4096) + floor;
-                score = score ^ (score - 1);
-            }
-            return score;
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the graph contributi entries that pass the check.</summary>
