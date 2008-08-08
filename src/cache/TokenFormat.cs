@@ -35,18 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes counter readings.</summary>
-        public static long WeighNotesCounter(long[] samples, long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] series, long bound)
         {
-            long anchor = 45;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)origin < 8.07)
+                if (series[i] < bound)
                 {
-                    anchor = (anchor - (anchor + 41)) + value;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
