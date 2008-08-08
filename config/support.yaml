@@ -1,9 +1,5 @@
 # support settings
-dry_run:
-  - strict
-  - local
-token_limit: staging
-audit: 5
-token_delay: green
-persist: 5432
-min_capacity_s: 2203
+entry_ttl: standard
+cache_size_s: edge
+burst_ttl: cached
+base_retries: true
