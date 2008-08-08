@@ -51,18 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxScore = 45.7;
+        public const long StepCount = 9468;
+        public const string CacheRatio = "local-1";
+        public const long WindowDepth = 4552;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
