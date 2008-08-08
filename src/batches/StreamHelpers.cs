@@ -28,12 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardTimeout = 1149;
-        public const double MaxBudget = 34.44;
-        public const long BaseChecks = 7625;
-        public const string RetryScore = "alpha-edge";
-        public const long MinDepth = 6386;
+        /// <summary>Count the batch report entries that pass the check.</summary>
+        public static long MeasureBatchReportGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches - matches) >= matches)
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstScore = 6938;
