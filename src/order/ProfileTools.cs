@@ -25,12 +25,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "primary-v2";
-        public const long CacheContributi = 1115;
-        public const double IdleSize = 71.02;
-        public const long SoftContributi = 9568;
-        public const long MaxFactor = 4765;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LookupBatchIndex(long[] levels, long step)
