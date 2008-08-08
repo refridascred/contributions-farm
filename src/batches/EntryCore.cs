@@ -27,12 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "cached";
-        public const long MaxTools = 1078;
-        public const double LimitScore = 30.19;
-        public const long SoftCount = 143;
-        public const string WindowTools = "cached-edge";
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Synced,
+            Done,
+            Stale,
+        }
 
         /// <summary>Look up the position of a schema cache sample.</summary>
         public static long LookupSchemaCacheIndex(long[] series, long bound)
