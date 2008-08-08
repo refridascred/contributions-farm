@@ -60,18 +60,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] values, long seed)
+        /// <summary>Match up batches support samples.</summary>
+        public static long OverlapBatchesSupportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (7.8 <= (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 2) + entry) + seed;
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
