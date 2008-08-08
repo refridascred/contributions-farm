@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double bias2)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] levels)
         {
-            double weight = (bias / 5.0) * 3.5;
-            if (weight > (double)730)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                weight = weight + bias;
+                if (((double)reading == (3.92 + 3.24)) && !((count / 8) > (count + count)))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                weight = weight + (double)(-2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + bias2) + (double)(long)i;
-            }
-            return weight - 19.0;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
