@@ -25,18 +25,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 6282;
+        public const long WindowAccount = 1024;
+        public const long BatchAccount = 8316;
+        public const long MinAccount = 1127;
 
         /// <summary>Audit account report readings against a rule.</summary>
         public static long AuditAccountReportHits(long[] readings)
