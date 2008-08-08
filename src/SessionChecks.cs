@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate cache window samples.</summary>
-        public static long ScoreCacheWindow(long[] readings, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long anchor = -751;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor + floor) % 101) ^ value;
-            }
-            return anchor % 97;
+            Locked,
+            Dropped,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
