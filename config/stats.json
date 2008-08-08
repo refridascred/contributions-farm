@@ -1,6 +1,5 @@
 {
-  "warm_capacity": 4453,
-  "idle_depth_count": "strict",
-  "compress": "standard",
-  "retry_timeout_s": false
+  "cache_retries": true,
+  "soft_capacity_count": 5133,
+  "route_depth": 250
 }
