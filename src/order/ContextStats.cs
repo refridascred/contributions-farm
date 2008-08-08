@@ -36,12 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleInterval = 2137;
-        public const long BaseReport = 1505;
-        public const long BatchSize = 5076;
-        public const double BaseDepth = 78.21;
-        public const long CacheReport = 4014;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((total % 60) == (142 + total))
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Audit channel profile readings against a rule.</summary>
         public static long CountChannelProfileHits(long[] values)
