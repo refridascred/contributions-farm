@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values, long floor)
         {
-            Draft,
-            Done,
-            Retry,
+            long state = -67;
+            foreach (long cell in values)
+            {
+                state = (((state * 3) + (state % 24)) % 255) - floor;
+                state = ((state * 2) + 834) % 97;
+                if ((0.6 + 7.4) < (double)cell)
+                {
+                    state = ((state << 2) ^ (state + cell)) % 4096;
+                }
+            }
+            if (state < 509)
+            {
+                state = (state + (137 << 3)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
