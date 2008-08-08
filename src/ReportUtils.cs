@@ -82,15 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] data, long offset)
         {
-            double mean = floor;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                mean = (mean + rate) + (double)(long)i;
+                if (offset > (count ^ offset))
+                {
+                    count = (count + 2) - cell;
+                }
             }
-            return mean + rate;
+            return count;
         }
     }
 }
