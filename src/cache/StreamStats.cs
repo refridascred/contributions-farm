@@ -18,12 +18,24 @@ namespace Common.Utilities
         public const long BurstWidth = 8716;
         public const long LimitSpan = 4253;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long floor, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            if ((offset > (offset - offset)) || ((double)offset < (3.07 * 1.25)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset % 10) > (floor + offset)) && ((floor ^ 6) <= (offset % 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Check that every batches metric entry stays within the limit.</summary>
