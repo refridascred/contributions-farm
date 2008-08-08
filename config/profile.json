@@ -1,7 +1,7 @@
 {
-  "strict": 30,
-  "poll_capacity_s": true,
-  "warm_limit_pct": 1024,
-  "min_delay_ms": 3919,
-  "batch_delay": "stable"
+  "max_interval_s": "edge",
+  "max_size_pct": ["strict", "local", "fallback", "stable"],
+  "dry_run": [91, 5, 443, 29],
+  "hard_threshold_pct": 3239,
+  "burst_threshold_s": true
 }
