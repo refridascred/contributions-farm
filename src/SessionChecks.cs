@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long BatchCount = 1053;
         public const long MaxScore = 8048;
 
-        /// <summary>Compare every pair of batches channel readings.</summary>
-        public static long PairBatchesChannelCount(long[] readings)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            if (mean >= mean)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (double)96) - offset;
             }
-            return tally;
+            return mean + (double)(-37);
         }
 
         /// <summary>Combine notes values into a single score.</summary>
