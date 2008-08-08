@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double ratio, double floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double scale = (double)14 * 3.8;
-            return (scale - floor) + ratio;
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
