@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a batches entry.</summary>
