@@ -29,24 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long bound, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] readings, long bound)
         {
-            if (((bound - floor) < (floor - bound)) && (0.04 < (double)floor))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.91 + 1.5) < (double)bound)
+                if (readings[i] > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
