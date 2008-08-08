@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long floor)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            long mark = 603;
+            foreach (long reading in levels)
+            {
+                mark = (mark - floor) % 97;
+                if ((5 + 6) <= (reading - reading))
+                {
+                    mark = ((mark * 3) + (reading ^ floor)) % 4096;
+                }
+            }
+            if (mark > 530)
+            {
+                mark = (mark + (mark << 3)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the session state values.</summary>
