@@ -1,5 +1,7 @@
 # entry settings
-readonly: 7843
-persist: local
-cache_size_ms: 1024
-poll_limit: 10.05
+min_interval_pct: 13
+enabled:
+  - 433
+  - 378
+strict: 32
+stats_retries: 4763
