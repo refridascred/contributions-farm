@@ -36,21 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= (409 + datum))
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - offset;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
