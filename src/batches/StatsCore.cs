@@ -21,18 +21,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long limit, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((step - step) != (step + limit))
             {
-                if ((19 / 2) == (matches - 2))
+                return 6;
+            }
+            else
+            {
+                if ((step >> 5) > 384)
                 {
-                    matches = (matches + 3) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank context input into a small class.</summary>
