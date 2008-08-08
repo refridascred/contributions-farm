@@ -14,10 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "staging-v2";
-        public const long StepScore = 5832;
-        public const long CacheScore = 2727;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
         public static long TallyClusterGithubfarmOutliers(long[] data, long seed)
