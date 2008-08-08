@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=54
-log "limit is ${RECORD_LIMIT}"
-
-for item in primary open edge; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in green legacy cached; do
+    log "checking ${item}"
+done
