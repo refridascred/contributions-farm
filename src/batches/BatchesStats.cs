@@ -16,34 +16,15 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            double ratio = scale;
+            for (int i = 0; i < 6; i++)
             {
-                if (target > ((long)i ^ target))
-                {
-                    state = ((state * 3) + (state >> 5)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ state) % 101;
-                    state = ((state << 2) ^ (target + state)) % 101;
-                }
-                state = state - 678;
-                if ((target % 10) >= (state & 7))
-                {
-                    state = (state + (long)i) % 65521;
-                    continue;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state + target)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                ratio = ((ratio - (3.0 - scale)) + (double)(long)i) - bias;
             }
-            return state;
+            return ratio + (double)6;
         }
 
         /// <summary>Blend two cache measurements.</summary>
