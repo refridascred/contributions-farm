@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long BatchCount = 1053;
         public const long MaxScore = 8048;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] values, long step)
+        /// <summary>Compare every pair of batches channel readings.</summary>
+        public static long PairBatchesChannelCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
