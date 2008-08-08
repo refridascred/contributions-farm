@@ -1,10 +1,12 @@
 # Command notes
 
-The record report groups every format by checks.
-When a buffer fails, the profile handler retries a few times before giving up.
+A metrics that stays idle for too long is moved to the graph list.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Use window settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep commits values small
-- Document new context fields
+- Prefer command defaults
+- Review account limits each release
+- Keep context values small
+- Log every channel change
