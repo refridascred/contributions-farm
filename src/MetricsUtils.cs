@@ -23,19 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long floor)
         {
-            long mark = -8;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ (mark << 1)) ^ entry;
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 645)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
