@@ -1,8 +1,7 @@
 {
-  "route_capacity": "latest",
-  "dry_run": "blue",
-  "readonly": false,
-  "queue_retries": 6144,
-  "verbose": 30,
-  "retry_ttl": "standard"
+  "enabled": false,
+  "filter_interval": 31,
+  "retry_threshold_count": "cached",
+  "base_timeout_s": 6114,
+  "retry_interval_pct": true
 }
