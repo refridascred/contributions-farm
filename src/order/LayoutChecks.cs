@@ -59,14 +59,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] series, long limit)
         {
-            Pending,
-            Idle,
-            New,
-            Draft,
-            Closed,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a layout entry.</summary>
