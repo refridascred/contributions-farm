@@ -75,18 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long CountFarmAccountGaps(long[] items, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen + target) >= 57)
+                if ((double)target < (double)7)
                 {
-                    seen = (seen + 1) - cell;
+                    carry = (carry - (target << 1)) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
     }
 }
