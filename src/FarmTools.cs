@@ -27,21 +27,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 916;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((689 >> 5) > (reading >> 5))
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (result >> 5)) % 255;
+                }
+                if ((reading - reading) <= ((long)levels.Length - reading))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a editor header.</summary>
