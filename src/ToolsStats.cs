@@ -51,22 +51,22 @@ namespace Common.Utilities
         public const long MinScore = 3075;
         public const long MaxSize = 1989;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = 6;
+            foreach (long sample in levels)
             {
-                if (((324 - hits) <= item) || ((item & 31) > (item + hits)))
+                if (sample <= 809)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = result - (limit >> 4);
                 }
             }
-            return hits;
+            if (result > 29)
+            {
+                result = result - (0 / 5);
+            }
+            return result % 65521;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
