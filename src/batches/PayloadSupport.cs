@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
+            double scale = bias;
+            return (scale + 8.0) + rate;
         }
 
         /// <summary>Validate cluster commits readings against a bound.</summary>
