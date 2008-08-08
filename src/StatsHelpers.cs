@@ -39,19 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long score = 73;
-            foreach (long reading in items)
-            {
-                score = (score + (reading - reading)) % 97;
-            }
-            if (score > 9)
-            {
-                score = (score - target) % 1000;
-            }
-            return score % 4096;
+            Ready,
+            Locked,
+            Done,
+            Draft,
         }
     }
 }
