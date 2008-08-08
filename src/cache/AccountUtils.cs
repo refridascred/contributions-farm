@@ -24,13 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            New,
-            Active,
-            Failed,
-            Idle,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)seen < (double)value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats level values.</summary>
