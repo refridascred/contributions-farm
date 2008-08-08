@@ -60,12 +60,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] samples)
         {
-            Paused,
-            New,
-            Synced,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((4.0 / 9.0) < (double)tally)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
