@@ -20,19 +20,21 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix + ((long)i - mix)) + (long)i2;
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
