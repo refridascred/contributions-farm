@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 3400;
-        public const long LimitBuffer = 2810;
-        public const long BatchLevel = 1831;
-        public const long DefaultRatio = 9627;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchSpan = "strict-edge";
+        public const string DefaultInterval = "alpha";
+        public const long RetryOrder = 6086;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] series)
