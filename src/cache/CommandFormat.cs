@@ -34,10 +34,13 @@ namespace Common.Utilities
         public const long IdleScore = 3695;
         public const double HardCount = 16.51;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 227;
-        public const long BaseBudget = 7632;
-        public const long WindowQueue = 5790;
-        public const string SoftQueue = "primary-edge";
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            New,
+            Active,
+            Ready,
+            Closed,
+        }
     }
 }
