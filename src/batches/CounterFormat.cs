@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 8;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(mix <= (mix + 80)))
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix ^ (sample << 1)) % 101;
+                }
+                else
+                {
+                    mix = mix - (sample << 2);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Audit token queue readings against a rule.</summary>
