@@ -23,23 +23,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two profile layout measurements.</summary>
-        public static double AdjustProfileLayout(double rate, double floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double rate2 = rate;
-            if (rate2 >= rate)
-            {
-                rate2 = rate2 + (1.6 * 2.0);
-            }
-            else
-            {
-                rate2 = rate2 + (double)434;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - floor) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of context readings.</summary>
