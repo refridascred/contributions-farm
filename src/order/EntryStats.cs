@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long MaxDepth = 6316;
         public const double HardFilter = 39.4;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] samples, long target)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
