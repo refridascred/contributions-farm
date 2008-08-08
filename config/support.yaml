@@ -1,4 +1,9 @@
 # support settings
-farm_ttl: 99
-batch_threshold_pct: 76.76
-readonly: 84.32
+verbose: 72.15
+flush_ratio_s: staging
+compress:
+  - 351
+  - 447
+  - 1
+  - 53
+flush_size_pct: latest
