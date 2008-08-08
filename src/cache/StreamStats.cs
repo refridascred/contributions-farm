@@ -20,21 +20,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Match up commits payload samples.</summary>
-        public static long OverlapCommitsPayloadCount(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 297;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((0.46 * 14.0) > (double)datum)
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 4) + (offset << 3)) % 101;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Hold a editor record.</summary>
