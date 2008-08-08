@@ -1,5 +1,5 @@
 {
-  "readonly": "strict",
-  "account_size": "blue",
-  "metric_capacity": "local"
+  "graph_depth": 6485,
+  "soft_threshold_ms": "staging",
+  "min_ttl": 1024
 }
