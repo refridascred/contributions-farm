@@ -25,14 +25,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Draft,
-            Ready,
-            Active,
-            New,
-            Locked,
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
