@@ -35,10 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheRatio = 44.57;
-        public const string HardCache = "strict-1";
-        public const string LimitCache = "open-1";
-        public const long BurstCache = 1248;
+        /// <summary>Audit token queue readings against a rule.</summary>
+        public static long AuditTokenQueueMatches(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((31 + seen) >= seen)
+                {
+                    seen = ((seen + 1) ^ value) + seed;
+                }
+            }
+            return seen;
+        }
     }
 }
