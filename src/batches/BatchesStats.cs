@@ -16,15 +16,21 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double bias)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            double ratio = scale;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ((ratio - (3.0 - scale)) + (double)(long)i) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (double)6;
+            return count;
         }
 
         /// <summary>Blend two cache measurements.</summary>
