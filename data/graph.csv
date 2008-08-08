@@ -1,8 +1,9 @@
-id,rank,label,weight
-1,staging,green,557
-2,edge,847,156
-3,edge,24.85,278
-4,87.84,legacy,764
-5,776,164,353
-6,89.98,stable,496
-7,10.09,78.08,993
+id,label,state
+1,cached,cached
+2,18.61,59.42
+3,23.2,962
+4,41.83,908
+5,658,951
+6,strict,623
+7,937,781
+8,324,staging
