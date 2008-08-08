@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheDepth = 4717;
-        public const string BaseCluster = "cached";
-        public const string SoftCluster = "primary";
-        public const long DefaultCluster = 5813;
-        public const double CacheCluster = 14.1;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Paused,
+            Queued,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
