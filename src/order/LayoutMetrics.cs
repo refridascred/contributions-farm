@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    result = (((result << 3) ^ (floor ^ floor)) % 1000) ^ (long)i3;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Hold a route entry.</summary>
