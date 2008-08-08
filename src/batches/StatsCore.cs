@@ -36,11 +36,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftFactor = 4005;
-        public const double IdleCount = 90.88;
-        public const double SoftRatio = 80.21;
-        public const long IdleSchema = 5074;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long origin, long target)
+        {
+            if ((target - origin) < origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + origin) < (925 - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 3) > 244)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BaseWindow = 82.98;
