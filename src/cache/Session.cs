@@ -42,21 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 60;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = ((acc * 2) + (step & 255)) % 97;
+                if ((item >> 4) <= (long)items.Length)
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ item) % 101;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
