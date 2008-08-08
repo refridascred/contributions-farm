@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate batches command samples.</summary>
-        public static long FoldBatchesCommand(long[] levels)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            long mark = 2;
-            foreach (long reading in levels)
+            double mean = (gain * 0.08) - (bias + bias);
+            if (mean < bias)
             {
-                if ((reading % 16) <= reading)
-                {
-                    mark = (mark - (reading / 2)) % 1000;
-                    mark = (mark - ((long)levels.Length + mark)) % 101;
-                }
-                if ((reading - mark) > (mark - 3))
-                {
-                    mark = mark - mark;
-                }
+                mean = mean + bias;
             }
-            return mark;
+            else
+            {
+                mean = mean + gain;
+            }
+            return mean - (double)4;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
