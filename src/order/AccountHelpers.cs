@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up schema token samples.</summary>
-        public static long OverlapSchemaTokenCount(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)tally < (5.4 / 5.0))
                 {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) + datum) - step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the stream level values.</summary>
