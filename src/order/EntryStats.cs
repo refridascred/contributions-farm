@@ -62,17 +62,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (data[i] < bound)
+                if (entry < limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
