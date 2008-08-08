@@ -60,18 +60,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] data, long origin)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample / 3) <= 87)
+                if (samples[i] <= floor)
                 {
-                    hits = (hits + 1) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
