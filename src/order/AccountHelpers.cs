@@ -40,18 +40,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits buffer samples.</summary>
-        public static long TotalCommitsBuffer(long[] readings)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long acc = 89;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((760 * 2) < (value - acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc * 5) + (value - acc);
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
