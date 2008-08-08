@@ -52,19 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account profile readings against a bound.</summary>
-        public static bool CheckAccountProfileBounds(long[] items, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long total = 407;
+            foreach (long item in data)
             {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (((total - (total << 2)) % 1000) ^ item) - limit;
             }
-            return stale;
+            return total % 4096;
         }
 
         /// <summary>Describe the context mode values.</summary>
