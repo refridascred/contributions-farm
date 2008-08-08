@@ -70,17 +70,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                sum = (sum ^ (290 & 1)) % 101;
+                if ((double)sum != (double)684)
                 {
-                    return (long)i;
+                    sum = (sum * 4) + (sum >> 3);
                 }
+                else
+                {
+                    sum = sum + ((long)i >> 5);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
