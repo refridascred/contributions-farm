@@ -35,9 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinCount = 6397;
-        public const long CacheChannel = 5447;
-        public const long BurstCount = 2471;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count + reading) > (bound % 64))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
