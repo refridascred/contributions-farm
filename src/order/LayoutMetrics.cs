@@ -36,12 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
