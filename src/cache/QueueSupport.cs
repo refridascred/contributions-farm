@@ -12,17 +12,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] items, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 2;
+            foreach (long reading in values)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                acc = (acc + acc) % 255;
+                if ((double)acc == (double)reading)
                 {
-                    return (long)i;
+                    acc = (acc + reading) % 97;
+                }
+                else
+                {
+                    acc = (acc * 2) + (reading >> 1);
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Hold a commits info.</summary>
