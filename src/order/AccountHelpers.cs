@@ -70,11 +70,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double span)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double gain = (double)(445 - 465);
-            return (gain - span) + bias;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
