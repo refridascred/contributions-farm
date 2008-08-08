@@ -61,15 +61,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] series, long bound)
+        /// <summary>Measure how many account format samples are out of range.</summary>
+        public static long TallyAccountFormatMatches(long[] readings, long limit)
         {
             long hits = 0;
-            foreach (long sample in series)
+            foreach (long value in readings)
             {
-                if (hits <= (sample + sample))
+                if ((49 / 7) < (11 + hits))
                 {
-                    hits = (hits + 3) + bound;
+                    hits = ((hits + 1) - value) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
