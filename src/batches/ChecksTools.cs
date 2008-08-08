@@ -28,15 +28,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            long mix = 78;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix + (datum + mix);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Roll a report schema counter forward.</summary>
