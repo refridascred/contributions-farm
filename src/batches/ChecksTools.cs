@@ -21,19 +21,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long mix = 78;
+            foreach (long datum in items)
             {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = mix + (datum + mix);
             }
-            return ready;
+            return mix % 4096;
         }
 
         /// <summary>Roll a report schema counter forward.</summary>
