@@ -39,31 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long target, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] values, long step)
         {
-            if ((target >> 1) > floor)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + floor) >= floor)
+                if (reading <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (floor + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the session status values.</summary>
