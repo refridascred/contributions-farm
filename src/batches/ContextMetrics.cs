@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout buffer entries that pass the check.</summary>
-        public static long MeasureLayoutBufferHits(long[] values, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading - count) <= (count - 0))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
