@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] readings, long offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally % 7) <= (offset % 12))
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a filter order value against two limits.</summary>
