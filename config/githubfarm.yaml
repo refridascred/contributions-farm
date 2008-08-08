@@ -1,9 +1,24 @@
 # githubfarm settings
-poll_ttl_pct:
-  sync_ratio_count:
-    - 385
-    - 396
-  record_retries: 46.78
-  readonly: 39
-report_ttl: eu-west
-default_window: 44
+cache_capacity:
+  - eu-west
+  - stable
+  - strict
+  - green
+flush_limit_s: true
+flush_interval_count:
+  sync_ratio_s: false
+  cache_limit: true
+  audit: fallback
+commits_limit:
+  sync_retries_s: 2605
+  report_timeout:
+    - eu-west
+    - open
+    - edge
+  max_interval_ms:
+    - primary
+    - staging
+    - eu-west
+  contributi_delay: 91
+  report_depth: true
+batch_timeout: 2981
