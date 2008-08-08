@@ -1,6 +1,9 @@
-id,rank,level
-1,746,61
-2,921,848
-3,50.38,36.9
-4,91.8,primary
-5,local,278
+id,state,owner
+1,20.92,946
+2,48,863
+3,691,green
+4,fallback,225
+5,65.56,720
+6,green,fallback
+7,135,65.06
+8,14.81,173
