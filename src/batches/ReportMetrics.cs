@@ -37,17 +37,19 @@ namespace Common.Utilities
             return ratio - bias2;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] series, long origin)
+        /// <summary>Validate support buffer readings against a bound.</summary>
+        public static bool ValidateSupportBufferRange(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (series[i] == origin)
+                if (cell <= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
