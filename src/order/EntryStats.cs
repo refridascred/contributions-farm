@@ -23,11 +23,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 9756;
-        public const string StepProfile = "open-1";
-        public const long MinCount = 1741;
-        public const long MaxRatio = 700;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long origin)
+        {
+            long edge = seed - origin;
+            if ((double)seed >= (16.0 * 8.7))
+            {
+                return 8;
+            }
+            else
+            {
+                if (4 < (edge - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (edge < (edge % 97))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)seed > 1.3) && ((edge / 9) <= seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
