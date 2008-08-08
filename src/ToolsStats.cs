@@ -61,11 +61,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardInterval = 7369;
-        public const long MinOrder = 5238;
-        public const long SoftOrder = 4463;
-        public const double BurstSize = 4.05;
-        public const string MaxRatio = "stable-v2";
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] items)
+        {
+            long sum = 7;
+            foreach (long value in items)
+            {
+                if (((6 >> 1) >= (value + value)) || (5 >= value))
+                {
+                    sum = (sum * 3) + sum;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum;
+        }
     }
 }
