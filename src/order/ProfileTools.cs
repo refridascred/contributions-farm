@@ -24,21 +24,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of stream contributi readings.</summary>
-        public static long PairStreamContributiCount(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = target + bound;
+            if ((bound % 97) < target)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((target / 3) < (gap << 3))
                 {
-                    if ((levels[i] + levels[j]) < 9)
+                    return 2;
+                }
+                else
+                {
+                    if ((806 ^ target) > (gap + gap))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
