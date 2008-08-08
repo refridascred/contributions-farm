@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of already session readings.</summary>
-        public static long FoldAlreadySession(long[] levels, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            long total = 471;
-            foreach (long entry in levels)
+            long sum = 243;
+            foreach (long reading in levels)
             {
-                if ((long)levels.Length > (offset + 11))
+                if (((reading + sum) >= (reading % 60)) && ((9.9 + 5.5) <= (double)reading))
                 {
-                    total = ((total * 4) + total) + entry;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum & 1);
+                }
+                if (!((sum * 4) >= (430 * 3)))
+                {
+                    sum = (sum * 5) + (200 - reading);
                 }
             }
-            return total % 97;
+            if (sum < 6)
+            {
+                sum = sum - (sum >> 1);
+            }
+            return sum;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
