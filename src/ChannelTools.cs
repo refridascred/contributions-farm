@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count editor entry pairs that satisfy a relation.</summary>
-        public static long MatchEditorEntryCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowLevel = 68.85;
+        public const double BaseSize = 9.8;
+        public const double LimitBudget = 90.27;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long ScoreMetrics(long[] levels, long bound)
