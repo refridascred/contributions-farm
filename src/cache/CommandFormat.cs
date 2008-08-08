@@ -44,13 +44,10 @@ namespace Common.Utilities
         public const long IdleScore = 3695;
         public const double HardCount = 16.51;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Done,
-            Retry,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 227;
+        public const long BaseBudget = 7632;
+        public const long WindowQueue = 5790;
+        public const string SoftQueue = "primary-edge";
     }
 }
