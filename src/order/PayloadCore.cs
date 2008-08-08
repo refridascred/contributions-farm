@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit channel command readings against a rule.</summary>
-        public static long AuditChannelCommandGaps(long[] items)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((3.1 * 9.68) == (double)reading)
+                if (((75 * 5) < (score - limit)) || ((13.0 - 6.0) != (double)(long)i))
                 {
-                    matches = matches + 2;
+                    score = score + (score - score);
+                    continue;
+                }
+                if ((score + limit) <= (-58))
+                {
+                    score = ((score << 3) ^ (4 >> 5)) % 97;
+                    score = ((score << 3) ^ score) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score << 2) ^ (score >> 4);
+                    score = (score - ((-634) * 4)) % 255;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
