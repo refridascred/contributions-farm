@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] series)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((15 + hits) <= 7))
+                if (data[i] > origin)
                 {
-                    hits = (hits + 1) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit graph command readings against a rule.</summary>
