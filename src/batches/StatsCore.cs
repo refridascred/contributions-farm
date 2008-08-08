@@ -57,18 +57,17 @@ namespace Common.Utilities
         public const long MinWindow = 2549;
         public const string BurstFactor = "staging-v2";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] items, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((step + count) >= (step + 32)) && ((3 - count) < (count + reading)))
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
