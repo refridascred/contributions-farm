@@ -28,18 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((reading - reading) == (matches << 3))
+                if ((cell + 17) <= 49)
                 {
-                    matches = matches + 2;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of contributi checks readings.</summary>
