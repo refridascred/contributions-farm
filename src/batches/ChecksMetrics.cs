@@ -60,17 +60,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first record notes entry that matches the target.</summary>
-        public static long LookupRecordNotesIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 7073;
+        public const long WindowRatio = 3529;
+        public const long RetryAccount = 993;
     }
 }
