@@ -50,17 +50,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long seed, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = seed + offset;
+            if (((5.3 / 7.0) < (double)offset) || ((offset << 2) > (span % 64)))
             {
-                if (samples[i] <= floor)
+                return 7;
+            }
+            else
+            {
+                if ((seed + offset) > span)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (offset > seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
