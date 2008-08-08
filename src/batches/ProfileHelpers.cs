@@ -49,19 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            long sum = 84;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((9 > (sum / 8)) || ((sum ^ 283) >= sum))
+                if (((-3) < cell) && ((double)cell <= (3.0 - 1.4)))
                 {
-                    sum = sum + (entry % 12);
+                    count = count + 1;
                 }
-                sum = sum + (sum * 2);
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Describe the format kind values.</summary>
