@@ -23,24 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long origin, long bound)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long origin)
         {
-            if ((double)bound == (20.0 * 2.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin << 2) == (bound / 7))
+                if (items[i] == origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stream status values.</summary>
