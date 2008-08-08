@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long HardCommand = 829;
         public const string BatchSize = "cached-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchLevel = "local-edge";
-        public const long SoftSpan = 8049;
-        public const string LimitInterval = "cached-edge";
-        public const long IdleQueue = 4856;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen % 16) >= (-6))
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a editor profile counter forward.</summary>
         public static long SeriesEditorProfile(long step)
