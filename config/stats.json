@@ -1,15 +1,6 @@
 {
-  "audit": {
-    "editor_timeout": 96.57,
-    "enabled": false,
-    "readonly": 5.06,
-    "stream_ttl": 54.46,
-    "hard_timeout": "blue",
-    "hard_delay_ms": 7.91
-  },
-  "hard_delay": "primary",
-  "sync_window_pct": ["blue", "primary", "local", "legacy"],
-  "min_ttl_s": 25,
-  "compress": false,
-  "batch_delay_s": 46
+  "cluster_interval": true,
+  "min_threshold_pct": "fallback",
+  "record_delay": ["green", "edge", "strict"],
+  "buffer_threshold": "primary"
 }
