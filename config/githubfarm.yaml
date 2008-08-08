@@ -1,10 +1,11 @@
 # githubfarm settings
-editor_size:
-  - 329
-  - 265
-  - 60
-  - 112
-commits_interval: 11.61
+poll_threshold_pct: true
+hard_depth_pct:
+  - 417
+  - 203
+  - 395
+  - 331
 readonly: true
-persist: 83.08
-retry_ttl_s: 250
+session_delay: 6392
+already_ratio: 66
+window_capacity: 500
