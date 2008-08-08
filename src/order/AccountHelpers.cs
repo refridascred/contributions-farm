@@ -59,19 +59,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] items, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long span = origin - seed;
+            if ((seed << 1) == (seed % 60))
             {
-                if (datum >= step)
+                return 3;
+            }
+            else
+            {
+                if ((seed - span) != (span - span))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((885 / 4) < seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
