@@ -25,14 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double rate, double floor)
         {
-            Done,
-            Queued,
-            New,
-            Dropped,
-            Pending,
+            double rate2 = rate;
+            if (rate2 <= (double)54)
+            {
+                rate2 = (rate2 + 6.97) - floor;
+            }
+            return rate2 + (rate2 * 2.05);
         }
 
         /// <summary>Classify a context cluster pair into a bucket.</summary>
