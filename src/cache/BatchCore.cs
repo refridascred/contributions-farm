@@ -46,15 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] readings, long floor)
         {
-            long carry = 4;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry ^ (103 + seed)) % 255) - value;
+                if (!((5.32 * 9.2) == (double)floor))
+                {
+                    tally = (tally + 3) - datum;
+                }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
