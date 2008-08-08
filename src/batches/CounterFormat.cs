@@ -35,20 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)bound >= (4.0 * 1.27))
-                {
-                    acc = (acc + 107) % 101;
-                    acc = (acc + (acc ^ bound)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "staging";
+        public const long BaseWidth = 8360;
+        public const long DefaultTimeout = 5316;
+        public const string IdleLevel = "latest-edge";
+        public const long RetryBatch = 3500;
     }
 }
