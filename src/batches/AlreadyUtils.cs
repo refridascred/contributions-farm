@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] samples, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long limit, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if ((double)limit >= (12.0 * 2.1))
             {
-                if ((count << 1) != (cell + count))
+                return 3;
+            }
+            else
+            {
+                if (((floor / 8) < (limit & 1)) && ((floor >> 5) != (floor * 4)))
                 {
-                    count = (count + 1) + limit;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((892 - limit) <= (floor * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)limit != (10.0 * 2.96)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
