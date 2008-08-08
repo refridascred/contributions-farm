@@ -47,39 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] readings)
         {
-            long edge = step - target;
-            if ((1.04 + 8.81) == (double)edge)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge * 2) != (step % 10))
+                if ((466 / 7) >= (tally ^ tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + edge) >= 82)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - target) > (target % 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 3) ^ item;
                 }
             }
+            return tally;
         }
     }
 }
