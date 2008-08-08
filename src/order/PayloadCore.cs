@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Ready,
-            New,
-            Active,
-            Idle,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseTimeout = "primary-edge";
+        public const long BurstSize = 1065;
+        public const double LimitDepth = 7.96;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 141;
