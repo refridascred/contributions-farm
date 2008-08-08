@@ -22,31 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a window counter pair into a bucket.</summary>
-        public static long BucketWindowCounter(long offset, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] readings, long origin)
         {
-            if (((offset + seed) > (seed + seed)) || ((double)offset <= (4.0 / 5.0)))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (158 >= seed)
+                if ((0 + origin) >= (676 << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset << 1) == (offset * 3)) || ((offset - 8) != (offset * 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the counter status values.</summary>
