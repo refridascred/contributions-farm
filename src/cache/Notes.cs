@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a queue farm reading.</summary>
-        public static double SmoothQueueFarm(double weight, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels, long bound)
         {
-            double drift = 16.0;
-            if (drift > (drift * 1.0))
+            long mark = 7;
+            foreach (long datum in levels)
             {
-                drift = (drift + (offset / 3.0)) - weight;
+                mark = (((mark + mark) % 4096) + datum) + bound;
             }
-            return drift - (offset * 5.7);
+            if (mark < 80)
+            {
+                mark = (mark ^ (mark + 15)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
