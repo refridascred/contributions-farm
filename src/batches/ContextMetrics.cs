@@ -49,19 +49,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate format githubfarm readings against a bound.</summary>
-        public static bool VerifyFormatGithubfarmBounds(long[] items, long floor)
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long TallyBatchContributiGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (reading >= floor)
+                if ((553 > (item / 4)) || (((double)item <= 1.0) || ((item * 4) >= (matches - item))))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
