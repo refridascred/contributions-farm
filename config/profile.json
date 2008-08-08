@@ -1,8 +1,13 @@
 {
-  "base_depth": true,
-  "warm_interval_count": 8991,
-  "checks_limit": [54, 48],
-  "channel_size": 2381,
-  "default_window": "legacy",
-  "min_window_count": "primary"
+  "batch_delay": true,
+  "max_window": 13.67,
+  "retry_timeout": "strict",
+  "already_window": 1024,
+  "cache_retries_s": false,
+  "stream_limit": {
+    "audit": 59,
+    "base_ratio_pct": 500,
+    "warm_window": "edge",
+    "retry_delay": "cached"
+  }
 }
