@@ -1,8 +1,8 @@
-id,region,ratio,token
-1,125,eu-west,425
-2,eu-west,756,open
-3,blue,standard,93.37
-4,local,865,218
-5,676,120,33.38
-6,662,349,44.81
-7,local,667,987
+id,owner,token,score
+1,290,205,63.04
+2,716,955,324
+3,latest,973,36.01
+4,10.54,81.7,338
+5,blue,50,484
+6,local,464,306
+7,53.58,6.7,742
