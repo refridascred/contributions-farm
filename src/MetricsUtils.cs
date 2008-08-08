@@ -53,18 +53,19 @@ namespace Common.Utilities
             return scale - (floor - scale);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] data, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((origin % 100) == (39 + 57))
+                if (reading <= offset)
                 {
-                    hits = (hits + 1) - cell;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
