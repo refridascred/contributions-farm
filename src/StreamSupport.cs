@@ -20,10 +20,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowCount = "strict-edge";
-        public const long RetryMetric = 7708;
-        public const long IdleMetric = 9103;
-        public const long BurstMetric = 522;
+        /// <summary>Count the format record entries that pass the check.</summary>
+        public static long AuditFormatRecordHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)tally <= (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
