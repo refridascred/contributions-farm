@@ -14,10 +14,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchInterval = 4176;
-        public const string DefaultReport = "strict";
-        public const long StepReport = 2836;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] items, long target)
