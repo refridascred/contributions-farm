@@ -41,19 +41,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels, long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = 5;
-            foreach (long reading in levels)
-            {
-                carry = ((carry << 2) ^ target) % 101;
-                if ((reading << 1) < reading)
-                {
-                    carry = (carry ^ (reading & 31)) % 1000;
-                }
-            }
-            return carry % 65521;
+            Stale,
+            Pending,
+            Draft,
+            Closed,
         }
     }
 }
