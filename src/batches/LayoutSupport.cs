@@ -19,22 +19,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultDepth = "alpha-1";
+        public const string HardBuffer = "primary-edge";
+        public const string SoftBuffer = "local-v2";
+        public const double BatchRatio = 76.69;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
