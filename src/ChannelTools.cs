@@ -36,12 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a stats buffer reading by value.</summary>
-        public static long SeekStatsBufferIndex(long[] readings, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > floor)
+                if ((values[i] < step) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
