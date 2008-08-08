@@ -25,18 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitTimeout = 2485;
+        public const long IdleLayout = 6378;
+        public const long MaxTimeout = 4496;
+        public const long MinLevel = 4381;
+        public const string MinLayout = "cached";
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
