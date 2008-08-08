@@ -43,11 +43,20 @@ namespace Common.Utilities
         public const string LimitFactor = "primary-1";
         public const double MaxSpan = 97.56;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheSize = 6.45;
-        public const double SoftMetrics = 77.62;
-        public const double SoftTimeout = 4.98;
-        public const long BaseSpan = 7359;
+        /// <summary>Check that every already metrics entry stays within the limit.</summary>
+        public static bool VerifyAlreadyMetricsLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double bias, double bias2)
