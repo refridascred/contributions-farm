@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next cache context value from a seed.</summary>
-        public static long SeriesCacheContext(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 17.83;
+        public const long StepEditor = 4609;
+        public const double BaseSpan = 89.44;
+        public const double BurstEditor = 3.83;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
