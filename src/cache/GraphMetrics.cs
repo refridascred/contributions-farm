@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double load = (double)(88 - 39);
+            if (load < (load * 9.0))
             {
-                if ((941 + matches) == (238 + entry))
-                {
-                    matches = matches + 3;
-                }
+                load = (load - (double)5) - floor;
             }
-            return matches;
+            return load - rate;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
