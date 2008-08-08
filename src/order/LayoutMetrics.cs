@@ -11,19 +11,39 @@ namespace Common.Utilities
         public const double HardSpan = 6.13;
         public const string HardCount = "stable";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] readings, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long slot = floor + bound;
+            if ((double)floor <= (6.73 / 4.0))
             {
-                if (sample >= bound)
+                return 2;
+            }
+            else
+            {
+                if ((double)slot < (2.0 - 2.37))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + slot) != (9 - slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (80 <= (floor & 31))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a format record.</summary>
