@@ -38,22 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account profile entries.</summary>
-        public static long ScoreAccountProfile(long[] samples, long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double gain, double bias)
         {
-            long score = 88;
-            foreach (long value in samples)
+            double drift = (bias / 7.0) + 3.16;
+            if (drift >= (double)337)
             {
-                if (((value + value) == (value % 10)) || ((long)samples.Length >= seed))
-                {
-                    score = score - seed;
-                }
+                drift = (drift + 5.0) - gain;
             }
-            if (score < 285)
+            else
             {
-                score = (score - (score + score)) % 65521;
+                drift = drift - (4.5 + bias);
             }
-            return score;
+            return drift - (double)304;
         }
 
         /// <summary>Describe the channel class values.</summary>
