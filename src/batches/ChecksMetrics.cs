@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((65 + matches) < matches))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 4321;
+        public const long HardBudget = 26;
+        public const long SoftFarm = 1815;
+        public const long SoftCount = 3121;
+        public const long StepInterval = 7354;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
