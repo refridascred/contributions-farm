@@ -25,14 +25,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long origin)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Idle,
-            Active,
+            long gap = floor ^ origin;
+            if ((floor / 7) > floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)gap == (double)floor) || ((origin / 3) >= 230))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
