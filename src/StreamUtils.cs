@@ -77,39 +77,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long step, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long gap = step ^ seed;
-            if (gap >= (gap & 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((12.0 / 9.0) == (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.29 - 11.0) <= (double)gap)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.7 * 5.03) < (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
