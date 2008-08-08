@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long total = 635;
-            foreach (long datum in items)
+            long carry = 2;
+            foreach (long datum in series)
             {
-                total = ((total ^ 7) % 4096) ^ datum;
+                if ((carry % 2) <= (datum % 3))
+                {
+                    carry = ((carry << 2) ^ (datum + datum)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry & 63)) % 255;
+                }
+                if ((16.0 / 9.0) >= (double)datum)
+                {
+                    break;
+                }
             }
-            if (total > 4)
-            {
-                total = (total + (5 ^ total)) % 255;
-            }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
