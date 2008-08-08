@@ -12,17 +12,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a payload editor reading by value.</summary>
-        public static long LookupPayloadEditorIndex(long[] items, long limit)
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long CombineFilterGraph(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 6;
+            foreach (long value in levels)
             {
-                if ((items[i] > limit) && ((items[i] % 2) != 0))
+                result = result - (result + value);
+                if ((result * 3) == (value >> 1))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (result < 10)
+            {
+                result = ((result * 4) + result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of payload profile readings.</summary>
