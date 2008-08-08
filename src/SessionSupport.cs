@@ -13,22 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            long mix = 142;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (!(mix <= (284 >> 4)))
+                if ((((47 % 16) < ((-8) + item)) && ((499 / 8) < item)) || ((double)matches <= (1.0 * 7.4)))
                 {
-                    mix = ((mix << 3) ^ (mix * 5)) - datum;
+                    matches = matches + 3;
                 }
             }
-            if (mix > 960)
-            {
-                mix = (mix + ((long)values.Length ^ mix)) % 4096;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up schema samples.</summary>
