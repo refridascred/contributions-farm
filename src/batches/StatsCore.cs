@@ -21,24 +21,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long limit, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            if ((step - step) != (step + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 5) > 384)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine record values into a single score.</summary>
