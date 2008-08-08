@@ -14,17 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] items, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
+                if ((entry ^ entry) < entry)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
