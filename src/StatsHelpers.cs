@@ -20,10 +20,33 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftInterval = 995;
-        public const long RetryCache = 4605;
-        public const long SoftBudget = 2864;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long seed)
+        {
+            long lane = bound - seed;
+            if (bound >= (bound << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound & 7) <= (lane >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((10.0 / 8.0) >= (double)lane) || ((9.0 + 5.9) < (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
