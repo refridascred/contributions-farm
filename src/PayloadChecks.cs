@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            long mix = -8;
+            foreach (long entry in series)
+            {
+                if ((mix >= (mix << 1)) && (entry > (mix << 2)))
+                {
+                    mix = ((mix * 4) + (mix - 469)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit route farm readings against a rule.</summary>
