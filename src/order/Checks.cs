@@ -57,39 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi metrics value against two limits.</summary>
-        public static long RankContributiMetrics(long offset, long seed)
+        /// <summary>Accumulate profile format samples.</summary>
+        public static long TallyProfileFormat(long[] samples, long bound)
         {
-            long gap = offset - seed;
-            if ((offset + gap) >= offset)
+            long score = 64;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)gap != (3.79 - 0.3))
+                if ((sample > score) || ((score << 2) != (sample & 31)))
                 {
-                    return 2;
+                    score = ((score ^ sample) % 255) - bound;
                 }
-                else
+                if (((sample << 3) <= (sample * 2)) || ((score * 2) <= (sample % 8)))
                 {
-                    if (!((3.0 / 8.0) <= (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset - seed) == (gap >> 4)) && ((double)seed >= (17.0 - 11.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return score;
         }
     }
 }
