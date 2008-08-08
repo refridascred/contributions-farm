@@ -1,8 +1,18 @@
 {
-  "audit": 94.82,
-  "batch_ratio": ["latest", "legacy"],
-  "warm_window_s": "staging",
-  "hard_interval_ms": ["staging", "strict"],
-  "batch_window_s": false,
-  "stats_retries": "latest"
+  "audit": [440, 180, 176, 373],
+  "poll_depth": {
+    "queue_delay": 22.95,
+    "graph_depth": {
+      "min_limit_count": "open",
+      "readonly": [349, 31, 423, 439],
+      "editor_ratio": false,
+      "min_limit": false,
+      "audit": 9484
+    },
+    "sync_ratio_pct": ["edge", "green", "legacy"],
+    "verbose": "legacy",
+    "hard_window_ms": true,
+    "sync_threshold": 30
+  },
+  "burst_window_count": "open"
 }
