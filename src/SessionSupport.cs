@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Fold a list of batches counter readings.</summary>
+        public static long DigestBatchesCounter(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long mix = 77;
+            foreach (long entry in values)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                mix = (mix - (65 - entry)) % 4096;
             }
-            return acc;
+            if (mix < 7)
+            {
+                mix = (mix ^ (24 & 1)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the session state values.</summary>
