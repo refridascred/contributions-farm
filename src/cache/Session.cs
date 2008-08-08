@@ -56,17 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter editor reading by value.</summary>
-        public static long LookupCounterEditorIndex(long[] levels, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Queued,
+            Ready,
         }
     }
 }
