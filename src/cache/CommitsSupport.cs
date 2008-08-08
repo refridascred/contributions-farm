@@ -45,17 +45,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics batch sample.</summary>
-        public static long LocateMetricsBatchIndex(long[] values, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = ratio;
+            if (weight < span)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                weight = weight - ratio;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
