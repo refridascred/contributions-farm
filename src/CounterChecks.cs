@@ -50,11 +50,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            Paused,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define context limits and defaults.</summary>
