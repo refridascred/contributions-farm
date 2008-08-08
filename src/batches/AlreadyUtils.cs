@@ -50,23 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (offset >= ((-94) - anchor))
-                {
-                    anchor = (anchor * 4) + (anchor + offset);
-                }
-                if (((long)i + offset) != ((long)i - 870))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Failed,
+            Pending,
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a commits entry.</summary>
