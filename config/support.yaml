@@ -1,5 +1,9 @@
 # support settings
-batch_limit: 39.76
-enabled: 89
-hard_capacity_ms: blue
-poll_window_pct: 16
+dry_run:
+  - strict
+  - local
+token_limit: staging
+audit: 5
+token_delay: green
+persist: 5432
+min_capacity_s: 2203
