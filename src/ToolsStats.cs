@@ -50,12 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "stable-v2";
-        public const long BatchStream = 2511;
-        public const long BurstBudget = 6963;
-        public const double BaseStream = 97.43;
-        public const long DefaultScore = 9687;
+        /// <summary>Audit account report readings against a rule.</summary>
+        public static long AuditAccountReportHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (datum >= (datum % 64))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
