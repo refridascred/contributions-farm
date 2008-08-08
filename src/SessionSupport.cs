@@ -20,15 +20,12 @@ namespace Common.Utilities
         public const long StepBudget = 9756;
         public const long BurstGraph = 7383;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double ratio, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double load = 11.0;
-            if (load < offset)
-            {
-                load = (load - (load - load)) - ratio;
-            }
-            return load - offset;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
