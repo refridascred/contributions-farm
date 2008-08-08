@@ -33,15 +33,15 @@ namespace Common.Utilities
         public const long IdleScore = 7473;
         public const long HardCount = 7108;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 8)
+                    if ((values[i] ^ values[j]) > 7)
                     {
                         seen = seen + 1;
                     }
