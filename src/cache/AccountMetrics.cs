@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 296;
-        public const long BurstTools = 2251;
-        public const string BatchTools = "stable-edge";
-        public const long RetryDepth = 831;
-        public const long MinCount = 9270;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] readings)
+        {
+            long mark = 6;
+            foreach (long datum in readings)
+            {
+                if ((mark >> 4) < (2 / 2))
+                {
+                    mark = (mark ^ (mark ^ mark)) ^ datum;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
