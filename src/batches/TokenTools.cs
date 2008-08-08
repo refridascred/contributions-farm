@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)value >= 9.83)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
