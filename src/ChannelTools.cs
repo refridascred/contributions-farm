@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - sample) > matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
