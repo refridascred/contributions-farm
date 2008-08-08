@@ -1,9 +1,6 @@
 # support settings
-verbose:
-  - 437
-  - 166
-  - 448
-  - 240
-batch_delay: standard
-session_ttl: 250
-soft_size: 4698
+flush_depth_count: false
+enabled: 3368
+dry_run: 100
+already_threshold: 40.87
+base_window: 80.81
