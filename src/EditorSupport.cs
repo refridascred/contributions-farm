@@ -46,11 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double scale = 7.6;
-            return scale - (bias + weight);
+            New,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
