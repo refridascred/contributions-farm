@@ -1,22 +1,23 @@
 # githubfarm settings
-persist: primary
-cache_ratio:
-  - primary
-  - cached
-  - open
-  - blue
-hard_ttl_s:
-  - 366
-  - 441
-  - 310
-layout_ttl:
-  dry_run: true
-  flush_interval_pct: blue
-  graph_depth: 5
-  cache_depth: 4489
-farm_timeout:
-  verbose:
-    - 197
-    - 317
-  dry_run: 96
-  queue_window: standard
+compress:
+  batch_limit: 100
+  metrics_timeout:
+    - strict
+    - fallback
+    - legacy
+    - edge
+  graph_ttl: 20.82
+  counter_limit:
+    - legacy
+    - cached
+    - eu-west
+    - blue
+githubfarm_threshold: true
+batch_threshold_count: true
+retry_delay_s:
+  commits_depth:
+    - standard
+    - standard
+    - open
+  filter_size: true
+  strict: 100
