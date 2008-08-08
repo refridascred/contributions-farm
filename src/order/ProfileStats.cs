@@ -39,18 +39,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((1 - datum) >= (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
