@@ -28,30 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((3.0 - 2.46) == (double)state)
-                {
-                    state = (state << 2) ^ (target & 255);
-                    continue;
-                }
-                else
-                {
-                    state = (state * 2) + (state + target);
-                }
-                if (!!(state >= target))
-                {
-                    state = state + (state & 127);
-                }
-                state = state - (target * 5);
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "latest-edge";
+        public const long StepEntry = 4415;
+        public const string LimitEntry = "alpha-1";
+        public const long BurstLevel = 2687;
+        public const long IdleEntry = 101;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LocateContributiIndex(long[] series, long bound)
