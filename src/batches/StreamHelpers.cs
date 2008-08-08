@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 33.26;
-        public const long CacheQueue = 722;
-        public const string BatchQueue = "latest-v2";
-        public const string BatchLevel = "alpha-edge";
-        public const long MinTimeout = 1676;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Ready,
+            Done,
+            Queued,
+            Active,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardTimeout = 1149;
