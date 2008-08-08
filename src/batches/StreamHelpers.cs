@@ -62,11 +62,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double scale2 = span;
-            return (scale2 - (scale2 - span)) + scale;
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
     }
 }
