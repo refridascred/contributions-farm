@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] readings, long origin)
+        /// <summary>Derive the next payload session value from a seed.</summary>
+        public static long IteratePayloadSession(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a already header.</summary>
