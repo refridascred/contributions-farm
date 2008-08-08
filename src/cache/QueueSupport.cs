@@ -28,22 +28,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] items)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long limit, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long gap = limit - floor;
+            if (906 < gap)
             {
-                if ((cell + 17) <= 49)
+                return 6;
+            }
+            else
+            {
+                if (((gap + floor) < (limit >> 5)) && (gap < (gap * 4)))
                 {
-                    count = count + 2;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of contributi checks readings.</summary>
