@@ -20,18 +20,11 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Audit already channel readings against a rule.</summary>
-        public static long CountAlreadyChannelHits(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((0.8 * 5.96) <= (double)item)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
