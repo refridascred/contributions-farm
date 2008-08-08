@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] series, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long limit, long floor)
         {
-            long carry = 5;
-            foreach (long datum in series)
+            if (9 < (limit - limit))
             {
-                carry = (carry ^ (step ^ 670)) + datum;
-                carry = (carry ^ (carry + carry)) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (floor > limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
