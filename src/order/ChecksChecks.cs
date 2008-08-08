@@ -10,23 +10,31 @@ namespace Common.Utilities
         public const long HardBuffer = 8898;
         public const string SoftWidth = "cached-edge";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long limit, long offset)
         {
-            long acc = 27;
-            foreach (long cell in data)
+            if (offset >= (offset << 2))
             {
-                acc = ((acc << 2) ^ (offset << 2)) - cell;
-                if ((double)acc < (double)21)
+                return 1;
+            }
+            else
+            {
+                if (((limit >> 5) > (offset + offset)) || ((offset - offset) >= offset))
                 {
-                    acc = acc + (acc / 5);
+                    return 7;
                 }
                 else
                 {
-                    acc = (acc - (offset - 4)) % 255;
+                    if ((offset % 2) != (offset / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Adjust a githubfarm batch reading.</summary>
