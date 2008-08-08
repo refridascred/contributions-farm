@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] items, long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long seed, long limit)
         {
-            long score = 8;
-            foreach (long reading in items)
+            if ((seed ^ seed) >= (seed - seed))
             {
-                if ((double)score > (5.3 / 4.0))
+                return 2;
+            }
+            else
+            {
+                if (seed >= (limit % 7))
                 {
-                    score = (score + score) % 255;
+                    return 8;
                 }
                 else
                 {
-                    score = (score - (reading + 452)) % 97;
+                    return 7;
                 }
             }
-            if (score < (-192))
-            {
-                score = ((score << 3) ^ (floor ^ score)) % 101;
-            }
-            return score % 65521;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
