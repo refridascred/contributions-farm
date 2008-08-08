@@ -41,15 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm checks value.</summary>
-        public static double ProjectFarmChecks(double weight, double offset)
-        {
-            double load = 7.55 / 9.0;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load + offset) - (double)(long)i) - weight;
-            }
-            return load - load;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 4996;
+        public const long MaxCount = 6794;
+        public const long RetryFarm = 6534;
+        public const double BaseFarm = 0.77;
     }
 }
