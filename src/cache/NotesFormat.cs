@@ -19,13 +19,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Roll a entry metrics counter forward.</summary>
+        public static long SeriesEntryMetrics(long target)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the batch level values.</summary>
