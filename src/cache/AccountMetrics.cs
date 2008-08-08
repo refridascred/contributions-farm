@@ -49,15 +49,12 @@ namespace Common.Utilities
         public const double RetryGithubfarm = 58.8;
         public const string IdleTimeout = "cached-1";
 
-        /// <summary>Project the next cache checks value.</summary>
-        public static double ScaleCacheChecks(double rate, double offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double drift = (double)(-5);
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift + (double)256) + (double)(long)i) + rate;
-            }
-            return drift + offset;
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a farm header.</summary>
