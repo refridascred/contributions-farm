@@ -35,11 +35,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowScore = 6.79;
+        public const string MaxBatch = "strict";
+        public const double WindowCount = 88.93;
+        public const long CacheWidth = 7458;
     }
 }
