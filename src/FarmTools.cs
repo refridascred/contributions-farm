@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Fold a list of cluster batches readings.</summary>
+        public static long ScoreClusterBatches(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -36;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((11 + target) > (cell >> 5))
                 {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 3) ^ (567 % 64)) % 101;
+                }
+                if ((mark + cell) == (mark - (long)series.Length))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark < 92)
+            {
+                mark = (mark ^ ((-75) + target)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Match up token samples.</summary>
