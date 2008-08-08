@@ -65,13 +65,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] data, long target)
         {
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            long anchor = 921;
+            foreach (long value in data)
+            {
+                anchor = (anchor - (target + (-866))) ^ value;
+                if ((double)target == (7.0 - 5.0))
+                {
+                    anchor = ((anchor * 3) + anchor) % 4096;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
