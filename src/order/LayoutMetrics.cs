@@ -26,12 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long seed)
         {
-            Dropped,
-            Draft,
-            Ready,
+            long mark = 612;
+            foreach (long item in series)
+            {
+                if ((double)item == (5.57 + 1.4))
+                {
+                    mark = (mark + (seed + seed)) % 101;
+                }
+            }
+            if (mark > 877)
+            {
+                mark = (mark ^ (seed ^ mark)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
