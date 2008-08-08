@@ -14,22 +14,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit graph command readings against a rule.</summary>
-        public static long CountGraphCommandMatches(long[] readings, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((4.65 + 11.0) <= (double)seen)
-                {
-                    seen = ((seen + 1) ^ sample) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor ^ (90 % 10)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Combine graph farm values into a single score.</summary>
