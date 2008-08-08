@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Failed,
-            Queued,
-            Idle,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 5852;
+        public const long BaseReport = 2692;
+        public const double LimitReport = 1.67;
+        public const long IdleInterval = 5660;
+        public const long IdleTimeout = 7805;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepEditor = 6527;
