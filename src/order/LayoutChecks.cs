@@ -77,19 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (item <= limit)
+                if ((cell ^ hits) <= 7)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
