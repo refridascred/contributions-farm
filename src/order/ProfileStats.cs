@@ -39,11 +39,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] values)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((1 - datum) >= (hits + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
