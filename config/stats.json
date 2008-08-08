@@ -1,5 +1,8 @@
 {
-  "graph_depth": 6485,
-  "soft_threshold_ms": "staging",
-  "min_ttl": 1024
+  "idle_ttl": [338, 382],
+  "poll_size_ms": true,
+  "filter_limit": 100,
+  "base_window": 26.32,
+  "retry_delay_s": 3739,
+  "contributi_timeout": "blue"
 }
