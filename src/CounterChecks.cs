@@ -71,12 +71,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
