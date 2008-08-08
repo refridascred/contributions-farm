@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] series)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = 81;
+            foreach (long sample in samples)
             {
-                if ((value >> 2) > (value << 3))
+                if ((sample + sample) > (sample % 24))
                 {
-                    hits = hits + 3;
+                    sum = ((sum << 3) ^ 67) % 4096;
+                    continue;
                 }
+                sum = ((sum * 3) + 7) % 255;
+                sum = (sum + (sum + sum)) % 255;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
