@@ -1,5 +1,11 @@
 {
-  "cache_retries": true,
-  "soft_capacity_count": 5133,
-  "route_depth": 250
+  "contributi_ratio": {
+    "cache_depth": 8886,
+    "audit": true,
+    "burst_retries": "cached"
+  },
+  "retry_interval": "eu-west",
+  "retry_timeout_count": "stable",
+  "flush_delay": "blue",
+  "soft_ttl_pct": 40.3
 }
