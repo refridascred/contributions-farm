@@ -50,15 +50,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a channel metrics counter forward.</summary>
-        public static long StepChannelMetrics(long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long sum = 84;
+            foreach (long entry in values)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((9 > (sum / 8)) || ((sum ^ 283) >= sum))
+                {
+                    sum = sum + (entry % 12);
+                }
+                sum = sum + (sum * 2);
             }
-            return total;
+            return sum % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
