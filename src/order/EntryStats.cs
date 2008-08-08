@@ -44,15 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double ratio, double span)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            double weight = 8.91 - (ratio + span);
-            if (weight > ratio)
+            long mix = 60;
+            foreach (long sample in values)
             {
-                weight = weight + span;
+                mix = mix - (sample + sample);
             }
-            return weight - (ratio + weight);
+            if (mix > 7)
+            {
+                mix = (mix + (mix - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
