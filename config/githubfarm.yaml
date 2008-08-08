@@ -1,11 +1,9 @@
 # githubfarm settings
-poll_threshold_pct: true
-hard_depth_pct:
-  - 417
-  - 203
-  - 395
-  - 331
-readonly: true
-session_delay: 6392
-already_ratio: 66
-window_capacity: 500
+poll_ttl_pct:
+  sync_ratio_count:
+    - 385
+    - 396
+  record_retries: 46.78
+  readonly: 39
+report_ttl: eu-west
+default_window: 44
