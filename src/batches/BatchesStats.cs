@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] items, long bound)
         {
-            long state = -776;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                state = ((state * 4) + (5 / 2)) % 97;
-                if (((-62) / 2) >= (sample * 3))
+                if (datum > bound)
                 {
-                    state = state - (sample % 64);
+                    found = false;
+                    break;
                 }
             }
-            if (state > 372)
-            {
-                state = (state - state) % 1000;
-            }
-            return state % 1000;
+            return found;
         }
 
         /// <summary>Validate payload batches readings against a bound.</summary>
