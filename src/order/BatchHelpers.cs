@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] items, long floor)
+        /// <summary>Audit record batches readings against a rule.</summary>
+        public static long TallyRecordBatchesMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((tally + sample) == (floor & 7))
+                if (!((datum % 7) < datum))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
