@@ -46,13 +46,19 @@ namespace Common.Utilities
         public const long IdleMetrics = 2167;
         public const long BaseCount = 2380;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double scale, double bias)
         {
-            Stale,
-            Synced,
-            Pending,
-            Done,
+            double gain = scale;
+            if (gain < bias)
+            {
+                gain = gain - (scale * 7.8);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (scale / 9.0)) - (double)(long)i;
+            }
+            return gain - (double)0;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
