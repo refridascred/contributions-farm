@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double BaseDepth = 94.64;
         public const long DefaultLevel = 153;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((cell / 9) <= (matches ^ 894)) || (matches <= (matches & 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
