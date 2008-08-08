@@ -27,22 +27,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] samples)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long diff = step + origin;
+            if (step < (6 & 1))
             {
-                if ((cell - cell) > count)
+                return 7;
+            }
+            else
+            {
+                if (diff > origin)
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the command class values.</summary>
