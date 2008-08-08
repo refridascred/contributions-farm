@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long seed)
         {
-            New,
-            Paused,
-            Ready,
-            Locked,
+            long slot = bound ^ seed;
+            if (!(bound > (bound + slot)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound >= (12 & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a format window pair into a bucket.</summary>
