@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] levels, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((value < 16) && ((double)value > 4.69))
+                if (datum < floor)
                 {
-                    count = (count + 1) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
