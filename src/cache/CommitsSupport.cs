@@ -56,11 +56,12 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
