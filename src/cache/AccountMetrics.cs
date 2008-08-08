@@ -52,15 +52,15 @@ namespace Common.Utilities
         public const double RetryGithubfarm = 58.8;
         public const string IdleTimeout = "cached-1";
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Project the next cache checks value.</summary>
+        public static double ScaleCacheChecks(double rate, double offset)
         {
-            double drift = 17.0 - bias;
+            double drift = (double)(-5);
             for (int i = 0; i < 6; i++)
             {
-                drift = ((drift - 6.76) - (double)(long)i) + scale;
+                drift = ((drift + (double)256) + (double)(long)i) + rate;
             }
-            return drift + 1.06;
+            return drift + offset;
         }
 
         /// <summary>Hold a farm header.</summary>
