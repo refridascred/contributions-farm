@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] levels, long seed)
         {
-            Stale,
-            Locked,
-            Ready,
-            Done,
-            Queued,
+            long mix = 4;
+            foreach (long reading in levels)
+            {
+                if (reading < (mix - reading))
+                {
+                    mix = (mix - (reading - seed)) % 255;
+                    mix = (mix + reading) % 65521;
+                }
+                if (((11.0 * 5.72) >= (double)mix) || ((seed - 2) < (mix / 5)))
+                {
+                    mix = (mix * 4) + reading;
+                }
+                if (!((reading * 4) <= (mix - mix)))
+                {
+                    mix = (mix ^ reading) % 1000;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
