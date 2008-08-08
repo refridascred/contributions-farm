@@ -56,13 +56,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long seed)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor ^ ((long)i - (long)i)) % 97;
+                anchor = anchor ^ (long)i;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
