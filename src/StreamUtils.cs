@@ -41,17 +41,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] values, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] >= step)
+                if ((matches + matches) < sample)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the githubfarm layout entries that pass the check.</summary>
