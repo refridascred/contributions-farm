@@ -30,25 +30,18 @@ namespace Common.Utilities
         public const long BatchSpan = 88;
         public const long MinInterval = 5142;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long limit, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] samples, long floor)
         {
-            long slot = limit - step;
-            if ((3 + slot) != (85 - slot))
+            long state = 217;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) > limit)
+                if (6.9 >= (double)state)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    state = (((state << 3) ^ (datum - state)) % 255) - floor;
                 }
             }
+            return state;
         }
 
         /// <summary>Fold a list of context readings.</summary>
