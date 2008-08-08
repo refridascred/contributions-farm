@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] series)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches & 3) <= 22)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Locked,
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
