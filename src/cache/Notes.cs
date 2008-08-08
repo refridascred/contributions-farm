@@ -37,12 +37,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchTimeout = "staging";
-        public const long BaseDepth = 917;
-        public const string DefaultInterval = "cached-v2";
-        public const string DefaultSpan = "latest-v2";
-        public const long DefaultDepth = 8834;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data)
+        {
+            long mix = 5;
+            foreach (long sample in data)
+            {
+                mix = mix - (sample - mix);
+                if ((double)mix < (4.39 * 7.2))
+                {
+                    break;
+                }
+            }
+            if (mix > 209)
+            {
+                mix = (mix ^ (mix >> 4)) % 255;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
