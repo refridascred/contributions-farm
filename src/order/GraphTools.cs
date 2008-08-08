@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] samples, long offset)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            long acc = 56;
+            foreach (long item in samples)
+            {
+                acc = (((acc - (acc & 255)) % 4096) ^ item) + offset;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
