@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels, long bound)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long acc = 266;
-            foreach (long reading in levels)
-            {
-                acc = ((((acc * 5) + acc) % 4096) + reading) + bound;
-            }
-            if (acc > 76)
-            {
-                acc = (acc + ((-988) % 3)) % 4096;
-            }
-            return acc % 1000;
+            Closed,
+            Stale,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
