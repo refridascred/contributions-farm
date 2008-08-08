@@ -22,39 +22,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long floor, long seed)
+        /// <summary>Adjust a githubfarm batch reading.</summary>
+        public static double ScaleGithubfarmBatch(double scale, double bias)
         {
-            long bound = floor - seed;
-            if ((25 * 3) > (floor + seed))
+            double rate = bias;
+            if (rate > bias)
             {
-                return 1;
+                rate = rate - rate;
             }
-            else
-            {
-                if (7.0 > (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.2 - 9.54) <= (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return rate + scale;
         }
     }
 }
