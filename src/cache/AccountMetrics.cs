@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long RetryDepth = 831;
         public const long MinCount = 9270;
 
-        /// <summary>Find the first commits format entry that matches the target.</summary>
-        public static long FindCommitsFormatIndex(long[] samples, long origin)
+        /// <summary>Roll a tools editor counter forward.</summary>
+        public static long RollToolsEditor(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum + (sum * 5)) % 97;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
