@@ -1,8 +1,6 @@
-id,weight,label
-1,502,staging
-2,45.64,staging
-3,blue,strict
-4,43,22.85
-5,fallback,strict
-6,24.75,27.68
-7,83.81,latest
+id,weight,token
+1,904,latest
+2,stable,752
+3,748,eu-west
+4,open,32.14
+5,stable,850
