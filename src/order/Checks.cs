@@ -56,12 +56,19 @@ namespace Common.Utilities
         public const long RetryToken = 7714;
         public const string HardToken = "primary";
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] levels, long floor)
         {
-            Failed,
-            Queued,
-            Done,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
