@@ -33,22 +33,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item & 255) == (5 & 255))
+                if (series[i] > target)
                 {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count command cluster pairs that satisfy a relation.</summary>
