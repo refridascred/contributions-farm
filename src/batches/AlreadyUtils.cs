@@ -61,19 +61,18 @@ namespace Common.Utilities
         public const long MinFactor = 4182;
         public const double LimitLevel = 83.18;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] values, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long anchor = 248;
+            foreach (long sample in readings)
             {
-                if (datum >= bound)
+                if ((double)anchor < (1.7 - 0.01))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor * 3) + (303 % 16)) - sample;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
