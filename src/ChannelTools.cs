@@ -28,15 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a graph support counter forward.</summary>
-        public static long SeriesGraphSupport(long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
     }
 }
