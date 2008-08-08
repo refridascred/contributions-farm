@@ -19,15 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                score = ((score * 2) + ((long)i << 1)) % 97;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Hold a token header.</summary>
