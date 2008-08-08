@@ -1,6 +1,5 @@
 {
-  "commits_ratio": "stable",
-  "flush_interval": 500,
-  "readonly": false,
-  "warm_depth_s": "legacy"
+  "entry_delay": 30,
+  "soft_timeout": 63.3,
+  "channel_depth": "stable"
 }
