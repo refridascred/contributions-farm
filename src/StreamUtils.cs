@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels, long seed)
         {
-            long score = 57;
-            foreach (long sample in levels)
+            long sum = 3;
+            foreach (long datum in levels)
             {
-                score = (((score * 5) + 6) % 101) + sample;
+                sum = (sum * 4) + (datum - datum);
+                if ((sum > (seed + seed)) && ((3.4 - 14.0) == (double)seed))
+                {
+                    sum = ((sum * 5) + (seed - 55)) % 4096;
+                }
             }
-            if (score > 55)
-            {
-                score = score ^ 5;
-            }
-            return score % 1000;
+            return sum;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
