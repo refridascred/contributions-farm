@@ -83,22 +83,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next support profile value from a seed.</summary>
-        public static long DeriveSupportProfile(long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] series, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total ^ bound;
-                if ((bound ^ bound) <= ((long)i - (long)i))
+                if (series[i] <= step)
                 {
-                    total = ((total << 3) ^ (total << 2)) % 65521;
-                    total = (total * 5) + (total + total);
-                    continue;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
     }
 }
