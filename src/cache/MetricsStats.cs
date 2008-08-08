@@ -24,21 +24,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = step - bound;
+            if ((step + step) < (step & 127))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((96 >> 2) <= (step / 9))
                 {
-                    if ((readings[i] + readings[j]) != 15)
+                    return 6;
+                }
+                else
+                {
+                    if ((step << 1) < step)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((diff << 2) > (step * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up batches support samples.</summary>
