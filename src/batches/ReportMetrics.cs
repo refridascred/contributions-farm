@@ -22,16 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double bias, double bias2)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            double ratio = (double)8;
+            if (ratio >= bias2)
             {
-                anchor = (anchor ^ (90 % 10)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                ratio = ratio + bias;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)2) - (double)(long)i;
+            }
+            return ratio - bias2;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
