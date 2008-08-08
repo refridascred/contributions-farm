@@ -31,17 +31,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] readings, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                if ((double)seen >= (4.0 - 0.13))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
