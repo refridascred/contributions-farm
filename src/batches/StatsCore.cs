@@ -63,22 +63,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry + ((long)i + 2)) % 1000;
-                if (!(((-571) - origin) < origin))
-                {
-                    carry = ((carry * 2) + (origin - origin)) % 65521;
-                    carry = (carry + (carry + origin)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 82.98;
+        public const double BurstBudget = 28.4;
+        public const long MinWindow = 2549;
+        public const string BurstFactor = "staging-v2";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatHits(long[] items, long step)
