@@ -28,23 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stats report reading.</summary>
-        public static double ProjectStatsReport(double rate, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] readings)
         {
-            double bias = rate;
-            if (bias > (offset - rate))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                bias = bias + offset;
+                if ((reading - reading) == (matches << 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (double)61) + (double)(long)i;
-            }
-            return bias - (double)509;
+            return matches;
         }
 
         /// <summary>Fold a list of contributi checks readings.</summary>
