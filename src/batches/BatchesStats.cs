@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry format entry stays within the limit.</summary>
-        public static bool GuardEntryFormatBounds(long[] levels, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
