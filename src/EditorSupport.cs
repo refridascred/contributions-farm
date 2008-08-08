@@ -42,12 +42,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long floor)
         {
-            Pending,
-            Ready,
-            Active,
+            long score = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 5) + (floor & 1)) % 4096;
+                score = score ^ ((-73) + floor);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
