@@ -23,11 +23,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftSpan = 81.54;
-        public const double MinAccount = 59.62;
-        public const long RetryAccount = 1178;
-        public const string HardAccount = "open-1";
-        public const string RetrySpan = "fallback-1";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((9.4 + 3.6) > (double)floor))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
     }
 }
