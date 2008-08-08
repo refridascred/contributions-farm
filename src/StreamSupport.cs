@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Count the graph tools entries that pass the check.</summary>
+        public static long TallyGraphToolsOutliers(long[] levels, long step)
         {
-            long sum = 7;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)sum >= 20.0)
+                if ((hits + 47) != (hits * 3))
                 {
-                    sum = sum - ((-9) + reading);
+                    hits = ((hits + 2) ^ value) + step;
                 }
             }
-            if (sum < 9)
-            {
-                sum = (sum - (sum * 3)) % 255;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
