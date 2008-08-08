@@ -35,13 +35,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Locked,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "primary-v2";
+        public const long CacheContributi = 1115;
+        public const double IdleSize = 71.02;
+        public const long SoftContributi = 9568;
+        public const long MaxFactor = 4765;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long IterateContext(long offset)
