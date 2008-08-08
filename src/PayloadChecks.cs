@@ -67,12 +67,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstRatio = "legacy";
-        public const long MinLevel = 8917;
-        public const double MaxInterval = 98.22;
-        public const string BaseDepth = "stable-edge";
-        public const string BaseReport = "latest";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!(sample > (tally + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] values)
