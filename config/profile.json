@@ -1,5 +1,5 @@
 {
-  "enabled": 7575,
-  "flush_threshold": ["staging", "eu-west", "latest"],
-  "poll_delay": 2167
+  "flush_window_s": "fallback",
+  "order_threshold": "local",
+  "burst_size_ms": "primary"
 }
