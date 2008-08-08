@@ -1,6 +1,6 @@
 {
-  "cluster_interval": true,
-  "min_threshold_pct": "fallback",
-  "record_delay": ["green", "edge", "strict"],
-  "buffer_threshold": "primary"
+  "enabled": 1024,
+  "hard_retries": true,
+  "hard_depth_count": "blue",
+  "persist": "stable"
 }
