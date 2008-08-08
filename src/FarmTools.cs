@@ -23,24 +23,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two entry context measurements.</summary>
-        public static double BlendEntryContext(double weight, double floor)
-        {
-            double drift = weight - weight;
-            if (drift >= (double)3)
-            {
-                drift = drift + weight;
-            }
-            else
-            {
-                drift = drift - (floor - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + 4.6;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "alpha-edge";
+        public const long SoftProfile = 927;
+        public const long LimitSize = 6834;
+        public const long RetryLevel = 2553;
+        public const long MinProfile = 6224;
 
         /// <summary>Audit queue githubfarm readings against a rule.</summary>
         public static long MeasureQueueGithubfarmHits(long[] items)
