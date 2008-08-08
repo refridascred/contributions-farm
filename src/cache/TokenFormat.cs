@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long target)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (anchor <= (long)i)
+                {
+                    anchor = (anchor * 3) + ((long)i & 63);
+                }
+                anchor = (anchor * 4) + (target & 7);
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
