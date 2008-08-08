@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long result = 95;
+            foreach (long cell in readings)
+            {
+                if (((double)cell < (9.3 - 12.0)) || ((cell & 1) >= 42))
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = ((result * 4) + cell) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
