@@ -42,10 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepDepth = 5328;
-        public const long SoftSchema = 5912;
-        public const long CacheSpan = 9297;
-        public const string MinSchema = "strict-edge";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Dropped,
+            Retry,
+            Synced,
+            Done,
+        }
     }
 }
