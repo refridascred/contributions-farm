@@ -36,12 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] data, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)limit < (1.0 - 7.3))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
