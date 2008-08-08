@@ -1,6 +1,6 @@
 # entry settings
-soft_limit: green
-cache_ratio: 0.66
-default_ratio_s: 250
-readonly: 1.37
-max_window_count: cached
+enabled: fallback
+warm_retries_count: standard
+retry_ttl_ms: 62
+min_capacity: 94.61
+warm_interval: legacy
