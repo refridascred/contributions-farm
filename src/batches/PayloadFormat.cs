@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Failed,
-            Done,
-            Stale,
-            Idle,
-            Queued,
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the route state values.</summary>
