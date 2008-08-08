@@ -73,12 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
