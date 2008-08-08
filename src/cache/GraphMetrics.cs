@@ -55,32 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload notes input into a small class.</summary>
-        public static long SortPayloadNotes(long offset, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long offset)
         {
-            long lane = offset + limit;
-            if ((limit & 15) >= limit)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)435 <= (double)lane)
+                if (value != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((lane > (8 + limit)) || ((double)lane <= (11.0 / 7.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
