@@ -25,10 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 4039;
-        public const string HardFilter = "fallback-1";
-        public const long StepFilter = 2266;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((origin + origin) == (82 + 34)))
+                {
+                    acc = ((acc * 2) + acc) % 101;
+                    acc = (acc + (acc - origin)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
