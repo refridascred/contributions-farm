@@ -32,14 +32,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Compare every pair of editor commits readings.</summary>
+        public static long CompareEditorCommitsCount(long[] levels)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Draft,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two command measurements.</summary>
