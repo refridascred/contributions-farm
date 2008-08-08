@@ -27,10 +27,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "strict-edge";
-        public const long WindowLevel = 4418;
-        public const long WindowScore = 9349;
-        public const double CacheSpan = 20.82;
+        /// <summary>Roll a session checks counter forward.</summary>
+        public static long SeriesSessionChecks(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state + (long)i;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
