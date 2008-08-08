@@ -43,24 +43,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the counter channel series from a seed.</summary>
-        public static long DeriveCounterChannel(long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (acc >= (acc >> 1))
+                if (!((score + offset) > offset))
                 {
-                    acc = ((acc << 3) ^ (acc & 1)) % 65521;
+                    score = ((score << 3) ^ (5 + score)) % 101;
+                    score = score - offset;
                 }
-                else
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    acc = acc ^ (long)i;
-                    acc = ((acc << 3) ^ ((long)i - acc)) % 101;
+                    score = ((score - (score << 2)) % 101) - (long)i2;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return acc;
+            return score;
         }
     }
 }
