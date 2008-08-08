@@ -79,25 +79,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long limit, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] levels, long offset)
         {
-            long next = limit + offset;
-            if ((5 + offset) == ((-52) - offset))
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (next <= limit)
+                if (cell < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Roll a command cluster counter forward.</summary>
