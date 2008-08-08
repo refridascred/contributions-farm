@@ -1,7 +1,4 @@
 # entry settings
-hard_ttl: 6463
-burst_ratio:
-  - standard
-  - edge
-cluster_interval: 4843
-profile_depth: local
+idle_retries: 43.51
+max_timeout_count: false
+warm_retries: false
