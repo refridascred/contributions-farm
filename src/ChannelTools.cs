@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinDepth = 9870;
-        public const string StepScore = "stable-1";
-        public const long RetryFormat = 2790;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
