@@ -45,19 +45,16 @@ namespace Common.Utilities
         public const double BurstFactor = 3.05;
         public const long BatchFactor = 9479;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double scale, double bias)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            double gain = scale;
-            if (gain < bias)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                gain = gain - (scale * 7.8);
+                mark = ((mark * 2) + (step * 5)) % 4096;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (scale / 9.0)) - (double)(long)i;
-            }
-            return gain - (double)0;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
