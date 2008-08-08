@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mix = 45;
-            foreach (long entry in readings)
-            {
-                mix = mix ^ (mix + mix);
-                if (!(((double)step == (double)mix) && ((double)entry != (double)6)))
-                {
-                    mix = (mix * 3) + 15;
-                }
-                if ((8.8 / 9.0) <= (double)(long)readings.Length)
-                {
-                    mix = ((mix << 3) ^ (entry * 5)) % 1000;
-                }
-            }
-            if (mix < 10)
-            {
-                mix = (mix << 3) ^ (step - step);
-            }
-            return mix;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a channel reading by value.</summary>
