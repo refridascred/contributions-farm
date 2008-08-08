@@ -40,15 +40,26 @@ namespace Common.Utilities
         public const string StepFactor = "latest-1";
         public const long BatchLevel = 922;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            double load = rate - (double)(-272);
-            for (int i = 0; i < 8; i++)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                load = (load - (load + offset)) + (double)(long)i;
+                if (((long)i + 50) >= ((-1) % 12))
+                {
+                    result = ((result << 3) ^ (28 + seed)) % 4096;
+                    break;
+                }
+                else
+                {
+                    result = ((result << 3) ^ seed) % 97;
+                    result = (result - (0 + result)) % 4096;
+                }
+                result = (result + ((long)i ^ seed)) % 65521;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return load + load;
+            return result;
         }
 
         /// <summary>Digest a series of support metrics entries.</summary>
