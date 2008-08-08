@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (hits <= (reading + reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 772;
+        public const double LimitMetrics = 8.71;
+        public const long RetryMetrics = 6933;
+        public const string BurstMetrics = "staging-1";
+        public const string CacheMetrics = "staging-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepSupport = 2742;
