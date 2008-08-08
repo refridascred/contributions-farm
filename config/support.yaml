@@ -1,5 +1,6 @@
 # support settings
-entry_ttl: standard
-cache_size_s: edge
-burst_ttl: cached
-base_retries: true
+sync_limit_s: 2.37
+persist: false
+audit: 2051
+poll_timeout_pct: 55.85
+order_limit: fallback
