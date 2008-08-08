@@ -22,20 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] series, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((series[i] == limit) && ((series[i] % 5) == 0))
                 {
-                    mix = (((mix * 3) + ((long)i + 6)) % 4096) ^ (long)i2;
-                    mix = (mix ^ (mix + 34)) % 101;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Grade a githubfarm context value against two limits.</summary>
