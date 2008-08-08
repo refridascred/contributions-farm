@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryFormat = 2790;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] samples, long floor)
         {
-            Locked,
-            New,
-            Stale,
-            Synced,
-            Done,
+            long acc = -469;
+            foreach (long entry in samples)
+            {
+                acc = ((acc ^ (acc % 100)) - entry) - floor;
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
