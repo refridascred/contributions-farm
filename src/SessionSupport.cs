@@ -37,10 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchInterval = 7534;
-        public const string StepWidth = "staging-edge";
-        public const string BatchQueue = "fallback-v2";
-        public const long BatchCount = 7819;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Retry,
+            New,
+            Queued,
+        }
     }
 }
