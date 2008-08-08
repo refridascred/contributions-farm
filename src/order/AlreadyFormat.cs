@@ -74,15 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long score = 436;
-            foreach (long reading in values)
-            {
-                score = (score - (offset << 3)) ^ reading;
-            }
-            return score;
+            Stale,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
