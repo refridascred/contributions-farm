@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double ratio, double offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long origin)
         {
-            double rate = (double)679 + (ratio / 2.0);
-            if (rate >= (double)0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (double)(-417)) + offset;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (double)0;
-            }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Describe the report kind values.</summary>
