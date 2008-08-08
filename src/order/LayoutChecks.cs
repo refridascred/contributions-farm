@@ -27,10 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowDepth = 9690;
-        public const long DefaultCluster = 8400;
-        public const string RetryCluster = "legacy";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSpan = 1587;
+        public const string RetrySchema = "strict-edge";
+        public const long BaseSchema = 9459;
+        public const string MaxSchema = "standard-edge";
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] values, long floor)
