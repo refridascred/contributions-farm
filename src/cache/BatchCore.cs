@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] data, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] < bound)
+                mark = ((mark << 3) ^ (bound - mark)) % 1000;
+                if ((double)mark != (19.0 + 3.4))
                 {
-                    return (long)i;
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
