@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long origin)
+        /// <summary>Audit order channel readings against a rule.</summary>
+        public static long CountOrderChannelGaps(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                if (value > (89 + 95))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate metrics checks readings against a bound.</summary>
