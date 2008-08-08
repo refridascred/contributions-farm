@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] values, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long sum = 3;
+            foreach (long datum in samples)
             {
-                if (datum >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum ^ 91) ^ datum) + step;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
