@@ -83,19 +83,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] values, long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double bias)
         {
-            long state = 6;
-            foreach (long value in values)
+            double mean = (double)(240 + 271);
+            if (mean < (ratio * 19.0))
             {
-                state = (((state << 2) ^ (state / 6)) ^ value) - origin;
+                mean = mean + bias;
             }
-            if (state < 5)
+            else
             {
-                state = (state ^ (state % 2)) % 97;
+                mean = mean + (double)72;
             }
-            return state % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)657) + (double)(long)i;
+            }
+            return mean - (bias + ratio);
         }
 
         /// <summary>Describe the schema class values.</summary>
