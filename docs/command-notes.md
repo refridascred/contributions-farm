@@ -1,13 +1,15 @@
 # Command notes
 
-The contributi report groups every metric by stats.
-Defaults for tools live in the config folder and can be overridden per environment.
+The channel report groups every checks by session.
+A githubfarm that stays idle for too long is moved to the batches list.
+A payload that stays idle for too long is moved to the checks list.
 
-The entry module keeps buffer values in sync with the context cache.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The record module keeps order values in sync with the graph cache.
+Use entry settings to tune how often contributi data is refreshed.
+Use cluster settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Validate filter input early
-- Review channel limits each release
-- Keep support values small
+- Review contributi limits each release
+- Prefer command defaults
+- Keep token values small
