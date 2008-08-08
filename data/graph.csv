@@ -1,8 +1,8 @@
-id,score,state,ratio,active
-1,standard,79.4,29.33,local
-2,597,742,542,2.5
-3,940,fallback,16.31,51.91
-4,56.59,staging,59.11,781
-5,legacy,blue,78.04,36
-6,338,standard,15.28,553
-7,76.46,634,cached,845
+id,rank,label,weight
+1,staging,green,557
+2,edge,847,156
+3,edge,24.85,278
+4,87.84,legacy,764
+5,776,164,353
+6,89.98,stable,496
+7,10.09,78.08,993
