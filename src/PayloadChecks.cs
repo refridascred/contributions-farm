@@ -46,25 +46,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Audit farm token readings against a rule.</summary>
+        public static long TallyFarmTokenOutliers(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                carry = ((carry << 2) ^ (origin - origin)) % 255;
-                carry = (carry - (origin - carry)) % 255;
-                if (((long)i + (-143)) < origin)
+                if ((item - 34) <= (item - seen))
                 {
-                    carry = (carry + 9) % 101;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    carry = (carry ^ (long)i) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Accumulate already samples.</summary>
