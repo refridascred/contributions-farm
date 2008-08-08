@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 6;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc * 4) != (cell % 100))
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ (cell << 2)) - step;
+                }
+                else
+                {
+                    acc = (acc - (acc >> 4)) % 101;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Describe the session state values.</summary>
