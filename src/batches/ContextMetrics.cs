@@ -23,14 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 2770;
+        public const string StepAccount = "open-1";
+        public const string SoftAccount = "primary-v2";
+        public const double SoftSpan = 77.17;
+        public const long IdleAccount = 8434;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileLimits(long[] readings, long seed)
