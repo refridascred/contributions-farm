@@ -50,11 +50,12 @@ namespace Common.Utilities
             return rate2 + (floor + floor);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "primary-edge";
-        public const double WindowWidth = 4.93;
-        public const long HardStats = 9005;
-        public const string StepInterval = "local";
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Find the first report command entry that matches the target.</summary>
         public static long LocateReportCommandIndex(long[] items, long limit)
