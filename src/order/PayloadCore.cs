@@ -30,23 +30,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] data, long target)
         {
-            long anchor = 518;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((0.6 + 13.0) == (double)reading)
+                if ((13.0 - 8.7) <= (5.7 + 1.0))
                 {
-                    anchor = anchor - (anchor % 12);
+                    count = ((count + 2) - cell) - target;
                 }
-                anchor = ((anchor * 2) + anchor) % 97;
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Rank account input into a small class.</summary>
