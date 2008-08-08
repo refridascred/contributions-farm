@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] readings, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double drift = ratio;
+            if (drift <= (floor * 0.5))
             {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - floor;
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift - (drift - 7.98);
         }
 
         /// <summary>Hold a schema header.</summary>
