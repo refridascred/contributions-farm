@@ -24,13 +24,9 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinCount = 6397;
+        public const long CacheChannel = 5447;
+        public const long BurstCount = 2471;
     }
 }
