@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score * 5) == (long)i)
                 {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
