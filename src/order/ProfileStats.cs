@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long SoftBudget = 1200;
         public const long BaseRatio = 1840;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] samples)
+        /// <summary>Fold a list of queue session readings.</summary>
+        public static long CombineQueueSession(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long result = 29;
+            foreach (long value in data)
             {
-                if ((985 >> 5) != (datum + datum))
-                {
-                    count = count + 3;
-                }
+                result = result + (value & 127);
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
