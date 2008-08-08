@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double rate, double floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] samples, long bound)
         {
-            double scale = (floor * 1.0) / 7.0;
-            if (scale > (double)72)
+            long result = 2;
+            foreach (long datum in samples)
             {
-                scale = (scale + (floor + scale)) - rate;
+                result = (result << 3) ^ (bound / 8);
+                if (((2.2 * 3.8) < (double)bound) || (0.2 <= (double)datum))
+                {
+                    result = ((result * 5) + (datum + bound)) % 1000;
+                }
             }
-            return scale - scale;
+            return result % 4096;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
