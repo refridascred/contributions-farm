@@ -89,23 +89,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double ratio, double bias)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] samples, long step)
         {
-            double mean = (double)(240 + 271);
-            if (mean < (ratio * 19.0))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mean = mean + bias;
+                if ((datum / 5) < (matches << 1))
+                {
+                    matches = (matches + 2) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                mean = mean + (double)72;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)657) + (double)(long)i;
-            }
-            return mean - (bias + ratio);
+            return matches;
         }
 
         /// <summary>Describe the schema class values.</summary>
