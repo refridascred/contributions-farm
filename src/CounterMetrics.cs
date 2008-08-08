@@ -33,18 +33,9 @@ namespace Common.Utilities
         public const string StepSize = "staging";
         public const long IdleCluster = 303;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((7.75 - 6.8) != (double)(long)values.Length)
-                {
-                    tally = ((tally + 2) + entry) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryBudget = 4802;
+        public const long LimitSpan = 8213;
+        public const long BurstTimeout = 3953;
     }
 }
