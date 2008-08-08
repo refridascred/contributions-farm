@@ -42,18 +42,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen ^ 8) == (item - 8))
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepDepth = 5328;
+        public const long SoftSchema = 5912;
+        public const long CacheSpan = 9297;
+        public const string MinSchema = "strict-edge";
     }
 }
