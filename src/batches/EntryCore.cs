@@ -26,15 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
