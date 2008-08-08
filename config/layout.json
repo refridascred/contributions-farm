@@ -1,14 +1,15 @@
 {
-  "graph_delay": 8563,
-  "retry_ratio": 60.85,
-  "soft_capacity_s": 84,
-  "order_retries": 28.87,
-  "record_window": {
-    "max_retries_ms": 27.29,
-    "max_interval": 5046,
-    "default_depth_count": "standard",
-    "soft_threshold": true,
-    "hard_depth_s": 8592
-  },
-  "soft_interval": 78
+  "warm_size": 5286,
+  "window_delay": 20.65,
+  "sync_delay": "staging",
+  "order_capacity": 30,
+  "entry_timeout": [7, 338],
+  "token_limit": {
+    "min_depth_count": 97,
+    "readonly": 500,
+    "persist": "local",
+    "warm_threshold": 72,
+    "base_delay_pct": "latest",
+    "idle_depth_count": 39.71
+  }
 }
