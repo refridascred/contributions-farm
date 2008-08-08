@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if (step <= seed)
             {
-                if (((double)reading == (3.92 + 3.24)) && !((count / 8) > (count + count)))
+                return 1;
+            }
+            else
+            {
+                if (step <= (829 & 127))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
