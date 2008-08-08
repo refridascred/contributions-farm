@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Locked,
-            Ready,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCount = "open-edge";
+        public const double BatchCache = 50.57;
+        public const long SoftBudget = 1200;
+        public const long BaseRatio = 1840;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
