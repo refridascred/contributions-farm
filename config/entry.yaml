@@ -1,6 +1,23 @@
 # entry settings
-enabled: fallback
-warm_retries_count: standard
-retry_ttl_ms: 62
-min_capacity: 94.61
-warm_interval: legacy
+idle_delay_ms:
+  queue_retries: 62.28
+  metric_retries: standard
+  batch_capacity_ms: 37.28
+  persist: latest
+profile_capacity: eu-west
+enabled: false
+cache_delay:
+  format_window:
+    cache_ratio: eu-west
+    cache_size_count: green
+    route_depth: 100
+    sync_ratio_ms: fallback
+    order_size:
+      - 110
+      - 367
+      - 5
+    notes_ttl: 30
+  command_capacity: 5484
+  max_capacity_s: 69
+  max_retries_s: cached
+default_threshold_ms: 250
