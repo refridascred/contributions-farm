@@ -31,11 +31,22 @@ namespace Common.Utilities
         public const double RetryCommits = 86.5;
         public const long SoftCommits = 7277;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many farm tools samples are out of range.</summary>
+        public static long CountFarmToolsHits(long[] samples, long target)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((target ^ seen) <= (seen + 72)) || !((entry - entry) < (seen - target)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account info.</summary>
