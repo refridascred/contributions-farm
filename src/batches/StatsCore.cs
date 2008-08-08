@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of queue counter readings.</summary>
-        public static long TallyQueueCounter(long[] series, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mark = 562;
-            foreach (long item in series)
-            {
-                mark = (mark - (3 % 8)) + item;
-                mark = mark + (2 & 63);
-            }
-            if (mark < 77)
-            {
-                mark = mark + step;
-            }
-            return mark % 65521;
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Audit notes profile readings against a rule.</summary>
