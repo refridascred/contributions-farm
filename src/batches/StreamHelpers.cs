@@ -56,17 +56,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] samples, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                anchor = (anchor ^ ((long)i - (long)i)) % 97;
-                anchor = anchor ^ (long)i;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((limit + tally) <= (limit * 3))
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
