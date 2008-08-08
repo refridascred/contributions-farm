@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long floor, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            if (((16 - floor) > limit) || ((13.0 - 8.98) <= (double)limit))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total - (origin + origin)) % 101) - (long)i2;
-                    total = ((total << 3) ^ (origin * 4)) % 4096;
-                }
-                if ((total >= (750 % 60)) && ((double)origin < (7.6 + 2.9)))
-                {
-                    total = total + (984 % 8);
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((3.2 + 0.9) >= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of githubfarm queue entries.</summary>
