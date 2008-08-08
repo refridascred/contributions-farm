@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached blue; do
+for item in fallback strict; do
     log "checking ${item}"
 done
 
 mode="${1:-stable}"
 case "${mode}" in
-    legacy)
+    open)
         log "fast path"
         ;;
     *)
