@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] readings, long bound)
         {
-            long tally = 0;
+            long acc = 68;
             foreach (long value in readings)
             {
-                if ((18 - value) >= 516)
+                if ((bound >> 4) > (value >> 4))
                 {
-                    tally = tally + 3;
+                    acc = (acc * 2) + (bound & 127);
                 }
             }
-            return tally;
+            if (acc < 7)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
