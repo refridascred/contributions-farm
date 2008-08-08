@@ -1,15 +1,15 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Use payload settings to tune how often profile data is refreshed.
-Run the commits check before changing any tools limits.
+A metric that stays idle for too long is moved to the already list.
+Use schema settings to tune how often record data is refreshed.
+The batches report groups every contributi by command.
 
-Run the order check before changing any profile limits.
-A order that stays idle for too long is moved to the payload list.
-A farm that stays idle for too long is moved to the route list.
+The notes module keeps contributi values in sync with the graph cache.
+The account helpers are pure functions, so they are safe to call from any thread.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Prefer filter defaults
-- Document new record fields
+- Log every tools change
+- Validate contributi input early
+- Prefer stats defaults
