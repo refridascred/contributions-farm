@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const double BaseSpan = 89.44;
         public const double BurstEditor = 3.83;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Queued,
-            New,
-            Draft,
-            Locked,
-            Retry,
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
