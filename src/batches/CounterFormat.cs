@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] series, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (offset > (bound ^ offset))
             {
-                if (series[i] > seed)
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ bound) > bound)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (offset >= (bound / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
