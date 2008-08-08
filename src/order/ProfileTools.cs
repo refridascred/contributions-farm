@@ -64,9 +64,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinDepth = 6656;
-        public const double WindowStream = 98.26;
-        public const long SoftStream = 9374;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Locked,
+            Dropped,
+            Failed,
+            Active,
+            Done,
+        }
     }
 }
