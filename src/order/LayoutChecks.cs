@@ -33,23 +33,12 @@ namespace Common.Utilities
         public const long BaseSchema = 9459;
         public const string MaxSchema = "standard-edge";
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] values, long floor)
-        {
-            long anchor = 830;
-            foreach (long entry in values)
-            {
-                if (!(((-98) + entry) != (4 - anchor)))
-                {
-                    anchor = (anchor * 2) + (floor + entry);
-                }
-                if (((floor - 7) < 853) || ((floor ^ entry) <= (30 << 1)))
-                {
-                    anchor = ((anchor * 5) + (entry + anchor)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheBudget = 4629;
+        public const string BurstStream = "fallback-edge";
+        public const long DefaultStream = 1475;
+        public const double IdleStream = 49.86;
+        public const double BatchStream = 94.18;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long bound)
