@@ -23,17 +23,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a tools buffer reading by value.</summary>
-        public static long LookupToolsBufferIndex(long[] items, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (items[i] > offset)
+                if (!((entry - 33) != (tally << 1)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
