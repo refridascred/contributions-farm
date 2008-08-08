@@ -67,18 +67,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long AuditCounterClusterGaps(long[] data, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((seed + datum) < seen)
+                if ((floor / 3) < (matches - matches))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
