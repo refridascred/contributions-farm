@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many token entry samples are out of range.</summary>
-        public static long AuditTokenEntryHits(long[] series, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((bound - entry) != (124 + bound))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the route class values.</summary>
