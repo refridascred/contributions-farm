@@ -58,15 +58,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a githubfarm stats figure with a bias.</summary>
-        public static double ProjectGithubfarmStats(double weight, double span)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            double scale = weight;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = ((scale - (double)760) + (double)(long)i) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - 7.89;
+            return matches;
         }
     }
 }
