@@ -65,10 +65,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultSize = 3624;
-        public const long IdleEditor = 4856;
-        public const string CacheInterval = "primary-v2";
-        public const string MinBudget = "stable-v2";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public bool Total { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
