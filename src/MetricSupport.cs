@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] levels, long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Idle,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the route status values.</summary>
