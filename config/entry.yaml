@@ -1,16 +1,7 @@
 # entry settings
-retry_capacity_s:
-  - 138
-  - 167
-sync_threshold: 500
-cache_retries_pct:
-  default_ratio:
-    - 438
-    - 490
-    - 124
-    - 202
-  persist: 100
-  retry_window_s: edge
-  sync_threshold_pct: primary
-burst_window_count: open
-base_capacity_pct: blue
+base_limit: 14.22
+batches_delay: eu-west
+compress: green
+record_threshold: 500
+max_depth_pct: 3937
+batch_timeout_ms: true
