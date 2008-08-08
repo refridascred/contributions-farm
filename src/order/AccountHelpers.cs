@@ -49,12 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinScore = "primary-edge";
+        public const long LimitSize = 4868;
+        public const long HardBuffer = 9619;
+        public const string IdleInterval = "alpha-v2";
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmBounds(long[] items, long step)
