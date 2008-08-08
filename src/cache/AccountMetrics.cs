@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Paused,
-            Failed,
-            Locked,
-            Synced,
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first commits format entry that matches the target.</summary>
