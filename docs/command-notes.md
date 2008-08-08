@@ -1,12 +1,14 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the graph list.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Use window settings to tune how often channel data is refreshed.
+Run the layout check before changing any metric limits.
+When a githubfarm fails, the batches handler retries a few times before giving up.
+Each cache is validated before it reaches the metrics queue.
+
+When a window fails, the contributi handler retries a few times before giving up.
+Keep metric and already names short and lowercase.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review account limits each release
-- Keep context values small
-- Log every channel change
+- Keep layout values small
+- Prefer profile defaults
+- Document new entry fields
