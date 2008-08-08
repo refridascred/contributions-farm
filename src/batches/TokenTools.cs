@@ -34,23 +34,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] items, long target)
+        /// <summary>Look up the position of a profile schema sample.</summary>
+        public static long SeekProfileSchemaIndex(long[] series, long bound)
         {
-            long total = 3;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total - (target << 2)) % 97) - entry;
-                if ((target >= (target / 4)) && (target >= (91 & 1)))
+                if (series[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > 23)
-            {
-                total = total ^ (target / 4);
-            }
-            return total % 4096;
+            return -1;
         }
     }
 }
