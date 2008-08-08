@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long acc = 266;
+            foreach (long reading in levels)
             {
-                result = ((result << 3) ^ result) % 255;
-                if (((origin >> 1) >= origin) && ((origin >> 1) >= result))
-                {
-                    result = result ^ (origin << 3);
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                acc = ((((acc * 5) + acc) % 4096) + reading) + bound;
             }
-            return result;
+            if (acc > 76)
+            {
+                acc = (acc + ((-988) % 3)) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
