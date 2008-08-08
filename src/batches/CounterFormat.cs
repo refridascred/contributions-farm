@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] samples, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (!((datum >= matches) && (offset <= (datum << 3))))
+                if (81 <= (reading % 7))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
