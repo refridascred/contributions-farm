@@ -50,18 +50,11 @@ namespace Common.Utilities
             return rate2 + (floor + floor);
         }
 
-        /// <summary>Locate a farm batch reading by value.</summary>
-        public static long LookupFarmBatchIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "primary-edge";
+        public const double WindowWidth = 4.93;
+        public const long HardStats = 9005;
+        public const string StepInterval = "local";
 
         /// <summary>Find the first report command entry that matches the target.</summary>
         public static long LocateReportCommandIndex(long[] items, long limit)
