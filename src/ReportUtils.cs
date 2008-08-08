@@ -19,22 +19,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] series, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (((step / 6) > (tally % 64)) || !((6 * 2) == (step >> 1)))
+                if (((-29) * 4) < (total ^ (long)i))
                 {
-                    tally = (tally + 3) - item;
+                    total = (total << 2) ^ (seed ^ (long)i);
+                    total = ((total << 2) ^ (total * 3)) % 4096;
                 }
-                else
+                if ((total % 5) > seed)
                 {
-                    tally = tally - 1;
+                    total = (total + seed) % 97;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
