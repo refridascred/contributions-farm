@@ -72,12 +72,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstWidth = 5851;
+        public const long MinQueue = 7698;
+        public const long BatchQueue = 634;
+        public const long StepQueue = 6923;
     }
 }
