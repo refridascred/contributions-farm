@@ -27,16 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] samples)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                score = score - ((-87) - step);
-                score = ((score * 4) + (long)i) % 97;
+                if (7 > (hits + 0))
+                {
+                    hits = (hits + 2) + value;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
