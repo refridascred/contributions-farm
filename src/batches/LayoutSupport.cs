@@ -19,11 +19,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultDepth = "alpha-1";
-        public const string HardBuffer = "primary-edge";
-        public const string SoftBuffer = "local-v2";
-        public const double BatchRatio = 76.69;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 1473;
+        public const long DefaultCommits = 3601;
+        public const long BaseBudget = 9318;
+        public const long RetryCommits = 8131;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
