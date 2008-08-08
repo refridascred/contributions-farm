@@ -40,39 +40,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long target, long seed)
-        {
-            if (((3.0 * 6.0) > (double)seed) && ((target / 6) <= (target << 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target < (seed & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed / 7) <= seed) && ((target ^ 87) != (seed / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + target) == (2 ^ seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 7591;
+        public const long WindowMetrics = 8191;
+        public const string LimitBudget = "legacy-1";
+        public const long IdleMetrics = 2167;
+        public const long BaseCount = 2380;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
