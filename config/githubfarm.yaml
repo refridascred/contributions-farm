@@ -1,8 +1,7 @@
 # githubfarm settings
-cache_ttl: legacy
-contributi_delay: 77
-persist:
-  retry_retries: open
-  profile_interval: 97.98
-  account_delay: green
-retry_size_s: 0.46
+hard_ttl: legacy
+strict: true
+checks_depth: true
+max_retries: blue
+entry_limit: 57.23
+burst_depth_s: 37.6
