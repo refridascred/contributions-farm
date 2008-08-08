@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 635;
+            foreach (long datum in items)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                total = ((total ^ 7) % 4096) ^ datum;
             }
-            return -1;
+            if (total > 4)
+            {
+                total = (total + (5 ^ total)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the editor class values.</summary>
