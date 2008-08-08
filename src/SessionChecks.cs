@@ -24,13 +24,19 @@ namespace Common.Utilities
             return mean + (double)(-37);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a cluster counter counter forward.</summary>
+        public static long StepClusterCounter(long limit)
         {
-            Closed,
-            Retry,
-            Dropped,
-            Done,
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((double)(long)i < (3.0 / 6.0)) || ((double)mark >= (3.57 * 9.8)))
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine entry notes values into a single score.</summary>
