@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long BaseCache = 9178;
         public const long MinCache = 9691;
 
-        /// <summary>Compare every pair of command stream readings.</summary>
-        public static long PairCommandStreamCount(long[] samples)
+        /// <summary>Roll a cache queue counter forward.</summary>
+        public static long IterateCacheQueue(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = total ^ total;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
