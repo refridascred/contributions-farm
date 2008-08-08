@@ -1,9 +1,9 @@
 # entry settings
-batch_interval: true
-default_interval_ms: green
-report_depth:
-  - 105
-  - 333
-  - 476
-soft_ratio: 1367
-verbose: 8339
+audit: standard
+graph_depth: staging
+strict: 100
+poll_retries:
+  - 77
+  - 155
+  - 306
+  - 470
