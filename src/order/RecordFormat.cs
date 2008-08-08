@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Paused,
-            Queued,
-            Synced,
-            Ready,
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
