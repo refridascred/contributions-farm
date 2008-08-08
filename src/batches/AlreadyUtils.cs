@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long limit, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] values, long origin)
         {
-            if ((double)limit >= (12.0 * 2.1))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor / 8) < (limit & 1)) && ((floor >> 5) != (floor * 4)))
+                if ((double)origin == (2.11 - 7.13))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((892 - limit) <= (floor * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)limit != (10.0 * 2.96)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 1) ^ sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
