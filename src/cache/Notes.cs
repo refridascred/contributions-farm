@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] levels)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((((value - 26) != (value & 15)) || ((16 << 2) <= count)) && ((long)levels.Length > (value + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the report entry entries that pass the check.</summary>
