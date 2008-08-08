@@ -47,12 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long floor)
         {
-            Pending,
-            Stale,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank payload notes input into a small class.</summary>
