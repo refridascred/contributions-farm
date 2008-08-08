@@ -1,6 +1,42 @@
 # githubfarm settings
-metrics_timeout: 96.35
-soft_capacity_count: 30
-base_interval_s: false
-poll_ttl: 2252
-report_ttl: 61.86
+counter_size:
+  poll_ttl_pct: standard
+  cache_ratio: 45.39
+  sync_depth: true
+  hard_depth_s:
+    checks_retries:
+      - 435
+      - 361
+      - 207
+    audit: standard
+    payload_ratio: true
+    editor_window: open
+  poll_limit_ms:
+    compress: 4279
+    dry_run: 12.72
+    idle_capacity_s: 2209
+    verbose: true
+    min_ratio_pct:
+      - 359
+      - 440
+  max_window_count:
+    soft_limit_s: 3397
+    idle_depth: 66.13
+    farm_timeout: 15
+    burst_delay_ms: false
+    base_threshold_count: 49.67
+    already_size: 65.69
+soft_size: 60
+hard_timeout_s: green
+flush_window_pct: staging
+default_capacity_s: edge
+report_retries:
+  report_ttl: 66.5
+  readonly:
+    compress: 1024
+    farm_ttl: strict
+    verbose:
+      - strict
+      - strict
+    command_size: 11
+  idle_interval: 4726
