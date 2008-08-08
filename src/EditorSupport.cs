@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseScore = "alpha";
-        public const long BaseCount = 5703;
-        public const long WindowTimeout = 4786;
-        public const long BaseEntry = 4559;
-        public const string LimitEntry = "standard-edge";
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Iterate the queue schema series from a seed.</summary>
         public static long RollQueueSchema(long step)
