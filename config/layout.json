@@ -1,13 +1,6 @@
 {
-  "burst_ttl_ms": true,
-  "max_threshold_pct": 7430,
-  "queue_depth": 32,
-  "warm_threshold_count": {
-    "queue_limit": 96.04,
-    "flush_timeout": true,
-    "base_capacity_ms": 60,
-    "burst_interval_pct": 36.64,
-    "min_ttl_count": 5142
-  },
-  "audit": "latest"
+  "cache_interval": false,
+  "flush_window": "stable",
+  "hard_interval_ms": 60,
+  "idle_interval_s": 1024
 }
