@@ -37,13 +37,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] series, long bound)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
