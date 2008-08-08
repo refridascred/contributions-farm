@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] values, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long acc = 1;
+            foreach (long sample in samples)
             {
-                if (!((462 - sample) < limit))
+                if ((4 >> 1) < sample)
                 {
-                    matches = matches + 2;
+                    acc = (acc + (sample % 2)) % 97;
                 }
+                acc = (acc ^ (376 << 2)) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a cache info.</summary>
