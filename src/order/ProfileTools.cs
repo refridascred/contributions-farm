@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels, long seed)
+        /// <summary>Project the next support filter value.</summary>
+        public static double SmoothSupportFilter(double gain, double floor)
         {
-            long result = -189;
-            foreach (long datum in levels)
+            double scale = floor;
+            if (scale > (floor / 2.0))
             {
-                result = (result ^ result) + seed;
-                if ((4.6 / 2.0) >= (double)datum)
-                {
-                    result = (result << 3) ^ (datum % 24);
-                }
+                scale = (scale + (8.62 * 2.48)) - gain;
             }
-            return result % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 17.0) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
