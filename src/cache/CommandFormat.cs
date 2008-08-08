@@ -34,11 +34,21 @@ namespace Common.Utilities
         public const long IdleScore = 3695;
         public const double HardCount = 16.51;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
