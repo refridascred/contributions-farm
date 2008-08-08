@@ -35,21 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor commits readings.</summary>
-        public static long CompareEditorCommitsCount(long[] levels)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 2)
+                    if ((values[i] - values[j]) != 11)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
