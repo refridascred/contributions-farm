@@ -35,15 +35,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long offset)
         {
-            double load = floor - (floor + floor);
-            if (load >= (load + load))
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load + (floor * 2.0)) - gain;
+                mark = (mark * 2) + (4 / 2);
+                if ((0 * 4) <= ((long)i ^ mark))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = mark ^ (mark << 3);
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return load - (floor - floor);
+            return mark;
         }
     }
 }
