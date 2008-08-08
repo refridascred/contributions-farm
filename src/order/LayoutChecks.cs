@@ -63,11 +63,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double gain, double offset)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            double load = offset;
+            return (load + offset) + gain;
         }
 
         /// <summary>Hold a layout entry.</summary>
