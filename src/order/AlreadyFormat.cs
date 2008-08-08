@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long BatchLevel = 1831;
         public const long DefaultRatio = 9627;
 
-        /// <summary>Digest a series of githubfarm queue entries.</summary>
-        public static long CombineGithubfarmQueue(long[] data, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] series)
         {
-            long mix = 38;
-            foreach (long datum in data)
+            long mark = 9;
+            foreach (long entry in series)
             {
-                if ((double)8 > (double)origin)
+                if ((mark < (entry * 2)) && ((mark + mark) != (entry + entry)))
                 {
-                    mix = (mix << 2) ^ datum;
+                    mark = mark - (entry + entry);
                 }
             }
-            return mix % 1000;
+            if (mark > 799)
+            {
+                mark = (mark + (4 / 6)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Match up graph notes samples.</summary>
