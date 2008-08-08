@@ -28,13 +28,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheWidth = 150;
+        public const long RetryBudget = 7704;
+        public const long MaxContributi = 7218;
+        public const long LimitScore = 4431;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsGaps(long[] samples, long limit)
