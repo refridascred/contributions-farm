@@ -1,9 +1,8 @@
-id,active,owner,score,rank
-1,79.34,777,legacy,39.5
-2,primary,547,21.32,73.31
-3,289,718,37.99,471
-4,staging,731,51.87,eu-west
-5,564,145,629,197
-6,797,63.19,50.15,green
-7,948,eu-west,228,45
-8,253,71.84,blue,stable
+id,rank,level,score
+1,local,586,724
+2,36,20.73,4
+3,13.77,981,29.21
+4,213,41.29,cached
+5,266,local,555
+6,801,stable,28.78
+7,staging,743,829
