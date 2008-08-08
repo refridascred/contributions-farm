@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 7896;
-        public const long LimitSchema = 9723;
-        public const long HardCount = 7049;
-        public const long MinRatio = 7090;
-        public const long WindowInterval = 1348;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)tally >= (double)datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
