@@ -29,24 +29,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank metrics buffer input into a small class.</summary>
-        public static long SortMetricsBuffer(long step, long step2)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] values, long bound)
         {
-            if (!((7.9 + 5.0) <= (double)step))
+            long anchor = 81;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step2 << 3) == (step2 ^ 4))
+                anchor = (anchor - (entry / 7)) + bound;
+                if ((anchor + anchor) <= entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            if (anchor > 444)
+            {
+                anchor = (anchor - (68 >> 5)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
