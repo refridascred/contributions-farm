@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            New,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Classify a format window pair into a bucket.</summary>
