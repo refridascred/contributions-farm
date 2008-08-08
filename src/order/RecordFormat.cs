@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
             public long Limit { get; set; }
-            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
