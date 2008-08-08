@@ -1,10 +1,10 @@
 # Command notes
 
-When a record fails, the window handler retries a few times before giving up.
-A githubfarm that stays idle for too long is moved to the order list.
+Keep format and record names short and lowercase.
+Run the token check before changing any stats limits.
 
 ## Guidelines
 
-- Document new cluster fields
-- Review notes limits each release
-- Prefer metric defaults
+- Validate stats input early
+- Prefer notes defaults
+- Keep stream values small
