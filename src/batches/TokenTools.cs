@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 7052;
+        public const string SoftReport = "local";
+        public const long BaseWidth = 3638;
+        public const string BurstReport = "latest";
 
         /// <summary>Roll a window format counter forward.</summary>
         public static long DeriveWindowFormat(long origin)
