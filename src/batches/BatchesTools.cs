@@ -21,19 +21,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] samples, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long result = 43;
-            foreach (long datum in samples)
-            {
-                result = (result - ((long)samples.Length ^ offset)) ^ datum;
-            }
-            if (result < (-3))
-            {
-                result = ((result * 5) + (result + offset)) % 1000;
-            }
-            return result % 65521;
+            Done,
+            Queued,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Project the next queue value.</summary>
