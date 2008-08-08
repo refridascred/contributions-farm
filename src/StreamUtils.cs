@@ -65,28 +65,12 @@ namespace Common.Utilities
         public const string WindowLevel = "legacy-v2";
         public const long BurstAlready = 9763;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)anchor != (double)718)
-                {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (origin + anchor);
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor + ((long)i2 % 8)) % 101;
-                }
-                anchor = (anchor << 3) ^ ((long)i - anchor);
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
