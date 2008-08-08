@@ -59,11 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 30.9;
-        public const double SoftTimeout = 28.35;
-        public const long IdleWindow = 7856;
-        public const long MaxWindow = 4444;
-        public const long HardWindow = 5151;
+        /// <summary>Validate farm route readings against a bound.</summary>
+        public static bool ValidateFarmRouteLimits(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
