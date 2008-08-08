@@ -61,19 +61,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] samples, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (reading < seed)
+                if (7.8 <= (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 2) + entry) + seed;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the farm account entries that pass the check.</summary>
