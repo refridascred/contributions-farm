@@ -49,19 +49,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] levels, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] series, long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (cell < target)
+                if (((-6) + matches) < (reading ^ 737))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - target;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
