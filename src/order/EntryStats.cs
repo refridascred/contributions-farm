@@ -23,14 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank context batch input into a small class.</summary>
+        public static long GradeContextBatch(long step, long bound)
         {
-            Idle,
-            Retry,
-            Dropped,
-            Stale,
-            Active,
+            long prev = step + bound;
+            if ((step >> 2) > (552 + prev))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound * 5) < (2 + prev)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the counter class values.</summary>
