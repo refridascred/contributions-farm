@@ -32,24 +32,17 @@ namespace Common.Utilities
         public const long SoftContributi = 9568;
         public const long MaxFactor = 4765;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] levels, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((score + offset) > offset))
+                if (levels[i] >= step)
                 {
-                    score = ((score << 3) ^ (5 + score)) % 101;
-                    score = score - offset;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score - (score << 2)) % 101) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
