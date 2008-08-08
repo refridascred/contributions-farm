@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of account token readings.</summary>
-        public static long ScoreAccountToken(long[] samples)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            long acc = 60;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc >> 4) != (acc + acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc << 2) ^ (430 & 31);
-                    break;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = acc - (acc + item);
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
