@@ -21,24 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] readings, long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long carry = 882;
-            foreach (long item in readings)
-            {
-                carry = (carry ^ (carry / 8)) % 101;
-                carry = (carry - (11 + limit)) % 97;
-                if ((double)item > (0.1 * 1.0))
-                {
-                    carry = carry ^ (carry + item);
-                }
-                if ((carry <= (limit * 5)) && ((item >> 5) != (item + (-4))))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
