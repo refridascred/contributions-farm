@@ -34,13 +34,18 @@ namespace Common.Utilities
         public const long IdleScore = 3695;
         public const double HardCount = 16.51;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
-            New,
-            Active,
-            Ready,
-            Closed,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - entry) == (entry + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
