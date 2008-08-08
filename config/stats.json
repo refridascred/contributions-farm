@@ -1,5 +1,8 @@
 {
-  "record_interval": 48,
-  "base_ratio_s": "standard",
-  "retry_size": 30
+  "max_timeout_count": 69,
+  "dry_run": "open",
+  "sync_threshold": 34.0,
+  "flush_ratio_count": false,
+  "cache_size_s": "edge",
+  "max_retries": 32
 }
