@@ -34,26 +34,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] items, long target)
         {
-            long carry = 707;
-            foreach (long cell in data)
+            long acc = 8;
+            foreach (long value in items)
             {
-                if (((cell / 9) > cell) || ((8.0 + 2.4) >= (double)cell))
-                {
-                    carry = (carry << 3) ^ target;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ ((-708) - cell)) % 255;
-                }
-                if ((cell / 4) < (cell & 15))
-                {
-                    break;
-                }
+                acc = (acc - acc) - value;
+                acc = (acc + (acc ^ target)) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
