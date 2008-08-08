@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Count the layout buffer entries that pass the check.</summary>
+        public static long MeasureLayoutBufferHits(long[] values, long seed)
         {
-            long state = 930;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((state * 5) < (state % 64))
+                if ((reading - count) <= (count - 0))
                 {
-                    state = ((state << 2) ^ (71 / 7)) - reading;
+                    count = (count + 3) - seed;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
