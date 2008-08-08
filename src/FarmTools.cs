@@ -30,14 +30,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            Locked,
-            Paused,
-            Retry,
-            Done,
-            Ready,
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result ^ ((long)i % 5)) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
