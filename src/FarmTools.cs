@@ -38,15 +38,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double scale, double offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double rate = (double)(-842);
-            if (rate < (double)76)
-            {
-                rate = (rate - scale) + offset;
-            }
-            return rate + (scale * 16.0);
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
