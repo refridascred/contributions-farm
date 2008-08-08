@@ -22,11 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long target)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            long offset = limit - target;
+            if ((18.0 <= (double)limit) && (target >= (limit >> 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((10 >> 4) <= (target / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset - target) > (4 % 5)) || ((offset << 1) >= (offset ^ target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
