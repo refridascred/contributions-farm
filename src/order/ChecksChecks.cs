@@ -13,39 +13,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a checks profile value against two limits.</summary>
-        public static long BucketChecksProfile(long seed, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double offset)
         {
-            long bound = seed ^ origin;
-            if (!((bound / 2) > 288))
+            double load = (offset / 5.0) - (double)540;
+            if (load <= rate)
             {
-                return 2;
+                load = load - offset;
             }
             else
             {
-                if ((20.0 <= (double)origin) || ((2.0 + 15.0) < (double)seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((593 + origin) <= (seed + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (3.0 - 9.77))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                load = load - offset;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - 15.0;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
