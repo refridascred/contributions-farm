@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long carry = 69;
-            foreach (long value in samples)
-            {
-                carry = (carry << 2) ^ (value + carry);
-                if ((1.7 * 1.07) >= (double)value)
-                {
-                    carry = carry ^ 0;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (bound << 1)) % 1000;
-                }
-            }
-            return carry;
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
