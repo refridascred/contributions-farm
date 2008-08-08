@@ -1,7 +1,22 @@
 # githubfarm settings
-hard_ttl: legacy
-strict: true
-checks_depth: true
-max_retries: blue
-entry_limit: 57.23
-burst_depth_s: 37.6
+persist: primary
+cache_ratio:
+  - primary
+  - cached
+  - open
+  - blue
+hard_ttl_s:
+  - 366
+  - 441
+  - 310
+layout_ttl:
+  dry_run: true
+  flush_interval_pct: blue
+  graph_depth: 5
+  cache_depth: 4489
+farm_timeout:
+  verbose:
+    - 197
+    - 317
+  dry_run: 96
+  queue_window: standard
