@@ -46,12 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            double bias = (double)(758 + 694);
+            if (bias >= bias)
+            {
+                bias = bias - (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias + (rate / 8.0);
         }
 
         /// <summary>Hold a support stats.</summary>
