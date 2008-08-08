@@ -23,11 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] samples)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - cell) > count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a counter editor reading by value.</summary>
