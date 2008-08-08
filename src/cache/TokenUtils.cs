@@ -43,26 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long result = -8;
-            foreach (long sample in values)
-            {
-                if ((result % 7) <= (sample << 1))
-                {
-                    result = ((result << 2) ^ (sample + 8)) % 97;
-                }
-                else
-                {
-                    result = (result ^ (sample - 487)) % 4096;
-                }
-            }
-            if (result < 81)
-            {
-                result = result ^ 768;
-            }
-            return result;
+            Idle,
+            Active,
+            Dropped,
+            Failed,
         }
     }
 }
