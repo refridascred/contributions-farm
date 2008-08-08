@@ -37,18 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item ^ item) < (item + matches)) || ((9 * 5) > (item >> 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
