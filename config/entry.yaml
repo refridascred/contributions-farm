@@ -1,12 +1,6 @@
 # entry settings
-retry_capacity_s:
-  burst_delay_pct: 35
-  window_ttl:
-    command_size: 45
-    idle_depth_count: local
-    idle_delay_s: green
-  support_ratio: 76.7
-readonly: 92
-hard_depth: strict
-min_interval_ms: 5808
-hard_size_pct: false
+soft_limit: green
+cache_ratio: 0.66
+default_ratio_s: 250
+readonly: 1.37
+max_window_count: cached
