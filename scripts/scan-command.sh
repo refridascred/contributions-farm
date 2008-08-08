@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in standard cached; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=176
-log "limit is ${COMMAND_LIMIT}"
-
-for item in staging standard edge stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
