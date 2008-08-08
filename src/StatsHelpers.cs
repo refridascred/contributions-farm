@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const long MinSize = 1682;
         public const double SoftInterval = 42.78;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support stats.</summary>
