@@ -1,7 +1,9 @@
-id,count,level,token
-1,green,246,489
-2,54.32,eu-west,27
-3,green,blue,611
-4,primary,cached,98.87
-5,293,610,fallback
-6,local,green,60.46
+id,token,weight,state
+1,blue,standard,blue
+2,780,25.6,123
+3,strict,801,56.32
+4,cached,897,388
+5,252,800,4.45
+6,stable,5.19,268
+7,450,standard,513
+8,fallback,454,467
