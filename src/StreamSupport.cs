@@ -33,18 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format record entries that pass the check.</summary>
-        public static long AuditFormatRecordHits(long[] series)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally <= (double)reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
