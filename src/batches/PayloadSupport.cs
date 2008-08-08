@@ -19,19 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster commits readings against a bound.</summary>
-        public static bool CheckClusterCommitsBounds(long[] series, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long mark = 45;
+            foreach (long cell in samples)
             {
-                if (datum >= limit)
+                if ((mark * 2) == (mark % 3))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 3) ^ (539 - mark)) ^ cell;
+                }
+                else
+                {
+                    mark = (mark + (mark << 3)) % 97;
                 }
             }
-            return ready;
+            if (mark < 524)
+            {
+                mark = ((mark * 4) + (49 ^ seed)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
