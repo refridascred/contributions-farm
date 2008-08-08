@@ -28,18 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] samples, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long anchor = 419;
+            foreach (long datum in values)
             {
-                if ((11.0 >= (double)sample) && (sample > (hits - sample)))
+                if (12.0 >= (double)anchor)
                 {
-                    hits = (hits + 3) + target;
+                    anchor = (anchor - ((-8) + datum)) + offset;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
     }
 }
