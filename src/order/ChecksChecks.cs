@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit commits report readings against a rule.</summary>
-        public static long CountCommitsReportMatches(long[] readings, long offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((matches + 406) <= offset))
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
