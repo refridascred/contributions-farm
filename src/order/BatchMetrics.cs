@@ -19,19 +19,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] values, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
