@@ -36,20 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((-52) < (carry + carry)) && ((carry + seed) == (carry - 1)))
+                if ((2.57 - 1.99) > (double)(long)series.Length)
                 {
-                    carry = ((carry * 2) + 7) % 97;
+                    tally = ((tally + 1) + value) + floor;
                 }
-                carry = (carry - (carry ^ (long)i)) % 97;
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
