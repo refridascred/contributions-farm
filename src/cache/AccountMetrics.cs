@@ -60,16 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state << 3) ^ (origin + origin)) % 65521;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
