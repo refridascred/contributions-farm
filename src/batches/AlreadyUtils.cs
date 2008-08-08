@@ -47,23 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)hits < (double)reading)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 8499;
+        public const long HardGithubfarm = 8610;
+        public const long MinFactor = 4182;
+        public const double LimitLevel = 83.18;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderLimits(long[] values, long bound)
