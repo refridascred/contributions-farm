@@ -12,38 +12,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank token cluster input into a small class.</summary>
-        public static long RankTokenCluster(long origin, long bound)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long target)
         {
-            if (((bound ^ 559) < (origin + 14)) && (bound <= (origin >> 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 2) <= origin)
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin != (2.4 + 8.6)) || (origin < (origin + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) == (origin / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
