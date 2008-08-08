@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double mean = rate;
-            if (mean <= (rate / 4.0))
-            {
-                mean = (mean + rate) + offset;
-            }
-            else
-            {
-                mean = mean - 1.61;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (mean / 7.0)) - (double)(long)i;
-            }
-            return mean - rate;
+            Paused,
+            Failed,
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
