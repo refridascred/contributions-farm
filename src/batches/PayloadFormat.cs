@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const long MaxGraph = 9693;
         public const string LimitScore = "staging-edge";
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
+            Retry,
+            Stale,
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
