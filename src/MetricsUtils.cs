@@ -38,19 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (item < offset)
+                if (cell >= limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Match up channel samples.</summary>
