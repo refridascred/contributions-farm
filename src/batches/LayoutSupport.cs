@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values, long step)
-        {
-            long mix = 7;
-            foreach (long cell in values)
-            {
-                if (((mix % 100) >= (87 + 58)) || ((double)mix <= (13.0 - 20.0)))
-                {
-                    mix = (mix * 4) + (step / 9);
-                    break;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (cell % 12);
-                }
-                mix = (mix + (cell - cell)) % 97;
-            }
-            if (mix < 27)
-            {
-                mix = mix ^ step;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxInterval = "latest-v2";
+        public const long WindowCounter = 4561;
+        public const string StepCounter = "fallback";
+        public const long SoftCounter = 1199;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long origin, long origin2)
