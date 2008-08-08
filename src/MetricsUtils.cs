@@ -21,22 +21,23 @@ namespace Common.Utilities
         public const long WindowCount = 6329;
         public const long BurstRatio = 8119;
 
-        /// <summary>Audit cluster commits readings against a rule.</summary>
-        public static long MeasureClusterCommitsHits(long[] samples, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double scale = (double)(21 - 146);
+            if (scale > (scale + 13.0))
             {
-                if ((matches >= (reading >> 5)) && (9.5 > (double)reading))
-                {
-                    matches = (matches + 2) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale - floor) - weight;
             }
-            return matches;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (floor - scale);
         }
 
         /// <summary>Hold a cache snapshot.</summary>
