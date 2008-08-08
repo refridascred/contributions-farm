@@ -46,13 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long score = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((long)i + score) != (long)i)
+                {
+                    score = (score ^ (long)i) % 97;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
