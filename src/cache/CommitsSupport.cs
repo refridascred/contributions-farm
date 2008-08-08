@@ -76,13 +76,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardCount = "strict";
+        public const long RetryInterval = 1280;
+        public const long MinInterval = 9158;
+        public const long BatchInterval = 8812;
+        public const long WindowScore = 3394;
     }
 }
