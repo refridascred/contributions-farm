@@ -27,27 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] data, long target)
         {
-            long sum = 45;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                long delta = (sum + sum) & 255;
-                if (23 < (sum + delta))
+                if (value >= target)
                 {
-                    break;
-                }
-                if ((713 & 15) == (sum ^ sum))
-                {
-                    sum = (sum ^ entry) % 101;
-                }
-                if ((sum << 3) >= (entry + 3))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
     }
 }
