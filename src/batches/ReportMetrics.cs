@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long MinLevel = 4381;
         public const string MinLayout = "cached";
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 2548;
+        public const long BatchBuffer = 3494;
+        public const long WindowSpan = 4395;
+        public const long BaseBuffer = 2194;
+        public const double BatchDepth = 70.06;
     }
 }
