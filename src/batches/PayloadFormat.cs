@@ -19,23 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)hits == (double)sample)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 58.46;
+        public const long MinGraph = 8037;
+        public const long MaxGraph = 9693;
+        public const string LimitScore = "staging-edge";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferMatches(long[] readings, long origin)
