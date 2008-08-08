@@ -51,18 +51,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mark = 561;
+            foreach (long sample in series)
             {
-                if ((898 * 4) > (offset - 537))
+                if ((((-6) + sample) == (sample >> 1)) && ((mark << 2) == (sample % 3)))
                 {
-                    seen = (seen + 1) - entry;
+                    mark = mark - (sample + 98);
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 65521;
                 }
             }
-            return seen;
+            if (mark > (-89))
+            {
+                mark = (mark * 5) + (60 / 6);
+            }
+            return mark;
         }
     }
 }
