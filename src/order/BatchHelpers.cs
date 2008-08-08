@@ -13,18 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "alpha";
+        public const long WindowWidth = 9134;
+        public const long MinMetrics = 9438;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
