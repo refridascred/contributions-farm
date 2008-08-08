@@ -37,14 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] items, long origin)
         {
-            Paused,
-            Idle,
-            Dropped,
-            Failed,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
