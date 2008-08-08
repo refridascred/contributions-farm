@@ -64,12 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "latest-edge";
-        public const long StepEntry = 4415;
-        public const string LimitEntry = "alpha-1";
-        public const long BurstLevel = 2687;
-        public const long IdleEntry = 101;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesHits(long[] items, long floor)
