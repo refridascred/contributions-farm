@@ -39,15 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] values, long target)
         {
-            double rate2 = (double)(-1) * 6.3;
-            if (rate2 < floor)
+            long count = 0;
+            foreach (long item in values)
             {
-                rate2 = (rate2 + (double)765) + rate;
+                if ((count + count) != (count - count))
+                {
+                    count = ((count + 2) ^ item) - target;
+                }
             }
-            return rate2 + (floor + floor);
+            return count;
         }
 
         /// <summary>Hold a layout record.</summary>
