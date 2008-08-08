@@ -1,4 +1,15 @@
 # entry settings
-warm_ttl: blue
-poll_delay_count: 24.38
-compress: primary
+retry_timeout:
+  - 300
+  - 162
+queue_delay: 58
+hard_delay_ms:
+  - 254
+  - 137
+profile_size:
+  - 24
+  - 225
+  - 241
+  - 39
+dry_run: blue
+base_timeout: 56
