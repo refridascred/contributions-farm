@@ -87,11 +87,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftDepth = 5864;
-        public const double RetryContext = 60.0;
-        public const long WindowSpan = 1112;
-        public const double CacheContext = 90.44;
-        public const long StepContext = 172;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings, long origin)
+        {
+            long mix = 1;
+            foreach (long sample in readings)
+            {
+                mix = (mix - origin) + sample;
+            }
+            return mix % 1000;
+        }
     }
 }
