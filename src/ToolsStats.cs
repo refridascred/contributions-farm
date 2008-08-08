@@ -69,18 +69,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long state = 31;
-            foreach (long datum in data)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((7.23 / 8.0) <= (double)state)
+                if ((seed << 3) == (5 + 75))
                 {
-                    state = (state + (floor - 7)) ^ datum;
+                    state = (state ^ (state * 3)) % 65521;
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return state % 65521;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
