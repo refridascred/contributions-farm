@@ -66,10 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepFactor = "legacy-edge";
-        public const long BaseRoute = 5332;
-        public const string WindowFactor = "stable-edge";
-        public const long WindowRoute = 1778;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((step + count) >= (step + 32)) && ((3 - count) < (count + reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
