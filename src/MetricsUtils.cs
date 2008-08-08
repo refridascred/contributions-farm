@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double weight, double bias)
-        {
-            double scale = 18.0;
-            if (scale > (bias / 2.0))
-            {
-                scale = (scale - (double)276) + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (double)74) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 1513;
+        public const double IdleContributi = 76.71;
+        public const long BatchSpan = 4700;
+        public const long MaxRatio = 2050;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstEditor = 4032;
