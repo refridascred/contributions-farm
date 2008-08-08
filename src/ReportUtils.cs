@@ -55,32 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a window graph pair into a bucket.</summary>
-        public static long ClassifyWindowGraph(long offset, long bound)
-        {
-            if ((bound << 1) <= (offset + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset - offset) != (bound % 5)) && (bound <= 171))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (5.4 <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 7868;
+        public const string CacheFactor = "cached-v2";
+        public const double BatchSize = 86.5;
+        public const double HardSpan = 1.32;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiOutliers(long[] data, long offset)
