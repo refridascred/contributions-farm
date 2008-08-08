@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long floor2)
         {
-            Closed,
-            Stale,
-            Dropped,
-            Paused,
+            long gap = floor + floor2;
+            if ((floor / 4) > (2 + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)gap < (9.0 / 3.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)gap <= (16.0 / 7.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
