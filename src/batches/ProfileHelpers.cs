@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Find the first account editor entry that matches the target.</summary>
+        public static long LookupAccountEditorIndex(long[] samples, long seed)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
