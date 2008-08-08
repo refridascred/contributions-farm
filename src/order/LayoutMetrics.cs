@@ -11,39 +11,19 @@ namespace Common.Utilities
         public const double HardSpan = 6.13;
         public const string HardCount = "stable";
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long floor, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double offset)
         {
-            long slot = floor + bound;
-            if ((double)floor <= (6.73 / 4.0))
+            double gain = (double)(328 * 5);
+            if (gain > (rate - rate))
             {
-                return 2;
+                gain = (gain + (gain - gain)) + offset;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)slot < (2.0 - 2.37))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + slot) != (9 - slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (80 <= (floor & 31))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                gain = (gain + (9.91 + rate)) - (double)(long)i;
             }
+            return gain + (double)11;
         }
 
         /// <summary>Hold a format record.</summary>
