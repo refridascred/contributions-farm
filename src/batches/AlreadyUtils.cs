@@ -52,14 +52,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Synced,
-            Ready,
-            Idle,
-            Closed,
-            Retry,
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many queue metric samples are out of range.</summary>
