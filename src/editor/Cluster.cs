@@ -20,12 +20,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowWidth = 38.94;
-        public const double BaseCommits = 47.64;
-        public const long SoftBudget = 649;
-        public const double SoftCommits = 80.45;
-        public const long BurstCommits = 8099;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long seed, long limit)
+        {
+            if ((double)seed >= (8.3 * 8.44))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long floor, long step)
