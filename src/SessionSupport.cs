@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum + sum) % 4096;
-                sum = (sum ^ (sum & 63)) % 4096;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Accumulate order samples.</summary>
