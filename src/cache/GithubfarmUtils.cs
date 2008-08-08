@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] items, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long carry = 7;
+            foreach (long item in levels)
             {
-                if (datum != bound)
+                if (!((double)carry <= (7.66 + 6.3)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry ^ (item >> 5)) % 255;
                 }
             }
-            return found;
+            return carry % 97;
         }
 
         /// <summary>Describe the context level values.</summary>
