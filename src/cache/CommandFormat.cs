@@ -19,20 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Count order stream pairs that satisfy a relation.</summary>
+        public static long MatchOrderStreamCount(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total ^ (total / 3)) % 255) + (long)i2;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total << 3) ^ ((long)i >> 5)) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
