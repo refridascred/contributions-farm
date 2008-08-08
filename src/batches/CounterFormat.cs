@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] readings, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((double)reading >= 6.3)
+                if (reading < target)
                 {
-                    tally = (tally + 3) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
