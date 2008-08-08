@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] series, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] <= step)
+                anchor = anchor - origin;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    anchor = anchor ^ ((long)i2 - (long)i);
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
