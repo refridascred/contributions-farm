@@ -25,26 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] levels, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            long anchor = -1;
-            foreach (long sample in levels)
+            long total = 12;
+            foreach (long sample in items)
             {
-                if ((anchor >> 1) <= (anchor - anchor))
+                if ((sample & 1) >= (total - sample))
                 {
-                    anchor = (anchor ^ (32 + anchor)) ^ sample;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + anchor) % 4096;
+                    total = (total + (sample + total)) % 65521;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = anchor ^ bound;
-            }
-            return anchor;
+            return total % 4096;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
