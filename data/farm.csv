@@ -1,8 +1,9 @@
-id,owner,weight,label
-1,5.88,legacy,468
-2,64.35,blue,fallback
-3,77.42,standard,342
-4,primary,5.29,strict
-5,36,719,eu-west
-6,183,stable,edge
-7,3.77,strict,559
+id,ratio,score,owner,region
+1,518,20.54,728,770
+2,344,444,standard,54.4
+3,82.76,26.56,93.0,18.25
+4,stable,standard,latest,519
+5,cached,656,45,local
+6,235,909,green,952
+7,staging,627,91,primary
+8,staging,primary,81.31,263
