@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long total = 10;
-            foreach (long item in values)
-            {
-                if ((double)item == (17.0 + 7.07))
-                {
-                    total = (total << 3) ^ (item & 3);
-                }
-            }
-            return total % 1000;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
