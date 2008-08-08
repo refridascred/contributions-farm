@@ -34,18 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] values)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally / 6) > (tally - reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Audit farm token readings against a rule.</summary>
