@@ -50,19 +50,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm checks entry stays within the limit.</summary>
-        public static bool VerifyFarmChecksRange(long[] samples, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc - (step * 5);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
     }
 }
