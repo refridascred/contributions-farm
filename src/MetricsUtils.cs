@@ -48,11 +48,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitLevel = 8271;
-        public const long IdleTimeout = 274;
-        public const long SoftCommits = 2229;
-        public const long StepCommits = 4319;
-        public const long MaxLevel = 2172;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
+        {
+            long acc = 618;
+            foreach (long value in readings)
+            {
+                acc = (acc * 5) + acc;
+                if ((acc << 2) < value)
+                {
+                    acc = ((acc << 3) ^ value) % 65521;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
