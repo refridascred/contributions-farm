@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long seed, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long seed)
         {
-            if ((seed % 8) >= (seed + seed))
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit >> 2) <= (limit << 3)) && ((double)seed > 20.0))
+                long tally = sum;
+                if ((seed - tally) >= (-73))
                 {
-                    return 6;
+                    tally = tally - ((long)i & 7);
                 }
-                else
-                {
-                    if ((4.28 - 7.0) == (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit < (limit + seed)) && (limit < (limit >> 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
