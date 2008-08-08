@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((double)hits != (0.8 - 1.0))
+                if (!((matches << 2) <= (514 ^ matches)))
                 {
-                    hits = (hits + 2) + datum;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the commits mode values.</summary>
