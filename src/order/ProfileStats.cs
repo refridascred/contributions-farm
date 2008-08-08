@@ -39,24 +39,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a command batches pair into a bucket.</summary>
-        public static long RankCommandBatches(long target, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if (target < (bound + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > 5.3)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
