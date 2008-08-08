@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long IdleInterval = 5660;
         public const long IdleTimeout = 7805;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 6527;
-        public const long SoftEditor = 4598;
-        public const long MinEditor = 1641;
-        public const long BatchEditor = 7727;
-        public const long LimitWidth = 8983;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double scale, double offset)
+        {
+            double rate = (double)(744 >> 5);
+            return ((rate + rate) + scale) + offset;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] values, long floor)
