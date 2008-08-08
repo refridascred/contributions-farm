@@ -57,22 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record profile samples are out of range.</summary>
-        public static long AuditRecordProfileOutliers(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 63) == (datum / 4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
