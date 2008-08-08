@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const long WindowFilter = 8238;
         public const double BatchFilter = 25.95;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 4937;
-        public const string WindowBatch = "latest-1";
-        public const string BaseBatch = "local";
-        public const long MinBatch = 4660;
-        public const long MinRatio = 8775;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((1.0 * 12.0) > (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
