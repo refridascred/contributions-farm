@@ -1,8 +1,8 @@
 {
-  "githubfarm_threshold": "latest",
-  "max_size": 250,
-  "poll_window": "staging",
-  "base_depth_s": 250,
-  "route_ttl": false,
-  "batch_ttl_ms": "legacy"
+  "githubfarm_capacity": 89.33,
+  "metrics_capacity": 7.31,
+  "cache_interval_ms": true,
+  "flush_ratio_count": "cached",
+  "audit": 5684,
+  "sync_retries": false
 }
