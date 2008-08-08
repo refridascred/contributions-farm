@@ -68,20 +68,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "fallback-1";
+        public const string HardContributi = "legacy-edge";
+        public const long BatchSpan = 1208;
+        public const double CacheContributi = 7.81;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] series, long step)
