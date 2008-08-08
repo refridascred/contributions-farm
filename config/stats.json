@@ -1,11 +1,5 @@
 {
-  "contributi_ratio": {
-    "cache_depth": 8886,
-    "audit": true,
-    "burst_retries": "cached"
-  },
-  "retry_interval": "eu-west",
-  "retry_timeout_count": "stable",
-  "flush_delay": "blue",
-  "soft_ttl_pct": 40.3
+  "record_interval": 48,
+  "base_ratio_s": "standard",
+  "retry_size": 30
 }
