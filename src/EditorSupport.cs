@@ -42,19 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] data, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!((hits - step) <= (hits - sample)))
                 {
-                    acc = (((acc * 5) + (limit % 60)) % 1000) ^ (long)i2;
+                    hits = hits + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a notes account counter forward.</summary>
