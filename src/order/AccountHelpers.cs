@@ -43,20 +43,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long seed, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            if ((target > (seed + seed)) || ((double)target < 4.9))
             {
-                if (((limit >> 2) == (limit + score)) && ((4 + (long)i) >= score))
-                {
-                    score = (score << 3) ^ (score + score);
-                }
-                score = ((score * 4) + 577) % 65521;
-                score = ((score * 4) + (long)i) % 4093;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((seed + seed) == (seed + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((0.5 * 15.0) > (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target * 3) > (38 >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
