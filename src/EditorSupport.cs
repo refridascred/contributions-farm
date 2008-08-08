@@ -58,17 +58,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] values, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 5) + (floor & 1)) % 4096;
-                score = score ^ ((-73) + floor);
-                score = ((score * 5) + (long)i) % 97;
+                if ((values[i] >= bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
