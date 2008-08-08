@@ -35,22 +35,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels, long offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long seed, long seed2)
         {
-            long result = 74;
-            foreach (long cell in levels)
+            long cur = seed - seed2;
+            if (cur <= seed)
             {
-                if (((double)cell <= (2.0 - 5.29)) && ((result % 100) < result))
+                return 0;
+            }
+            else
+            {
+                if ((cur >> 2) != (cur << 1))
                 {
-                    result = (result ^ (result >> 2)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed >= (3.61 / 3.0)) && ((seed - 95) > (cur - cur)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((17.0 * 1.1) != (double)seed2) && ((seed >> 1) == (cur + seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result > 3)
-            {
-                result = result - (offset % 12);
-            }
-            return result % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
