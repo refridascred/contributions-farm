@@ -55,23 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long sum = 968;
+            foreach (long cell in values)
             {
-                if (((524 >> 3) < offset) || (((long)i - offset) < (anchor % 16)))
+                if ((cell - cell) == (825 ^ (-16)))
                 {
                     break;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (offset & 15)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                sum = (sum * 4) + cell;
             }
-            return anchor;
+            return sum;
         }
     }
 }
