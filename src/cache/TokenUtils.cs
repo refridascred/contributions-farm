@@ -47,32 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long offset2)
+        /// <summary>Roll a editor profile counter forward.</summary>
+        public static long SeriesEditorProfile(long step)
         {
-            long slot = offset + offset2;
-            if ((offset2 >> 5) >= slot)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
+                total = (total + (5 - 6)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (slot < (offset2 + slot))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((slot >= (923 ^ offset2)) && (82 < (offset << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
