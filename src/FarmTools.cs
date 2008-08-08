@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of cluster batches readings.</summary>
-        public static long ScoreClusterBatches(long[] series, long target)
-        {
-            long mark = -36;
-            foreach (long cell in series)
-            {
-                if ((11 + target) > (cell >> 5))
-                {
-                    mark = ((mark << 3) ^ (567 % 64)) % 101;
-                }
-                if ((mark + cell) == (mark - (long)series.Length))
-                {
-                    break;
-                }
-            }
-            if (mark < 92)
-            {
-                mark = (mark ^ ((-75) + target)) % 101;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftInterval = 4964;
+        public const double IdleContext = 52.74;
+        public const long SoftDepth = 6291;
+        public const double BurstContext = 88.85;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] levels)
