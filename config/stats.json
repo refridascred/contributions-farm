@@ -1,6 +1,20 @@
 {
-  "enabled": 1024,
-  "hard_retries": true,
-  "hard_depth_count": "blue",
-  "persist": "stable"
+  "min_limit": "latest",
+  "hard_retries_pct": ["local", "strict"],
+  "compress": 13.65,
+  "default_depth_ms": {
+    "strict": "strict",
+    "counter_limit": {
+      "contributi_capacity": 2519,
+      "retry_delay_s": 50.15,
+      "stats_interval": ["standard", "standard"],
+      "audit": "strict",
+      "persist": 50.5
+    },
+    "cache_delay_ms": [361, 426, 197],
+    "persist": 250,
+    "schema_timeout": "edge"
+  },
+  "soft_interval_pct": 83.27,
+  "min_timeout_ms": "latest"
 }
