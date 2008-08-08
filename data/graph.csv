@@ -1,10 +1,6 @@
-id,weight,token,level
-1,92.77,14.17,985
-2,457,581,410
-3,168,blue,open
-4,58,open,16.1
-5,edge,488,398
-6,30,555,46.93
-7,open,412,95.74
-8,fallback,local,859
-9,standard,25.04,340
+id,state,score,level
+1,edge,364,open
+2,549,11.6,90.47
+3,99,blue,eu-west
+4,272,515,307
+5,701,local,stable
