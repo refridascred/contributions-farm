@@ -30,19 +30,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] series, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Ready,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
