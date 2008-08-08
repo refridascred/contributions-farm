@@ -57,15 +57,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine commits channel values into a single score.</summary>
-        public static long WeighCommitsChannel(long[] items, long limit)
+        /// <summary>Classify a session record pair into a bucket.</summary>
+        public static long BucketSessionRecord(long target, long floor)
         {
-            long score = 76;
-            foreach (long entry in items)
+            long offset = target + floor;
+            if ((double)target >= (double)offset)
             {
-                score = ((score * 2) + (limit + limit)) ^ entry;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (((target & 1) <= (offset ^ target)) || ((double)offset > 1.86))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
