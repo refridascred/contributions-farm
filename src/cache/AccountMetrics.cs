@@ -39,12 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 284;
-        public const long MaxGithubfarm = 5886;
-        public const long MaxInterval = 8851;
-        public const double RetryGithubfarm = 58.8;
-        public const string IdleTimeout = "cached-1";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((count + 643) < (count - sample)) || ((2.77 - 16.0) < (double)count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
