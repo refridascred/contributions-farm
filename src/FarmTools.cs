@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate payload entry readings against a bound.</summary>
-        public static bool VerifyPayloadEntryRange(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstLevel = 3389;
+        public const long BaseInterval = 8569;
+        public const long SoftSize = 2158;
+        public const long MaxGithubfarm = 4203;
 
         /// <summary>Blend two entry context measurements.</summary>
         public static double BlendEntryContext(double weight, double floor)
