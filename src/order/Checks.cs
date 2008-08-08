@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the batches route entries that pass the check.</summary>
-        public static long CountBatchesRouteGaps(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((5.0 - 1.1) > (double)cell)
+                if ((double)value < (19.0 / 3.0))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
