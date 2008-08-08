@@ -61,19 +61,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate farm route readings against a bound.</summary>
-        public static bool ValidateFarmRouteLimits(long[] levels, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Paused,
+            Done,
         }
     }
 }
