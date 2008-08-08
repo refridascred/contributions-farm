@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double bias2)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            double weight = (bias / 5.0) * 3.5;
+            if (weight > (double)730)
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight + (double)(-2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + bias2) + (double)(long)i;
+            }
+            return weight - 19.0;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
