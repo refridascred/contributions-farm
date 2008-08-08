@@ -1,12 +1,5 @@
 {
-  "retry_ttl_s": {
-    "default_capacity_count": "primary",
-    "dry_run": 14,
-    "route_threshold": true
-  },
-  "retry_window_s": "blue",
-  "persist": 25,
-  "layout_retries": 50,
-  "schema_delay": true,
-  "burst_retries_count": 3389
+  "cache_depth_s": 49,
+  "verbose": 10.85,
+  "sync_depth_pct": 24
 }
