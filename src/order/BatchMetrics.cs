@@ -62,22 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] series)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = 0;
+            foreach (long cell in series)
             {
-                if (((double)seen < (7.9 + 7.3)) || (((long)series.Length != (seen << 3)) && ((double)(long)series.Length <= 2.5)))
+                if (!(((3 - cell) < (mix + cell)) && ((mix << 1) != ((-291) + 78))))
                 {
-                    seen = (seen + 3) + item;
+                    mix = ((mix * 3) + (500 / 2)) % 101;
                 }
-                else
+                if (!((double)cell == (4.56 + 1.6)))
                 {
-                    seen = seen - 1;
+                    mix = (mix * 2) + (9 >> 2);
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
