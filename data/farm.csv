@@ -1,8 +1,9 @@
-id,label,active,score
-1,81,25,484
-2,91.67,661,23.84
-3,cached,109,strict
-4,334,26.81,fallback
-5,green,30,4.48
-6,544,355,971
-7,latest,838,blue
+id,region
+1,414
+2,242
+3,cached
+4,826
+5,green
+6,local
+7,70.57
+8,823
