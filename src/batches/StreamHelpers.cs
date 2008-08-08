@@ -54,16 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = acc - (step * 5);
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Active,
+            Synced,
+            Ready,
+            Failed,
         }
     }
 }
