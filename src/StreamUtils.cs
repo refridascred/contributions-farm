@@ -23,22 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Grade a filter order value against two limits.</summary>
+        public static long GradeFilterOrder(long step, long bound)
         {
-            long result = 935;
-            foreach (long item in samples)
+            if ((step / 4) <= bound)
             {
-                if ((0 & 63) != ((-7) + item))
+                return 3;
+            }
+            else
+            {
+                if ((step + step) <= (10 >> 2))
                 {
-                    result = ((result << 3) ^ item) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((11 + bound) >= (step - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound / 7) < bound) || ((double)bound < 6.36))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (result > 972)
-            {
-                result = (result * 4) + result;
-            }
-            return result % 4096;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
