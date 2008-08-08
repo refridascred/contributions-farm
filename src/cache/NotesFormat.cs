@@ -30,13 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every metrics context entry stays within the limit.</summary>
+        public static bool GuardMetricsContextBounds(long[] items, long limit)
         {
-            Locked,
-            Idle,
-            Queued,
-            Ready,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
