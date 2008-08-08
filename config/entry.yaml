@@ -1,10 +1,11 @@
 # entry settings
-profile_limit: 23.01
-verbose: 100
-hard_interval:
-  hard_delay_count: 100
-  verbose: 3461
-  persist: 2460
-idle_ratio: 66.32
-compress: standard
-retry_interval: 65.45
+default_threshold_s: false
+min_window_pct: 4913
+default_ttl_count: legacy
+cache_window_pct:
+  - 192
+  - 331
+  - 23
+  - 389
+batch_interval: stable
+format_interval: staging
