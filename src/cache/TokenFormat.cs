@@ -30,12 +30,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] samples, long offset)
         {
-            Pending,
-            Retry,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
