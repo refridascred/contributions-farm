@@ -16,11 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            Queued,
+            New,
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
