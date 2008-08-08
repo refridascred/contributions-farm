@@ -36,19 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] levels, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long gap = floor - seed;
+            if ((double)gap <= (7.9 - 10.0))
             {
-                if (item != offset)
+                return 2;
+            }
+            else
+            {
+                if (((gap / 3) >= (floor >> 5)) || ((double)floor > 15.0))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a filter reading.</summary>
