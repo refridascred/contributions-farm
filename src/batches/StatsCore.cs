@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxFactor = 6247;
-        public const string DefaultWidth = "staging";
-        public const long MinWidth = 2448;
-        public const long LimitWidth = 4365;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 41.04;
+        public const long BatchCache = 9041;
+        public const long RetrySize = 4993;
 
         /// <summary>Scale a queue payload figure with a bias.</summary>
         public static double BlendQueuePayload(double ratio, double span)
