@@ -34,12 +34,27 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardLevel = 34.77;
-        public const string HardBatches = "legacy-1";
-        public const double DefaultBatches = 46.54;
-        public const long IdleBatches = 8784;
-        public const long LimitBatches = 1480;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data, long target)
+        {
+            long carry = 707;
+            foreach (long cell in data)
+            {
+                if (((cell / 9) > cell) || ((8.0 + 2.4) >= (double)cell))
+                {
+                    carry = (carry << 3) ^ target;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ ((-708) - cell)) % 255;
+                }
+                if ((cell / 4) < (cell & 15))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] values, long floor)
