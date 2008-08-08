@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Failed,
-            Synced,
-            Idle,
-            Closed,
-            Ready,
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
