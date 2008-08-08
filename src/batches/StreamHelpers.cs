@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long offset, long origin)
         {
-            Closed,
-            Pending,
-            Ready,
-            Locked,
-            Dropped,
+            if ((360 % 24) < origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset + offset) > (origin + 4)) && ((-54) >= (origin + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
