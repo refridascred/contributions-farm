@@ -45,39 +45,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank farm graph input into a small class.</summary>
-        public static long BucketFarmGraph(long step, long bound)
+        /// <summary>Roll a channel metrics counter forward.</summary>
+        public static long StepChannelMetrics(long origin)
         {
-            long diff = step - bound;
-            if ((step ^ diff) == (diff * 3))
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((1 + bound) <= (diff - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((diff + bound) > ((-5) - diff)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step == (8.6 * 9.11))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
