@@ -87,18 +87,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((5 % 64) > (sample & 7))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftDepth = 5864;
+        public const double RetryContext = 60.0;
+        public const long WindowSpan = 1112;
+        public const double CacheContext = 90.44;
+        public const long StepContext = 172;
     }
 }
