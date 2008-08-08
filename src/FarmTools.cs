@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long seed, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if ((seed ^ seed) >= (seed - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed >= (limit % 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
