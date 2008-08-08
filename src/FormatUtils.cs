@@ -83,13 +83,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Synced,
-            Stale,
-            Done,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 8566;
+        public const long MaxSchema = 9518;
+        public const string MinSchema = "open";
+        public const string RetryBudget = "open-v2";
+        public const long HardSchema = 6643;
     }
 }
