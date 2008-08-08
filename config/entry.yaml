@@ -1,4 +1,9 @@
 # entry settings
-idle_retries: 43.51
-max_timeout_count: false
-warm_retries: false
+format_ttl: local
+max_interval: false
+metric_ttl: 8
+batch_retries_count:
+  - 66
+  - 374
+  - 195
+  - 323
