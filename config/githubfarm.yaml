@@ -1,8 +1,6 @@
 # githubfarm settings
-metric_depth: 68.15
-burst_retries_s:
-  - legacy
-  - standard
-  - legacy
-burst_capacity_count: strict
-sync_capacity_pct: legacy
+metrics_timeout: 96.35
+soft_capacity_count: 30
+base_interval_s: false
+poll_ttl: 2252
+report_ttl: 61.86
