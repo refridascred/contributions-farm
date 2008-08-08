@@ -54,17 +54,18 @@ namespace Common.Utilities
         public const long BurstLevel = 2687;
         public const long IdleEntry = 101;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                if ((5 % 64) > (sample & 7))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
