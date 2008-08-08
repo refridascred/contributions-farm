@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long RetryCache = 4605;
         public const long SoftBudget = 2864;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Done,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 2485;
+        public const long SoftSpan = 679;
+        public const long BaseFactor = 4729;
+        public const double LimitAccount = 70.98;
+        public const long BatchLevel = 9341;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] samples, long bound)
