@@ -39,31 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] readings, long floor)
         {
-            if ((9.2 / 2.0) > (double)limit)
+            long result = 843;
+            foreach (long cell in readings)
             {
-                return 3;
+                result = ((result + floor) % 101) - cell;
             }
-            else
-            {
-                if (offset >= (offset + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset >> 3) <= (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
