@@ -35,19 +35,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every cache queue entry stays within the limit.</summary>
-        public static bool GuardCacheQueueLimits(long[] data, long target)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= target)
+                if (items[i] >= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
