@@ -35,11 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
