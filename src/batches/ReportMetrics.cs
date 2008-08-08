@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long MinLevel = 4381;
         public const string MinLayout = "cached";
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
