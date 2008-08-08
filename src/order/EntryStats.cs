@@ -50,18 +50,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session entry readings against a rule.</summary>
-        public static long TallySessionEntryMatches(long[] levels)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 >> 4) < (datum + datum))
+                if (data[i] < bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
