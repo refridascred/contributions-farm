@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine stats session values into a single score.</summary>
-        public static long TotalStatsSession(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] series)
         {
-            long mark = -119;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mark = (mark - (value << 1)) % 101;
-                mark = (mark << 3) ^ (mark & 3);
-                mark = (mark ^ (value << 2)) % 255;
+                if ((value >> 2) > (value << 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (mark > 764)
-            {
-                mark = (mark << 2) ^ (mark / 6);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
