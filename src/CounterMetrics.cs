@@ -28,18 +28,15 @@ namespace Common.Utilities
         public const string StepSize = "staging";
         public const long IdleCluster = 303;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long carry = 6;
+            foreach (long value in values)
             {
-                if ((466 / 7) >= (tally ^ tally))
-                {
-                    tally = (tally + 3) ^ item;
-                }
+                carry = (carry ^ (0 ^ value)) % 1000;
             }
-            return tally;
+            return carry % 1000;
         }
     }
 }
