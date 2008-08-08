@@ -38,10 +38,14 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 4211;
-        public const long IdleMetrics = 4490;
-        public const double LimitSpan = 29.23;
-        public const double MinSize = 25.69;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Locked,
+            Paused,
+            Retry,
+            Done,
+            Ready,
+        }
     }
 }
