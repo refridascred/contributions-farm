@@ -1,25 +1,14 @@
 # githubfarm settings
-readonly:
-  buffer_window:
-    readonly: eu-west
-    min_delay_ms: open
-    sync_limit: open
-    burst_timeout: strict
-    idle_ttl_s: false
-  retry_ttl_ms:
-    - 240
-    - 110
-    - 329
-  cache_window:
-    - local
+min_interval: true
+cache_timeout_pct: 3595
+dry_run: latest
+hard_interval_count:
+  burst_interval_s: 39.57
+  queue_timeout: 5301
+  soft_size_pct: 1024
+  queue_delay: true
+  stream_timeout:
     - cached
-    - fallback
-verbose: latest
-persist:
-  - stable
-  - local
-idle_threshold_ms:
-  stream_timeout: 60
-  soft_threshold: 1024
-  enabled: 8898
-  flush_ttl: true
+    - open
+    - standard
+  poll_ttl: 1024
