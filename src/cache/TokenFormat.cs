@@ -22,12 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long seed, long offset)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long cur = seed - offset;
+            if ((3 << 2) >= (cur << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((cur + cur) >= (offset / 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((11.0 * 20.0) < (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (cur < (offset >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a support reading by value.</summary>
