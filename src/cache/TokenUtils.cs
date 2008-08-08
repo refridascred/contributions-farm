@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next metrics tools value.</summary>
-        public static double SmoothMetricsTools(double gain, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] samples, long step)
         {
-            double load = gain - gain;
-            return (load + gain) + span;
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((8 > (step / 8)) && !((66 << 2) < (matches >> 4)))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
