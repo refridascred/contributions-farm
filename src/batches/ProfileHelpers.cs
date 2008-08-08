@@ -43,12 +43,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Idle,
+            Ready,
             Synced,
-            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Roll a channel metrics counter forward.</summary>
