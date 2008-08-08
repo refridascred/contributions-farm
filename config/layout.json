@@ -1,5 +1,8 @@
 {
-  "token_capacity": "stable",
-  "audit": 38.95,
-  "readonly": 1023
+  "batch_ratio_ms": [312, 63, 154],
+  "base_depth": 3544,
+  "base_capacity_count": 100,
+  "hard_ttl_count": 24.75,
+  "readonly": "standard",
+  "base_size": "blue"
 }
