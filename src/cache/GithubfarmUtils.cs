@@ -20,21 +20,19 @@ namespace Common.Utilities
         public const string CacheDepth = "latest-v2";
         public const long BaseSpan = 6784;
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > target)
                 {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Accumulate format tools samples.</summary>
