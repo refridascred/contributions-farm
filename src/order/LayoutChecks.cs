@@ -20,15 +20,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Idle,
-            Queued,
-            Done,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowDepth = 9690;
+        public const long DefaultCluster = 8400;
+        public const string RetryCluster = "legacy";
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] values, long floor)
