@@ -1,6 +1,22 @@
 {
-  "commits_depth": "blue",
-  "compress": 500,
-  "idle_retries_count": 2.61,
-  "flush_delay": 34.05
+  "counter_window": 96.82,
+  "base_threshold": {
+    "batch_retries": 42.92,
+    "min_size_count": true,
+    "hard_ttl_ms": {
+      "persist": 1005,
+      "soft_depth_ms": [242, 93],
+      "batch_ratio": "fallback",
+      "max_threshold_count": 4572,
+      "base_ttl_ms": 30
+    }
+  },
+  "warm_capacity_count": 88.28,
+  "persist": {
+    "max_depth": 91.26,
+    "filter_threshold": "staging",
+    "dry_run": 7032,
+    "strict": ["primary", "local", "strict"],
+    "filter_depth": [346, 183, 37, 463]
+  }
 }
