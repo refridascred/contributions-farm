@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            long carry = 8;
+            foreach (long entry in values)
+            {
+                if (origin < entry)
+                {
+                    carry = (carry - entry) % 1000;
+                }
+                if (!((origin + carry) >= carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = carry ^ origin;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of window entries.</summary>
