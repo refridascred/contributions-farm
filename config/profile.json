@@ -1,22 +1,6 @@
 {
-  "max_interval_ms": "stable",
-  "sync_capacity_ms": 94.0,
-  "persist": true,
-  "dry_run": "green",
-  "compress": {
-    "record_size": "green",
-    "min_size": ["legacy", "open", "edge"],
-    "retry_threshold_count": 8101,
-    "burst_delay": {
-      "verbose": 63.12,
-      "idle_threshold_pct": true,
-      "command_limit": 500,
-      "min_ttl": false,
-      "enabled": "stable",
-      "min_delay_pct": "stable"
-    },
-    "retry_ttl": false,
-    "poll_timeout": ["cached", "blue", "cached"]
-  },
-  "batch_limit_pct": "edge"
+  "warm_ratio_count": false,
+  "context_interval": "strict",
+  "base_delay": 22.98,
+  "dry_run": "open"
 }
