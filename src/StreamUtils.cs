@@ -60,19 +60,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
-        public static long MeasureGithubfarmLayoutOutliers(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((bound >= (bound / 8)) || ((36 * 5) == (sample & 7))) || ((2.0 * 11.0) == (double)bound))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 7441;
+        public const string WindowLevel = "legacy-v2";
+        public const long BurstAlready = 9763;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long origin)
