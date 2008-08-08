@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double drift = (offset - offset) + (offset / 5.0);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - (drift * 9.0)) + (double)(long)i) - ratio;
-            }
-            return drift + offset;
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a payload editor reading by value.</summary>
