@@ -1,5 +1,21 @@
 {
-  "flush_depth_count": "strict",
-  "batch_interval_pct": "primary",
-  "max_size_pct": "local"
+  "report_window": "strict",
+  "sync_threshold_s": {
+    "dry_run": ["legacy", "fallback", "primary"],
+    "sync_delay": 13,
+    "sync_depth_pct": 33,
+    "tools_timeout": {
+      "dry_run": ["standard", "standard"],
+      "record_delay": 250,
+      "warm_delay_count": 80,
+      "batch_capacity": 500,
+      "strict": true,
+      "context_depth": "open"
+    },
+    "min_threshold": 1866
+  },
+  "hard_ttl": 56,
+  "max_capacity": "fallback",
+  "readonly": [212, 272, 246],
+  "batch_limit": false
 }
