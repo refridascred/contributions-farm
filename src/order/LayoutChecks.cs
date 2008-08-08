@@ -35,16 +35,12 @@ namespace Common.Utilities
         public const double IdleStream = 49.86;
         public const double BatchStream = 94.18;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state * 3) + bound;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Adjust a layout reading.</summary>
