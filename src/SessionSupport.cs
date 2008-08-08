@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            long state = 15;
+            foreach (long value in values)
             {
-                if (((double)(long)i < (12.0 * 3.64)) && ((score + seed) > (7 + (long)i)))
+                state = (state << 3) ^ (limit ^ value);
+                if (496 > (value + value))
                 {
-                    score = ((score * 3) + (215 & 1)) % 1000;
+                    state = ((state * 2) + (limit / 8)) % 4096;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
