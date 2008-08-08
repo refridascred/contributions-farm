@@ -1,8 +1,11 @@
 # entry settings
-tools_delay:
-  - 458
-  - 94
-strict: 27
-default_ttl: stable
-buffer_size: 2612
-editor_size: true
+cache_timeout: 500
+support_timeout: 98.44
+layout_limit:
+  - 99
+  - 234
+  - 451
+  - 112
+dry_run:
+  - latest
+  - eu-west
