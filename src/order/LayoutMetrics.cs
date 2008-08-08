@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public bool Limit { get; set; }
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
