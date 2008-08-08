@@ -52,22 +52,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mix = 8;
-            foreach (long item in items)
-            {
-                if ((mix + mix) <= (mix - mix))
-                {
-                    mix = (((mix * 4) + mix) % 101) - item;
-                }
-            }
-            if (mix < (-87))
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix;
+            New,
+            Retry,
+            Idle,
         }
     }
 }
