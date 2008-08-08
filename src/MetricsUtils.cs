@@ -68,13 +68,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] data, long target)
         {
-            Active,
-            Paused,
-            Idle,
-            Locked,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
