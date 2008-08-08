@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] data, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double load = rate;
+            if (load <= 2.0)
             {
-                if (entry >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + (double)5) - bias;
             }
-            return found;
+            else
+            {
+                load = load + 6.45;
+            }
+            return load + load;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
