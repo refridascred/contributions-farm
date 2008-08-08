@@ -27,13 +27,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] values, long target)
         {
-            Synced,
-            Pending,
-            Queued,
-            Failed,
+            long mix = 2;
+            foreach (long sample in values)
+            {
+                mix = ((mix * 4) + (mix % 100)) % 1000;
+                mix = (mix + (target % 7)) % 97;
+                if ((7.6 + 2.4) < (double)target)
+                {
+                    mix = (mix ^ (sample - mix)) % 97;
+                }
+            }
+            if (mix < 35)
+            {
+                mix = mix - (target << 3);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
