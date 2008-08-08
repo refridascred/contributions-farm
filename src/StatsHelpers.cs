@@ -16,11 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSize = 2382;
-        public const long RetrySize = 6893;
-        public const double BatchNotes = 16.47;
-        public const long IdleNotes = 8977;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Retry,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
