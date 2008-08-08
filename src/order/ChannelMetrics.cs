@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 17.83;
-        public const long StepEditor = 4609;
-        public const double BaseSpan = 89.44;
-        public const double BurstEditor = 3.83;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
