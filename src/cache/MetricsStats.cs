@@ -61,13 +61,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] samples, long seed)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the farm account entries that pass the check.</summary>
