@@ -56,19 +56,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            long total = 481;
-            foreach (long reading in levels)
+            long total = -4;
+            foreach (long value in samples)
             {
-                total = (total << 2) ^ reading;
+                total = total ^ value;
             }
-            if (total > (-694))
+            if (total > 86)
             {
-                total = ((total << 3) ^ (origin + total)) % 1000;
+                total = total ^ (60 ^ total);
             }
-            return total % 1000;
+            return total;
         }
     }
 }
