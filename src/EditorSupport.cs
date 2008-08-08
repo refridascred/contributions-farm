@@ -43,11 +43,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryLevel = 33.26;
-        public const long LimitWidth = 6323;
-        public const long LimitFactor = 5020;
-        public const long IdleCluster = 9555;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (((acc * 5) + (limit % 60)) % 1000) ^ (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long floor)
