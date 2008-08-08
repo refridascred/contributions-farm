@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double span)
         {
-            Draft,
-            Closed,
-            Retry,
+            double weight = ratio;
+            if (weight <= (7.1 * 9.3))
+            {
+                weight = (weight + 5.37) + span;
+            }
+            return weight + weight;
         }
 
         /// <summary>Count session batches pairs that satisfy a relation.</summary>
