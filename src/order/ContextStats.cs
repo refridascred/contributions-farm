@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] series)
         {
-            long result = 54;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                result = ((result << 2) ^ (9 + result)) + item;
+                if ((9.75 + 5.0) >= (double)value)
+                {
+                    count = count + 1;
+                }
             }
-            if (result < 995)
-            {
-                result = result - (78 + result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many metric layout samples are out of range.</summary>
