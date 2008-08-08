@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the session queue entries that pass the check.</summary>
+        public static long AuditSessionQueueHits(long[] data)
         {
-            Active,
-            Closed,
-            Synced,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((hits & 31) <= (hits << 2)) || ((cell > (62 - cell)) || (cell >= (cell << 1))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
