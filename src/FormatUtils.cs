@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 5;
+            foreach (long reading in readings)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) == 0))
+                if ((82 - 7) > carry)
                 {
-                    return (long)i;
+                    carry = (((carry * 5) + (carry - 40)) % 101) - reading;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Iterate the notes tools series from a seed.</summary>
