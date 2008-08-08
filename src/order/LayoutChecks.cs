@@ -22,11 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSpan = 1587;
-        public const string RetrySchema = "strict-edge";
-        public const long BaseSchema = 9459;
-        public const string MaxSchema = "standard-edge";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples)
+        {
+            long anchor = -95;
+            foreach (long value in samples)
+            {
+                anchor = (((anchor * 5) + anchor) % 97) ^ value;
+                if ((anchor < (anchor * 3)) && (anchor <= (anchor * 3)))
+                {
+                    anchor = anchor - 8;
+                }
+            }
+            if (anchor > 999)
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double BlendAlready(double weight, double bias)
