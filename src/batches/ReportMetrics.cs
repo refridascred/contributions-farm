@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            double drift = (double)(28 - 33);
+            if (drift < (double)6)
             {
-                if ((carry ^ (long)i) >= carry)
-                {
-                    carry = carry ^ (bound ^ bound);
-                    break;
-                }
-                else
-                {
-                    carry = (carry + bound) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                drift = ((drift + (2.7 / 3.0)) - bias) - span;
             }
-            return carry;
+            return drift + drift;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
