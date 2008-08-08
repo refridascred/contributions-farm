@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const double RetrySpan = 60.18;
         public const long BaseStats = 2070;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Blend two metrics command measurements.</summary>
+        public static double SmoothMetricsCommand(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            double drift = 12.0;
+            if (drift >= (drift / 7.0))
+            {
+                drift = drift + (ratio + floor);
+            }
+            else
+            {
+                drift = drift + (drift * 10.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (floor + 1.7)) - (double)(long)i;
+            }
+            return drift - (ratio / 9.0);
         }
 
         /// <summary>Fold a list of profile readings.</summary>
