@@ -19,13 +19,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] readings, long origin)
         {
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
