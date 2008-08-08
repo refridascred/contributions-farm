@@ -34,13 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Queued,
-            Draft,
-            Stale,
-            Active,
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
