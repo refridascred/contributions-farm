@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const double BatchInterval = 43.98;
         public const long MaxCount = 775;
 
-        /// <summary>Fold a list of batch farm readings.</summary>
-        public static long WeighBatchFarm(long[] levels, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] readings)
         {
-            long score = 767;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((double)score >= 2.31)
+                if (((long)readings.Length - sample) <= count)
                 {
-                    score = (((score * 2) + 3) - reading) - offset;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
