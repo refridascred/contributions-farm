@@ -14,19 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long state = 5;
-            foreach (long entry in readings)
-            {
-                state = ((((state * 4) + state) % 101) ^ entry) - step;
-                if (!((double)(long)readings.Length > (8.4 * 3.32)))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
