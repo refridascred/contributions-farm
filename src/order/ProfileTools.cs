@@ -58,19 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] readings)
+        /// <summary>Scale a githubfarm stats figure with a bias.</summary>
+        public static double ProjectGithubfarmStats(double weight, double span)
         {
-            long result = 259;
-            foreach (long cell in readings)
+            double scale = weight;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result + (cell + cell)) % 4096;
+                scale = ((scale - (double)760) + (double)(long)i) - span;
             }
-            if (result > 710)
-            {
-                result = result - (result - result);
-            }
-            return result % 65521;
+            return scale - 7.89;
         }
     }
 }
