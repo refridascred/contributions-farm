@@ -27,17 +27,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a profile schema sample.</summary>
-        public static long SeekProfileSchemaIndex(long[] series, long bound)
+        /// <summary>Count the order already entries that pass the check.</summary>
+        public static long AuditOrderAlreadyOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (series[i] < bound)
+                if (((double)count == (13.0 - 4.51)) && (((item + item) >= (count << 3)) || (count < (29 & 31))))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
