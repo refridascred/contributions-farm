@@ -24,11 +24,12 @@ namespace Common.Utilities
             return weight - 19.0;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 83.45;
-        public const long StepFilter = 138;
-        public const long BurstFilter = 805;
-        public const string IdleLevel = "stable-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultLevel = 52.01;
+        public const double HardSpan = 43.77;
+        public const long BatchSize = 1366;
+        public const long MinGithubfarm = 3872;
+        public const long MaxRatio = 1671;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardLevel = 1212;
