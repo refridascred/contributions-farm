@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window format counter forward.</summary>
-        public static long DeriveWindowFormat(long origin)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((double)sum <= (2.8 / 8.0)))
-                {
-                    sum = sum - (sum / 9);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            New,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Look up the position of a profile schema sample.</summary>
