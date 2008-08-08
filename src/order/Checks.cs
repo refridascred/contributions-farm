@@ -60,32 +60,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a session metric pair into a bucket.</summary>
-        public static long GradeSessionMetric(long bound, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long diff = bound + target;
-            if (diff >= (diff - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 97) < (-4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound / 5) != (bound / 6)) || ((5.0 + 6.0) > (double)diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Closed,
+            Ready,
+            Retry,
+            Draft,
         }
     }
 }
