@@ -1,23 +1,17 @@
 # githubfarm settings
-compress:
-  batch_limit: 100
-  metrics_timeout:
-    - strict
-    - fallback
-    - legacy
-    - edge
-  graph_ttl: 20.82
-  counter_limit:
-    - legacy
-    - cached
-    - eu-west
-    - blue
-githubfarm_threshold: true
-batch_threshold_count: true
-retry_delay_s:
-  commits_depth:
-    - standard
-    - standard
-    - open
-  filter_size: true
-  strict: 100
+strict:
+  enabled: 89.34
+  sync_window_ms: 9030
+  layout_depth: 4882
+  cache_size_s: local
+  strict:
+    - 384
+    - 233
+    - 133
+    - 249
+  min_delay: 60
+graph_size: blue
+readonly: 9308
+idle_limit: cached
+poll_ratio_s: 69.9
+hard_threshold: false
