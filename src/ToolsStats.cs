@@ -44,22 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] levels, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            long result = 6;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= 809)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = result - (limit >> 4);
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 29)
-            {
-                result = result - (0 / 5);
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Hold a farm stats.</summary>
