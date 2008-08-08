@@ -36,17 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session metric entry that matches the target.</summary>
-        public static long FindSessionMetricIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstFactor = 8486;
+        public const long RetryEditor = 3072;
+        public const double BatchLevel = 27.75;
     }
 }
