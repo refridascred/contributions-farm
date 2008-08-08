@@ -42,13 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items, long seed)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Done,
+            long sum = 50;
+            foreach (long sample in items)
+            {
+                sum = (((sum << 2) ^ seed) % 65521) + sample;
+            }
+            return sum;
         }
     }
 }
