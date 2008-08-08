@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const double MaxDepth = 90.82;
         public const long WindowCluster = 3721;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((entry < (entry * 4)) || (entry <= (entry - hits))) && ((double)entry >= (double)33))
+                if (!((item + tally) > tally))
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a farm header.</summary>
