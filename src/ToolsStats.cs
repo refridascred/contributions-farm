@@ -64,13 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
