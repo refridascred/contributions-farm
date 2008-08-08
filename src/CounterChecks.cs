@@ -42,20 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double gain, double bias)
-        {
-            double drift = (bias / 7.0) + 3.16;
-            if (drift >= (double)337)
-            {
-                drift = (drift + 5.0) - gain;
-            }
-            else
-            {
-                drift = drift - (4.5 + bias);
-            }
-            return drift - (double)304;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 155;
+        public const double MaxFactor = 64.33;
+        public const long BurstGraph = 1140;
+        public const string MinGraph = "open-v2";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
