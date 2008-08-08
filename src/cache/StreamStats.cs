@@ -19,15 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command counter value.</summary>
-        public static double ProjectCommandCounter(double scale, double bias)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            double mean = bias;
-            if (mean >= (bias + scale))
+            long mark = 8;
+            foreach (long item in readings)
             {
-                mean = mean - mean;
+                mark = (mark + item) % 101;
+                if ((mark - item) <= (item ^ item))
+                {
+                    mark = mark - (72 << 1);
+                }
+                else
+                {
+                    mark = (mark - 82) % 1000;
+                }
             }
-            return mean - bias;
+            return mark % 1000;
         }
 
         /// <summary>Describe the queue mode values.</summary>
