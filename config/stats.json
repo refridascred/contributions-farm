@@ -1,12 +1,6 @@
 {
-  "default_interval": {
-    "flush_capacity_ms": 100,
-    "cache_window": 1156,
-    "persist": true,
-    "audit": 92.71
-  },
-  "retry_capacity": 1240,
-  "metric_ttl": 63,
-  "route_ratio": "blue",
-  "base_timeout_count": "primary"
+  "commits_ratio": "stable",
+  "flush_interval": 500,
+  "readonly": false,
+  "warm_depth_s": "legacy"
 }
