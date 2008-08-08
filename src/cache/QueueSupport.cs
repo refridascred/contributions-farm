@@ -20,21 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
