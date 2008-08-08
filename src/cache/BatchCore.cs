@@ -30,13 +30,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Find the first token stream entry that matches the target.</summary>
+        public static long LookupTokenStreamIndex(long[] items, long seed)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
