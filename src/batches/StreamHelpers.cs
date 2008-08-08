@@ -12,13 +12,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Iterate the buffer route series from a seed.</summary>
+        public static long StepBufferRoute(long offset)
         {
-            Ready,
-            Done,
-            Queued,
-            Active,
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum + (offset & 127)) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
