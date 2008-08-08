@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] readings)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally == (12.0 + 0.96))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
