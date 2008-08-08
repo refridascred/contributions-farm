@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Project the next cache tools value.</summary>
+        public static double SmoothCacheTools(double rate, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            double rate2 = (0.83 + 3.6) / 3.0;
+            if (rate2 > (2.2 - 2.3))
             {
-                total = ((total * 2) + (long)i) % 1000;
+                rate2 = ((rate2 - rate2) + rate) - span;
             }
-            return total;
+            return rate2 + 3.9;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
