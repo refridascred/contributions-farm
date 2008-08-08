@@ -29,14 +29,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] values, long origin)
         {
-            Draft,
-            Locked,
-            Queued,
-            Pending,
-            Dropped,
+            long result = 904;
+            foreach (long item in values)
+            {
+                result = (((result - (925 - result)) % 101) - item) - origin;
+            }
+            return result;
         }
 
         /// <summary>Describe the graph kind values.</summary>
