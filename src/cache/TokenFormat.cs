@@ -22,22 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                state = (state << 3) ^ (bound ^ state);
-                if (!(bound > (bound - bound)))
-                {
-                    state = (state - 48) % 255;
-                    continue;
-                }
-                state = (state ^ ((long)i / 5)) % 101;
-                state = ((state * 5) + (long)i) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Fold a list of notes counter readings.</summary>
