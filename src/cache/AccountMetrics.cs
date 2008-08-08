@@ -45,10 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 3628;
-        public const double MaxDepth = 90.82;
-        public const long WindowCluster = 3721;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 284;
+        public const long MaxGithubfarm = 5886;
+        public const long MaxInterval = 8851;
+        public const double RetryGithubfarm = 58.8;
+        public const string IdleTimeout = "cached-1";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricHits(long[] samples)
