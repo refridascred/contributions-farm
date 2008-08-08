@@ -15,15 +15,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] series, long limit)
         {
-            double gain = ratio;
-            for (int i = 0; i < 2; i++)
+            long carry = 7;
+            foreach (long entry in series)
             {
-                gain = ((gain + (gain * 1.14)) + (double)(long)i) - span;
+                if ((limit >> 2) < (carry >> 4))
+                {
+                    carry = (carry - 713) + entry;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
             }
-            return gain + ratio;
+            if (carry > 52)
+            {
+                carry = (carry << 2) ^ (limit / 3);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a payload options.</summary>
