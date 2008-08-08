@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double rate, double floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double rate2 = rate;
-            if (rate2 <= (double)54)
-            {
-                rate2 = (rate2 + 6.97) - floor;
-            }
-            return rate2 + (rate2 * 2.05);
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a context cluster pair into a bucket.</summary>
