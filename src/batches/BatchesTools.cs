@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double bias, double span)
         {
-            if ((limit % 5) <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit > (bound >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double gain = (double)(0 / 3);
+            return (gain + span) + bias;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
