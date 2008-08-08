@@ -19,20 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!(((state - limit) < (state ^ 21)) && ((long)i < state)))
+                if (((sample >> 3) >= (sample + 6)) || ((matches + matches) == ((long)data.Length >> 2)))
                 {
-                    state = ((state * 5) + (limit / 3)) % 97;
+                    matches = matches + 2;
                 }
-                state = (state + (state >> 1)) % 101;
-                state = ((state * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Match up queue samples.</summary>
