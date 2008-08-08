@@ -1,6 +1,8 @@
-id,rank,ratio,score,weight
-1,49.3,1.83,edge,777
-2,primary,58.35,fallback,85.14
-3,32.22,65.07,93.85,122
-4,342,413,16,eu-west
-5,eu-west,legacy,staging,216
+id,active,score
+1,725,771
+2,90.33,edge
+3,181,34.29
+4,green,895
+5,39.03,347
+6,462,768
+7,992,26
