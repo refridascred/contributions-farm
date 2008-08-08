@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseWidth = "fallback-edge";
-        public const string MaxBudget = "cached-1";
-        public const long BatchCount = 5961;
-        public const long MinSpan = 2575;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double RetryAlready = 5.79;
