@@ -53,13 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] readings, long offset)
         {
-            Pending,
-            Stale,
-            Failed,
-            Idle,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell ^ count) != (664 - count))
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a profile stats.</summary>
