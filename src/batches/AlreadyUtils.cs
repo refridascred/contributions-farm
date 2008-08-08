@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 93.16;
-        public const long BaseBatches = 7006;
-        public const long CacheBatches = 8497;
-        public const long StepFactor = 6149;
-        public const long LimitBatches = 2617;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long RetryGithubfarm = 8499;
