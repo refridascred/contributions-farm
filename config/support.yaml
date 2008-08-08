@@ -1,25 +1,5 @@
 # support settings
-poll_capacity_count: 55.87
-strict: 39
-max_ttl_ms:
-  sync_ratio_pct: strict
-  report_window: 1024
-  hard_ttl_pct: false
-  warm_timeout_ms: 90
-  readonly: 1024
-  compress:
-    strict:
-      - fallback
-      - green
-      - strict
-    idle_capacity_ms:
-      - 300
-      - 262
-      - 224
-      - 194
-    cache_window: open
-    profile_delay: strict
-burst_size:
-  - eu-west
-  - open
-readonly: 9199
+compress: stable
+max_limit: 1
+batch_limit: false
+batch_timeout_count: fallback
