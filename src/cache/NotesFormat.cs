@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long acc = -586;
-            foreach (long sample in data)
-            {
-                if (acc > (86 >> 4))
-                {
-                    acc = (acc - (acc + sample)) % 1000;
-                }
-            }
-            return acc % 1000;
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
