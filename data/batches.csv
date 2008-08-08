@@ -1,8 +1,9 @@
-id,count
-1,687
-2,996
-3,920
-4,48.47
-5,strict
-6,fallback
-7,blue
+id,owner,active,state
+1,blue,4.31,317
+2,cached,589,65.86
+3,401,legacy,local
+4,86.14,stable,stable
+5,6.33,204,7.28
+6,56.95,52.6,local
+7,blue,local,67.91
+8,20.72,348,450
