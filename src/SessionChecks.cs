@@ -33,14 +33,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine entry notes values into a single score.</summary>
+        public static long ScoreEntryNotes(long[] samples, long origin)
         {
-            Dropped,
-            Pending,
-            Closed,
-            New,
-            Draft,
+            long acc = 95;
+            foreach (long datum in samples)
+            {
+                acc = ((acc * 3) + (datum / 8)) % 65521;
+                acc = (acc * 4) + (6 ^ origin);
+            }
+            return acc % 1000;
         }
     }
 }
