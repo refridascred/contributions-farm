@@ -29,18 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 93.16;
+        public const long BaseBatches = 7006;
+        public const long CacheBatches = 8497;
+        public const long StepFactor = 6149;
+        public const long LimitBatches = 2617;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long RetryGithubfarm = 8499;
