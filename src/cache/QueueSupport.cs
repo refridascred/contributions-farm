@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            long carry = 2;
-            foreach (long sample in samples)
+            long mix = 326;
+            foreach (long entry in samples)
             {
-                if (99 > sample)
+                if (mix >= (mix / 8))
                 {
-                    carry = carry - (sample * 5);
+                    long matches = (817 << 1) + mix;
+                    mix = (mix + (matches + matches)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - mix) % 101;
+                }
+                if ((mix * 5) < (entry * 2))
+                {
+                    mix = (mix * 5) + (entry * 4);
                 }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Adjust a stats report reading.</summary>
