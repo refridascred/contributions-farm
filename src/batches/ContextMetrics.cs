@@ -49,13 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long TallyBatchContributiGaps(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long reading in items)
             {
-                if ((553 > (item / 4)) || (((double)item <= 1.0) || ((item * 4) >= (matches - item))))
+                if ((reading ^ matches) < reading)
                 {
                     matches = matches + 1;
                 }
