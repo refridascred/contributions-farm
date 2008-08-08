@@ -51,20 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Count checks support pairs that satisfy a relation.</summary>
+        public static long MatchChecksSupportCount(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(bound >= (anchor / 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + (bound / 8)) % 97;
-                    anchor = (anchor + bound) % 255;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a command info.</summary>
