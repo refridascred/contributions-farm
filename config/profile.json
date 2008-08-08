@@ -1,6 +1,6 @@
 {
-  "warm_ratio_count": false,
-  "context_interval": "strict",
-  "base_delay": 22.98,
-  "dry_run": "open"
+  "batch_threshold": "green",
+  "warm_capacity": "green",
+  "hard_ttl_pct": 62,
+  "checks_window": 500
 }
