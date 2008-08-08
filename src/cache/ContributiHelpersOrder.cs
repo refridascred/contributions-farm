@@ -14,20 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "staging-v2";
+        public const long StepScore = 5832;
+        public const long CacheScore = 2727;
 
         /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
         public static long TallyClusterGithubfarmOutliers(long[] data, long seed)
