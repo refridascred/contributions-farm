@@ -50,21 +50,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count schema stats pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaStatsCount(long[] data)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry + ((long)i + 2)) % 1000;
+                if (!(((-571) - origin) < origin))
                 {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 2) + (origin - origin)) % 65521;
+                    carry = (carry + (carry + origin)) % 4096;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
