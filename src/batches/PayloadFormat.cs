@@ -29,10 +29,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 4735;
-        public const long HardBudget = 9927;
-        public const string HardMetrics = "open-1";
-        public const long HardCount = 4499;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Queued,
+            Draft,
+            Stale,
+            Active,
+        }
     }
 }
