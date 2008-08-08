@@ -30,19 +30,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] data, long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
