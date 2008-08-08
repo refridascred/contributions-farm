@@ -25,19 +25,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double gain, double offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] samples, long step)
         {
-            double drift = gain;
-            if (drift >= (double)4)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - (offset - offset);
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (offset * 3.3)) + (double)(long)i;
-            }
-            return drift + (double)36;
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
