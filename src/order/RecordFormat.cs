@@ -30,11 +30,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Grade a support route value against two limits.</summary>
+        public static long RankSupportRoute(long limit, long origin)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            if (((origin + limit) < (limit << 2)) || ((limit / 9) == (338 * 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((17 >> 2) < (limit & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit > (89 % 24)) && (origin < limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit & 15) <= (origin / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
