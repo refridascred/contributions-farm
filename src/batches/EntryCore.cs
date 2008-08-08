@@ -28,17 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a schema cache sample.</summary>
-        public static long LookupSchemaCacheIndex(long[] series, long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a session header.</summary>
