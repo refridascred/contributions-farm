@@ -36,21 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item & 255) == (5 & 255))
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count command cluster pairs that satisfy a relation.</summary>
