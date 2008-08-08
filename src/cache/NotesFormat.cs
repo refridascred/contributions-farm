@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 5.79;
-        public const long LimitFactor = 2660;
-        public const long HardAlready = 1683;
-        public const string BurstTimeout = "alpha-edge";
-        public const long BaseAlready = 9714;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data)
+        {
+            long acc = -586;
+            foreach (long sample in data)
+            {
+                if (acc > (86 >> 4))
+                {
+                    acc = (acc - (acc + sample)) % 1000;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 5494;
