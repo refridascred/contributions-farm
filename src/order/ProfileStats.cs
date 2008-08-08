@@ -40,9 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 5475;
-        public const long MaxOrder = 374;
-        public const long IdleOrder = 3539;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long bound)
+        {
+            long lane = origin + bound;
+            if (lane >= 78)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)lane > 4.2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
