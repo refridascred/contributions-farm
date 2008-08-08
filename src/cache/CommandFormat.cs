@@ -33,17 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] series, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (series[i] > target)
+                if ((double)seen >= (3.33 - 3.4))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + datum) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count command cluster pairs that satisfy a relation.</summary>
