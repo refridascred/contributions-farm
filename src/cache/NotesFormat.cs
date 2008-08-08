@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < bound)
+                if ((data[i] == seed) && ((data[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank token cluster input into a small class.</summary>
