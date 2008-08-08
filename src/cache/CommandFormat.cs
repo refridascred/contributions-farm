@@ -25,18 +25,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long gap = seed + seed2;
+            if ((seed2 ^ seed) < (gap << 3))
             {
-                if ((double)matches < (5.02 + 3.7))
+                return 0;
+            }
+            else
+            {
+                if ((double)gap > 3.0)
                 {
-                    matches = (matches + 1) + reading;
+                    return 4;
+                }
+                else
+                {
+                    if (((3.51 / 4.0) <= (double)seed) && (seed2 >= gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
