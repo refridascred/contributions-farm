@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (503 > (tally + 87))
                 {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) + datum) + bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
