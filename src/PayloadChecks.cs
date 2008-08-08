@@ -85,21 +85,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Validate layout payload readings against a bound.</summary>
+        public static bool ValidateLayoutPayloadLimits(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= seed)
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
