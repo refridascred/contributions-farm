@@ -29,15 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double drift = ratio;
-            if (drift < (9.0 * 1.2))
-            {
-                drift = drift + offset;
-            }
-            return drift - 4.25;
+            Idle,
+            Queued,
+            Draft,
+            Retry,
         }
     }
 }
