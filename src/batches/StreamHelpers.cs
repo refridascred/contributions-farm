@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix + (mix + 8)) % 101) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
