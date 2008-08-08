@@ -30,18 +30,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] levels, long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= 855)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + target;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
