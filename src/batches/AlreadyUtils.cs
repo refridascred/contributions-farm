@@ -39,34 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items)
         {
-            long mix = -744;
-            foreach (long entry in items)
+            long total = 57;
+            foreach (long reading in items)
             {
-                if ((entry - seed) != (seed & 63))
-                {
-                    mix = (mix ^ (seed - 22)) % 97;
-                }
-                else
-                {
-                    mix = (mix - (5 - entry)) % 4096;
-                }
-                if ((mix < ((long)items.Length / 3)) && ((mix + seed) >= mix))
-                {
-                    mix = (mix - (entry + entry)) % 97;
-                }
-                else
-                {
-                    mix = (mix * 4) + 96;
-                }
+                total = total - (total ^ reading);
             }
-            if (mix < 847)
+            if (total < 7)
             {
-                mix = mix ^ mix;
+                total = ((total << 3) ^ ((-134) - total)) % 101;
             }
-            return mix % 4096;
+            return total;
         }
 
         /// <summary>Describe the session status values.</summary>
