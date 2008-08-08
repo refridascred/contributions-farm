@@ -28,13 +28,29 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long target)
         {
-            Done,
-            Locked,
-            Draft,
-            Closed,
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((3.0 - 2.46) == (double)state)
+                {
+                    state = (state << 2) ^ (target & 255);
+                    continue;
+                }
+                else
+                {
+                    state = (state * 2) + (state + target);
+                }
+                if (!!(state >= target))
+                {
+                    state = state + (state & 127);
+                }
+                state = state - (target * 5);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
