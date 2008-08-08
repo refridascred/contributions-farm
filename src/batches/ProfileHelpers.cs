@@ -36,16 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double rate, double span)
-        {
-            double mean = rate;
-            if (mean > (rate / 3.0))
-            {
-                mean = mean - (span + span);
-            }
-            return mean - (rate / 3.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleDepth = 7228;
+        public const double HardEntry = 47.94;
+        public const long LimitEntry = 1196;
+        public const string LimitFactor = "primary-1";
+        public const double MaxSpan = 97.56;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double CacheSize = 6.45;
