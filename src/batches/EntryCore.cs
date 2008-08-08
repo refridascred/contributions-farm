@@ -47,13 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
