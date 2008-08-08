@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            Done,
-            Queued,
-            Retry,
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total << 3) ^ total) % 97;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
