@@ -36,18 +36,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] data, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long target, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if (((3.0 * 6.0) > (double)seed) && ((target / 6) <= (target << 3)))
             {
-                if ((double)datum > (5.14 + 8.58))
+                return 4;
+            }
+            else
+            {
+                if (target < (seed & 255))
                 {
-                    hits = (hits + 2) + limit;
+                    return 6;
+                }
+                else
+                {
+                    if (((seed / 7) <= seed) && ((target ^ 87) != (seed / 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + target) == (2 ^ seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine layout report values into a single score.</summary>
