@@ -1,7 +1,12 @@
 # entry settings
-schema_threshold: strict
-batch_threshold: 47.96
-batch_threshold_s: 30
-order_timeout: true
-verbose: blue
-soft_delay_count: 5829
+retry_capacity_s:
+  burst_delay_pct: 35
+  window_ttl:
+    command_size: 45
+    idle_depth_count: local
+    idle_delay_s: green
+  support_ratio: 76.7
+readonly: 92
+hard_depth: strict
+min_interval_ms: 5808
+hard_size_pct: false
