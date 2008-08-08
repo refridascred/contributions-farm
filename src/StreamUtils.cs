@@ -41,19 +41,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double rate, double offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            double load = rate;
-            if (load >= 7.6)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + rate) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (load * 5.22);
+            return tally;
         }
 
         /// <summary>Count the githubfarm layout entries that pass the check.</summary>
