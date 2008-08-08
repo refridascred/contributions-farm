@@ -37,11 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            public double Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
