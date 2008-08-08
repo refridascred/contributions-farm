@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples)
-        {
-            long mark = 12;
-            foreach (long datum in samples)
-            {
-                mark = (mark * 3) + (datum - 67);
-                mark = (mark - (datum * 3)) % 101;
-            }
-            if (mark > 728)
-            {
-                mark = (mark - ((-66) & 31)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardRatio = 9898;
+        public const long IdleLayout = 4382;
+        public const string MaxLayout = "open-1";
+        public const long MaxCount = 9201;
+        public const long LimitLayout = 9542;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
