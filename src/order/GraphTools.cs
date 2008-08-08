@@ -26,18 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report already readings against a rule.</summary>
-        public static long AuditReportAlreadyOutliers(long[] series, long floor)
+        /// <summary>Combine profile layout values into a single score.</summary>
+        public static long FoldProfileLayout(long[] series)
         {
-            long tally = 0;
+            long result = 8;
             foreach (long cell in series)
             {
-                if ((tally << 1) <= floor)
+                if (cell < (result - result))
                 {
-                    tally = (tally + 1) - cell;
+                    result = result ^ (cell * 5);
+                }
+                else
+                {
+                    result = result + result;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the cache class values.</summary>
