@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long step)
         {
-            double drift = ratio / 3.0;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                drift = ((drift + ratio) - (double)(long)i) - floor;
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + ratio;
+            return stale;
         }
 
         /// <summary>Describe the payload status values.</summary>
