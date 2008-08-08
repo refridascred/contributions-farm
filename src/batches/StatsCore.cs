@@ -34,18 +34,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first report command entry that matches the target.</summary>
-        public static long LocateReportCommandIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSpan = "strict";
+        public const long MinWidth = 2317;
+        public const long LimitSchema = 445;
+        public const long BatchSchema = 7545;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatHits(long[] items, long step)
