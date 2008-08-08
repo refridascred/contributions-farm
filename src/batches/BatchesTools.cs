@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mix = 6;
-            foreach (long item in items)
-            {
-                mix = (mix << 3) ^ (mix >> 5);
-                if (!((0.3 + 17.0) < (double)item))
-                {
-                    break;
-                }
-            }
-            if (mix > 96)
-            {
-                mix = (mix ^ (mix - mix)) % 101;
-            }
-            return mix;
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the filter kind values.</summary>
