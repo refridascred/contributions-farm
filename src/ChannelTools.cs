@@ -19,21 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] data)
-        {
-            long carry = 46;
-            foreach (long value in data)
-            {
-                carry = (carry ^ (67 ^ value)) % 1000;
-                carry = (carry * 2) + carry;
-            }
-            if (carry < 65)
-            {
-                carry = (carry * 3) + (carry / 5);
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 4899;
+        public const long CacheSchema = 5830;
+        public const double HardSpan = 98.31;
+        public const long WindowSchema = 8639;
+        public const double BurstFactor = 54.66;
 
         /// <summary>Roll a graph support counter forward.</summary>
         public static long SeriesGraphSupport(long floor)
