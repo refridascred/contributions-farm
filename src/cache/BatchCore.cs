@@ -13,32 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long offset, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long gap = offset ^ floor;
-            if ((double)offset >= (double)gap)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (gap < (offset + gap))
+                if (!((1.8 / 7.0) >= (double)bound))
                 {
-                    return 6;
+                    state = ((state << 2) ^ (state / 6)) % 101;
                 }
-                else
-                {
-                    if ((offset - gap) >= (-74))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
