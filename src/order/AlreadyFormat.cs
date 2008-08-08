@@ -45,16 +45,21 @@ namespace Common.Utilities
         public const double BurstFactor = 3.05;
         public const long BatchFactor = 9479;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (step * 5)) % 4096;
-                mark = ((mark * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
