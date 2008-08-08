@@ -39,15 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] readings, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items, long target)
         {
-            long result = 843;
-            foreach (long cell in readings)
+            long score = 73;
+            foreach (long reading in items)
             {
-                result = ((result + floor) % 101) - cell;
+                score = (score + (reading - reading)) % 97;
             }
-            return result;
+            if (score > 9)
+            {
+                score = (score - target) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
