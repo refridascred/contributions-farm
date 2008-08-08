@@ -48,21 +48,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Iterate the counter channel series from a seed.</summary>
+        public static long DeriveCounterChannel(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (acc >= (acc >> 1))
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc & 1)) % 65521;
                 }
+                else
+                {
+                    acc = acc ^ (long)i;
+                    acc = ((acc << 3) ^ ((long)i - acc)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
     }
 }
