@@ -37,14 +37,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long limit, long step)
         {
-            Paused,
-            Done,
-            Closed,
-            Ready,
-            Draft,
+            if ((double)10 < (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step << 2) <= (step + step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.12 + 7.2) < (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
