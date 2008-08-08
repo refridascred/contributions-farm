@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLevel = 7829;
-        public const double SoftLayout = 80.11;
-        public const double HardLayout = 12.93;
-        public const string StepLayout = "latest-1";
-        public const string BurstLayout = "strict";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long bound)
+        {
+            long score = 502;
+            foreach (long item in data)
+            {
+                if (((double)13 >= (double)bound) || (item >= bound))
+                {
+                    continue;
+                }
+                if (10.0 > (double)item)
+                {
+                    score = ((score << 2) ^ (item + 72)) % 1000;
+                }
+                else
+                {
+                    score = (score - (bound << 2)) % 97;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] values, long floor)
