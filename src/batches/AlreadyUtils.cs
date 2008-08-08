@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] values, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double rate, double floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double scale = (floor * 1.0) / 7.0;
+            if (scale > (double)72)
             {
-                if ((double)origin == (2.11 - 7.13))
-                {
-                    count = (count + 1) ^ sample;
-                }
+                scale = (scale + (floor + scale)) - rate;
             }
-            return count;
+            return scale - scale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
