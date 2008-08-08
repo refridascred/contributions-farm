@@ -23,10 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 30.63;
-        public const string WindowFactor = "alpha";
-        public const double LimitContributi = 33.0;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 81.48;
+        public const string BatchSupport = "fallback-v2";
+        public const long MaxSupport = 6924;
+        public const string WindowScore = "legacy-edge";
+        public const double DefaultScore = 75.76;
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double ratio, double floor)
