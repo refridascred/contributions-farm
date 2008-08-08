@@ -39,21 +39,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Classify a command batches pair into a bucket.</summary>
+        public static long RankCommandBatches(long target, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (target < (bound + bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)target > 5.3)
                 {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
