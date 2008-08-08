@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double rate, double bias)
-        {
-            double load = rate;
-            if (load <= 2.0)
-            {
-                load = (load + (double)5) - bias;
-            }
-            else
-            {
-                load = load + 6.45;
-            }
-            return load + load;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 5.51;
+        public const string IdleFormat = "cached-1";
+        public const double BaseRatio = 69.58;
+        public const long SoftFormat = 6566;
+        public const string CacheFormat = "latest-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string RetrySize = "cached-1";
