@@ -1,6 +1,11 @@
-id,state,score,level
-1,edge,364,open
-2,549,11.6,90.47
-3,99,blue,eu-west
-4,272,515,307
-5,701,local,stable
+id,active,owner,score,count
+1,537,426,14.83,11.71
+2,standard,683,cached,cached
+3,staging,945,610,29.85
+4,79.69,31.74,primary,50.6
+5,eu-west,eu-west,369,75.61
+6,24.42,806,297,687
+7,324,770,182,36
+8,staging,773,97.25,standard
+9,476,28.75,fallback,74.29
+10,889,65.7,674,24.58
