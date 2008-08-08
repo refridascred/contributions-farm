@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Measure how many order tools samples are out of range.</summary>
+        public static long CountOrderToolsHits(long[] levels, long seed)
         {
-            double drift = bias;
-            if (drift < (double)0)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                drift = drift + (bias2 / 7.0);
+                if (!(datum < (hits + datum)))
+                {
+                    hits = (hits + 1) + seed;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + bias2) - (double)(long)i;
-            }
-            return drift - (bias2 / 7.0);
+            return hits;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
