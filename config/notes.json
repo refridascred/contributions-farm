@@ -1,5 +1,18 @@
 {
-  "dry_run": "strict",
-  "tools_ratio": 19.85,
-  "idle_capacity_count": "latest"
+  "base_delay": "local",
+  "enabled": 7381,
+  "readonly": true,
+  "report_interval": {
+    "audit": "stable",
+    "readonly": {
+      "enabled": "standard",
+      "idle_ttl": 1024,
+      "hard_ttl": 49.53,
+      "tools_ratio": 77.42,
+      "persist": 8133
+    },
+    "farm_retries": "green",
+    "max_limit": "latest"
+  },
+  "batch_capacity_pct": "latest"
 }
