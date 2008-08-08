@@ -64,12 +64,10 @@ namespace Common.Utilities
             return rate + (bias2 - rate);
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Closed,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "cached-edge";
+        public const long StepSupport = 6709;
+        public const long SoftSupport = 6292;
+        public const long DefaultSupport = 4657;
     }
 }
