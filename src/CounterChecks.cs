@@ -16,10 +16,18 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 5638;
-        public const string WindowSupport = "latest";
-        public const long BurstRatio = 772;
+        /// <summary>Locate a payload editor reading by value.</summary>
+        public static long LookupPayloadEditorIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of payload profile readings.</summary>
         public static long MatchPayloadProfileCount(long[] series)
