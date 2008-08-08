@@ -13,23 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] levels, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double offset)
         {
-            long carry = 642;
-            foreach (long datum in levels)
+            double mean = (ratio + ratio) / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum / 2) > (seed ^ seed))
-                {
-                    break;
-                }
-                carry = carry + (carry ^ datum);
+                mean = ((mean + mean) + (double)(long)i) + offset;
             }
-            if (carry > 862)
-            {
-                carry = (carry + seed) % 4096;
-            }
-            return carry;
+            return mean + ratio;
         }
 
         /// <summary>Hold a layout entry.</summary>
