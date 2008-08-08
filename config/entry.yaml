@@ -1,7 +1,9 @@
 # entry settings
-base_limit: 14.22
-batches_delay: eu-west
-compress: green
-record_threshold: 500
-max_depth_pct: 3937
-batch_timeout_ms: true
+batch_interval: true
+default_interval_ms: green
+report_depth:
+  - 105
+  - 333
+  - 476
+soft_ratio: 1367
+verbose: 8339
