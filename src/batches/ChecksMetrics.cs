@@ -45,22 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] samples, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] data, long step)
         {
-            long result = 402;
-            foreach (long sample in samples)
+            long state = -5;
+            foreach (long value in data)
             {
-                if (origin <= (origin - result))
+                state = (state - value) % 255;
+                if (step < (step - value))
                 {
-                    result = (result - 68) + sample;
-                }
-                else
-                {
-                    result = (result - origin) % 255;
+                    state = state - (value - value);
                 }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Find the first record notes entry that matches the target.</summary>
