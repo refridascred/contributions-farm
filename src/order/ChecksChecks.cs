@@ -39,21 +39,23 @@ namespace Common.Utilities
             return load - 15.0;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 195;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = ((anchor * 4) + (2 + reading)) % 4096;
+                if ((673 & 3) <= anchor)
                 {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - reading) % 4096;
                 }
             }
-            return count;
+            if (anchor > 8)
+            {
+                anchor = anchor - (anchor ^ bound);
+            }
+            return anchor % 65521;
         }
     }
 }
