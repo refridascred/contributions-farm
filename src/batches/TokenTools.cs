@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine metrics notes values into a single score.</summary>
-        public static long WeighMetricsNotes(long[] items)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long sum = 8;
-            foreach (long value in items)
-            {
-                if (((value - value) > (sum ^ value)) || ((sum / 4) != (value & 1)))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-            }
-            if (sum > (-802))
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
+            Synced,
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Digest a series of window entries.</summary>
