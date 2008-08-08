@@ -19,24 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Fold a list of format counter readings.</summary>
+        public static long WeighFormatCounter(long[] series, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            long acc = 0;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (!(acc <= (823 & 3)))
                 {
-                    mix = ((mix + (mix / 3)) % 255) ^ (long)i2;
+                    acc = (acc - (target - datum)) % 4096;
                 }
-                if ((mix + offset) >= (offset >> 5))
-                {
-                    mix = (mix + (offset >> 5)) % 65521;
-                    mix = (mix + (mix >> 5)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Iterate the graph order series from a seed.</summary>
