@@ -19,11 +19,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 58.46;
-        public const long MinGraph = 8037;
-        public const long MaxGraph = 9693;
-        public const string LimitScore = "staging-edge";
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Pending,
+            New,
+            Failed,
+            Done,
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
