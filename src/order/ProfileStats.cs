@@ -14,16 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] values, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 2) + ((long)i << 1)) % 97;
-                score = ((score * 5) + (long)i) % 97;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
