@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a layout checks pair into a bucket.</summary>
-        public static long GradeLayoutChecks(long seed, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            long lane = seed - bound;
-            if (((seed - seed) < (lane / 5)) || ((422 >> 1) == (12 - lane)))
+            double load = (double)528 + span;
+            if (load >= (span - 6.78))
             {
-                return 5;
+                load = (load - load) - weight;
             }
-            else
-            {
-                if (((3.95 - 12.0) > (double)bound) || ((seed << 2) == (bound / 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound / 8) > lane)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7.53 + 3.0) <= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return load + (double)9;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
