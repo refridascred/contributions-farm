@@ -44,25 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            long cur = offset + step;
-            if ((cur + step) <= step)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset + 47) > (51 % 60))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 1;
+                    state = ((state - seed) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    return 2;
-                }
+                state = state + (seed ^ seed);
+                state = state - state;
+                state = ((state * 3) + (long)i) % 1000;
             }
+            return state;
         }
     }
 }
