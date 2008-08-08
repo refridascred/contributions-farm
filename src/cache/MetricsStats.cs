@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long limit)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            if (((-28) + step) == (step + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 3) >= (limit + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - limit) >= (step >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Queued,
         }
 
         /// <summary>Fold a list of report readings.</summary>
