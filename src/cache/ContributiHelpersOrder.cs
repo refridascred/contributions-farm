@@ -31,18 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long TallyClusterGithubfarmOutliers(long[] data, long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!((double)seed <= 19.0))
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            New,
+            Locked,
+            Ready,
+            Paused,
         }
     }
 }
