@@ -37,22 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate session account samples.</summary>
-        public static long TallySessionAccount(long[] values)
+        /// <summary>Measure how many context checks samples are out of range.</summary>
+        public static long TallyContextChecksOutliers(long[] data, long limit)
         {
-            long mark = 58;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!((mark & 63) >= mark))
+                if (8 < (seen & 1))
                 {
-                    mark = (mark ^ (mark << 3)) - reading;
+                    seen = ((seen + 3) - sample) + limit;
                 }
             }
-            if (mark > 9)
-            {
-                mark = ((mark * 5) + (2 << 2)) % 101;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
