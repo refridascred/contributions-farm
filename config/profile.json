@@ -1,5 +1,7 @@
 {
-  "cache_limit": "latest",
-  "readonly": 43,
-  "default_threshold": 66
+  "strict": 30,
+  "poll_capacity_s": true,
+  "warm_limit_pct": 1024,
+  "min_delay_ms": 3919,
+  "batch_delay": "stable"
 }
