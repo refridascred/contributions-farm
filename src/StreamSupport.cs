@@ -12,12 +12,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the format record entries that pass the check.</summary>
