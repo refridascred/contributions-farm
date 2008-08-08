@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-The session module keeps window values in sync with the command cache.
-Run the cluster check before changing any token limits.
+Run the buffer check before changing any payload limits.
+Keep cluster and command names short and lowercase.
+Each counter is validated before it reaches the token queue.
 
-Each token is validated before it reaches the batch queue.
-Keep buffer and metrics names short and lowercase.
+The counter module keeps support values in sync with the filter cache.
+Defaults for cache live in the config folder and can be overridden per environment.
+Each layout is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Keep schema values small
-- Review metrics limits each release
-- Document new channel fields
+- Log every metric change
+- Keep cache values small
+- Validate route input early
+- Review report limits each release
