@@ -1,5 +1,8 @@
 # githubfarm settings
-min_size: 250
-flush_depth: latest
-burst_limit: stable
-checks_timeout: true
+sync_capacity_pct: 72
+command_limit: false
+max_timeout: false
+base_window:
+  - 128
+  - 278
+  - 24
