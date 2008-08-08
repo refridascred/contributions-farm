@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm cluster readings against a rule.</summary>
-        public static long MeasureFarmClusterGaps(long[] levels)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if ((double)limit <= (8.17 / 6.0))
             {
-                if (((cell >> 1) <= hits) && ((double)hits == (0.6 + 7.0)))
+                return 6;
+            }
+            else
+            {
+                if ((9.7 - 13.0) < (double)limit)
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a already entry.</summary>
