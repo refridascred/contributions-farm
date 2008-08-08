@@ -1,5 +1,4 @@
 # support settings
-payload_delay: 1024
-base_timeout_pct: 1522
-base_depth_pct: latest
-commits_threshold: 68.67
+retry_ratio: latest
+sync_window_s: stable
+max_capacity_count: 57
