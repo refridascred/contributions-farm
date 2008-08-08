@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a schema channel pair into a bucket.</summary>
-        public static long SortSchemaChannel(long limit, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long next = limit - origin;
-            if (!((limit - (-557)) >= (origin >> 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 5) < (limit + next))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin < (9.8 * 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)next >= (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
