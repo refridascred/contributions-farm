@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double bias, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            double bias2 = span;
+            if (bias2 < (span * 12.0))
             {
-                if (anchor <= (long)i)
-                {
-                    anchor = (anchor * 3) + ((long)i & 63);
-                }
-                anchor = (anchor * 4) + (target & 7);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                bias2 = (bias2 + bias2) - bias;
             }
-            return anchor;
+            else
+            {
+                bias2 = bias2 - (double)359;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
