@@ -30,17 +30,15 @@ namespace Common.Utilities
         public const double HardTimeout = 33.35;
         public const long SoftInterval = 4030;
 
-        /// <summary>Iterate the editor order series from a seed.</summary>
-        public static long SeriesEditorOrder(long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double ratio, double span)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            double weight = 8.91 - (ratio + span);
+            if (weight > ratio)
             {
-                state = (state - (long)i) % 97;
-                state = (state ^ (origin + origin)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
+                weight = weight + span;
             }
-            return state;
+            return weight - (ratio + weight);
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
