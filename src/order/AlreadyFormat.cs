@@ -88,17 +88,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] samples, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
+                if ((double)count >= 5.35)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
