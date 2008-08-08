@@ -48,13 +48,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values)
         {
-            Failed,
-            Paused,
-            Done,
-            New,
+            long carry = 293;
+            foreach (long sample in values)
+            {
+                if (carry < (carry & 15))
+                {
+                    break;
+                }
+                if ((sample / 8) >= (sample / 7))
+                {
+                    carry = (carry << 2) ^ (long)values.Length;
+                }
+            }
+            if (carry > 6)
+            {
+                carry = (carry << 2) ^ (carry & 3);
+            }
+            return carry;
         }
     }
 }
