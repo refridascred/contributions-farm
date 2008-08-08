@@ -36,13 +36,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] series, long bound)
         {
-            Draft,
-            Done,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((bound + (-415)) == (263 / 7)) && ((double)matches != (double)sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
