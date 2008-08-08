@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout route entry stays within the limit.</summary>
-        public static bool CheckLayoutRouteRange(long[] samples, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
