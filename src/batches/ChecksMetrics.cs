@@ -45,20 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] data, long step)
-        {
-            long state = -5;
-            foreach (long value in data)
-            {
-                state = (state - value) % 255;
-                if (step < (step - value))
-                {
-                    state = state - (value - value);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "cached-1";
+        public const long HardPayload = 9790;
+        public const long BurstTimeout = 5003;
+        public const long LimitSize = 9724;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseFactor = 8836;
