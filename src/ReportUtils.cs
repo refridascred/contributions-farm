@@ -31,25 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long seed, long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long gap = seed + origin;
-            if (origin > 199)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin > (gap - origin)) || ((2.1 - 1.2) >= (double)gap))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
