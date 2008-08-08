@@ -29,15 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] values, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double scale, double offset)
         {
-            long result = 904;
-            foreach (long item in values)
+            double load = offset / 7.0;
+            if (load > load)
             {
-                result = (((result - (925 - result)) % 101) - item) - origin;
+                load = (load + (double)4) + scale;
             }
-            return result;
+            else
+            {
+                load = load - offset;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a checks info.</summary>
