@@ -15,12 +15,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long seed, long origin)
         {
-            Idle,
-            Dropped,
-            Synced,
+            long gap = seed + origin;
+            if (origin > 199)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin > (gap - origin)) || ((2.1 - 1.2) >= (double)gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many window route samples are out of range.</summary>
