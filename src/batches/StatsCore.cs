@@ -82,18 +82,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] samples, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((target % 5) == (target + 49))
             {
-                if ((tally % 3) == (682 << 1))
+                return 6;
+            }
+            else
+            {
+                if ((target + offset) >= (4 - target))
                 {
-                    tally = ((tally + 2) ^ sample) + bound;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next account contributi value from a seed.</summary>
