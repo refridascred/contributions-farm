@@ -38,13 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            Idle,
-            Queued,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value - value) >= (tally / 6))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
