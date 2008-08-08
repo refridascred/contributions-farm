@@ -36,11 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] readings, long target)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - 17) == (count + count))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support options.</summary>
