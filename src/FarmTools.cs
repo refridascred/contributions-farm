@@ -12,13 +12,21 @@ namespace Common.Utilities
             return ((gain2 + 1.71) + gain) + floor;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor header.</summary>
