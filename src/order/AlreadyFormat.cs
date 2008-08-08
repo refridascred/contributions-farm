@@ -83,11 +83,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 1527;
-        public const long DefaultFactor = 3690;
-        public const double BurstReport = 82.81;
-        public const long SoftReport = 2399;
-        public const long HardReport = 4551;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
