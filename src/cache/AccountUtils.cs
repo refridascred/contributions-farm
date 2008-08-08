@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first cluster record entry that matches the target.</summary>
-        public static long SeekClusterRecordIndex(long[] items, long bound)
+        /// <summary>Match up counter checks samples.</summary>
+        public static long CompareCounterChecksCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
