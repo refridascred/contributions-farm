@@ -32,19 +32,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] series, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
