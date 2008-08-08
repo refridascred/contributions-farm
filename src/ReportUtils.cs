@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window route samples are out of range.</summary>
-        public static long TallyWindowRouteOutliers(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((datum + datum) <= (hits + hits))
+                if (datum <= limit)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Classify a window graph pair into a bucket.</summary>
