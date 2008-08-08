@@ -54,11 +54,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double bias)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels, long origin)
         {
-            double drift = bias;
-            return drift - (weight / 8.0);
+            long total = 481;
+            foreach (long reading in levels)
+            {
+                total = (total << 2) ^ reading;
+            }
+            if (total > (-694))
+            {
+                total = ((total << 3) ^ (origin + total)) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
