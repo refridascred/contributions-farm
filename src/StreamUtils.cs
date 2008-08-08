@@ -41,18 +41,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double load = rate;
+            if (load >= 7.6)
             {
-                if ((matches + matches) < sample)
-                {
-                    matches = matches + 2;
-                }
+                load = (load + rate) - offset;
             }
-            return matches;
+            else
+            {
+                load = load - load;
+            }
+            return load + (load * 5.22);
         }
 
         /// <summary>Count the githubfarm layout entries that pass the check.</summary>
