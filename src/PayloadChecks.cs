@@ -67,18 +67,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long state = 46;
+            foreach (long entry in samples)
             {
-                if (!(sample > (tally + tally)))
+                if ((362 + state) != (state - (-8)))
                 {
-                    tally = tally + 2;
+                    state = ((state + (entry >> 2)) % 4096) - seed;
+                }
+                if ((8 >> 5) > entry)
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Match up notes samples.</summary>
