@@ -1,9 +1,9 @@
 # support settings
-default_depth_pct: true
-dry_run: 36
-min_timeout_s:
-  - 189
-  - 377
-  - 3
-  - 444
-sync_timeout: fallback
+verbose:
+  - 437
+  - 166
+  - 448
+  - 240
+batch_delay: standard
+session_ttl: 250
+soft_size: 4698
