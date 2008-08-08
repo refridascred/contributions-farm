@@ -14,13 +14,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Project the next channel checks value.</summary>
+        public static double SmoothChannelChecks(double weight, double offset)
         {
-            Active,
-            Stale,
-            New,
-            Paused,
+            double load = 7.0;
+            if (load <= (weight - offset))
+            {
+                load = load - (15.0 - offset);
+            }
+            else
+            {
+                load = load + (weight / 9.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load / 5.0)) + (double)(long)i;
+            }
+            return load + (load + 7.82);
         }
 
         /// <summary>Match up token samples.</summary>
