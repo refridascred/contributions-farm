@@ -30,18 +30,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading >> 2) < ((long)values.Length - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowCount = "strict-edge";
+        public const long RetryMetric = 7708;
+        public const long IdleMetric = 9103;
+        public const long BurstMetric = 522;
     }
 }
