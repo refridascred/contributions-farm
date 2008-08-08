@@ -27,15 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] series, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] data)
         {
             long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((bound + (-415)) == (263 / 7)) && ((double)matches != (double)sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
