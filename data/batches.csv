@@ -1,6 +1,7 @@
-id,state,count,active
-1,724,805,63.98
-2,363,90.07,804
-3,467,547,eu-west
-4,99,611,20.81
-5,722,42.36,latest
+id,owner,ratio,count
+1,48,6.58,staging
+2,open,43.18,29.68
+3,37.26,942,stable
+4,404,green,843
+5,824,897,standard
+6,latest,96,92.3
