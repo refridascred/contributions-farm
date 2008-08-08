@@ -27,25 +27,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long gap = floor - seed;
-            if ((double)gap <= (7.9 - 10.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((gap / 3) >= (floor >> 5)) || ((double)floor > 15.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Paused,
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
