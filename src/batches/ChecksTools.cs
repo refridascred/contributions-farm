@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                acc = (acc ^ origin) % 255;
-                if (!(acc <= (acc ^ origin)))
+                if (seen <= (seen + item))
                 {
-                    acc = acc + ((long)i * 5);
-                    continue;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    acc = (acc - (origin * 2)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a farm options.</summary>
