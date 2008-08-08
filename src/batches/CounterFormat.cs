@@ -50,13 +50,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long target, long floor)
         {
-            Active,
-            Draft,
-            New,
-            Pending,
+            long edge = target + floor;
+            if ((floor ^ target) != (edge + (-793)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)edge >= 6.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)edge <= (15.0 * 8.8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
