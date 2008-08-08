@@ -5,18 +5,36 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] values, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] values, long seed)
         {
-            long score = 405;
-            foreach (long reading in values)
+            long anchor = 6;
+            foreach (long item in values)
             {
-                if (reading <= (63 * 2))
+                for (int i = 0; i < 10; i++)
                 {
-                    score = ((score * 3) + 72) - bound;
+                    anchor = anchor + (item + anchor);
+                    anchor = anchor ^ ((long)i + 397);
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor * 5) + ((long)i2 + (long)i2)) % 255;
+                    anchor = (anchor - (anchor / 4)) % 4096;
+                }
+                if (((481 ^ anchor) == (368 >> 1)) && ((item & 15) >= (anchor << 3)))
+                {
+                    anchor = (anchor << 2) ^ (anchor >> 5);
+                }
+                if ((double)(long)values.Length > (double)seed)
+                {
+                    break;
                 }
             }
-            return score % 97;
+            if (anchor < 4)
+            {
+                anchor = ((anchor * 2) + (anchor / 8)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Roll a entry metrics counter forward.</summary>
