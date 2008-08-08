@@ -68,19 +68,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] items, long target)
         {
-            long acc = 618;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                acc = (acc * 5) + acc;
-                if ((acc << 2) < value)
+                if ((target - hits) >= (sample + 6))
                 {
-                    acc = ((acc << 3) ^ value) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return acc % 97;
+            return hits;
         }
     }
 }
