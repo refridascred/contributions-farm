@@ -29,11 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 5085;
-        public const double LimitContributi = 1.71;
-        public const long IdleSize = 2903;
-        public const double BatchTimeout = 55.79;
-        public const long CacheContributi = 1296;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
