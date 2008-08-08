@@ -20,10 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryLevel = 65;
-        public const double BaseRatio = 85.61;
-        public const long IdleScore = 2971;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Retry,
+            Queued,
+            Dropped,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
