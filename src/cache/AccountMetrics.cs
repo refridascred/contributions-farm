@@ -77,10 +77,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepSpan = 1474;
-        public const string RetryBudget = "legacy-v2";
-        public const string WindowWidth = "standard-v2";
-        public const long HardAlready = 2590;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
