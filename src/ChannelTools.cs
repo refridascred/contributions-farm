@@ -22,15 +22,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Adjust a profile entry reading.</summary>
+        public static double ScaleProfileEntry(double bias, double floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            double rate = floor;
+            if (rate < bias)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                rate = rate - floor;
             }
-            return mark;
+            else
+            {
+                rate = rate + (bias - rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (double)21) - (double)(long)i;
+            }
+            return rate - (bias * 0.21);
         }
     }
 }
