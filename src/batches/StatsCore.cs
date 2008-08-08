@@ -39,24 +39,17 @@ namespace Common.Utilities
             return rate2 + (floor + floor);
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Locate a farm batch reading by value.</summary>
+        public static long LookupFarmBatchIndex(long[] items, long limit)
         {
-            if ((target % 5) == (target + 49))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + offset) >= (4 - target))
+                if (items[i] >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
