@@ -51,26 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series)
-        {
-            long mark = 561;
-            foreach (long sample in series)
-            {
-                if ((((-6) + sample) == (sample >> 1)) && ((mark << 2) == (sample % 3)))
-                {
-                    mark = mark - (sample + 98);
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 65521;
-                }
-            }
-            if (mark > (-89))
-            {
-                mark = (mark * 5) + (60 / 6);
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 2998;
+        public const long RetryFarm = 6162;
+        public const long HardCount = 5120;
+        public const long BaseFarm = 7758;
     }
 }
