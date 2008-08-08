@@ -55,10 +55,12 @@ namespace Common.Utilities
         public const long RetryToken = 7714;
         public const string HardToken = "primary";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "fallback-edge";
-        public const double WindowBatch = 13.23;
-        public const long BurstBatch = 7641;
-        public const long LimitBatch = 5130;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Failed,
+            Queued,
+            Done,
+        }
     }
 }
