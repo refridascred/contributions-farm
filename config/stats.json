@@ -1,8 +1,6 @@
 {
-  "idle_ttl": [338, 382],
-  "poll_size_ms": true,
-  "filter_limit": 100,
-  "base_window": 26.32,
-  "retry_delay_s": 3739,
-  "contributi_timeout": "blue"
+  "base_timeout_s": "local",
+  "enabled": 27,
+  "cache_ttl_count": 500,
+  "warm_limit_ms": 6494
 }
