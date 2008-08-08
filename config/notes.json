@@ -1,8 +1,7 @@
 {
-  "enabled": 85.3,
-  "persist": 100,
-  "sync_depth_pct": "eu-west",
-  "idle_window_count": 46.05,
-  "hard_delay_ms": 78,
-  "burst_capacity": 5.44
+  "min_retries_pct": 30,
+  "queue_ratio": ["stable", "stable"],
+  "retry_timeout_ms": [247, 356, 462, 115],
+  "context_capacity": 57.73,
+  "sync_ttl_ms": 1024
 }
