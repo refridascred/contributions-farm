@@ -33,22 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((value - value) >= (value + tally)) && (tally >= (tally / 3)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
