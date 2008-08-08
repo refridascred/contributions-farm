@@ -2,10 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    score REAL NOT NULL DEFAULT 0,
-    token TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    created_at TIMESTAMP,
+    active INTEGER NOT NULL DEFAULT 1,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
+
+INSERT INTO commits_records (ratio, active, token) VALUES (45.85, 88, 'stable');
+INSERT INTO commits_records (ratio, active, token) VALUES (18.5, 67, 'fallback');
+INSERT INTO commits_records (ratio, active, token) VALUES (80.83, 62, 'fallback');
