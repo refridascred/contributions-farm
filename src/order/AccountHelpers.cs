@@ -43,11 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinScore = "primary-edge";
-        public const long LimitSize = 4868;
-        public const long HardBuffer = 9619;
-        public const string IdleInterval = "alpha-v2";
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((limit >> 2) == (limit + score)) && ((4 + (long)i) >= score))
+                {
+                    score = (score << 3) ^ (score + score);
+                }
+                score = ((score * 4) + 577) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmBounds(long[] items, long step)
