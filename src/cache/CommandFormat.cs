@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] samples, long step)
         {
-            long carry = 553;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (0 < (target + datum))
+                if ((((item >> 4) <= (54 ^ count)) && ((step - count) > (-1))) && ((double)item >= (double)count))
                 {
-                    carry = (carry + (carry / 8)) % 65521;
+                    count = count + 3;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
