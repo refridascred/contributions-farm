@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many order tools samples are out of range.</summary>
-        public static long CountOrderToolsHits(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!(datum < (hits + datum)))
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 7639;
+        public const double WindowCommits = 44.38;
+        public const double HardSpan = 6.13;
+        public const string HardCount = "stable";
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueBounds(long[] readings, long bound)
