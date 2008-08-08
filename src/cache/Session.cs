@@ -24,22 +24,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] levels, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long floor)
         {
-            long sum = 709;
-            foreach (long sample in levels)
+            long bound = origin + floor;
+            if ((origin + (-7)) > (bound >> 3))
             {
-                if (sample <= (sum ^ 28))
+                return 7;
+            }
+            else
+            {
+                if ((0.4 < (double)origin) && ((floor << 1) < (bound + floor)))
                 {
-                    sum = sum - origin;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (sum < (-43))
-            {
-                sum = ((sum * 4) + origin) % 255;
-            }
-            return sum;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
