@@ -20,13 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Retry,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 3515;
+        public const string StepAccount = "legacy-1";
+        public const long MaxAccount = 8448;
+        public const long CacheAccount = 7511;
+        public const long RetryAccount = 6271;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
