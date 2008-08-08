@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long MaxGraph = 9693;
         public const string LimitScore = "staging-edge";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] readings, long origin)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((0 + origin) >= (676 << 3))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
