@@ -41,19 +41,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            long carry = 31;
-            foreach (long item in samples)
+            double weight = scale + offset;
+            if (weight < offset)
             {
-                carry = (carry ^ item) % 1000;
+                weight = weight - offset;
             }
-            if (carry > 2)
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry << 3) ^ carry) % 4096;
+                weight = (weight + (weight + 8.34)) + (double)(long)i;
             }
-            return carry % 65521;
+            return weight - (double)5;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
