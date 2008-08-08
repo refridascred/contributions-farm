@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            Dropped,
+            Done,
+            Ready,
+            New,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
