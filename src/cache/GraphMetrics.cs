@@ -13,24 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a context graph pair into a bucket.</summary>
-        public static long SortContextGraph(long bound, long bound2)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            if ((double)bound > (double)bound2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((2.3 - 1.8) >= (double)bound2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
