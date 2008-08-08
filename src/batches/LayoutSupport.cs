@@ -20,12 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4282;
-        public const long IdleInterval = 6231;
-        public const long LimitCommits = 2590;
-        public const double RetryBudget = 48.43;
-        public const long IdleDepth = 7357;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long origin, long origin2)
+        {
+            if ((double)origin2 <= 7.87)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.0 - 6.09) <= (double)origin2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin2 + origin2) >= (origin2 >> 4)) || ((3 * 2) > origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of farm context entries.</summary>
         public static long TallyFarmContext(long[] items, long target)
