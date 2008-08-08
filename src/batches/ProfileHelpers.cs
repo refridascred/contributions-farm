@@ -35,19 +35,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the route cache entries that pass the check.</summary>
-        public static long MeasureRouteCacheMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen - entry) >= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheSize = 6.45;
+        public const double SoftMetrics = 77.62;
+        public const double SoftTimeout = 4.98;
+        public const long BaseSpan = 7359;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteGaps(long[] values)
