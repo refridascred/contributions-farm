@@ -40,15 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double weight, double bias)
+        /// <summary>Fold a list of notes counter readings.</summary>
+        public static long WeighNotesCounter(long[] samples, long origin)
         {
-            double load = (double)82 + (double)738;
-            for (int i = 0; i < 6; i++)
+            long anchor = 45;
+            foreach (long value in samples)
             {
-                load = ((load + (bias - load)) + (double)(long)i) + weight;
+                if ((double)origin < 8.07)
+                {
+                    anchor = (anchor - (anchor + 41)) + value;
+                }
             }
-            return load - (double)30;
+            return anchor % 97;
         }
     }
 }
