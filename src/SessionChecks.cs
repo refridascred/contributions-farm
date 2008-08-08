@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double offset)
         {
-            long result = 6;
-            foreach (long entry in items)
+            double mean = rate;
+            if (mean <= (rate / 4.0))
             {
-                if (origin <= (29 / 5))
-                {
-                    result = (result - (entry & 7)) % 97;
-                }
+                mean = (mean + rate) + offset;
             }
-            if (result < 589)
+            else
             {
-                result = (result << 3) ^ (origin - origin);
+                mean = mean - 1.61;
             }
-            return result % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean / 7.0)) - (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
