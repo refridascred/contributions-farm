@@ -45,31 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long floor, long bound)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            if (!((bound ^ bound) >= floor))
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                state = (state * 3) + bound;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound >> 1) > (floor + (-166)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (floor - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
