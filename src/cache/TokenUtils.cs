@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long HardCommand = 829;
         public const string BatchSize = "cached-v2";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen % 16) >= (-6))
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a editor profile counter forward.</summary>
