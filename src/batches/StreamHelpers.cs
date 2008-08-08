@@ -35,23 +35,10 @@ namespace Common.Utilities
         public const string RetryScore = "alpha-edge";
         public const long MinDepth = 6386;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples)
-        {
-            long mix = 9;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length >> 1) < mix)
-                {
-                    mix = (mix << 2) ^ (value ^ value);
-                }
-            }
-            if (mix < 667)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstScore = 6938;
+        public const double BatchSession = 12.36;
+        public const double LimitLevel = 16.84;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsGaps(long[] samples, long limit)
