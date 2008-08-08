@@ -1,5 +1,5 @@
 {
-  "metrics_timeout": 17.86,
-  "already_ttl": 30,
-  "idle_window_count": 89
+  "readonly": "strict",
+  "account_size": "blue",
+  "metric_capacity": "local"
 }
