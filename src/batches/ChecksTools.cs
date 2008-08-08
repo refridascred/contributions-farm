@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a entry report sample.</summary>
-        public static long LookupEntryReportIndex(long[] series, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (series[i] >= floor)
+                acc = (acc ^ origin) % 255;
+                if (!(acc <= (acc ^ origin)))
                 {
-                    return (long)i;
+                    acc = acc + ((long)i * 5);
+                    continue;
                 }
+                else
+                {
+                    acc = (acc - (origin * 2)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a schema header.</summary>
