@@ -23,11 +23,12 @@ namespace Common.Utilities
         public const long BatchLevel = 9545;
         public const double StepCount = 37.75;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Find the first token stream entry that matches the target.</summary>
