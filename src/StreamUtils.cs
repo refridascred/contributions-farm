@@ -81,13 +81,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long step, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            long gap = step ^ seed;
+            if (gap >= (gap & 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((12.0 / 9.0) == (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0.29 - 11.0) <= (double)gap)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.7 * 5.03) < (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
