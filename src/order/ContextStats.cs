@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples, long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long step)
         {
-            long acc = 899;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 3) + (cell ^ cell)) - origin;
-                acc = (acc - (1 + cell)) % 255;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 8)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
