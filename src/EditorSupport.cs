@@ -55,17 +55,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryBudget = 2714;
+        public const double BatchInterval = 87.13;
+        public const double CacheTools = 20.73;
+        public const string CacheSpan = "standard-1";
+        public const long BurstSize = 4833;
     }
 }
