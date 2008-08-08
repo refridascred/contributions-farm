@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] data, long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)tally < (5.4 / 5.0))
-                {
-                    tally = ((tally + 2) + datum) - step;
-                }
-            }
-            return tally;
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Fold a list of format counter readings.</summary>
