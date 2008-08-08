@@ -40,12 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            New,
-            Paused,
-            Synced,
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
