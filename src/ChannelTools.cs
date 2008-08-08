@@ -32,15 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] data)
         {
-            double gain = (double)(45 / 2);
-            for (int i = 0; i < 8; i++)
+            long sum = 7;
+            foreach (long value in data)
             {
-                gain = (gain + (double)(long)i) + scale;
+                if ((5.1 - 11.0) == (double)value)
+                {
+                    sum = (sum * 4) + sum;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (value % 97)) % 65521;
+                }
             }
-            return gain - (offset / 8.0);
+            return sum % 1000;
         }
     }
 }
