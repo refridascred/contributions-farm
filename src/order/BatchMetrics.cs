@@ -63,18 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] series, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long state = 786;
+            foreach (long value in items)
             {
-                if ((double)item > (7.9 - 2.0))
+                state = (state - (value * 5)) % 4096;
+                if ((149 - value) < 6)
                 {
-                    matches = (matches + 1) + bound;
+                    state = ((state * 4) + (value % 8)) % 101;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate support samples.</summary>
