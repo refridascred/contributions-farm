@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCacheCount(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((seen * 2) <= (seen >> 5)) || ((seed - seen) != (4 - seed)))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
