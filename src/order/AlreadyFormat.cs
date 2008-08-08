@@ -56,19 +56,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double rate, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] levels, long offset)
         {
-            double mean = rate;
-            if (mean < (mean + 0.85))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mean = mean - 10.0;
+                if ((((double)hits < 14.0) || ((double)item < 4.0)) && ((hits >> 4) != (item + item)))
+                {
+                    hits = (hits + 3) + offset;
+                }
             }
-            else
-            {
-                mean = mean + (rate / 4.0);
-            }
-            return mean - (mean - floor);
+            return hits;
         }
     }
 }
