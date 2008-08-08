@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score - (target + (long)i)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Ready,
+            New,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Combine record values into a single score.</summary>
