@@ -1,18 +1,12 @@
 {
-  "default_ttl": 57.51,
-  "githubfarm_interval": {
-    "support_capacity": 46,
-    "batch_interval": 1024,
-    "session_timeout": {
-      "burst_size_count": "fallback",
-      "command_threshold": "open",
-      "compress": ["fallback", "cached", "standard", "eu-west"],
-      "enabled": ["strict", "legacy", "staging"]
-    },
-    "compress": true,
-    "editor_timeout": false
+  "persist": {
+    "base_retries_count": 45,
+    "max_depth_s": "edge",
+    "token_depth": "eu-west",
+    "audit": 1299
   },
-  "burst_ttl": "edge",
-  "readonly": "strict",
-  "warm_interval_ms": "green"
+  "compress": false,
+  "soft_limit_s": true,
+  "max_capacity": false,
+  "flush_depth": 47.32
 }
