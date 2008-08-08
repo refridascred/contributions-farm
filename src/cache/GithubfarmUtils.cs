@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long floor2)
-        {
-            long gap = floor + floor2;
-            if ((floor / 4) > (2 + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)gap < (9.0 / 3.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)gap <= (16.0 / 7.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2828;
+        public const string MaxSpan = "staging";
+        public const long MinScore = 3660;
+        public const long IdleRatio = 8688;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] readings)
