@@ -31,19 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] readings, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (sample != target)
+                if (((step / 6) > (tally % 64)) || !((6 * 2) == (step >> 1)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
