@@ -48,19 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a editor stream reading.</summary>
-        public static double ScaleEditorStream(double rate, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] series, long bound)
         {
-            double mean = (rate * 8.93) * 9.0;
-            if (mean >= rate)
+            long matches = 0;
+            foreach (long item in series)
             {
-                mean = (mean - mean) - span;
+                if ((double)item > (7.9 - 2.0))
+                {
+                    matches = (matches + 1) + bound;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + (mean - 4.0);
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
