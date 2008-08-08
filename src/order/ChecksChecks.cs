@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double span)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] series, long seed)
         {
-            double gain = 1.0;
-            if (gain > span)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                gain = (gain + gain) - ratio;
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain / 7.0)) + (double)(long)i;
-            }
-            return gain - (gain - 6.0);
+            return stale;
         }
     }
 }
