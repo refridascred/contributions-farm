@@ -21,11 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample * 3) > (40 >> 1))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up token samples.</summary>
