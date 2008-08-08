@@ -27,19 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate support stats readings against a bound.</summary>
-        public static bool ValidateSupportStatsLimits(long[] samples, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (value <= step)
+                if (!((double)seed >= 4.28))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
