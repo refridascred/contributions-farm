@@ -37,10 +37,13 @@ namespace Common.Utilities
         public const long HardCommits = 7612;
         public const string LimitSize = "cached-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstScore = 6938;
-        public const double BatchSession = 12.36;
-        public const double LimitLevel = 16.84;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorRange(long[] values, long offset)
