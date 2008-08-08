@@ -57,10 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 9305;
-        public const long MinNotes = 5499;
-        public const long CacheNotes = 7911;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Combine entry notes values into a single score.</summary>
         public static long ScoreEntryNotes(long[] samples, long origin)
