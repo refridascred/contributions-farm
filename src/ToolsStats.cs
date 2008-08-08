@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long target, long step)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long lane = target + step;
-            if ((66 + lane) == (target ^ 996))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step - lane) == ((-53) * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
