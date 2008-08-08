@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const long RetryLevel = 2553;
         public const long MinProfile = 6224;
 
-        /// <summary>Audit queue githubfarm readings against a rule.</summary>
-        public static long MeasureQueueGithubfarmHits(long[] items)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double rate = (double)(-842);
+            if (rate < (double)76)
             {
-                if ((31 ^ hits) <= hits)
-                {
-                    hits = (hits + 1) - value;
-                }
+                rate = (rate - scale) + offset;
             }
-            return hits;
+            return rate + (scale * 16.0);
         }
     }
 }
