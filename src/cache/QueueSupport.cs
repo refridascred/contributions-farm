@@ -33,9 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "primary-edge";
-        public const long WindowCluster = 1375;
-        public const double DefaultTimeout = 46.55;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+        }
     }
 }
