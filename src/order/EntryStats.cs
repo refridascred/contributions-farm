@@ -33,18 +33,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit record metrics readings against a rule.</summary>
-        public static long TallyRecordMetricsHits(long[] levels)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - seen) < seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
