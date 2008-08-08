@@ -49,15 +49,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] data, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] data)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long reading in data)
             {
-                if (!((matches - origin) <= (origin + matches)) && !(origin <= (809 * 4)))
+                if ((matches >> 1) <= (reading + matches))
                 {
-                    matches = (matches + 3) - sample;
+                    matches = matches + 1;
                 }
             }
             return matches;
