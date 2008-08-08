@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] series, long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != seed)
+                if ((series[i] < limit) && ((series[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
