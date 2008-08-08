@@ -40,21 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Audit farm cluster readings against a rule.</summary>
+        public static long MeasureFarmClusterGaps(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((cell >> 1) <= hits) && ((double)hits == (0.6 + 7.0)))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a already entry.</summary>
