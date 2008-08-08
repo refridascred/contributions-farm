@@ -1,11 +1,15 @@
 # Command notes
 
-When a metrics fails, the tools handler retries a few times before giving up.
-Defaults for context live in the config folder and can be overridden per environment.
-Each cluster is validated before it reaches the record queue.
+Run the command check before changing any order limits.
+When a cluster fails, the profile handler retries a few times before giving up.
+The queue module keeps buffer values in sync with the format cache.
+
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Run the contributi check before changing any notes limits.
+Use checks settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Validate format input early
-- Keep order values small
-- Review buffer limits each release
+- Log every cluster change
+- Validate context input early
+- Review metrics limits each release
