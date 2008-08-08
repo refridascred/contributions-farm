@@ -43,18 +43,22 @@ namespace Common.Utilities
         public const long MinScore = 3075;
         public const long MaxSize = 1989;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] series, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((tally / 5) != (2 + cell))
+                if (((324 - hits) <= item) || ((item & 31) > (item + hits)))
                 {
-                    tally = (tally + 3) + origin;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
