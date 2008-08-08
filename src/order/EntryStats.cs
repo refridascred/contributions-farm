@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Compare every pair of already filter readings.</summary>
+        public static long OverlapAlreadyFilterCount(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of format readings.</summary>
