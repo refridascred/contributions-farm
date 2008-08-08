@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate stream format samples.</summary>
+        public static long DigestStreamFormat(long[] values, long target)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long mix = 24;
+            foreach (long entry in values)
+            {
+                if (((double)mix <= (5.0 * 2.3)) && ((target << 2) != (entry - mix)))
+                {
+                    mix = ((mix * 4) + entry) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
