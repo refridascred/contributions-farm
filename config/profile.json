@@ -1,5 +1,6 @@
 {
-  "compress": "open",
-  "githubfarm_limit": true,
-  "batch_window_ms": "latest"
+  "support_timeout": false,
+  "filter_size": ["stable", "staging", "local", "primary"],
+  "retry_threshold": "green",
+  "poll_delay_pct": "blue"
 }
