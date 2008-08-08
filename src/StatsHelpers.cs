@@ -20,12 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 3515;
-        public const string StepAccount = "legacy-1";
-        public const long MaxAccount = 8448;
-        public const long CacheAccount = 7511;
-        public const long RetryAccount = 6271;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftInterval = 995;
+        public const long RetryCache = 4605;
+        public const long SoftBudget = 2864;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
