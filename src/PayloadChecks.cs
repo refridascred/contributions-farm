@@ -19,15 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Paused,
-            Done,
-            Ready,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "local-v2";
+        public const long RetryGithubfarm = 5948;
+        public const double BatchScore = 17.27;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] values, long bound)
