@@ -35,17 +35,15 @@ namespace Common.Utilities
             return load - (rate / 9.0);
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] series, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((series[i] > target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
