@@ -28,11 +28,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a report schema reading.</summary>
-        public static double BlendReportSchema(double rate, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            double mean = (double)(27 % 8);
-            return (mean + (offset * 4.1)) + rate;
+            long score = -626;
+            foreach (long entry in samples)
+            {
+                if (entry <= (entry % 3))
+                {
+                    score = (score - (entry << 2)) % 1000;
+                }
+            }
+            return score % 97;
         }
     }
 }
