@@ -20,12 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Adjust a stats report reading.</summary>
+        public static double ProjectStatsReport(double rate, double offset)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            double bias = rate;
+            if (bias > (offset - rate))
+            {
+                bias = bias + offset;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (double)61) + (double)(long)i;
+            }
+            return bias - (double)509;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
