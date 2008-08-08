@@ -44,18 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the farm metrics entries that pass the check.</summary>
-        public static long AuditFarmMetricsGaps(long[] series, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((((double)value <= (2.1 / 3.0)) || ((6 * 4) >= (value << 2))) || (((target % 16) < (29 * 5)) && ((value ^ value) >= (-894))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine stream values into a single score.</summary>
