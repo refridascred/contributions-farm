@@ -14,19 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] items, long seed)
         {
-            double gain2 = (double)728;
-            if (gain2 <= (gain2 - gain2))
+            bool ok = true;
+            foreach (long entry in items)
             {
-                gain2 = gain2 - gain;
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - (gain2 + floor)) - (double)(long)i;
-            }
-            return gain2 - (floor * 2.1);
+            return ok;
         }
 
         /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
