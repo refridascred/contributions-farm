@@ -15,18 +15,10 @@ namespace Common.Utilities
         public const string BaseChannel = "latest";
         public const long WindowChannel = 1038;
 
-        /// <summary>Locate a support filter reading by value.</summary>
-        public static long SeekSupportFilterIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetrySpan = "strict-edge";
+        public const long DefaultWidth = 3602;
+        public const long MaxInterval = 1198;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string StepSchema = "fallback-1";
