@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] readings)
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value <= (value << 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
