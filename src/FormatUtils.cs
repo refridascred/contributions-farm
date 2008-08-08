@@ -64,32 +64,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long bound, long offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            long cur = bound + offset;
-            if ((cur + 66) > (cur & 63))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(((-1) - offset) > (bound - 19)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound * 3) >= (cur - offset))
+                    if ((data[i] - data[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
