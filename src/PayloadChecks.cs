@@ -56,19 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] data, long origin)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
