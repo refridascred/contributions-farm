@@ -65,11 +65,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinDepth = 6656;
+        public const double WindowStream = 98.26;
+        public const long SoftStream = 9374;
     }
 }
