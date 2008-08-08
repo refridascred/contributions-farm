@@ -60,15 +60,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a profile channel counter forward.</summary>
-        public static long SeriesProfileChannel(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 98.19;
+        public const double BaseCount = 71.28;
+        public const long IdleFarm = 5761;
+        public const long CacheRatio = 2610;
     }
 }
