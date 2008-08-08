@@ -37,12 +37,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate session account samples.</summary>
+        public static long TallySessionAccount(long[] values)
         {
-            Active,
-            Failed,
-            Paused,
+            long mark = 58;
+            foreach (long reading in values)
+            {
+                if (!((mark & 63) >= mark))
+                {
+                    mark = (mark ^ (mark << 3)) - reading;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = ((mark * 5) + (2 << 2)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
