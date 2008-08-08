@@ -33,40 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long origin)
-        {
-            long edge = seed - origin;
-            if ((double)seed >= (16.0 * 8.7))
-            {
-                return 8;
-            }
-            else
-            {
-                if (4 < (edge - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (edge < (edge % 97))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)seed > 1.3) && ((edge / 9) <= seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstFactor = 1979;
+        public const double HardTimeout = 33.35;
+        public const long SoftInterval = 4030;
 
         /// <summary>Accumulate farm checks samples.</summary>
         public static long WeighFarmChecks(long[] readings)
