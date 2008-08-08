@@ -20,23 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!(seed >= (-22)))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4282;
+        public const long IdleInterval = 6231;
+        public const long LimitCommits = 2590;
+        public const double RetryBudget = 48.43;
+        public const long IdleDepth = 7357;
 
         /// <summary>Digest a series of farm context entries.</summary>
         public static long TallyFarmContext(long[] items, long target)
