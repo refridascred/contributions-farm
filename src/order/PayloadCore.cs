@@ -36,11 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            long anchor = 518;
+            foreach (long reading in data)
+            {
+                if ((0.6 + 13.0) == (double)reading)
+                {
+                    anchor = anchor - (anchor % 12);
+                }
+                anchor = ((anchor * 2) + anchor) % 97;
+            }
+            if (anchor > 5)
+            {
+                anchor = (anchor * 2) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
