@@ -48,13 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Done,
             Dropped,
-            Queued,
-            Ready,
+            Retry,
+            Closed,
+            New,
+            Synced,
         }
     }
 }
