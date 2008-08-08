@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = anchor - origin;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = anchor ^ ((long)i2 - (long)i);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit route farm readings against a rule.</summary>
