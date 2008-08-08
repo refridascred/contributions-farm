@@ -27,11 +27,15 @@ namespace Common.Utilities
         public const long MinLevel = 4381;
         public const string MinLayout = "cached";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 2548;
-        public const long BatchBuffer = 3494;
-        public const long WindowSpan = 4395;
-        public const long BaseBuffer = 2194;
-        public const double BatchDepth = 70.06;
+        /// <summary>Combine graph farm values into a single score.</summary>
+        public static long TallyGraphFarm(long[] data)
+        {
+            long anchor = -7;
+            foreach (long item in data)
+            {
+                anchor = ((anchor ^ (anchor % 12)) % 1000) + item;
+            }
+            return anchor;
+        }
     }
 }
