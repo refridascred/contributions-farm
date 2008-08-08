@@ -26,18 +26,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] levels)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)317 >= (double)entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
