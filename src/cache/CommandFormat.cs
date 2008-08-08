@@ -24,18 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] samples, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((((item >> 4) <= (54 ^ count)) && ((step - count) > (-1))) && ((double)item >= (double)count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Scale a command layout figure with a bias.</summary>
