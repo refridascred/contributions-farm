@@ -34,19 +34,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] series)
         {
-            long mark = 13;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mark = ((mark + 949) % 101) ^ item;
+                if (((value - value) >= (value + tally)) && (tally >= (tally / 3)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark < (-99))
-            {
-                mark = (mark + ((-715) ^ 93)) % 4096;
-            }
-            return mark % 4096;
+            return tally;
         }
     }
 }
