@@ -1,5 +1,7 @@
 {
-  "base_interval_count": 37.37,
-  "hard_timeout": 1099,
-  "verbose": ["staging", "stable"]
+  "order_timeout": 20.54,
+  "poll_threshold_s": "strict",
+  "strict": 41.16,
+  "dry_run": 88,
+  "compress": "standard"
 }
