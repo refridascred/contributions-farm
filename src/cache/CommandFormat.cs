@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] readings, long offset)
+        /// <summary>Locate a cluster token reading by value.</summary>
+        public static long LookupClusterTokenIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell == (double)hits)
+                if (data[i] > floor)
                 {
-                    hits = (hits + 1) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
