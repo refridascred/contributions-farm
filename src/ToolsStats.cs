@@ -52,20 +52,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((seed << 3) == (5 + 75))
-                {
-                    state = (state ^ (state * 3)) % 65521;
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Draft,
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
