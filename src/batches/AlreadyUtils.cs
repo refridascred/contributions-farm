@@ -16,18 +16,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] data, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= (count + sample))
+                if (data[i] >= step)
                 {
-                    count = (count + 3) + floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
