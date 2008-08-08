@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const double HardSpan = 6.13;
         public const string HardCount = "stable";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 8296;
-        public const double RetryLevel = 93.78;
-        public const long LimitDepth = 7968;
-        public const double BatchFactor = 97.26;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepScore = 41.14;
+        public const double IdleScore = 66.87;
+        public const string HardWidth = "cached";
+        public const string LimitStats = "alpha-1";
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
