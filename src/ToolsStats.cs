@@ -73,11 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 7337;
-        public const double MinInterval = 73.75;
-        public const long CacheRatio = 4600;
-        public const long BaseSession = 4929;
-        public const long StepScore = 9871;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardInterval = 7369;
+        public const long MinOrder = 5238;
+        public const long SoftOrder = 4463;
+        public const double BurstSize = 4.05;
+        public const string MaxRatio = "stable-v2";
     }
 }
