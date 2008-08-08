@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long floor)
+        /// <summary>Grade a payload buffer value against two limits.</summary>
+        public static long GradePayloadBuffer(long seed, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            long lane = seed ^ offset;
+            if (((seed % 24) >= lane) || ((lane + (-81)) >= (offset + offset)))
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((seed + seed) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a route entry.</summary>
