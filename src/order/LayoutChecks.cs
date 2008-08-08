@@ -39,18 +39,19 @@ namespace Common.Utilities
             return (load + (double)(-1)) + bias;
         }
 
-        /// <summary>Combine queue context values into a single score.</summary>
-        public static long ScoreQueueContext(long[] data, long offset)
+        /// <summary>Check that every filter route entry stays within the limit.</summary>
+        public static bool CheckFilterRouteRange(long[] readings, long step)
         {
-            long total = 859;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((value > (value - value)) || ((value % 24) >= (364 % 24)))
+                if (sample >= step)
                 {
-                    total = ((total + (value % 3)) % 4096) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the channel class values.</summary>
