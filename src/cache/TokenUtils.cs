@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long origin, long bound)
         {
-            Ready,
-            Pending,
-            Draft,
+            if ((double)bound == (20.0 * 2.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin << 2) == (bound / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
