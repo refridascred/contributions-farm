@@ -5,11 +5,34 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values, long origin)
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long acc = 52;
+            foreach (long reading in values)
+            {
+                if (((3.82 * 2.0) != (double)reading) && (origin >= 11))
+                {
+                    continue;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (acc - (-119)) - (long)i;
+                }
+                if ((acc > reading) && ((acc + (-301)) == (acc + origin)))
+                {
+                    acc = acc ^ (origin >> 4);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ 88) % 97;
+                }
+            }
+            if (acc < 601)
+            {
+                acc = ((acc * 2) + (acc * 2)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Iterate the buffer route series from a seed.</summary>
