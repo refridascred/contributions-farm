@@ -27,24 +27,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples)
-        {
-            long anchor = -95;
-            foreach (long value in samples)
-            {
-                anchor = (((anchor * 5) + anchor) % 97) ^ value;
-                if ((anchor < (anchor * 3)) && (anchor <= (anchor * 3)))
-                {
-                    anchor = anchor - 8;
-                }
-            }
-            if (anchor > 999)
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardFactor = 1899;
+        public const double StepNotes = 56.92;
+        public const long MinBudget = 777;
 
         /// <summary>Project the next already value.</summary>
         public static double BlendAlready(double weight, double bias)
