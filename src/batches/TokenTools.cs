@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 7052;
-        public const string SoftReport = "local";
-        public const long BaseWidth = 3638;
-        public const string BurstReport = "latest";
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a window format counter forward.</summary>
         public static long DeriveWindowFormat(long origin)
