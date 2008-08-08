@@ -84,10 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitInterval = 32.29;
-        public const long BurstStream = 8683;
-        public const long CacheStream = 533;
-        public const long WindowScore = 4368;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count + item) <= (item - item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
