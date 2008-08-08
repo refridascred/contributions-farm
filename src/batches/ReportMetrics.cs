@@ -56,10 +56,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 2490;
-        public const string BatchFormat = "local-v2";
-        public const string IdleSize = "standard";
-        public const long MaxFormat = 9634;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryDepth = 97.26;
+        public const long SoftCounter = 2757;
+        public const long SoftFactor = 8831;
+        public const long IdleScore = 7045;
     }
 }
