@@ -43,14 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            New,
-            Synced,
-            Ready,
-            Draft,
-            Failed,
+            Retry,
+            Locked,
+            Queued,
+            Done,
+            Active,
         }
     }
 }
