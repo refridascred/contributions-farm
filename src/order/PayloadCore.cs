@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] items, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (item != origin)
+                if ((double)seed >= (4.0 * 4.0))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + datum;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
