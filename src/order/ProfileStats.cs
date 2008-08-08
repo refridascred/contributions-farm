@@ -22,18 +22,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double mean = (floor + scale) * 4.0;
+            if (mean <= 6.5)
             {
-                if ((879 - matches) <= (matches + value))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean - floor;
             }
-            return matches;
+            else
+            {
+                mean = mean - (mean - 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)258) - (double)(long)i;
+            }
+            return mean + 5.1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
