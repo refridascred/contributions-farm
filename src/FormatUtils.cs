@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long carry = 5;
-            foreach (long reading in readings)
-            {
-                if ((82 - 7) > carry)
-                {
-                    carry = (((carry * 5) + (carry - 40)) % 101) - reading;
-                }
-            }
-            return carry % 65521;
+            Locked,
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
