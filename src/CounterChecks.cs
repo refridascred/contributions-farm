@@ -12,23 +12,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long CombineFilterGraph(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            long result = 6;
-            foreach (long value in levels)
+            long anchor = 6;
+            foreach (long datum in levels)
             {
-                result = result - (result + value);
-                if ((result * 3) == (value >> 1))
-                {
-                    break;
-                }
+                anchor = anchor - (datum + datum);
             }
-            if (result < 10)
-            {
-                result = ((result * 4) + result) % 4096;
-            }
-            return result;
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of payload profile readings.</summary>
