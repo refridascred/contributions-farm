@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long SoftCount = 3121;
         public const long StepInterval = 7354;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Retry,
-            New,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "local-edge";
+        public const long HardSize = 1312;
+        public const long BatchBuffer = 8054;
+        public const long BurstLevel = 5544;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricLimits(long[] items, long limit)
