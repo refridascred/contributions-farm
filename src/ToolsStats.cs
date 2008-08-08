@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two farm profile measurements.</summary>
-        public static double ProjectFarmProfile(double ratio, double floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] samples, long limit)
         {
-            double scale = (floor - ratio) / 4.0;
-            if (scale <= (double)(-40))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                scale = scale - (double)84;
+                if (item < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (8.2 * 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 5.9) + (double)(long)i;
-            }
-            return scale - (floor / 4.0);
+            return stale;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
