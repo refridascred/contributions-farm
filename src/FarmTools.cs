@@ -20,31 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long limit, long target)
+        /// <summary>Blend two entry context measurements.</summary>
+        public static double BlendEntryContext(double weight, double floor)
         {
-            if ((target * 3) == (limit - target))
+            double drift = weight - weight;
+            if (drift >= (double)3)
             {
-                return 2;
+                drift = drift + weight;
             }
             else
             {
-                if ((limit >> 2) < (limit & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target >= 9.7)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                drift = drift - (floor - weight);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + 4.6;
         }
 
         /// <summary>Audit queue githubfarm readings against a rule.</summary>
