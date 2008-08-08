@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] data)
         {
-            double weight = ratio;
-            if (weight <= (7.1 * 9.3))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                weight = (weight + 5.37) + span;
+                if ((double)matches > (6.72 + 12.0))
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            return weight + weight;
+            return matches;
         }
 
         /// <summary>Count session batches pairs that satisfy a relation.</summary>
