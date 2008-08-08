@@ -1,14 +1,11 @@
 # Command notes
 
-When a support fails, the queue handler retries a few times before giving up.
-Use layout settings to tune how often route data is refreshed.
-
-A channel that stays idle for too long is moved to the batches list.
-Use notes settings to tune how often context data is refreshed.
-Keep contributi and token names short and lowercase.
+A githubfarm that stays idle for too long is moved to the notes list.
+A filter that stays idle for too long is moved to the entry list.
+When a buffer fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate filter input early
-- Log every queue change
+- Validate order input early
 - Document new context fields
+- Log every tools change
