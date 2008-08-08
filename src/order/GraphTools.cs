@@ -43,12 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 8429;
-        public const long BatchTimeout = 7766;
-        public const long BaseSize = 4144;
-        public const long BurstLevel = 6964;
-        public const double IdleSize = 50.51;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 5047;
