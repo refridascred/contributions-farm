@@ -1,15 +1,5 @@
 # entry settings
-retry_timeout:
-  - 300
-  - 162
-queue_delay: 58
-hard_delay_ms:
-  - 254
-  - 137
-profile_size:
-  - 24
-  - 225
-  - 241
-  - 39
-dry_run: blue
-base_timeout: 56
+readonly: 7843
+persist: local
+cache_size_ms: 1024
+poll_limit: 10.05
