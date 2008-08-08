@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
