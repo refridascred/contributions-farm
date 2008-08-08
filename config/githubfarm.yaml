@@ -1,7 +1,4 @@
 # githubfarm settings
-base_timeout_s:
-  - 12
-  - 61
-batch_depth_s: 85.05
-flush_timeout: false
-burst_depth_pct: fallback
+min_ratio_pct: strict
+layout_size: fallback
+idle_window: 32.49
