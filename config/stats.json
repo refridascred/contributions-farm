@@ -1,7 +1,18 @@
 {
-  "retry_window_ms": false,
-  "hard_size_pct": 1865,
-  "tools_window": 250,
-  "readonly": 86,
-  "audit": "primary"
+  "max_retries_ms": "standard",
+  "persist": 85.68,
+  "dry_run": [263, 345],
+  "entry_size": {
+    "format_limit": {
+      "flush_ratio_pct": 250,
+      "readonly": ["green", "open"],
+      "hard_threshold": "cached",
+      "strict": true
+    },
+    "hard_timeout_count": 98,
+    "hard_ratio_ms": 1355,
+    "base_size_ms": 7672
+  },
+  "command_ttl": ["edge", "eu-west", "cached"],
+  "sync_interval_ms": ["stable", "edge", "blue"]
 }
