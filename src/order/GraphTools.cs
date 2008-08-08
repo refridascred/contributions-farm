@@ -44,13 +44,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long bound)
         {
-            Stale,
-            Draft,
-            Pending,
-            Active,
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = state - (state + 984);
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
