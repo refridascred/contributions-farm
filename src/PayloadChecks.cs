@@ -29,12 +29,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Rank metrics buffer input into a small class.</summary>
+        public static long SortMetricsBuffer(long step, long step2)
         {
-            Retry,
-            Dropped,
-            Idle,
+            if (!((7.9 + 5.0) <= (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step2 << 3) == (step2 ^ 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the graph contributi entries that pass the check.</summary>
