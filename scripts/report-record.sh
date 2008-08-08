@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-RECORD_LIMIT=238
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
