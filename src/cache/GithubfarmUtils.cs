@@ -14,11 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 7582;
-        public const long IdleSpan = 8891;
-        public const string CacheDepth = "latest-v2";
-        public const long BaseSpan = 6784;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] levels, long target)
