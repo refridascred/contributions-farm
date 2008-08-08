@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long floor, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            long span = floor - offset;
-            if (3 >= (floor - span))
+            long total = 3;
+            foreach (long entry in series)
             {
-                return 6;
+                total = total - (entry << 2);
             }
-            else
+            if (total > 6)
             {
-                if (((1.0 / 2.0) >= (double)floor) || ((double)floor < 6.9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((span * 3) > (offset + 73)) && ((span / 3) <= floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((span & 7) == (floor + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                total = (total * 2) + (50 << 3);
             }
+            return total % 97;
         }
 
         /// <summary>Match up commits payload samples.</summary>
