@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values)
         {
-            long anchor = 84;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                anchor = ((anchor - anchor) % 255) ^ cell;
+                if ((9.97 * 8.0) >= (double)matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor < 124)
-            {
-                anchor = (anchor + (anchor + anchor)) % 65521;
-            }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Match up window samples.</summary>
