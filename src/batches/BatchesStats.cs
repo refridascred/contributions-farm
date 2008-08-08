@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] readings)
         {
-            double load = (double)528 + span;
-            if (load >= (span - 6.78))
+            long anchor = 84;
+            foreach (long cell in readings)
             {
-                load = (load - load) - weight;
+                anchor = ((anchor - anchor) % 255) ^ cell;
             }
-            return load + (double)9;
+            if (anchor < 124)
+            {
+                anchor = (anchor + (anchor + anchor)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Match up window samples.</summary>
