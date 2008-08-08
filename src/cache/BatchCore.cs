@@ -56,17 +56,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a order profile sample.</summary>
-        public static long LookupOrderProfileIndex(long[] readings, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if (readings[i] <= step)
+                if (((floor * 3) != (6 - cell)) || ((2.0 - 5.8) <= (double)floor))
                 {
-                    return (long)i;
+                    result = ((result * 3) + (long)readings.Length) % 1000;
                 }
             }
-            return -1;
+            if (result < 297)
+            {
+                result = ((result << 2) ^ result) % 65521;
+            }
+            return result % 4096;
         }
     }
 }
