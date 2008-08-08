@@ -23,12 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseInterval = "local";
-        public const long LimitBudget = 8867;
-        public const string IdleWidth = "open";
-        public const long SoftRatio = 5379;
-        public const long CacheChecks = 4490;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchLevel = "local-edge";
+        public const long SoftSpan = 8049;
+        public const string LimitInterval = "cached-edge";
+        public const long IdleQueue = 4856;
 
         /// <summary>Roll a editor profile counter forward.</summary>
         public static long SeriesEditorProfile(long step)
