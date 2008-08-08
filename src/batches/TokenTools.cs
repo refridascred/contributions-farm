@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long acc = 6;
-            foreach (long cell in values)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((acc * 4) != (cell % 100))
-                {
-                    acc = ((acc << 2) ^ (cell << 2)) - step;
-                }
-                else
-                {
-                    acc = (acc - (acc >> 4)) % 101;
-                }
+                mix = ((mix << 2) ^ mix) % 4096;
+                mix = (mix << 2) ^ mix;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Describe the session state values.</summary>
