@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowLevel = 68.85;
-        public const double BaseSize = 9.8;
-        public const double LimitBudget = 90.27;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] series, long step)
+        {
+            long carry = 5;
+            foreach (long datum in series)
+            {
+                carry = (carry ^ (step ^ 670)) + datum;
+                carry = (carry ^ (carry + carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long ScoreMetrics(long[] levels, long bound)
