@@ -63,18 +63,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Grade a session entry value against two limits.</summary>
+        public static long RankSessionEntry(long target, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long offset = target - origin;
+            if ((39 + origin) <= offset)
             {
-                if ((count + item) <= (item - item))
+                return 0;
+            }
+            else
+            {
+                if ((166 & 7) >= origin)
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin & 3) != (origin - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
