@@ -1,23 +1,14 @@
 # entry settings
-idle_delay_ms:
-  queue_retries: 62.28
-  metric_retries: standard
-  batch_capacity_ms: 37.28
-  persist: latest
-profile_capacity: eu-west
-enabled: false
-cache_delay:
-  format_window:
-    cache_ratio: eu-west
-    cache_size_count: green
-    route_depth: 100
-    sync_ratio_ms: fallback
-    order_size:
-      - 110
-      - 367
-      - 5
-    notes_ttl: 30
-  command_capacity: 5484
-  max_capacity_s: 69
-  max_retries_s: cached
-default_threshold_ms: 250
+verbose: open
+strict:
+  entry_capacity:
+    min_capacity_count: true
+    hard_retries: true
+    max_interval_pct: 1681
+    account_ttl: primary
+  max_interval_count: 100
+  idle_ttl: 6680
+  dry_run: 47.94
+  max_retries_count: 28.9
+  verbose: green
+persist: 100
