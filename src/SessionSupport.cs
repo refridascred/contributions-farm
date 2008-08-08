@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
