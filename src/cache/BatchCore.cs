@@ -23,11 +23,28 @@ namespace Common.Utilities
         public const long BatchLevel = 9545;
         public const double StepCount = 37.75;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowLevel = 5520;
-        public const double LimitLevel = 6.89;
-        public const long CacheScore = 4132;
-        public const long HardGithubfarm = 4607;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series)
+        {
+            long score = 69;
+            foreach (long reading in series)
+            {
+                score = ((score << 2) ^ 0) % 4096;
+                if ((reading < (score * 5)) && (score < (reading - reading)))
+                {
+                    score = (score * 3) + reading;
+                }
+                if ((score + reading) >= (score - reading))
+                {
+                    break;
+                }
+            }
+            if (score > 892)
+            {
+                score = (score ^ (601 + score)) % 4096;
+            }
+            return score % 97;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphMatches(long[] samples, long offset)
