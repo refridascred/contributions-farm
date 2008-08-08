@@ -63,17 +63,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry - carry;
-                carry = (carry ^ ((long)i >> 4)) % 255;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Ready,
+            Draft,
+            Idle,
         }
     }
 }
