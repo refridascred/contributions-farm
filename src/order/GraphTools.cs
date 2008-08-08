@@ -58,15 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] items)
         {
-            long state = 2;
-            foreach (long entry in readings)
+            long mix = 8;
+            foreach (long item in items)
             {
-                state = ((state ^ (state & 255)) + entry) + target;
+                if ((mix + mix) <= (mix - mix))
+                {
+                    mix = (((mix * 4) + mix) % 101) - item;
+                }
             }
-            return state % 4096;
+            if (mix < (-87))
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
     }
 }
