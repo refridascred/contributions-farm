@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Pending,
-            Dropped,
-            Paused,
-            Retry,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleDepth = 7850;
+        public const long StepRatio = 4440;
+        public const long BatchProfile = 2662;
+        public const double BaseLevel = 10.01;
+        public const double MinScore = 3.53;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
