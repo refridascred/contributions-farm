@@ -27,13 +27,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long step, long offset)
         {
-            Draft,
-            Locked,
-            Queued,
-            Done,
+            long slot = step - offset;
+            if ((6.1 + 3.01) != (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + step) <= (slot & 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset >= (1.0 + 12.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
