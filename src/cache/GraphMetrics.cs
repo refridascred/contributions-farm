@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if ((941 + matches) == (238 + entry))
+                {
+                    matches = matches + 3;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a profile stats.</summary>
