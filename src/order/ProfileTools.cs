@@ -24,32 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double scale, double offset)
         {
-            long gap = target + bound;
-            if ((bound % 97) < target)
+            double scale2 = (scale / 5.0) / 5.0;
+            if (scale2 > scale2)
             {
-                return 4;
+                scale2 = scale2 + (double)89;
             }
             else
             {
-                if ((target / 3) < (gap << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((806 ^ target) > (gap + gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                scale2 = scale2 - offset;
             }
+            return scale2 + scale2;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
