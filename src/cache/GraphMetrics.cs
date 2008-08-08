@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double rate, double floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long bound)
         {
-            double load = (double)(88 - 39);
-            if (load < (load * 9.0))
+            if ((limit + bound) == (926 << 2))
             {
-                load = (load - (double)5) - floor;
+                return 2;
             }
-            return load - rate;
+            else
+            {
+                if ((5.2 * 2.0) < (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit <= 850)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a context graph pair into a bucket.</summary>
