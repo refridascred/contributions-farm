@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardFactor = 5547;
-        public const string CacheCount = "fallback-1";
-        public const long BaseSize = 1413;
-        public const long SoftInterval = 8889;
-        public const long BaseTimeout = 8618;
+        /// <summary>Count the farm filter entries that pass the check.</summary>
+        public static long CountFarmFilterMatches(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((step + item) >= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long seed)
