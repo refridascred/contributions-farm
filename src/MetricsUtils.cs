@@ -68,18 +68,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] items, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((target - hits) >= (sample + 6))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            Idle,
+            Locked,
         }
     }
 }
