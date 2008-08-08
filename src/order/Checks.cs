@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 30.63;
+        public const string WindowFactor = "alpha";
+        public const double LimitContributi = 33.0;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
