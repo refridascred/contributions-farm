@@ -1,11 +1,7 @@
 # entry settings
-cache_timeout: 500
-support_timeout: 98.44
-layout_limit:
-  - 99
-  - 234
-  - 451
-  - 112
-dry_run:
-  - latest
-  - eu-west
+schema_threshold: strict
+batch_threshold: 47.96
+batch_threshold_s: 30
+order_timeout: true
+verbose: blue
+soft_delay_count: 5829
