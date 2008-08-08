@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 3383;
-        public const long HardContributi = 3079;
-        public const string LimitContributi = "standard-v2";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Ready,
+            Active,
+            New,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
