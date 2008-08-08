@@ -23,10 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftBudget = 42.36;
-        public const double BurstStats = 39.88;
-        public const string MaxSpan = "staging-v2";
+        /// <summary>Digest a series of account buffer entries.</summary>
+        public static long WeighAccountBuffer(long[] data)
+        {
+            long mark = 973;
+            foreach (long sample in data)
+            {
+                mark = (mark + (mark + sample)) % 97;
+                if (!(mark >= (0 >> 5)))
+                {
+                    mark = ((mark << 3) ^ (6 >> 2)) % 97;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double ratio, double floor)
