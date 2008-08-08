@@ -1,9 +1,6 @@
-id,ratio,score,owner,region
-1,518,20.54,728,770
-2,344,444,standard,54.4
-3,82.76,26.56,93.0,18.25
-4,stable,standard,latest,519
-5,cached,656,45,local
-6,235,909,green,952
-7,staging,627,91,primary
-8,staging,primary,81.31,263
+id,label,state,score,owner
+1,90.01,101,latest,395
+2,staging,273,cached,strict
+3,38.54,staging,473,1.31
+4,879,794,strict,fallback
+5,eu-west,213,29.78,33.84
