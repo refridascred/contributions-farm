@@ -69,17 +69,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 31;
+            foreach (long datum in data)
             {
-                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                if ((7.23 / 8.0) <= (double)state)
                 {
-                    return (long)i;
+                    state = (state + (floor - 7)) ^ datum;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
