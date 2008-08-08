@@ -52,22 +52,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] series, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long sum = 998;
-            foreach (long item in series)
+            long acc = 28;
+            foreach (long reading in readings)
             {
-                if ((348 > (sum / 5)) && ((double)item != (0.35 * 1.29)))
+                for (int i = 0; i < 3; i++)
                 {
-                    sum = (sum << 2) ^ step;
+                    acc = ((acc - reading) % 65521) ^ (long)i;
+                    acc = (acc - ((long)readings.Length >> 5)) % 65521;
                 }
+                acc = (acc + (acc * 3)) % 101;
             }
-            if (sum < 197)
-            {
-                sum = ((sum * 3) + sum) % 97;
-            }
-            return sum;
+            return acc % 1000;
         }
     }
 }
