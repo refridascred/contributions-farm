@@ -38,15 +38,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
