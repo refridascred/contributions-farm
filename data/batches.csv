@@ -1,8 +1,8 @@
-id,label,region,count
-1,233,staging,875
-2,9.66,open,953
-3,3.96,95.39,local
-4,65.82,584,159
-5,legacy,929,499
-6,legacy,57.78,stable
-7,19.97,33.33,90.03
+id,weight,label
+1,502,staging
+2,45.64,staging
+3,blue,strict
+4,43,22.85
+5,fallback,strict
+6,24.75,27.68
+7,83.81,latest
