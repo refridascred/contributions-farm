@@ -1,7 +1,8 @@
 # githubfarm settings
-poll_threshold_count: true
-cache_ttl: 500
-retry_capacity_pct: standard
-verbose: 37.85
-retry_retries_pct: true
-checks_threshold: 58.51
+cache_ttl: legacy
+contributi_delay: 77
+persist:
+  retry_retries: open
+  profile_interval: 97.98
+  account_delay: green
+retry_size_s: 0.46
