@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Blend two farm profile measurements.</summary>
+        public static double ProjectFarmProfile(double ratio, double floor)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            double scale = (floor - ratio) / 4.0;
+            if (scale <= (double)(-40))
+            {
+                scale = scale - (double)84;
+            }
+            else
+            {
+                scale = scale - (8.2 * 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 5.9) + (double)(long)i;
+            }
+            return scale - (floor / 4.0);
         }
 
         /// <summary>Describe the contributi kind values.</summary>
