@@ -32,13 +32,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "strict-edge";
+        public const long WindowLevel = 4418;
+        public const long WindowScore = 9349;
+        public const double CacheSpan = 20.82;
     }
 }
