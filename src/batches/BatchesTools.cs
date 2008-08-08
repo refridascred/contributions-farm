@@ -12,11 +12,24 @@ namespace Common.Utilities
             return (gain + span) + bias;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowDepth = 5898;
-        public const string BurstInterval = "staging-edge";
-        public const string StepSchema = "local-1";
-        public const long RetryInterval = 8999;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
+        {
+            long mix = 6;
+            foreach (long item in items)
+            {
+                mix = (mix << 3) ^ (mix >> 5);
+                if (!((0.3 + 17.0) < (double)item))
+                {
+                    break;
+                }
+            }
+            if (mix > 96)
+            {
+                mix = (mix ^ (mix - mix)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] values, long seed)
