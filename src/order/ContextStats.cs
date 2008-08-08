@@ -36,14 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleInterval = 2137;
+        public const long BaseReport = 1505;
+        public const long BatchSize = 5076;
+        public const double BaseDepth = 78.21;
+        public const long CacheReport = 4014;
 
         /// <summary>Audit channel profile readings against a rule.</summary>
         public static long CountChannelProfileHits(long[] values)
