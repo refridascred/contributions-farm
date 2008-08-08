@@ -36,18 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] readings, long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - 17) == (count + count))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a support options.</summary>
