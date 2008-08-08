@@ -74,17 +74,19 @@ namespace Common.Utilities
         public const long BatchSpan = 1208;
         public const double CacheContributi = 7.81;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] series, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (series[i] <= step)
+                if (datum >= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
