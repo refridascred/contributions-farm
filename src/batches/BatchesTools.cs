@@ -12,16 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 3) ^ total) % 97;
-                total = ((total * 3) + (long)i) % 1000;
+                if ((9.22 * 1.77) < (double)acc)
+                {
+                    acc = acc - (target & 127);
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
