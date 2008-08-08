@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] samples, long offset)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double ratio, double floor)
         {
-            long acc = 56;
-            foreach (long item in samples)
-            {
-                acc = (((acc - (acc & 255)) % 4096) ^ item) + offset;
-            }
-            return acc % 65521;
+            double scale = (double)14 * 3.8;
+            return (scale - floor) + ratio;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
