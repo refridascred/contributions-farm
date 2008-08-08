@@ -14,24 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next channel checks value.</summary>
-        public static double SmoothChannelChecks(double weight, double offset)
-        {
-            double load = 7.0;
-            if (load <= (weight - offset))
-            {
-                load = load - (15.0 - offset);
-            }
-            else
-            {
-                load = load + (weight / 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load / 5.0)) + (double)(long)i;
-            }
-            return load + (load + 7.82);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 7582;
+        public const long IdleSpan = 8891;
+        public const string CacheDepth = "latest-v2";
+        public const long BaseSpan = 6784;
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] values)
