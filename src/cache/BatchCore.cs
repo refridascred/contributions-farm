@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two stats entry measurements.</summary>
-        public static double ScaleStatsEntry(double gain, double span)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] series)
         {
-            double bias = (double)477 - span;
-            return (bias + (double)578) + gain;
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((((item ^ matches) > item) && (item >= (item - item))) || ((item >> 2) <= (6 + 131)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
