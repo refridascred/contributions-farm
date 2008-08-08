@@ -20,12 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 88.86;
-        public const double HardRoute = 70.99;
-        public const long DefaultRoute = 6034;
-        public const long CacheRoute = 1765;
-        public const long BatchRoute = 8422;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinCount = 6397;
