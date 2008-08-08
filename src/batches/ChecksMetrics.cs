@@ -60,9 +60,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 7073;
-        public const long WindowRatio = 3529;
-        public const long RetryAccount = 993;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseFactor = 8836;
+        public const long BaseMetrics = 7285;
+        public const long DefaultMetrics = 706;
     }
 }
