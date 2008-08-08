@@ -32,18 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] data, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long anchor = 8;
-            foreach (long entry in data)
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((offset << 2) != (entry + (-495)))
+                if ((double)bound >= (4.0 * 1.27))
                 {
-                    anchor = anchor + (82 + entry);
+                    acc = (acc + 107) % 101;
+                    acc = (acc + (acc ^ bound)) % 101;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
     }
 }
