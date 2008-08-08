@@ -38,10 +38,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseFactor = "legacy";
-        public const long IdleScore = 3695;
-        public const double HardCount = 16.51;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Draft,
+            Failed,
+            New,
+            Queued,
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long limit)
