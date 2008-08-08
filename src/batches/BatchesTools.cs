@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] series, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mark = 9;
-            foreach (long datum in series)
-            {
-                mark = (mark ^ ((long)series.Length + target)) % 65521;
-                if (((4.0 + 11.0) >= (double)mark) && (mark < (datum * 4)))
-                {
-                    mark = mark + (target + 23);
-                }
-            }
-            return mark % 1000;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
