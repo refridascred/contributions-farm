@@ -1,6 +1,18 @@
 {
-  "cache_delay": 13,
-  "compress": 1024,
-  "order_timeout": 1934,
-  "metric_retries": ["staging", "primary", "staging"]
+  "batch_ttl_s": "green",
+  "batch_ttl": {
+    "stats_ratio": {
+      "hard_threshold_s": false,
+      "soft_interval_s": true,
+      "burst_size_ms": true,
+      "dry_run": "edge",
+      "soft_size_pct": "strict"
+    },
+    "entry_ttl": 7,
+    "idle_ttl_ms": 63.46
+  },
+  "editor_limit": 4113,
+  "default_ratio_s": 76.79,
+  "idle_window": true,
+  "flush_ttl_count": "green"
 }
