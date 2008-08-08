@@ -41,10 +41,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftDepth = 58.21;
-        public const long HardChecks = 8049;
-        public const long LimitChecks = 1102;
-        public const string MinScore = "stable-v2";
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
