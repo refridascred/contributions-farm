@@ -58,22 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] samples, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double gain, double span)
         {
-            long state = 46;
-            foreach (long entry in samples)
+            double weight = gain;
+            if (weight <= (span - 9.6))
             {
-                if ((362 + state) != (state - (-8)))
-                {
-                    state = ((state + (entry >> 2)) % 4096) - seed;
-                }
-                if ((8 >> 5) > entry)
-                {
-                    break;
-                }
+                weight = weight + 6.3;
             }
-            return state;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - (double)(-2);
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
