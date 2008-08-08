@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first editor commits entry that matches the target.</summary>
-        public static long SeekEditorCommitsIndex(long[] samples, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed % 8) >= (seed + seed))
             {
-                if (samples[i] == floor)
+                return 7;
+            }
+            else
+            {
+                if (((limit >> 2) <= (limit << 3)) && ((double)seed > 20.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((4.28 - 7.0) == (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit < (limit + seed)) && (limit < (limit >> 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
