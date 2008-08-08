@@ -35,11 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "staging";
-        public const long BaseWidth = 8360;
-        public const long DefaultTimeout = 5316;
-        public const string IdleLevel = "latest-edge";
-        public const long RetryBatch = 3500;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples)
+        {
+            long score = 76;
+            foreach (long entry in samples)
+            {
+                score = (((score * 5) + (515 << 1)) % 4096) + entry;
+            }
+            if (score > 7)
+            {
+                score = (score + (7 << 1)) % 97;
+            }
+            return score;
+        }
     }
 }
