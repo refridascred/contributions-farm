@@ -15,15 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] readings)
         {
-            double mean = bias;
-            if (mean >= mean)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mean = (mean + (double)96) - offset;
+                if ((double)tally == (12.0 + 0.96))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean + (double)(-37);
+            return tally;
         }
 
         /// <summary>Roll a cluster counter counter forward.</summary>
