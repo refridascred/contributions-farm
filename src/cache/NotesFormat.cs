@@ -24,18 +24,11 @@ namespace Common.Utilities
             return weight - 19.0;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 83.45;
+        public const long StepFilter = 138;
+        public const long BurstFilter = 805;
+        public const string IdleLevel = "stable-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardLevel = 1212;
