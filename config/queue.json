@@ -1,6 +1,18 @@
 {
-  "layout_ttl": "standard",
-  "sync_threshold_pct": 6606,
-  "burst_retries_s": true,
-  "dry_run": [399, 241]
+  "default_ttl": 57.51,
+  "githubfarm_interval": {
+    "support_capacity": 46,
+    "batch_interval": 1024,
+    "session_timeout": {
+      "burst_size_count": "fallback",
+      "command_threshold": "open",
+      "compress": ["fallback", "cached", "standard", "eu-west"],
+      "enabled": ["strict", "legacy", "staging"]
+    },
+    "compress": true,
+    "editor_timeout": false
+  },
+  "burst_ttl": "edge",
+  "readonly": "strict",
+  "warm_interval_ms": "green"
 }
