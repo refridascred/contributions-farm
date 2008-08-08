@@ -24,39 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long step, long bound)
+        /// <summary>Check that every already window entry stays within the limit.</summary>
+        public static bool CheckAlreadyWindowBounds(long[] values, long offset)
         {
-            long diff = step - bound;
-            if ((step + step) < (step & 127))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((96 >> 2) <= (step / 9))
+                if (sample >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 1) < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((diff << 2) > (step * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up batches support samples.</summary>
