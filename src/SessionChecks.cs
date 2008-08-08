@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long MaxSession = 2539;
         public const long DefaultSpan = 580;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "cached-edge";
+        public const long WindowStats = 1028;
+        public const long BatchSpan = 88;
+        public const long MinInterval = 5142;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
