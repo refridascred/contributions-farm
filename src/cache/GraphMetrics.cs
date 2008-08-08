@@ -16,15 +16,12 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Closed,
-            Locked,
-            Synced,
-            Retry,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5368;
+        public const long StepLevel = 2882;
+        public const long MaxTimeout = 73;
+        public const long BaseAccount = 1881;
+        public const long MaxFactor = 4437;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
