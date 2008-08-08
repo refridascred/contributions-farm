@@ -1,7 +1,12 @@
 {
-  "enabled": false,
-  "filter_interval": 31,
-  "retry_threshold_count": "cached",
-  "base_timeout_s": 6114,
-  "retry_interval_pct": true
+  "cache_ttl_count": [435, 162],
+  "cache_size_ms": 8963,
+  "base_delay_count": ["local", "cached"],
+  "window_ttl": true,
+  "hard_retries_count": {
+    "min_depth_pct": 31,
+    "base_capacity": ["eu-west", "green", "strict", "fallback"],
+    "soft_retries": true
+  },
+  "soft_limit_pct": 30
 }
