@@ -72,10 +72,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstWidth = 5851;
-        public const long MinQueue = 7698;
-        public const long BatchQueue = 634;
-        public const long StepQueue = 6923;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
