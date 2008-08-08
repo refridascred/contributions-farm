@@ -25,33 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long seed2)
-        {
-            long gap = seed + seed2;
-            if ((seed2 ^ seed) < (gap << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap > 3.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((3.51 / 4.0) <= (double)seed) && (seed2 >= gap))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseContext = "strict";
+        public const string LimitContext = "cached-v2";
+        public const long IdleDepth = 4722;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowInterval = 9125;
