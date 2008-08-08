@@ -76,17 +76,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first window schema entry that matches the target.</summary>
-        public static long FindWindowSchemaIndex(long[] items, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Pending,
+            Locked,
+            New,
         }
     }
 }
