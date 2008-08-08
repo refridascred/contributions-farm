@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] items, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (datum < step)
+                if ((entry % 7) == (count % 7))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
