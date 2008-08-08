@@ -50,18 +50,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token queue readings against a rule.</summary>
-        public static long AuditTokenQueueMatches(long[] levels, long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((31 + seen) >= seen)
-                {
-                    seen = ((seen + 1) ^ value) + seed;
-                }
-            }
-            return seen;
+            Active,
+            Draft,
+            New,
+            Pending,
         }
     }
 }
