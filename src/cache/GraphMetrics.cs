@@ -27,39 +27,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long limit, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long bound = limit ^ step;
-            if (((bound % 5) <= 7) || ((step - 16) <= step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)limit > 3.14))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit >= (5.6 + 9.5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(limit <= (bound << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
