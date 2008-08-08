@@ -37,23 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account support samples.</summary>
-        public static long WeighAccountSupport(long[] values, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long sum = 92;
-            foreach (long datum in values)
-            {
-                sum = sum ^ bound;
-                if (653 < (12 + datum))
-                {
-                    sum = (sum ^ (datum - 77)) % 255;
-                }
-            }
-            if (sum < 64)
-            {
-                sum = sum - bound;
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
