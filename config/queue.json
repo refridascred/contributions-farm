@@ -1,14 +1,7 @@
 {
-  "token_size": {
-    "idle_size_count": "open",
-    "cache_depth_ms": 813,
-    "channel_timeout": 60,
-    "default_timeout": "stable",
-    "cache_size": false
-  },
-  "editor_ratio": "strict",
-  "audit": 6012,
-  "default_capacity_pct": 30,
-  "default_delay_s": "edge",
-  "dry_run": 5474
+  "route_interval": 72.03,
+  "burst_timeout_ms": 3255,
+  "compress": false,
+  "already_depth": true,
+  "readonly": ["open", "stable", "legacy"]
 }
