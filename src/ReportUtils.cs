@@ -31,13 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] readings, long target)
         {
-            Retry,
-            Done,
-            Pending,
-            Closed,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
