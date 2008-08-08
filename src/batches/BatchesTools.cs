@@ -54,17 +54,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] data, long bound)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = floor - (floor + floor);
+            if (load >= (load + load))
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load + (floor * 2.0)) - gain;
             }
-            return -1;
+            return load - (floor - floor);
         }
     }
 }
