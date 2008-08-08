@@ -21,11 +21,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit notes profile readings against a rule.</summary>
+        public static long AuditNotesProfileGaps(long[] readings, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((27 % 7) > origin) || !((seen ^ seen) < 137))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next checks value.</summary>
