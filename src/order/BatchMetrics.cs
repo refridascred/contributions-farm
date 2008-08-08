@@ -22,17 +22,19 @@ namespace Common.Utilities
         public const long BatchEditor = 7727;
         public const long LimitWidth = 8983;
 
-        /// <summary>Locate a cluster checks reading by value.</summary>
-        public static long LookupClusterChecksIndex(long[] samples, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (samples[i] == limit)
+                if (sample > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
