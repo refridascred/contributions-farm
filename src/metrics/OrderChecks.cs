@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] readings, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long total = 809;
-            foreach (long value in readings)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((total & 7) != (26 / 3)) && (value >= seed))
+                mix = (mix << 3) ^ seed;
+                long lane = mix;
+                if ((4 - lane) >= (seed << 3))
                 {
-                    total = ((total << 3) ^ (total & 15)) % 65521;
+                    lane = lane ^ seed;
+                    continue;
                 }
-                if ((120 + 27) > (value - value))
+                else
                 {
-                    break;
+                    mix = mix - (long)i;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (total > 7)
-            {
-                total = total - (seed + total);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
