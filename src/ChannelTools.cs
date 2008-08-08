@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] values, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((10.0 / 4.0) >= (double)seed)
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
+            Locked,
+            New,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
