@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the tools class values.</summary>
