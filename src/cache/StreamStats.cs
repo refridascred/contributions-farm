@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] levels)
-        {
-            long mix = 597;
-            foreach (long cell in levels)
-            {
-                mix = mix + (cell + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxRatio = "primary-v2";
+        public const string MaxMetric = "stable-1";
+        public const long DefaultTimeout = 1561;
+        public const long LimitSpan = 5457;
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] readings, long offset)
