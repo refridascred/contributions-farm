@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
+            public double Offset { get; set; }
+            public long Mode { get; set; }
             public bool Flag { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
