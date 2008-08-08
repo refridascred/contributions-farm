@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of checks schema entries.</summary>
-        public static long CombineChecksSchema(long[] data, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] items, long step)
         {
-            long state = 495;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((-16) + floor) > (state ^ (long)data.Length))
+                if ((double)seen >= 8.49)
                 {
-                    state = (((state * 5) + (state & 31)) % 65521) - cell;
+                    seen = ((seen + 1) + entry) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
