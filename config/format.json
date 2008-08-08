@@ -1,7 +1,11 @@
 {
-  "hard_delay": "stable",
-  "retry_timeout_ms": "open",
-  "persist": 95,
-  "stats_ttl": ["blue", "fallback", "blue"],
-  "warm_threshold_s": false
+  "soft_threshold": "local",
+  "max_delay_ms": "staging",
+  "retry_capacity": {
+    "metric_threshold": "strict",
+    "readonly": "latest",
+    "audit": "standard",
+    "dry_run": 30
+  },
+  "warm_limit_pct": false
 }
