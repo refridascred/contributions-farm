@@ -66,39 +66,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long target, long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long cur = target ^ offset;
-            if (offset >= 78)
-            {
-                return 3;
-            }
-            else
-            {
-                if (4.0 >= (1.13 / 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur * 4) != (cur - cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((6 >> 5) != (target << 2)) && ((double)offset >= (9.21 + 9.29)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a profile stats.</summary>
