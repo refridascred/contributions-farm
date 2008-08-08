@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstTimeout = 37.22;
-        public const string CacheTimeout = "staging";
-        public const long BurstBudget = 3213;
-        public const long RetryCount = 1071;
-        public const double BaseAccount = 13.38;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series)
+        {
+            long result = -69;
+            foreach (long entry in series)
+            {
+                result = result + (entry + result);
+                result = result - entry;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] items)
