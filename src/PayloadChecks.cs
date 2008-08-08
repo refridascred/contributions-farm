@@ -46,14 +46,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            Synced,
-            Locked,
-            Done,
-            Paused,
-            Pending,
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
