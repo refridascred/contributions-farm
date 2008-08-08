@@ -51,32 +51,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format counter input into a small class.</summary>
-        public static long RankFormatCounter(long limit, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            long span = limit ^ seed;
-            if ((seed << 1) == (span % 7))
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)span != (1.5 * 7.7))
+                if (!(bound >= (anchor / 4)))
                 {
-                    return 4;
+                    anchor = (anchor + (bound / 8)) % 97;
+                    anchor = (anchor + bound) % 255;
                 }
-                else
-                {
-                    if ((113 << 2) >= (limit * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Hold a command info.</summary>
