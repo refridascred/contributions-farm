@@ -25,21 +25,11 @@ namespace Common.Utilities
         public const long BatchBuffer = 8054;
         public const long BurstLevel = 5544;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
