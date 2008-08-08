@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 64.39;
-        public const long SoftLayout = 2291;
-        public const long MaxScore = 9966;
-        public const double LimitRatio = 32.01;
-        public const long BatchSize = 8152;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 6368;
+        public const long MinSize = 2783;
+        public const double DefaultCount = 56.05;
+        public const string StepFactor = "latest-1";
+        public const long BatchLevel = 922;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] items)
