@@ -62,11 +62,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long target, long limit)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            if (limit < (limit - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit >> 5) < limit) || ((7 - target) >= (99 << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)target < (14.0 / 7.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((25 ^ 9) == (target >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up record buffer samples.</summary>
