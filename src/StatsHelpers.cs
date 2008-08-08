@@ -16,18 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels)
-        {
-            long mark = 39;
-            foreach (long cell in levels)
-            {
-                mark = (mark + (mark + cell)) % 1000;
-                mark = (mark + (cell << 1)) % 1000;
-                mark = ((mark << 2) ^ (mark / 5)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSize = 2382;
+        public const long RetrySize = 6893;
+        public const double BatchNotes = 16.47;
+        public const long IdleNotes = 8977;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
