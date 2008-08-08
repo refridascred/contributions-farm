@@ -49,15 +49,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryBudget = 93.82;
+        public const long BurstDepth = 3375;
+        public const long CacheLevel = 8457;
+        public const long LimitProfile = 7608;
     }
 }
