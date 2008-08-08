@@ -22,19 +22,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of tools record entries.</summary>
-        public static long WeighToolsRecord(long[] data, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long total = 515;
-            foreach (long item in data)
-            {
-                total = ((total << 3) ^ (step << 1)) + item;
-            }
-            if (total > 645)
-            {
-                total = (total + step) % 101;
-            }
-            return total;
+            Locked,
+            Idle,
+            Queued,
+            Ready,
         }
     }
 }
