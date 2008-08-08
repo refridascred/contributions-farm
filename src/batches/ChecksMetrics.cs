@@ -42,18 +42,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.57 - 1.99) > (double)(long)series.Length)
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
                 {
-                    tally = ((tally + 1) + value) + floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate stream samples.</summary>
