@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            Active,
+            Dropped,
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Project the next support value.</summary>
