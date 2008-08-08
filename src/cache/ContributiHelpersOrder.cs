@@ -31,13 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] items)
         {
-            New,
-            Locked,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item + seen) >= (seen ^ item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
