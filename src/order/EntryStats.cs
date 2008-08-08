@@ -69,19 +69,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] values, long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
