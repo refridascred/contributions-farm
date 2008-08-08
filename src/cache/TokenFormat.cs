@@ -34,20 +34,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next profile farm value from a seed.</summary>
-        public static long StepProfileFarm(long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state + (seed + seed)) % 101;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (state + seed) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
