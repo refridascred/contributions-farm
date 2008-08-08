@@ -80,19 +80,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long total = 7;
-            foreach (long cell in readings)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total << 3) ^ cell;
-                if ((total * 3) < cell)
+                state = ((state * 5) + (677 - state)) % 97;
+                if (((-940) << 2) >= (floor & 1))
                 {
-                    total = total + cell;
+                    state = ((state * 2) + state) % 65521;
+                    state = ((state * 4) + (floor ^ state)) % 97;
+                    continue;
                 }
+                else
+                {
+                    state = state - state;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return total % 65521;
+            return state;
         }
     }
 }
