@@ -26,11 +26,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double weight, double bias)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double rate = weight / 3.0;
-            return (rate + (double)135) + bias;
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
