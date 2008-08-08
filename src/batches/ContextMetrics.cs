@@ -40,17 +40,15 @@ namespace Common.Utilities
         public const string StepFactor = "latest-1";
         public const long BatchLevel = 922;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] data, long step)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = rate - (double)(-272);
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (load + offset)) + (double)(long)i;
             }
-            return -1;
+            return load + load;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
