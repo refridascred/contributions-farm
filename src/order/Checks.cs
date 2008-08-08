@@ -38,20 +38,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double ratio, double floor)
-        {
-            double gain = (double)(97 * 4);
-            if (gain <= (double)43)
-            {
-                gain = gain - floor;
-            }
-            else
-            {
-                gain = gain + (gain + floor);
-            }
-            return gain - (ratio + gain);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseScore = "stable-edge";
+        public const string MaxCounter = "legacy-v2";
+        public const long BurstDepth = 1974;
+        public const long BurstCounter = 7146;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long FoldSession(long[] samples, long origin)
