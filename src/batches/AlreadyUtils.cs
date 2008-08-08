@@ -16,17 +16,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] data, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 5;
+            foreach (long cell in readings)
             {
-                if (data[i] >= step)
+                if ((double)origin < (1.93 * 0.5))
                 {
-                    return (long)i;
+                    mark = (((mark << 2) ^ (mark + origin)) % 4096) + cell;
                 }
             }
-            return -1;
+            if (mark < 415)
+            {
+                mark = (mark * 2) + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
