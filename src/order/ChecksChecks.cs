@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long HardBuffer = 8898;
         public const string SoftWidth = "cached-edge";
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long offset)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            long acc = 27;
+            foreach (long cell in data)
+            {
+                acc = ((acc << 2) ^ (offset << 2)) - cell;
+                if ((double)acc < (double)21)
+                {
+                    acc = acc + (acc / 5);
+                }
+                else
+                {
+                    acc = (acc - (offset - 4)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Adjust a githubfarm batch reading.</summary>
