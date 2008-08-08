@@ -61,32 +61,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a session entry value against two limits.</summary>
-        public static long RankSessionEntry(long target, long origin)
-        {
-            long offset = target - origin;
-            if ((39 + origin) <= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((166 & 7) >= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin & 3) != (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultSize = 3624;
+        public const long IdleEditor = 4856;
+        public const string CacheInterval = "primary-v2";
+        public const string MinBudget = "stable-v2";
     }
 }
