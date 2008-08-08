@@ -27,10 +27,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetrySpan = "strict-edge";
-        public const long DefaultWidth = 3602;
-        public const long MaxInterval = 1198;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchLevel = 9559;
