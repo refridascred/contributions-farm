@@ -51,18 +51,9 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)bound < (double)2)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseLevel = "stable-edge";
+        public const long IdleBatch = 6897;
+        public const long MaxBatch = 933;
     }
 }
