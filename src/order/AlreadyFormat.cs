@@ -39,12 +39,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 7591;
-        public const long WindowMetrics = 8191;
-        public const string LimitBudget = "legacy-1";
-        public const long IdleMetrics = 2167;
-        public const long BaseCount = 2380;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowRatio = 7184;
+        public const long MaxTimeout = 8450;
+        public const double BurstFactor = 3.05;
+        public const long BatchFactor = 9479;
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double scale, double bias)
