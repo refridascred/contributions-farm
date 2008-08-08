@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            Synced,
-            Ready,
-            Queued,
-            Stale,
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix * 3) + (limit * 3);
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
