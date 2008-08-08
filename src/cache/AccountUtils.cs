@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Dropped,
-            Ready,
-            Retry,
+            New,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
