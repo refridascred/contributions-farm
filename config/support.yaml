@@ -1,5 +1,4 @@
 # support settings
-burst_timeout_s: 14.98
-cache_retries_ms: 43.26
-audit: 100
-metric_size: eu-west
+farm_ttl: 99
+batch_threshold_pct: 76.76
+readonly: 84.32
