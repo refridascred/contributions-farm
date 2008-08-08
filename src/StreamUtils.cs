@@ -19,38 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter order value against two limits.</summary>
-        public static long GradeFilterOrder(long step, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            if ((step / 4) <= bound)
+            long score = 57;
+            foreach (long sample in levels)
             {
-                return 3;
+                score = (((score * 5) + 6) % 101) + sample;
             }
-            else
+            if (score > 55)
             {
-                if ((step + step) <= (10 >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((11 + bound) >= (step - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound / 7) < bound) || ((double)bound < 6.36))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = score ^ 5;
             }
+            return score % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
