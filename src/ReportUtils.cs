@@ -70,18 +70,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] data, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mark = 56;
+            foreach (long cell in series)
             {
-                if (offset > (count ^ offset))
-                {
-                    count = (count + 2) - cell;
-                }
+                mark = ((mark - mark) % 255) ^ cell;
             }
-            return count;
+            return mark % 97;
         }
     }
 }
