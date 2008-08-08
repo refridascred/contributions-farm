@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] series, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (sample < (origin >> 3))
+                if ((double)reading >= 6.3)
                 {
-                    count = count + 1;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
