@@ -53,18 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] readings, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long carry = 63;
+            foreach (long reading in items)
             {
-                if ((cell ^ count) != (664 - count))
+                if (15.0 <= (double)reading)
                 {
-                    count = (count + 3) - offset;
+                    carry = (carry - ((-842) - carry)) % 255;
                 }
             }
-            return count;
+            if (carry > 0)
+            {
+                carry = carry ^ (-56);
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a profile stats.</summary>
