@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double BaseSpan = 89.44;
         public const double BurstEditor = 3.83;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            long total = 65;
+            foreach (long entry in samples)
+            {
+                if (((total / 7) == (total + 35)) && ((8.9 - 8.45) > (double)total))
+                {
+                    total = total - (entry ^ total);
+                }
+            }
+            if (total < 0)
+            {
+                total = total + (507 - total);
+            }
+            return total;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
