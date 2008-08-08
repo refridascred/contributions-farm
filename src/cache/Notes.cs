@@ -57,25 +57,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a session record pair into a bucket.</summary>
-        public static long BucketSessionRecord(long target, long floor)
+        /// <summary>Roll a profile channel counter forward.</summary>
+        public static long SeriesProfileChannel(long bound)
         {
-            long offset = target + floor;
-            if ((double)target >= (double)offset)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((target & 1) <= (offset ^ target)) || ((double)offset > 1.86))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
     }
 }
