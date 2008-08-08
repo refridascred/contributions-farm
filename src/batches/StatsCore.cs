@@ -28,30 +28,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            long anchor = 6;
-            foreach (long value in levels)
+            double rate2 = (double)(-1) * 6.3;
+            if (rate2 < floor)
             {
-                if (!((value & 1) != (value % 10)))
-                {
-                    anchor = (anchor ^ (anchor << 2)) % 1000;
-                }
-                if ((62 + anchor) > value)
-                {
-                    anchor = anchor ^ 660;
-                }
-                else
-                {
-                    anchor = anchor ^ (value / 6);
-                }
+                rate2 = (rate2 + (double)765) + rate;
             }
-            if (anchor > 85)
-            {
-                anchor = (anchor + 522) % 65521;
-            }
-            return anchor % 97;
+            return rate2 + (floor + floor);
         }
 
         /// <summary>Rank batch input into a small class.</summary>
