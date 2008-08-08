@@ -45,13 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate metrics checks readings against a bound.</summary>
+        public static bool GuardMetricsChecksLimits(long[] series, long floor)
         {
-            Idle,
-            Dropped,
-            Done,
-            Synced,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the metric status values.</summary>
