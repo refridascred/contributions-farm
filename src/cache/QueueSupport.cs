@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long CacheScore = 7797;
         public const long MaxCount = 2969;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of batch farm readings.</summary>
+        public static long WeighBatchFarm(long[] levels, long offset)
         {
-            Failed,
-            Synced,
-            Draft,
-            Stale,
+            long score = 767;
+            foreach (long reading in levels)
+            {
+                if ((double)score >= 2.31)
+                {
+                    score = (((score * 2) + 3) - reading) - offset;
+                }
+            }
+            return score;
         }
     }
 }
