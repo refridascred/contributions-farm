@@ -15,11 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "cached-edge";
-        public const long WindowStats = 1028;
-        public const long BatchSpan = 88;
-        public const long MinInterval = 5142;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long DigestNotes(long[] samples, long floor)
