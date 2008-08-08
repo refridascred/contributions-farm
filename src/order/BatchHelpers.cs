@@ -26,10 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheInterval = 9455;
-        public const double MaxNotes = 98.48;
-        public const double RetryWidth = 19.33;
-        public const long RetryRatio = 6806;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
