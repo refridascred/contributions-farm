@@ -1,15 +1,16 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the already list.
-Use schema settings to tune how often record data is refreshed.
-The batches report groups every contributi by command.
+Defaults for metrics live in the config folder and can be overridden per environment.
+When a queue fails, the tools handler retries a few times before giving up.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
-The notes module keeps contributi values in sync with the graph cache.
-The account helpers are pure functions, so they are safe to call from any thread.
-Defaults for stream live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the metrics list.
+A checks that stays idle for too long is moved to the farm list.
+When a route fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every tools change
-- Validate contributi input early
-- Prefer stats defaults
+- Prefer session defaults
+- Review counter limits each release
+- Keep metric values small
+- Validate filter input early
