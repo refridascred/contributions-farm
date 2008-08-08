@@ -22,23 +22,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a profile entry reading.</summary>
-        public static double ScaleProfileEntry(double bias, double floor)
+        /// <summary>Adjust a report schema reading.</summary>
+        public static double BlendReportSchema(double rate, double offset)
         {
-            double rate = floor;
-            if (rate < bias)
-            {
-                rate = rate - floor;
-            }
-            else
-            {
-                rate = rate + (bias - rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (double)21) - (double)(long)i;
-            }
-            return rate - (bias * 0.21);
+            double mean = (double)(27 % 8);
+            return (mean + (offset * 4.1)) + rate;
         }
     }
 }
