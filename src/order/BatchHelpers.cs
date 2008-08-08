@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const long WindowWidth = 9134;
         public const long MinMetrics = 9438;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
     }
 }
