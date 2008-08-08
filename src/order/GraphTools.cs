@@ -26,23 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((518 + seen) >= seen))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinWidth = 6785;
+        public const double MinCommits = 34.33;
+        public const long WindowCommits = 8272;
+        public const long IdleScore = 7473;
+        public const long HardCount = 7108;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] data)
