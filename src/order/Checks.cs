@@ -33,12 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
