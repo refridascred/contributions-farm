@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const string StepCounter = "fallback";
         public const long SoftCounter = 1199;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long origin, long origin2)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if ((double)origin2 <= 7.87)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.0 - 6.09) <= (double)origin2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin2 + origin2) >= (origin2 >> 4)) || ((3 * 2) > origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
