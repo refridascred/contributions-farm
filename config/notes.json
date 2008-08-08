@@ -1,7 +1,13 @@
 {
-  "graph_capacity": 18.49,
-  "verbose": ["staging", "edge"],
-  "default_timeout_count": 30,
-  "strict": "cached",
-  "batch_limit_ms": "edge"
+  "max_threshold_s": {
+    "command_capacity": "strict",
+    "hard_capacity_count": "open",
+    "max_delay_ms": false,
+    "verbose": 1024
+  },
+  "enabled": "fallback",
+  "hard_retries": 2,
+  "hard_delay_count": false,
+  "retry_ttl_count": "green",
+  "farm_size": true
 }
