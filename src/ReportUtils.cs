@@ -15,19 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long result = 8;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ datum) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (result > (-50))
-            {
-                result = (result * 4) + (result - result);
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Derive the next stats route value from a seed.</summary>
