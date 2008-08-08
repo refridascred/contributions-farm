@@ -38,18 +38,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] items)
+        /// <summary>Grade a githubfarm context value against two limits.</summary>
+        public static long BucketGithubfarmContext(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long next = bound + offset;
+            if (((offset + bound) >= (next / 8)) || (929 <= bound))
             {
-                if ((1.0 * 12.0) > (double)reading)
+                return 1;
+            }
+            else
+            {
+                if (offset >= (next - next))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a layout record.</summary>
