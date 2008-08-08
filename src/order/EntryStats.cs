@@ -62,11 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] data, long origin)
         {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum > (0.37 * 5.7))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit session entry readings against a rule.</summary>
