@@ -15,26 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] series, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            long carry = 7;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit >> 2) < (carry >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry - 713) + entry;
-                }
-                else
-                {
-                    carry = carry ^ carry;
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 52)
-            {
-                carry = (carry << 2) ^ (limit / 3);
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Hold a payload options.</summary>
