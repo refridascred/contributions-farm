@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double bias, double span)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] series)
         {
-            double bias2 = span;
-            if (bias2 < (span * 12.0))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                bias2 = (bias2 + bias2) - bias;
+                if (!((tally ^ tally) == (cell >> 1)))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)359;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - bias2;
+            return tally;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
