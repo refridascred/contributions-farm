@@ -52,9 +52,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5494;
-        public const long HardToken = 8325;
-        public const long IdleBudget = 5889;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardLevel = 1212;
+        public const long BatchRoute = 4564;
+        public const double StepRoute = 73.89;
     }
 }
