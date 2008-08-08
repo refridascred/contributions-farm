@@ -56,24 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] series, long floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mix = 64;
-            foreach (long cell in series)
-            {
-                if (mix >= (cell >> 4))
-                {
-                    mix = (((mix * 4) + 4) % 4096) - floor;
-                }
-                mix = mix - 60;
-                mix = ((mix * 5) + (cell >> 2)) % 255;
-            }
-            if (mix > 3)
-            {
-                mix = (mix - (mix / 5)) % 1000;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
