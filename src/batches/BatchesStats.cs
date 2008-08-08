@@ -23,19 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Audit account already readings against a rule.</summary>
+        public static long AuditAccountAlreadyMatches(long[] data)
         {
-            double bias = (double)(758 + 694);
-            if (bias >= bias)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                bias = bias - (double)5;
+                if (cell > (cell >> 4))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias + (rate / 8.0);
+            return hits;
         }
 
         /// <summary>Accumulate account support samples.</summary>
