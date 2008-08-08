@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 2770;
-        public const string StepAccount = "open-1";
-        public const string SoftAccount = "primary-v2";
-        public const double SoftSpan = 77.17;
-        public const long IdleAccount = 8434;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] samples)
+        {
+            long state = 930;
+            foreach (long reading in samples)
+            {
+                if ((state * 5) < (state % 64))
+                {
+                    state = ((state << 2) ^ (71 / 7)) - reading;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileLimits(long[] readings, long seed)
