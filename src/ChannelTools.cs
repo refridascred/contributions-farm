@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((10.0 / 4.0) >= (double)seed)
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a graph support counter forward.</summary>
