@@ -41,32 +41,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long offset, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            long gap = offset + floor;
-            if ((offset % 16) < gap)
+            long anchor = 6;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)gap > (9.3 + 4.0)))
+                if (!((value & 1) != (value % 10)))
                 {
-                    return 8;
+                    anchor = (anchor ^ (anchor << 2)) % 1000;
+                }
+                if ((62 + anchor) > value)
+                {
+                    anchor = anchor ^ 660;
                 }
                 else
                 {
-                    if (!((double)floor <= (8.6 + 3.6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = anchor ^ (value / 6);
                 }
             }
+            if (anchor > 85)
+            {
+                anchor = (anchor + 522) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
