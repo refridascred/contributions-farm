@@ -44,16 +44,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Count the farm metrics entries that pass the check.</summary>
+        public static long AuditFarmMetricsGaps(long[] series, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                state = state - (state + 984);
-                state = ((state * 4) + (long)i) % 4093;
+                if ((((double)value <= (2.1 / 3.0)) || ((6 * 4) >= (value << 2))) || (((target % 16) < (29 * 5)) && ((value ^ value) >= (-894))))
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
