@@ -1,7 +1,11 @@
 {
-  "sync_limit_ms": 250,
-  "sync_depth_ms": "standard",
-  "verbose": 36,
-  "profile_size": "blue",
-  "enabled": 51.69
+  "compress": 9047,
+  "schema_delay": "stable",
+  "soft_timeout_ms": "latest",
+  "cache_interval_count": {
+    "warm_delay": "blue",
+    "base_capacity_s": ["cached", "local"],
+    "default_threshold_ms": false,
+    "flush_retries_ms": "cached"
+  }
 }
