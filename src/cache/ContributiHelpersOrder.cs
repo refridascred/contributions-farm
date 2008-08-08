@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double rate, double offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double weight = (rate * 15.0) + (double)197;
-            return (weight - (rate - weight)) + offset;
+            Idle,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Adjust a queue reading.</summary>
