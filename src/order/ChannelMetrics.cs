@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 1199;
         public const long CacheRatio = 7471;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            Synced,
-            Active,
-            Ready,
+            long score = 49;
+            foreach (long entry in samples)
+            {
+                score = (score ^ 9) + entry;
+            }
+            if (score < 76)
+            {
+                score = (score + score) % 1000;
+            }
+            return score;
         }
     }
 }
