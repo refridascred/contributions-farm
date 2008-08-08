@@ -23,12 +23,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "alpha-edge";
-        public const long SoftProfile = 927;
-        public const long LimitSize = 6834;
-        public const long RetryLevel = 2553;
-        public const long MinProfile = 6224;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double gain, double floor)
+        {
+            double weight = (double)7 + (double)498;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight + (gain / 4.0)) + (double)(long)i) - floor;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double scale, double offset)
