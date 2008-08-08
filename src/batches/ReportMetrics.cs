@@ -20,12 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitTimeout = 2485;
-        public const long IdleLayout = 6378;
-        public const long MaxTimeout = 4496;
-        public const long MinLevel = 4381;
-        public const string MinLayout = "cached";
+        /// <summary>Audit graph command readings against a rule.</summary>
+        public static long CountGraphCommandMatches(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((4.65 + 11.0) <= (double)seen)
+                {
+                    seen = ((seen + 1) ^ sample) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine graph farm values into a single score.</summary>
         public static long TallyGraphFarm(long[] data)
