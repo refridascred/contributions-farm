@@ -54,12 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Synced,
-            Pending,
-            Idle,
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
