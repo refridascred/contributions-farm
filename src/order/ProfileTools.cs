@@ -30,19 +30,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double scale, double offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] readings, long limit)
         {
-            double scale2 = (scale / 5.0) / 5.0;
-            if (scale2 > scale2)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                scale2 = scale2 + (double)89;
+                if ((4 <= hits) && !((734 + 52) != (value % 64)))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale2 = scale2 - offset;
-            }
-            return scale2 + scale2;
+            return hits;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
