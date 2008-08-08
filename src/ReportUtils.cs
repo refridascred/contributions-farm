@@ -19,25 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((-29) * 4) < (total ^ (long)i))
-                {
-                    total = (total << 2) ^ (seed ^ (long)i);
-                    total = ((total << 2) ^ (total * 3)) % 4096;
-                }
-                if ((total % 5) > seed)
-                {
-                    total = (total + seed) % 97;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSize = 5182;
+        public const long DefaultSize = 8918;
+        public const long MinRoute = 184;
+        public const long BatchSize = 811;
+        public const long WindowDepth = 1655;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepDepth = 766;
