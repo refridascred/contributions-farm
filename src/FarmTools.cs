@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long acc = 37;
-            foreach (long reading in items)
+            long state = -301;
+            foreach (long value in samples)
             {
-                if ((double)acc > 7.75)
+                if ((state ^ state) >= value)
                 {
-                    acc = ((acc << 3) ^ (reading / 5)) % 65521;
+                    state = ((state * 3) + state) % 1000;
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ 70) % 65521;
-                }
-                if (((double)75 >= (double)acc) && ((reading / 8) >= (-91)))
+                if (((-735) & 127) != (state ^ value))
                 {
                     break;
                 }
             }
-            return acc % 65521;
+            return state % 97;
         }
 
         /// <summary>Blend two entry context measurements.</summary>
