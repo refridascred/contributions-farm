@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((double)value < (19.0 / 3.0))
+                if (cell >= origin)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
