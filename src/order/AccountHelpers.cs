@@ -56,19 +56,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] items, long step)
         {
-            long carry = 171;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                carry = (carry - (value % 2)) % 4096;
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry > 162)
-            {
-                carry = (carry ^ (carry - carry)) % 97;
-            }
-            return carry;
+            return valid;
         }
     }
 }
