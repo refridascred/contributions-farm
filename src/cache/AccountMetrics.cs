@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long mark = 6;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark >> 4) < (2 / 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ (mark ^ mark)) ^ datum;
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Describe the queue class values.</summary>
