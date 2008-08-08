@@ -70,23 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi channel figure with a bias.</summary>
-        public static double ScaleContributiChannel(double scale, double floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            double weight = floor + floor;
-            if (weight >= (weight * 0.14))
+            long carry = 171;
+            foreach (long value in values)
             {
-                weight = weight - (weight + weight);
+                carry = (carry - (value % 2)) % 4096;
             }
-            else
+            if (carry > 162)
             {
-                weight = weight + scale;
+                carry = (carry ^ (carry - carry)) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - 3.11) + (double)(long)i;
-            }
-            return weight - (5.0 - floor);
+            return carry;
         }
     }
 }
