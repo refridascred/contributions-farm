@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double floor)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            double gain2 = (double)(623 - 8);
-            return ((gain2 + 1.71) + gain) + floor;
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
