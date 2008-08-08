@@ -61,16 +61,22 @@ namespace Common.Utilities
             return gain + (1.5 - weight);
         }
 
-        /// <summary>Roll a command metrics counter forward.</summary>
-        public static long StepCommandMetrics(long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                result = ((result << 2) ^ 25) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
+                if (((double)seen < (7.9 + 7.3)) || (((long)series.Length != (seen << 3)) && ((double)(long)series.Length <= 2.5)))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
