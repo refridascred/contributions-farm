@@ -33,19 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi checks readings.</summary>
-        public static long ScoreContributiChecks(long[] samples)
-        {
-            long mark = 664;
-            foreach (long reading in samples)
-            {
-                mark = (mark ^ (reading - 21)) % 4096;
-            }
-            if (mark > 1)
-            {
-                mark = mark ^ (mark & 1);
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "primary-edge";
+        public const long WindowCluster = 1375;
+        public const double DefaultTimeout = 46.55;
     }
 }
