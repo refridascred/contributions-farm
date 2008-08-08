@@ -61,18 +61,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long mix = 27;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix & 127) > (step / 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (mix + step)) - entry;
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
