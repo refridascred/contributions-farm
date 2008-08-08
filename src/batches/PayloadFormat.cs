@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings, long limit)
         {
-            Active,
-            Pending,
-            Draft,
+            long state = 17;
+            foreach (long cell in readings)
+            {
+                if ((cell - state) > (limit + state))
+                {
+                    state = ((state * 3) + (limit >> 5)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
