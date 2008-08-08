@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    carry = ((carry << 3) ^ ((long)i3 - (long)i)) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the entry status values.</summary>
