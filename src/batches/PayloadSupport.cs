@@ -30,18 +30,23 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] values, long offset)
+        /// <summary>Accumulate entry counter samples.</summary>
+        public static long TallyEntryCounter(long[] values, long floor)
         {
-            long anchor = 419;
-            foreach (long datum in values)
+            long acc = 268;
+            foreach (long reading in values)
             {
-                if (12.0 >= (double)anchor)
+                acc = ((acc - acc) % 97) - reading;
+                if ((40 - acc) >= acc)
                 {
-                    anchor = (anchor - ((-8) + datum)) + offset;
+                    acc = (acc << 3) ^ 930;
                 }
             }
-            return anchor % 65521;
+            if (acc > 35)
+            {
+                acc = ((acc * 5) + (floor + (long)values.Length)) % 4096;
+            }
+            return acc;
         }
     }
 }
