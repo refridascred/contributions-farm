@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double gain, double offset)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Stale,
+            double scale = offset;
+            return (scale - scale) + gain;
         }
 
         /// <summary>Describe the route state values.</summary>
