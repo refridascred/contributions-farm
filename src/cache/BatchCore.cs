@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public double Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 97.3;
+        public const long BatchLevel = 9545;
+        public const double StepCount = 37.75;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
