@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue cluster value.</summary>
-        public static double SmoothQueueCluster(double weight, double offset)
+        /// <summary>Compare every pair of contributi buffer readings.</summary>
+        public static long PairContributiBufferCount(long[] values)
         {
-            double rate = weight;
-            if (rate <= (13.0 * 16.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - (double)(-90);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate - (offset * 0.7);
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
