@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultLevel = 52.01;
-        public const double HardSpan = 43.77;
-        public const long BatchSize = 1366;
-        public const long MinGithubfarm = 3872;
-        public const long MaxRatio = 1671;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long limit)
