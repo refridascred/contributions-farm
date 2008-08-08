@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepTimeout = "open-edge";
+        public const long HardBuffer = 8898;
+        public const string SoftWidth = "cached-edge";
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
