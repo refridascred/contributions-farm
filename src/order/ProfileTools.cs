@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next support filter value.</summary>
-        public static double SmoothSupportFilter(double gain, double floor)
-        {
-            double scale = floor;
-            if (scale > (floor / 2.0))
-            {
-                scale = (scale + (8.62 * 2.48)) - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 17.0) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 7768;
+        public const long SoftInterval = 3080;
+        public const string BatchDepth = "staging-v2";
+        public const long StepBudget = 4237;
+        public const double HardSize = 46.47;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] readings)
