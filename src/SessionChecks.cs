@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next payload session value from a seed.</summary>
-        public static long IteratePayloadSession(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitScore = 7651;
+        public const long MaxDepth = 5882;
+        public const long RetryInterval = 2641;
+        public const long MaxSession = 2539;
+        public const long DefaultSpan = 580;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
