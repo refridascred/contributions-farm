@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Accumulate batches command samples.</summary>
+        public static long FoldBatchesCommand(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long mark = 2;
+            foreach (long reading in levels)
             {
-                if ((score * 5) == (long)i)
+                if ((reading % 16) <= reading)
                 {
-                    break;
+                    mark = (mark - (reading / 2)) % 1000;
+                    mark = (mark - ((long)levels.Length + mark)) % 101;
                 }
-                score = ((score * 4) + (long)i) % 4093;
+                if ((reading - mark) > (mark - 3))
+                {
+                    mark = mark - mark;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
