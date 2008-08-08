@@ -57,11 +57,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryBudget = 2714;
-        public const double BatchInterval = 87.13;
-        public const double CacheTools = 20.73;
-        public const string CacheSpan = "standard-1";
-        public const long BurstSize = 4833;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data, long step)
+        {
+            long mix = 27;
+            foreach (long entry in data)
+            {
+                if ((mix & 127) > (step / 8))
+                {
+                    mix = (mix ^ (mix + step)) - entry;
+                }
+            }
+            return mix;
+        }
     }
 }
