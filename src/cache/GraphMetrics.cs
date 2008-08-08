@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            Closed,
+            Locked,
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the account status values.</summary>
