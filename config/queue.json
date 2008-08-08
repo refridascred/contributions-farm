@@ -1,20 +1,15 @@
 {
-  "filter_retries": false,
-  "entry_limit": {
-    "burst_size_pct": 25.46,
-    "default_delay": {
-      "enabled": "latest",
-      "flush_window_ms": 14,
-      "cache_depth": true,
-      "channel_delay": 2963,
-      "idle_size_count": "primary",
-      "cache_depth_s": "edge"
-    },
-    "enabled": "eu-west",
-    "context_limit": false,
-    "batch_limit_count": ["staging", "legacy", "cached"]
-  },
-  "batch_limit": false,
-  "default_retries_count": 250,
-  "cache_capacity_pct": true
+  "readonly": "latest",
+  "min_threshold_s": true,
+  "record_depth": "eu-west",
+  "command_limit": 11.94,
+  "compress": 2331,
+  "graph_ratio": {
+    "persist": 37.28,
+    "max_capacity": 500,
+    "batch_delay": 360,
+    "retry_capacity": "green",
+    "strict": 1588,
+    "idle_limit_pct": "strict"
+  }
 }
