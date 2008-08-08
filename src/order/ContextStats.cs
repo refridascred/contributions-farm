@@ -45,19 +45,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every payload record entry stays within the limit.</summary>
-        public static bool VerifyPayloadRecordBounds(long[] items, long bound)
+        /// <summary>Audit channel profile readings against a rule.</summary>
+        public static long CountChannelProfileHits(long[] values)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (reading < bound)
+                if ((datum ^ datum) >= hits)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
