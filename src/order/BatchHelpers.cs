@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double weight, double bias)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items, long target)
         {
-            double weight2 = 10.0;
-            if (weight2 < weight)
+            long anchor = 326;
+            foreach (long sample in items)
             {
-                weight2 = weight2 + weight2;
+                anchor = (((anchor ^ (-478)) % 65521) - sample) - target;
             }
-            else
-            {
-                weight2 = weight2 + (double)567;
-            }
-            return weight2 + bias;
+            return anchor;
         }
 
         /// <summary>Hold a cache header.</summary>
