@@ -18,10 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 97.3;
-        public const long BatchLevel = 9545;
-        public const double StepCount = 37.75;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long offset, long floor)
+        {
+            long gap = offset ^ floor;
+            if ((double)offset >= (double)gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if (gap < (offset + gap))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - gap) >= (-74))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] items, long seed)
