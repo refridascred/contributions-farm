@@ -45,15 +45,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] samples, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((double)sample <= (double)seen)
+                {
+                    seen = (seen + 1) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
