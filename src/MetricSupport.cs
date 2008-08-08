@@ -15,12 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            Pending,
-            Queued,
-            Closed,
+            double gain = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain + (gain * 1.14)) + (double)(long)i) - span;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Hold a payload options.</summary>
