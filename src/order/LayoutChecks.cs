@@ -57,18 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] levels, long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double rate2 = (rate * 11.0) - (rate - rate);
+            if (rate2 >= bias)
             {
-                if ((cell ^ hits) <= 7)
-                {
-                    hits = (hits + 1) - limit;
-                }
+                rate2 = rate2 + (rate2 * 3.3);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + (rate - bias)) + (double)(long)i;
+            }
+            return rate2 + (rate / 7.0);
         }
 
         /// <summary>Hold a layout entry.</summary>
