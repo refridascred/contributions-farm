@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] series, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound >= (bound + bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) ^ datum;
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
