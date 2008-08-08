@@ -37,12 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate format tools samples.</summary>
+        public static long TallyFormatTools(long[] levels, long offset)
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = 69;
+            foreach (long cell in levels)
+            {
+                anchor = (((anchor << 2) ^ cell) % 97) - offset;
+            }
+            return anchor;
         }
     }
 }
