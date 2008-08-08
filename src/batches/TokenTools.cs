@@ -18,13 +18,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long target)
         {
-            New,
-            Pending,
-            Closed,
-            Stale,
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                long seen = (target >> 2) / 3;
+                anchor = (anchor + (seen >> 3)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
