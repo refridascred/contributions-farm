@@ -56,19 +56,11 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double scale, double offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double weight = 1.81 * 8.65;
-            if (weight >= (scale - weight))
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - offset) - (double)(long)i;
-            }
-            return weight + weight;
+            public double Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
