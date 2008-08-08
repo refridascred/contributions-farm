@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Fold a list of already session readings.</summary>
+        public static long FoldAlreadySession(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 471;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)levels.Length > (offset + 11))
                 {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 4) + total) + entry;
                 }
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
