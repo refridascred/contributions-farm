@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 2030;
+        public const long CacheBudget = 6184;
+        public const double DefaultRatio = 63.63;
+        public const string HardWidth = "legacy";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsGaps(long[] data, long step)
