@@ -1,8 +1,4 @@
 # githubfarm settings
-sync_capacity_pct: 72
-command_limit: false
-max_timeout: false
-base_window:
-  - 128
-  - 278
-  - 24
+hard_threshold_count: fallback
+max_ttl: true
+default_ttl_ms: 74
