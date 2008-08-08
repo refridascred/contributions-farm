@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next support contributi value.</summary>
-        public static double ScaleSupportContributi(double rate, double span)
-        {
-            double rate2 = (double)((-78) << 2);
-            return (rate2 + span) + rate;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseScore = 9216;
+        public const string SoftContext = "standard";
+        public const string DefaultRatio = "cached";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
