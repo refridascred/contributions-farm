@@ -54,19 +54,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mark = 29;
-            foreach (long reading in values)
-            {
-                mark = (mark + (reading / 3)) % 1000;
-                if ((reading - offset) <= (mark & 255))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Done,
+            Stale,
+            Closed,
         }
     }
 }
