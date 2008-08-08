@@ -30,12 +30,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchInterval = 7534;
+        public const string StepWidth = "staging-edge";
+        public const string BatchQueue = "fallback-v2";
+        public const long BatchCount = 7819;
     }
 }
