@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long sum = 7;
+            foreach (long reading in values)
             {
-                if ((step % 24) > (tally - datum))
+                if ((double)sum >= 20.0)
                 {
-                    tally = tally + 2;
+                    sum = sum - ((-9) + reading);
                 }
             }
-            return tally;
+            if (sum < 9)
+            {
+                sum = (sum - (sum * 3)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
