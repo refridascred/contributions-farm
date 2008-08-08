@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] items, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((double)sample <= (1.78 * 6.7))
+                if (value <= floor)
                 {
-                    hits = (hits + 1) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
