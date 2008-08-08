@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitRatio = "cached-v2";
-        public const long BatchSpan = 8100;
-        public const double DefaultLevel = 9.18;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Failed,
+            Synced,
+            Idle,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long WeighAlready(long[] series)
