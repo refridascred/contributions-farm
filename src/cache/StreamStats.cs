@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxRatio = "primary-v2";
-        public const string MaxMetric = "stable-1";
-        public const long DefaultTimeout = 1561;
-        public const long LimitSpan = 5457;
+        /// <summary>Digest a series of checks schema entries.</summary>
+        public static long CombineChecksSchema(long[] data, long floor)
+        {
+            long state = 495;
+            foreach (long cell in data)
+            {
+                if (((-16) + floor) > (state ^ (long)data.Length))
+                {
+                    state = (((state * 5) + (state & 31)) % 65521) - cell;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitTimeout = 4949;
