@@ -35,11 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] items, long step)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample <= (1.78 * 6.7))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
     }
 }
