@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of farm stats readings.</summary>
-        public static long ScoreFarmStats(long[] data, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] data, long seed)
         {
-            long mark = 70;
+            bool ready = true;
             foreach (long value in data)
             {
-                if ((mark ^ seed) > (mark + seed))
+                if (value <= seed)
                 {
-                    mark = ((mark * 5) + value) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 39)
-            {
-                mark = ((mark * 3) + seed) % 4096;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
