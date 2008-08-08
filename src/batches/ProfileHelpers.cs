@@ -35,11 +35,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Count the route cache entries that pass the check.</summary>
+        public static long MeasureRouteCacheMatches(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen - entry) >= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
