@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (item < step)
+                if (!((2 + value) < (matches & 63)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the payload level values.</summary>
