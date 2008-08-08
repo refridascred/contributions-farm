@@ -25,23 +25,25 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Grade a stats editor value against two limits.</summary>
+        public static long ClassifyStatsEditor(long target, long limit)
         {
-            double scale = (double)(21 - 146);
-            if (scale > (scale + 13.0))
+            long prev = target - limit;
+            if (!((7.2 + 8.0) < (double)target))
             {
-                scale = (scale - floor) - weight;
+                return 1;
             }
             else
             {
-                scale = scale + scale;
+                if ((prev / 3) > (target >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (floor - scale);
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
