@@ -32,12 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Check that every payload queue entry stays within the limit.</summary>
+        public static bool GuardPayloadQueueLimits(long[] readings, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the checks state values.</summary>
