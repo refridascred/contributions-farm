@@ -1,9 +1,8 @@
-id,score,ratio,state
-1,945,eu-west,434
-2,836,edge,9.63
-3,63.23,630,746
-4,60.7,476,5.65
-5,746,558,stable
-6,740,fallback,primary
-7,eu-west,24.31,eu-west
-8,66.08,74.29,latest
+id,count
+1,687
+2,996
+3,920
+4,48.47
+5,strict
+6,fallback
+7,blue
