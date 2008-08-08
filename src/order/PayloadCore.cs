@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseTimeout = "primary-edge";
-        public const long BurstSize = 1065;
-        public const double LimitDepth = 7.96;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((7.33 / 9.0) >= (double)count) && (sample <= (1 % 10)))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 141;
