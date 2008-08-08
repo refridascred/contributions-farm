@@ -14,22 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((3 & 1) >= (value << 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Match up token samples.</summary>
