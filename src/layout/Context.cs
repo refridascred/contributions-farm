@@ -33,19 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!!((double)matches <= (2.63 + 3.1)))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxCount = 60.73;
+        public const string SoftSchema = "open-edge";
+        public const long BatchSchema = 7780;
+        public const long StepSchema = 3481;
+        public const long RetrySchema = 2299;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string RetryRatio = "legacy-1";
