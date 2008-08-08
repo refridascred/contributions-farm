@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = sum - (sum % 2);
-                sum = (sum + (sum - bound)) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
