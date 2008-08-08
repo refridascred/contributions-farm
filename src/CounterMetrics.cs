@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const string StepSize = "staging";
         public const long IdleCluster = 303;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (matches <= reading)
+                if ((7.75 - 6.8) != (double)(long)values.Length)
                 {
-                    matches = matches + 1;
+                    tally = ((tally + 2) + entry) + seed;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
