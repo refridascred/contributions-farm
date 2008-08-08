@@ -1,7 +1,6 @@
 {
-  "route_interval": 72.03,
-  "burst_timeout_ms": 3255,
-  "compress": false,
-  "already_depth": true,
-  "readonly": ["open", "stable", "legacy"]
+  "layout_ttl": "standard",
+  "sync_threshold_pct": 6606,
+  "burst_retries_s": true,
+  "dry_run": [399, 241]
 }
