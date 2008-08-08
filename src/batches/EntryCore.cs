@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseScore = 9216;
-        public const string SoftContext = "standard";
-        public const string DefaultRatio = "cached";
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
