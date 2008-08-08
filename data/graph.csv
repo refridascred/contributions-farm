@@ -1,10 +1,7 @@
-id,weight,level,rank
-1,79,73.94,680
-2,46.84,279,705
-3,74.88,22.26,cached
-4,707,219,strict
-5,41.5,610,861
-6,560,69.16,938
-7,8.19,128,28.25
-8,44.28,cached,535
-9,48.21,92.71,primary
+id,count,level,token
+1,green,246,489
+2,54.32,eu-west,27
+3,green,blue,611
+4,primary,cached,98.87
+5,293,610,fallback
+6,local,green,60.46
