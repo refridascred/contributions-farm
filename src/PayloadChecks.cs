@@ -42,18 +42,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit farm token readings against a rule.</summary>
-        public static long TallyFarmTokenOutliers(long[] data)
+        /// <summary>Count the graph contributi entries that pass the check.</summary>
+        public static long AuditGraphContributiGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((item - 34) <= (item - seen))
+                if ((double)reading == (3.2 * 9.0))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
