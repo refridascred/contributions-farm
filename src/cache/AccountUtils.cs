@@ -22,13 +22,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 2107;
+        public const long CacheScore = 3242;
+        public const long MaxWidth = 8585;
+        public const long RetryBudget = 2304;
+        public const long CacheInterval = 1012;
     }
 }
