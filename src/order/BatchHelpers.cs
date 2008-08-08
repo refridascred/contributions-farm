@@ -20,17 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] data, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
