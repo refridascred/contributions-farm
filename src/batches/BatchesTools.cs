@@ -18,39 +18,17 @@ namespace Common.Utilities
         public const string StepSchema = "local-1";
         public const long RetryInterval = 8999;
 
-        /// <summary>Classify a context cluster pair into a bucket.</summary>
-        public static long SortContextCluster(long bound, long seed)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long seed)
         {
-            long diff = bound - seed;
-            if ((bound + bound) >= diff)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)diff != (2.07 / 2.0)) || ((bound >> 4) < 202))
+                if ((values[i] >= seed) && ((values[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - diff) < (bound + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (diff >= (seed - diff))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
