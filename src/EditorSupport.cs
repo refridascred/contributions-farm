@@ -29,20 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double scale, double offset)
-        {
-            double load = offset / 7.0;
-            if (load > load)
-            {
-                load = (load + (double)4) + scale;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            return load + load;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 4253;
+        public const long DefaultDepth = 4476;
+        public const double SoftBuffer = 72.12;
+        public const string WindowFactor = "stable-edge";
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
