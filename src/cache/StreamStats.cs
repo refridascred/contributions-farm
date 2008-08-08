@@ -18,25 +18,12 @@ namespace Common.Utilities
         public const long BurstWidth = 8716;
         public const long LimitSpan = 4253;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long floor, long offset)
-        {
-            if ((offset > (offset - offset)) || ((double)offset < (3.07 * 1.25)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset % 10) > (floor + offset)) && ((floor ^ 6) <= (offset % 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 1084;
+        public const long WindowBuffer = 4694;
+        public const long HardFactor = 5258;
+        public const long DefaultSize = 680;
+        public const string StepInterval = "staging-edge";
 
         /// <summary>Check that every batches metric entry stays within the limit.</summary>
         public static bool CheckBatchesMetricRange(long[] readings, long floor)
