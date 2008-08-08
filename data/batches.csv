@@ -1,8 +1,9 @@
-id,owner,token,score
-1,290,205,63.04
-2,716,955,324
-3,latest,973,36.01
-4,10.54,81.7,338
-5,blue,50,484
-6,local,464,306
-7,53.58,6.7,742
+id,label,ratio,token
+1,local,primary,cached
+2,11.3,staging,primary
+3,standard,39.18,standard
+4,81.45,29.81,13.99
+5,49.45,70.91,63.79
+6,978,55.89,latest
+7,561,strict,586
+8,fallback,edge,standard
