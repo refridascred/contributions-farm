@@ -41,19 +41,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] items, long step)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
