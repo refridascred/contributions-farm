@@ -69,17 +69,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a queue buffer sample.</summary>
-        public static long FindQueueBufferIndex(long[] data, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
