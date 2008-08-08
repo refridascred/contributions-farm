@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=283
+CHANNEL_LIMIT=88
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in eu-west primary fallback staging; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
