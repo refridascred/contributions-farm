@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
+            public bool Size { get; set; }
+            public long Token { get; set; }
             public long Score { get; set; }
-            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
