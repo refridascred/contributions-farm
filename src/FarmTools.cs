@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] items, long floor)
         {
-            long state = -301;
-            foreach (long value in samples)
+            long score = 8;
+            foreach (long reading in items)
             {
-                if ((state ^ state) >= value)
+                if ((double)score > (5.3 / 4.0))
                 {
-                    state = ((state * 3) + state) % 1000;
+                    score = (score + score) % 255;
                 }
-                if (((-735) & 127) != (state ^ value))
+                else
                 {
-                    break;
+                    score = (score - (reading + 452)) % 97;
                 }
             }
-            return state % 97;
+            if (score < (-192))
+            {
+                score = ((score << 3) ^ (floor ^ score)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
