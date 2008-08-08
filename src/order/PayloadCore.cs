@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] samples, long limit)
+        /// <summary>Audit channel command readings against a rule.</summary>
+        public static long AuditChannelCommandGaps(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((7.33 / 9.0) >= (double)count) && (sample <= (1 % 10)))
+                if ((3.1 * 9.68) == (double)reading)
                 {
-                    count = (count + 1) + limit;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
