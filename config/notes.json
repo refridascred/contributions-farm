@@ -1,12 +1,6 @@
 {
-  "sync_limit_pct": false,
-  "support_window": 13.77,
-  "compress": {
-    "strict": true,
-    "schema_delay": false,
-    "burst_ttl": ["green", "primary", "edge", "primary"]
-  },
-  "flush_capacity_pct": 4,
-  "audit": ["primary", "blue"],
-  "default_retries_s": 38
+  "cache_delay": 13,
+  "compress": 1024,
+  "order_timeout": 1934,
+  "metric_retries": ["staging", "primary", "staging"]
 }
