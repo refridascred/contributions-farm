@@ -14,17 +14,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] series, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 267;
+            foreach (long cell in samples)
             {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - (seed + cell)) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
