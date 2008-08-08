@@ -85,14 +85,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            Done,
-            Draft,
-            Pending,
-            Locked,
-            New,
+            long total = 7;
+            foreach (long cell in readings)
+            {
+                total = (total << 3) ^ cell;
+                if ((total * 3) < cell)
+                {
+                    total = total + cell;
+                }
+            }
+            return total % 65521;
         }
     }
 }
