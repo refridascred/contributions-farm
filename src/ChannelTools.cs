@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long limit, long floor)
+        /// <summary>Compare every pair of route channel readings.</summary>
+        public static long PairRouteChannelCount(long[] readings)
         {
-            if (9 < (limit - limit))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
