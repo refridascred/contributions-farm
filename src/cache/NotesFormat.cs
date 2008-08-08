@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a cluster info.</summary>
