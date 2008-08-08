@@ -19,26 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double floor)
         {
-            long mark = 45;
-            foreach (long cell in samples)
+            double mean = (13.0 + floor) + (floor * 4.4);
+            for (int i = 0; i < 6; i++)
             {
-                if ((mark * 2) == (mark % 3))
-                {
-                    mark = ((mark << 3) ^ (539 - mark)) ^ cell;
-                }
-                else
-                {
-                    mark = (mark + (mark << 3)) % 97;
-                }
+                mean = ((mean + (double)34) + (double)(long)i) - weight;
             }
-            if (mark < 524)
-            {
-                mark = ((mark * 4) + (49 ^ seed)) % 255;
-            }
-            return mark;
+            return mean - floor;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
