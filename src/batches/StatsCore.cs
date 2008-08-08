@@ -22,12 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinCount = 71.15;
-        public const long SoftSize = 582;
-        public const long BaseInterval = 6253;
-        public const long WindowFilter = 8238;
-        public const double BatchFilter = 25.95;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (((mix * 3) + ((long)i + 6)) % 4096) ^ (long)i2;
+                    mix = (mix ^ (mix + 34)) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileHits(long[] items)
