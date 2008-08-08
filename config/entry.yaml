@@ -1,7 +1,11 @@
 # entry settings
-min_interval_pct: 13
-enabled:
-  - 433
-  - 378
-strict: 32
-stats_retries: 4763
+layout_capacity:
+  - 456
+  - 68
+  - 480
+  - 342
+format_retries: true
+soft_threshold_s: 4
+readonly: false
+idle_ttl_pct: stable
+account_ttl: 3735
