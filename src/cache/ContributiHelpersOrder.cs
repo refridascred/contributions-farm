@@ -17,21 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -5;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)datum >= (double)state)
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state << 3) ^ (step + step);
+                    state = state ^ (datum + datum);
+                }
+                if ((datum + 143) <= step)
+                {
+                    state = (state + (datum & 127)) % 255;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
