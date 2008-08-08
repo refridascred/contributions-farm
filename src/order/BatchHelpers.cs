@@ -22,16 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Measure how many account command samples are out of range.</summary>
+        public static long MeasureAccountCommandGaps(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 5) + ((long)i / 8)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((double)reading > (3.0 * 17.0))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
