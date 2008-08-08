@@ -44,17 +44,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] values, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(45 / 2);
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] < step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (double)(long)i) + scale;
             }
-            return -1;
+            return gain - (offset / 8.0);
         }
     }
 }
