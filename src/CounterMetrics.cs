@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result ^ (result + 16)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the report phase values.</summary>
