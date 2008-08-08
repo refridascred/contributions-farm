@@ -62,12 +62,18 @@ namespace Common.Utilities
         public const string BaseDepth = "stable-edge";
         public const string BaseReport = "latest";
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] values, long target)
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((((tally - 954) > (entry / 2)) || ((target - target) == (target + target))) && (tally < (entry & 127)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
