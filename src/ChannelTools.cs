@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many farm already samples are out of range.</summary>
-        public static long MeasureFarmAlreadyHits(long[] values, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!((2.0 - 2.7) != (double)seen))
+                if ((sample - sample) > matches)
                 {
-                    seen = ((seen + 2) - cell) - bound;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
