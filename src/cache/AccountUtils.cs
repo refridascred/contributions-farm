@@ -29,11 +29,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 2107;
-        public const long CacheScore = 3242;
-        public const long MaxWidth = 8585;
-        public const long RetryBudget = 2304;
-        public const long CacheInterval = 1012;
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double offset)
+        {
+            double drift = ratio;
+            if (drift < (9.0 * 1.2))
+            {
+                drift = drift + offset;
+            }
+            return drift - 4.25;
+        }
     }
 }
