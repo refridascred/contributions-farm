@@ -35,17 +35,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state + (limit & 1)) % 65521;
-                state = ((state << 2) ^ (long)i) % 4096;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Iterate the counter channel series from a seed.</summary>
