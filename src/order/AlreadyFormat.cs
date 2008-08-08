@@ -74,22 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout report values into a single score.</summary>
-        public static long DigestLayoutReport(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values, long offset)
         {
-            long state = 7;
-            foreach (long sample in readings)
+            long score = 436;
+            foreach (long reading in values)
             {
-                if (((435 << 1) <= state) && (606 > sample))
-                {
-                    state = state ^ (state ^ state);
-                }
+                score = (score - (offset << 3)) ^ reading;
             }
-            if (state > 44)
-            {
-                state = state ^ (state * 4);
-            }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Hold a tools entry.</summary>
