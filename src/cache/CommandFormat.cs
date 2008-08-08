@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank graph layout input into a small class.</summary>
-        public static long SortGraphLayout(long offset, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long bound)
         {
-            if (!((offset + seed) > (seed * 2)))
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 3) < (seed * 2))
+                if (((bound - (long)i) <= mark) || (bound >= (7 + bound)))
                 {
-                    return 8;
+                    mark = ((mark * 2) + (mark + (long)i)) % 1000;
+                    mark = (mark ^ mark) % 101;
                 }
                 else
                 {
-                    return 6;
+                    mark = ((mark << 2) ^ (mark << 2)) % 4096;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
