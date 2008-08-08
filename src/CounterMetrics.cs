@@ -31,17 +31,32 @@ namespace Common.Utilities
         public const string StepSize = "staging";
         public const long IdleCluster = 303;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long target, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = target + limit;
+            if (((double)limit < (double)edge) && ((target >> 1) <= limit))
             {
-                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((double)edge > (2.6 - 1.0)) || ((edge + limit) <= limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((target << 1) < (edge << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
