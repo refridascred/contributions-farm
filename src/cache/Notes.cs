@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] data, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
