@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Failed,
-            Active,
-            Pending,
-            Stale,
-            Dropped,
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
