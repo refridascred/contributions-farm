@@ -38,19 +38,19 @@ namespace Common.Utilities
             return bias - (double)509;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] levels, long limit)
+        /// <summary>Fold a list of contributi checks readings.</summary>
+        public static long ScoreContributiChecks(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long mark = 664;
+            foreach (long reading in samples)
             {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark ^ (reading - 21)) % 4096;
             }
-            return valid;
+            if (mark > 1)
+            {
+                mark = mark ^ (mark & 1);
+            }
+            return mark;
         }
     }
 }
