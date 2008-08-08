@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] series, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (sample < limit)
+                if (sample >= (count + sample))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + floor;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
