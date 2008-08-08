@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 7768;
-        public const long SoftInterval = 3080;
-        public const string BatchDepth = "staging-v2";
-        public const long StepBudget = 4237;
-        public const double HardSize = 46.47;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 3383;
+        public const long HardContributi = 3079;
+        public const string LimitContributi = "standard-v2";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] readings)
