@@ -58,24 +58,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long step, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] values, long step)
         {
-            if (step < (target + 3))
+            bool found = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step != (5.0 + 9.61))
+                if (value != step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
