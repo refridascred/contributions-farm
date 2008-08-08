@@ -22,13 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = ((total ^ (total / 3)) % 255) + (long)i2;
+                }
+                total = ((total << 3) ^ ((long)i >> 5)) % 65521;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
