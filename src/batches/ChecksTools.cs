@@ -13,11 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
