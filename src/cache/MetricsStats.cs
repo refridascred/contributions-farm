@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const double RetrySpan = 60.18;
         public const long BaseStats = 2070;
 
-        /// <summary>Blend two metrics command measurements.</summary>
-        public static double SmoothMetricsCommand(double ratio, double floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long origin)
         {
-            double drift = 12.0;
-            if (drift >= (drift / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (ratio + floor);
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (drift * 10.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (floor + 1.7)) - (double)(long)i;
-            }
-            return drift - (ratio / 9.0);
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
