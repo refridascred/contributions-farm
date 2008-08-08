@@ -35,19 +35,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long bound)
+        /// <summary>Classify a context cluster pair into a bucket.</summary>
+        public static long SortContextCluster(long bound, long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long diff = bound - seed;
+            if ((bound + bound) >= diff)
             {
-                if (reading >= bound)
+                return 2;
+            }
+            else
+            {
+                if (((double)diff != (2.07 / 2.0)) || ((bound >> 4) < 202))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - diff) < (bound + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (diff >= (seed - diff))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
