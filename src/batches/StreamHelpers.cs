@@ -35,17 +35,22 @@ namespace Common.Utilities
         public const string RetryScore = "alpha-edge";
         public const long MinDepth = 6386;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 9;
+            foreach (long value in samples)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
+                if (((long)samples.Length >> 1) < mix)
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (value ^ value);
                 }
             }
-            return -1;
+            if (mix < 667)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
