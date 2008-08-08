@@ -33,22 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)seen >= (3.33 - 3.4))
+                if ((double)matches < (5.02 + 3.7))
                 {
-                    seen = ((seen + 2) + datum) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count command cluster pairs that satisfy a relation.</summary>
