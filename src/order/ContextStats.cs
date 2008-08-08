@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first metrics session entry that matches the target.</summary>
-        public static long FindMetricsSessionIndex(long[] data, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 54;
+            foreach (long item in items)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ (9 + result)) + item;
             }
-            return -1;
+            if (result < 995)
+            {
+                result = result - (78 + result);
+            }
+            return result;
         }
 
         /// <summary>Measure how many metric layout samples are out of range.</summary>
