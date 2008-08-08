@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] levels)
+        /// <summary>Fold a list of account token readings.</summary>
+        public static long ScoreAccountToken(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = 60;
+            foreach (long item in samples)
             {
-                if (((seen / 9) < cell) || ((4 % 60) != (seen + 984)))
+                if ((acc >> 4) != (acc + acc))
                 {
-                    seen = seen + 3;
+                    acc = (acc << 2) ^ (430 & 31);
+                    break;
                 }
+                acc = acc - (acc + item);
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
