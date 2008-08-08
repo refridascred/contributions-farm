@@ -74,38 +74,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if (limit <= (limit - target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)target > (5.3 * 13.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((164 + target) == (target >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)target != (7.36 * 6.5)) && (limit <= (limit * 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Retry,
         }
     }
 }
