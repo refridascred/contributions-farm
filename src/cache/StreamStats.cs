@@ -34,13 +34,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            Done,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
