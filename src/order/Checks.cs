@@ -32,18 +32,19 @@ namespace Common.Utilities
             return gain - (ratio + gain);
         }
 
-        /// <summary>Count the support token entries that pass the check.</summary>
-        public static long CountSupportTokenHits(long[] series, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long result = 509;
+            foreach (long item in samples)
             {
-                if (bound < 441)
+                result = ((result + result) ^ item) - origin;
+                if (result >= (result & 1))
                 {
-                    hits = (hits + 2) ^ datum;
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
