@@ -1,11 +1,46 @@
 # entry settings
-default_threshold_s: false
-min_window_pct: 4913
-default_ttl_count: legacy
-cache_window_pct:
-  - 192
-  - 331
-  - 23
-  - 389
-batch_interval: stable
-format_interval: staging
+max_threshold_count:
+  base_capacity_ms:
+    schema_limit:
+      - 143
+      - 32
+      - 228
+      - 328
+    warm_depth: 250
+    poll_window: 62
+    soft_retries_s: cached
+    default_capacity_s:
+      - 413
+      - 71
+  farm_threshold: cached
+  compress: true
+  dry_run: 250
+  already_delay: 74.01
+  poll_delay_s: 30
+default_capacity:
+  persist:
+    base_capacity: standard
+    sync_depth: open
+    stream_timeout:
+      - 172
+      - 51
+    batch_depth: 41.3
+    compress: edge
+    flush_delay: 48
+  audit: strict
+  readonly:
+    - fallback
+    - green
+    - fallback
+    - primary
+  order_ttl:
+    - fallback
+    - stable
+dry_run: eu-west
+burst_delay_pct:
+  - edge
+  - cached
+  - eu-west
+  - latest
+compress: open
+verbose: staging
