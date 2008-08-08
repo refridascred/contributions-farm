@@ -32,24 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats route value from a seed.</summary>
-        public static long RollStatsRoute(long limit)
+        /// <summary>Measure how many window route samples are out of range.</summary>
+        public static long TallyWindowRouteOutliers(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((datum + datum) <= (hits + hits))
                 {
-                    total = ((total ^ (total - total)) % 97) + (long)i2;
+                    hits = hits + 3;
                 }
-                if ((((long)i + limit) < 679) && ((double)limit < (0.08 * 17.0)))
-                {
-                    total = total ^ (limit + total);
-                }
-                total = (total - (44 >> 4)) % 65521;
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
