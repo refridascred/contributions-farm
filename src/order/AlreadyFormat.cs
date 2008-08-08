@@ -85,13 +85,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 1527;
+        public const long DefaultFactor = 3690;
+        public const double BurstReport = 82.81;
+        public const long SoftReport = 2399;
+        public const long HardReport = 4551;
     }
 }
