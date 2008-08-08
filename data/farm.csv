@@ -1,11 +1,6 @@
-id,owner,rank
-1,fallback,11.45
-2,primary,primary
-3,13.42,420
-4,fallback,94.35
-5,58.67,544
-6,34,12.94
-7,420,564
-8,stable,97.27
-9,98.94,839
-10,strict,cached
+id,owner,weight,count,region
+1,local,staging,strict,567
+2,primary,eu-west,74.99,local
+3,50.45,865,564,402
+4,strict,96.17,743,standard
+5,green,open,80.69,879
