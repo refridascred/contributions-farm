@@ -57,17 +57,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] values, long bound)
+        /// <summary>Roll a notes account counter forward.</summary>
+        public static long DeriveNotesAccount(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate entry samples.</summary>
