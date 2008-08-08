@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the session queue entries that pass the check.</summary>
-        public static long AuditSessionQueueHits(long[] data)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((hits & 31) <= (hits << 2)) || ((cell > (62 - cell)) || (cell >= (cell << 1))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
