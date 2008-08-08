@@ -60,10 +60,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 98.19;
-        public const double BaseCount = 71.28;
-        public const long IdleFarm = 5761;
-        public const long CacheRatio = 2610;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                long step = anchor / 7;
+                anchor = (anchor * 5) + (step + anchor);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
