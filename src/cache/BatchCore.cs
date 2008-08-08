@@ -31,17 +31,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first token stream entry that matches the target.</summary>
-        public static long LookupTokenStreamIndex(long[] items, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] == seed)
+                if ((offset << 3) >= (sample / 4))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
