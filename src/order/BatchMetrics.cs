@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
+            Failed,
+            Queued,
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Adjust a token reading.</summary>
