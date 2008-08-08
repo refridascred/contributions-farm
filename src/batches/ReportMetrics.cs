@@ -56,10 +56,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryDepth = 97.26;
-        public const long SoftCounter = 2757;
-        public const long SoftFactor = 8831;
-        public const long IdleScore = 7045;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
