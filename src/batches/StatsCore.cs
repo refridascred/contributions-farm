@@ -26,25 +26,15 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Grade a githubfarm context value against two limits.</summary>
-        public static long BucketGithubfarmContext(long bound, long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long limit)
         {
-            long next = bound + offset;
-            if (((offset + bound) >= (next / 8)) || (929 <= bound))
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (offset >= (next - next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
