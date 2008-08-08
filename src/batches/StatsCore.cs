@@ -34,12 +34,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count schema stats pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaStatsCount(long[] data)
         {
-            Done,
-            Pending,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
