@@ -44,11 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleSpan = 5258;
-        public const long HardPayload = 166;
-        public const double IdlePayload = 34.64;
-        public const string BurstFactor = "strict-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "stable-v2";
+        public const long BatchStream = 2511;
+        public const long BurstBudget = 6963;
+        public const double BaseStream = 97.43;
+        public const long DefaultScore = 9687;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
