@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Locked,
-            Done,
-            Pending,
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
