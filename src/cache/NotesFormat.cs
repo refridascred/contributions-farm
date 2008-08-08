@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 5.79;
+        public const long LimitFactor = 2660;
+        public const long HardAlready = 1683;
+        public const string BurstTimeout = "alpha-edge";
+        public const long BaseAlready = 9714;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
