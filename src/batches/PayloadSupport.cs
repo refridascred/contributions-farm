@@ -27,18 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] data, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((origin >= (cell * 3)) || ((seen >> 1) < (cell % 10)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
