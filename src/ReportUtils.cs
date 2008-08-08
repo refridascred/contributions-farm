@@ -54,13 +54,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a window graph pair into a bucket.</summary>
+        public static long ClassifyWindowGraph(long offset, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            if ((bound << 1) <= (offset + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset - offset) != (bound % 5)) && (bound <= 171))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (5.4 <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
