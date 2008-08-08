@@ -34,10 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardBudget = 942;
-        public const string MinProfile = "staging-edge";
-        public const double RetryProfile = 35.15;
-        public const long StepBudget = 7053;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Synced,
+            Active,
+            Ready,
+        }
     }
 }
