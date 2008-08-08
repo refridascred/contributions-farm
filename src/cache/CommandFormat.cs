@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double rate, double floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            double bias = (double)6 - (rate + 7.7);
-            if (bias <= 5.0)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias + (bias + floor);
+                if ((((long)i + origin) < (long)i) && (((long)i / 4) != (mark - mark)))
+                {
+                    mark = mark ^ (origin - origin);
+                }
+                if (((-82) / 6) >= origin)
+                {
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return bias - (rate * 12.0);
+            return mark;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
