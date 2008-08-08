@@ -33,22 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] readings, long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((4 <= hits) && !((734 + 52) != (value % 64)))
-                {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
