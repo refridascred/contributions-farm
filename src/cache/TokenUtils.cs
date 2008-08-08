@@ -26,18 +26,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)tally >= (double)datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 4363;
+        public const string IdleChecks = "latest-1";
+        public const long StepBudget = 6064;
+        public const double WindowScore = 78.92;
     }
 }
