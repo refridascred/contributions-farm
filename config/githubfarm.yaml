@@ -1,17 +1,10 @@
 # githubfarm settings
-strict:
-  enabled: 89.34
-  sync_window_ms: 9030
-  layout_depth: 4882
-  cache_size_s: local
-  strict:
-    - 384
-    - 233
-    - 133
-    - 249
-  min_delay: 60
-graph_size: blue
-readonly: 9308
-idle_limit: cached
-poll_ratio_s: 69.9
-hard_threshold: false
+editor_size:
+  - 329
+  - 265
+  - 60
+  - 112
+commits_interval: 11.61
+readonly: true
+persist: 83.08
+retry_ttl_s: 250
