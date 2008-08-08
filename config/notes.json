@@ -1,8 +1,11 @@
 {
-  "burst_ttl": "staging",
-  "checks_ratio": 94.42,
-  "commits_delay": "local",
-  "hard_depth_ms": true,
-  "poll_delay_count": ["standard", "staging", "blue"],
-  "record_depth": "strict"
+  "enabled": 500,
+  "compress": "eu-west",
+  "default_retries": {
+    "min_retries_s": 11,
+    "window_window": [35, 6, 6],
+    "githubfarm_delay": ["local", "standard", "stable", "standard"]
+  },
+  "max_depth_ms": "open",
+  "burst_limit_s": 9125
 }
