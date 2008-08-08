@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] values, long limit)
+        /// <summary>Measure how many stream already samples are out of range.</summary>
+        public static long TallyStreamAlreadyMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (value < limit)
+                if (datum >= (709 / 6))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the layout buffer entries that pass the check.</summary>
