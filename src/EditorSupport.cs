@@ -15,17 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next stream payload value from a seed.</summary>
-        public static long StepStreamPayload(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total - total;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 53.71;
+        public const long MaxBudget = 8006;
+        public const string MinMetric = "latest-v2";
+        public const long CacheRatio = 4454;
+        public const long StepLevel = 489;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long step, long offset)
