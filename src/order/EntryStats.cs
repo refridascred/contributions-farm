@@ -37,22 +37,17 @@ namespace Common.Utilities
         public const double HardTimeout = 33.35;
         public const long SoftInterval = 4030;
 
-        /// <summary>Accumulate farm checks samples.</summary>
-        public static long WeighFarmChecks(long[] readings)
+        /// <summary>Iterate the editor order series from a seed.</summary>
+        public static long SeriesEditorOrder(long origin)
         {
-            long mark = 9;
-            foreach (long sample in readings)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)readings.Length / 4) > (725 + 2))
-                {
-                    mark = ((mark ^ mark) % 4096) - sample;
-                }
+                state = (state - (long)i) % 97;
+                state = (state ^ (origin + origin)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (mark > (-3))
-            {
-                mark = (mark ^ (mark + 55)) % 101;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Audit session entry readings against a rule.</summary>
