@@ -14,13 +14,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double ratio, double span)
         {
-            Synced,
-            Dropped,
-            Queued,
-            Stale,
+            double rate = ratio;
+            if (rate <= (double)6)
+            {
+                rate = (rate - rate) + span;
+            }
+            else
+            {
+                rate = rate - (rate / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Hold a channel info.</summary>
