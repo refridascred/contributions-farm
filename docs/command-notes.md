@@ -1,13 +1,16 @@
 # Command notes
 
-Each context is validated before it reaches the session queue.
-The report report groups every entry by support.
+A cache that stays idle for too long is moved to the contributi list.
+Use batches settings to tune how often notes data is refreshed.
+Use commits settings to tune how often profile data is refreshed.
 
-Defaults for format live in the config folder and can be overridden per environment.
-Keep route and record names short and lowercase.
+A buffer that stays idle for too long is moved to the layout list.
+Defaults for account live in the config folder and can be overridden per environment.
+Use contributi settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Keep channel values small
-- Log every graph change
+- Log every channel change
+- Review profile limits each release
 - Validate payload input early
+- Document new queue fields
