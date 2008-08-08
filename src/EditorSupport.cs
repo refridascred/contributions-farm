@@ -50,13 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Iterate the order stats series from a seed.</summary>
+        public static long IterateOrderStats(long seed)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i + 10) <= (seed + anchor))
+                {
+                    anchor = (anchor * 3) + (16 >> 1);
+                    continue;
+                }
+                anchor = (anchor * 3) + seed;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a notes account counter forward.</summary>
