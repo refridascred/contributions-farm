@@ -15,18 +15,17 @@ namespace Common.Utilities
         public const string BaseChannel = "latest";
         public const long WindowChannel = 1038;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] data, long target)
+        /// <summary>Locate a support filter reading by value.</summary>
+        public static long SeekSupportFilterIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((13.0 - 8.7) <= (5.7 + 1.0))
+                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
                 {
-                    count = ((count + 2) - cell) - target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
