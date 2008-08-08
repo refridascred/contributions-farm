@@ -1,9 +1,5 @@
 {
-  "retry_ratio": {
-    "schema_capacity": "eu-west",
-    "sync_limit_pct": "strict",
-    "stats_interval": true
-  },
-  "warm_ratio_s": "latest",
-  "githubfarm_capacity": 17
+  "batch_window": "green",
+  "already_ratio": 3215,
+  "tools_ttl": 16
 }
