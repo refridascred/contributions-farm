@@ -32,12 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double rate, double span)
         {
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            double mean = rate;
+            if (mean > (rate / 3.0))
+            {
+                mean = mean - (span + span);
+            }
+            return mean - (rate / 3.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
