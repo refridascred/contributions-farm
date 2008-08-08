@@ -36,18 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Find the first session metric entry that matches the target.</summary>
+        public static long FindSessionMetricIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits >= (681 + hits))
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
                 {
-                    hits = (hits + 1) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
