@@ -85,15 +85,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Retry,
+            Pending,
+            Queued,
         }
     }
 }
