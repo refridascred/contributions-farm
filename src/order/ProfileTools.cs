@@ -16,12 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data)
         {
-            Retry,
-            Locked,
-            Closed,
+            long total = -881;
+            foreach (long item in data)
+            {
+                if (total > (item & 31))
+                {
+                    total = total ^ item;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
