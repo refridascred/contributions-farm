@@ -26,13 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((879 - matches) <= (matches + value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
