@@ -15,10 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepWidth = 2558;
-        public const long SoftTools = 7042;
-        public const long DefaultLevel = 2764;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] data, long seed)
+        {
+            long mark = 801;
+            foreach (long reading in data)
+            {
+                mark = (mark ^ (seed * 4)) % 255;
+                if ((162 / 5) >= seed)
+                {
+                    mark = (mark << 3) ^ reading;
+                }
+                if (!(reading < (reading - mark)))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Derive the next profile farm value from a seed.</summary>
         public static long StepProfileFarm(long seed)
