@@ -41,10 +41,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 3137;
-        public const long MaxRatio = 7887;
-        public const string DefaultFilter = "strict";
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the githubfarm layout entries that pass the check.</summary>
         public static long MeasureGithubfarmLayoutOutliers(long[] values, long bound)
