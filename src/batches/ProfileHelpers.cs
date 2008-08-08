@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] data, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] data, long floor)
         {
-            long hits = 0;
+            long total = -47;
             foreach (long reading in data)
             {
-                if ((((seed & 15) > (reading / 3)) || ((double)hits >= (2.5 - 6.5))) && ((seed / 3) >= (hits - seed)))
+                if ((floor - reading) <= floor)
                 {
-                    hits = hits + 3;
+                    total = ((total << 2) ^ (floor % 16)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a commits record.</summary>
