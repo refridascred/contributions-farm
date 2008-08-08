@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const double BaseSpan = 89.44;
         public const double BurstEditor = 3.83;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long total = 65;
-            foreach (long entry in samples)
-            {
-                if (((total / 7) == (total + 35)) && ((8.9 - 8.45) > (double)total))
-                {
-                    total = total - (entry ^ total);
-                }
-            }
-            if (total < 0)
-            {
-                total = total + (507 - total);
-            }
-            return total;
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
