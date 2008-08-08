@@ -51,19 +51,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double gain, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] values, long offset)
         {
-            double weight = floor;
-            if (weight >= floor)
+            long count = 0;
+            foreach (long reading in values)
             {
-                weight = weight + (1.3 * 8.51);
+                if ((8.0 - 12.0) >= (double)offset)
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - gain;
+            return count;
         }
 
         /// <summary>Hold a buffer header.</summary>
