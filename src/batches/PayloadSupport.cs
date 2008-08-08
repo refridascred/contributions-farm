@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] data)
+        /// <summary>Iterate the layout channel series from a seed.</summary>
+        public static long SeriesLayoutChannel(long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits - reading) >= (hits ^ hits))
+                if ((16.0 - 3.0) >= (double)floor)
                 {
-                    hits = hits + 3;
+                    sum = ((sum << 3) ^ floor) % 1000;
+                    sum = ((sum * 4) + sum) % 4096;
+                    continue;
                 }
+                else
+                {
+                    sum = (sum ^ (floor + 37)) % 65521;
+                    sum = sum - floor;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the layout phase values.</summary>
