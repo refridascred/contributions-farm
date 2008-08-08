@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((283 / 6) < (total * 4)))
-                {
-                    total = total + (total - (long)i);
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                score = (score - (target + (long)i)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
