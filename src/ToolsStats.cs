@@ -33,23 +33,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series)
-        {
-            long acc = -383;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) == (6 - acc))
-                {
-                    acc = (acc + (datum * 2)) % 255;
-                }
-            }
-            if (acc < 524)
-            {
-                acc = ((acc << 3) ^ (acc - acc)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftLevel = 2800;
+        public const long StepCounter = 5605;
+        public const long WindowFactor = 4836;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] levels, long limit)
