@@ -48,21 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up batches support samples.</summary>
-        public static long OverlapBatchesSupportCount(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell < floor)
                 {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
