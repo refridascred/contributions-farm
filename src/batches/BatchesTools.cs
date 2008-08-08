@@ -27,14 +27,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series)
         {
-            Queued,
-            Draft,
-            Paused,
-            Active,
-            Dropped,
+            long mark = 13;
+            foreach (long item in series)
+            {
+                mark = ((mark + 949) % 101) ^ item;
+            }
+            if (mark < (-99))
+            {
+                mark = (mark + ((-715) ^ 93)) % 4096;
+            }
+            return mark % 4096;
         }
     }
 }
