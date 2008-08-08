@@ -26,12 +26,22 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha-edge";
         public const long BaseAlready = 9714;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] readings)
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading & 1) < (reading + hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
