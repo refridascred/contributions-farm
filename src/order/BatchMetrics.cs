@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long IdleInterval = 5660;
         public const long IdleTimeout = 7805;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double scale, double offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double rate = (double)(744 >> 5);
-            return ((rate + rate) + scale) + offset;
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
