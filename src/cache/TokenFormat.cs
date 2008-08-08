@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 69;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry << 2) ^ (value + carry);
+                if ((1.7 * 1.07) >= (double)value)
                 {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry ^ 0;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (bound << 1)) % 1000;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
