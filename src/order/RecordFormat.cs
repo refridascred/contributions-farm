@@ -59,14 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] readings)
         {
-            Failed,
-            Synced,
-            Locked,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item - item) != (count + (-6)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
