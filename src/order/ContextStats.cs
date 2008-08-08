@@ -46,19 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Check that every payload record entry stays within the limit.</summary>
+        public static bool VerifyPayloadRecordBounds(long[] items, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (((long)i + score) != (long)i)
+                if (reading < bound)
                 {
-                    score = (score ^ (long)i) % 97;
+                    found = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return found;
         }
     }
 }
