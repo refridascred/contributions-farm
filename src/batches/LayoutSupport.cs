@@ -70,10 +70,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "latest-1";
-        public const double BaseRecord = 5.41;
-        public const string CacheRecord = "cached-edge";
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] readings)
