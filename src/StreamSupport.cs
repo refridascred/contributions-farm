@@ -32,13 +32,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] values)
         {
-            Retry,
-            Failed,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading >> 2) < ((long)values.Length - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
