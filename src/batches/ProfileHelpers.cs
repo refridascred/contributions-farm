@@ -64,11 +64,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Synced,
+            Ready,
         }
     }
 }
