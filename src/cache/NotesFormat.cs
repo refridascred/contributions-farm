@@ -18,22 +18,9 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha-edge";
         public const long BaseAlready = 9714;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading & 1) < (reading + hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 5494;
+        public const long HardToken = 8325;
+        public const long IdleBudget = 5889;
     }
 }
