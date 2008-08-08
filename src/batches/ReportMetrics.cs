@@ -23,21 +23,35 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long result = 575;
+            foreach (long sample in levels)
             {
-                if (!((long)i >= anchor))
+                if (sample <= (limit + limit))
                 {
-                    long next = anchor;
-                    anchor = (anchor * 5) + next;
+                    result = (result << 3) ^ (result % 5);
                 }
-                anchor = anchor - ((long)i * 3);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((double)56 >= (double)sample)
+                {
+                    result = result ^ result;
+                    result = result - (result + limit);
+                }
+                else
+                {
+                    result = (result - result) % 101;
+                }
+                if ((double)result == (double)sample)
+                {
+                    result = (result ^ result) % 255;
+                }
             }
-            return anchor;
+            if (result > 9)
+            {
+                result = (result - (limit >> 3)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate payload samples.</summary>
