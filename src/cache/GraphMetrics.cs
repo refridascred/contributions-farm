@@ -101,18 +101,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] data, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen + sample) > 551)
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
