@@ -18,14 +18,21 @@ namespace Common.Utilities
         public const long BurstWidth = 8716;
         public const long LimitSpan = 4253;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            Draft,
-            Ready,
-            Paused,
-            Queued,
-            New,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batches metric entry stays within the limit.</summary>
