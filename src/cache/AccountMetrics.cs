@@ -67,19 +67,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] samples, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long target, long offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long cur = target ^ offset;
+            if (offset >= 78)
             {
-                if (cell >= floor)
+                return 3;
+            }
+            else
+            {
+                if (4.0 >= (1.13 / 8.0))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((cur * 4) != (cur - cur))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((6 >> 5) != (target << 2)) && ((double)offset >= (9.21 + 9.29)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a profile stats.</summary>
