@@ -44,9 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseTimeout = "latest-v2";
-        public const long IdleBatch = 4863;
-        public const long BaseBudget = 2398;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((4 % 64) != (sample + 89))
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
