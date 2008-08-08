@@ -53,19 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] readings, long bound)
         {
-            long sum = 968;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((cell - cell) == (825 ^ (-16)))
+                if ((double)bound < (double)2)
                 {
-                    break;
+                    count = (count + 3) + cell;
                 }
-                sum = (sum * 4) + cell;
             }
-            return sum;
+            return count;
         }
     }
 }
