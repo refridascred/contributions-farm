@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((75 * 5) < (score - limit)) || ((13.0 - 6.0) != (double)(long)i))
+                if (samples[i] <= step)
                 {
-                    score = score + (score - score);
-                    continue;
+                    return (long)i;
                 }
-                if ((score + limit) <= (-58))
-                {
-                    score = ((score << 3) ^ (4 >> 5)) % 97;
-                    score = ((score << 3) ^ score) % 1000;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score >> 4);
-                    score = (score - ((-634) * 4)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
