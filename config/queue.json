@@ -1,8 +1,5 @@
 {
-  "record_retries": 3327,
-  "poll_delay_count": 85,
-  "cache_limit": 67,
-  "cache_size_ms": "green",
-  "account_depth": 33,
-  "default_limit_s": "primary"
+  "command_retries": "open",
+  "entry_window": 42.92,
+  "burst_ttl": "staging"
 }
