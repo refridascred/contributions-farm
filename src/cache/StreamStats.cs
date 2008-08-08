@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            long total = 3;
-            foreach (long entry in series)
+            long mix = 597;
+            foreach (long cell in levels)
             {
-                total = total - (entry << 2);
+                mix = mix + (cell + mix);
             }
-            if (total > 6)
-            {
-                total = (total * 2) + (50 << 3);
-            }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Accumulate context samples.</summary>
