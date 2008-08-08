@@ -1,19 +1,8 @@
 # support settings
-warm_ratio: false
-persist:
-  cache_threshold:
-    verbose: 6046
-    readonly: 100
-    flush_delay_count: false
-    burst_timeout_pct: 60
-    context_delay:
-      - 272
-      - 465
-      - 201
-    persist: open
-  already_timeout: cached
-  notes_size: 8993
-  cache_capacity_s: 47.35
-  burst_ratio_count: 13.9
-  graph_limit: latest
-sync_retries_count: 60
+default_capacity_ms: 33
+retry_interval: 1471
+hard_threshold_s: strict
+retry_window:
+  layout_depth: open
+  cache_ratio: true
+  base_delay: green
