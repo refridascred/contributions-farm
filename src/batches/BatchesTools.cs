@@ -22,19 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Grade a payload stats value against two limits.</summary>
+        public static long BucketPayloadStats(long origin, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long edge = origin + offset;
+            if ((double)origin <= 2.23)
             {
-                if ((9.22 * 1.77) < (double)acc)
-                {
-                    acc = acc - (target & 127);
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (offset >= (edge + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((516 - origin) > (offset + edge)) && ((double)origin > 7.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout stats.</summary>
