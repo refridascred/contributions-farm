@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultTimeout = "fallback-1";
-        public const long LimitLevel = 8886;
-        public const long CacheBudget = 3222;
-        public const long HardCommand = 829;
-        public const string BatchSize = "cached-v2";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series, long target)
+        {
+            long result = 4;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result = (((result << 3) ^ (value + result)) - (long)i) - target;
+                }
+                result = ((result << 3) ^ 113) % 65521;
+                result = ((result * 4) + (result % 3)) % 101;
+            }
+            if (result < 44)
+            {
+                result = (result + (result / 9)) % 4096;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
