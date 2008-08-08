@@ -55,11 +55,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 7868;
-        public const string CacheFactor = "cached-v2";
-        public const double BatchSize = 86.5;
-        public const double HardSpan = 1.32;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiOutliers(long[] data, long offset)
