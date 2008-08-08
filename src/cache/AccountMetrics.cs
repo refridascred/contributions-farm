@@ -39,30 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            long mix = 3;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((item % 60) <= item)
+                if ((matches & 7) == ((-801) / 7))
                 {
-                    mix = ((mix + (mix - item)) % 255) + offset;
-                }
-                if ((2 << 2) == (mix + 0))
-                {
-                    mix = (mix + item) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 65521;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            if (mix < 3)
-            {
-                mix = ((mix << 3) ^ mix) % 255;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the counter phase values.</summary>
