@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const long SoftBudget = 1200;
         public const long BaseRatio = 1840;
 
-        /// <summary>Fold a list of queue session readings.</summary>
-        public static long CombineQueueSession(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long result = 29;
-            foreach (long value in data)
-            {
-                result = result + (value & 127);
-            }
-            return result;
+            Failed,
+            New,
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
