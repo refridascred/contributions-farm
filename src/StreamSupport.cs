@@ -33,21 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Project the next farm checks value.</summary>
+        public static double ProjectFarmChecks(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = 7.55 / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load + offset) - (double)(long)i) - weight;
             }
-            return seen;
+            return load - load;
         }
     }
 }
