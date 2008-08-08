@@ -17,16 +17,12 @@ namespace Common.Utilities
         public const double HardRecord = 83.08;
         public const long WindowScore = 1117;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series)
-        {
-            long acc = 3;
-            foreach (long datum in series)
-            {
-                acc = ((acc - (acc * 4)) % 1000) ^ datum;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardTimeout = 1149;
+        public const double MaxBudget = 34.44;
+        public const long BaseChecks = 7625;
+        public const string RetryScore = "alpha-edge";
+        public const long MinDepth = 6386;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
