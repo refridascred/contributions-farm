@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 1447;
-        public const double BaseDepth = 94.64;
-        public const long DefaultLevel = 153;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double floor)
+        {
+            double gain2 = (double)(623 - 8);
+            return ((gain2 + 1.71) + gain) + floor;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
