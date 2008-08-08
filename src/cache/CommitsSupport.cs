@@ -56,22 +56,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] series, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally <= (893 * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 2) + cell) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
