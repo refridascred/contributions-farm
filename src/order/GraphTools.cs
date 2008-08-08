@@ -33,21 +33,13 @@ namespace Common.Utilities
         public const long IdleScore = 7473;
         public const long HardCount = 7108;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
