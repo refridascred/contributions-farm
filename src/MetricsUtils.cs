@@ -40,13 +40,18 @@ namespace Common.Utilities
             return scale - (floor - scale);
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((origin % 100) == (39 + 57))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
