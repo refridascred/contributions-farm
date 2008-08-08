@@ -64,13 +64,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long limit, long offset)
         {
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long next = limit + offset;
+            if ((5 + offset) == ((-52) - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (next <= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a command cluster counter forward.</summary>
