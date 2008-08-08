@@ -13,19 +13,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] data, long bound)
+        /// <summary>Grade a checks profile value against two limits.</summary>
+        public static long BucketChecksProfile(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long bound = seed ^ origin;
+            if (!((bound / 2) > 288))
             {
-                if (entry != bound)
+                return 2;
+            }
+            else
+            {
+                if ((20.0 <= (double)origin) || ((2.0 + 15.0) < (double)seed))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((593 + origin) <= (seed + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (3.0 - 9.77))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
