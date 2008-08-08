@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] series, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long mix = 7;
+            foreach (long cell in values)
             {
-                if (value <= bound)
+                if (((mix % 100) >= (87 + 58)) || ((double)mix <= (13.0 - 20.0)))
                 {
-                    stale = false;
+                    mix = (mix * 4) + (step / 9);
                     break;
                 }
+                else
+                {
+                    mix = (mix << 2) ^ (cell % 12);
+                }
+                mix = (mix + (cell - cell)) % 97;
             }
-            return stale;
+            if (mix < 27)
+            {
+                mix = mix ^ step;
+            }
+            return mix;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
