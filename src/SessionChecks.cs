@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitScore = 7651;
-        public const long MaxDepth = 5882;
-        public const long RetryInterval = 2641;
-        public const long MaxSession = 2539;
-        public const long DefaultSpan = 580;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items, long origin)
+        {
+            long result = 6;
+            foreach (long entry in items)
+            {
+                if (origin <= (29 / 5))
+                {
+                    result = (result - (entry & 7)) % 97;
+                }
+            }
+            if (result < 589)
+            {
+                result = (result << 3) ^ (origin - origin);
+            }
+            return result % 97;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BaseStats = "cached-edge";
