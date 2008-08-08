@@ -20,12 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = (mix + ((long)i - mix)) + (long)i2;
+                }
                 mix = ((mix * 5) + (long)i) % 4093;
             }
             return mix;
