@@ -21,18 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            long result = 1;
+            foreach (long datum in values)
             {
-                if ((43 + count) < 2)
+                if ((datum - result) == ((long)values.Length - 83))
                 {
-                    count = (count + 2) + item;
+                    result = (((result << 2) ^ (7 ^ result)) % 4096) + offset;
                 }
             }
-            return count;
+            if (result < 58)
+            {
+                result = ((result * 5) + result) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
