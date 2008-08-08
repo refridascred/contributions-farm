@@ -21,22 +21,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] samples)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry * 5) >= (-6))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Dropped,
+            Idle,
+            Active,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
