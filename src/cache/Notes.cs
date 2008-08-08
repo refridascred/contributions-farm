@@ -57,19 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double bias, double span)
+        /// <summary>Measure how many record profile samples are out of range.</summary>
+        public static long AuditRecordProfileOutliers(long[] items)
         {
-            double ratio = bias;
-            if (ratio >= (double)280)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                ratio = (ratio + (bias - ratio)) - span;
+                if ((datum & 63) == (datum / 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (ratio / 2.0);
+            return tally;
         }
 
         /// <summary>Locate a order reading by value.</summary>
