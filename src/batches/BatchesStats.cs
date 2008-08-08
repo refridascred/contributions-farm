@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 49.98;
-        public const double MinScore = 94.01;
-        public const string StepCache = "open-v2";
-        public const string BaseCache = "strict-v2";
-        public const double BurstCache = 5.37;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((64 + count) <= (item - item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every entry format entry stays within the limit.</summary>
         public static bool GuardEntryFormatBounds(long[] levels, long target)
