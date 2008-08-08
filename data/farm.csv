@@ -1,9 +1,7 @@
-id,rank,score
-1,38.59,685
-2,63.97,stable
-3,36.43,362
-4,76.53,strict
-5,38.11,27.03
-6,36.77,59.89
-7,98,70.76
-8,stable,397
+id,ratio,rank,level,active
+1,7.44,128,strict,117
+2,eu-west,47.89,strict,edge
+3,921,blue,336,latest
+4,blue,227,9.23,stable
+5,blue,96.64,122,34
+6,1.88,primary,primary,60.47
