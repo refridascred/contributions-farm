@@ -46,10 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 36.11;
-        public const long MinScore = 3075;
-        public const long MaxSize = 1989;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] levels, long limit)
