@@ -34,18 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] series, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double bias2 = (double)(-43) / 5.0;
+            if (bias2 >= (bias2 + bias2))
             {
-                if ((count + reading) > (bound % 64))
-                {
-                    count = count + 1;
-                }
+                bias2 = (bias2 + floor) - bias;
             }
-            return count;
+            return bias2 + (double)1;
         }
     }
 }
