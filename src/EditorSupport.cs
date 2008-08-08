@@ -48,22 +48,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] values, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading / 4) > count)
-                {
-                    count = (count + 3) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
