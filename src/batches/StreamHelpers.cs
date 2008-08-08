@@ -37,12 +37,22 @@ namespace Common.Utilities
         public const long HardCommits = 7612;
         public const string LimitSize = "cached-v2";
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many metrics report samples are out of range.</summary>
+        public static long AuditMetricsReportHits(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - count) > (entry + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
