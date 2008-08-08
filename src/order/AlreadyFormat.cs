@@ -39,11 +39,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowRatio = 7184;
-        public const long MaxTimeout = 8450;
-        public const double BurstFactor = 3.05;
-        public const long BatchFactor = 9479;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double gain, double offset)
+        {
+            double drift = gain;
+            if (drift >= (double)4)
+            {
+                drift = drift - (offset - offset);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (offset * 3.3)) + (double)(long)i;
+            }
+            return drift + (double)36;
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long PairEditorCount(long[] levels)
