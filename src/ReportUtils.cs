@@ -37,15 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data, long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long total = 407;
-            foreach (long item in data)
-            {
-                total = (((total - (total << 2)) % 1000) ^ item) - limit;
-            }
-            return total % 4096;
+            Idle,
+            Paused,
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
