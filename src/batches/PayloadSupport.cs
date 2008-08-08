@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 1459;
+        public const string StepSpan = "primary";
+        public const string BaseBuffer = "fallback-1";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportGaps(long[] readings, long seed)
