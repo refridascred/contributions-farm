@@ -13,18 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of format counter readings.</summary>
-        public static long WeighFormatCounter(long[] series, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double rate, double offset)
         {
-            long acc = 0;
-            foreach (long datum in series)
+            double mean = (double)283;
+            if (mean >= (offset + 7.1))
             {
-                if (!(acc <= (823 & 3)))
-                {
-                    acc = (acc - (target - datum)) % 4096;
-                }
+                mean = mean - rate;
             }
-            return acc % 65521;
+            else
+            {
+                mean = mean + (mean - 16.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Iterate the graph order series from a seed.</summary>
