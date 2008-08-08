@@ -1,4 +1,10 @@
 # support settings
-commits_delay: false
-warm_depth_s: 90
-enabled: 3990
+base_window_s: 96.58
+burst_threshold_s: edge
+token_limit: false
+editor_threshold:
+  - open
+  - green
+  - local
+strict: 26.8
+payload_delay: latest
