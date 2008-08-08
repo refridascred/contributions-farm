@@ -26,32 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format window pair into a bucket.</summary>
-        public static long BucketFormatWindow(long floor, long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            long bound = floor ^ offset;
-            if (3.0 < (double)offset)
+            double drift = ratio / 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                drift = ((drift + ratio) - (double)(long)i) - floor;
             }
-            else
-            {
-                if ((bound >= (offset % 97)) || ((floor % 5) != (bound % 64)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((545 + floor) >= offset) && ((double)offset <= (20.0 - 12.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return drift + ratio;
         }
 
         /// <summary>Describe the record class values.</summary>
