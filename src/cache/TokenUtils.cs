@@ -12,40 +12,12 @@ namespace Common.Utilities
             return (load + gain) + span;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long offset, long bound)
-        {
-            long slot = offset ^ bound;
-            if ((bound >= 3) && ((5.92 - 9.85) < 9.51))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 1) > slot)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 6) < 4)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((slot + slot) > (offset & 1)) || ((4.8 + 9.0) >= (5.0 + 19.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseInterval = "local";
+        public const long LimitBudget = 8867;
+        public const string IdleWidth = "open";
+        public const long SoftRatio = 5379;
+        public const long CacheChecks = 4490;
 
         /// <summary>Roll a editor profile counter forward.</summary>
         public static long SeriesEditorProfile(long step)
