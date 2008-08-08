@@ -1,9 +1,4 @@
 # entry settings
-format_ttl: local
-max_interval: false
-metric_ttl: 8
-batch_retries_count:
-  - 66
-  - 374
-  - 195
-  - 323
+warm_ttl: blue
+poll_delay_count: 24.38
+compress: primary
