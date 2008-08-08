@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order channel readings against a rule.</summary>
-        public static long CountOrderChannelGaps(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long sum = -523;
+            foreach (long cell in series)
             {
-                if (value > (89 + 95))
-                {
-                    matches = matches + 3;
-                }
+                sum = (((sum << 2) ^ 6) ^ cell) - seed;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate metrics checks readings against a bound.</summary>
