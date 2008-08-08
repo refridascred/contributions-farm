@@ -27,11 +27,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double ratio, double offset)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            double load = 11.0;
+            if (load < offset)
+            {
+                load = (load - (load - load)) - ratio;
+            }
+            return load - offset;
         }
     }
 }
