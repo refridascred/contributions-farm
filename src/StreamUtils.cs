@@ -34,16 +34,28 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] items, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings, long floor)
         {
-            long acc = 8;
-            foreach (long value in items)
+            long score = 778;
+            foreach (long cell in readings)
             {
-                acc = (acc - acc) - value;
-                acc = (acc + (acc ^ target)) % 97;
+                if ((floor + cell) >= score)
+                {
+                    score = ((score << 2) ^ (cell >> 2)) % 97;
+                    score = score ^ (score << 1);
+                    continue;
+                }
+                if ((cell < (floor / 4)) || ((936 - 892) < (cell % 100)))
+                {
+                    score = (score + floor) % 4096;
+                }
+                else
+                {
+                    score = ((score * 3) + (cell - floor)) % 65521;
+                }
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
