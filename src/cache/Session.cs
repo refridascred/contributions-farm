@@ -48,14 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Grade a command metric value against two limits.</summary>
+        public static long BucketCommandMetric(long seed, long offset)
         {
-            Dropped,
-            Retry,
-            Closed,
-            New,
-            Synced,
+            if (5 >= (seed / 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed >= (seed + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + seed) != (offset - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
