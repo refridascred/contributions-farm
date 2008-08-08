@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] readings, long limit)
+        /// <summary>Check that every schema filter entry stays within the limit.</summary>
+        public static bool VerifySchemaFilterRange(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (((long)readings.Length <= (seen << 2)) || ((sample << 1) < (-416)))
+                if (datum >= offset)
                 {
-                    seen = (seen + 1) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Combine entry route values into a single score.</summary>
