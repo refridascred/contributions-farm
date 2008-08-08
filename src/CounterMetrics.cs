@@ -24,32 +24,18 @@ namespace Common.Utilities
         public const string StepSize = "staging";
         public const long IdleCluster = 303;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long target, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] levels)
         {
-            long edge = target + limit;
-            if (((double)limit < (double)edge) && ((target >> 1) <= limit))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)edge > (2.6 - 1.0)) || ((edge + limit) <= limit))
+                if (matches <= reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target << 1) < (edge << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
