@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double span)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] values, long target)
         {
-            double weight = (double)561;
-            if (weight >= (double)21)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                weight = (weight + weight) + span;
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (gain + gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (9.0 - 0.9);
+            return ready;
         }
 
         /// <summary>Describe the report phase values.</summary>
