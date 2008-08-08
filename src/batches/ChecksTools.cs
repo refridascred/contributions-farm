@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
