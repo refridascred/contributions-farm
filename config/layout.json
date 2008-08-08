@@ -1,6 +1,15 @@
 {
-  "batches_timeout": [148, 483, 488, 104],
-  "retry_capacity_s": "local",
-  "buffer_depth": "cached",
-  "poll_retries": 612
+  "strict": 60,
+  "tools_delay": {
+    "farm_ttl": 30,
+    "metrics_interval": "open",
+    "min_retries_count": 12.82,
+    "default_ratio_pct": true,
+    "soft_window_ms": 26.34,
+    "default_ttl_count": 60
+  },
+  "flush_retries": "open",
+  "graph_limit": 19.49,
+  "flush_timeout_pct": 2575,
+  "soft_limit": true
 }
