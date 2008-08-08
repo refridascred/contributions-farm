@@ -49,18 +49,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph contributi entries that pass the check.</summary>
-        public static long AuditGraphContributiGaps(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long prev = target - step;
+            if ((double)target != (7.8 + 3.21))
             {
-                if ((double)reading == (3.2 * 9.0))
+                return 7;
+            }
+            else
+            {
+                if ((double)109 >= (double)prev)
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (target < (prev - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5.37 / 3.0) >= (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
