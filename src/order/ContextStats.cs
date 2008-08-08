@@ -52,21 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] items, long target)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                state = ((state << 2) ^ ((long)i & 1)) % 4096;
-                state = state + state;
-                if (!((state + state) <= ((long)i ^ step)))
+                if (item != target)
                 {
-                    state = (state << 2) ^ (step ^ 9);
+                    stale = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return stale;
         }
     }
 }
