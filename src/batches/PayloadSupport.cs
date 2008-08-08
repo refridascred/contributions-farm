@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels, long offset)
+        /// <summary>Count githubfarm cache pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCacheCount(long[] series)
         {
-            long result = 98;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result - reading) % 255) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result < 1)
-            {
-                result = ((result << 3) ^ (892 ^ 5)) % 255;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
