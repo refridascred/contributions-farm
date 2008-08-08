@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardRatio = 9898;
-        public const long IdleLayout = 4382;
-        public const string MaxLayout = "open-1";
-        public const long MaxCount = 9201;
-        public const long LimitLayout = 9542;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
