@@ -34,13 +34,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
