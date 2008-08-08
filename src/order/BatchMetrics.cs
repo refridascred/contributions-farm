@@ -15,14 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Active,
-            Failed,
+            Synced,
             Dropped,
-            Paused,
             Queued,
+            Stale,
         }
 
         /// <summary>Hold a channel info.</summary>
