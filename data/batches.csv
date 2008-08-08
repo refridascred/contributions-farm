@@ -1,6 +1,10 @@
-id,weight,token
-1,904,latest
-2,stable,752
-3,748,eu-west
-4,open,32.14
-5,stable,850
+id,token,count,level
+1,280,667,77.48
+2,strict,933,824
+3,936,574,strict
+4,blue,74.62,cached
+5,legacy,green,26.02
+6,560,0.08,strict
+7,51,809,419
+8,641,43.27,16.9
+9,24.52,184,strict
