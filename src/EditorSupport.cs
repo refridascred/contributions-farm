@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
+            Closed,
+            Ready,
             New,
-            Retry,
-            Paused,
-            Done,
-            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Derive the next stream payload value from a seed.</summary>
