@@ -27,13 +27,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Idle,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepRatio = 8621;
+        public const long RetryMetrics = 5099;
+        public const long SoftTimeout = 1040;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
