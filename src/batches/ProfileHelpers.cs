@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] data, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            long total = -47;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((floor - reading) <= floor)
+                if ((18 - value) >= 516)
                 {
-                    total = ((total << 2) ^ (floor % 16)) % 1000;
+                    tally = tally + 3;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
