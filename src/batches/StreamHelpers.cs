@@ -28,11 +28,28 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheWidth = 150;
-        public const long RetryBudget = 7704;
-        public const long MaxContributi = 7218;
-        public const long LimitScore = 4431;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items)
+        {
+            long mark = 47;
+            foreach (long reading in items)
+            {
+                if ((double)reading <= (double)mark)
+                {
+                    mark = (mark + (reading ^ mark)) % 101;
+                }
+                if ((double)reading < 8.15)
+                {
+                    mark = (mark - (mark - mark)) % 4096;
+                }
+                mark = ((mark << 2) ^ (mark >> 5)) % 97;
+            }
+            if (mark < 4)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsGaps(long[] samples, long limit)
