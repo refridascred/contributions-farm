@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long BaseSchema = 9459;
         public const string MaxSchema = "standard-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheBudget = 4629;
-        public const string BurstStream = "fallback-edge";
-        public const long DefaultStream = 1475;
-        public const double IdleStream = 49.86;
-        public const double BatchStream = 94.18;
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double weight, double bias)
+        {
+            double load = weight;
+            return (load + (double)(-1)) + bias;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
