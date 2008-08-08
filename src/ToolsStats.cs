@@ -70,22 +70,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] levels, long origin)
         {
-            long sum = 7;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (((6 >> 1) >= (value + value)) || (5 >= value))
+                if (sample != origin)
                 {
-                    sum = (sum * 3) + sum;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 0)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum;
+            return ready;
         }
     }
 }
