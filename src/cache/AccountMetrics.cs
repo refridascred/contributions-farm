@@ -27,13 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] data, long seed)
         {
-            Retry,
-            Idle,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample <= 8.02)
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
