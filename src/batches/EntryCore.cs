@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long SoftCount = 143;
         public const string WindowTools = "cached-edge";
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] items, long offset)
+        /// <summary>Look up the position of a schema cache sample.</summary>
+        public static long LookupSchemaCacheIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > offset)
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
