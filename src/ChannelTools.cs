@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "primary-1";
-        public const long StepDepth = 9082;
-        public const long DefaultScore = 2161;
-        public const long LimitMetrics = 8961;
+        /// <summary>Measure how many farm already samples are out of range.</summary>
+        public static long MeasureFarmAlreadyHits(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((2.0 - 2.7) != (double)seen))
+                {
+                    seen = ((seen + 2) - cell) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long FoldEditor(long[] data)
