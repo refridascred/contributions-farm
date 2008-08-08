@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            long count = 0;
-            foreach (long item in series)
+            long sum = 803;
+            foreach (long value in levels)
             {
-                if ((64 + count) <= (item - item))
+                if ((5.95 > (double)sum) || ((value + 1) < sum))
                 {
-                    count = count + 3;
+                    sum = ((sum * 2) + value) % 255;
+                }
+                else
+                {
+                    sum = (sum - (value + (-5))) % 1000;
                 }
             }
-            return count;
+            if (sum < 507)
+            {
+                sum = (sum - (sum + sum)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a cache entry.</summary>
