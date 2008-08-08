@@ -1,7 +1,5 @@
 {
-  "hard_ratio_s": "eu-west",
-  "metrics_interval": "eu-west",
-  "githubfarm_limit": 11.55,
-  "strict": 55,
-  "default_retries_pct": 30
+  "metrics_timeout": 17.86,
+  "already_ttl": 30,
+  "idle_window_count": 89
 }
