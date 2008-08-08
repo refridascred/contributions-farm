@@ -37,21 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 1;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < (mark + (long)readings.Length))
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark - (value / 5);
+                }
+                if ((value ^ mark) >= (value ^ value))
+                {
+                    mark = ((mark * 2) + (value + mark)) % 97;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
