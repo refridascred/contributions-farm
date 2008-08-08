@@ -64,18 +64,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (380 > hits)
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
