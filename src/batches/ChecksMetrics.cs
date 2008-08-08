@@ -62,14 +62,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Derive the next batch counter value from a seed.</summary>
+        public static long RollBatchCounter(long target)
         {
-            Draft,
-            Paused,
-            Idle,
-            Stale,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark ^ ((long)i - target)) % 4096) + (long)i2;
+                }
+                mark = (mark * 5) + ((long)i / 8);
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
