@@ -24,17 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (values[i] <= origin)
+                if ((43 + count) < 2)
                 {
-                    return (long)i;
+                    count = (count + 2) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
