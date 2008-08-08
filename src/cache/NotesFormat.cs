@@ -35,17 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a channel route sample.</summary>
-        public static long LocateChannelRouteIndex(long[] readings, long step)
+        /// <summary>Compare every pair of token stream readings.</summary>
+        public static long MatchTokenStreamCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
