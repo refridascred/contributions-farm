@@ -23,27 +23,15 @@ namespace Common.Utilities
         public const long BatchLevel = 9545;
         public const double StepCount = 37.75;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] items, long seed)
         {
-            long score = 69;
-            foreach (long reading in series)
+            long carry = 4;
+            foreach (long value in items)
             {
-                score = ((score << 2) ^ 0) % 4096;
-                if ((reading < (score * 5)) && (score < (reading - reading)))
-                {
-                    score = (score * 3) + reading;
-                }
-                if ((score + reading) >= (score - reading))
-                {
-                    break;
-                }
+                carry = ((carry ^ (103 + seed)) % 255) - value;
             }
-            if (score > 892)
-            {
-                score = (score ^ (601 + score)) % 4096;
-            }
-            return score % 97;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
