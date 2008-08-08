@@ -54,12 +54,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double bias)
         {
-            Done,
-            Stale,
-            Closed,
+            double drift = bias;
+            return drift - (weight / 8.0);
         }
     }
 }
