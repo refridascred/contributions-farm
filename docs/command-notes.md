@@ -1,14 +1,13 @@
 # Command notes
 
-Run the layout check before changing any metric limits.
-When a githubfarm fails, the batches handler retries a few times before giving up.
-Each cache is validated before it reaches the metrics queue.
+Each githubfarm is validated before it reaches the contributi queue.
+Defaults for batches live in the config folder and can be overridden per environment.
 
-When a window fails, the contributi handler retries a few times before giving up.
-Keep metric and already names short and lowercase.
+Each farm is validated before it reaches the command queue.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep layout values small
+- Validate context input early
+- Review editor limits each release
 - Prefer profile defaults
-- Document new entry fields
