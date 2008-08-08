@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] series, long origin)
         {
-            long sum = 3;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                sum = ((sum ^ 91) ^ datum) + step;
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Accumulate stats samples.</summary>
