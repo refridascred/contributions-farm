@@ -39,19 +39,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] values, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long mix = -744;
+            foreach (long entry in items)
             {
-                if (reading <= step)
+                if ((entry - seed) != (seed & 63))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix ^ (seed - 22)) % 97;
+                }
+                else
+                {
+                    mix = (mix - (5 - entry)) % 4096;
+                }
+                if ((mix < ((long)items.Length / 3)) && ((mix + seed) >= mix))
+                {
+                    mix = (mix - (entry + entry)) % 97;
+                }
+                else
+                {
+                    mix = (mix * 4) + 96;
                 }
             }
-            return ready;
+            if (mix < 847)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the session status values.</summary>
