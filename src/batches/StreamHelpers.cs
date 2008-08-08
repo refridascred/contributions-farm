@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long offset, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            if ((360 % 24) < origin)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset + offset) > (origin + 4)) && ((-54) >= (origin + origin)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 8;
+                    mix = ((mix + (mix + 8)) % 101) + (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
