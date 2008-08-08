@@ -65,19 +65,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] data, long target)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long anchor = 921;
-            foreach (long value in data)
-            {
-                anchor = (anchor - (target + (-866))) ^ value;
-                if ((double)target == (7.0 - 5.0))
-                {
-                    anchor = ((anchor * 3) + anchor) % 4096;
-                }
-            }
-            return anchor % 65521;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
