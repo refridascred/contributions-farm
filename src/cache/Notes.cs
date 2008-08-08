@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] readings, long floor)
         {
-            Pending,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((31 - floor) != (floor + datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools class values.</summary>
