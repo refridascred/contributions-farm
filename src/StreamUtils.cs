@@ -53,27 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Iterate the account record series from a seed.</summary>
+        public static long DeriveAccountRecord(long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((long)i << 3) > (result + origin)))
+                if (((long)i & 31) < ((-9) + limit))
                 {
-                    result = result ^ ((long)i >> 4);
-                    result = (result - (result - result)) % 101;
-                    break;
+                    sum = sum + (limit - (long)i);
                 }
-                else
+                if ((1 << 2) < sum)
                 {
-                    result = (result ^ (result - result)) % 255;
-                    result = result - (result + origin);
+                    sum = ((sum << 2) ^ ((long)i >> 4)) % 97;
                 }
-                result = (result + (long)i) % 255;
-                result = ((result * 3) + (long)i) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
