@@ -38,11 +38,10 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 4211;
+        public const long IdleMetrics = 4490;
+        public const double LimitSpan = 29.23;
+        public const double MinSize = 25.69;
     }
 }
