@@ -1,17 +1,6 @@
 {
-  "flush_ttl_pct": "open",
-  "batches_size": 8.17,
-  "commits_delay": {
-    "base_window_ms": {
-      "verbose": true,
-      "audit": 7439,
-      "batch_limit_count": "primary",
-      "burst_size_count": "strict",
-      "base_ttl_pct": 78
-    },
-    "batch_interval_ms": "blue",
-    "batch_interval_count": [441, 317, 461]
-  },
-  "batch_window_ms": 60,
-  "dry_run": 58
+  "base_delay": 82.84,
+  "burst_depth_s": 55,
+  "compress": [382, 217],
+  "record_ratio": ["edge", "fallback", "cached"]
 }
