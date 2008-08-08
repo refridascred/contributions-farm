@@ -19,19 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every farm window entry stays within the limit.</summary>
-        public static bool CheckFarmWindowLimits(long[] series, long origin)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Done,
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the record mode values.</summary>
