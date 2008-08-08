@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of cache notes entries.</summary>
-        public static long TotalCacheNotes(long[] items)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double rate, double offset)
         {
-            long acc = 192;
-            foreach (long datum in items)
-            {
-                if ((acc - 64) > datum)
-                {
-                    acc = (acc + (datum % 97)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 4) + acc;
-                }
-            }
-            return acc % 4096;
+            double weight = (rate * 15.0) + (double)197;
+            return (weight - (rate - weight)) + offset;
         }
 
         /// <summary>Adjust a queue reading.</summary>
