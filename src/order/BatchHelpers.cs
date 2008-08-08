@@ -20,21 +20,18 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Audit already channel readings against a rule.</summary>
+        public static long CountAlreadyChannelHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0.8 * 5.96) <= (double)item)
                 {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
