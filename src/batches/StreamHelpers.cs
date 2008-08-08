@@ -56,25 +56,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long step, long step2)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long gap = step ^ step2;
-            if ((step2 >> 1) <= gap)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap & 255) != (9 - gap))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
