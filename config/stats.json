@@ -1,5 +1,6 @@
 {
-  "default_timeout_ms": false,
-  "route_window": false,
-  "retry_size_count": 66
+  "default_interval": 250,
+  "editor_retries": ["eu-west", "stable", "standard"],
+  "sync_capacity_s": "latest",
+  "idle_threshold_count": "strict"
 }
