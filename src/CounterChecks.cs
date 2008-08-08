@@ -82,13 +82,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] levels, long offset)
         {
-            Paused,
-            Draft,
-            Synced,
-            Retry,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((offset >> 5) < offset))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a buffer record.</summary>
