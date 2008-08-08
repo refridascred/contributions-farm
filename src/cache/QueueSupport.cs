@@ -20,10 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleRatio = "fallback-edge";
-        public const long CacheScore = 7797;
-        public const long MaxCount = 2969;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 74.74;
+        public const string BaseDepth = "primary-edge";
+        public const string RetryFactor = "staging";
+        public const double BatchInterval = 43.98;
+        public const long MaxCount = 775;
 
         /// <summary>Fold a list of batch farm readings.</summary>
         public static long WeighBatchFarm(long[] levels, long offset)
