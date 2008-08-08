@@ -69,18 +69,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell <= (hits & 255))
+                if (((524 >> 3) < offset) || (((long)i - offset) < (anchor % 16)))
                 {
-                    hits = hits + 1;
+                    break;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (offset & 15)) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
