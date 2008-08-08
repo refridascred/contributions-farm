@@ -54,14 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            Failed,
-            Pending,
-            Active,
-            Stale,
-            Retry,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item - 91) > (item + 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
