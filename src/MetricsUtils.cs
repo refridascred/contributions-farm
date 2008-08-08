@@ -38,19 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] series, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (reading <= offset)
+                if (item < offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Match up channel samples.</summary>
