@@ -28,32 +28,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long floor, long target)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long delta = floor + target;
-            if ((double)delta < (7.0 + 1.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target < (target + delta))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target < floor)
+                    if ((series[i] ^ series[j]) != 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
