@@ -85,13 +85,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long limit, long offset)
         {
-            Active,
-            Synced,
-            Ready,
-            Failed,
+            if (limit <= offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0.4 / 3.0) > (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)offset != (9.19 + 3.33)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
