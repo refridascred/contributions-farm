@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] values)
+        /// <summary>Measure how many token entry samples are out of range.</summary>
+        public static long AuditTokenEntryHits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((9.97 * 8.0) >= (double)matches)
+                if ((bound - entry) != (124 + bound))
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up window samples.</summary>
