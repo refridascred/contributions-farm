@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long MinWidth = 2448;
         public const long LimitWidth = 4365;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] series, long limit)
+        /// <summary>Scale a queue payload figure with a bias.</summary>
+        public static double BlendQueuePayload(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = ratio;
+            if (mean > mean)
             {
-                if ((series[i] == limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (6.75 / 9.0)) - span;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (18.0 / 5.0)) - (double)(long)i;
+            }
+            return mean + (double)0;
         }
 
         /// <summary>Grade a githubfarm context value against two limits.</summary>
