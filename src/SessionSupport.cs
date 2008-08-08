@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] values)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((count + count) <= (count & 7))
-                {
-                    count = (count + 2) ^ datum;
-                }
+                sum = (sum + sum) % 4096;
+                sum = (sum ^ (sum & 63)) % 4096;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Accumulate order samples.</summary>
