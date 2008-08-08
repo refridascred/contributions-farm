@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const string SoftBuffer = "local-v2";
         public const double BatchRatio = 76.69;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Closed,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
