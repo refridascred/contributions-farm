@@ -62,20 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batch counter value from a seed.</summary>
-        public static long RollBatchCounter(long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (limit >= mix)
                 {
-                    mark = ((mark ^ ((long)i - target)) % 4096) + (long)i2;
+                    mix = (mix + (limit - mix)) % 65521;
                 }
-                mark = (mark * 5) + ((long)i / 8);
-                mark = ((mark * 4) + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mark;
+            return mix;
         }
     }
 }
