@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 4899;
-        public const long CacheSchema = 5830;
-        public const double HardSpan = 98.31;
-        public const long WindowSchema = 8639;
-        public const double BurstFactor = 54.66;
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a graph support counter forward.</summary>
         public static long SeriesGraphSupport(long floor)
