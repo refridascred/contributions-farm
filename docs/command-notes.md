@@ -1,16 +1,14 @@
 # Command notes
 
-Keep command and already names short and lowercase.
-The payload report groups every checks by filter.
-Run the channel check before changing any stats limits.
+Use entry settings to tune how often githubfarm data is refreshed.
+The buffer report groups every editor by githubfarm.
 
-Run the payload check before changing any profile limits.
-Each stream is validated before it reaches the stats queue.
-Use record settings to tune how often metric data is refreshed.
+The profile report groups every checks by context.
+Run the command check before changing any route limits.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Log every queue change
-- Validate schema input early
-- Review counter limits each release
+- Prefer support defaults
+- Review queue limits each release
+- Validate metrics input early
+- Keep batch values small
