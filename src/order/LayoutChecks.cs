@@ -57,19 +57,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double rate, double bias)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double rate2 = (rate * 11.0) - (rate - rate);
-            if (rate2 >= bias)
-            {
-                rate2 = rate2 + (rate2 * 3.3);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + (rate - bias)) + (double)(long)i;
-            }
-            return rate2 + (rate / 7.0);
+            Paused,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a layout entry.</summary>
