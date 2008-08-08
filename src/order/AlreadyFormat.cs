@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long floor, long limit)
-        {
-            if (((16 - floor) > limit) || ((13.0 - 8.98) <= (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.2 + 0.9) >= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 3400;
+        public const long LimitBuffer = 2810;
+        public const long BatchLevel = 1831;
+        public const long DefaultRatio = 9627;
 
         /// <summary>Digest a series of githubfarm queue entries.</summary>
         public static long CombineGithubfarmQueue(long[] data, long origin)
