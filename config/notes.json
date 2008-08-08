@@ -1,13 +1,8 @@
 {
-  "max_threshold_s": {
-    "command_capacity": "strict",
-    "hard_capacity_count": "open",
-    "max_delay_ms": false,
-    "verbose": 1024
-  },
-  "enabled": "fallback",
-  "hard_retries": 2,
-  "hard_delay_count": false,
-  "retry_ttl_count": "green",
-  "farm_size": true
+  "soft_limit_s": false,
+  "already_delay": 79.77,
+  "default_threshold_ms": true,
+  "record_ttl": false,
+  "min_retries": 77,
+  "batches_retries": "primary"
 }
