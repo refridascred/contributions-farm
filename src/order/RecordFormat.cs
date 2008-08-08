@@ -45,11 +45,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxScore = 45.7;
-        public const long StepCount = 9468;
-        public const string CacheRatio = "local-1";
-        public const long WindowDepth = 4552;
+        /// <summary>Count the graph contributi entries that pass the check.</summary>
+        public static long TallyGraphContributiHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + 87) == (entry << 1))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
