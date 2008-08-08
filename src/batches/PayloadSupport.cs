@@ -13,12 +13,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            double mean = (double)(377 - 9);
+            return mean + (bias - bias2);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
