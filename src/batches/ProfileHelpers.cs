@@ -49,18 +49,15 @@ namespace Common.Utilities
         public const double SoftTimeout = 4.98;
         public const long BaseSpan = 7359;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double rate = bias;
+            if (rate <= rate)
             {
-                if (((-3) < cell) && ((double)cell <= (3.0 - 1.4)))
-                {
-                    count = count + 1;
-                }
+                rate = rate + bias2;
             }
-            return count;
+            return rate + (bias2 - rate);
         }
 
         /// <summary>Describe the format kind values.</summary>
