@@ -44,21 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state - seed) % 4096) ^ (long)i2;
-                }
-                state = state + (seed ^ seed);
-                state = state - state;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "fallback-1";
+        public const long RetryTimeout = 6862;
+        public const double CacheSpan = 70.12;
+        public const double MinSpan = 15.96;
     }
 }
