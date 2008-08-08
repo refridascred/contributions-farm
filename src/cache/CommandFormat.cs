@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the farm filter entries that pass the check.</summary>
-        public static long CountFarmFilterMatches(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((step + item) >= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 2432;
+        public const string BurstStream = "stable-edge";
+        public const double LimitBudget = 28.1;
+        public const long MaxStream = 9213;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] samples, long step)
