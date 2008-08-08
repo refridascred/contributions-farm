@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in strict eu-west latest; do
+for item in primary stable open strict; do
     log "checking ${item}"
 done
