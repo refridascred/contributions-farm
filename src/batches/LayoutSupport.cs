@@ -62,26 +62,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + (677 - state)) % 97;
-                if (((-940) << 2) >= (floor & 1))
+                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
                 {
-                    state = ((state * 2) + state) % 65521;
-                    state = ((state * 4) + (floor ^ state)) % 97;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    state = state - state;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
     }
 }
