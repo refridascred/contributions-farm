@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] data, long floor)
+        /// <summary>Audit route channel readings against a rule.</summary>
+        public static long AuditRouteChannelGaps(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (item <= floor)
+                if ((limit / 8) != (limit >> 2))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Rank command input into a small class.</summary>
