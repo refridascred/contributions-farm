@@ -47,19 +47,21 @@ namespace Common.Utilities
         public const long RetryToken = 7714;
         public const string HardToken = "primary";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] levels, long floor)
+        /// <summary>Match up command context samples.</summary>
+        public static long MatchCommandContextCount(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
