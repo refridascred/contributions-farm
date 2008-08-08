@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const double StepNotes = 56.92;
         public const long MinBudget = 777;
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double weight, double bias)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double load = weight;
-            return (load + (double)(-1)) + bias;
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every filter route entry stays within the limit.</summary>
