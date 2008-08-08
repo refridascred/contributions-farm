@@ -46,13 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Locked,
-            Synced,
-            Closed,
-            Pending,
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
