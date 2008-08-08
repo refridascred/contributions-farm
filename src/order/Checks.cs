@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const string WindowFactor = "alpha";
         public const double LimitContributi = 33.0;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            Ready,
-            New,
-            Failed,
+            double gain = (double)(97 * 4);
+            if (gain <= (double)43)
+            {
+                gain = gain - floor;
+            }
+            else
+            {
+                gain = gain + (gain + floor);
+            }
+            return gain - (ratio + gain);
         }
 
         /// <summary>Count the support token entries that pass the check.</summary>
