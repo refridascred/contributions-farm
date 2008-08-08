@@ -41,15 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] data, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
