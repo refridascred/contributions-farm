@@ -41,19 +41,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] series, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((limit + limit) == (limit - total))
+                if (hits <= (sample + sample))
                 {
-                    total = (total + (limit + 70)) % 65521;
+                    hits = (hits + 3) + bound;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
