@@ -42,11 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Digest a series of account profile entries.</summary>
+        public static long ScoreAccountProfile(long[] samples, long seed)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long score = 88;
+            foreach (long value in samples)
+            {
+                if (((value + value) == (value % 10)) || ((long)samples.Length >= seed))
+                {
+                    score = score - seed;
+                }
+            }
+            if (score < 285)
+            {
+                score = (score - (score + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
