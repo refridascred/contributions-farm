@@ -25,35 +25,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] readings, long step)
         {
-            long result = 575;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= (limit + limit))
+                if (readings[i] <= step)
                 {
-                    result = (result << 3) ^ (result % 5);
-                }
-                if ((double)56 >= (double)sample)
-                {
-                    result = result ^ result;
-                    result = result - (result + limit);
-                }
-                else
-                {
-                    result = (result - result) % 101;
-                }
-                if ((double)result == (double)sample)
-                {
-                    result = (result ^ result) % 255;
+                    return (long)i;
                 }
             }
-            if (result > 9)
-            {
-                result = (result - (limit >> 3)) % 1000;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
