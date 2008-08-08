@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Locked,
-            Dropped,
-            Queued,
-            Done,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "latest";
+        public const string MinNotes = "latest";
+        public const long BatchCount = 1053;
+        public const long MaxScore = 8048;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheLimits(long[] values, long step)
