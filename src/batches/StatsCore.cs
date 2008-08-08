@@ -34,11 +34,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSpan = "strict";
-        public const long MinWidth = 2317;
-        public const long LimitSchema = 445;
-        public const long BatchSchema = 7545;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Done,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatHits(long[] items, long step)
