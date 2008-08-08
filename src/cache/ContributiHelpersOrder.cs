@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] values, long bound)
+        /// <summary>Digest a series of cache notes entries.</summary>
+        public static long TotalCacheNotes(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long acc = 192;
+            foreach (long datum in items)
             {
-                if (cell >= bound)
+                if ((acc - 64) > datum)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc + (datum % 97)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 4) + acc;
                 }
             }
-            return ok;
+            return acc % 4096;
         }
 
         /// <summary>Adjust a session reading.</summary>
