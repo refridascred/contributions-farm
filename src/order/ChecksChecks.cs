@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] series, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long result = 754;
+            foreach (long datum in levels)
             {
-                if (entry > origin)
+                if (((datum + 91) > (datum ^ result)) && ((double)datum >= 0.8))
                 {
-                    ready = false;
-                    break;
+                    result = (result ^ (long)levels.Length) % 97;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Accumulate stats samples.</summary>
