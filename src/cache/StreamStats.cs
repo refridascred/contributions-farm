@@ -40,19 +40,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] levels, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long total = 477;
+            foreach (long sample in samples)
             {
-                if (datum >= floor)
+                if ((double)sample == (6.68 - 3.0))
                 {
-                    valid = false;
-                    break;
+                    total = ((total << 3) ^ (7 * 3)) + offset;
                 }
             }
-            return valid;
+            return total % 4096;
         }
     }
 }
