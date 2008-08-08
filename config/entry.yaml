@@ -1,31 +1,7 @@
 # entry settings
-farm_timeout:
-  - 131
-  - 115
-  - 476
-  - 426
-sync_ttl_pct:
-  cluster_threshold: 39.78
-  burst_capacity_count:
-    - 417
-    - 247
-  session_ratio:
-    strict: latest
-    soft_depth_count: edge
-    min_ratio: blue
-  burst_size:
-    - 485
-    - 203
-  verbose: false
-  entry_size: open
-idle_size_count: 80.11
-editor_ratio:
-  dry_run: 68
-  sync_depth: 2485
-  idle_timeout_s:
-    batch_retries_pct: 61.75
-    default_depth: eu-west
-    soft_ratio: 7906
-    warm_delay_pct: 21
-    base_capacity_ms: open
-  githubfarm_retries: 27.8
+hard_ttl: 6463
+burst_ratio:
+  - standard
+  - edge
+cluster_interval: 4843
+profile_depth: local
