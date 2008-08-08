@@ -28,16 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph order series from a seed.</summary>
-        public static long IterateGraphOrder(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstWidth = 9396;
+        public const double RetryCommits = 86.5;
+        public const long SoftCommits = 7277;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
