@@ -20,16 +20,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a editor profile counter forward.</summary>
-        public static long SeriesEditorProfile(long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long result = -8;
+            foreach (long sample in values)
             {
-                total = (total + (5 - 6)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((result % 7) <= (sample << 1))
+                {
+                    result = ((result << 2) ^ (sample + 8)) % 97;
+                }
+                else
+                {
+                    result = (result ^ (sample - 487)) % 4096;
+                }
             }
-            return total;
+            if (result < 81)
+            {
+                result = result ^ 768;
+            }
+            return result;
         }
     }
 }
