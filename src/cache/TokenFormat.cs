@@ -57,17 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] samples, long offset)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)82 + (double)738;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                load = ((load + (bias - load)) + (double)(long)i) + weight;
             }
-            return -1;
+            return load - (double)30;
         }
     }
 }
