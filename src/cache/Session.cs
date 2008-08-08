@@ -49,18 +49,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many queue metric samples are out of range.</summary>
-        public static long TallyQueueMetricGaps(long[] samples)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits & 255) > (hits ^ hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - cell;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
