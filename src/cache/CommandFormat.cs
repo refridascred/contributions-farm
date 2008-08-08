@@ -38,10 +38,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseContext = "strict";
-        public const string LimitContext = "cached-v2";
-        public const long IdleDepth = 4722;
+        /// <summary>Scale a command layout figure with a bias.</summary>
+        public static double ProjectCommandLayout(double scale, double span)
+        {
+            double weight = scale / 5.0;
+            if (weight < 1.0)
+            {
+                weight = (weight - (weight + weight)) + span;
+            }
+            return weight - (9.0 / 8.0);
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowInterval = 9125;
