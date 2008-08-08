@@ -40,18 +40,17 @@ namespace Common.Utilities
         public const string StepFactor = "latest-1";
         public const long BatchLevel = 922;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading ^ matches) < reading)
+                if ((data[i] < step) && ((data[i] % 3) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
