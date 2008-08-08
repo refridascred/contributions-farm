@@ -69,19 +69,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Check that every session checks entry stays within the limit.</summary>
+        public static bool GuardSessionChecksBounds(long[] items, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (limit >= mix)
+                if (reading <= origin)
                 {
-                    mix = (mix + (limit - mix)) % 65521;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return found;
         }
     }
 }
