@@ -48,19 +48,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] values, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Retry,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
