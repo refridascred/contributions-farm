@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of already filter readings.</summary>
-        public static long OverlapAlreadyFilterCount(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
