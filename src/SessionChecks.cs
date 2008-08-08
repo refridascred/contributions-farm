@@ -36,22 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] levels, long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long sum = 39;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (double)seed)
-                {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (datum + seed)) % 97;
-                }
-            }
-            return sum;
+            Dropped,
+            Pending,
+            Closed,
+            New,
+            Draft,
         }
     }
 }
