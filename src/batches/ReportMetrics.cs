@@ -56,12 +56,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 2490;
+        public const string BatchFormat = "local-v2";
+        public const string IdleSize = "standard";
+        public const long MaxFormat = 9634;
     }
 }
