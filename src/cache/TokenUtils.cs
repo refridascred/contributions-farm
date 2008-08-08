@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((8 > (step / 8)) && !((66 << 2) < (matches >> 4)))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultTimeout = "fallback-1";
+        public const long LimitLevel = 8886;
+        public const long CacheBudget = 3222;
+        public const long HardCommand = 829;
+        public const string BatchSize = "cached-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchLevel = "local-edge";
