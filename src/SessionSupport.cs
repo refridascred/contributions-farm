@@ -24,38 +24,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank command token input into a small class.</summary>
-        public static long ClassifyCommandToken(long step, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            if ((5.6 / 3.0) > (double)offset)
+            long score = 318;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.72 * 3.45) >= (double)offset)
+                if (11.0 > (double)entry)
                 {
-                    return 6;
+                    score = score ^ (entry & 31);
+                    score = ((score << 3) ^ score) % 1000;
                 }
-                else
+                if (((32 + entry) == (score - score)) || ((score + score) <= entry))
                 {
-                    if (offset > (offset ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (13.0 <= (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score * 4) + (5 + score);
                 }
             }
+            return score;
         }
     }
 }
