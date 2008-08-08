@@ -27,19 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload queue entry stays within the limit.</summary>
-        public static bool GuardPayloadQueueLimits(long[] readings, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every payload record entry stays within the limit.</summary>
