@@ -1,7 +1,8 @@
 {
-  "account_delay": [114, 217, 463],
-  "already_delay": [442, 177, 41, 478],
-  "burst_retries": 21.52,
-  "idle_capacity_pct": 13.97,
-  "idle_timeout_ms": 250
+  "audit": 94.82,
+  "batch_ratio": ["latest", "legacy"],
+  "warm_window_s": "staging",
+  "hard_interval_ms": ["staging", "strict"],
+  "batch_window_s": false,
+  "stats_retries": "latest"
 }
