@@ -67,12 +67,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            Done,
+            Ready,
+            Idle,
+            Closed,
         }
     }
 }
