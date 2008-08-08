@@ -33,22 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long seed, long step)
+        /// <summary>Grade a report buffer value against two limits.</summary>
+        public static long BucketReportBuffer(long seed, long seed2)
         {
-            if ((step ^ seed) >= (step >> 5))
+            if ((6.0 - 7.3) <= (double)seed2)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((6.7 - 0.62) < (double)step)
+                if ((seed + seed) <= (1 + seed2))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    return 5;
                 }
             }
         }
