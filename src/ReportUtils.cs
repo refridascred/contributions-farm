@@ -54,14 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Idle,
-            Paused,
-            Active,
-            Draft,
-            Retry,
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
