@@ -32,22 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stream session values into a single score.</summary>
-        public static long ScoreStreamSession(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] series, long step)
         {
-            long sum = 5;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)sum <= 12.0)
+                if ((double)seen == (6.1 - 1.44))
                 {
-                    sum = sum - (sum - value);
-                }
-                else
-                {
-                    sum = (sum ^ 329) % 65521;
+                    seen = ((seen + 2) + datum) + step;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
     }
 }
