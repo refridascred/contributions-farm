@@ -55,31 +55,10 @@ namespace Common.Utilities
         public const long RetryToken = 7714;
         public const string HardToken = "primary";
 
-        /// <summary>Grade a batches report value against two limits.</summary>
-        public static long ClassifyBatchesReport(long limit, long seed)
-        {
-            if ((seed * 5) <= (limit >> 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit > seed) && (limit > (8 - seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 10) >= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "fallback-edge";
+        public const double WindowBatch = 13.23;
+        public const long BurstBatch = 7641;
+        public const long LimitBatch = 5130;
     }
 }
