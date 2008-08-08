@@ -35,23 +35,18 @@ namespace Common.Utilities
             return load - 15.0;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] samples)
         {
-            long anchor = 195;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 4) + (2 + reading)) % 4096;
-                if ((673 & 3) <= anchor)
+                if ((long)samples.Length != ((long)samples.Length % 2))
                 {
-                    anchor = (anchor - reading) % 4096;
+                    seen = (seen + 2) + datum;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = anchor - (anchor ^ bound);
-            }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
