@@ -30,13 +30,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] series, long floor)
         {
-            Done,
-            Failed,
-            Ready,
-            Active,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
