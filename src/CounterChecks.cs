@@ -57,15 +57,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Count context schema pairs that satisfy a relation.</summary>
+        public static long OverlapContextSchemaCount(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
