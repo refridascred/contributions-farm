@@ -1,16 +1,5 @@
 {
-  "flush_timeout_count": "stable",
-  "base_depth_count": false,
-  "compress": {
-    "default_window_pct": "green",
-    "batch_size": {
-      "burst_retries_s": true,
-      "schema_size": 74.44,
-      "flush_threshold": "eu-west",
-      "batch_timeout_ms": 7174
-    },
-    "cache_ttl": true,
-    "dry_run": ["edge", "stable"]
-  },
-  "profile_retries": [57, 217]
+  "compress": "open",
+  "githubfarm_limit": true,
+  "batch_window_ms": "latest"
 }
