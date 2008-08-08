@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 553;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (0 < (target + datum))
                 {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (carry / 8)) % 65521;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
