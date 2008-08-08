@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double gain, double bias)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long origin)
         {
-            double ratio = gain;
-            if (ratio <= ratio)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio + gain) + bias;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + gain) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
