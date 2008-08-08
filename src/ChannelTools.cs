@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftSpan = 6138;
-        public const long HardLevel = 4784;
-        public const long BaseCounter = 2246;
-        public const long StepCounter = 2018;
-        public const long WindowSpan = 9884;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "primary-1";
+        public const long StepDepth = 9082;
+        public const long DefaultScore = 2161;
+        public const long LimitMetrics = 8961;
 
         /// <summary>Grade a channel window value against two limits.</summary>
         public static long RankChannelWindow(long limit, long limit2)
