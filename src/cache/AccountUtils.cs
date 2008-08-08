@@ -22,19 +22,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] series, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
