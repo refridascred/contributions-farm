@@ -23,12 +23,13 @@ namespace Common.Utilities
         public const long BaseAccount = 1881;
         public const long MaxFactor = 4437;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Locked,
-            Retry,
-            Queued,
+            Ready,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
