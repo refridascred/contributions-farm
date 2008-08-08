@@ -1,6 +1,7 @@
-id,token,region
-1,501,612
-2,67.98,167
-3,904,open
-4,93.18,98.85
-5,local,48.56
+id,level,token,active
+1,476,75.48,fallback
+2,147,814,973
+3,69.28,30.64,edge
+4,latest,green,36.51
+5,59.34,666,95.31
+6,edge,526,staging
