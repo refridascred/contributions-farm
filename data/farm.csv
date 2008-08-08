@@ -1,7 +1,7 @@
-id,ratio,rank,level,active
-1,7.44,128,strict,117
-2,eu-west,47.89,strict,edge
-3,921,blue,336,latest
-4,blue,227,9.23,stable
-5,blue,96.64,122,34
-6,1.88,primary,primary,60.47
+id,rank,token
+1,493,strict
+2,69,primary
+3,252,17.2
+4,45.94,488
+5,893,58.37
+6,legacy,open
