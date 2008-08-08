@@ -1,6 +1,6 @@
 # githubfarm settings
-retry_depth_pct: 250
-verbose: eu-west
-entry_timeout: 36.33
-persist: 5.19
-max_ttl_ms: 81.95
+warm_ttl_pct: eu-west
+max_retries: 100
+hard_ttl: cached
+strict: 6930
+burst_window_ms: true
