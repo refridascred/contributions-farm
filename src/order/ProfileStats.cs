@@ -25,23 +25,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double scale, double floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double mean = (floor + scale) * 4.0;
-            if (mean <= 6.5)
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean - (mean - 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)258) - (double)(long)i;
-            }
-            return mean + 5.1;
+            Paused,
+            Queued,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define order limits and defaults.</summary>
