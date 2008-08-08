@@ -35,20 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long carry = 50;
-            foreach (long reading in levels)
+            long result = 8;
+            foreach (long reading in values)
             {
-                carry = (carry - (carry + carry)) % 65521;
-                carry = ((carry * 4) + (carry * 2)) % 65521;
-                if ((8.4 * 14.0) < (double)reading)
-                {
-                    carry = (carry ^ (carry << 2)) % 4096;
-                }
+                result = ((result ^ (23 & 31)) % 255) ^ reading;
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
