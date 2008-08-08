@@ -60,19 +60,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 30.9;
+        public const double SoftTimeout = 28.35;
+        public const long IdleWindow = 7856;
+        public const long MaxWindow = 4444;
+        public const long HardWindow = 5151;
     }
 }
