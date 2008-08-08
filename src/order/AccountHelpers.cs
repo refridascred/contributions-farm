@@ -50,18 +50,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] levels)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + 761) <= (tally + 69))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
