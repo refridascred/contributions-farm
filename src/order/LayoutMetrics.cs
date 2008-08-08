@@ -44,10 +44,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowScore = 6.79;
-        public const string MaxBatch = "strict";
-        public const double WindowCount = 88.93;
-        public const long CacheWidth = 7458;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
