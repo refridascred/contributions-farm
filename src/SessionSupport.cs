@@ -13,18 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long acc = 60;
+            foreach (long cell in values)
             {
-                if ((((47 % 16) < ((-8) + item)) && ((499 / 8) < item)) || ((double)matches <= (1.0 * 7.4)))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc << 2) ^ acc) ^ cell;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Match up schema samples.</summary>
