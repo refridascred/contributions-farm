@@ -51,9 +51,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 5003;
         public const long LimitSize = 9724;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseFactor = 8836;
-        public const long BaseMetrics = 7285;
-        public const long DefaultMetrics = 706;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Done,
+            Locked,
+            Ready,
+        }
     }
 }
