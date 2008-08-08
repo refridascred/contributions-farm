@@ -21,21 +21,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 77;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score + (value / 5)) % 4096) + floor;
+                score = score ^ (score - 1);
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the graph contributi entries that pass the check.</summary>
