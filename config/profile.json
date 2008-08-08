@@ -1,8 +1,5 @@
 {
-  "soft_interval": 87,
-  "poll_size": false,
-  "idle_ttl_pct": true,
-  "layout_delay": false,
-  "flush_interval_s": "stable",
-  "readonly": "legacy"
+  "enabled": 7575,
+  "flush_threshold": ["staging", "eu-west", "latest"],
+  "poll_delay": 2167
 }
