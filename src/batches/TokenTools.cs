@@ -49,10 +49,39 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryBudget = 93.82;
-        public const long BurstDepth = 3375;
-        public const long CacheLevel = 8457;
-        public const long LimitProfile = 7608;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long origin)
+        {
+            long slot = target ^ origin;
+            if ((double)target >= (8.5 / 5.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)origin != (2.7 - 9.0)) || ((slot - target) >= (target + target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - slot) > (slot + slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target >> 3) >= (slot << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
