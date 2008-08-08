@@ -52,20 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 704;
+        public const double BurstDepth = 32.76;
+        public const long CacheCounter = 3938;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] levels, long offset)
