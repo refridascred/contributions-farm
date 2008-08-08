@@ -29,13 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            Dropped,
-            Ready,
-            Locked,
-            Pending,
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry + (limit << 2)) % 101;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
