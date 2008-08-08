@@ -23,18 +23,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] levels, long target)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= 855)
                 {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + target;
                 }
             }
             return count;
