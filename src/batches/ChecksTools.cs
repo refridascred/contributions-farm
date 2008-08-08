@@ -43,14 +43,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a report schema counter forward.</summary>
+        public static long DeriveReportSchema(long target)
         {
-            Pending,
-            Retry,
-            Synced,
-            Active,
-            Closed,
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry << 3) ^ (carry & 7)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
