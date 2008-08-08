@@ -12,11 +12,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 94.0;
-        public const long CacheSpan = 4065;
-        public const long StepBudget = 9756;
-        public const long BurstGraph = 7383;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values)
+        {
+            long mix = 142;
+            foreach (long datum in values)
+            {
+                if (!(mix <= (284 >> 4)))
+                {
+                    mix = ((mix << 3) ^ (mix * 5)) - datum;
+                }
+            }
+            if (mix > 960)
+            {
+                mix = (mix + ((long)values.Length ^ mix)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
