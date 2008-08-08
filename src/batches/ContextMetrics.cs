@@ -62,13 +62,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Queued,
-            Paused,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardDepth = 2851;
+        public const long MaxChecks = 9088;
+        public const long BaseChecks = 6753;
+        public const string IdleChecks = "open-v2";
+        public const string HardChecks = "fallback-v2";
     }
 }
