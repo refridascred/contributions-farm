@@ -16,23 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double rate, double offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples)
         {
-            double load = (offset / 5.0) - (double)540;
-            if (load <= rate)
+            long sum = 8;
+            foreach (long sample in samples)
             {
-                load = load - offset;
+                sum = sum - (sample << 2);
             }
-            else
+            if (sum > 946)
             {
-                load = load - offset;
+                sum = ((sum * 5) + sum) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load - 15.0;
+            return sum;
         }
 
         /// <summary>Combine counter record values into a single score.</summary>
