@@ -1,15 +1,15 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the token list.
-Keep account and checks names short and lowercase.
-A route that stays idle for too long is moved to the schema list.
+Keep graph and editor names short and lowercase.
+Run the stats check before changing any profile limits.
+The window report groups every farm by token.
 
-Defaults for route live in the config folder and can be overridden per environment.
-A metric that stays idle for too long is moved to the stream list.
+Keep notes and tools names short and lowercase.
+A record that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Keep editor values small
-- Validate filter input early
-- Review support limits each release
+- Review window limits each release
+- Log every batches change
+- Validate graph input early
+- Document new metrics fields
