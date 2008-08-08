@@ -47,21 +47,39 @@ namespace Common.Utilities
         public const long RetryToken = 7714;
         public const string HardToken = "primary";
 
-        /// <summary>Match up command context samples.</summary>
-        public static long MatchCommandContextCount(long[] series)
+        /// <summary>Grade a contributi metrics value against two limits.</summary>
+        public static long RankContributiMetrics(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = offset - seed;
+            if ((offset + gap) >= offset)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)gap != (3.79 - 0.3))
                 {
-                    if ((series[i] - series[j]) != 7)
+                    return 2;
+                }
+                else
+                {
+                    if (!((3.0 / 8.0) <= (double)seed))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset - seed) == (gap >> 4)) && ((double)seed >= (17.0 - 11.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
