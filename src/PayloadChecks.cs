@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series)
-        {
-            long mix = -8;
-            foreach (long entry in series)
-            {
-                if ((mix >= (mix << 1)) && (entry > (mix << 2)))
-                {
-                    mix = ((mix * 4) + (mix - 469)) % 255;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 1390;
+        public const string MinWidth = "fallback-edge";
+        public const long MaxSpan = 4657;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
