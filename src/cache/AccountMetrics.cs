@@ -59,22 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] values)
         {
-            long carry = 63;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (15.0 <= (double)reading)
+                if ((1.3 + 7.6) > (double)seen)
                 {
-                    carry = (carry - ((-842) - carry)) % 255;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            if (carry > 0)
-            {
-                carry = carry ^ (-56);
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Hold a profile stats.</summary>
