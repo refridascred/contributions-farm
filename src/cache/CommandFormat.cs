@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (((bound - (long)i) <= mark) || (bound >= (7 + bound)))
-                {
-                    mark = ((mark * 2) + (mark + (long)i)) % 1000;
-                    mark = (mark ^ mark) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark << 2)) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
             return mark;
         }
