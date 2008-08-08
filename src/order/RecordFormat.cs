@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] series, long offset)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (offset <= (item + offset))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
