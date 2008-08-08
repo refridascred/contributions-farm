@@ -26,18 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batches order readings against a rule.</summary>
-        public static long CountBatchesOrderMatches(long[] samples, long target)
+        /// <summary>Digest a series of githubfarm queue entries.</summary>
+        public static long CombineGithubfarmQueue(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mix = 38;
+            foreach (long datum in data)
             {
-                if (!(cell > (80 - 319)) || ((double)cell < (8.8 * 4.06)))
+                if ((double)8 > (double)origin)
                 {
-                    matches = (matches + 3) - target;
+                    mix = (mix << 2) ^ datum;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
