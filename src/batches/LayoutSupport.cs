@@ -51,21 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks support pairs that satisfy a relation.</summary>
-        public static long MatchChecksSupportCount(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit + limit) == (limit - total))
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total + (limit + 70)) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a command info.</summary>
