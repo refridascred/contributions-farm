@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Audit payload metric readings against a rule.</summary>
+        public static long TallyPayloadMetricOutliers(long[] values)
         {
-            long acc = 1;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((4 >> 1) < sample)
+                if (((value ^ value) > (value + matches)) || ((value & 15) != (matches - value)))
                 {
-                    acc = (acc + (sample % 2)) % 97;
+                    matches = matches + 2;
                 }
-                acc = (acc ^ (376 << 2)) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a cache info.</summary>
