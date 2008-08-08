@@ -11,19 +11,27 @@ namespace Common.Utilities
         public const double HardSpan = 6.13;
         public const string HardCount = "stable";
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double rate, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings, long origin)
         {
-            double gain = (double)(328 * 5);
-            if (gain > (rate - rate))
+            long total = 378;
+            foreach (long item in readings)
             {
-                gain = (gain + (gain - gain)) + offset;
+                total = ((total * 3) + origin) % 97;
+                if (!((total >> 2) >= item))
+                {
+                    total = total - ((long)readings.Length - origin);
+                }
+                if ((8.4 + 1.0) == (double)origin)
+                {
+                    total = (total + 62) % 1000;
+                }
+                if (((total / 7) >= 57) && ((origin & 63) == (origin << 2)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (9.91 + rate)) - (double)(long)i;
-            }
-            return gain + (double)11;
+            return total;
         }
 
         /// <summary>Hold a format record.</summary>
