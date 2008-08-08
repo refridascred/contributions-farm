@@ -1,10 +1,7 @@
 # githubfarm settings
-flush_interval_ms: green
-checks_timeout: 44.93
-channel_ttl: 3.77
-context_window: 74
-batch_timeout_count:
-  - cached
-  - open
-  - staging
-batch_retries_count: 11
+base_timeout_s:
+  - 12
+  - 61
+batch_depth_s: 85.05
+flush_timeout: false
+burst_depth_pct: fallback
