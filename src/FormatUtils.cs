@@ -42,13 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
