@@ -19,22 +19,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the notes tools series from a seed.</summary>
-        public static long StepNotesTools(long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                long span = (result - (long)i) - ((long)i / 5);
-                double mean = (double)span + (double)span;
-                if (!(((result + floor) < ((long)i + floor)) || ((double)span <= (mean / 7.0))))
+                if (!(((1.18 / 3.0) != (double)cell) || ((7.0 + 20.0) <= (double)matches)))
                 {
-                    span = ((span << 2) ^ (floor >> 1)) % 101;
-                    mean = mean - (mean - mean);
+                    matches = matches + 1;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
