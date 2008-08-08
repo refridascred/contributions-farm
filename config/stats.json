@@ -1,8 +1,9 @@
 {
-  "max_timeout_count": 69,
-  "dry_run": "open",
-  "sync_threshold": 34.0,
-  "flush_ratio_count": false,
-  "cache_size_s": "edge",
-  "max_retries": 32
+  "retry_ratio": {
+    "schema_capacity": "eu-west",
+    "sync_limit_pct": "strict",
+    "stats_interval": true
+  },
+  "warm_ratio_s": "latest",
+  "githubfarm_capacity": 17
 }
