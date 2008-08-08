@@ -1,19 +1,14 @@
 {
-  "idle_window_ms": [411, 425],
-  "enabled": {
-    "warm_delay": {
-      "dry_run": "edge",
-      "persist": [421, 375, 488],
-      "retry_ttl_pct": ["local", "cached", "green"],
-      "min_threshold_count": 36.83
-    },
-    "cache_depth_ms": 500,
-    "dry_run": false,
-    "warm_timeout_pct": {
-      "compress": "latest",
-      "min_window_s": false,
-      "stream_ratio": true
-    }
+  "graph_delay": 8563,
+  "retry_ratio": 60.85,
+  "soft_capacity_s": 84,
+  "order_retries": 28.87,
+  "record_window": {
+    "max_retries_ms": 27.29,
+    "max_interval": 5046,
+    "default_depth_count": "standard",
+    "soft_threshold": true,
+    "hard_depth_s": 8592
   },
-  "compress": "fallback"
+  "soft_interval": 78
 }
