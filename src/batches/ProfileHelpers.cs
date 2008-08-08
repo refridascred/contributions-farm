@@ -15,23 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long result = -8;
-            foreach (long reading in series)
-            {
-                result = result - ((long)series.Length + result);
-                if ((reading + reading) >= (reading + result))
-                {
-                    break;
-                }
-            }
-            if (result < 4)
-            {
-                result = ((result * 4) + (result - result)) % 65521;
-            }
-            return result % 1000;
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a commits record.</summary>
