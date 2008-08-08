@@ -33,31 +33,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank account contributi input into a small class.</summary>
-        public static long GradeAccountContributi(long origin, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            if ((double)origin >= (4.81 - 3.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin / 7) == (target & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Blend two command measurements.</summary>
