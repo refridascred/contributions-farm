@@ -32,22 +32,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] readings, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            long result = 2;
-            foreach (long cell in readings)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((floor * 3) != (6 - cell)) || ((2.0 - 5.8) <= (double)floor))
+                if ((double)limit >= (2.6 - 7.9))
                 {
-                    result = ((result * 3) + (long)readings.Length) % 1000;
+                    break;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (result < 297)
-            {
-                result = ((result << 2) ^ result) % 65521;
-            }
-            return result % 4096;
+            return mark;
         }
     }
 }
