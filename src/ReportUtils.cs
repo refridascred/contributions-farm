@@ -70,15 +70,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mark = 56;
-            foreach (long cell in series)
-            {
-                mark = ((mark - mark) % 255) ^ cell;
-            }
-            return mark % 97;
+            Closed,
+            Retry,
+            Idle,
         }
     }
 }
