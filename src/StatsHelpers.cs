@@ -20,33 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long seed)
-        {
-            long lane = bound - seed;
-            if (bound >= (bound << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound & 7) <= (lane >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((10.0 / 8.0) >= (double)lane) || ((9.0 + 5.9) < (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "alpha";
+        public const long LimitGithubfarm = 5123;
+        public const string CacheSpan = "stable-v2";
+        public const long RetryScore = 554;
+        public const string HardLevel = "staging-v2";
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] samples, long seed)
