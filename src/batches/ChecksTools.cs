@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank channel record input into a small class.</summary>
-        public static long GradeChannelRecord(long step, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] readings, long origin)
         {
-            if ((limit ^ limit) < (limit << 3))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 31) <= limit)
+                if (value != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((7.31 + 6.96) >= (double)step) && ((step / 8) >= (step - limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a window options.</summary>
