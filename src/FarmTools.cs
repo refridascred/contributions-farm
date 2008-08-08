@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 1447;
+        public const double BaseDepth = 94.64;
+        public const long DefaultLevel = 153;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long origin)
