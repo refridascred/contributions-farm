@@ -35,19 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches report figure with a bias.</summary>
-        public static double ProjectBatchesReport(double rate, double bias)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] values, long floor)
         {
-            double bias2 = rate - (rate + bias);
-            if (bias2 > rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 + (bias2 / 3.0);
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 + bias)) + (double)(long)i;
-            }
-            return bias2 - (bias / 6.0);
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
