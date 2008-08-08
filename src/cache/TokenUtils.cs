@@ -26,22 +26,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] readings, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long limit, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if (!((double)limit > (6.0 / 3.0)))
             {
-                if (!((7.0 * 7.4) != (double)value) && ((value ^ 55) <= (777 - seen)))
+                return 8;
+            }
+            else
+            {
+                if ((step + 7) > (limit / 8))
                 {
-                    seen = (seen + 2) - floor;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
