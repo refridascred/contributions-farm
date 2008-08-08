@@ -34,13 +34,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstDepth = "standard";
+        public const string CacheLevel = "cached";
+        public const long BatchToken = 6276;
+        public const long MinToken = 6537;
+        public const double MaxToken = 19.03;
     }
 }
