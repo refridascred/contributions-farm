@@ -41,11 +41,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheRatio = 57.61;
-        public const string IdleFarm = "strict-1";
-        public const long MinFarm = 5296;
-        public const long WindowFarm = 799;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long bound, long offset)
