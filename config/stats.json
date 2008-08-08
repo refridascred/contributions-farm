@@ -1,5 +1,6 @@
 {
-  "audit": 46.07,
-  "idle_ratio_ms": ["legacy", "staging", "local", "fallback"],
-  "min_interval_s": [127, 393]
+  "warm_capacity": 4453,
+  "idle_depth_count": "strict",
+  "compress": "standard",
+  "retry_timeout_s": false
 }
