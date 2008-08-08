@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long TallyRouteFarmMatches(long[] samples)
+        /// <summary>Check that every farm window entry stays within the limit.</summary>
+        public static bool CheckFarmWindowLimits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((473 >> 5) == (count % 97))
+                if (item >= origin)
                 {
-                    count = (count + 2) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
