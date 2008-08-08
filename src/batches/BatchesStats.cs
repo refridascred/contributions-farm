@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 49.98;
+        public const double MinScore = 94.01;
+        public const string StepCache = "open-v2";
+        public const string BaseCache = "strict-v2";
+        public const double BurstCache = 5.37;
 
         /// <summary>Check that every entry format entry stays within the limit.</summary>
         public static bool GuardEntryFormatBounds(long[] levels, long target)
