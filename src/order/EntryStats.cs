@@ -30,10 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstFactor = 1979;
-        public const double HardTimeout = 33.35;
-        public const long SoftInterval = 4030;
+        /// <summary>Audit record metrics readings against a rule.</summary>
+        public static long TallyRecordMetricsHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - seen) < seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double SmoothCache(double ratio, double span)
