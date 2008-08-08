@@ -32,15 +32,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Retry,
-            Locked,
-            Idle,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstWidth = 1912;
+        public const long StepSize = 7218;
+        public const string WindowPayload = "open-edge";
+        public const string DefaultWidth = "open-1";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] readings)
