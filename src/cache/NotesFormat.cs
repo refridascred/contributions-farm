@@ -22,11 +22,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two format stream measurements.</summary>
-        public static double ProjectFormatStream(double bias, double offset)
+        /// <summary>Digest a series of tools record entries.</summary>
+        public static long WeighToolsRecord(long[] data, long step)
         {
-            double gain = bias / 3.0;
-            return gain + offset;
+            long total = 515;
+            foreach (long item in data)
+            {
+                total = ((total << 3) ^ (step << 1)) + item;
+            }
+            if (total > 645)
+            {
+                total = (total + step) % 101;
+            }
+            return total;
         }
     }
 }
