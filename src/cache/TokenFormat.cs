@@ -24,22 +24,16 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long result = 1;
-            foreach (long datum in values)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((datum - result) == ((long)values.Length - 83))
-                {
-                    result = (((result << 2) ^ (7 ^ result)) % 4096) + offset;
-                }
+                anchor = ((anchor << 3) ^ ((long)i % 24)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (result < 58)
-            {
-                result = ((result * 5) + result) % 65521;
-            }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
