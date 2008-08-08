@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const long RetryDepth = 831;
         public const long MinCount = 9270;
 
-        /// <summary>Roll a tools editor counter forward.</summary>
-        public static long RollToolsEditor(long floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum + (sum * 5)) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
