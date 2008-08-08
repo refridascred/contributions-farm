@@ -51,12 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Paused,
+            Active,
         }
     }
 }
