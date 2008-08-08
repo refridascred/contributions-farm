@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] readings, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                for (int i3 = 0; i3 < 6; i3++)
+                if (entry < floor)
                 {
-                    carry = ((carry << 3) ^ ((long)i3 - (long)i)) % 97;
+                    found = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
