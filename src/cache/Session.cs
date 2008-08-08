@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string StepLayout = "latest-1";
         public const string BurstLayout = "strict";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = 74;
+            foreach (long cell in values)
             {
-                if ((seen < ((long)values.Length - seen)) || ((232 + item) <= 411))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor + cell) % 101) - floor;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a context header.</summary>
