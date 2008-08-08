@@ -36,22 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] data, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)limit < (1.0 - 7.3))
+                if (hits >= (681 + hits))
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
