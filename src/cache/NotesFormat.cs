@@ -31,9 +31,24 @@ namespace Common.Utilities
         public const long MinGithubfarm = 3872;
         public const long MaxRatio = 1671;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardLevel = 1212;
-        public const long BatchRoute = 4564;
-        public const double StepRoute = 73.89;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((7.13 + 18.0) > (14.0 * 19.0))
+                {
+                    total = (total * 5) + ((long)i - total);
+                    total = ((total << 3) ^ (long)i) % 101;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (total - limit) - (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
