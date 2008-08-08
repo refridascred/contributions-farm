@@ -56,19 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm context entries.</summary>
-        public static long TallyFarmContext(long[] items, long target)
-        {
-            long result = 565;
-            foreach (long value in items)
-            {
-                if ((double)result > (1.99 + 6.0))
-                {
-                    result = (((result << 3) ^ (value * 4)) % 97) + target;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstSize = 7442;
+        public const double HardDepth = 68.9;
+        public const long BatchAlready = 1050;
+        public const double HardCount = 71.89;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
