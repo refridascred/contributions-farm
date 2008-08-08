@@ -23,14 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long target, long floor)
         {
-            Locked,
-            Pending,
-            Idle,
-            Closed,
-            Stale,
+            if ((target >> 1) > floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + floor) >= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target > (floor + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
