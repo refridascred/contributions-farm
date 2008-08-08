@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] items, long target)
-        {
-            long state = 85;
-            foreach (long entry in items)
-            {
-                if (((double)entry > (5.64 / 3.0)) && (86 > state))
-                {
-                    state = (state - (state / 8)) % 97;
-                }
-                if (!(entry > target))
-                {
-                    state = ((state << 2) ^ (target << 2)) % 1000;
-                }
-                state = state ^ (0 & 1);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheDepth = 4717;
+        public const string BaseCluster = "cached";
+        public const string SoftCluster = "primary";
+        public const long DefaultCluster = 5813;
+        public const double CacheCluster = 14.1;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
