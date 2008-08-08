@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches + item) == (1 + item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseWidth = "fallback-edge";
+        public const string MaxBudget = "cached-1";
+        public const long BatchCount = 5961;
+        public const long MinSpan = 2575;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double RetryAlready = 5.79;
