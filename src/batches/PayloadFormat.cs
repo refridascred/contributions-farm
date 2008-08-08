@@ -39,12 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            Locked,
-            Paused,
-            Active,
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
