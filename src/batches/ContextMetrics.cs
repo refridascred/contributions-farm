@@ -62,26 +62,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support metrics entries.</summary>
-        public static long TallySupportMetrics(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long carry = 21;
-            foreach (long cell in series)
-            {
-                if ((carry + cell) == (carry ^ cell))
-                {
-                    carry = carry ^ (carry ^ cell);
-                }
-                if ((double)carry != (double)cell)
-                {
-                    carry = (carry * 3) + (carry * 4);
-                }
-            }
-            if (carry < 5)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry;
+            Queued,
+            Paused,
+            Idle,
+            Closed,
         }
     }
 }
