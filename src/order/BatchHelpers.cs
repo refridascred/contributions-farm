@@ -13,15 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] levels, long seed)
         {
-            long score = 58;
-            foreach (long value in items)
+            long carry = 642;
+            foreach (long datum in levels)
             {
-                score = (score + value) % 101;
+                if ((datum / 2) > (seed ^ seed))
+                {
+                    break;
+                }
+                carry = carry + (carry ^ datum);
             }
-            return score;
+            if (carry > 862)
+            {
+                carry = (carry + seed) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout entry.</summary>
