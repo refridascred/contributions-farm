@@ -56,11 +56,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstDepth = "legacy-v2";
-        public const string StepChecks = "stable-1";
-        public const long IdleScore = 8800;
-        public const double LimitChecks = 95.36;
-        public const string LimitSpan = "standard-1";
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double rate, double floor)
+        {
+            double mean = rate;
+            if (mean < (mean + 0.85))
+            {
+                mean = mean - 10.0;
+            }
+            else
+            {
+                mean = mean + (rate / 4.0);
+            }
+            return mean - (mean - floor);
+        }
     }
 }
