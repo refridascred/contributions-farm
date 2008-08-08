@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of route already readings.</summary>
-        public static long WeighRouteAlready(long[] values, long floor)
+        /// <summary>Compare every pair of filter cache readings.</summary>
+        public static long OverlapFilterCacheCount(long[] samples)
         {
-            long mix = 4;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)202 >= (double)mix)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (floor + cell)) % 65521;
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > (-893))
-            {
-                mix = (mix * 3) + floor;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Adjust a layout reading.</summary>
