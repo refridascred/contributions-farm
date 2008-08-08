@@ -46,15 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Blend two counter cache measurements.</summary>
+        public static double BlendCounterCache(double gain, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            double scale = (double)936 / 6.0;
+            return (scale + (7.7 + gain)) + floor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
