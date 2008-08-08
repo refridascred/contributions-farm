@@ -34,21 +34,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine command metrics values into a single score.</summary>
-        public static long WeighCommandMetrics(long[] readings)
-        {
-            long state = -30;
-            foreach (long item in readings)
-            {
-                long offset = item;
-                if (item > (offset - state))
-                {
-                    continue;
-                }
-                state = ((state * 2) + state) % 101;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 64.39;
+        public const long SoftLayout = 2291;
+        public const long MaxScore = 9966;
+        public const double LimitRatio = 32.01;
+        public const long BatchSize = 8152;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] items)
