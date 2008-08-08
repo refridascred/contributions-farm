@@ -1,6 +1,19 @@
 {
-  "base_timeout_s": "local",
-  "enabled": 27,
-  "cache_ttl_count": 500,
-  "warm_limit_ms": 6494
+  "min_size_pct": "legacy",
+  "min_capacity": "local",
+  "hard_retries_count": "stable",
+  "batch_ratio_pct": 52,
+  "strict": 4264,
+  "poll_threshold_count": {
+    "cache_capacity_s": "eu-west",
+    "hard_ttl_count": "cached",
+    "strict": true,
+    "flush_retries": {
+      "default_delay": "strict",
+      "session_capacity": 2944,
+      "checks_capacity": 70.75
+    },
+    "route_depth": 57.41,
+    "metric_interval": 67
+  }
 }
