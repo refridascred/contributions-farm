@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long result = -189;
+            foreach (long datum in levels)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                result = (result ^ result) + seed;
+                if ((4.6 / 2.0) >= (double)datum)
+                {
+                    result = (result << 3) ^ (datum % 24);
+                }
             }
-            return score;
+            return result % 97;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
