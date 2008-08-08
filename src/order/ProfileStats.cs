@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long SoftBudget = 1200;
         public const long BaseRatio = 1840;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((985 >> 5) != (datum + datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a already reading.</summary>
