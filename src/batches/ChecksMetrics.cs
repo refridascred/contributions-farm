@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] samples, long step)
+        /// <summary>Combine stats session values into a single score.</summary>
+        public static long TotalStatsSession(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = -119;
+            foreach (long value in data)
             {
-                if ((39 ^ cell) > (hits + (long)samples.Length))
-                {
-                    hits = (hits + 2) - step;
-                }
+                mark = (mark - (value << 1)) % 101;
+                mark = (mark << 3) ^ (mark & 3);
+                mark = (mark ^ (value << 2)) % 255;
             }
-            return hits;
+            if (mark > 764)
+            {
+                mark = (mark << 2) ^ (mark / 6);
+            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
