@@ -45,19 +45,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] values, long offset)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double mean = weight * 2.0;
+            if (mean >= (double)276)
             {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + (mean * 18.0);
             }
-            return ok;
+            else
+            {
+                mean = mean + (mean + weight);
+            }
+            return mean - bias;
         }
 
         /// <summary>Hold a stream options.</summary>
