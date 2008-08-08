@@ -30,22 +30,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the graph contributi entries that pass the check.</summary>
-        public static long TallyGraphContributiHits(long[] samples)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry + 87) == (entry << 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
