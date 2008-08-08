@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const double MaxDepth = 90.82;
         public const long WindowCluster = 3721;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((1.3 + 7.6) > (double)seen)
+                if (((entry < (entry * 4)) || (entry <= (entry - hits))) && ((double)entry >= (double)33))
                 {
-                    seen = (seen + 2) ^ cell;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a farm header.</summary>
