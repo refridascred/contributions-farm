@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] data, long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
