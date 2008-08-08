@@ -1,15 +1,4 @@
 # support settings
-retry_interval: 500
-min_interval_count: 60.74
-default_timeout_ms:
-  - 486
-  - 440
-  - 380
-  - 447
-flush_retries:
-  - 395
-  - 50
-default_limit_ms:
-  - 96
-  - 323
-cache_delay_s: 61.67
+commits_delay: false
+warm_depth_s: 90
+enabled: 3990
