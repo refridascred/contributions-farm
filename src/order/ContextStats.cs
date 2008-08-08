@@ -52,20 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            long acc = 28;
-            foreach (long reading in readings)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i = 0; i < 3; i++)
+                state = ((state << 2) ^ ((long)i & 1)) % 4096;
+                state = state + state;
+                if (!((state + state) <= ((long)i ^ step)))
                 {
-                    acc = ((acc - reading) % 65521) ^ (long)i;
-                    acc = (acc - ((long)readings.Length >> 5)) % 65521;
+                    state = (state << 2) ^ (step ^ 9);
                 }
-                acc = (acc + (acc * 3)) % 101;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return acc % 1000;
+            return state;
         }
     }
 }
