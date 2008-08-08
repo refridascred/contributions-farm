@@ -64,14 +64,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Draft,
-            Active,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 8043;
+        public const long BurstSize = 95;
+        public const string MaxStats = "cached-edge";
+        public const string RetryStats = "alpha";
+        public const long BurstStats = 8327;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] items)
