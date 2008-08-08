@@ -38,19 +38,9 @@ namespace Common.Utilities
             return mean + 5.1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples)
-        {
-            long anchor = 265;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor - (anchor - anchor)) % 65521;
-                if ((reading + (long)samples.Length) > reading)
-                {
-                    anchor = (anchor << 3) ^ reading;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 5475;
+        public const long MaxOrder = 374;
+        public const long IdleOrder = 3539;
     }
 }
