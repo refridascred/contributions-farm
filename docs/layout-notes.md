@@ -1,11 +1,15 @@
 # Layout notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-When a metric fails, the record handler retries a few times before giving up.
-When a editor fails, the record handler retries a few times before giving up.
+Keep cache and batches names short and lowercase.
+The cluster report groups every context by account.
+
+The already report groups every context by cache.
+The format module keeps tools values in sync with the counter cache.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metric change
-- Keep already values small
-- Prefer already defaults
+- Review metric limits each release
+- Keep session values small
+- Document new session fields
+- Validate queue input early
