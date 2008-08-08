@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Synced,
-            Retry,
-            Closed,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many notes payload samples are out of range.</summary>
