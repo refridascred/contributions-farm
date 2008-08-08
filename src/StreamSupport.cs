@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate stream format samples.</summary>
-        public static long DigestStreamFormat(long[] values, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] levels, long bound)
         {
-            long mix = 24;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)mix <= (5.0 * 2.3)) && ((target << 2) != (entry - mix)))
+                if (levels[i] <= bound)
                 {
-                    mix = ((mix * 4) + entry) % 4096;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
