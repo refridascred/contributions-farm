@@ -37,15 +37,17 @@ namespace Common.Utilities
             return load - (rate / 9.0);
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] samples, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long target)
         {
-            long result = 3;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result + bound) ^ reading;
+                if ((series[i] > target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
     }
 }
