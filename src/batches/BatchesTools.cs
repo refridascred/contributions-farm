@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (!!((count + 567) > (count << 3)))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
