@@ -32,11 +32,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 4253;
-        public const long DefaultDepth = 4476;
-        public const double SoftBuffer = 72.12;
-        public const string WindowFactor = "stable-edge";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double RetryLevel = 33.26;
