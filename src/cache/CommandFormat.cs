@@ -44,9 +44,19 @@ namespace Common.Utilities
             return weight - (9.0 / 8.0);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowInterval = 9125;
-        public const string WindowLayout = "legacy";
-        public const string CacheDepth = "alpha-edge";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
