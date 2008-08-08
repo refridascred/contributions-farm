@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Locked,
-            Ready,
-            Queued,
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
