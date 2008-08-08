@@ -70,13 +70,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Scale a contributi channel figure with a bias.</summary>
+        public static double ScaleContributiChannel(double scale, double floor)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Token { get; set; }
+            double weight = floor + floor;
+            if (weight >= (weight * 0.14))
+            {
+                weight = weight - (weight + weight);
+            }
+            else
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - 3.11) + (double)(long)i;
+            }
+            return weight - (5.0 - floor);
         }
     }
 }
