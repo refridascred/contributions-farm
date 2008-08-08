@@ -31,24 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            if ((limit >> 5) == (5 >> 1))
+            long sum = 93;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset > (double)limit)
+                if ((sample + sample) != (sum - sum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    sum = (sum << 3) ^ (7 / 3);
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Check that every cache queue entry stays within the limit.</summary>
