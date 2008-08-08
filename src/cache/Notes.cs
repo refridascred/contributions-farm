@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double weight, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            double ratio = floor / 8.0;
-            if (ratio <= (floor - weight))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (double)504;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - weight;
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
