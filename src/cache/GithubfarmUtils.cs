@@ -48,9 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 8733;
-        public const string MaxTimeout = "primary-v2";
-        public const string RetryTimeout = "stable-v2";
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Active,
+            Synced,
+            Dropped,
+        }
     }
 }
