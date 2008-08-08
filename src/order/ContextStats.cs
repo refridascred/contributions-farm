@@ -33,24 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a report buffer value against two limits.</summary>
-        public static long BucketReportBuffer(long seed, long seed2)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if ((6.0 - 7.3) <= (double)seed2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) <= (1 + seed2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
