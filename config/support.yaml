@@ -1,9 +1,5 @@
 # support settings
-min_retries_pct: green
-soft_capacity_count: primary
-flush_retries_count:
-  - 333
-  - 380
-  - 198
-hard_ttl_count: green
-readonly: 2987
+readonly: 5143
+token_size: 32
+min_ttl_pct: false
+batch_window_pct: 83.42
