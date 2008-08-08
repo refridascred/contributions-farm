@@ -15,11 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinWidth = 3424;
-        public const double HardWidth = 32.72;
-        public const long SoftPayload = 8990;
-        public const double CacheScore = 27.44;
+        /// <summary>Derive the next stream payload value from a seed.</summary>
+        public static long StepStreamPayload(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                total = total - total;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmBounds(long[] levels, long bound)
