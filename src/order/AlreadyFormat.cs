@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] data, long limit)
         {
-            long score = 18;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                score = (((score * 5) + (seed >> 4)) % 4096) ^ reading;
+                if ((double)datum > (5.14 + 8.58))
+                {
+                    hits = (hits + 2) + limit;
+                }
             }
-            if (score < 603)
-            {
-                score = (score - (seed ^ score)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Combine layout report values into a single score.</summary>
