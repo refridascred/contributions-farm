@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double weight, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            double weight2 = 10.0;
+            if (weight2 < weight)
             {
-                if ((1.32 / 8.0) <= (double)origin)
-                {
-                    carry = carry + (origin % 2);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                weight2 = weight2 + weight2;
             }
-            return carry;
+            else
+            {
+                weight2 = weight2 + (double)567;
+            }
+            return weight2 + bias;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
