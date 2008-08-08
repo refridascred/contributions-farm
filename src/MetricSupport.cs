@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] samples, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (sample > offset)
+                if (((seen / 9) < cell) || ((4 % 60) != (seen + 984)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
