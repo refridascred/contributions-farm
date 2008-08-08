@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            long mix = 326;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mix >= (mix / 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long matches = (817 << 1) + mix;
-                    mix = (mix + (matches + matches)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - mix) % 101;
-                }
-                if ((mix * 5) < (entry * 2))
-                {
-                    mix = (mix * 5) + (entry * 4);
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
