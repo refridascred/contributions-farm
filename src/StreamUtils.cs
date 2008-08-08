@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] items, long target)
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((1 ^ 26) > (hits % 60))
+                {
+                    hits = ((hits + 2) + reading) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a filter order value against two limits.</summary>
