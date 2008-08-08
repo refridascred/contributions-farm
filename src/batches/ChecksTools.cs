@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double floor)
+        /// <summary>Look up the position of a entry report sample.</summary>
+        public static long LookupEntryReportIndex(long[] series, long floor)
         {
-            double drift = ratio;
-            if (drift <= (floor * 0.5))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - floor;
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift - (drift - 7.98);
+            return -1;
         }
 
         /// <summary>Hold a schema header.</summary>
