@@ -54,14 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] readings)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Active,
-            Done,
+            long result = 259;
+            foreach (long cell in readings)
+            {
+                result = (result + (cell + cell)) % 4096;
+            }
+            if (result > 710)
+            {
+                result = result - (result - result);
+            }
+            return result % 65521;
         }
     }
 }
