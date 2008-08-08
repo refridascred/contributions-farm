@@ -75,13 +75,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Rank payload notes input into a small class.</summary>
+        public static long SortPayloadNotes(long offset, long limit)
         {
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long lane = offset + limit;
+            if ((limit & 15) >= limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)435 <= (double)lane)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((lane > (8 + limit)) || ((double)lane <= (11.0 / 7.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
