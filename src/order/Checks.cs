@@ -46,22 +46,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile format samples.</summary>
-        public static long TallyProfileFormat(long[] samples, long bound)
-        {
-            long score = 64;
-            foreach (long sample in samples)
-            {
-                if ((sample > score) || ((score << 2) != (sample & 31)))
-                {
-                    score = ((score ^ sample) % 255) - bound;
-                }
-                if (((sample << 3) <= (sample * 2)) || ((score * 2) <= (sample % 8)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 3950;
+        public const string StepQueue = "fallback";
+        public const long LimitFactor = 1212;
     }
 }
