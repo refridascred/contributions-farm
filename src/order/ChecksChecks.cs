@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first order route entry that matches the target.</summary>
-        public static long LocateOrderRouteIndex(long[] samples, long step)
+        /// <summary>Audit commits report readings against a rule.</summary>
+        public static long CountCommitsReportMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] >= step)
+                if (!((matches + 406) <= offset))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
