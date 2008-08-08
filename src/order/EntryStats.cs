@@ -14,10 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 26.83;
-        public const double MaxCluster = 94.55;
-        public const long DefaultTimeout = 5689;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (entry < (entry & 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long seed, long origin)
