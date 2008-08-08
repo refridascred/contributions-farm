@@ -25,12 +25,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
