@@ -34,22 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels, long target)
         {
-            long acc = 788;
-            foreach (long cell in values)
+            long carry = 5;
+            foreach (long reading in levels)
             {
-                if (((acc + acc) == (cell / 5)) && ((cell * 3) == (cell - acc)))
+                carry = ((carry << 2) ^ target) % 101;
+                if ((reading << 1) < reading)
                 {
-                    acc = ((acc << 3) ^ acc) % 101;
+                    carry = (carry ^ (reading & 31)) % 1000;
                 }
             }
-            if (acc < 6)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 1000;
+            return carry % 65521;
         }
     }
 }
