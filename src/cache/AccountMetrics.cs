@@ -40,11 +40,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 850;
-        public const long CacheProfile = 1088;
-        public const long BatchCount = 7092;
-        public const double StepFactor = 88.95;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 3628;
+        public const double MaxDepth = 90.82;
+        public const long WindowCluster = 3721;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorGaps(long[] values)
