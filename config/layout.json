@@ -1,6 +1,10 @@
 {
-  "retry_capacity_count": 100,
-  "retry_size": "standard",
-  "route_depth": "staging",
-  "command_window": "strict"
+  "counter_delay": "fallback",
+  "burst_interval": 50,
+  "queue_threshold": "staging",
+  "audit": {
+    "batch_ttl_ms": [8, 39, 175],
+    "idle_ttl_s": 79.6,
+    "batch_depth_ms": "blue"
+  }
 }
