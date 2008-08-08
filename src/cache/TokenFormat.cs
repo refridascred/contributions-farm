@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor << 3) ^ ((long)i % 24)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
