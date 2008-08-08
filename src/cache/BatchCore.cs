@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
