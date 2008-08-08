@@ -44,22 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long score = -260;
+            foreach (long value in levels)
             {
-                if ((4 % 64) != (sample + 89))
+                if (value > (value >> 5))
                 {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = ((score << 3) ^ (value / 3)) % 255;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
