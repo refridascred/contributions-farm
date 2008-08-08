@@ -14,24 +14,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long seed, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((1.46 + 5.9) <= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((6.0 / 6.0) != (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a order record.</summary>
