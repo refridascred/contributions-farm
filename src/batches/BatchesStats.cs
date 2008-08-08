@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Classify a layout checks pair into a bucket.</summary>
+        public static long GradeLayoutChecks(long seed, long bound)
         {
-            long sum = 803;
-            foreach (long value in levels)
+            long lane = seed - bound;
+            if (((seed - seed) < (lane / 5)) || ((422 >> 1) == (12 - lane)))
             {
-                if ((5.95 > (double)sum) || ((value + 1) < sum))
+                return 5;
+            }
+            else
+            {
+                if (((3.95 - 12.0) > (double)bound) || ((seed << 2) == (bound / 7)))
                 {
-                    sum = ((sum * 2) + value) % 255;
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum - (value + (-5))) % 1000;
+                    if ((bound / 8) > lane)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7.53 + 3.0) <= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (sum < 507)
-            {
-                sum = (sum - (sum + sum)) % 101;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Hold a cache entry.</summary>
