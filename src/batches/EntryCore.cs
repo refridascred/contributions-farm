@@ -37,12 +37,14 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Synced,
+            Paused,
             Done,
-            Stale,
+            Closed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
