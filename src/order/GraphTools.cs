@@ -60,10 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 5047;
-        public const long DefaultLevel = 9207;
-        public const double MinTimeout = 55.08;
-        public const long IdleTools = 5614;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((matches - origin) <= (origin + matches)) && !(origin <= (809 * 4)))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
     }
 }
