@@ -13,19 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels)
-        {
-            long mix = 70;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length / 3) <= entry)
-                {
-                    mix = (mix + (mix ^ mix)) % 255;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinCount = 71.15;
+        public const long SoftSize = 582;
+        public const long BaseInterval = 6253;
+        public const long WindowFilter = 8238;
+        public const double BatchFilter = 25.95;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstBatch = 4937;
