@@ -54,17 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats command sample.</summary>
-        public static long LookupStatsCommandIndex(long[] readings, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the notes level values.</summary>
