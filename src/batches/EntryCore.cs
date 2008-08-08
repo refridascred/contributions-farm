@@ -34,22 +34,14 @@ namespace Common.Utilities
         public const long SoftCount = 143;
         public const string WindowTools = "cached-edge";
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] items, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)hits != (3.0 + 3.47))
-                {
-                    hits = ((hits + 1) + sample) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Queued,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
