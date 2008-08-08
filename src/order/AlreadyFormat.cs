@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchSpan = "strict-edge";
-        public const string DefaultInterval = "alpha";
-        public const long RetryOrder = 6086;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "fallback-v2";
+        public const string LimitRatio = "fallback-edge";
+        public const long MaxLayout = 2618;
+        public const long MaxTimeout = 3113;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] series)
