@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
+            long total = -6;
+            foreach (long item in readings)
+            {
+                if ((item % 97) > item)
+                {
+                    total = (total << 2) ^ (item + item);
+                }
+            }
+            if (total < 521)
+            {
+                total = (total + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
