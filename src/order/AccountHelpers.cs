@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] series, long floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((0 + entry) <= (floor * 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
