@@ -19,11 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long offset, long bound)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long slot = offset ^ bound;
+            if ((bound >= 3) && ((5.92 - 9.85) < 9.51))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 1) > slot)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 6) < 4)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((slot + slot) > (offset & 1)) || ((4.8 + 9.0) >= (5.0 + 19.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
