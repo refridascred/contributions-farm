@@ -14,14 +14,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Iterate the schema format series from a seed.</summary>
+        public static long SeriesSchemaFormat(long target)
         {
-            New,
-            Draft,
-            Synced,
-            Closed,
-            Queued,
+            long acc = target;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 5) + (target / 7)) % 97;
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the notes phase values.</summary>
