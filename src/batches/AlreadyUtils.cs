@@ -67,11 +67,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "fallback-1";
-        public const string HardContributi = "legacy-edge";
-        public const long BatchSpan = 1208;
-        public const double CacheContributi = 7.81;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)hits < (double)reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderLimits(long[] values, long bound)
