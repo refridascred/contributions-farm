@@ -1,8 +1,23 @@
 # support settings
-default_retries: true
-stats_limit: true
-base_limit_pct: 60
-idle_timeout_pct: 7130
-compress:
-  - staging
-  - legacy
+window_interval: edge
+warm_size_pct: 100
+retry_interval_ms: legacy
+dry_run:
+  filter_capacity:
+    - 64
+    - 423
+    - 10
+  persist:
+    warm_timeout_s:
+      - 211
+      - 230
+      - 455
+    contributi_interval: true
+    persist: legacy
+  retry_capacity_count:
+    - 254
+    - 29
+    - 454
+    - 110
+  burst_size: 6923
+  audit: 34.53
