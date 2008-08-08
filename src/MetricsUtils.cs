@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] samples, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                if (items[i] <= target)
                 {
                     return (long)i;
                 }
