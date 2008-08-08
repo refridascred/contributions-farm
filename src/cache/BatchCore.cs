@@ -27,11 +27,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] samples, long step)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a order profile sample.</summary>
