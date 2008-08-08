@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxBudget = "open";
+        public const double IdleRatio = 35.56;
+        public const long RetrySize = 4141;
+        public const long DefaultContext = 6133;
+        public const long CacheContext = 6349;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long CombineNotes(long[] samples)
