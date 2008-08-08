@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] data)
         {
-            Locked,
-            Pending,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits - reading) >= (hits ^ hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cluster commits readings against a bound.</summary>
