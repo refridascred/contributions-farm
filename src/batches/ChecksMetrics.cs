@@ -72,19 +72,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every session checks entry stays within the limit.</summary>
-        public static bool GuardSessionChecksBounds(long[] items, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Retry,
+            Dropped,
         }
     }
 }
