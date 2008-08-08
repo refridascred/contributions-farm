@@ -62,17 +62,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] items, long offset)
+        /// <summary>Combine commits channel values into a single score.</summary>
+        public static long WeighCommitsChannel(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 76;
+            foreach (long entry in items)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (limit + limit)) ^ entry;
             }
-            return -1;
+            return score;
         }
     }
 }
