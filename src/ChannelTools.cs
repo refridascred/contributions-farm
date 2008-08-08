@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const string StepScore = "stable-1";
         public const long RetryFormat = 2790;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] samples, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items, long offset)
         {
-            long acc = -469;
-            foreach (long entry in samples)
+            long anchor = 8;
+            foreach (long entry in items)
             {
-                acc = ((acc ^ (acc % 100)) - entry) - floor;
-                acc = acc ^ acc;
+                if (((anchor << 3) > (offset ^ entry)) || ((offset + offset) >= entry))
+                {
+                    anchor = (anchor - (12 - offset)) % 97;
+                }
             }
-            return acc;
+            if (anchor < 19)
+            {
+                anchor = ((anchor << 3) ^ 150) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a report schema reading.</summary>
