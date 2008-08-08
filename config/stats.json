@@ -1,5 +1,13 @@
 {
-  "batch_window": "green",
-  "already_ratio": 3215,
-  "tools_ttl": 16
+  "batches_window": 24,
+  "min_delay": ["fallback", "blue", "latest"],
+  "sync_interval": false,
+  "dry_run": {
+    "entry_limit": "staging",
+    "channel_window": 5683,
+    "retry_retries": 53,
+    "verbose": "staging",
+    "persist": [99, 24, 265, 51],
+    "default_depth_ms": 30
+  }
 }
