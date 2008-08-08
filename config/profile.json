@@ -1,6 +1,25 @@
 {
-  "support_timeout": false,
-  "filter_size": ["stable", "staging", "local", "primary"],
-  "retry_threshold": "green",
-  "poll_delay_pct": "blue"
+  "min_limit": ["open", "stable", "standard"],
+  "report_ttl": ["legacy", "open", "strict", "primary"],
+  "batches_interval": ["eu-west", "green", "standard"],
+  "readonly": ["green", "fallback"],
+  "record_depth": 56.96,
+  "sync_window": {
+    "cache_interval": 1038,
+    "tools_delay": "legacy",
+    "flush_threshold_ms": {
+      "cache_threshold": ["fallback", "legacy", "legacy", "strict"],
+      "record_limit": "primary",
+      "verbose": "eu-west"
+    },
+    "readonly": 792,
+    "dry_run": 75.3,
+    "idle_timeout_s": {
+      "min_interval_s": "cached",
+      "cache_depth": "primary",
+      "burst_window": "latest",
+      "token_depth": true,
+      "burst_interval": false
+    }
+  }
 }
