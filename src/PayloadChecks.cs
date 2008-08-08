@@ -21,13 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long TallyRouteFarmMatches(long[] samples)
         {
-            Draft,
-            Failed,
-            Active,
-            Synced,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((473 >> 5) == (count % 97))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
