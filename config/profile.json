@@ -1,8 +1,16 @@
 {
-  "soft_capacity": "legacy",
-  "min_window_s": ["staging", "open", "local", "eu-west"],
-  "default_window_count": "eu-west",
-  "retry_threshold": 2973,
-  "verbose": "staging",
-  "max_timeout_ms": 500
+  "format_timeout": {
+    "window_threshold": "fallback",
+    "poll_delay_pct": "latest",
+    "audit": [377, 440, 301]
+  },
+  "idle_size_pct": 6309,
+  "readonly": 77,
+  "hard_capacity": {
+    "max_depth_ms": "eu-west",
+    "burst_limit": 4.92,
+    "idle_threshold_pct": "primary"
+  },
+  "verbose": "blue",
+  "notes_delay": ["latest", "standard", "legacy", "latest"]
 }
