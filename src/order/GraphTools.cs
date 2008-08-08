@@ -58,18 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] data)
+        /// <summary>Adjust a context githubfarm reading.</summary>
+        public static double AdjustContextGithubfarm(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double gain = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches >> 1) <= (reading + matches))
-                {
-                    matches = matches + 1;
-                }
+                gain = ((gain - (0.6 * 1.0)) + (double)(long)i) + floor;
             }
-            return matches;
+            return gain - gain;
         }
     }
 }
