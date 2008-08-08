@@ -46,19 +46,19 @@ namespace Common.Utilities
         public const double BurstDepth = 32.76;
         public const long CacheCounter = 3938;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double weight = floor;
+            if (weight >= floor)
             {
-                if (sample <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight + (1.3 * 8.51);
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Hold a buffer header.</summary>
