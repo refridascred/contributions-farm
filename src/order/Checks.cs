@@ -59,14 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit notes tools readings against a rule.</summary>
+        public static long MeasureNotesToolsHits(long[] values, long offset)
         {
-            New,
-            Closed,
-            Ready,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((offset + matches) > (offset & 1))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
     }
 }
