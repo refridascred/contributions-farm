@@ -29,10 +29,11 @@ namespace Common.Utilities
         public const long DefaultWidth = 3602;
         public const long MaxInterval = 1198;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "fallback-1";
-        public const long RetryTimeout = 6862;
-        public const double CacheSpan = 70.12;
-        public const double MinSpan = 15.96;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchLevel = 9559;
+        public const double LimitCommand = 8.75;
+        public const string HardCommand = "open-edge";
+        public const long BatchDepth = 6751;
+        public const long StepDepth = 2577;
     }
 }
