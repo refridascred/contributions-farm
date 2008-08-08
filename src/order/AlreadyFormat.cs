@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of batch stream readings.</summary>
-        public static long MatchBatchStreamCount(long[] values)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total - (origin + origin)) % 101) - (long)i2;
+                    total = ((total << 3) ^ (origin * 4)) % 4096;
                 }
+                if ((total >= (750 % 60)) && ((double)origin < (7.6 + 2.9)))
+                {
+                    total = total + (984 % 8);
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
