@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of githubfarm tools readings.</summary>
-        public static long MatchGithubfarmToolsCount(long[] readings)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor >> 2) <= (97 / 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step ^ step) <= (546 + step))
                 {
-                    if ((readings[i] + readings[j]) != 2)
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 2) > step)
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step ^ floor) == (step + step)) || (step >= (floor + step)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank window input into a small class.</summary>
