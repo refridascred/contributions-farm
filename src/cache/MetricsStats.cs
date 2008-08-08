@@ -60,14 +60,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Idle,
-            Ready,
-            Synced,
-            Stale,
-            Failed,
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
