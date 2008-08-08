@@ -1,7 +1,6 @@
-id,region,label,score,active
-1,261,181,588,edge
-2,562,14.98,5,40.12
-3,stable,98,32.89,761
-4,local,open,848,609
-5,latest,stable,56.52,300
-6,75.75,edge,19.14,291
+id,state,ratio,count,level
+1,19.39,61.85,blue,green
+2,94.85,83.04,117,401
+3,52.63,standard,green,262
+4,stable,833,388,36.08
+5,748,legacy,29,eu-west
