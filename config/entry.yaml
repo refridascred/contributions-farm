@@ -1,8 +1,12 @@
 # entry settings
-min_capacity_pct: 2194
-payload_timeout:
-  - 311
-  - 90
-  - 34
-  - 142
-githubfarm_interval: 52.74
+retry_retries_count: 3056
+batch_depth: 1024
+burst_retries:
+  window_ttl:
+    - latest
+    - legacy
+    - blue
+  buffer_delay: standard
+  hard_delay_count: true
+default_size: 6957
+tools_limit: latest
