@@ -26,16 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long floor)
         {
-            long state = -2;
-            foreach (long datum in levels)
+            if ((1.46 + 5.9) <= (double)seed)
             {
-                state = ((state * 3) + datum) + target;
-                state = (state + state) % 255;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (!((6.0 / 6.0) != (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
