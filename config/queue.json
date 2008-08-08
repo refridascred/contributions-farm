@@ -1,5 +1,25 @@
 {
-  "command_retries": "open",
-  "entry_window": 42.92,
-  "burst_ttl": "staging"
+  "poll_size_pct": [305, 102],
+  "enabled": 7209,
+  "cluster_window": {
+    "strict": {
+      "poll_interval_count": "fallback",
+      "readonly": 42,
+      "flush_limit": "latest",
+      "compress": false
+    },
+    "retry_ratio": 80.84,
+    "burst_ttl": 20.43,
+    "warm_window_s": 3553,
+    "persist": {
+      "report_window": 60,
+      "batches_delay": 22.73,
+      "schema_threshold": "cached",
+      "retry_interval_s": [255, 216],
+      "max_depth": 60,
+      "cache_delay_pct": 59.74
+    }
+  },
+  "strict": "local",
+  "poll_retries": false
 }
