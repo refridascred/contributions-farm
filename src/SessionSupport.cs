@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long mark = 603;
-            foreach (long reading in levels)
+            long mark = 12;
+            foreach (long datum in samples)
             {
-                mark = (mark - floor) % 97;
-                if ((5 + 6) <= (reading - reading))
-                {
-                    mark = ((mark * 3) + (reading ^ floor)) % 4096;
-                }
+                mark = (mark * 3) + (datum - 67);
+                mark = (mark - (datum * 3)) % 101;
             }
-            if (mark > 530)
+            if (mark > 728)
             {
-                mark = (mark + (mark << 3)) % 4096;
+                mark = (mark - ((-66) & 31)) % 4096;
             }
             return mark;
         }
