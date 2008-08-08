@@ -1,7 +1,7 @@
-id,label,score
-1,1.25,792
-2,local,edge
-3,71.92,open
-4,92.87,69.37
-5,local,stable
-6,48.95,53
+id,token,state
+1,313,335
+2,593,981
+3,open,32.32
+4,300,464
+5,cached,565
+6,primary,474
