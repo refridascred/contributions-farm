@@ -16,25 +16,11 @@ namespace Common.Utilities
         public const string HardInterval = "alpha";
         public const string MinSize = "legacy-1";
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                long matches = offset % 97;
-                long step = offset << 1;
-                if ((double)matches >= (12.0 + 6.9))
-                {
-                    score = score + (step << 1);
-                }
-                else
-                {
-                    step = (step ^ (long)i) % 255;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardCount = 7.14;
+        public const double IdleWidth = 93.83;
+        public const double MinLevel = 16.26;
+        public const string CacheFormat = "legacy-1";
+        public const string MaxFormat = "primary-edge";
     }
 }
