@@ -15,23 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items)
-        {
-            long mark = 66;
-            foreach (long item in items)
-            {
-                if ((item & 3) < (-563))
-                {
-                    mark = ((mark << 3) ^ (mark & 63)) % 255;
-                }
-            }
-            if (mark > 0)
-            {
-                mark = (mark ^ (mark * 3)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 4032;
+        public const string LimitEditor = "fallback-1";
+        public const long WindowCount = 6329;
+        public const long BurstRatio = 8119;
 
         /// <summary>Audit cluster commits readings against a rule.</summary>
         public static long MeasureClusterCommitsHits(long[] samples, long target)
