@@ -89,17 +89,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] data, long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
