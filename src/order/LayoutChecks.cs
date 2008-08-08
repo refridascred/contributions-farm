@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            long carry = 2;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry % 2) <= (datum % 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (datum + datum)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry & 63)) % 255;
-                }
-                if ((16.0 / 9.0) >= (double)datum)
-                {
-                    break;
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
