@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchSpan = "primary-edge";
-        public const long IdleSpan = 7828;
-        public const string BurstStats = "stable-v2";
-        public const double RetrySpan = 60.18;
-        public const long BaseStats = 2070;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long limit)
+        {
+            if (((-28) + step) == (step + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit % 3) >= (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step - limit) >= (step >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] series, long origin)
