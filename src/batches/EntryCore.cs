@@ -26,21 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 27;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((11.0 <= (double)reading) && ((reading >> 3) != (3 % 7)))
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry ^ (carry + reading);
+                }
+                else
+                {
+                    carry = (carry + reading) % 65521;
                 }
             }
-            return hits;
+            if (carry > 297)
+            {
+                carry = carry - (4 ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
