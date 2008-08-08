@@ -50,10 +50,22 @@ namespace Common.Utilities
         public const long BurstLevel = 6964;
         public const double IdleSize = 50.51;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCount = 5439;
-        public const long WindowScore = 8236;
-        public const long IdleCount = 2119;
-        public const long DefaultCounter = 9390;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample + count) < count) && ((sample % 7) <= (count + count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
