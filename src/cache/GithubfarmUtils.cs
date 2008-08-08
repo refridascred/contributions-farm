@@ -20,15 +20,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the route farm series from a seed.</summary>
-        public static long DeriveRouteFarm(long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if ((3 & 1) >= (value << 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Match up token samples.</summary>
