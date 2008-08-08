@@ -1,8 +1,10 @@
 {
-  "sync_size_ms": ["strict", "blue"],
-  "compress": 64.39,
-  "max_threshold_count": "cached",
-  "token_threshold": [16, 43],
-  "strict": 8105,
-  "hard_size_s": 1024
+  "entry_interval": {
+    "retry_threshold_s": "edge",
+    "max_capacity_s": [430, 368, 207],
+    "readonly": [306, 139, 280, 382]
+  },
+  "default_ttl_ms": 6.1,
+  "max_timeout_pct": "green",
+  "entry_depth": 85.28
 }
