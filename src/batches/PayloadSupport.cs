@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the layout channel series from a seed.</summary>
-        public static long SeriesLayoutChannel(long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((16.0 - 3.0) >= (double)floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 3) ^ floor) % 1000;
-                    sum = ((sum * 4) + sum) % 4096;
-                    continue;
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum ^ (floor + 37)) % 65521;
-                    sum = sum - floor;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
