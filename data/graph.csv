@@ -1,8 +1,8 @@
-id,token,ratio,count
-1,44,773,fallback
-2,open,491,566
-3,674,edge,stable
-4,29.46,83.96,latest
-5,257,standard,78
-6,245,primary,cached
-7,143,blue,921
+id,state,score
+1,61.12,46.46
+2,330,959
+3,30,193
+4,latest,94.53
+5,26,26.67
+6,269,962
+7,83.59,cached
