@@ -53,24 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account record series from a seed.</summary>
-        public static long DeriveAccountRecord(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i & 31) < ((-9) + limit))
-                {
-                    sum = sum + (limit - (long)i);
-                }
-                if ((1 << 2) < sum)
-                {
-                    sum = ((sum << 2) ^ ((long)i >> 4)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardLevel = 34.77;
+        public const string HardBatches = "legacy-1";
+        public const double DefaultBatches = 46.54;
+        public const long IdleBatches = 8784;
+        public const long LimitBatches = 1480;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] values, long floor)
