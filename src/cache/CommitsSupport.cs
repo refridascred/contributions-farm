@@ -73,11 +73,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardCount = "strict";
-        public const long RetryInterval = 1280;
-        public const long MinInterval = 9158;
-        public const long BatchInterval = 8812;
-        public const long WindowScore = 3394;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
