@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long HardBuffer = 8898;
         public const string SoftWidth = "cached-edge";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSize = 1833;
-        public const long LimitFormat = 4911;
-        public const long BurstFormat = 8483;
-        public const string MaxCount = "legacy-1";
-        public const double BurstCount = 76.33;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxFactor = 88.23;
+        public const long StepBudget = 9556;
+        public const long WindowWidth = 7999;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long offset)
