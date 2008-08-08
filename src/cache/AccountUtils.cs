@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Find the first cluster record entry that matches the target.</summary>
+        public static long SeekClusterRecordIndex(long[] items, long bound)
         {
-            double mean = (gain * 0.08) - (bias + bias);
-            if (mean < bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + bias;
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + gain;
-            }
-            return mean - (double)4;
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
