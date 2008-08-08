@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of contributi order entries.</summary>
-        public static long WeighContributiOrder(long[] data)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            long mark = 59;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark << 3) ^ (value % 10);
-                mark = (mark + mark) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 4)
-            {
-                mark = mark ^ (mark << 1);
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
