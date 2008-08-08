@@ -45,17 +45,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] items, long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Ready,
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
