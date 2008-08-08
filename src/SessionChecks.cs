@@ -18,14 +18,11 @@ namespace Common.Utilities
         public const long BatchSpan = 88;
         public const long MinInterval = 5142;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstDepth = 9911;
+        public const string DefaultRoute = "alpha-1";
+        public const long LimitRoute = 6439;
+        public const double SoftScore = 23.78;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] levels, long seed)
