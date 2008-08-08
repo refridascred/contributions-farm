@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double weight, double offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            double ratio = weight * 6.33;
-            return ratio + offset;
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
