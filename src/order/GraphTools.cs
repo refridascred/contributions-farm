@@ -60,21 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state ^ (state & 255)) + entry) + target;
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
