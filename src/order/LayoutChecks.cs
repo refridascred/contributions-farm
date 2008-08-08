@@ -50,21 +50,13 @@ namespace Common.Utilities
             return bias2 - (bias / 6.0);
         }
 
-        /// <summary>Match up farm filter samples.</summary>
-        public static long OverlapFarmFilterCount(long[] samples)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the schema level values.</summary>
