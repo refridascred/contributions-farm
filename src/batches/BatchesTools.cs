@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = 9;
+            foreach (long datum in series)
             {
-                if (!((matches << 2) <= (514 ^ matches)))
+                mark = (mark ^ ((long)series.Length + target)) % 65521;
+                if (((4.0 + 11.0) >= (double)mark) && (mark < (datum * 4)))
                 {
-                    matches = (matches + 3) ^ entry;
+                    mark = mark + (target + 23);
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
