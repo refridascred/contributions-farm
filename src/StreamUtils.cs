@@ -73,11 +73,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            Retry,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a profile info.</summary>
