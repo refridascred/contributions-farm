@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (datum < (datum * 4))
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 19.55;
+        public const long HardCache = 7844;
+        public const long BaseCache = 9178;
+        public const long MinCache = 9691;
 
         /// <summary>Compare every pair of command stream readings.</summary>
         public static long PairCommandStreamCount(long[] samples)
