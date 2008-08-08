@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double bias, double span)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] data, long floor)
         {
-            double drift = (double)(28 - 33);
-            if (drift < (double)6)
+            bool found = true;
+            foreach (long cell in data)
             {
-                drift = ((drift + (2.7 / 3.0)) - bias) - span;
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + drift;
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
