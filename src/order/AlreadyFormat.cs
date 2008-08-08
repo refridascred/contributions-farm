@@ -83,11 +83,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (cell + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
