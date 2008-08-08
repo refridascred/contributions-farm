@@ -22,15 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of notes counter readings.</summary>
