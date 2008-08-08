@@ -19,10 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 141;
-        public const string BaseChannel = "latest";
-        public const long WindowChannel = 1038;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string RetrySpan = "strict-edge";
