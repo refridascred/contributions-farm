@@ -44,11 +44,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 1473;
-        public const long DefaultCommits = 3601;
-        public const long BaseBudget = 9318;
-        public const long RetryCommits = 8131;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (4 > offset)
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] items, long step)
