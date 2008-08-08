@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long offset)
         {
-            Failed,
-            Idle,
-            Paused,
-            Stale,
-            Dropped,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
