@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const long HardBuffer = 8898;
         public const string SoftWidth = "cached-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxFactor = 88.23;
-        public const long StepBudget = 9556;
-        public const long WindowWidth = 7999;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 76.03;
+        public const long SoftSupport = 637;
+        public const string HardInterval = "alpha";
+        public const string MinSize = "legacy-1";
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long offset)
