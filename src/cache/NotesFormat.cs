@@ -34,24 +34,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Blend two format stream measurements.</summary>
+        public static double ProjectFormatStream(double bias, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((7.13 + 18.0) > (14.0 * 19.0))
-                {
-                    total = (total * 5) + ((long)i - total);
-                    total = ((total << 3) ^ (long)i) % 101;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (total - limit) - (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            double gain = bias / 3.0;
+            return gain + offset;
         }
     }
 }
