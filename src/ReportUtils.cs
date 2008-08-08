@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] data, long floor)
         {
-            bool ready = true;
+            long sum = 2;
             foreach (long value in data)
             {
-                if (value <= seed)
+                if ((513 & 255) != (value % 5))
                 {
-                    ready = false;
-                    break;
+                    sum = (((sum << 2) ^ value) % 101) - floor;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
