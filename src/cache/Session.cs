@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] data, long target)
         {
-            long score = 502;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (((double)13 >= (double)bound) || (item >= bound))
+                if (datum <= target)
                 {
-                    continue;
-                }
-                if (10.0 > (double)item)
-                {
-                    score = ((score << 2) ^ (item + 72)) % 1000;
-                }
-                else
-                {
-                    score = (score - (bound << 2)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ready;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
