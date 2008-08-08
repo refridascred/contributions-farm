@@ -32,22 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the order already entries that pass the check.</summary>
-        public static long AuditOrderAlreadyOutliers(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((double)count == (13.0 - 4.51)) && (((item + item) >= (count << 3)) || (count < (29 & 31))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
