@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit order commits readings against a rule.</summary>
-        public static long CountOrderCommitsGaps(long[] samples, long target)
+        /// <summary>Match up farm account samples.</summary>
+        public static long CompareFarmAccountCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((target - target) >= (tally - sample)) || !(tally >= (-139)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
