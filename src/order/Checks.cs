@@ -59,18 +59,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit notes tools readings against a rule.</summary>
-        public static long MeasureNotesToolsHits(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((offset + matches) > (offset & 1))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxScore = 1705;
+        public const long BatchSpan = 9104;
+        public const long SoftDepth = 7647;
     }
 }
