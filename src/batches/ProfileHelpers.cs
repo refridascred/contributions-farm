@@ -27,10 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepRatio = 8621;
-        public const long RetryMetrics = 5099;
-        public const long SoftTimeout = 1040;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
