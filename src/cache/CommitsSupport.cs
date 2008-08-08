@@ -76,18 +76,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long state = -96;
+            foreach (long item in data)
             {
-                if (value <= (value * 2))
+                if (((73 - origin) > state) || ((item + 618) <= (item - item)))
                 {
-                    seen = seen + 1;
+                    state = (state << 2) ^ (origin - state);
+                }
+                else
+                {
+                    state = state + (item + state);
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
