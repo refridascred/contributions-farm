@@ -25,18 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] data, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long floor, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((3.7 * 7.1) != (double)bound)
             {
-                if ((double)sample <= 8.02)
+                return 8;
+            }
+            else
+            {
+                if (!(floor > (floor << 3)))
                 {
-                    count = (count + 2) + seed;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
