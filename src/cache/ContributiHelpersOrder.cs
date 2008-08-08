@@ -29,15 +29,18 @@ namespace Common.Utilities
             return gain2 - (floor * 2.1);
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
+        public static long TallyClusterGithubfarmOutliers(long[] data, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (!((double)seed <= 19.0))
+                {
+                    count = (count + 3) - value;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
