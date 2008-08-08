@@ -33,21 +33,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Check that every batches metric entry stays within the limit.</summary>
+        public static bool CheckBatchesMetricRange(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item != floor)
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
