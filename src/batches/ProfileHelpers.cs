@@ -43,13 +43,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Ready,
-            Synced,
-            Locked,
-            Active,
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a channel metrics counter forward.</summary>
