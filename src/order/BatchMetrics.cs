@@ -15,24 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double ratio, double span)
-        {
-            double rate = ratio;
-            if (rate <= (double)6)
-            {
-                rate = (rate - rate) + span;
-            }
-            else
-            {
-                rate = rate - (rate / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + ratio;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 6527;
+        public const long SoftEditor = 4598;
+        public const long MinEditor = 1641;
+        public const long BatchEditor = 7727;
+        public const long LimitWidth = 8983;
 
         /// <summary>Locate a cluster checks reading by value.</summary>
         public static long LookupClusterChecksIndex(long[] samples, long limit)
