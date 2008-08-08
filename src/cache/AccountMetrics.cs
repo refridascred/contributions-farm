@@ -52,18 +52,15 @@ namespace Common.Utilities
         public const double RetryGithubfarm = 58.8;
         public const string IdleTimeout = "cached-1";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double drift = 17.0 - bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((item + tally) > tally))
-                {
-                    tally = tally + 2;
-                }
+                drift = ((drift - 6.76) - (double)(long)i) + scale;
             }
-            return tally;
+            return drift + 1.06;
         }
 
         /// <summary>Hold a farm header.</summary>
