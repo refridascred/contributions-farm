@@ -21,21 +21,15 @@ namespace Common.Utilities
         public const string WindowSupport = "latest";
         public const long BurstRatio = 772;
 
-        /// <summary>Compare every pair of cluster profile readings.</summary>
-        public static long MatchClusterProfileCount(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 25;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state ^ (sample + 38)) % 1000) + seed;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Digest a series of account profile entries.</summary>
