@@ -20,15 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Retry,
-            Queued,
-            Dropped,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleRatio = "fallback-edge";
+        public const long CacheScore = 7797;
+        public const long MaxCount = 2969;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
