@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first account editor entry that matches the target.</summary>
-        public static long LookupAccountEditorIndex(long[] samples, long seed)
+        /// <summary>Find the first report filter entry that matches the target.</summary>
+        public static long SeekReportFilterIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] > seed)
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
