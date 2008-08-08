@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long seed)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            if (step <= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step <= (829 & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
