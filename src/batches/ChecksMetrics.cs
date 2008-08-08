@@ -72,12 +72,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Find the first record notes entry that matches the target.</summary>
+        public static long LookupRecordNotesIndex(long[] levels, long target)
         {
-            Ready,
-            Retry,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
