@@ -19,12 +19,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Queued,
-            Locked,
-            Draft,
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
