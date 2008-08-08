@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix * 3) + (limit * 3);
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
