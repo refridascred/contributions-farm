@@ -26,11 +26,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            Pending,
+            Failed,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Match up session samples.</summary>
