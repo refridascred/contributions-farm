@@ -12,21 +12,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the queue schema series from a seed.</summary>
-        public static long RollQueueSchema(long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((anchor + anchor) == ((long)i - step))
-                {
-                    anchor = (anchor << 3) ^ (723 >> 5);
-                    anchor = anchor ^ step;
-                }
-                anchor = (anchor ^ (anchor / 8)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
