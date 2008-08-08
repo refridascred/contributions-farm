@@ -32,13 +32,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
             public bool Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Adjust a contributi reading.</summary>
