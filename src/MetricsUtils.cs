@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] levels, long seed)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            long mix = 4;
-            foreach (long reading in levels)
+            double scale = 18.0;
+            if (scale > (bias / 2.0))
             {
-                if (reading < (mix - reading))
-                {
-                    mix = (mix - (reading - seed)) % 255;
-                    mix = (mix + reading) % 65521;
-                }
-                if (((11.0 * 5.72) >= (double)mix) || ((seed - 2) < (mix / 5)))
-                {
-                    mix = (mix * 4) + reading;
-                }
-                if (!((reading * 4) <= (mix - mix)))
-                {
-                    mix = (mix ^ reading) % 1000;
-                }
+                scale = (scale - (double)276) + weight;
             }
-            return mix % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)74) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
