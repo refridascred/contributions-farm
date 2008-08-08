@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long BurstWidth = 8716;
         public const long LimitSpan = 4253;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double rate, double span)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double rate2 = (rate * 5.26) * 4.7;
-            if (rate2 < rate2)
-            {
-                rate2 = rate2 - (span * 2.0);
-            }
-            return rate2 + (double)7;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
