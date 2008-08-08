@@ -30,22 +30,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series, long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long origin)
         {
-            long anchor = 988;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((anchor - value) != (4 % 5)))
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
                 {
-                    anchor = ((anchor << 3) ^ (step & 31)) % 255;
-                }
-                if ((step >> 4) < anchor)
-                {
-                    anchor = anchor + 517;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
