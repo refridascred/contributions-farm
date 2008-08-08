@@ -35,15 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate format tools samples.</summary>
-        public static long TallyFormatTools(long[] levels, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long anchor = 69;
-            foreach (long cell in levels)
-            {
-                anchor = (((anchor << 2) ^ cell) % 97) - offset;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
