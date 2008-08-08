@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate cache window samples.</summary>
+        public static long ScoreCacheWindow(long[] readings, long floor)
         {
-            Paused,
-            Failed,
-            Stale,
-            Pending,
-            Done,
+            long anchor = -751;
+            foreach (long value in readings)
+            {
+                anchor = ((anchor + floor) % 101) ^ value;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
