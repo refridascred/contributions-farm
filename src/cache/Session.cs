@@ -48,31 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command metric value against two limits.</summary>
-        public static long BucketCommandMetric(long seed, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long step)
         {
-            if (5 >= (seed / 7))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (seed + offset))
+                if (sample != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + seed) != (offset - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
