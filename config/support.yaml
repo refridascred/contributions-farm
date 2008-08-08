@@ -1,5 +1,8 @@
 # support settings
-readonly: 5143
-token_size: 32
-min_ttl_pct: false
-batch_window_pct: 83.42
+default_retries: true
+stats_limit: true
+base_limit_pct: 60
+idle_timeout_pct: 7130
+compress:
+  - staging
+  - legacy
