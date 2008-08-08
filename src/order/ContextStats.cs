@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
             public double Mode { get; set; }
-            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
