@@ -50,19 +50,19 @@ namespace Common.Utilities
         public const long BurstLevel = 6964;
         public const double IdleSize = 50.51;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] values, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long carry = 5;
+            foreach (long entry in samples)
             {
-                if (cell > origin)
+                carry = (((carry * 3) + (carry << 3)) % 97) ^ entry;
+                if (((double)carry < (double)floor) && (carry <= (floor - 4)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return carry % 65521;
         }
     }
 }
