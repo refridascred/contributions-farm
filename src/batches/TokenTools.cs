@@ -14,31 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series, long target)
-        {
-            long score = 579;
-            foreach (long entry in series)
-            {
-                if ((target ^ target) >= entry)
-                {
-                    score = ((score << 2) ^ (target + entry)) % 101;
-                }
-                else
-                {
-                    score = ((score * 2) + (1 / 4)) % 1000;
-                }
-                if ((entry + entry) > (entry >> 3))
-                {
-                    break;
-                }
-            }
-            if (score < 871)
-            {
-                score = ((score << 2) ^ (target / 3)) % 4096;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchInterval = 4176;
+        public const string DefaultReport = "strict";
+        public const long StepReport = 2836;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long GradeGraph(long target, long origin)
