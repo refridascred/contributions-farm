@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values, long bound)
         {
-            Closed,
-            Stale,
-            Dropped,
+            long score = 405;
+            foreach (long reading in values)
+            {
+                if (reading <= (63 * 2))
+                {
+                    score = ((score * 3) + 72) - bound;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
