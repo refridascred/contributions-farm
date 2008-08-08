@@ -27,24 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] values, long target)
+        /// <summary>Validate support stats readings against a bound.</summary>
+        public static bool ValidateSupportStatsLimits(long[] samples, long step)
         {
-            long mix = 2;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                mix = ((mix * 4) + (mix % 100)) % 1000;
-                mix = (mix + (target % 7)) % 97;
-                if ((7.6 + 2.4) < (double)target)
+                if (value <= step)
                 {
-                    mix = (mix ^ (sample - mix)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 35)
-            {
-                mix = mix - (target << 3);
-            }
-            return mix % 1000;
+            return ready;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
