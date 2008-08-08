@@ -1,7 +1,5 @@
 # support settings
-report_delay: 43.66
-schema_delay: 250
-soft_size:
-  - eu-west
-  - edge
-cache_window_count: fallback
+batch_limit: 39.76
+enabled: 89
+hard_capacity_ms: blue
+poll_window_pct: 16
