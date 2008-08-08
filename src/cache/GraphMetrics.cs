@@ -34,18 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 988;
+            foreach (long value in series)
             {
-                if ((entry % 7) == (count % 7))
+                if (!((anchor - value) != (4 % 5)))
                 {
-                    count = count + 1;
+                    anchor = ((anchor << 3) ^ (step & 31)) % 255;
+                }
+                if ((step >> 4) < anchor)
+                {
+                    anchor = anchor + 517;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
