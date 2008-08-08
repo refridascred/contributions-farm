@@ -18,12 +18,15 @@ namespace Common.Utilities
         public const long BurstWidth = 8716;
         public const long LimitSpan = 4253;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 1084;
-        public const long WindowBuffer = 4694;
-        public const long HardFactor = 5258;
-        public const long DefaultSize = 680;
-        public const string StepInterval = "staging-edge";
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Draft,
+            Ready,
+            Paused,
+            Queued,
+            New,
+        }
 
         /// <summary>Check that every batches metric entry stays within the limit.</summary>
         public static bool CheckBatchesMetricRange(long[] readings, long floor)
