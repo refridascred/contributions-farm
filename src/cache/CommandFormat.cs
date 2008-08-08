@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardFactor = 5547;
+        public const string CacheCount = "fallback-1";
+        public const long BaseSize = 1413;
+        public const long SoftInterval = 8889;
+        public const long BaseTimeout = 8618;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long seed)
