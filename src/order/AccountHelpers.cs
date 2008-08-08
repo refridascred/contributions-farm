@@ -14,23 +14,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double rate, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] series, long floor)
         {
-            double mean = (double)283;
-            if (mean >= (offset + 7.1))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                mean = mean - rate;
+                if ((0 + entry) <= (floor * 5))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                mean = mean + (mean - 16.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Iterate the graph order series from a seed.</summary>
