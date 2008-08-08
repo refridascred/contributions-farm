@@ -18,11 +18,26 @@ namespace Common.Utilities
         public const long BatchSpan = 88;
         public const long MinInterval = 5142;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstDepth = 9911;
-        public const string DefaultRoute = "alpha-1";
-        public const long LimitRoute = 6439;
-        public const double SoftScore = 23.78;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long limit, long step)
+        {
+            long slot = limit - step;
+            if ((3 + slot) != (85 - slot))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + step) > limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] levels, long seed)
