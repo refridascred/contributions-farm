@@ -20,16 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double bias, double span)
-        {
-            double rate = span;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (double)(long)i) - bias;
-            }
-            return rate + 4.8;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryLevel = 65;
+        public const double BaseRatio = 85.61;
+        public const long IdleScore = 2971;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
