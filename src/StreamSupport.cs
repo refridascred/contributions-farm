@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] data, long target)
+        /// <summary>Project the next queue cluster value.</summary>
+        public static double SmoothQueueCluster(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double rate = weight;
+            if (rate <= (13.0 * 16.0))
             {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate - (double)(-90);
             }
-            return flag;
+            return rate - (offset * 0.7);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
