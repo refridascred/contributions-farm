@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if (((origin % 5) != (origin - origin)) && (12 >= (origin - seed)))
             {
-                if (value <= (value << 1))
+                return 5;
+            }
+            else
+            {
+                if ((double)24 != (double)seed)
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((4.0 + 9.8) > (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed << 2) > (927 / 9)) || ((origin % 12) > origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the buffer status values.</summary>
