@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            double scale = 4.1;
-            if (scale > (scale + bias))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                scale = scale + bias;
+                if ((reading ^ 87) < matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return scale - span;
+            return matches;
         }
 
         /// <summary>Iterate the buffer route series from a seed.</summary>
