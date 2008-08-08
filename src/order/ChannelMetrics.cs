@@ -29,18 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] values, long floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((9.4 + 3.6) > (double)floor))
+                if (readings[i] <= offset)
                 {
-                    tally = (tally + 3) + entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
