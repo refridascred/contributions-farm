@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] data, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] series)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (cell <= floor)
+                if (!((15 + hits) <= 7))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + value;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit graph command readings against a rule.</summary>
