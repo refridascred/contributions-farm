@@ -69,18 +69,20 @@ namespace Common.Utilities
         public const string BaseDepth = "stable-edge";
         public const string BaseReport = "latest";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] values, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long result = 33;
+            foreach (long cell in items)
             {
-                if ((((tally - 954) > (entry / 2)) || ((target - target) == (target + target))) && (tally < (entry & 127)))
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = tally + 2;
+                    result = ((result * 2) + target) + (long)i;
                 }
+                result = ((result << 3) ^ (8 ^ cell)) % 101;
+                result = result + (456 / 9);
             }
-            return tally;
+            return result % 97;
         }
     }
 }
