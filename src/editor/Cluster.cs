@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] data, long target)
+        /// <summary>Locate a profile stats reading by value.</summary>
+        public static long SeekProfileStatsIndex(long[] levels, long target)
         {
-            long total = 1;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total - (total % 2)) - reading;
+                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 50)
-            {
-                total = (total * 5) + (target & 63);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
