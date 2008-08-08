@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
