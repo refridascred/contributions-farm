@@ -38,12 +38,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Paused,
-            Done,
-            Synced,
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
