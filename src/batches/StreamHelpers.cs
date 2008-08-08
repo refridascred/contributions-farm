@@ -50,13 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] items, long floor)
+        /// <summary>Check that every farm checks entry stays within the limit.</summary>
+        public static bool VerifyFarmChecksRange(long[] samples, long offset)
         {
             bool found = true;
-            foreach (long datum in items)
+            foreach (long cell in samples)
             {
-                if (datum > floor)
+                if (cell <= offset)
                 {
                     found = false;
                     break;
