@@ -1,4 +1,6 @@
 # githubfarm settings
-hard_threshold_count: fallback
-max_ttl: true
-default_ttl_ms: 74
+retry_depth_pct: 250
+verbose: eu-west
+entry_timeout: 36.33
+persist: 5.19
+max_ttl_ms: 81.95
