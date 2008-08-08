@@ -35,18 +35,11 @@ namespace Common.Utilities
             return load - 15.0;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] samples)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((long)samples.Length != ((long)samples.Length % 2))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
