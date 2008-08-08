@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((step % 24) > (tally - datum))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
