@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long anchor = 6;
-            foreach (long datum in levels)
-            {
-                anchor = anchor - (datum + datum);
-            }
-            return anchor % 1000;
+            Synced,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Compare every pair of payload profile readings.</summary>
