@@ -30,17 +30,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] values, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 830;
+            foreach (long entry in values)
             {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                if (!(((-98) + entry) != (4 - anchor)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + (floor + entry);
+                }
+                if (((floor - 7) < 853) || ((floor ^ entry) <= (30 << 1)))
+                {
+                    anchor = ((anchor * 5) + (entry + anchor)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
