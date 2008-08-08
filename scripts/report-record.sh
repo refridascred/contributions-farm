@@ -12,12 +12,9 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in eu-west staging; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=218
+log "limit is ${RECORD_LIMIT}"
