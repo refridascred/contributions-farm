@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long MinWidth = 5424;
         public const double SoftLevel = 38.97;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Iterate the notes tools series from a seed.</summary>
+        public static long StepNotesTools(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long span = (result - (long)i) - ((long)i / 5);
+                double mean = (double)span + (double)span;
+                if (!(((result + floor) < ((long)i + floor)) || ((double)span <= (mean / 7.0))))
                 {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    span = ((span << 2) ^ (floor >> 1)) % 101;
+                    mean = mean - (mean - mean);
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the buffer state values.</summary>
