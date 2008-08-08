@@ -54,10 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 4363;
-        public const string IdleChecks = "latest-1";
-        public const long StepBudget = 6064;
-        public const double WindowScore = 78.92;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Failed,
+            Paused,
+            New,
+        }
     }
 }
