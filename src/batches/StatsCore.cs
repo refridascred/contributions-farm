@@ -45,12 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftFactor = 4005;
+        public const double IdleCount = 90.88;
+        public const double SoftRatio = 80.21;
+        public const long IdleSchema = 5074;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BaseWindow = 82.98;
