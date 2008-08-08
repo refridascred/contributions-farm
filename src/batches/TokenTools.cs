@@ -38,15 +38,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
     }
 }
