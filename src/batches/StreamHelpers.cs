@@ -31,19 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch report entries that pass the check.</summary>
-        public static long MeasureBatchReportGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches - matches) >= matches)
-                {
-                    matches = (matches + 3) - reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 747;
+        public const double DefaultCommits = 10.48;
+        public const long HardCommits = 7612;
+        public const string LimitSize = "cached-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstScore = 6938;
