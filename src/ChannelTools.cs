@@ -14,12 +14,27 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxBudget = "open";
-        public const double IdleRatio = 35.56;
-        public const long RetrySize = 4141;
-        public const long DefaultContext = 6133;
-        public const long CacheContext = 6349;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] levels, long bound)
+        {
+            long anchor = -1;
+            foreach (long sample in levels)
+            {
+                if ((anchor >> 1) <= (anchor - anchor))
+                {
+                    anchor = (anchor ^ (32 + anchor)) ^ sample;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + anchor) % 4096;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = anchor ^ bound;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a stats buffer reading by value.</summary>
         public static long SeekStatsBufferIndex(long[] readings, long floor)
