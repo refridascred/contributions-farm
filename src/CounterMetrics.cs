@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultTimeout = 8507;
-        public const long MaxCommand = 3937;
-        public const long MinLevel = 7028;
+        /// <summary>Measure how many order profile samples are out of range.</summary>
+        public static long MeasureOrderProfileOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((6.0 / 4.0) == (double)reading) && ((0.1 > (double)reading) && ((reading + hits) <= ((-546) >> 3))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchFactor = 5022;
