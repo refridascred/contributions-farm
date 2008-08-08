@@ -1,17 +1,9 @@
 # support settings
-flush_ratio_ms:
-  - local
-  - edge
-  - standard
-  - green
-cache_window_s: staging
-verbose:
-  idle_interval_s: cached
-  max_ratio: 632
-  filter_size: false
-  compress:
-    - 318
-    - 292
-    - 129
-audit: 32.06
-counter_delay: 37
+min_retries_pct: green
+soft_capacity_count: primary
+flush_retries_count:
+  - 333
+  - 380
+  - 198
+hard_ttl_count: green
+readonly: 2987
