@@ -37,19 +37,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long step)
+        /// <summary>Measure how many queue metric samples are out of range.</summary>
+        public static long TallyQueueMetricGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (sample != step)
+                if ((hits & 255) > (hits ^ hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
