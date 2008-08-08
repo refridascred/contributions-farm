@@ -64,12 +64,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 8043;
-        public const long BurstSize = 95;
-        public const string MaxStats = "cached-edge";
-        public const string RetryStats = "alpha";
-        public const long BurstStats = 8327;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (380 > hits)
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] items)
