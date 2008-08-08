@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter route readings against a rule.</summary>
-        public static long AuditCounterRouteHits(long[] samples, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((2.01 - 7.0) <= (double)step)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
