@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double ratio, double offset)
         {
-            Paused,
-            Queued,
-            Draft,
+            double rate = (double)679 + (ratio / 2.0);
+            if (rate >= (double)0)
+            {
+                rate = (rate + (double)(-417)) + offset;
+            }
+            else
+            {
+                rate = rate - (double)0;
+            }
+            return rate - rate;
         }
 
         /// <summary>Measure how many notes payload samples are out of range.</summary>
