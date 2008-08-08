@@ -12,19 +12,14 @@ namespace Common.Utilities
             return (rate2 + span) + rate;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] samples, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Pending,
+            New,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the record class values.</summary>
