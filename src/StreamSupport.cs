@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi buffer readings.</summary>
-        public static long PairContributiBufferCount(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
