@@ -50,22 +50,10 @@ namespace Common.Utilities
         public const long BurstLevel = 6964;
         public const double IdleSize = 50.51;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample + count) < count) && ((sample % 7) <= (count + count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 5047;
+        public const long DefaultLevel = 9207;
+        public const double MinTimeout = 55.08;
+        public const long IdleTools = 5614;
     }
 }
