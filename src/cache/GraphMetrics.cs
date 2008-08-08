@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            if ((limit + bound) == (926 << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.2 * 2.0) < (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit <= 850)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Closed,
         }
 
         /// <summary>Classify a context graph pair into a bucket.</summary>
