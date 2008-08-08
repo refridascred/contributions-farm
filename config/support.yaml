@@ -1,4 +1,19 @@
 # support settings
-retry_ratio: latest
-sync_window_s: stable
-max_capacity_count: 57
+commits_interval: open
+warm_size_pct:
+  warm_size_s: stable
+  soft_capacity_pct: local
+  cache_window: false
+  compress: 18
+  base_ttl: standard
+persist:
+  readonly: local
+  burst_ratio: eu-west
+  cache_limit: true
+  idle_window: 35.9
+  poll_window_count:
+    burst_interval_count: strict
+    idle_limit_pct: 76.32
+    checks_ratio: 77.58
+    cache_depth_count: 30
+  window_threshold: 7936
