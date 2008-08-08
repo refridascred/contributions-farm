@@ -1,6 +1,7 @@
-id,token,level
-1,971,legacy
-2,cached,916
-3,cached,8.04
-4,58.8,64
-5,edge,90.74
+id,label,score
+1,1.25,792
+2,local,edge
+3,71.92,open
+4,92.87,69.37
+5,local,stable
+6,48.95,53
