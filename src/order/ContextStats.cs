@@ -40,12 +40,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Synced,
+            Closed,
+            Pending,
         }
     }
 }
