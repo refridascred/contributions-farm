@@ -34,21 +34,16 @@ namespace Common.Utilities
         public const long IdleScore = 3695;
         public const double HardCount = 16.51;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum * 3) + (sum - limit);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
