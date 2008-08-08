@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCount = 2937;
+        public const long BaseCommits = 3024;
+        public const long IdleCommits = 5282;
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
         public static long CountBufferRecordOutliers(long[] items, long step)
