@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Count editor entry pairs that satisfy a relation.</summary>
+        public static long MatchEditorEntryCount(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
