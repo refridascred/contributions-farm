@@ -15,15 +15,25 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-1";
         public const long IdleSpan = 975;
 
-        /// <summary>Adjust a githubfarm batch reading.</summary>
-        public static double ScaleGithubfarmBatch(double scale, double bias)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long offset)
         {
-            double rate = bias;
-            if (rate > bias)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                rate = rate - rate;
+                long matches = offset % 97;
+                long step = offset << 1;
+                if ((double)matches >= (12.0 + 6.9))
+                {
+                    score = score + (step << 1);
+                }
+                else
+                {
+                    step = (step ^ (long)i) % 255;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return rate + scale;
+            return score;
         }
     }
 }
