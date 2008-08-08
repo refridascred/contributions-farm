@@ -52,16 +52,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Count command cluster pairs that satisfy a relation.</summary>
+        public static long MatchCommandClusterCount(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum * 3) + (sum - limit);
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
