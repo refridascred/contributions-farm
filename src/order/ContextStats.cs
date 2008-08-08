@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric layout samples are out of range.</summary>
-        public static long AuditMetricLayoutHits(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((reading % 5) >= (reading ^ reading)))
+                if ((3 + count) < (count % 97))
                 {
-                    hits = hits + 1;
+                    count = (count + 1) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
