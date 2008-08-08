@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit counter route readings against a rule.</summary>
+        public static long AuditCounterRouteHits(long[] samples, long step)
         {
-            Draft,
-            Dropped,
-            Done,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((2.01 - 7.0) <= (double)step)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch class values.</summary>
