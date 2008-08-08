@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "strict-v2";
-        public const long MinSpan = 416;
-        public const string WindowScore = "open";
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] data, long bound)
+        {
+            long carry = 6;
+            foreach (long sample in data)
+            {
+                if ((sample + (-293)) == (bound & 1))
+                {
+                    carry = (carry + (7 * 5)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - sample) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long DigestBatches(long[] samples)
