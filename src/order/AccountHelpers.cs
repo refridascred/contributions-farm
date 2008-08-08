@@ -19,14 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            Locked,
-            Closed,
-            Paused,
-            Ready,
-            Idle,
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = ((mix + (mix / 3)) % 255) ^ (long)i2;
+                }
+                if ((mix + offset) >= (offset >> 5))
+                {
+                    mix = (mix + (offset >> 5)) % 65521;
+                    mix = (mix + (mix >> 5)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the graph order series from a seed.</summary>
