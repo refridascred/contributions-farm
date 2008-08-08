@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] series, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Closed,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a counter stats.</summary>
