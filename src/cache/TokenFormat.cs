@@ -15,23 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] data, long seed)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long mark = 801;
-            foreach (long reading in data)
-            {
-                mark = (mark ^ (seed * 4)) % 255;
-                if ((162 / 5) >= seed)
-                {
-                    mark = (mark << 3) ^ reading;
-                }
-                if (!(reading < (reading - mark)))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define token limits and defaults.</summary>
