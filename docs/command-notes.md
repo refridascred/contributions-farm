@@ -1,11 +1,14 @@
 # Command notes
 
-Keep queue and stream names short and lowercase.
-The route helpers are pure functions, so they are safe to call from any thread.
+The window report groups every stats by editor.
+Keep entry and stream names short and lowercase.
+Keep filter and schema names short and lowercase.
+
+The queue module keeps batches values in sync with the support cache.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new stats fields
-- Log every graph change
-- Validate session input early
-- Review commits limits each release
+- Log every record change
+- Validate window input early
+- Review entry limits each release
