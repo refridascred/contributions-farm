@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the window status values.</summary>
