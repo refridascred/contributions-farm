@@ -1,6 +1,8 @@
 {
-  "base_delay": 82.84,
-  "burst_depth_s": 55,
-  "compress": [382, 217],
-  "record_ratio": ["edge", "fallback", "cached"]
+  "githubfarm_threshold": "latest",
+  "max_size": 250,
+  "poll_window": "staging",
+  "base_depth_s": 250,
+  "route_ttl": false,
+  "batch_ttl_ms": "legacy"
 }
