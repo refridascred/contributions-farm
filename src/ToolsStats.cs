@@ -25,21 +25,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((values[i] < limit) && ((values[i] % 2) == 0))
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit account report readings against a rule.</summary>
