@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of batches counter readings.</summary>
-        public static long DigestBatchesCounter(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] levels, long target)
         {
-            long mix = 77;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mix = (mix - (65 - entry)) % 4096;
+                if ((target <= (633 * 4)) && ((sample << 1) < 1))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (mix < 7)
-            {
-                mix = (mix ^ (24 & 1)) % 101;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
