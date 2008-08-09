@@ -25,18 +25,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long carry = 7;
-            foreach (long item in levels)
+            long result = 70;
+            foreach (long datum in readings)
             {
-                if (!((double)carry <= (7.66 + 6.3)))
-                {
-                    carry = (carry ^ (item >> 5)) % 255;
-                }
+                result = ((result ^ result) % 97) - datum;
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
