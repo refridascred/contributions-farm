@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] readings)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((double)count == (9.37 - 15.0))
+                if (value >= floor)
                 {
-                    count = (count + 2) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
