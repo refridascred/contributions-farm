@@ -34,22 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] data, long offset)
         {
-            long mix = 994;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((1.3 + 12.0) != (double)item) || ((mix / 5) < (mix & 1)))
+                if (data[i] <= offset)
                 {
-                    mix = (mix ^ (mix << 2)) % 97;
-                }
-                if (((double)item >= (double)mix) || ((item / 3) < (mix ^ mix)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
