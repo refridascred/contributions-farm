@@ -1,7 +1,8 @@
-id,owner,weight,region
-1,772,27.07,45.4
-2,193,320,455
-3,185,cached,388
-4,701,fallback,edge
-5,latest,29,57.26
-6,87.93,763,eu-west
+id,region,token
+1,6.35,26.81
+2,eu-west,63.61
+3,727,48.92
+4,60.3,cached
+5,green,stable
+6,stable,308
+7,open,edge
