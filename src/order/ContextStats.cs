@@ -26,11 +26,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 9542;
-        public const string BatchAlready = "strict-1";
-        public const long DefaultAlready = 1615;
-        public const string LimitFactor = "local-1";
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Done,
+            Synced,
+            Retry,
+            New,
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] samples, long bound)
