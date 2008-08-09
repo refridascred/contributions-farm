@@ -66,22 +66,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            long total = 33;
-            foreach (long cell in items)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell / 5) > 8)
-                {
-                    total = (total + total) % 1000;
-                }
-                if (cell >= (cell & 63))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
     }
 }
