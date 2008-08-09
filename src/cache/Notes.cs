@@ -42,13 +42,17 @@ namespace Common.Utilities
             return load - (load / 2.0);
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] series, long bound)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
