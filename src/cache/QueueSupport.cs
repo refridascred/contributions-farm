@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long seed)
         {
-            double rate = (double)(63 / 8);
-            for (int i = 0; i < 7; i++)
+            if ((seed * 2) > seed)
             {
-                rate = ((rate - 0.15) + (double)(long)i) - bias;
+                return 6;
             }
-            return rate + (weight / 4.0);
+            else
+            {
+                if ((double)floor != (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a metric header.</summary>
