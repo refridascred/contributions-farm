@@ -26,21 +26,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of payload profile readings.</summary>
-        public static long MatchPayloadProfileCount(long[] series)
+        /// <summary>Iterate the metric filter series from a seed.</summary>
+        public static long SeriesMetricFilter(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
