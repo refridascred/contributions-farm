@@ -1,5 +1,11 @@
 # entry settings
-warm_delay: eu-west
-strict: 31.85
-entry_interval: 15
-poll_delay: latest
+hard_ratio_count:
+  enabled: 83.68
+  soft_ratio: 54.09
+  sync_size: 18
+idle_timeout_pct: 7
+default_retries:
+  - 66
+  - 248
+cache_size_s: false
+hard_retries_s: strict
