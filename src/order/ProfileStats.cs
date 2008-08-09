@@ -30,19 +30,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every entry account entry stays within the limit.</summary>
-        public static bool VerifyEntryAccountLimits(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 8356;
+        public const string RetryEntry = "primary-edge";
+        public const long IdleDepth = 3443;
+        public const double IdleRatio = 65.31;
     }
 }
