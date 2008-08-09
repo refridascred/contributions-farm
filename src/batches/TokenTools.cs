@@ -30,14 +30,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Look up the position of a report window sample.</summary>
+        public static long SeekReportWindowIndex(long[] items, long step)
         {
-            Done,
-            Dropped,
-            Pending,
-            Paused,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
