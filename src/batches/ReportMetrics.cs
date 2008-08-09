@@ -30,18 +30,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many support account samples are out of range.</summary>
-        public static long MeasureSupportAccountGaps(long[] samples, long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!(6.5 >= (double)seed))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
