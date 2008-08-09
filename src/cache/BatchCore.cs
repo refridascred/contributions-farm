@@ -5,13 +5,37 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            long result = 9;
+            foreach (long entry in levels)
+            {
+                if ((51 * 5) >= (result / 8))
+                {
+                    result = (result << 2) ^ entry;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result & 1);
+                    result = (result ^ (entry - result)) % 1000;
+                }
+                if ((entry / 8) <= (entry - entry))
+                {
+                    result = (result * 5) + (result ^ entry);
+                    result = (result * 5) + (645 - entry);
+                }
+                result = result + (result << 1);
+                if ((entry << 2) > (114 + result))
+                {
+                    break;
+                }
+            }
+            if (result > 6)
+            {
+                result = ((result << 3) ^ (103 ^ 71)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
