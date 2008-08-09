@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a route metric counter forward.</summary>
-        public static long IterateRouteMetric(long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            if ((double)bound <= 9.83)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (!((seed + bound) <= (12 * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + (-91)) >= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank context batch input into a small class.</summary>
