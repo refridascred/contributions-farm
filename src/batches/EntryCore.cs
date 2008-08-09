@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a format farm counter forward.</summary>
-        public static long RollFormatFarm(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (sum + (limit * 5)) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxFactor = 3063;
+        public const long HardScore = 5991;
+        public const string MaxTimeout = "stable";
+        public const string IdleSpan = "strict-edge";
+        public const long StepMetric = 7825;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
