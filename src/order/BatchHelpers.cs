@@ -37,24 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] levels, long limit)
         {
-            if (!((target ^ 0) > (limit * 5)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target != (5.0 + 2.91))
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
