@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "strict-v2";
-        public const long WindowLevel = 1163;
-        public const long BatchToken = 3626;
-        public const long BaseToken = 7148;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long target)
+        {
+            if (((limit % 97) == (target / 8)) && ((target / 3) >= (limit & 31)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (8 < (target - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((target * 4) < limit) || ((limit & 127) <= (target >> 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((97 ^ target) >= (target + target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
