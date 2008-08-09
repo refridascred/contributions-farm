@@ -1,5 +1,5 @@
 {
-  "min_ratio": 30,
-  "graph_delay": 100,
-  "base_depth_count": "cached"
+  "enabled": "staging",
+  "editor_window": 9472,
+  "compress": 59.25
 }
