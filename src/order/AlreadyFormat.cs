@@ -58,11 +58,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 44.37;
-        public const long MaxStream = 1211;
-        public const long HardLevel = 406;
-        public const double DefaultInterval = 14.44;
-        public const long BatchStream = 9452;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long limit)
+        {
+            if ((origin <= (72 - origin)) || ((origin + 918) == (origin >> 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit + limit) >= (limit - 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
