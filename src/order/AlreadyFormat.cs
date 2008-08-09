@@ -33,22 +33,17 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] readings, long floor)
+        /// <summary>Locate a stats counter reading by value.</summary>
+        public static long SeekStatsCounterIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((997 + 557) > (0 ^ count))
+                if (readings[i] <= origin)
                 {
-                    count = ((count + 2) + reading) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
