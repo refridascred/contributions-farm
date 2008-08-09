@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long BatchSpan = 4700;
         public const long MaxRatio = 2050;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long limit)
+        /// <summary>Adjust a session batch reading.</summary>
+        public static double ProjectSessionBatch(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(2 << 2);
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - bias) - (double)(long)i) - floor;
             }
-            return -1;
+            return ratio - (ratio - 0.3);
         }
 
         /// <summary>Locate a context reading by value.</summary>
