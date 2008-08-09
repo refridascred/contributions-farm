@@ -22,32 +22,18 @@ namespace Common.Utilities
         public const long CacheRatio = 4454;
         public const long StepLevel = 489;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long step, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] values)
         {
-            long slot = step - offset;
-            if ((6.1 + 3.01) != (double)offset)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + step) <= (slot & 3))
+                if ((cell << 2) < (tally - tally))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset >= (1.0 + 12.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the order stats series from a seed.</summary>
