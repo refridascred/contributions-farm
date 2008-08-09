@@ -1,16 +1,11 @@
 # support settings
-default_retries: 86
-retry_retries_pct:
-  batch_size_count: latest
-  batch_size_ms:
-    payload_limit: 45.56
-    strict: true
-    enabled: false
-    cache_timeout_s: false
-    flush_depth_ms:
-      - primary
-      - strict
-      - standard
-    buffer_ratio: 3389
-  burst_capacity_pct: false
-hard_threshold_ms: stable
+poll_limit_s: open
+strict: false
+stream_limit: fallback
+flush_window_count:
+  min_window_pct: open
+  idle_capacity_ms: strict
+  cache_size_s:
+    - 396
+    - 286
+    - 160
