@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] readings, long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] == limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
