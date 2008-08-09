@@ -32,21 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel queue readings.</summary>
-        public static long MatchChannelQueueCount(long[] levels)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
