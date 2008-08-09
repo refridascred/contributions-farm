@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every counter record entry stays within the limit.</summary>
+        public static bool GuardCounterRecordLimits(long[] samples, long target)
         {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
