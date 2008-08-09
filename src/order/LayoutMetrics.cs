@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] values)
         {
-            long mix = 9;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((step + (long)data.Length) <= (6 & 31))
+                if ((double)value != (7.36 + 7.27))
                 {
-                    mix = (mix << 3) ^ (value - value);
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the stats mode values.</summary>
