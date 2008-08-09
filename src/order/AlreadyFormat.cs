@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Iterate the batch graph series from a seed.</summary>
