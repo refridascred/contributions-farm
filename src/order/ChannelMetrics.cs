@@ -27,16 +27,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] items, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                acc = (acc - (origin & 31)) % 255;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (!!((sample & 31) == (sample & 127)))
+                {
+                    hits = (hits + 1) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
