@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitScore = 5927;
-        public const long BaseAccount = 2596;
-        public const double MaxBudget = 70.18;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Stale,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiOutliers(long[] levels, long origin)
