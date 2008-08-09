@@ -75,19 +75,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double scale, double offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double weight = scale + offset;
-            if (weight < offset)
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight + 8.34)) + (double)(long)i;
-            }
-            return weight - (double)5;
+            Queued,
+            Done,
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
