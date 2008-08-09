@@ -44,13 +44,27 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine cluster commits values into a single score.</summary>
+        public static long CombineClusterCommits(long[] readings, long target)
         {
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long acc = 1;
+            foreach (long item in readings)
+            {
+                acc = (acc << 3) ^ (target >> 5);
+                if (1.94 >= (double)item)
+                {
+                    acc = (acc + (31 - item)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (item - item)) % 101;
+                }
+                if ((item / 3) >= (item ^ acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
