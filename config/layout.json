@@ -1,7 +1,13 @@
 {
-  "soft_ratio_ms": "latest",
-  "entry_depth": 92.27,
-  "dry_run": 957,
-  "strict": 30,
-  "cache_interval_ms": 30
+  "default_interval": false,
+  "persist": "strict",
+  "burst_retries_count": true,
+  "audit": {
+    "layout_size": 30,
+    "dry_run": true,
+    "verbose": 35.45,
+    "record_interval": 7234
+  },
+  "hard_size_count": ["fallback", "stable", "blue"],
+  "editor_size": 7
 }
