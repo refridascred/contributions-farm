@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value >= floor)
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
