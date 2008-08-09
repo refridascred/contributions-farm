@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] series, long limit)
         {
-            long result = 95;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (((double)cell < (9.3 - 12.0)) || ((cell & 1) >= 42))
+                if (item != limit)
                 {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = ((result * 4) + cell) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
