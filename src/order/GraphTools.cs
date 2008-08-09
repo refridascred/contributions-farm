@@ -55,9 +55,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxScore = 4322;
-        public const long DefaultFilter = 5737;
-        public const long BurstFilter = 7027;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long origin, long floor)
+        {
+            long step = origin + floor;
+            if ((step >= (77 + 0)) && ((origin % 5) != (floor + origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor < (5.96 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >= (origin - floor)) || ((double)floor > 6.5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((272 + floor) != (step - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
