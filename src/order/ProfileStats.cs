@@ -29,21 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Check that every entry account entry stays within the limit.</summary>
+        public static bool VerifyEntryAccountLimits(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < floor)
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
