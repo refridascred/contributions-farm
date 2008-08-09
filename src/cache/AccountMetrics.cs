@@ -41,18 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor metrics samples are out of range.</summary>
-        public static long TallyEditorMetricsGaps(long[] data, long origin)
+        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
+        public static bool CheckBufferToolsLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (datum < (datum + datum))
+                if (reading <= origin)
                 {
-                    matches = (matches + 3) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a farm header.</summary>
