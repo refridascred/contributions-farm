@@ -24,14 +24,12 @@ namespace Common.Utilities
             return rate - (rate - gain);
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Retry,
-            Pending,
-            Done,
-            Draft,
-            Stale,
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
