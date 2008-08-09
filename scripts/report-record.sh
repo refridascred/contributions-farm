@@ -12,5 +12,11 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=478
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+RECORD_LIMIT=497
 log "limit is ${RECORD_LIMIT}"
