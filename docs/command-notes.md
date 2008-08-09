@@ -1,11 +1,11 @@
 # Command notes
 
-Keep command and window names short and lowercase.
-Each buffer is validated before it reaches the tools queue.
-The entry helpers are pure functions, so they are safe to call from any thread.
+A batch that stays idle for too long is moved to the editor list.
+When a support fails, the graph handler retries a few times before giving up.
+Each farm is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Keep session values small
-- Document new commits fields
-- Review account limits each release
+- Log every batch change
+- Prefer channel defaults
+- Keep command values small
