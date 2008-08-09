@@ -26,21 +26,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "strict-1";
+        public const string IdleFactor = "latest-edge";
+        public const long StepAlready = 6769;
+        public const long CacheAlready = 9638;
+        public const string WindowAlready = "alpha-1";
     }
 }
