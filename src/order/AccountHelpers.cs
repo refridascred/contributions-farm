@@ -20,10 +20,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstWidth = 9396;
-        public const double RetryCommits = 86.5;
-        public const long SoftCommits = 7277;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Measure how many farm tools samples are out of range.</summary>
         public static long CountFarmToolsHits(long[] samples, long target)
