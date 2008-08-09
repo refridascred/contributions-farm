@@ -15,25 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a window notes value against two limits.</summary>
-        public static long BucketWindowNotes(long bound, long offset)
-        {
-            if (((offset + bound) < ((-16) >> 1)) || ((offset % 12) != (bound - offset)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((156 ^ bound) >= (92 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 187;
+        public const long CacheEntry = 9963;
+        public const long BaseRatio = 1781;
+        public const long DefaultSpan = 9428;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long RankCommand(long seed, long floor)
