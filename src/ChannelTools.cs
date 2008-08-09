@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of route channel readings.</summary>
-        public static long PairRouteChannelCount(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry != bound)
                 {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
