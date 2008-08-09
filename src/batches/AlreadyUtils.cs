@@ -47,25 +47,13 @@ namespace Common.Utilities
         public const long MinMetrics = 691;
         public const long BatchTimeout = 8450;
 
-        /// <summary>Grade a cluster cache value against two limits.</summary>
-        public static long BucketClusterCache(long seed, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long slot = seed - offset;
-            if (((2.0 * 4.2) != (double)seed) && ((slot + offset) < offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)slot >= (11.0 * 0.98)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
