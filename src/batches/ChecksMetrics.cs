@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long result = 334;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result + (2 + result)) % 101) - sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result > 407)
-            {
-                result = ((result * 5) + result) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
