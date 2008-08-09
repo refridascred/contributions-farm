@@ -57,34 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values, long offset)
-        {
-            long sum = 983;
-            foreach (long item in values)
-            {
-                if (sum >= (sum + item))
-                {
-                    sum = (sum + (8 + item)) % 1000;
-                    sum = ((sum * 3) + (offset << 1)) % 1000;
-                    break;
-                }
-                if (((512 & 3) < (8 ^ item)) && ((offset + 43) == (offset - item)))
-                {
-                    sum = sum + (item - offset);
-                    sum = sum + (item - item);
-                    continue;
-                }
-                if ((sum - (long)values.Length) <= sum)
-                {
-                    sum = ((sum * 4) + (offset + 6)) % 4096;
-                }
-            }
-            if (sum < 15)
-            {
-                sum = (sum ^ (sum + (long)values.Length)) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "standard-1";
+        public const long StepLevel = 3092;
+        public const long MinCluster = 8870;
+        public const string WindowCluster = "latest";
+        public const double CacheCluster = 24.51;
     }
 }
