@@ -20,12 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 38.31;
+        public const string MinMetric = "strict";
+        public const string SoftTimeout = "cached-1";
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] items)
