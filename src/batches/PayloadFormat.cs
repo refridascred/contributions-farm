@@ -41,11 +41,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long offset, long step)
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long diff = offset + step;
+            if ((12 >= (offset + offset)) && (diff < (diff & 15)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9 << 2) == (offset - diff))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
