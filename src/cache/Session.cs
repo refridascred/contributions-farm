@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 8210;
-        public const string BatchSpan = "primary-1";
-        public const long StepSize = 3218;
-        public const long WindowInterval = 1947;
-        public const string BurstWidth = "alpha-edge";
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
