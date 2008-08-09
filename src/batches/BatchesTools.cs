@@ -33,15 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            double load = (ratio + 4.3) + (ratio + ratio);
-            if (load <= (double)5)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                load = (load - (load - load)) - span;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return load + 6.1;
+            return mark;
         }
     }
 }
