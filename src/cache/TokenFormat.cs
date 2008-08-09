@@ -50,31 +50,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long limit, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            if (step < 455)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit ^ limit) > (step - step)) && ((limit % 12) >= (48 & 63)))
+                if (!(limit > (total & 7)))
                 {
-                    return 4;
+                    total = (total << 3) ^ (total / 8);
                 }
-                else
-                {
-                    if (3 > (step + 703))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                total = total + total;
+                total = (total - limit) % 4096;
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
     }
 }
