@@ -38,13 +38,9 @@ namespace Common.Utilities
         public const double HardTimeout = 55.49;
         public const string DefaultSession = "staging-edge";
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstScore = 1292;
+        public const long BaseEntry = 2865;
+        public const long BatchSpan = 1773;
     }
 }
