@@ -28,14 +28,13 @@ namespace Common.Utilities
             return rate + (floor + weight);
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Ready,
-            Idle,
-            Failed,
-            Retry,
-            Dropped,
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
