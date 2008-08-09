@@ -63,13 +63,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
+        public static bool CheckMetricsCounterRange(long[] data, long step)
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
