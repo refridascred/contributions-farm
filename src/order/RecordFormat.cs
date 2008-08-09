@@ -54,11 +54,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            long acc = 9;
+            foreach (long cell in samples)
+            {
+                if (((-69) - acc) <= (cell + acc))
+                {
+                    acc = ((acc << 3) ^ (acc / 9)) % 4096;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = (acc << 2) ^ (acc / 6);
+            }
+            return acc;
         }
 
         /// <summary>Audit contributi report readings against a rule.</summary>
