@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] samples, long offset)
         {
-            long sum = 4;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (!((sum ^ 7) < (sum ^ sum)))
+                if ((cell / 8) < cell)
                 {
-                    sum = (sum * 4) + (long)items.Length;
-                }
-                else
-                {
-                    sum = (sum ^ (sample - sample)) % 97;
+                    count = (count + 2) - offset;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
