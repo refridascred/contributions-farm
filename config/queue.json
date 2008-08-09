@@ -1,12 +1,19 @@
 {
-  "hard_ttl": true,
-  "context_retries": {
-    "hard_threshold": 15.7,
-    "enabled": "legacy",
-    "poll_window_count": 28,
-    "tools_capacity": "strict",
-    "min_depth_pct": "legacy",
-    "flush_interval_count": 30
+  "layout_limit": true,
+  "base_timeout_s": {
+    "strict": 6065,
+    "payload_threshold": ["legacy", "standard", "cached", "standard"],
+    "dry_run": {
+      "cluster_retries": "primary",
+      "poll_size_pct": 83.98,
+      "flush_size_ms": 60,
+      "cache_interval": "stable"
+    },
+    "flush_window": 4.24,
+    "compress": 24,
+    "cache_threshold_pct": 8287
   },
-  "payload_ratio": 30
+  "strict": 100,
+  "record_ratio": 26,
+  "enabled": 90
 }
