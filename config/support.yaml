@@ -1,6 +1,4 @@
 # support settings
-batch_interval: primary
-persist: standard
-soft_limit: false
-editor_interval: 500
-cache_ttl_pct: 3275
+sync_depth_ms: 429
+strict: staging
+poll_window_s: open
