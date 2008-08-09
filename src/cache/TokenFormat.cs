@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every checks schema entry stays within the limit.</summary>
-        public static bool VerifyChecksSchemaLimits(long[] items, long offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a checks session sample.</summary>
