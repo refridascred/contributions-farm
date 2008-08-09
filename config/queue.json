@@ -1,6 +1,19 @@
 {
-  "persist": "fallback",
-  "retry_ttl_s": "cached",
-  "stream_ratio": "standard",
-  "cache_retries": 39.4
+  "min_interval_s": [68, 480, 208],
+  "default_depth_pct": {
+    "min_size_s": [215, 104, 144],
+    "min_timeout_count": false,
+    "poll_interval": 1569,
+    "audit": 52.1,
+    "flush_capacity": 80.27,
+    "commits_threshold": 57
+  },
+  "hard_capacity": true,
+  "min_window_count": {
+    "dry_run": "edge",
+    "persist": "edge",
+    "compress": 3191,
+    "default_interval": 60,
+    "default_timeout_s": 67
+  }
 }
