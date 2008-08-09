@@ -18,26 +18,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate entry order samples.</summary>
-        public static long FoldEntryOrder(long[] values)
+        /// <summary>Grade a queue cluster value against two limits.</summary>
+        public static long ClassifyQueueCluster(long limit, long seed)
         {
-            long mix = 962;
-            foreach (long entry in values)
+            if ((seed + 8) > seed)
             {
-                for (int i = 0; i < 2; i++)
+                return 2;
+            }
+            else
+            {
+                if ((3.55 * 7.2) > (double)limit)
                 {
-                    mix = ((mix + entry) % 4096) - (long)i;
+                    return 4;
                 }
-                if (entry >= (mix / 4))
+                else
                 {
-                    mix = mix ^ (-373);
+                    if (4 < (limit - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(seed > (seed + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mix > 59)
-            {
-                mix = (mix - (mix << 3)) % 1000;
-            }
-            return mix;
         }
     }
 }
