@@ -1,30 +1,4 @@
 # githubfarm settings
-burst_ttl_count: edge
-cache_ttl:
-  batch_threshold_pct:
-    enabled:
-      - 86
-      - 146
-      - 419
-    order_limit: 60
-    audit:
-      - latest
-      - open
-      - latest
-  persist:
-    base_limit_s: green
-    counter_limit: open
-    warm_depth_pct: legacy
-  metric_ttl:
-    - 344
-    - 197
-    - 331
-    - 102
-  burst_timeout_s: 52
-soft_depth:
-  - 193
-  - 123
-editor_ttl:
-  cache_depth: green
-  default_ttl_count: standard
-  token_depth: false
+tools_size: 6621
+command_ttl: primary
+dry_run: 250
