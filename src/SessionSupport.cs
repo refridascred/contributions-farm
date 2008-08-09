@@ -35,24 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long limit, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] items, long seed)
         {
-            if ((bound + bound) == (bound << 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) <= bound)
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
