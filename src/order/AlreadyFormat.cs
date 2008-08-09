@@ -64,9 +64,8 @@ namespace Common.Utilities
         public enum BatchKind
         {
             Done,
-            Retry,
-            Dropped,
-            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
