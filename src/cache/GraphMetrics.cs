@@ -12,25 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long step, long step2)
+        /// <summary>Fold a list of stream already readings.</summary>
+        public static long FoldStreamAlready(long[] data)
         {
-            long diff = step ^ step2;
-            if (((diff + diff) >= (3 + step)) || ((diff - step2) < (414 * 3)))
+            long score = 3;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)diff < (9.7 / 4.0))
+                score = (score * 5) + (value % 8);
+                if ((1 + score) != (score + value))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Hold a queue record.</summary>
