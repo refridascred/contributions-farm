@@ -28,14 +28,10 @@ namespace Common.Utilities
             return rate + (floor + weight);
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseBudget = 19.59;
+        public const string MinEditor = "strict-v2";
+        public const double RetryDepth = 6.52;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
