@@ -74,17 +74,15 @@ namespace Common.Utilities
         public const long BatchSize = 9220;
         public const double LimitInterval = 42.19;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] readings, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
