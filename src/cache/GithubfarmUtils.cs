@@ -42,19 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double weight, double floor)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double floor)
         {
-            double ratio = floor;
-            if (ratio < (floor / 8.0))
-            {
-                ratio = ratio - (weight * 9.88);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (2.2 * 1.05)) + (double)(long)i;
-            }
-            return ratio - weight;
+            double drift = (double)(9 ^ 8);
+            return ((drift + (drift - 15.0)) + scale) + floor;
         }
     }
 }
