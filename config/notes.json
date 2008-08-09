@@ -1,7 +1,18 @@
 {
-  "sync_delay_s": "cached",
-  "audit": "staging",
-  "counter_ttl": 96,
-  "order_interval": 3532,
-  "cache_delay_pct": false
+  "githubfarm_retries": false,
+  "retry_size": {
+    "idle_depth_ms": 19,
+    "base_ttl_ms": 250,
+    "base_timeout_s": 66.3
+  },
+  "persist": [32, 469, 404, 134],
+  "githubfarm_size": {
+    "dry_run": "eu-west",
+    "payload_capacity": 22,
+    "sync_limit_ms": 56.16,
+    "checks_threshold": "latest",
+    "hard_retries": false
+  },
+  "checks_retries": 83,
+  "enabled": 66.46
 }
