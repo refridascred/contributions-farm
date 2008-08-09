@@ -49,14 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings, long offset)
         {
-            Queued,
-            Pending,
-            Failed,
-            Paused,
-            Dropped,
+            long result = 1;
+            foreach (long sample in readings)
+            {
+                if ((7.7 - 15.0) != (double)sample)
+                {
+                    result = result + (offset + result);
+                }
+            }
+            return result;
         }
     }
 }
