@@ -33,17 +33,11 @@ namespace Common.Utilities
         public const long SoftSize = 4423;
         public const double LimitSpan = 35.9;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheLevel = 3873;
+        public const long RetryCount = 2977;
+        public const string MaxDepth = "fallback-v2";
+        public const string MaxWidth = "stable-v2";
+        public const long BaseToken = 2956;
     }
 }
