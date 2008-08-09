@@ -29,18 +29,21 @@ namespace Common.Utilities
             return scale + (ratio / 7.0);
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = 0;
+            foreach (long cell in series)
             {
-                if ((hits & 1) != (hits ^ hits))
-                {
-                    hits = (hits + 2) + entry;
-                }
+                result = result - (result ^ step);
+                result = ((result << 2) ^ (cell + result)) % 97;
+                result = (result << 2) ^ step;
             }
-            return hits;
+            if (result > 866)
+            {
+                result = ((result << 3) ^ (result ^ step)) % 1000;
+            }
+            return result % 97;
         }
     }
 }
