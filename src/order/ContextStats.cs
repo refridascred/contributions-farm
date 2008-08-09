@@ -53,11 +53,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 7542;
-        public const string CacheFactor = "alpha-v2";
-        public const string DefaultWidth = "staging-edge";
-        public const long BaseFilter = 8928;
-        public const long CacheCount = 3692;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
