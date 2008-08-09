@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const string StepSpan = "primary";
         public const string BaseBuffer = "fallback-1";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] readings, long seed)
+        /// <summary>Rank entry farm input into a small class.</summary>
+        public static long RankEntryFarm(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((76 < (bound - bound)) && ((20.0 / 7.0) == (double)bound))
             {
-                if (!((seen * 2) <= (seen >> 5)) || ((seed - seen) != (4 - seed)))
+                return 7;
+            }
+            else
+            {
+                if (((bound - 564) > (bound - offset)) && ((offset - bound) < (725 * 3)))
                 {
-                    seen = (seen + 3) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    if ((5 ^ bound) == (bound >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
