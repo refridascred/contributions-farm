@@ -30,13 +30,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)34 >= (double)limit)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
