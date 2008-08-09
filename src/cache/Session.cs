@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double offset)
-        {
-            double drift = offset - (double)716;
-            return (drift - 4.44) + ratio;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 8210;
+        public const string BatchSpan = "primary-1";
+        public const long StepSize = 3218;
+        public const long WindowInterval = 1947;
+        public const string BurstWidth = "alpha-edge";
 
         /// <summary>Accumulate profile samples.</summary>
         public static long FoldProfile(long[] series)
