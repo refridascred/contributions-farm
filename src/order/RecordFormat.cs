@@ -55,19 +55,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
-        public static bool CheckSchemaContributiRange(long[] values, long offset)
+        /// <summary>Audit contributi report readings against a rule.</summary>
+        public static long AuditContributiReportOutliers(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (cell <= offset)
+                if ((double)entry >= (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
