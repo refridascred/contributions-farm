@@ -48,15 +48,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] values, long offset)
+        /// <summary>Look up the position of a contributi order sample.</summary>
+        public static long FindContributiOrderIndex(long[] values, long origin)
         {
-            long mix = 239;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix << 3) ^ (offset << 1)) ^ value;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a session summary.</summary>
