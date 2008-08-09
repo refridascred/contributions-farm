@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every counter metric entry stays within the limit.</summary>
-        public static bool GuardCounterMetricBounds(long[] items, long offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Queued,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
