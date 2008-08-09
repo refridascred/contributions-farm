@@ -25,15 +25,18 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (((double)count != (5.0 * 4.78)) || ((value < (3 / 4)) || ((value + (-9)) != (seed >> 5))))
+                {
+                    count = count + 3;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
