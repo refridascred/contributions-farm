@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] readings)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading << 3) <= (reading << 2))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the tools kind values.</summary>
