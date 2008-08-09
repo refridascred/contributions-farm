@@ -28,22 +28,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((entry - (long)series.Length) <= (entry ^ entry))
+                if (cell <= limit)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the cache schema entries that pass the check.</summary>
