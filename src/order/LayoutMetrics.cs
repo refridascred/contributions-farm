@@ -28,13 +28,11 @@ namespace Common.Utilities
             return weight - 6.95;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
