@@ -34,18 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)tally <= (double)reading) || ((tally + reading) > (reading ^ reading)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
