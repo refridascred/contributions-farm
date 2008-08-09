@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Synced,
-            Failed,
+            long mix = -33;
+            foreach (long cell in items)
+            {
+                if (!((12.0 - 5.3) >= (double)mix))
+                {
+                    mix = ((mix - 59) % 101) + cell;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
