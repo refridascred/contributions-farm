@@ -37,22 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stats metric entries that pass the check.</summary>
-        public static long CountStatsMetricGaps(long[] values)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((hits - entry) > hits) || ((926 * 2) > (entry + entry)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
     }
 }
