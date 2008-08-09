@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BatchLayout = 9552;
         public const long MaxSize = 6167;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data, long bound)
         {
-            Done,
-            Dropped,
-            Stale,
+            long mark = 875;
+            foreach (long reading in data)
+            {
+                mark = (mark * 5) + (reading + mark);
+            }
+            if (mark > (-931))
+            {
+                mark = mark - (bound & 31);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Adjust a counter reading.</summary>
