@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] data, long target)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            long score = 57;
+            foreach (long cell in data)
+            {
+                score = score - (target - score);
+                if (80 > score)
+                {
+                    score = ((score * 2) + (cell & 31)) % 255;
+                }
+            }
+            if (score > 41)
+            {
+                score = ((score * 3) + (score - target)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a batch counter sample.</summary>
