@@ -41,18 +41,12 @@ namespace Common.Utilities
         public const long RetryScore = 7903;
         public const long RetryFarm = 8809;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] levels, long bound)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((6.0 - 3.28) > (double)count)
-                {
-                    count = ((count + 1) + value) + bound;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
