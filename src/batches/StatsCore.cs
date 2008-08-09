@@ -60,24 +60,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((double)origin != (1.0 * 1.0)))
-                {
-                    mix = mix - (origin + (long)i);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ origin;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 64.97;
+        public const double SoftNotes = 52.61;
+        public const double StepNotes = 57.46;
     }
 }
