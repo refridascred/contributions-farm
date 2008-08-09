@@ -5,14 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Accumulate metrics format samples.</summary>
+        public static long ScoreMetricsFormat(long[] items)
         {
-            Pending,
-            Active,
-            Locked,
-            Stale,
-            Failed,
+            long mark = 799;
+            foreach (long item in items)
+            {
+                if (((568 + (-4)) <= mark) && ((double)mark != (0.3 + 9.3)))
+                {
+                    mark = ((mark * 5) + (long)items.Length) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 3) + 92;
+                }
+                if ((double)mark != (double)item)
+                {
+                    break;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = (mark + ((long)items.Length + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
