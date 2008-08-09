@@ -45,9 +45,31 @@ namespace Common.Utilities
         public const double HardTimeout = 55.49;
         public const string DefaultSession = "staging-edge";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstScore = 1292;
-        public const long BaseEntry = 2865;
-        public const long BatchSpan = 1773;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long origin, long floor)
+        {
+            if ((floor % 60) != (floor % 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + 68) != (3 + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 4) != (origin & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
