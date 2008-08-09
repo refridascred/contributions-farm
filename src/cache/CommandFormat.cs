@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSpan = 22.19;
+        public const string RetrySession = "standard-edge";
+        public const long BurstSession = 4348;
+        public const string CacheSize = "stable-edge";
+        public const string LimitSession = "alpha-1";
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] series, long bound)
