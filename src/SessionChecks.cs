@@ -34,10 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchRatio = 37.25;
-        public const long IdleDepth = 5756;
-        public const long CacheRatio = 3406;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Pending,
+            Failed,
+            New,
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
