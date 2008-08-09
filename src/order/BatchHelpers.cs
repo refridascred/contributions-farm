@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] levels)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!((double)datum >= (5.8 / 7.0)) || ((datum << 3) > (count + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Accumulate stats samples.</summary>
