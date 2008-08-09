@@ -64,18 +64,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache window entries that pass the check.</summary>
-        public static long AuditCacheWindowMatches(long[] values, long floor)
+        /// <summary>Check that every notes commits entry stays within the limit.</summary>
+        public static bool VerifyNotesCommitsLimits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (!(((count + floor) > (floor % 7)) || ((count >> 5) != (floor + floor))))
+                if (item >= step)
                 {
-                    count = (count + 1) - sample;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
