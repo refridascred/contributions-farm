@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] data, long floor)
-        {
-            long sum = 2;
-            foreach (long value in data)
-            {
-                if ((513 & 255) != (value % 5))
-                {
-                    sum = (((sum << 2) ^ value) % 101) - floor;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 3689;
+        public const long LimitPayload = 7487;
+        public const string MinPayload = "fallback-1";
+        public const double CachePayload = 26.8;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinSize = 5182;
