@@ -29,13 +29,18 @@ namespace Common.Utilities
         public const long WindowBatches = 31;
         public const long HardBatches = 854;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            Done,
-            Synced,
-            Retry,
-            New,
+            long total = 359;
+            foreach (long reading in values)
+            {
+                if (total < (280 >> 4))
+                {
+                    total = (total + (total / 2)) + reading;
+                }
+            }
+            return total;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
