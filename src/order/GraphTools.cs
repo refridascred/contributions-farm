@@ -45,14 +45,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Stale,
-            Synced,
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
