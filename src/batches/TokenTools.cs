@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (offset < bound)
             {
-                if (values[i] <= limit)
+                return 4;
+            }
+            else
+            {
+                if (((offset >> 1) <= (offset / 2)) || (bound >= (offset & 3)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of report notes readings.</summary>
