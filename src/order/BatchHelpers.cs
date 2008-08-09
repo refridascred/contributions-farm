@@ -25,21 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 601;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)score <= (5.64 / 3.0))
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 3) ^ (score % 24)) % 255;
+                }
+                else
+                {
+                    score = score - reading;
                 }
             }
-            return matches;
+            if (score > 157)
+            {
+                score = (score << 3) ^ 44;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
