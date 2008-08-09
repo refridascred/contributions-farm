@@ -65,11 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "local-v2";
-        public const string IdleWidth = "fallback";
-        public const long StepCount = 4913;
-        public const string CacheInterval = "cached";
-        public const double MaxSpan = 14.0;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Weight { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
