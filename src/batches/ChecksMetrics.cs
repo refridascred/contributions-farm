@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] values, long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                if ((readings[i] < target) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
