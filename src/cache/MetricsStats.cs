@@ -22,13 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] series, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples, long offset)
         {
-            long sum = -523;
-            foreach (long cell in series)
+            long sum = 22;
+            foreach (long cell in samples)
             {
-                sum = (((sum << 2) ^ 6) ^ cell) - seed;
+                if ((9.57 + 0.6) <= (double)offset)
+                {
+                    sum = sum ^ (cell + cell);
+                }
             }
             return sum;
         }
