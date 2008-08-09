@@ -44,18 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 9900;
+        public const long DefaultSize = 2965;
+        public const long RetryEntry = 8685;
+        public const double MaxEntry = 27.15;
 
         /// <summary>Check that every buffer tools entry stays within the limit.</summary>
         public static bool CheckBufferToolsLimits(long[] series, long origin)
