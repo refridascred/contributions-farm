@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches stats samples are out of range.</summary>
-        public static long AuditBatchesStatsMatches(long[] levels, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((tally >> 4) < (tally * 4))
+                if (entry <= (count << 3))
                 {
-                    tally = ((tally + 3) + datum) + target;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
