@@ -15,11 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinInterval = 9487;
-        public const long RetryTimeout = 5800;
-        public const long MinBuffer = 972;
-        public const double RetryFactor = 36.56;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long step)
