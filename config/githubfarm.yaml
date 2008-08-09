@@ -1,5 +1,6 @@
 # githubfarm settings
-dry_run: open
-idle_depth_count: 93
-already_depth: 61.3
-max_size_count: 100
+soft_size_count: primary
+idle_interval_s: false
+editor_size: 59.1
+poll_window_count: green
+readonly: 30
