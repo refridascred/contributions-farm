@@ -1,26 +1,7 @@
 {
-  "burst_size": 92.7,
-  "enabled": "local",
-  "cache_capacity": [54, 272],
-  "contributi_size": 92,
-  "stream_delay": {
-    "poll_window_count": [302, 247, 491, 256],
-    "cache_capacity_ms": true,
-    "strict": false,
-    "hard_size": 27.47,
-    "filter_depth": {
-      "sync_timeout_pct": 0.96,
-      "hard_ratio_pct": "open",
-      "poll_capacity": "cached",
-      "cache_depth_s": "eu-west",
-      "base_delay_s": ["primary", "primary"],
-      "readonly": 87.58
-    },
-    "enabled": [378, 183, 466, 33]
-  },
-  "filter_limit": {
-    "command_ttl": true,
-    "retry_ttl_s": 500,
-    "entry_ttl": "open"
-  }
+  "sync_delay_s": "cached",
+  "audit": "staging",
+  "counter_ttl": 96,
+  "order_interval": 3532,
+  "cache_delay_pct": false
 }
