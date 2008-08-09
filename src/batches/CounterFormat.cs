@@ -26,16 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry - (carry % 64);
-                carry = ((carry * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
