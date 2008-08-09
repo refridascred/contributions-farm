@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+mode="${1:-legacy}"
 case "${mode}" in
-    legacy)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=43
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
