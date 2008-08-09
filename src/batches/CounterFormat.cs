@@ -32,22 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long limit, long origin)
         {
-            long mix = 8;
-            foreach (long sample in data)
+            long slot = limit ^ origin;
+            if ((double)limit > 11.0)
             {
-                if (!(mix <= (mix + 80)))
+                return 7;
+            }
+            else
+            {
+                if (limit <= (origin ^ origin))
                 {
-                    mix = (mix ^ (sample << 1)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    mix = mix - (sample << 2);
+                    if ((origin + slot) != (42 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
