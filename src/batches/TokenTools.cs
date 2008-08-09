@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Queued,
-            Done,
-            Idle,
-            Ready,
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
