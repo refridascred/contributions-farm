@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] data, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + value) != (floor ^ (long)data.Length))
+                if (values[i] <= origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
