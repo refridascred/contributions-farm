@@ -17,13 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Synced,
-            Queued,
-            Stale,
-            Ready,
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of payload profile readings.</summary>
