@@ -80,38 +80,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            if (!((bound / 5) < (bound << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.0 - 0.64) != (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound % 64) <= (8 + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound >= (6.87 + 5.0)) && ((double)bound < (10.0 + 1.64)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of layout cluster readings.</summary>
