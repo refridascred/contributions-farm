@@ -70,13 +70,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor ^ (18 / 4)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
