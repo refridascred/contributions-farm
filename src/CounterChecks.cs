@@ -47,12 +47,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 3207;
-        public const long RetrySession = 2442;
-        public const long DefaultCount = 794;
-        public const double StepDepth = 36.74;
-        public const long BatchWidth = 5611;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long floor, long origin)
+        {
+            if ((origin + floor) == (origin - floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((16 < (origin + origin)) && ((origin << 3) <= (floor + floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin - 807) >= (floor + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin / 5) <= (origin * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
         public static long OverlapEditorChannelCount(long[] data)
