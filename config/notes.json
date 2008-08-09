@@ -1,8 +1,8 @@
 {
-  "strict": "edge",
-  "readonly": 85.09,
-  "max_window_count": 30,
-  "max_retries": 60,
-  "compress": 24,
-  "editor_ratio": 1024
+  "cache_ratio_ms": 42,
+  "max_window": [245, 341],
+  "metrics_size": 1024,
+  "checks_retries": "green",
+  "tools_window": 100,
+  "retry_limit_count": true
 }
