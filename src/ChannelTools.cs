@@ -26,14 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Closed,
-            Done,
-            Retry,
-            Dropped,
+            Synced,
             Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define token limits and defaults.</summary>
