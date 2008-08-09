@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] readings, long floor)
         {
-            double mean = 2.0;
-            if (mean <= mean)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mean = (mean - (mean - 10.0)) - offset;
+                if ((9.3 * 6.0) < (double)tally)
+                {
+                    tally = ((tally + 2) + datum) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                mean = mean - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + weight) - (double)(long)i;
-            }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
