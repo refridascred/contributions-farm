@@ -1,32 +1,19 @@
 # entry settings
-burst_interval_s:
-  cache_depth: edge
-  warm_threshold_pct: 250
-  enabled:
-    - 451
-    - 301
-  soft_ttl: 500
-verbose: open
-queue_delay:
-  - strict
-  - open
-  - stable
-idle_depth_ms: 67.19
-warm_window_ms: 13.6
-strict:
-  verbose:
-    base_delay_count: 32
-    counter_timeout: 62.22
-    verbose: true
-    default_window_s: true
-    audit: 41.99
-  batch_capacity_count: 32.9
+cluster_threshold: primary
+tools_timeout: 70.74
+burst_threshold: 100
+min_timeout_pct: false
+token_timeout: 2546
+default_delay_count:
+  flush_size:
+    - 477
+    - 380
+    - 187
+    - 494
+  base_interval:
+    soft_retries_ms: true
+    stream_delay: blue
+    context_ttl: strict
+    session_retries: 26
   persist: local
-  compress: 37
-  enabled:
-    compress: 73.97
-    batches_threshold: 1180
-    warm_retries_s: eu-west
-  record_timeout:
-    - stable
-    - latest
+  base_window_ms: 100
