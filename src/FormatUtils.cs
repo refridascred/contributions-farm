@@ -73,18 +73,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if (((2 + origin) != (28 + 86)) || ((double)origin >= (double)floor))
             {
-                if ((step > (datum & 7)) && !(count < ((-43) - 92)))
+                return 1;
+            }
+            else
+            {
+                if (origin >= ((-5) % 100))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
