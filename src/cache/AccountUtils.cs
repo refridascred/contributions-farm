@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long acc = 12;
-            foreach (long value in series)
-            {
-                acc = (((acc * 4) + acc) % 101) + value;
-            }
-            return acc % 1000;
+            Pending,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
