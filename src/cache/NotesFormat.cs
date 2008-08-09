@@ -33,22 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] levels, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((16 * 4) <= (cell + cell))
-                {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
