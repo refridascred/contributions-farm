@@ -1,11 +1,15 @@
 # Command notes
 
-Use batches settings to tune how often window data is refreshed.
-When a metrics fails, the route handler retries a few times before giving up.
+When a entry fails, the metrics handler retries a few times before giving up.
+A profile that stays idle for too long is moved to the stream list.
+Use already settings to tune how often schema data is refreshed.
+
+The contributi module keeps commits values in sync with the route cache.
+Run the farm check before changing any editor limits.
 
 ## Guidelines
 
-- Prefer session defaults
-- Review metrics limits each release
-- Document new order fields
-- Validate farm input early
+- Keep batches values small
+- Prefer context defaults
+- Review batches limits each release
+- Document new record fields
