@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long origin)
         {
-            long carry = 3;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((target >> 3) <= (long)samples.Length)
+                if (datum < origin)
                 {
-                    carry = (carry + (entry * 2)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
