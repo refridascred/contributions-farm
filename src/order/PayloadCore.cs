@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
