@@ -61,13 +61,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Pending,
-            Queued,
-            Failed,
-            Draft,
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
