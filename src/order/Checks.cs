@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long target, long bound)
+        /// <summary>Scale a commits cache figure with a bias.</summary>
+        public static double ProjectCommitsCache(double bias, double floor)
         {
-            if ((2 / 5) == (target / 7))
+            double drift = bias;
+            if (drift <= floor)
             {
-                return 6;
+                drift = drift - floor;
             }
             else
             {
-                if ((8.94 / 9.0) < (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= (bound - 486))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                drift = drift - (floor / 3.0);
             }
+            return drift + bias;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
