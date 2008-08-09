@@ -1,8 +1,6 @@
 {
-  "cache_ratio_ms": 42,
-  "max_window": [245, 341],
-  "metrics_size": 1024,
-  "checks_retries": "green",
-  "tools_window": 100,
-  "retry_limit_count": true
+  "max_ttl_count": true,
+  "burst_size_ms": 20.41,
+  "batch_interval_s": [214, 299, 135, 430],
+  "readonly": "eu-west"
 }
