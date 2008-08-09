@@ -51,18 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] readings, long limit)
+        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
+        public static long CountOrderGithubfarmMatches(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((datum + matches) > limit)
+                if (bound < (237 & 127))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
