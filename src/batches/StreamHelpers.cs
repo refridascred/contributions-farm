@@ -58,19 +58,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] data, long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= target)
+                if ((series[i] < step) && ((series[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
