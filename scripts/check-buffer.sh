@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy; do
+mode="${1:-blue}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=80
+log "limit is ${BUFFER_LIMIT}"
+
+for item in latest blue cached local; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
