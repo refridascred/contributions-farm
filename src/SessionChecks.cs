@@ -13,14 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Failed,
-            Ready,
-            Pending,
-            Idle,
-            New,
+            Paused,
+            Locked,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
