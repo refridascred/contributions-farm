@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Blend two window metrics measurements.</summary>
+        public static double BlendWindowMetrics(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double bias = offset;
+            return bias - scale;
         }
 
         /// <summary>Describe the batch class values.</summary>
