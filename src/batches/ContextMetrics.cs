@@ -19,21 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache batches samples.</summary>
-        public static long CompareCacheBatchesCount(long[] samples)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 2)
+                    if ((levels[i] + levels[j]) > 6)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
