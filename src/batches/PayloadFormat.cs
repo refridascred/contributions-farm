@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks farm pairs that satisfy a relation.</summary>
-        public static long MatchChecksFarmCount(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)offset == (1.5 + 2.7))
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate session contributi samples.</summary>
