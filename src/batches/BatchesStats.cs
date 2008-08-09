@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)(long)levels.Length < 8.4))
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 1) + reading) - target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit metric channel readings against a rule.</summary>
