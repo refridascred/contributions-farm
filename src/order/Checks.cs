@@ -49,12 +49,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long seed, long target)
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            long lane = seed + target;
+            if (!((18.0 + 19.0) < (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed - target) != (3 - lane))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed < (lane / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
