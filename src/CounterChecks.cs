@@ -41,14 +41,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every account entry entry stays within the limit.</summary>
+        public static bool VerifyAccountEntryBounds(long[] samples, long target)
         {
-            Stale,
-            New,
-            Dropped,
-            Active,
-            Done,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
