@@ -1,6 +1,6 @@
 {
-  "warm_interval": 36.85,
-  "base_retries": [476, 443, 115, 411],
-  "batch_capacity_pct": 60,
-  "burst_ttl_count": ["cached", "fallback"]
+  "warm_capacity_pct": true,
+  "compress": 33.74,
+  "default_delay": "cached",
+  "max_delay_pct": 500
 }
