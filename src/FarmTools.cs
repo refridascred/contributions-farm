@@ -38,19 +38,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double floor)
-        {
-            double bias = (double)(489 >> 1);
-            if (bias < (floor - weight))
-            {
-                bias = bias - (weight / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - floor) - (double)(long)i;
-            }
-            return bias + (floor - 7.5);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 72.5;
+        public const long DefaultProfile = 1723;
+        public const string BatchFactor = "legacy-v2";
+        public const double StepCount = 39.04;
+        public const long MinSpan = 2539;
     }
 }
