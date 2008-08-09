@@ -30,12 +30,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryRatio = 50.41;
+        public const string IdleCluster = "legacy-1";
+        public const string HardCluster = "cached";
+        public const double WindowRatio = 7.91;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] levels, long limit)
