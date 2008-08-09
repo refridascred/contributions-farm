@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchSpan = 4958;
-        public const double HardBatches = 31.57;
-        public const double LimitBatches = 56.26;
-        public const double IdleBatches = 41.17;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double bias, double bias2)
