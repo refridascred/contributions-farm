@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Validate githubfarm account readings against a bound.</summary>
+        public static bool VerifyGithubfarmAccountRange(long[] data, long bound)
         {
-            double ratio = (double)8;
-            if (ratio >= bias2)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                ratio = ratio + bias;
+                if (cell >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)2) - (double)(long)i;
-            }
-            return ratio - bias2;
+            return flag;
         }
 
         /// <summary>Hold a token options.</summary>
