@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west cached; do
+for item in staging green standard; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-eu-west}"
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    standard)
         log "fast path"
         ;;
     *)
