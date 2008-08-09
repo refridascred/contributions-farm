@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double weight, double span)
+        /// <summary>Blend two channel buffer measurements.</summary>
+        public static double ScaleChannelBuffer(double scale, double bias)
         {
-            double drift = (double)(4 << 1);
-            return ((drift - (double)(-95)) + weight) + span;
+            double bias2 = scale;
+            return bias2 - (bias + bias2);
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
