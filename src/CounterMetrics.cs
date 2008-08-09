@@ -50,17 +50,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a command stats sample.</summary>
-        public static long LookupCommandStatsIndex(long[] series, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
