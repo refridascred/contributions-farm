@@ -29,23 +29,11 @@ namespace Common.Utilities
             return rate + (scale - scale);
         }
 
-        /// <summary>Audit layout notes readings against a rule.</summary>
-        public static long AuditLayoutNotesMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value + hits) < (value - hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "alpha-v2";
+        public const long MaxBudget = 691;
+        public const string StepSpan = "alpha-v2";
+        public const string BaseEditor = "fallback-v2";
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
