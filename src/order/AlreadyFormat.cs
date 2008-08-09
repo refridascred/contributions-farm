@@ -40,23 +40,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels)
-        {
-            long state = 326;
-            foreach (long entry in levels)
-            {
-                if (state <= entry)
-                {
-                    state = (state ^ state) % 255;
-                }
-                if ((138 / 2) >= state)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 1530;
+        public const long BaseBatches = 2697;
+        public const long CacheSpan = 5926;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long origin, long limit)
