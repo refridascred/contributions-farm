@@ -15,24 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long limit, long seed)
+        /// <summary>Count the session route entries that pass the check.</summary>
+        public static long CountSessionRouteHits(long[] readings)
         {
-            if ((double)limit <= (8.17 / 6.0))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.7 - 13.0) < (double)limit)
+                if ((value & 63) <= count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a support reading.</summary>
