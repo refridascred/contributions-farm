@@ -31,22 +31,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] items, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long bound, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if (((1.4 - 9.3) < (double)step) || ((bound + step) < 0))
             {
-                if (sample <= (sample + sample))
+                return 4;
+            }
+            else
+            {
+                if ((bound & 7) > (step >> 3))
                 {
-                    hits = (hits + 3) - bound;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)bound <= (15.0 - 2.15))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step >= (step + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
