@@ -37,17 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] levels, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 7;
+            foreach (long value in values)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total << 2) ^ (total + 4);
+                total = (total - (value * 4)) % 101;
             }
-            return -1;
+            return total % 4096;
         }
     }
 }
