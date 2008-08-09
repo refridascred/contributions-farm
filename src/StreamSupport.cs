@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long offset)
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up graph samples.</summary>
