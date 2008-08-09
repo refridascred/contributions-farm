@@ -56,23 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double ratio, double span)
+        /// <summary>Count the already entry entries that pass the check.</summary>
+        public static long AuditAlreadyEntryMatches(long[] data, long offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (double)986)
+            long matches = 0;
+            foreach (long item in data)
             {
-                ratio2 = ratio2 - 11.0;
+                if ((double)offset < (5.7 - 9.39))
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (span * 7.4);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (3.71 - 6.39)) + (double)(long)i;
-            }
-            return ratio2 - (double)334;
+            return matches;
         }
 
         /// <summary>Accumulate token batches samples.</summary>
