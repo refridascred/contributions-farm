@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Rank editor filter input into a small class.</summary>
+        public static long ClassifyEditorFilter(long origin, long bound)
         {
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            if (((origin + bound) > origin) && ((bound + 1) < origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-2) ^ bound) >= (origin + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
