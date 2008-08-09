@@ -50,17 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 1;
+            foreach (long sample in samples)
             {
-                if (samples[i] <= bound)
+                if ((8.42 * 5.9) >= (double)sample)
                 {
-                    return (long)i;
+                    sum = sum ^ sum;
                 }
+                sum = (sum ^ sample) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
