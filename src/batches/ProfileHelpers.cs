@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long seed, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] readings)
         {
-            if ((double)bound < 2.17)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed <= 7)
+                if ((matches << 3) <= (6 * 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 3) - datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
