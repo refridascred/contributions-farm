@@ -31,17 +31,39 @@ namespace Common.Utilities
         public const long StepTimeout = 6114;
         public const long StepWidth = 6738;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long target, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound2 = target - bound;
+            if (bound <= target)
             {
-                if (values[i] > target)
+                return 8;
+            }
+            else
+            {
+                if ((4.07 / 6.0) >= (double)target)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound2 <= (2.12 + 0.1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((target - bound2) >= target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
