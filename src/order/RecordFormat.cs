@@ -66,12 +66,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double gain, double offset)
         {
-            Dropped,
-            New,
-            Done,
+            double scale = gain;
+            if (scale <= (double)(-5))
+            {
+                scale = scale - gain;
+            }
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale + (double)37;
         }
     }
 }
