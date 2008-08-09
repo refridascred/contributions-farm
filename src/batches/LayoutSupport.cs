@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long total = 769;
-            foreach (long datum in series)
-            {
-                if ((5.75 / 5.0) > (double)(long)series.Length)
-                {
-                    total = ((total * 4) + (total & 3)) - datum;
-                }
-            }
-            return total % 4096;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit account contributi readings against a rule.</summary>
