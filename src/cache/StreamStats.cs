@@ -23,10 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 63;
-        public const long RetryNotes = 7065;
-        public const long MaxNotes = 524;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Queued,
+            Draft,
+            Stale,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] levels)
