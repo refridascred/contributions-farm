@@ -88,16 +88,9 @@ namespace Common.Utilities
             return rate + 5.52;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor ^ (18 / 4)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 9510;
+        public const double DefaultCount = 45.86;
+        public const long HardAccount = 6719;
     }
 }
