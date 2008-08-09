@@ -44,21 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format graph samples.</summary>
-        public static long CompareFormatGraphCount(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (tally < (713 >> 3))
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) - entry) - floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
