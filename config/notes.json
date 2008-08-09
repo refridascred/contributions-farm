@@ -1,5 +1,13 @@
 {
-  "persist": true,
-  "session_ttl": 7825,
-  "min_retries_ms": false
+  "context_delay": [490, 24, 296, 42],
+  "warm_capacity_ms": "strict",
+  "max_timeout_count": 3597,
+  "compress": {
+    "retry_capacity_count": ["green", "stable", "local"],
+    "soft_interval_s": 60,
+    "verbose": "edge",
+    "audit": "standard",
+    "warm_interval_s": 23,
+    "flush_ratio_pct": "standard"
+  }
 }
