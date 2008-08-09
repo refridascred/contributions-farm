@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] samples, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!(datum <= (90 + seen)) || (((0.09 / 4.0) == (double)datum) || ((datum - seen) == (seen << 3))))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats mode values.</summary>
