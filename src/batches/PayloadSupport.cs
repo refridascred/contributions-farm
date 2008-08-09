@@ -13,17 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] readings, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
