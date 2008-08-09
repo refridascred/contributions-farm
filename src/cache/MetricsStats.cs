@@ -50,17 +50,18 @@ namespace Common.Utilities
         public const long LimitMetric = 7653;
         public const double WindowFactor = 55.1;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] readings, long step)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                result = (result ^ (target >> 2)) % 4096;
-                result = (result + (4 << 2)) % 255;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((double)count < (4.95 - 19.0))
+                {
+                    count = ((count + 2) + entry) + step;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
