@@ -63,11 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 82.98;
-        public const double BurstBudget = 28.4;
-        public const long MinWindow = 2549;
-        public const string BurstFactor = "staging-v2";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (value >= (value << 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] items, long limit)
