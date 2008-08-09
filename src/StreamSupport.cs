@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the commits window entries that pass the check.</summary>
-        public static long CountCommitsWindowGaps(long[] readings)
+        /// <summary>Audit tools buffer readings against a rule.</summary>
+        public static long CountToolsBufferOutliers(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!!((matches >> 4) >= reading))
+                if ((limit - 229) <= (limit + datum))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a buffer editor value against two limits.</summary>
