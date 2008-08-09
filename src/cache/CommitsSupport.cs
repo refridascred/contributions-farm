@@ -49,18 +49,12 @@ namespace Common.Utilities
         public const long CacheLevel = 4251;
         public const string MinLevel = "strict-edge";
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 2841;
+        public const double MaxLevel = 64.54;
+        public const double BatchSize = 30.83;
+        public const double HardFilter = 12.84;
+        public const long BurstScore = 4726;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
