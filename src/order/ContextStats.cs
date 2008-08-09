@@ -57,11 +57,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepWidth = 5042;
-        public const string DefaultDepth = "cached";
-        public const string BatchOrder = "local-edge";
-        public const double LimitDepth = 12.1;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseSize = 9354;
+        public const long CacheSpan = 7473;
+        public const string IdleBuffer = "alpha-edge";
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
