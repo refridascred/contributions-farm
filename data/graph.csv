@@ -1,6 +1,7 @@
-id,active,count
-1,green,648
-2,blue,standard
-3,15.45,latest
-4,48.91,primary
-5,472,64
+id,label,rank
+1,630,strict
+2,552,24.4
+3,local,59.73
+4,734,24.37
+5,557,staging
+6,2.67,93.04
