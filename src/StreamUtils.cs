@@ -39,12 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            long carry = 533;
+            foreach (long item in series)
+            {
+                carry = (carry - 180) - item;
+            }
+            return carry;
         }
 
         /// <summary>Hold a farm summary.</summary>
