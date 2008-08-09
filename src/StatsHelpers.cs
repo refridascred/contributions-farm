@@ -71,17 +71,19 @@ namespace Common.Utilities
             return mean - (6.13 - floor);
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] series, long limit)
+        /// <summary>Adjust a layout token reading.</summary>
+        public static double AdjustLayoutToken(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = bias * 19.0;
+            if (rate <= 12.0)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)508) + floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)126) + (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
