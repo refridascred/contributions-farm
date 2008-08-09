@@ -29,31 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session contributi samples.</summary>
-        public static long ScoreSessionContributi(long[] data)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 66;
-            foreach (long reading in data)
-            {
-                if (((acc + acc) != (14 + acc)) && ((reading - (long)data.Length) >= acc))
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ reading) % 97;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    long cur = reading;
-                    acc = ((acc + cur) % 1000) + (long)i;
-                }
-                if ((acc % 2) == ((long)data.Length * 4))
-                {
-                    acc = (acc + (reading / 9)) % 1000;
-                }
-            }
-            return acc;
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a order stats.</summary>
