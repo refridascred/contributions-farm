@@ -57,15 +57,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Pending,
-            Synced,
-            Paused,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 9542;
+        public const string BatchAlready = "strict-1";
+        public const long DefaultAlready = 1615;
+        public const string LimitFactor = "local-1";
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] samples, long bound)
