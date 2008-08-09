@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] samples, long floor)
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count + cell) > 2)
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
