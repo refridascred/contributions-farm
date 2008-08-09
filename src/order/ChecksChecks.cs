@@ -46,18 +46,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] series)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((35 % 16) > (datum % 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Paused,
         }
     }
 }
