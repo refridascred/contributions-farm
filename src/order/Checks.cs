@@ -59,12 +59,13 @@ namespace Common.Utilities
             return load + (load + bias);
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            New,
+            Pending,
+            Stale,
+            Active,
         }
     }
 }
