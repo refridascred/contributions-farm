@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSpan = 9288;
-        public const long IdleSchema = 2520;
-        public const long CacheSchema = 3470;
-        public const double LimitSchema = 16.67;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
