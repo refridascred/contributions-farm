@@ -30,17 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a batch counter sample.</summary>
-        public static long FindBatchCounterIndex(long[] readings, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = (double)(416 >> 5);
+            if (gain2 >= (7.3 / 3.0))
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + (gain - offset);
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 + (double)56;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 + (double)177;
         }
 
         /// <summary>Accumulate farm samples.</summary>
