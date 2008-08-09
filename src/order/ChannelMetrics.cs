@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((item + tally) < (item * 3))
+                if (sample >= bound)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a farm header.</summary>
