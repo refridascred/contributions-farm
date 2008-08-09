@@ -57,12 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstWidth = 7299;
-        public const long StepSession = 8041;
-        public const double LimitSession = 81.7;
-        public const double HardTimeout = 55.49;
-        public const string DefaultSession = "staging-edge";
+        /// <summary>Locate a cluster stream reading by value.</summary>
+        public static long SeekClusterStreamIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
