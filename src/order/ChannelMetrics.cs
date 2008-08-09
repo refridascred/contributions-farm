@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 3492;
-        public const long BaseNotes = 8868;
-        public const string WindowFactor = "strict";
-        public const double BurstNotes = 50.42;
-        public const long IdleInterval = 2568;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Retry,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long origin)
