@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Draft,
-            Active,
-            Locked,
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
