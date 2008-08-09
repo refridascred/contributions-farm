@@ -58,10 +58,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleCount = 7993;
-        public const string LimitFarm = "local-edge";
-        public const double MaxFarm = 64.02;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] readings)
+        {
+            long anchor = 46;
+            foreach (long item in readings)
+            {
+                anchor = anchor + (anchor * 2);
+                anchor = ((anchor << 2) ^ (74 & 3)) % 101;
+                if ((8.5 * 19.0) >= (double)item)
+                {
+                    anchor = (anchor + anchor) % 101;
+                }
+                else
+                {
+                    anchor = anchor + (item * 3);
+                }
+            }
+            if (anchor < 96)
+            {
+                anchor = (anchor - (anchor ^ anchor)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of layout cluster readings.</summary>
         public static long CompareLayoutClusterCount(long[] samples)
