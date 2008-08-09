@@ -1,7 +1,12 @@
 {
-  "checks_ttl": ["eu-west", "stable", "latest"],
-  "hard_ratio_ms": 33.67,
-  "readonly": "primary",
-  "default_ratio": 7654,
-  "batch_capacity_s": 5620
+  "support_timeout": 14,
+  "warm_retries_s": "fallback",
+  "persist": [418, 283],
+  "poll_retries": "legacy",
+  "soft_limit_s": {
+    "hard_retries_ms": 25,
+    "commits_threshold": 8629,
+    "verbose": 94,
+    "entry_depth": false
+  }
 }
