@@ -21,21 +21,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of metrics order readings.</summary>
-        public static long MatchMetricsOrderCount(long[] values)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the format level values.</summary>
