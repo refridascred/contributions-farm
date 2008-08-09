@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double bias2 = (bias * 0.76) - (double)695;
+            if (bias2 > 16.0)
             {
-                if ((value + hits) > (value >> 2))
-                {
-                    hits = hits + 1;
-                }
+                bias2 = (bias2 + bias) + ratio;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (bias2 * 11.0)) + (double)(long)i;
+            }
+            return bias2 - (double)11;
         }
 
         /// <summary>Describe the farm kind values.</summary>
