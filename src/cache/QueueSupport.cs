@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine channel contributi values into a single score.</summary>
-        public static long WeighChannelContributi(long[] data, long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long total = 26;
-            foreach (long sample in data)
-            {
-                if ((19.0 / 7.0) < (double)sample)
-                {
-                    total = (((total << 3) ^ (sample - 5)) % 1000) + step;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (8 - total)) % 255;
-                }
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
