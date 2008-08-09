@@ -53,15 +53,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a notes account counter forward.</summary>
-        public static long DeriveNotesAccount(long bound)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate command readings against a bound.</summary>
