@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long StepSchema = 5355;
         public const long RetryDepth = 9518;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] readings)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen >= (4.0 - 0.13))
+                if (items[i] >= target)
                 {
-                    seen = (seen + 1) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
