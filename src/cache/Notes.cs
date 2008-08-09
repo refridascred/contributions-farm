@@ -34,17 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 2;
+            foreach (long reading in values)
             {
-                if (data[i] <= offset)
+                sum = (((sum * 4) + 786) % 4096) - reading;
+                if ((5.0 - 4.87) < (double)seed)
                 {
-                    return (long)i;
+                    sum = (sum ^ (seed + sum)) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
