@@ -33,23 +33,17 @@ namespace Common.Utilities
         public const long SoftSize = 4423;
         public const double LimitSpan = 35.9;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels, long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long limit)
         {
-            long total = 55;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total ^ 301;
-                if (cell > total)
+                if (values[i] == limit)
                 {
-                    total = (total * 2) + (origin / 2);
+                    return (long)i;
                 }
             }
-            if (total > 20)
-            {
-                total = ((total * 3) + (origin % 60)) % 4096;
-            }
-            return total;
+            return -1;
         }
     }
 }
