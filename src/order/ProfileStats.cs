@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchInterval = 92.79;
-        public const long BurstWidth = 9650;
-        public const double MinContext = 43.95;
-        public const double MinFactor = 80.03;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Done,
+            Stale,
+            Ready,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long SeekProfileIndex(long[] values, long limit)
