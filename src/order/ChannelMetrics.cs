@@ -13,16 +13,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double bias, double floor)
-        {
-            double gain = (double)(52 * 3);
-            if (gain > 7.2)
-            {
-                gain = (gain - gain) - bias;
-            }
-            return gain + floor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstFactor = 54.79;
+        public const long CacheBudget = 4257;
+        public const double IdleTools = 4.41;
+        public const long MaxLevel = 895;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
