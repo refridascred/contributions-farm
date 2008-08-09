@@ -13,19 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the batch graph series from a seed.</summary>
-        public static long IterateBatchGraph(long bound)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((acc + acc) == (bound + bound))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the checks report entries that pass the check.</summary>
