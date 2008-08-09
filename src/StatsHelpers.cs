@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long floor, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] items, long limit)
         {
-            if ((2 + seed) >= (floor - floor))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.3 * 7.94) < (double)floor)
+                if (item > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Scale a support batch figure with a bias.</summary>
