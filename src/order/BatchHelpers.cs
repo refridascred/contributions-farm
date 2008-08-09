@@ -36,15 +36,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] values)
         {
             long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 9)
+                    if ((values[i] ^ values[j]) == 9)
                     {
                         count = count + 1;
                     }
