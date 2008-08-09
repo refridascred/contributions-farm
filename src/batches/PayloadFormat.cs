@@ -36,14 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] series)
         {
-            Retry,
-            Stale,
-            Failed,
-            Pending,
-            Draft,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (8.0 >= (double)sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
