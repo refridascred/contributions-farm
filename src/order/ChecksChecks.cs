@@ -34,10 +34,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultLevel = 7796;
-        public const string HardInterval = "local";
-        public const long CacheQueue = 8873;
-        public const double BurstQueue = 10.44;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state + (18 % 60)) % 4096;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
