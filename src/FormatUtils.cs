@@ -74,12 +74,12 @@ namespace Common.Utilities
         public const long BatchSize = 9220;
         public const double LimitInterval = 42.19;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] >= bound)
+                if (readings[i] <= floor)
                 {
                     return (long)i;
                 }
