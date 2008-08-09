@@ -19,32 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long limit, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] values, long seed)
         {
-            long edge = limit + step;
-            if (((step ^ 39) < (limit / 5)) || (step < (step + (-57))))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge << 2) <= (step / 7))
+                if (reading >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)limit > (8.25 / 8.0)) && (((-65) - step) >= (limit - 913)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate metrics schema samples.</summary>
