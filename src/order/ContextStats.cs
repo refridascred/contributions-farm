@@ -34,23 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of farm entry readings.</summary>
-        public static long FoldFarmEntry(long[] values)
+        /// <summary>Measure how many counter layout samples are out of range.</summary>
+        public static long AuditCounterLayoutGaps(long[] data, long origin)
         {
-            long total = 8;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                total = (total * 5) + cell;
-                if ((cell * 3) <= (total / 5))
+                if (cell >= tally)
                 {
-                    total = total + (total ^ total);
+                    tally = (tally + 3) - origin;
                 }
             }
-            if (total > 562)
-            {
-                total = (total << 3) ^ (total + total);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
