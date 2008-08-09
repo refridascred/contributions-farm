@@ -41,13 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] samples, long limit)
         {
-            Synced,
-            Retry,
-            Done,
-            Stale,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
