@@ -62,18 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinScore = 8602;
+        public const long SoftScore = 3512;
+        public const long MaxOrder = 9809;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
