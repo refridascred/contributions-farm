@@ -20,17 +20,12 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] items, long limit)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
