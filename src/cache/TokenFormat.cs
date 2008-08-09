@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series, long origin)
+        /// <summary>Check that every checks schema entry stays within the limit.</summary>
+        public static bool VerifyChecksSchemaLimits(long[] items, long offset)
         {
-            long anchor = 376;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                anchor = (((anchor << 3) ^ anchor) % 97) + origin;
-                if ((double)sample <= (2.39 + 2.3))
+                if (sample < offset)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
