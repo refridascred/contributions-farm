@@ -1,5 +1,7 @@
 {
-  "hard_capacity_count": ["green", "local", "staging", "legacy"],
-  "persist": 54.35,
-  "soft_delay_pct": 53.26
+  "max_threshold_pct": 5618,
+  "base_ratio": "legacy",
+  "idle_retries_s": true,
+  "idle_threshold_count": [48, 235, 290, 404],
+  "batch_capacity_count": "green"
 }
