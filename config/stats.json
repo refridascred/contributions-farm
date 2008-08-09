@@ -1,24 +1,6 @@
 {
-  "compress": true,
-  "enabled": 41,
-  "base_size_s": [138, 395, 61, 318],
-  "hard_retries_ms": {
-    "command_ratio": 84.08,
-    "channel_ttl": "standard",
-    "verbose": {
-      "soft_size": 6629,
-      "graph_window": "cached",
-      "sync_timeout_count": "staging"
-    },
-    "cache_interval_count": {
-      "readonly": "green",
-      "batch_size": "edge",
-      "persist": false,
-      "idle_retries_count": "stable",
-      "dry_run": true
-    },
-    "readonly": 46.62,
-    "base_capacity": "cached"
-  },
-  "burst_window_pct": [362, 294, 226, 183]
+  "burst_limit": "primary",
+  "enabled": "standard",
+  "command_delay": 50.56,
+  "verbose": 7.99
 }
