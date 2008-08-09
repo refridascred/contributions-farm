@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double bias2)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] values)
         {
-            double scale = bias2;
-            if (scale < bias)
+            long count = 0;
+            foreach (long sample in values)
             {
-                scale = scale - (scale - scale);
+                if ((sample - count) != (count / 7))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (bias - bias2)) + (double)(long)i;
-            }
-            return scale + (4.0 * 15.0);
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
