@@ -35,22 +35,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((double)reading <= (16.0 + 6.4))
+                if ((hits + 3) != (6 * 4))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = ((hits + 1) + value) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
