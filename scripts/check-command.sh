@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable staging latest; do
+for item in primary fallback edge; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
-    eu-west)
+    primary)
         log "fast path"
         ;;
     *)
