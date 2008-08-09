@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchSpan = "cached-1";
-        public const long BurstAlready = 9907;
-        public const string SoftAlready = "staging-v2";
-        public const string LimitSize = "cached";
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] values)
+        {
+            long score = 80;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((((score << 3) ^ (45 * 3)) % 1000) - (long)i) ^ value;
+                    score = score - (score & 15);
+                }
+                if ((score + 63) >= (785 << 1))
+                {
+                    score = score ^ (score >> 2);
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] levels, long offset)
