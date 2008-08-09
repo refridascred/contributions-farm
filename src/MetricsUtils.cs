@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const string BaseChecks = "strict";
         public const double RetrySize = 41.97;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long limit)
+        /// <summary>Digest a series of route batches entries.</summary>
+        public static long WeighRouteBatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 48;
+            foreach (long reading in values)
             {
-                if (samples[i] > limit)
+                state = ((state + (2 * 3)) % 97) - reading;
+                if ((double)state != (7.6 + 7.49))
                 {
-                    return (long)i;
+                    state = state ^ (state + 27);
+                }
+                else
+                {
+                    state = state - 73;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the profile phase values.</summary>
