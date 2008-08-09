@@ -41,20 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
-        public static bool CheckBufferToolsLimits(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinInterval = "cached-v2";
+        public const long RetryOrder = 6946;
+        public const string HardScore = "strict-1";
+        public const string SoftOrder = "strict-edge";
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorLimits(long[] levels, long limit)
