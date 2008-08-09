@@ -1,10 +1,11 @@
 # Command notes
 
-When a metrics fails, the session handler retries a few times before giving up.
-When a account fails, the context handler retries a few times before giving up.
+Keep command and window names short and lowercase.
+Each buffer is validated before it reaches the tools queue.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep format values small
-- Prefer token defaults
-- Validate entry input early
+- Keep session values small
+- Document new commits fields
+- Review account limits each release
