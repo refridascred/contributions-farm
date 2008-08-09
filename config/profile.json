@@ -1,5 +1,6 @@
 {
-  "githubfarm_ratio": true,
-  "cache_limit_s": 12.97,
-  "hard_ttl_s": 60
+  "retry_interval": 7,
+  "retry_delay_ms": 49.27,
+  "graph_timeout": 500,
+  "window_ttl": 35.66
 }
