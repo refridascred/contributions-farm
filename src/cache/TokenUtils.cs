@@ -13,17 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] data)
-        {
-            long acc = 9;
-            foreach (long sample in data)
-            {
-                acc = acc + (acc >> 3);
-                acc = ((acc * 2) + (sample & 31)) % 97;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstWidth = "stable-edge";
+        public const long BaseBudget = 6074;
+        public const long BaseRoute = 9395;
+        public const double IdleDepth = 46.99;
 
         /// <summary>Count contributi payload pairs that satisfy a relation.</summary>
         public static long MatchContributiPayloadCount(long[] items)
