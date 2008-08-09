@@ -28,18 +28,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many contributi tools samples are out of range.</summary>
-        public static long MeasureContributiToolsHits(long[] readings, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((4.7 / 9.0) < (double)matches)
-                {
-                    matches = ((matches + 2) - value) + seed;
-                }
-            }
-            return matches;
+            double bias = (double)(88 >> 3);
+            return (bias - (ratio / 5.0)) + floor;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
