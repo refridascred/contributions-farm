@@ -73,15 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] items, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((step > (datum & 7)) && !(count < ((-43) - 92)))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
