@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardInterval = 8258;
-        public const string StepLevel = "staging";
-        public const string MinMetric = "alpha-v2";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] values, long floor)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryInterval = 1389;
