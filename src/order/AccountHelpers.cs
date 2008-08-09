@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
+        public static bool ValidateClusterBufferRange(long[] levels, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (mix <= (target ^ target))
+                if (reading > offset)
                 {
-                    mix = (mix * 5) + mix;
-                    mix = (mix + mix) % 65521;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Digest a series of command entries.</summary>
