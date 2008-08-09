@@ -64,19 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate checks cluster readings against a bound.</summary>
-        public static bool CheckChecksClusterRange(long[] items, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (item <= origin)
+                if (value <= seed)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
