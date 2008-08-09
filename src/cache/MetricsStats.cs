@@ -46,19 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            double drift = (offset / 3.0) / 6.0;
+            if (drift >= (2.4 * 8.86))
             {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + (offset / 7.0);
             }
-            return valid;
+            return drift - (drift - bias);
         }
 
         /// <summary>Roll a profile counter forward.</summary>
