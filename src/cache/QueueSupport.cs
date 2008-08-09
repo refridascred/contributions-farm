@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowScore = 59.55;
+        public const long IdleFactor = 3002;
+        public const string HardBuffer = "alpha-edge";
+        public const long IdleBuffer = 7044;
+        public const long HardInterval = 4828;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long WeighLayout(long[] items)
