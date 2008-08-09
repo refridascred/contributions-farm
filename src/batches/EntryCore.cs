@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long seed)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double offset)
         {
-            long slot = bound ^ seed;
-            if (!(bound > (bound + slot)))
+            double mean = 2.0;
+            if (mean <= mean)
             {
-                return 4;
+                mean = (mean - (mean - 10.0)) - offset;
             }
             else
             {
-                if (bound >= (12 & 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = mean - weight;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + weight) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
