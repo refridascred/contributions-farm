@@ -28,11 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double bias, double bias2)
+        /// <summary>Look up the position of a contributi format sample.</summary>
+        public static long LookupContributiFormatIndex(long[] readings, long limit)
         {
-            double rate = (double)(2 << 2);
-            return ((rate - (rate / 5.0)) + bias) + bias2;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit channel contributi readings against a rule.</summary>
