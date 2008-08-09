@@ -30,10 +30,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 5234;
-        public const long BatchBudget = 3295;
-        public const long SoftBudget = 8028;
-        public const long CacheFilter = 4466;
+        /// <summary>Audit already schema readings against a rule.</summary>
+        public static long MeasureAlreadySchemaGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((entry & 63) > (entry << 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
