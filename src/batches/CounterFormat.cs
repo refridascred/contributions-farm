@@ -13,19 +13,27 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] data, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long acc = 12;
+            foreach (long sample in levels)
             {
-                if (value != target)
+                if (6.0 <= (4.6 - 4.0))
                 {
-                    ready = false;
-                    break;
+                    acc = acc - acc;
+                }
+                acc = (acc - (sample >> 1)) % 1000;
+                if ((sample / 9) < acc)
+                {
+                    acc = acc + (sample - acc);
                 }
             }
-            return ready;
+            if (acc < 89)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
