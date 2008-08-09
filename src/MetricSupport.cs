@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] data, long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)step < (1.76 + 4.5))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            Dropped,
+            Stale,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
