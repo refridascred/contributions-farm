@@ -13,18 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] levels, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((((hits >> 5) == (item - origin)) || ((item - origin) == (origin * 4))) || (((13.0 + 16.0) == (double)hits) && ((double)hits < (5.69 * 8.0))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double gain = (double)(289 + 8);
+            return (gain - offset) + ratio;
         }
 
         /// <summary>Roll a checks stream counter forward.</summary>
