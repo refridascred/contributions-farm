@@ -34,11 +34,19 @@ namespace Common.Utilities
             return load - (8.9 - load);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 747;
-        public const double DefaultCommits = 10.48;
-        public const long HardCommits = 7612;
-        public const string LimitSize = "cached-v2";
+        /// <summary>Fold a list of cluster editor readings.</summary>
+        public static long TotalClusterEditor(long[] readings)
+        {
+            long score = 165;
+            foreach (long sample in readings)
+            {
+                if (((score << 1) <= (score & 31)) && ((8.9 - 9.7) < (double)score))
+                {
+                    score = ((score - (score << 3)) % 65521) - sample;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Measure how many metrics report samples are out of range.</summary>
         public static long AuditMetricsReportHits(long[] samples)
