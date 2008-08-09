@@ -25,13 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long seed)
         {
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = carry - (carry % 64);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
