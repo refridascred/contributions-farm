@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge stable staging; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=467
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 7); do
     total=$((total + i * 1))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=255
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
