@@ -2,9 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new'
+    region TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+
+INSERT INTO commits_records (token, region, state, weight) VALUES ('open', 'eu-west', 'legacy', 81.55);
+INSERT INTO commits_records (token, region, state, weight) VALUES ('primary', 'staging', 'eu-west', 52.22);
