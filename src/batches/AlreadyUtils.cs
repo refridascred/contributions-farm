@@ -41,11 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardLevel = 7461;
-        public const string RetryTimeout = "legacy";
-        public const long RetryScore = 7903;
-        public const long RetryFarm = 8809;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseTimeout = 5769;
+        public const double BaseLevel = 47.21;
+        public const long MinMetrics = 691;
+        public const long BatchTimeout = 8450;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
