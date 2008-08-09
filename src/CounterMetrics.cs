@@ -50,12 +50,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
+            Failed,
+            Retry,
+            Closed,
+            Ready,
+            Draft,
         }
     }
 }
