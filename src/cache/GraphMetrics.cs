@@ -23,11 +23,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 37.93;
-        public const long StepFilter = 6397;
-        public const long DefaultWidth = 1404;
-        public const double MaxCount = 13.76;
+        /// <summary>Grade a cluster already value against two limits.</summary>
+        public static long GradeClusterAlready(long floor, long seed)
+        {
+            if ((9 - seed) <= 7)
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor >= (seed & 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor - floor) != (344 >> 4)) && ((double)floor < (8.9 - 4.33)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed < 1.29)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] items, long floor)
