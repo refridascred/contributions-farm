@@ -37,12 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit channel filter readings against a rule.</summary>
+        public static long AuditChannelFilterOutliers(long[] series)
         {
-            New,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((long)series.Length <= (hits << 3))
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
