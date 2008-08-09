@@ -1,11 +1,11 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the stats list.
-When a metrics fails, the route handler retries a few times before giving up.
-Keep queue and farm names short and lowercase.
+Keep already and format names short and lowercase.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new stream fields
-- Log every report change
-- Review account limits each release
+- Validate filter input early
+- Keep cluster values small
+- Review entry limits each release
+- Prefer payload defaults
