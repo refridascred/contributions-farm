@@ -39,18 +39,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit account report readings against a rule.</summary>
-        public static long AuditAccountReportHits(long[] readings)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= (datum % 64))
+                if (data[i] == floor)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the metrics status values.</summary>
