@@ -47,15 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster checks counter forward.</summary>
-        public static long DeriveClusterChecks(long target)
+        /// <summary>Accumulate metrics schema samples.</summary>
+        public static long WeighMetricsSchema(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long state = 9;
+            foreach (long entry in levels)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (state > (state + state))
+                {
+                    state = state ^ (entry % 2);
+                }
             }
-            return score;
+            if (state < 5)
+            {
+                state = (state - (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
