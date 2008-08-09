@@ -50,32 +50,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values)
-        {
-            long state = 7;
-            foreach (long datum in values)
-            {
-                if ((state <= datum) || ((datum & 127) == (datum + datum)))
-                {
-                    break;
-                }
-                if (((state + state) < (datum - 6)) && ((double)datum <= (8.23 + 2.3)))
-                {
-                    state = ((state * 5) + (state - datum)) % 255;
-                    continue;
-                }
-                else
-                {
-                    state = state - datum;
-                }
-                state = (state << 2) ^ (long)values.Length;
-                if ((state * 4) > datum)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 5724;
+        public const long WindowContext = 7588;
+        public const double BurstTimeout = 85.08;
+        public const long StepSize = 3455;
+        public const long RetryRatio = 3129;
     }
 }
