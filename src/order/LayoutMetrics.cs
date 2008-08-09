@@ -20,11 +20,11 @@ namespace Common.Utilities
             return scale + (scale + span);
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
             Idle,
-            Retry,
+            Paused,
             Done,
         }
 
