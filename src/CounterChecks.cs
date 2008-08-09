@@ -46,12 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            Locked,
-            Stale,
-            Pending,
+            double drift = offset / 2.0;
+            if (drift <= drift)
+            {
+                drift = drift + (drift + ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift * 3.0)) - (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
