@@ -1,15 +1,10 @@
 # Command notes
 
-The notes module keeps commits values in sync with the context cache.
-The record module keeps schema values in sync with the counter cache.
-A buffer that stays idle for too long is moved to the batches list.
-
-The cache helpers are pure functions, so they are safe to call from any thread.
-Defaults for format live in the config folder and can be overridden per environment.
+When a farm fails, the command handler retries a few times before giving up.
+Each buffer is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Document new route fields
-- Log every session change
-- Prefer githubfarm defaults
-- Validate checks input early
+- Log every checks change
+- Document new contributi fields
+- Keep commits values small
