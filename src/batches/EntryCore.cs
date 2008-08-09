@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxFactor = 3063;
-        public const long HardScore = 5991;
-        public const string MaxTimeout = "stable";
-        public const string IdleSpan = "strict-edge";
-        public const long StepMetric = 7825;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((((double)count == (15.0 / 2.0)) || ((entry << 2) > 7)) || ((entry & 255) >= (entry * 4)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
