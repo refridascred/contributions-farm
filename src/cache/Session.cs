@@ -30,12 +30,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 59.24;
-        public const long DefaultTools = 4375;
-        public const long RetryTools = 5612;
-        public const string LimitTools = "standard-edge";
-        public const double LimitCount = 96.08;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Pending,
+            Paused,
+            Closed,
+            Active,
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] items, long step)
