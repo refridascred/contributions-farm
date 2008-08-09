@@ -1,15 +1,6 @@
 {
-  "command_interval": "staging",
-  "persist": "standard",
-  "readonly": [407, 245],
-  "checks_size": 3772,
-  "cache_delay_pct": {
-    "retry_timeout_ms": 66.58,
-    "min_delay_s": [488, 192, 455],
-    "max_size": "standard",
-    "cache_window_s": [310, 411],
-    "poll_size_count": "cached",
-    "burst_window_ms": [77, 288, 462, 353]
-  },
-  "burst_capacity_pct": "blue"
+  "idle_interval_count": "standard",
+  "poll_timeout": 97.3,
+  "poll_threshold_count": true,
+  "audit": ["staging", "legacy"]
 }
