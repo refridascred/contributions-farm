@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (floor + 6.56) * 11.0;
+            if (drift > (5.6 / 6.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (scale / 9.0);
             }
-            return hits;
+            else
+            {
+                drift = drift + (floor * 17.0);
+            }
+            return drift - scale;
         }
 
         /// <summary>Describe the stream class values.</summary>
