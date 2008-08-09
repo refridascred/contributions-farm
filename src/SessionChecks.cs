@@ -40,13 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double ratio, double bias)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            double weight = 7.03;
+            if (weight > 0.1)
+            {
+                weight = (weight - (weight - weight)) - ratio;
+            }
+            else
+            {
+                weight = weight - (bias - 0.1);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (double)14) - (double)(long)i;
+            }
+            return weight + (double)612;
         }
 
         /// <summary>Describe the queue level values.</summary>
