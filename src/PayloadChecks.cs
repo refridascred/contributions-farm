@@ -40,14 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] levels, long offset)
         {
-            Locked,
-            Active,
-            Synced,
-            Done,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
