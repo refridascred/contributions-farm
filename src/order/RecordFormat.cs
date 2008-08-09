@@ -66,18 +66,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit profile command readings against a rule.</summary>
-        public static long TallyProfileCommandOutliers(long[] series)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (743 < (sample ^ tally))
+                if ((count << 1) <= (entry >> 4))
                 {
-                    tally = tally + 3;
+                    count = (count + 2) + floor;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
