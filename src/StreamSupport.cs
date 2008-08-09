@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the graph tools entries that pass the check.</summary>
-        public static long TallyGraphToolsOutliers(long[] levels, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((hits + 47) != (hits * 3))
+                if (count >= (reading >> 5))
                 {
-                    hits = ((hits + 2) ^ value) + step;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
