@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long offset, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if (offset < bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset >> 1) <= (offset / 2)) || (bound >= (offset & 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of report notes readings.</summary>
