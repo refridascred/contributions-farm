@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
