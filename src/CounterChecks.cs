@@ -75,38 +75,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long target, long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            if (((target / 3) >= (target - floor)) || ((6.0 + 14.0) != (double)floor))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)44 == (double)floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target < (638 >> 5))
+                    if ((series[i] ^ series[j]) < 17)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor > (floor + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
