@@ -1,16 +1,4 @@
 # githubfarm settings
-poll_window_pct: primary
-enabled: standard
-verbose: false
-sync_ratio_count:
-  - 177
-  - 352
-  - 104
-min_interval_count:
-  strict: true
-  warm_size_count: 250
-  audit: 70
-  notes_capacity: eu-west
-  idle_ttl: 75
-  idle_ratio_pct: 100
-base_capacity: 500
+compress: blue
+flush_interval_count: false
+poll_ratio: false
