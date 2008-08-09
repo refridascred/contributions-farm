@@ -13,18 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] series, long step)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((step - seen) >= (step - step)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) ^ sample;
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a buffer record.</summary>
