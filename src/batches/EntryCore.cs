@@ -56,15 +56,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings, long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long target2)
         {
-            long mix = 1;
-            foreach (long sample in readings)
+            long prev = target ^ target2;
+            if ((target2 + prev) >= target2)
             {
-                mix = (mix - origin) + sample;
+                return 2;
             }
-            return mix % 1000;
+            else
+            {
+                if ((target + target2) > (target2 + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
