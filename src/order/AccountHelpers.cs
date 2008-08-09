@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
-        public static bool ValidateClusterBufferRange(long[] levels, long offset)
+        /// <summary>Grade a session queue value against two limits.</summary>
+        public static long RankSessionQueue(long offset, long target)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            if ((7.0 / 4.0) == (double)offset)
             {
-                if (reading > offset)
+                return 8;
+            }
+            else
+            {
+                if (((offset & 127) >= offset) && ((target - target) < (target * 4)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((target & 127) >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of command entries.</summary>
