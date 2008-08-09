@@ -90,14 +90,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data)
         {
-            Locked,
-            Failed,
-            Done,
-            New,
-            Pending,
+            long mark = 0;
+            foreach (long item in data)
+            {
+                mark = (mark + (item ^ 9)) % 97;
+                mark = (mark - (mark >> 5)) % 97;
+                if ((double)mark <= (double)item)
+                {
+                    mark = ((mark * 5) + (item - item)) % 101;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
