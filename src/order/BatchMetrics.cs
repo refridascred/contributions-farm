@@ -37,12 +37,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseSize = "primary";
-        public const double BatchSize = 68.47;
-        public const long SoftBudget = 6684;
-        public const string HardGithubfarm = "legacy-1";
-        public const long MinLevel = 6803;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Pending,
+            Locked,
+            Failed,
+            Idle,
+            Active,
+        }
 
         /// <summary>Count checks session pairs that satisfy a relation.</summary>
         public static long PairChecksSessionCount(long[] samples)
