@@ -51,18 +51,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] items, long target)
+        /// <summary>Grade a layout support value against two limits.</summary>
+        public static long GradeLayoutSupport(long bound, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((step - bound) <= step)
             {
-                if ((hits / 2) <= target)
+                return 3;
+            }
+            else
+            {
+                if (((double)step == (6.2 + 4.73)) && (bound < 581))
                 {
-                    hits = (hits + 2) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if ((step - bound) < 0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)bound < (1.43 - 8.9)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
