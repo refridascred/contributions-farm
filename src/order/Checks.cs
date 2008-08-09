@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const long RetryFilter = 3310;
         public const string IdleWidth = "staging-edge";
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double scale, double span)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            double load = (double)86 * 6.66;
+            return ((load + (12.0 + load)) + scale) + span;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
