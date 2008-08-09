@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 2814;
-        public const long BurstSize = 2681;
-        public const long MaxContext = 8039;
-        public const double SoftScore = 20.04;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double bias, double bias2)
+        {
+            double rate = bias;
+            if (rate <= (double)47)
+            {
+                rate = rate - (bias + bias2);
+            }
+            return rate + bias;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsLimits(long[] items, long offset)
