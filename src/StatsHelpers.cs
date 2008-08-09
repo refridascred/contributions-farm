@@ -28,15 +28,19 @@ namespace Common.Utilities
             return bias + (bias + ratio);
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples, long seed)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double scale, double offset)
         {
-            long acc = 470;
-            foreach (long item in samples)
+            double ratio = offset;
+            if (ratio <= (offset / 7.0))
             {
-                acc = ((acc + (item & 127)) % 97) - seed;
+                ratio = ratio - (9.1 + ratio);
             }
-            return acc;
+            else
+            {
+                ratio = ratio + (double)6;
+            }
+            return ratio - (offset - scale);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
