@@ -36,15 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format metrics value from a seed.</summary>
-        public static long RollFormatMetrics(long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Synced,
+            Retry,
+            Done,
+            Stale,
         }
     }
 }
