@@ -34,11 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 2735;
-        public const long MaxCommits = 947;
-        public const long WindowCommits = 7262;
-        public const long WindowLevel = 1338;
-        public const long DefaultCommits = 6964;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 6047;
+        public const long SoftRatio = 8193;
+        public const string IdleCount = "primary-v2";
+        public const string CacheTimeout = "alpha";
     }
 }
