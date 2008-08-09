@@ -1,14 +1,6 @@
 {
-  "format_depth": 30,
-  "dry_run": {
-    "window_capacity": "latest",
-    "hard_delay": "open",
-    "batches_ttl": "standard",
-    "strict": "legacy",
-    "poll_limit_count": "strict",
-    "checks_depth": 72
-  },
-  "min_retries": ["standard", "legacy", "fallback", "eu-west"],
-  "warm_window_ms": ["strict", "local", "green", "eu-west"],
-  "max_limit_count": 69
+  "poll_ttl_pct": "strict",
+  "retry_delay_count": 2,
+  "max_threshold_pct": 97,
+  "idle_limit": "open"
 }
