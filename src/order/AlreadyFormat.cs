@@ -37,22 +37,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double load = (double)92 * 3.0;
+            if (load < load)
             {
-                if (((seen ^ 900) >= (7 - sample)) && ((seen - sample) < seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load - (span * 6.99);
             }
-            return seen;
+            else
+            {
+                load = load + (double)26;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (span - weight)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
