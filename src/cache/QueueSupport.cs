@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const string BurstRatio = "staging-v2";
         public const string RetryInterval = "legacy";
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Audit entry command readings against a rule.</summary>
+        public static long TallyEntryCommandMatches(long[] series)
         {
-            long score = 538;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!(datum >= (score & 3)))
+                if ((5.7 - 3.3) < (double)tally)
                 {
-                    score = score + score;
-                }
-                else
-                {
-                    score = (score ^ score) % 97;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            if (score < 7)
-            {
-                score = ((score * 2) + (score >> 2)) % 101;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
