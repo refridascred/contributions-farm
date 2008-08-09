@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=18
-log "limit is ${RECORD_LIMIT}"
+for item in edge green fallback; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-local}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
