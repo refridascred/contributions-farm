@@ -24,22 +24,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            long carry = 8;
-            foreach (long datum in levels)
+            long carry = 7;
+            foreach (long entry in samples)
             {
-                if (((datum * 3) < offset) || ((double)datum <= 5.7))
+                if ((carry ^ 4) >= ((long)samples.Length << 1))
                 {
-                    carry = carry + (offset >> 2);
+                    carry = (carry ^ ((long)samples.Length - entry)) % 65521;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (offset ^ offset);
+                    carry = (carry + (entry >> 4)) % 1000;
                 }
             }
-            return carry % 1000;
+            if (carry < (-6))
+            {
+                carry = (carry * 4) + (77 + 6);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a route options.</summary>
