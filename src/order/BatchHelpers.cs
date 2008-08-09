@@ -25,26 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long score = 601;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)score <= (5.64 / 3.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score << 3) ^ (score % 24)) % 255;
-                }
-                else
-                {
-                    score = score - reading;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 157)
-            {
-                score = (score << 3) ^ 44;
-            }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
