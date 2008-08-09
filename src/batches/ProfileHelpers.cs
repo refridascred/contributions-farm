@@ -61,15 +61,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double bias2)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double rate = bias;
-            if (rate <= rate)
-            {
-                rate = rate + bias2;
-            }
-            return rate + (bias2 - rate);
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
