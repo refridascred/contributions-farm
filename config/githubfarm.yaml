@@ -1,6 +1,11 @@
 # githubfarm settings
-soft_size_count: primary
-idle_interval_s: false
-editor_size: 59.1
-poll_window_count: green
-readonly: 30
+batch_threshold_pct:
+  - 484
+  - 213
+  - 380
+  - 115
+sync_limit: 79.29
+soft_ratio_count:
+  - 70
+  - 155
+  - 52
