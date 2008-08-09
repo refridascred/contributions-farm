@@ -12,19 +12,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] levels, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long step)
         {
-            long acc = 12;
-            foreach (long datum in levels)
+            if ((double)bound >= (8.0 * 7.5))
             {
-                acc = (acc - origin) - datum;
-                if (((17.0 / 6.0) != (double)acc) && ((double)origin <= (2.3 - 12.0)))
+                return 0;
+            }
+            else
+            {
+                if ((step & 127) != (bound ^ step))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
