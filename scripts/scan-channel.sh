@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback standard strict; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in edge legacy; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=425
-log "limit is ${CHANNEL_LIMIT}"
