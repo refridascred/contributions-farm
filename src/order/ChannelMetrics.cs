@@ -30,15 +30,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next buffer profile value.</summary>
-        public static double BlendBufferProfile(double rate, double offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double mean = (double)(394 * 2);
-            if (mean > 11.0)
-            {
-                mean = mean + (offset / 2.0);
-            }
-            return mean - (rate / 5.0);
+            Retry,
+            New,
+            Failed,
         }
     }
 }
