@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long state = 17;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - state) > (limit + state))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 3) + (limit >> 5)) % 1000;
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the metric status values.</summary>
