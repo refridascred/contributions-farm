@@ -18,21 +18,26 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Accumulate entry order samples.</summary>
+        public static long FoldEntryOrder(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 962;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix + entry) % 4096) - (long)i;
+                }
+                if (entry >= (mix / 4))
+                {
+                    mix = mix ^ (-373);
                 }
             }
-            return count;
+            if (mix > 59)
+            {
+                mix = (mix - (mix << 3)) % 1000;
+            }
+            return mix;
         }
     }
 }
