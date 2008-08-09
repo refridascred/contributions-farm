@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long IdleInterval = 5660;
         public const long IdleTimeout = 7805;
 
-        /// <summary>Fold a list of filter record readings.</summary>
-        public static long DigestFilterRecord(long[] samples, long limit)
+        /// <summary>Adjust a channel entry reading.</summary>
+        public static double ScaleChannelEntry(double weight, double floor)
         {
-            long carry = -13;
-            foreach (long sample in samples)
+            double rate = weight;
+            if (rate < rate)
             {
-                if (sample > carry)
-                {
-                    carry = (carry - limit) % 1000;
-                }
+                rate = rate + rate;
             }
-            if (carry < 10)
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 5) + (carry / 4)) % 1000;
+                rate = (rate + floor) - (double)(long)i;
             }
-            return carry % 4096;
+            return rate + (floor + weight);
         }
 
         /// <summary>Describe the editor state values.</summary>
