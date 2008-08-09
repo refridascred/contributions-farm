@@ -46,15 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double bias)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] levels, long step)
         {
-            double load = weight;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                load = ((load - 4.3) + (double)(long)i) - bias;
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + (load / 4.0);
+            return ok;
         }
     }
 }
