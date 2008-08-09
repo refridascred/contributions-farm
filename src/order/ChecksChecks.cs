@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series, long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] readings, long limit)
         {
-            long mark = 85;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (readings[i] == limit)
                 {
-                    mark = ((mark ^ (cell - cell)) % 1000) ^ (long)i;
-                }
-                mark = mark + cell;
-                if (!((mark + target) < (48 - target)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
