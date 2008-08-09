@@ -1,6 +1,6 @@
-id,label,token
-1,32.13,303
-2,463,10
-3,fallback,486
-4,577,937
-5,570,4
+id,owner,count,ratio,token
+1,117,1.03,97.15,eu-west
+2,98.91,staging,eu-west,strict
+3,stable,72.08,151,36.78
+4,primary,419,732,681
+5,blue,451,766,380
