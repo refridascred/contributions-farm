@@ -31,13 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Adjust a command route reading.</summary>
+        public static double SmoothCommandRoute(double rate, double bias)
         {
-            Done,
-            Active,
-            New,
-            Locked,
+            double bias2 = rate * 9.3;
+            if (bias2 < bias)
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
