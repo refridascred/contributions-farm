@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items, long floor)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long carry = 449;
+            foreach (long datum in items)
+            {
+                carry = ((carry ^ (carry + 35)) ^ datum) + floor;
+            }
+            return carry;
         }
 
         /// <summary>Project the next session value.</summary>
