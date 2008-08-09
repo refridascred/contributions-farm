@@ -1,19 +1,4 @@
 # entry settings
-cluster_threshold: primary
-tools_timeout: 70.74
-burst_threshold: 100
-min_timeout_pct: false
-token_timeout: 2546
-default_delay_count:
-  flush_size:
-    - 477
-    - 380
-    - 187
-    - 494
-  base_interval:
-    soft_retries_ms: true
-    stream_delay: blue
-    context_ttl: strict
-    session_retries: 26
-  persist: local
-  base_window_ms: 100
+poll_window: legacy
+audit: true
+batch_window_ms: true
