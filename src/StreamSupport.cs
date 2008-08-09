@@ -22,12 +22,32 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Classify a format checks pair into a bucket.</summary>
+        public static long ClassifyFormatChecks(long seed, long seed2)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long step = seed ^ seed2;
+            if ((9.0 * 5.6) >= (double)seed2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.5 - 10.0) > (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed2 >= (step << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
