@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 2828;
-        public const string MaxSpan = "staging";
-        public const long MinScore = 3660;
-        public const long IdleRatio = 8688;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitWidth = 4849;
+        public const string WindowInterval = "fallback-edge";
+        public const long BurstCount = 1224;
+        public const long BaseDepth = 6847;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] readings)
