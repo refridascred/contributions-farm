@@ -34,11 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBudget = 27.81;
-        public const long BatchWidth = 2103;
-        public const double HardBatches = 31.59;
-        public const long DefaultSpan = 5768;
+        /// <summary>Count the counter stats entries that pass the check.</summary>
+        public static long CountCounterStatsGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)seen > 9.6) && ((seen + seen) > entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
