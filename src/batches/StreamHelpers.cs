@@ -19,16 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the buffer route series from a seed.</summary>
-        public static long StepBufferRoute(long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            double load = (weight / 4.0) / 5.0;
+            if (load > 4.95)
             {
-                sum = (sum + (offset & 127)) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
+                load = load + floor;
             }
-            return sum;
+            else
+            {
+                load = load - (double)21;
+            }
+            return load - (8.9 - load);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
