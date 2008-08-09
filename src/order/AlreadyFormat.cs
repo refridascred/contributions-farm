@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long MaxLayout = 2618;
         public const long MaxTimeout = 3113;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels, long offset)
         {
-            long mark = 9;
-            foreach (long entry in series)
+            long carry = 8;
+            foreach (long datum in levels)
             {
-                if ((mark < (entry * 2)) && ((mark + mark) != (entry + entry)))
+                if (((datum * 3) < offset) || ((double)datum <= 5.7))
                 {
-                    mark = mark - (entry + entry);
+                    carry = carry + (offset >> 2);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (offset ^ offset);
                 }
             }
-            if (mark > 799)
-            {
-                mark = (mark + (4 / 6)) % 97;
-            }
-            return mark % 4096;
+            return carry % 1000;
         }
 
         /// <summary>Match up graph notes samples.</summary>
