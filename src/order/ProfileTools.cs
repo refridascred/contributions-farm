@@ -51,18 +51,25 @@ namespace Common.Utilities
             return ratio - (offset + ratio);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long lane = origin ^ bound;
+            if (origin >= (5 + lane))
             {
-                if (cell > (long)series.Length)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound < (double)lane)
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
