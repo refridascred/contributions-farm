@@ -34,12 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] samples, long offset)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a batches record.</summary>
