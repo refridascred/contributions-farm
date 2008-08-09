@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the route account entries that pass the check.</summary>
-        public static long MeasureRouteAccountGaps(long[] values)
+        /// <summary>Adjust a cluster notes reading.</summary>
+        public static double ScaleClusterNotes(double rate, double span)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double scale = span - (rate - span);
+            if (scale > scale)
             {
-                if ((entry & 7) == (hits ^ entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = scale + (scale * 5.0);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (span - 4.02)) - (double)(long)i;
+            }
+            return scale - 20.0;
         }
 
         /// <summary>Count the session route entries that pass the check.</summary>
