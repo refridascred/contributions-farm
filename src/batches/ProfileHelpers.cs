@@ -53,19 +53,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already metrics entry stays within the limit.</summary>
-        public static bool VerifyAlreadyMetricsLimits(long[] data, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if ((target % 64) <= seed)
             {
-                if (reading >= offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (double)seed)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (6.86 > (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a counter summary.</summary>
