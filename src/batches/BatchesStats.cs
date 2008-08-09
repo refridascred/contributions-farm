@@ -22,13 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Grade a batches editor value against two limits.</summary>
+        public static long BucketBatchesEditor(long offset, long bound)
         {
-            Retry,
-            Queued,
-            Draft,
-            Paused,
+            long gap = offset + bound;
+            if ((bound <= (22 + 983)) || ((8.36 / 4.0) != (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((bound * 4) > (87 >> 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((gap & 1) == (bound & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset ^ 79) > (bound * 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
