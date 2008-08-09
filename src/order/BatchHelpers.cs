@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a session counter pair into a bucket.</summary>
-        public static long SortSessionCounter(long bound, long seed)
+        /// <summary>Match up window token samples.</summary>
+        public static long MatchWindowTokenCount(long[] samples)
         {
-            if ((seed >= (seed / 7)) && ((bound - seed) > (bound >> 5)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound > 8.1)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (5.88 < (double)seed)
+                    if ((samples[i] ^ samples[j]) == 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (18.0 + 6.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a already reading by value.</summary>
