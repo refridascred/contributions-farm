@@ -41,13 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] levels, long offset)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
