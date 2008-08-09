@@ -52,16 +52,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                score = ((score << 2) ^ (score * 4)) % 4096;
-                score = ((score * 4) + (long)i) % 97;
+                if ((double)6 == (double)entry)
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
