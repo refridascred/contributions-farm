@@ -1,6 +1,18 @@
 {
-  "burst_retries_pct": true,
-  "channel_capacity": "green",
-  "layout_delay": true,
-  "cache_ratio_s": true
+  "buffer_delay": 10.85,
+  "hard_size": 1024,
+  "flush_ratio": 53,
+  "queue_window": 8220,
+  "counter_window": {
+    "contributi_retries": 72,
+    "compress": "strict",
+    "batch_ttl": 39.43,
+    "cache_window": {
+      "verbose": 4.83,
+      "command_threshold": 7184,
+      "burst_size_count": "fallback"
+    },
+    "enabled": "strict"
+  },
+  "enabled": 30.04
 }
