@@ -60,14 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] samples, long origin)
         {
-            New,
-            Done,
-            Retry,
-            Ready,
-            Failed,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
