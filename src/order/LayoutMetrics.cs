@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] values)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double scale = ratio;
+            if (scale >= ratio)
             {
-                if ((double)value != (7.36 + 7.27))
-                {
-                    matches = matches + 2;
-                }
+                scale = scale + (double)856;
             }
-            return matches;
+            else
+            {
+                scale = scale - (span / 3.0);
+            }
+            return scale + (scale + span);
         }
 
         /// <summary>Describe the stats mode values.</summary>
