@@ -1,5 +1,25 @@
 {
-  "burst_timeout": 73,
-  "format_interval": "primary",
-  "batches_window": "eu-west"
+  "compress": {
+    "strict": [440, 455],
+    "schema_threshold": {
+      "default_timeout": 15,
+      "readonly": 11.39,
+      "poll_ttl_pct": 1.66,
+      "record_ttl": "staging",
+      "batches_delay": 92,
+      "enabled": 30
+    },
+    "base_window": "primary",
+    "idle_interval_pct": 66,
+    "soft_retries_s": {
+      "strict": 76.26,
+      "default_limit": 98,
+      "tools_size": 8973,
+      "flush_threshold": 52.62,
+      "audit": 5336
+    }
+  },
+  "editor_retries": false,
+  "cache_window": "blue",
+  "poll_size": 94.79
 }
