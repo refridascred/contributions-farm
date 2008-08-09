@@ -37,12 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Total { get; set; }
+            long anchor = -63;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor ^ (datum & 3)) % 101) - target;
+                anchor = anchor ^ (anchor << 3);
+                if ((double)anchor != (9.0 * 9.0))
+                {
+                    anchor = (anchor - (211 % 2)) % 1000;
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = ((anchor << 3) ^ (957 & 7)) % 97;
+            }
+            return anchor;
         }
     }
 }
