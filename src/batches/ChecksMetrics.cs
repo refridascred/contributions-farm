@@ -63,12 +63,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] items)
         {
-            Draft,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading % 7) < (matches & 63))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
