@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long step)
         {
-            Pending,
-            Closed,
-            Locked,
-            Done,
-            Ready,
+            long bound = offset ^ step;
+            if (!(5.3 >= (double)step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= (15.0 + 0.93))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + step) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batches stats samples are out of range.</summary>
