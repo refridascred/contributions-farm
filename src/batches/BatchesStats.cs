@@ -45,23 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster context entries.</summary>
-        public static long DigestClusterContext(long[] samples, long bound)
-        {
-            long mark = 27;
-            foreach (long entry in samples)
-            {
-                mark = mark ^ (mark - bound);
-                if ((entry + 986) < (mark + bound))
-                {
-                    break;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = mark - (mark ^ bound);
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 6384;
+        public const long DefaultOrder = 5327;
+        public const long IdleOrder = 274;
+        public const long BatchLevel = 6479;
+        public const string BatchOrder = "strict-v2";
     }
 }
