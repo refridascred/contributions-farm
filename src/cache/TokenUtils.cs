@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long bound, long bound2)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] series, long bound)
         {
-            if (((9 << 3) > (bound2 + 0)) && ((553 >> 3) > bound))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 4) <= (bound2 - bound2))
+                if (item <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(bound2 >= (bound2 / 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound2 <= (2 / 9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
