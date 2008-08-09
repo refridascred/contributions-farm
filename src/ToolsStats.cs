@@ -24,12 +24,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            Done,
+            Closed,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
