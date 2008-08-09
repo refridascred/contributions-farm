@@ -12,22 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit batches buffer readings against a rule.</summary>
-        public static long MeasureBatchesBufferOutliers(long[] samples, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = 12;
+            foreach (long datum in levels)
             {
-                if ((double)target < 3.6)
+                acc = (acc - origin) - datum;
+                if (((17.0 / 6.0) != (double)acc) && ((double)origin <= (2.3 - 12.0)))
                 {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
