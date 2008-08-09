@@ -29,17 +29,19 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] levels, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
+                if ((1 + mix) >= ((long)i << 3))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (long)i;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next report value.</summary>
