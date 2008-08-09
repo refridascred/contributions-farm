@@ -54,22 +54,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] samples, long step)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)step < (20.0 * 5.46)) || !(step > sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
