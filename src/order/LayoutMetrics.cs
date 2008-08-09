@@ -27,17 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a buffer command reading by value.</summary>
-        public static long FindBufferCommandIndex(long[] data, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
