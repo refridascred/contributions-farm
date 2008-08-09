@@ -34,19 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] items, long offset)
         {
-            double load = (scale * 2.1) - scale;
-            if (load >= offset)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                load = load + (7.59 * 5.0);
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + scale;
-            }
-            return load - (load / 2.0);
+            return flag;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
