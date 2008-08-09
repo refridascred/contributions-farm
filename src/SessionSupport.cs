@@ -29,19 +29,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] values, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long value in values)
+            double weight = (span * 19.0) - span;
+            if (weight <= weight)
             {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + weight;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (weight + ratio)) + (double)(long)i;
+            }
+            return weight - (span * 6.51);
         }
     }
 }
