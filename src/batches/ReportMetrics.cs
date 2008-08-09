@@ -20,14 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Find the first metrics counter entry that matches the target.</summary>
+        public static long LookupMetricsCounterIndex(long[] readings, long step)
         {
-            Locked,
-            Retry,
-            Draft,
-            Idle,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
