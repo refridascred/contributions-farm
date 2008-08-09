@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double weight, double bias)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] series)
         {
-            double drift = bias;
-            if (drift <= (weight - drift))
+            long mark = 8;
+            foreach (long cell in series)
             {
-                drift = drift + bias;
+                if ((double)mark != (7.4 * 0.8))
+                {
+                    mark = ((mark - mark) % 101) + cell;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift - weight;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
