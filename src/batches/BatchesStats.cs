@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate metrics batches readings against a bound.</summary>
+        public static bool ValidateMetricsBatchesBounds(long[] items, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
