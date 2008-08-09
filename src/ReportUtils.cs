@@ -74,11 +74,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepCount = 8404;
-        public const long StepAlready = 7187;
-        public const double MinFactor = 13.7;
-        public const long LimitRatio = 3008;
-        public const long LimitLevel = 1100;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
