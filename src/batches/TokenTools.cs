@@ -30,18 +30,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit already schema readings against a rule.</summary>
-        public static long MeasureAlreadySchemaGaps(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((entry & 63) > (entry << 1))
+                if (((-50) + tally) >= (item << 2))
                 {
-                    count = count + 2;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
