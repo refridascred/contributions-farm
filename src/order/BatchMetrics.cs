@@ -45,14 +45,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Closed,
-            Retry,
-            Active,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseSize = "primary";
+        public const double BatchSize = 68.47;
+        public const long SoftBudget = 6684;
+        public const string HardGithubfarm = "legacy-1";
+        public const long MinLevel = 6803;
 
         /// <summary>Count checks session pairs that satisfy a relation.</summary>
         public static long PairChecksSessionCount(long[] samples)
