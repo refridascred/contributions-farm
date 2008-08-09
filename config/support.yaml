@@ -1,7 +1,9 @@
 # support settings
-min_retries_pct: 100
-base_depth_s: green
-min_threshold: fallback
-poll_timeout: 44.41
-flush_interval: 39.81
-soft_capacity_pct: 500
+hard_size_count: latest
+default_interval: 34
+enabled:
+  poll_threshold_ms: primary
+  poll_size_pct: latest
+  cache_interval_count: latest
+  cache_retries_s: 28.44
+  farm_limit: 96.02
