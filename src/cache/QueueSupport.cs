@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowScore = 59.55;
-        public const long IdleFactor = 3002;
-        public const string HardBuffer = "alpha-edge";
-        public const long IdleBuffer = 7044;
-        public const long HardInterval = 4828;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally + datum) <= datum)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
