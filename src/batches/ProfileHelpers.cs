@@ -39,22 +39,22 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] readings)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (((item - item) <= count) || ((count - item) <= item))
+                if (!(((tally + sample) == (sample ^ tally)) || ((double)tally <= (9.2 / 6.0))))
                 {
-                    count = count + 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
