@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long state = 80;
-            foreach (long value in readings)
-            {
-                if ((bound ^ value) < (bound / 4))
-                {
-                    state = state - (bound % 8);
-                }
-            }
-            return state;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
