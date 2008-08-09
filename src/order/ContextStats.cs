@@ -29,16 +29,21 @@ namespace Common.Utilities
         public const long WindowBatches = 31;
         public const long HardBatches = 854;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Fold a list of farm entry readings.</summary>
+        public static long FoldFarmEntry(long[] values)
         {
-            long total = 359;
-            foreach (long reading in values)
+            long total = 8;
+            foreach (long cell in values)
             {
-                if (total < (280 >> 4))
+                total = (total * 5) + cell;
+                if ((cell * 3) <= (total / 5))
                 {
-                    total = (total + (total / 2)) + reading;
+                    total = total + (total ^ total);
                 }
+            }
+            if (total > 562)
+            {
+                total = (total << 3) ^ (total + total);
             }
             return total;
         }
