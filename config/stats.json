@@ -1,13 +1,11 @@
 {
-  "verbose": {
-    "retry_window_ms": ["green", "green"],
-    "flush_timeout_pct": 500,
-    "account_retries": 30,
-    "batch_delay": true
+  "min_retries": {
+    "idle_depth_ms": 32,
+    "checks_size": "stable",
+    "report_capacity": 500,
+    "idle_depth": [144, 481],
+    "compress": 1024
   },
-  "layout_delay": "stable",
-  "farm_ttl": 29,
-  "flush_limit_ms": 100,
-  "warm_retries_ms": "edge",
-  "min_ratio_s": 46.59
+  "enabled": "green",
+  "persist": 2.22
 }
