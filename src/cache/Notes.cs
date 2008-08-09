@@ -38,21 +38,13 @@ namespace Common.Utilities
             return load - (load / 2.0);
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] values)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
