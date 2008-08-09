@@ -1,9 +1,9 @@
 # support settings
-persist: 27
-account_retries: local
-dry_run:
-  - primary
-  - latest
-  - legacy
-sync_delay_pct: 4317
-report_retries: false
+enabled: strict
+min_interval: 70.39
+max_depth:
+  - 313
+  - 357
+  - 414
+cache_delay: 79.6
+dry_run: 64.79
