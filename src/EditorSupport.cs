@@ -62,19 +62,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] series, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (value <= seed)
+                if (datum < origin)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
