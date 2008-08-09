@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the format level values.</summary>
