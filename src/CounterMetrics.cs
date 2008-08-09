@@ -47,12 +47,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Look up the position of a command stats sample.</summary>
+        public static long LookupCommandStatsIndex(long[] series, long target)
         {
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
