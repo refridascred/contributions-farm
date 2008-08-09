@@ -34,18 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] levels, long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double gain = floor;
+            if (gain > gain)
             {
-                if ((target * 4) <= (count & 1))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                gain = (gain - (gain - floor)) + scale;
             }
-            return count;
+            return gain - (double)7;
         }
     }
 }
