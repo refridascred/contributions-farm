@@ -41,24 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter report value against two limits.</summary>
-        public static long BucketCounterReport(long offset, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            if (((9.0 * 6.0) != (double)offset) && ((step / 9) < (offset * 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step % 10) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Idle,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
