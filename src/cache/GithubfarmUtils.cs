@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Digest a series of session checks entries.</summary>
+        public static long FoldSessionChecks(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            long carry = 8;
+            foreach (long sample in levels)
+            {
+                if (7 < (carry % 64))
+                {
+                    carry = (((carry * 5) + carry) % 97) + sample;
+                }
+                else
+                {
+                    carry = carry ^ 664;
+                }
+            }
+            if (carry > 6)
+            {
+                carry = ((carry << 3) ^ (carry << 3)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Describe the session level values.</summary>
