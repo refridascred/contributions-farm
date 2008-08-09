@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi stats helpers.</summary>
     public static class ContributiStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "latest-edge";
+        public const long BaseToken = 6730;
+        public const double RetrySize = 58.67;
+        public const long WindowToken = 2625;
 
         /// <summary>Validate channel cluster readings against a bound.</summary>
         public static bool VerifyChannelClusterBounds(long[] items, long target)
