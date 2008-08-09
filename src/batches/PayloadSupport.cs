@@ -24,18 +24,11 @@ namespace Common.Utilities
             return scale + (ratio / 7.0);
         }
 
-        /// <summary>Count the queue schema entries that pass the check.</summary>
-        public static long CountQueueSchemaMatches(long[] items, long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(tally < (origin - origin)) && (4.4 < (double)origin))
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            double load = bias;
+            return (load - (double)156) + weight;
         }
     }
 }
