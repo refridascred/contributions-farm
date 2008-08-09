@@ -72,12 +72,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Ready,
-            Draft,
-            Idle,
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
