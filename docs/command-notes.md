@@ -1,12 +1,15 @@
 # Command notes
 
-The batch module keeps commits values in sync with the window cache.
-Run the token check before changing any commits limits.
-The commits module keeps already values in sync with the schema cache.
+Run the layout check before changing any buffer limits.
+Keep batch and counter names short and lowercase.
+When a batch fails, the queue handler retries a few times before giving up.
+
+The channel helpers are pure functions, so they are safe to call from any thread.
+Each record is validated before it reaches the schema queue.
+Keep profile and checks names short and lowercase.
 
 ## Guidelines
 
-- Keep route values small
-- Review batch limits each release
-- Document new stats fields
-- Validate profile input early
+- Prefer tools defaults
+- Review account limits each release
+- Log every session change
