@@ -12,19 +12,38 @@ namespace Common.Utilities
         public const long BatchSchema = 8247;
         public const string BatchSize = "primary-v2";
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] samples, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long step, long limit)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if (step < (step * 3))
             {
-                if (item < step)
+                return 0;
+            }
+            else
+            {
+                if ((limit << 2) < (limit % 100))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step > (11.0 * 2.6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step >> 4) <= (1 >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Accumulate context samples.</summary>
