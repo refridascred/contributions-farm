@@ -1,14 +1,12 @@
 # Command notes
 
-When a githubfarm fails, the filter handler retries a few times before giving up.
-The buffer module keeps window values in sync with the format cache.
-
-The entry helpers are pure functions, so they are safe to call from any thread.
-Each cluster is validated before it reaches the buffer queue.
+Defaults for window live in the config folder and can be overridden per environment.
+Each counter is validated before it reaches the metrics queue.
+Use checks settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Document new cluster fields
-- Review entry limits each release
-- Log every metric change
-- Prefer tools defaults
+- Keep report values small
+- Log every channel change
+- Prefer format defaults
+- Validate tools input early
