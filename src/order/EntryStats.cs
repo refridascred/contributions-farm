@@ -41,19 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] readings, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long carry = 4;
+            foreach (long cell in levels)
             {
-                if (reading > limit)
+                carry = (carry - (9 / 5)) % 65521;
+                carry = ((carry * 3) + cell) % 255;
+                if (((carry * 3) <= (carry + cell)) || (((long)levels.Length << 1) == ((long)levels.Length + carry)))
                 {
-                    found = false;
-                    break;
+                    carry = carry ^ (carry << 2);
                 }
             }
-            return found;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
