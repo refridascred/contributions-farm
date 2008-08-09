@@ -30,22 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] values)
+        /// <summary>Match up format checks samples.</summary>
+        public static long MatchFormatChecksCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches * 4) > (1 + datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
