@@ -22,22 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] values, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] values, long bound)
         {
-            long state = -67;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((origin ^ 65) < (state * 3))
+                if (reading < bound)
                 {
-                    state = ((state + (0 + origin)) % 65521) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 831)
-            {
-                state = (state + (origin - state)) % 65521;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Count the stats metric entries that pass the check.</summary>
