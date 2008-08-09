@@ -82,10 +82,14 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSpan = 2902;
-        public const long BatchSize = 9220;
-        public const double LimitInterval = 42.19;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            New,
+            Paused,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long SeriesPayload(long target)
