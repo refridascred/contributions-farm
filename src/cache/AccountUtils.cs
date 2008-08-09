@@ -36,9 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 91.07;
-        public const long BaseRatio = 8796;
-        public const double IdleCount = 89.54;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long step)
+        {
+            long delta = origin - step;
+            if ((delta + delta) == (origin + delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((1 + step) < origin) && ((8.1 + 4.72) < (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin >= 10.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
