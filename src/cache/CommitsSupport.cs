@@ -79,21 +79,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 81;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = ((acc - acc) % 97) + item;
+                if ((2.34 * 8.17) == (double)acc)
                 {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc - (offset + offset);
                 }
             }
-            return count;
+            if (acc > 161)
+            {
+                acc = acc + (offset % 2);
+            }
+            return acc;
         }
 
         /// <summary>Hold a layout entry.</summary>
