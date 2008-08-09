@@ -40,11 +40,23 @@ namespace Common.Utilities
             return rate + (scale - scale);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "alpha-v2";
-        public const long MaxBudget = 691;
-        public const string StepSpan = "alpha-v2";
-        public const string BaseEditor = "fallback-v2";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels)
+        {
+            long acc = 17;
+            foreach (long reading in levels)
+            {
+                if (0.48 >= (double)acc)
+                {
+                    acc = acc ^ (104 * 2);
+                }
+                else
+                {
+                    acc = acc ^ (acc + reading);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
