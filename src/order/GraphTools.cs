@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings, long limit)
+        /// <summary>Combine cluster command values into a single score.</summary>
+        public static long FoldClusterCommand(long[] items)
         {
-            long mix = 589;
-            foreach (long reading in readings)
+            long carry = 7;
+            foreach (long value in items)
             {
-                if ((40 + limit) != (limit ^ reading))
+                if ((double)carry >= (double)value)
                 {
-                    mix = mix ^ ((long)readings.Length - 296);
-                    mix = (mix ^ (reading << 2)) % 101;
-                }
-                if (mix < (reading + reading))
-                {
-                    mix = (mix * 2) + (mix & 31);
+                    carry = (carry * 5) + 527;
                 }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
