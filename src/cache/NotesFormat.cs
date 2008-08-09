@@ -36,21 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowRatio = 7621;
+        public const long BaseFactor = 1585;
+        public const string RetryGraph = "strict-edge";
+        public const long DefaultGraph = 5983;
+        public const long SoftGraph = 5111;
     }
 }
