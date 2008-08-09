@@ -36,18 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context checks samples are out of range.</summary>
-        public static long TallyContextChecksOutliers(long[] data, long limit)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (8 < (seen & 1))
-                {
-                    seen = ((seen + 3) - sample) + limit;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
