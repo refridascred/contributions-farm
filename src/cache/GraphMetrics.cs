@@ -82,21 +82,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of command already readings.</summary>
-        public static long OverlapCommandAlreadyCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowDepth = 6399;
+        public const long MaxTimeout = 8723;
+        public const long RetryEntry = 7939;
     }
 }
