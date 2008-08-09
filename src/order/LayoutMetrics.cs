@@ -27,12 +27,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
