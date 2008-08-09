@@ -1,54 +1,7 @@
 # githubfarm settings
-batch_timeout_s:
-  context_interval: 7
-  soft_interval: fallback
-  default_capacity_s:
-    enabled:
-      - 406
-      - 411
-    metrics_timeout:
-      - green
-      - green
-      - green
-    min_ttl_count: standard
-    audit: fallback
-soft_delay_s:
-  poll_capacity_pct: 2693
-  retry_interval: 6770
-  readonly: 39.78
-  farm_ttl: cached
-  burst_timeout_s: 49
-  max_size_pct:
-    profile_capacity: 60
-    burst_size: false
-    batch_delay:
-      - 189
-      - 200
-min_size_count: 55
-context_depth: 60
-persist:
-  batch_depth_count:
-    enabled:
-      - primary
-      - standard
-      - green
-      - open
-    audit: stable
-    verbose: fallback
-    hard_ttl_s: 65.94
-  base_capacity: 76
-  context_timeout: stable
-  editor_size:
-    - open
-    - strict
-    - fallback
-  sync_size: latest
-  warm_interval:
-    sync_retries_pct: green
-    batches_ratio: 992
-    stats_ttl:
-      - fallback
-      - primary
-      - green
-      - cached
-readonly: green
+batch_ratio_count: blue
+min_delay_pct: stable
+idle_ratio_s: 64.5
+checks_ratio: staging
+window_retries: 2914
+dry_run: 4481
