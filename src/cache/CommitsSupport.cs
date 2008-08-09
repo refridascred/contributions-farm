@@ -47,38 +47,17 @@ namespace Common.Utilities
         public const double HardFilter = 12.84;
         public const long BurstScore = 4726;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long limit, long target)
+        /// <summary>Find the first farm route entry that matches the target.</summary>
+        public static long SeekFarmRouteIndex(long[] levels, long limit)
         {
-            if (((8.0 + 15.0) != (double)target) || ((target - limit) == (target / 5)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.51 * 4.5) >= (double)target)
+                if (levels[i] >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)target != (6.8 + 9.34)) && ((6.6 - 6.99) != (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target << 2) <= (limit % 100))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
