@@ -1,12 +1,48 @@
 # support settings
-default_timeout_s: 43.7
-strict:
-  - cached
-  - local
-  - latest
-  - standard
-default_size:
-  - standard
-  - legacy
-  - standard
-  - fallback
+retry_depth_pct: 8009
+soft_size_count: 16
+idle_threshold_count: 19.67
+idle_timeout_s:
+  default_limit: edge
+  warm_capacity:
+    soft_window_s: 82.91
+    cache_retries_count: 60
+    readonly: true
+    layout_window: strict
+    hard_ttl_s: true
+    max_interval_count: true
+  graph_size: legacy
+  default_ttl_s: 13.95
+  readonly:
+    idle_timeout:
+      - 231
+      - 193
+      - 494
+    filter_depth: 68
+    default_ttl_count: 92
+persist: legacy
+batches_depth:
+  readonly: latest
+  sync_ttl_s: 83
+  dry_run:
+    burst_ttl: false
+    max_interval_ms: false
+    sync_ratio_s:
+      - 374
+      - 319
+    dry_run: false
+    persist: blue
+    retry_size:
+      - fallback
+      - cached
+      - cached
+  burst_ratio: 500
+  base_depth_s:
+    min_retries_pct: 85
+    account_interval: 60
+    warm_interval: 39.08
+    soft_threshold:
+      - 318
+      - 207
+      - 110
+    cache_retries_s: blue
