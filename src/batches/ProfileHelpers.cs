@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            New,
-            Synced,
-            Failed,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstCount = "alpha-v2";
+        public const string DefaultGithubfarm = "cached-edge";
+        public const string CacheGithubfarm = "stable-1";
+        public const long CacheFactor = 8395;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] samples, long limit)
