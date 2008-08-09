@@ -46,15 +46,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a metrics farm figure with a bias.</summary>
-        public static double SmoothMetricsFarm(double bias, double floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double gain = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (double)(long)i) + bias;
-            }
-            return gain - (floor - gain);
+            Ready,
+            Draft,
+            Closed,
+            Locked,
+            Queued,
         }
     }
 }
