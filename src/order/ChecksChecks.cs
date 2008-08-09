@@ -38,21 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            New,
         }
     }
 }
