@@ -34,21 +34,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
