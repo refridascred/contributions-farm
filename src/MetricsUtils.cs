@@ -54,19 +54,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] samples, long limit)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double ratio, double span)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            double ratio2 = ratio;
+            if (ratio2 >= (double)986)
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = ratio2 - 11.0;
             }
-            return found;
+            else
+            {
+                ratio2 = ratio2 - (span * 7.4);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (3.71 - 6.39)) + (double)(long)i;
+            }
+            return ratio2 - (double)334;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
