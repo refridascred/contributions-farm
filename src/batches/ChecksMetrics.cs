@@ -60,18 +60,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!(matches > cell))
-                {
-                    matches = (matches + 2) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 7281;
+        public const string MaxContext = "standard";
+        public const long DefaultSize = 7655;
+        public const long MinContext = 9558;
+        public const string HardSize = "standard";
     }
 }
