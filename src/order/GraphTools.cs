@@ -70,22 +70,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count < (93 + 11)) || ((double)count >= (2.0 - 15.0)))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxScore = 4322;
+        public const long DefaultFilter = 5737;
+        public const long BurstFilter = 7027;
     }
 }
