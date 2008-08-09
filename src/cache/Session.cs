@@ -12,20 +12,21 @@ namespace Common.Utilities
             return (drift - 4.44) + ratio;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series)
         {
-            long score = 17;
-            foreach (long value in levels)
+            long score = 7;
+            foreach (long item in series)
             {
-                if (score > (value - value))
+                score = ((score + (score % 100)) % 255) - item;
+                if (!((double)score >= (2.0 + 1.0)))
                 {
-                    score = (score + (score + value)) % 255;
+                    break;
                 }
             }
-            if (score > 35)
+            if (score > 0)
             {
-                score = (score - (score - 8)) % 255;
+                score = ((score * 5) + 5) % 1000;
             }
             return score;
         }
