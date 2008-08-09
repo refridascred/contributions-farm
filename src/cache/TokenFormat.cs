@@ -20,21 +20,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -121;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading & 63) == (anchor / 5))
                 {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 4) + (reading + 278)) - offset;
+                }
+                else
+                {
+                    anchor = (anchor + reading) % 97;
                 }
             }
-            return count;
+            if (anchor < (-357))
+            {
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metrics level values.</summary>
