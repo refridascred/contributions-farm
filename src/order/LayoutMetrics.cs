@@ -21,19 +21,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double gain = weight;
-            if (gain < (double)3)
-            {
-                gain = (gain + (17.0 / 3.0)) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (19.0 / 6.0)) + (double)(long)i;
-            }
-            return gain + (double)4;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
