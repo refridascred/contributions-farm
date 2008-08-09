@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] series, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double rate = (double)(91 - 6);
+            if (rate > (rate - span))
             {
-                if ((double)tally == (20.0 * 4.56))
-                {
-                    tally = ((tally + 3) ^ datum) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate + 4.09;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (span - ratio)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define session limits and defaults.</summary>
