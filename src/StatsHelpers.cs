@@ -49,19 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double mean = (double)(-2);
-            if (mean > (double)459)
-            {
-                mean = mean + (3.0 + weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean - 8.0)) + (double)(long)i;
-            }
-            return mean - (6.13 - floor);
+            Active,
+            Locked,
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Adjust a layout token reading.</summary>
