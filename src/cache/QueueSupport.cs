@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string MinToken = "primary-v2";
         public const double IdleFactor = 97.21;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
