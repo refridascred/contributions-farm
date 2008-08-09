@@ -15,15 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] series, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((12.0 / 4.0) < (double)sample)
+                {
+                    hits = (hits + 2) - target;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count the format support entries that pass the check.</summary>
