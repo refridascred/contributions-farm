@@ -32,10 +32,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardSpan = 3998;
-        public const string RetryInterval = "stable";
-        public const long DefaultInterval = 149;
-        public const long BurstCount = 3039;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleDepth = 60.4;
+        public const long DefaultDepth = 3789;
+        public const long HardCluster = 7593;
     }
 }
