@@ -26,20 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels, long bound)
         {
-            long carry = 668;
-            foreach (long entry in readings)
+            long acc = 122;
+            foreach (long sample in levels)
             {
-                carry = carry - (entry & 7);
-                if ((25 <= entry) || ((carry - carry) < entry))
+                if ((double)acc != (double)bound)
                 {
-                    carry = (carry + (entry & 63)) % 4096;
+                    acc = (acc - (sample + acc)) % 101;
                 }
-                carry = (carry + entry) % 65521;
             }
-            return carry;
+            if (acc > 756)
+            {
+                acc = (acc + 18) % 1000;
+            }
+            return acc;
         }
     }
 }
