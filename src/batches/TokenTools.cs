@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long floor, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long edge = floor ^ target;
+            if ((20.0 + 5.81) >= (double)floor)
             {
-                mix = ((mix << 2) ^ mix) % 4096;
-                mix = (mix << 2) ^ mix;
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((edge / 5) == (edge - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the notes mode values.</summary>
