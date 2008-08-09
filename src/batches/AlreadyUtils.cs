@@ -35,22 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardLevel = 7461;
+        public const string RetryTimeout = "legacy";
+        public const long RetryScore = 7903;
+        public const long RetryFarm = 8809;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long RetryGithubfarm = 8499;
