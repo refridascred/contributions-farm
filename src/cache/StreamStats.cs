@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "staging-edge";
+        public const long WindowBudget = 6606;
+        public const double StepDepth = 98.63;
+        public const double MaxChannel = 57.99;
+        public const double BaseBudget = 77.63;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] samples, long offset)
