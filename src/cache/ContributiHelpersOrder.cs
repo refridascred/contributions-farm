@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
             public long Token { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Adjust a queue reading.</summary>
