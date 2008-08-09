@@ -23,13 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
+            Synced,
             Pending,
-            Dropped,
-            Closed,
-            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Blend two editor measurements.</summary>
