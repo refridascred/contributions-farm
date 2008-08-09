@@ -56,11 +56,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long offset)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long score = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score << 2) ^ (score & 63)) % 101;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
