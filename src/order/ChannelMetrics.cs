@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstFactor = 54.79;
-        public const long CacheBudget = 4257;
-        public const double IdleTools = 4.41;
-        public const long MaxLevel = 895;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item + tally) < (item * 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
