@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data, long origin)
         {
-            Idle,
-            Dropped,
-            Synced,
+            long state = 84;
+            foreach (long reading in data)
+            {
+                state = ((state + (608 & 31)) - reading) - origin;
+                state = (state + (state % 10)) % 65521;
+                if ((state - 40) >= state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
