@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double weight = (double)(52 / 9);
-            if (weight <= (double)3)
-            {
-                weight = (weight + (double)84) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight - 6.95;
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
