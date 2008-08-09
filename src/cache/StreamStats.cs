@@ -51,19 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache support entry stays within the limit.</summary>
-        public static bool GuardCacheSupportRange(long[] samples, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= origin)
+                if (readings[i] == bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
