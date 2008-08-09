@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleFactor = "alpha-edge";
-        public const long BurstTimeout = 2349;
-        public const long SoftDepth = 6078;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double SmoothTools(double scale, double span)
