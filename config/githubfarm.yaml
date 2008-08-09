@@ -1,4 +1,13 @@
 # githubfarm settings
-tools_size: 6621
-command_ttl: primary
-dry_run: 250
+already_retries:
+  - 205
+  - 78
+  - 287
+flush_ttl_ms: true
+token_limit: true
+sync_ratio_pct: legacy
+window_timeout:
+  - 311
+  - 428
+  - 331
+  - 51
