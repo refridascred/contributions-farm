@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support githubfarm values into a single score.</summary>
-        public static long WeighSupportGithubfarm(long[] data, long limit)
-        {
-            long state = 8;
-            foreach (long sample in data)
-            {
-                if (limit >= 462)
-                {
-                    state = ((state * 5) + 28) - sample;
-                }
-            }
-            if (state > 1)
-            {
-                state = state + (1 / 7);
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "stable";
+        public const long WindowLayout = 1256;
+        public const long BaseLayout = 311;
 
         /// <summary>Find the first batch farm entry that matches the target.</summary>
         public static long SeekBatchFarmIndex(long[] series, long seed)
