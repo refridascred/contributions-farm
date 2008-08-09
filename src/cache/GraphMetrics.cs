@@ -52,12 +52,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 4974;
-        public const string BaseWidth = "local-edge";
-        public const long SoftBuffer = 5976;
-        public const long BurstFactor = 5120;
-        public const long DefaultBudget = 2440;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long origin)
+        {
+            if (!((bound / 5) < (bound << 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.0 - 0.64) != (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound % 64) <= (8 + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)bound >= (6.87 + 5.0)) && ((double)bound < (10.0 + 1.64)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
