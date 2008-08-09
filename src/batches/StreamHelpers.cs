@@ -55,19 +55,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double weight, double bias)
+        /// <summary>Compare every pair of support cluster readings.</summary>
+        public static long CompareSupportClusterCount(long[] levels)
         {
-            double mean = weight * 2.0;
-            if (mean >= (double)276)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (mean * 18.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (mean + weight);
-            }
-            return mean - bias;
+            return tally;
         }
 
         /// <summary>Hold a stream options.</summary>
