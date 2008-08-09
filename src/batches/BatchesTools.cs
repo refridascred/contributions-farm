@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long BatchDepth = 6947;
         public const double DefaultBudget = 72.39;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] items)
         {
-            double scale = 7.5;
-            if (scale < (double)(-967))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                scale = scale - offset;
+                if (entry < (entry + entry))
+                {
+                    matches = matches + 1;
+                }
             }
-            return scale + (ratio - 15.0);
+            return matches;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
