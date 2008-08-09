@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long anchor = 6;
-            foreach (long entry in readings)
-            {
-                if (((anchor << 2) == (anchor % 7)) && ((anchor & 15) >= (entry + entry)))
-                {
-                    anchor = (anchor * 3) + (entry ^ (long)readings.Length);
-                }
-            }
-            return anchor % 65521;
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
