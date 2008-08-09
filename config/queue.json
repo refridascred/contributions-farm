@@ -1,7 +1,5 @@
 {
-  "readonly": "local",
-  "sync_size_pct": 85.24,
-  "cache_delay_ms": 250,
-  "poll_depth": 27.21,
-  "verbose": true
+  "support_limit": "blue",
+  "default_interval_ms": true,
+  "metrics_window": 100
 }
