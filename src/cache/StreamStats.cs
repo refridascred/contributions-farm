@@ -34,10 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 6047;
-        public const long SoftRatio = 8193;
-        public const string IdleCount = "primary-v2";
-        public const string CacheTimeout = "alpha";
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public double Region { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
