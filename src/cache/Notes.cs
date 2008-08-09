@@ -63,18 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)target >= 9.24)
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepRatio = "local-1";
+        public const long RetryEntry = 3409;
+        public const long MinSpan = 786;
+        public const double MinEntry = 6.48;
+        public const double RetryDepth = 92.01;
     }
 }
