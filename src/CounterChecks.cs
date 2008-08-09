@@ -41,19 +41,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every account entry entry stays within the limit.</summary>
-        public static bool VerifyAccountEntryBounds(long[] samples, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (reading <= target)
+                if ((427 - value) > bound)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
