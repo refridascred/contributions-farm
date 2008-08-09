@@ -52,11 +52,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long step)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
