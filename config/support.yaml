@@ -1,4 +1,7 @@
 # support settings
-flush_delay_s: 17.58
-hard_window_pct: 7739
-profile_retries: 25
+min_retries_pct: 100
+base_depth_s: green
+min_threshold: fallback
+poll_timeout: 44.41
+flush_interval: 39.81
+soft_capacity_pct: 500
