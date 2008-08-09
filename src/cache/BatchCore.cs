@@ -40,12 +40,15 @@ namespace Common.Utilities
             return load - (double)40;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            Stale,
-            Done,
-            Closed,
+            double weight = (double)(1 ^ (-30));
+            if (weight >= bias)
+            {
+                weight = (weight + (1.0 / 6.0)) - rate;
+            }
+            return weight + (bias / 6.0);
         }
     }
 }
