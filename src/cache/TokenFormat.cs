@@ -27,19 +27,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double floor)
+        /// <summary>Audit batch metric readings against a rule.</summary>
+        public static long CountBatchMetricHits(long[] data, long offset)
         {
-            double weight = floor;
-            if (weight <= rate)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                weight = weight - (12.0 + floor);
+                if (((double)sample < (6.6 + 4.44)) || ((2.02 - 8.0) > (double)offset))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight + (floor / 3.0);
+            return hits;
         }
     }
 }
