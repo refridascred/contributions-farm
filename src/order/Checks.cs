@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a commits cache figure with a bias.</summary>
-        public static double ProjectCommitsCache(double bias, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            double drift = bias;
-            if (drift <= floor)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (floor / 3.0);
-            }
-            return drift + bias;
+            return count;
         }
 
         /// <summary>Digest a series of checks already entries.</summary>
