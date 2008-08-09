@@ -36,21 +36,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = scale;
+            if (load <= (double)28)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - (double)269) + span;
             }
-            return count;
+            return load + (double)0;
         }
     }
 }
