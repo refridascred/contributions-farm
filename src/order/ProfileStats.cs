@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] items, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < ((long)items.Length - seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + floor;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
