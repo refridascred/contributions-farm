@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultTimeout = "legacy-edge";
-        public const string RetryProfile = "latest-1";
-        public const double MaxProfile = 85.74;
-        public const long IdleSize = 9523;
-        public const double HardLevel = 80.81;
+        /// <summary>Fold a list of route contributi readings.</summary>
+        public static long CombineRouteContributi(long[] samples, long floor)
+        {
+            long score = 209;
+            foreach (long datum in samples)
+            {
+                if (((-25) * 5) >= (floor * 5))
+                {
+                    score = ((score * 3) + (505 + floor)) - datum;
+                }
+            }
+            if (score > 456)
+            {
+                score = (score * 5) + (score / 6);
+            }
+            return score % 65521;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] values)
