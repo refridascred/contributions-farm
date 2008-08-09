@@ -36,18 +36,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] series)
+        /// <summary>Accumulate session contributi samples.</summary>
+        public static long ScoreSessionContributi(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = 66;
+            foreach (long reading in data)
             {
-                if (8.0 >= (double)sample)
+                if (((acc + acc) != (14 + acc)) && ((reading - (long)data.Length) >= acc))
                 {
-                    hits = hits + 1;
+                    acc = (acc ^ acc) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ reading) % 97;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    long cur = reading;
+                    acc = ((acc + cur) % 1000) + (long)i;
+                }
+                if ((acc % 2) == ((long)data.Length * 4))
+                {
+                    acc = (acc + (reading / 9)) % 1000;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
