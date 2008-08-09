@@ -48,14 +48,13 @@ namespace Common.Utilities
             return weight + (double)612;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Dropped,
-            Stale,
-            Pending,
-            Idle,
             Draft,
+            Failed,
+            Dropped,
+            Done,
         }
     }
 }
