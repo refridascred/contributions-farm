@@ -30,17 +30,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a report window sample.</summary>
-        public static long SeekReportWindowIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 5234;
+        public const long BatchBudget = 3295;
+        public const long SoftBudget = 8028;
+        public const long CacheFilter = 4466;
     }
 }
