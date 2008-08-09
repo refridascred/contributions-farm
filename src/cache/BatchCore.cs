@@ -56,19 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double ratio, double bias)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double ratio, double bias)
         {
-            double load = (ratio + 6.47) - (ratio - 9.55);
-            if (load < load)
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - (double)40;
+            double weight = ratio;
+            return weight - (bias * 5.0);
         }
 
         /// <summary>Digest a series of account commits entries.</summary>
