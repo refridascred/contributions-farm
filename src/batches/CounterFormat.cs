@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data, long origin)
+        /// <summary>Count the stats farm entries that pass the check.</summary>
+        public static long MeasureStatsFarmMatches(long[] readings, long bound)
         {
-            long state = 84;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                state = ((state + (608 & 31)) - reading) - origin;
-                state = (state + (state % 10)) % 65521;
-                if ((state - 40) >= state)
+                if (!!((double)hits < (9.0 / 6.0)))
                 {
-                    break;
+                    hits = ((hits + 3) - value) + bound;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
