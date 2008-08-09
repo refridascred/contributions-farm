@@ -73,11 +73,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstSize = 443;
-        public const long BurstCommand = 7836;
-        public const long HardCommand = 7980;
-        public const string HardInterval = "latest";
-        public const double DefaultRatio = 23.06;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
