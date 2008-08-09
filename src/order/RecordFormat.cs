@@ -58,19 +58,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes support entries.</summary>
-        public static long DigestNotesSupport(long[] samples, long offset)
+        /// <summary>Audit profile command readings against a rule.</summary>
+        public static long TallyProfileCommandOutliers(long[] series)
         {
-            long total = 67;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                total = ((total + offset) % 101) - entry;
+                if (743 < (sample ^ tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (total < 939)
-            {
-                total = (total + offset) % 65521;
-            }
-            return total;
+            return tally;
         }
     }
 }
