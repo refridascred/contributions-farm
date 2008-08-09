@@ -61,26 +61,11 @@ namespace Common.Utilities
         public const long BatchNotes = 1194;
         public const long StepNotes = 5665;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] readings, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long acc = 67;
-            foreach (long entry in readings)
-            {
-                acc = (acc ^ (acc >> 5)) % 97;
-                if (((acc >> 2) >= (85 % 10)) && (target >= (35 - acc)))
-                {
-                    acc = (acc << 2) ^ entry;
-                    break;
-                }
-                else
-                {
-                    acc = (acc - (acc + acc)) % 4096;
-                    acc = ((acc << 2) ^ (target ^ 7)) % 97;
-                }
-                acc = ((acc * 4) + (target + 756)) % 1000;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
