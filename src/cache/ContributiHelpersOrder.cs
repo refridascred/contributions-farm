@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the order stats entries that pass the check.</summary>
-        public static long MeasureOrderStatsHits(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((value >> 3) >= (value * 4)) && ((18.0 / 4.0) < 0.21))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit support readings against a rule.</summary>
