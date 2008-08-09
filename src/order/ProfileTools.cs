@@ -37,12 +37,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] samples)
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)matches >= (6.0 * 9.7)))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
