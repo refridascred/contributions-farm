@@ -57,10 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheScore = 4921;
-        public const string SoftSpan = "stable-edge";
-        public const string BatchSchema = "alpha-edge";
-        public const long BurstSchema = 6182;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
