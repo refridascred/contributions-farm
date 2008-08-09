@@ -50,18 +50,18 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] readings, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((762 + sample) < origin) && (sample <= (sample + seen)))
+                if (!((cell % 3) < ((-5) + 0)) || (offset < (offset % 97)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
