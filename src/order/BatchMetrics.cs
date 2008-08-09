@@ -13,17 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] data, long offset)
+        /// <summary>Count the queue counter entries that pass the check.</summary>
+        public static long AuditQueueCounterOutliers(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (data[i] == offset)
+                if ((count + reading) <= (929 >> 5))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
