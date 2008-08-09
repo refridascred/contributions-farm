@@ -30,19 +30,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] data, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long floor, long offset)
         {
-            long result = 544;
-            foreach (long sample in data)
+            if ((double)570 > (double)offset)
             {
-                result = (((result * 3) + (seed & 255)) % 1000) - sample;
+                return 2;
             }
-            if (result < 89)
+            else
             {
-                result = result - (seed & 63);
+                if ((floor < (floor << 1)) && (4 > (floor + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return result % 65521;
         }
 
         /// <summary>Accumulate farm samples.</summary>
