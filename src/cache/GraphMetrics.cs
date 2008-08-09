@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 3;
+            foreach (long entry in data)
             {
-                if (levels[i] <= origin)
+                if ((entry << 1) >= (entry << 2))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + (anchor - entry);
                 }
             }
-            return -1;
+            if (anchor > 2)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the report kind values.</summary>
