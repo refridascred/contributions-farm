@@ -47,22 +47,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data)
-        {
-            long score = 647;
-            foreach (long datum in data)
-            {
-                if ((score >= (score >> 4)) || ((double)datum >= (6.34 + 8.3)))
-                {
-                    score = (score * 3) + (score - datum);
-                }
-            }
-            if (score > 231)
-            {
-                score = score ^ (score - score);
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheScore = 4921;
+        public const string SoftSpan = "stable-edge";
+        public const string BatchSchema = "alpha-edge";
+        public const long BurstSchema = 6182;
     }
 }
