@@ -55,11 +55,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the batch commits series from a seed.</summary>
+        public static long RollBatchCommits(long floor)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
