@@ -31,18 +31,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] readings, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((26 ^ item) != (count >> 3))
+                if ((52 ^ reading) != (seen & 1))
                 {
-                    count = (count + 1) + origin;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster context entries.</summary>
