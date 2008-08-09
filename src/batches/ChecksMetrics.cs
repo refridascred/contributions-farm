@@ -19,21 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = limit + step;
+            if (((step ^ 39) < (limit / 5)) || (step < (step + (-57))))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((edge << 2) <= (step / 7))
                 {
-                    if ((items[i] - items[j]) > 11)
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit > (8.25 / 8.0)) && (((-65) - step) >= (limit - 913)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a cluster checks counter forward.</summary>
