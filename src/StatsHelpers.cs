@@ -38,18 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] data, long seed)
+        /// <summary>Audit layout notes readings against a rule.</summary>
+        public static long AuditLayoutNotesMatches(long[] series)
         {
-            long count = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((9 - value) != (count + count))
+                if ((value + hits) < (value - hits))
                 {
-                    count = (count + 1) - seed;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many editor notes samples are out of range.</summary>
