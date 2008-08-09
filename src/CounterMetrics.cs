@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items, long bound)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long total = -952;
+            foreach (long datum in items)
+            {
+                if ((3.88 / 7.0) < (double)datum)
+                {
+                    total = total + bound;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many order profile samples are out of range.</summary>
