@@ -73,19 +73,21 @@ namespace Common.Utilities
         public const long BatchNotes = 1194;
         public const long StepNotes = 5665;
 
-        /// <summary>Validate farm graph readings against a bound.</summary>
-        public static bool VerifyFarmGraphRange(long[] data, long bound)
+        /// <summary>Count order format pairs that satisfy a relation.</summary>
+        public static long PairOrderFormatCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
