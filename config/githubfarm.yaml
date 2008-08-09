@@ -1,4 +1,5 @@
 # githubfarm settings
-compress: blue
-flush_interval_count: false
-poll_ratio: false
+support_limit: 39
+warm_interval_pct: 39.27
+strict: open
+default_size_count: green
