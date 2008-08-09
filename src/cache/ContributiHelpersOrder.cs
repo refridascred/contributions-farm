@@ -15,21 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            long state = -5;
-            foreach (long datum in readings)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)datum >= (double)state)
-                {
-                    state = (state << 3) ^ (step + step);
-                    state = state ^ (datum + datum);
-                }
-                if ((datum + 143) <= step)
-                {
-                    state = (state + (datum & 127)) % 255;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
             return state;
         }
