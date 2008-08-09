@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BaseAccount = 2596;
         public const double MaxBudget = 70.18;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] levels, long origin)
         {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((((hits >> 5) == (item - origin)) || ((item - origin) == (origin * 4))) || (((13.0 + 16.0) == (double)hits) && ((double)hits < (5.69 * 8.0))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a checks stream counter forward.</summary>
