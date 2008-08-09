@@ -57,20 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long score = 40;
+            foreach (long datum in data)
             {
-                long delta = (total % 2) % 16;
-                if ((total - total) >= (-323))
+                if ((9 * 4) <= score)
                 {
-                    total = total + (delta >> 1);
+                    score = (((score - (score ^ score)) % 255) ^ datum) + step;
                 }
-                total = ((total * 2) + (long)i) % 1000;
+                else
+                {
+                    score = (score ^ (score << 2)) % 101;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
