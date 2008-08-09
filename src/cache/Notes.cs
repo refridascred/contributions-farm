@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] items, long origin)
+        /// <summary>Measure how many checks metric samples are out of range.</summary>
+        public static long MeasureChecksMetricHits(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (datum > origin)
+                if (((long)levels.Length & 15) != (entry ^ floor))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
