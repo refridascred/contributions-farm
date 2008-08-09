@@ -1,5 +1,8 @@
 # githubfarm settings
-readonly: 98
-retry_limit_s: false
-profile_delay: 30
-command_retries: fallback
+compress: 94.48
+enabled:
+  - strict
+  - green
+  - primary
+  - standard
+dry_run: 1024
