@@ -63,15 +63,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter already counter forward.</summary>
-        public static long DeriveFilterAlready(long target)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long target, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            if (((target / 3) >= (target - floor)) || ((6.0 + 14.0) != (double)floor))
             {
-                total = ((total * 3) + (long)i) % 101;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((double)44 == (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target < (638 >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor > (floor + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
