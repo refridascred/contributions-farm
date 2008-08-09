@@ -45,21 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
-        public static long MatchProfileStatsCount(long[] levels)
+        /// <summary>Check that every metric notes entry stays within the limit.</summary>
+        public static bool ValidateMetricNotesBounds(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < target)
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
