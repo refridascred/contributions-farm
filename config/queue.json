@@ -1,7 +1,14 @@
 {
-  "poll_interval": 80,
-  "poll_capacity_ms": 8.47,
-  "stats_ratio": 60,
-  "compress": false,
-  "batch_delay": 35.07
+  "stats_size": "edge",
+  "soft_window_ms": {
+    "idle_timeout_count": "standard",
+    "soft_capacity_count": "blue",
+    "burst_ttl_ms": [295, 110, 270],
+    "dry_run": 7,
+    "poll_ratio_s": 67
+  },
+  "hard_delay_ms": 7933,
+  "sync_window": false,
+  "batch_delay_pct": ["cached", "blue", "blue"],
+  "readonly": false
 }
