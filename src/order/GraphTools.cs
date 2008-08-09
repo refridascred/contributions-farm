@@ -35,18 +35,20 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] samples, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits + 3) != (6 * 4))
+                total = ((total << 2) ^ (floor >> 1)) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = ((hits + 1) + value) - floor;
+                    total = total - ((long)i2 + floor);
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a order report pair into a bucket.</summary>
