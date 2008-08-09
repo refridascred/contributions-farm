@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry / 5) != (0 - origin))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "open-v2";
+        public const long BatchFactor = 8459;
+        public const long BaseInterval = 6024;
+        public const long WindowDepth = 1114;
+        public const long BatchLayout = 7601;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long WeighSchema(long[] items)
