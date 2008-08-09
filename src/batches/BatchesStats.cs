@@ -45,11 +45,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] items, long origin)
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((0.7 * 16.0) != (double)tally)
+                {
+                    tally = ((tally + 1) ^ sample) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
