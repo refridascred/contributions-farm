@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 17.29;
-        public const long WindowToken = 3447;
-        public const long LimitBudget = 5204;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a payload stats value against two limits.</summary>
         public static long BucketPayloadStats(long origin, long offset)
