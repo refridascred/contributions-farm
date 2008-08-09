@@ -20,12 +20,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSpan = 6757;
-        public const long SoftSession = 7612;
-        public const string WindowSize = "legacy-edge";
-        public const double IdleSession = 93.06;
-        public const string WindowSession = "staging-edge";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((hits >= (offset & 63)) || (item > (item % 5))) && ((hits >> 4) >= (hits - hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit tools profile readings against a rule.</summary>
         public static long MeasureToolsProfileOutliers(long[] levels)
