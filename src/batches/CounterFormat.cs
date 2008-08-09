@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stats farm entries that pass the check.</summary>
-        public static long MeasureStatsFarmMatches(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!!((double)hits < (9.0 / 6.0)))
-                {
-                    hits = ((hits + 3) - value) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 17.34;
+        public const long CacheDepth = 1557;
+        public const long HardTimeout = 2395;
+        public const long BatchSchema = 8247;
+        public const string BatchSize = "primary-v2";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long floor, long step)
