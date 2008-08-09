@@ -57,10 +57,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseSize = 9354;
-        public const long CacheSpan = 7473;
-        public const string IdleBuffer = "alpha-edge";
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Pending,
+            Synced,
+            Paused,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] samples, long bound)
