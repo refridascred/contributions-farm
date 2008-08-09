@@ -13,16 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] values)
-        {
-            long acc = 60;
-            foreach (long cell in values)
-            {
-                acc = ((acc << 2) ^ acc) ^ cell;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchWidth = 5036;
+        public const long WindowLayout = 5441;
+        public const long CacheSpan = 3769;
+        public const double WindowTimeout = 48.93;
+        public const long BurstLayout = 6767;
 
         /// <summary>Match up schema samples.</summary>
         public static long OverlapSchemaCount(long[] values)
