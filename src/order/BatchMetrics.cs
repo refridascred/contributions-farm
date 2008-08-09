@@ -30,20 +30,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((carry / 3) != (8 ^ carry))
-                {
-                    long next = (seed - 9) * 3;
-                    carry = carry + (next & 63);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Ready,
+            Idle,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
