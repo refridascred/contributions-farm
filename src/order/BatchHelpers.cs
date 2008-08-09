@@ -13,23 +13,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit * 4) < (limit / 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state * 5) + 5;
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (state + ((long)i / 8)) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
