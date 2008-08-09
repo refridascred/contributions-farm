@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "standard-1";
+        public const long MinChecks = 91;
+        public const string HardInterval = "fallback";
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
