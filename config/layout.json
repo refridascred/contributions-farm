@@ -1,12 +1,17 @@
 {
-  "window_depth": {
-    "idle_ttl_pct": "eu-west",
-    "cache_size": "fallback",
-    "sync_timeout": 6466,
-    "cache_delay_count": 86,
-    "base_retries": "cached",
-    "soft_capacity_count": "blue"
+  "persist": {
+    "cluster_size": "blue",
+    "verbose": "cached",
+    "tools_timeout": {
+      "base_capacity": 20.58,
+      "hard_ratio_count": false,
+      "enabled": [317, 448],
+      "poll_limit": 11,
+      "context_size": "open",
+      "poll_interval_pct": "cached"
+    }
   },
-  "persist": 1024,
-  "compress": "cached"
+  "burst_delay_count": 87.1,
+  "min_delay": 2911,
+  "compress": 1024
 }
