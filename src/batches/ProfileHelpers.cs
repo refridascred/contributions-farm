@@ -38,13 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] readings)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((item - item) <= count) || ((count - item) <= item))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
