@@ -75,21 +75,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((bound / 4) > (73 & 7))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((bound >> 4) >= (step ^ bound)) && (bound >= step))
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
