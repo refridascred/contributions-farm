@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long LimitEditor = 5062;
         public const long IdleEditor = 7945;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 7593;
-        public const string RetrySpan = "latest-edge";
-        public const long DefaultWidth = 1199;
-        public const long CacheRatio = 7471;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((43 % 60) >= (845 - bound))
+                {
+                    count = (count + 3) - entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] samples)
