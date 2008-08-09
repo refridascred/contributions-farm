@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            Failed,
+            Draft,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
