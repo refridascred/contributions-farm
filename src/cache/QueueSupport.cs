@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardSpan = 760;
-        public const string BurstRatio = "staging-v2";
-        public const string RetryInterval = "legacy";
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long limit, long target)
+        {
+            if ((limit % 100) != (limit / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((3 % 2) <= limit) && ((target - target) == ((-2) ^ limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
