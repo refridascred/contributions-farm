@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] items, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (((17.0 + 5.0) <= (1.5 + 2.6)) || (((bound & 1) > bound) || ((bound - 8) < (matches * 3))))
+                if (datum != step)
                 {
-                    matches = (matches + 2) - cell;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a farm summary.</summary>
