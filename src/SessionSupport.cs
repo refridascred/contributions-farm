@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const string BatchSize = "standard-edge";
         public const long HardAlready = 7450;
 
-        /// <summary>Measure how many tools entry samples are out of range.</summary>
-        public static long AuditToolsEntryGaps(long[] values, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((origin & 1) != (cell / 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Paused,
         }
     }
 }
