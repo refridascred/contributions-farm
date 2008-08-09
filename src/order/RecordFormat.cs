@@ -39,13 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = -98;
+            foreach (long sample in series)
+            {
+                mark = (mark * 5) + (sample % 12);
+            }
+            if (mark < 3)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a record stats.</summary>
