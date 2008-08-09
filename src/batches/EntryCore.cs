@@ -59,13 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((offset ^ offset) < (matches + value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
