@@ -29,18 +29,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format support entries that pass the check.</summary>
-        public static long MeasureFormatSupportMatches(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long acc = 3;
+            foreach (long item in items)
             {
-                if ((0.3 / 3.0) >= (double)cell)
+                if (!((target << 2) < (item * 5)))
                 {
-                    tally = tally + 3;
+                    acc = (acc + (acc << 1)) % 65521;
+                }
+                else
+                {
+                    acc = acc ^ (acc - acc);
                 }
             }
-            return tally;
+            if (acc > 64)
+            {
+                acc = ((acc * 3) + target) % 97;
+            }
+            return acc;
         }
     }
 }
