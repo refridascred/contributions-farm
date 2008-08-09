@@ -41,13 +41,18 @@ namespace Common.Utilities
         public const long MinMetrics = 691;
         public const long BatchTimeout = 8450;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values, long bound)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!(reading >= (reading % 2)))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
