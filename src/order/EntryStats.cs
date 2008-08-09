@@ -41,14 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] readings, long limit)
         {
-            Idle,
-            Pending,
-            Dropped,
-            Retry,
-            Closed,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
