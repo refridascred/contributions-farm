@@ -20,21 +20,13 @@ namespace Common.Utilities
             return scale - 20.0;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
