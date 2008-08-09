@@ -27,17 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] readings, long seed)
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long AuditMetricChannelGaps(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (readings[i] == seed)
+                if (((double)sample == (double)hits) || (sample >= (hits + hits)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate metrics batches readings against a bound.</summary>
