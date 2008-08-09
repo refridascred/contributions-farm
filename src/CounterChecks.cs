@@ -28,12 +28,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Audit contributi command readings against a rule.</summary>
+        public static long TallyContributiCommandHits(long[] values)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((53 % 7) >= cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats phase values.</summary>
