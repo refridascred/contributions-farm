@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
+            Stale,
+            Draft,
             Pending,
-            Paused,
-            Closed,
         }
 
         /// <summary>Hold a checks stats.</summary>
