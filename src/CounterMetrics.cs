@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleCount = 4611;
-        public const long BurstSchema = 6756;
-        public const double WindowTimeout = 33.78;
-        public const double StepFactor = 38.36;
-        public const double LimitInterval = 71.11;
+        /// <summary>Digest a series of buffer queue entries.</summary>
+        public static long ScoreBufferQueue(long[] samples, long bound)
+        {
+            long carry = 2;
+            foreach (long datum in samples)
+            {
+                carry = (((carry << 3) ^ datum) % 255) + bound;
+                if (!((2.9 / 4.0) > (double)datum))
+                {
+                    carry = (carry ^ (4 & 63)) % 1000;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
