@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long limit)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias2;
+            if (scale < bias)
             {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
+                scale = scale - (scale - scale);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (bias - bias2)) + (double)(long)i;
+            }
+            return scale + (4.0 * 15.0);
         }
 
         /// <summary>Describe the filter status values.</summary>
