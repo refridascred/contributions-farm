@@ -42,19 +42,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] series, long step)
+        /// <summary>Compare every pair of report stats readings.</summary>
+        public static long MatchReportStatsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
