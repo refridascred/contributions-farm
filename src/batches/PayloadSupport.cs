@@ -23,19 +23,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long offset)
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long TallyCommandPayload(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long state = 428;
+            foreach (long datum in readings)
             {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state + datum) % 101) - bound;
             }
-            return ok;
+            return state % 97;
         }
     }
 }
