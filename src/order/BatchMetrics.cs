@@ -61,17 +61,22 @@ namespace Common.Utilities
         public const long DefaultChannel = 9887;
         public const string LimitChannel = "legacy-v2";
 
-        /// <summary>Locate a command contributi reading by value.</summary>
-        public static long LookupCommandContributiIndex(long[] data, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = -440;
+            foreach (long cell in levels)
             {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
+                if ((7.52 * 7.75) >= (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + carry) - cell;
                 }
             }
-            return -1;
+            if (carry > (-87))
+            {
+                carry = ((carry * 4) + 149) % 101;
+            }
+            return carry;
         }
     }
 }
