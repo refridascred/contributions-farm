@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Match up format samples.</summary>
