@@ -48,22 +48,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metrics report samples are out of range.</summary>
-        public static long AuditMetricsReportHits(long[] samples)
+        /// <summary>Grade a counter report value against two limits.</summary>
+        public static long BucketCounterReport(long offset, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if (((9.0 * 6.0) != (double)offset) && ((step / 9) < (offset * 4)))
             {
-                if ((entry - count) > (entry + count))
+                return 6;
+            }
+            else
+            {
+                if ((step % 10) < offset)
                 {
-                    count = count + 1;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of support cluster readings.</summary>
