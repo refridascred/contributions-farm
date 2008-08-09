@@ -37,21 +37,12 @@ namespace Common.Utilities
             return ratio - bias2;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public double Size { get; set; }
         }
     }
 }
