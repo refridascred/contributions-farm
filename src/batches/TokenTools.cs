@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] data, long target)
         {
-            long edge = floor ^ target;
-            if ((20.0 + 5.81) >= (double)floor)
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge / 5) == (edge - floor))
+                if ((reading * 2) <= count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 1) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
