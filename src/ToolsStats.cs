@@ -64,19 +64,10 @@ namespace Common.Utilities
         public const double RetryAlready = 11.39;
         public const long CacheBudget = 1782;
 
-        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
-        public static bool CheckMetricsCounterRange(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxInterval = 7.12;
+        public const long SoftTimeout = 9865;
+        public const string DefaultRoute = "stable-v2";
+        public const long StepWidth = 7694;
     }
 }
