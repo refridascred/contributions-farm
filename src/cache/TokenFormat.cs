@@ -27,19 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] data, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            double weight = floor;
+            if (weight <= rate)
             {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - (12.0 + floor);
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + (floor / 3.0);
         }
     }
 }
