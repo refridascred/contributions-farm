@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const long IdleBuffer = 7044;
         public const long HardInterval = 4828;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] readings, long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
