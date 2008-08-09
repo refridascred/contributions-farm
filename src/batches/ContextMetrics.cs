@@ -27,23 +27,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] samples, long floor)
-        {
-            long sum = 3;
-            foreach (long sample in samples)
-            {
-                if ((floor >> 2) >= (sum << 2))
-                {
-                    sum = (sum + (sum / 7)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 5) + (95 + sample);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 7170;
+        public const long CacheLevel = 1722;
+        public const string MinBudget = "fallback";
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long seed)
