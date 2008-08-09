@@ -15,18 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count cluster githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchClusterGithubfarmCount(long[] data)
+        /// <summary>Measure how many batches stats samples are out of range.</summary>
+        public static long AuditBatchesStatsMatches(long[] levels, long target)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally >> 4) < (tally * 4))
                 {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) + datum) + target;
                 }
             }
             return tally;
