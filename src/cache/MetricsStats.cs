@@ -43,12 +43,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "fallback-1";
-        public const long BatchMetric = 3805;
-        public const double IdleLevel = 33.36;
-        public const long LimitMetric = 7653;
-        public const double WindowFactor = 55.1;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + matches) > limit)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesGaps(long[] readings, long step)
