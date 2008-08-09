@@ -71,22 +71,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi report readings against a rule.</summary>
-        public static long AuditContributiReportOutliers(long[] values, long floor)
+        /// <summary>Digest a series of notes support entries.</summary>
+        public static long DigestNotesSupport(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long total = 67;
+            foreach (long entry in samples)
             {
-                if ((double)entry >= (double)hits)
-                {
-                    hits = (hits + 2) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total + offset) % 101) - entry;
             }
-            return hits;
+            if (total < 939)
+            {
+                total = (total + offset) % 65521;
+            }
+            return total;
         }
     }
 }
