@@ -1,6 +1,4 @@
 # support settings
-report_depth: 61
-base_threshold_pct: local
-filter_threshold: 9.92
-max_timeout: 42
-flush_threshold_ms: eu-west
+flush_delay_s: 17.58
+hard_window_pct: 7739
+profile_retries: 25
