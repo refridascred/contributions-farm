@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Active,
-            Draft,
-            Dropped,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 1769;
+        public const double DefaultBudget = 93.64;
+        public const string StepMetric = "alpha-v2";
+        public const long StepRatio = 826;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesGaps(long[] levels, long target)
