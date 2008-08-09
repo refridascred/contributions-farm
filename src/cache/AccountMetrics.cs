@@ -24,10 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 2741;
-        public const long BurstScore = 2011;
-        public const long RetryContext = 6485;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long StepNotes(long offset)
