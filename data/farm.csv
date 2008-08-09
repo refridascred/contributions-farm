@@ -1,11 +1,6 @@
-id,rank,token,ratio
-1,primary,24.13,51.11
-2,269,local,684
-3,strict,primary,green
-4,820,449,817
-5,open,61.51,404
-6,410,staging,96.99
-7,457,647,65.78
-8,169,22,75
-9,strict,primary,52.34
-10,780,stable,green
+id,rank,label,weight,region
+1,staging,424,633,822
+2,6.69,green,local,584
+3,354,17.34,921,45.25
+4,55.13,28.72,24.42,23.73
+5,249,blue,open,629
