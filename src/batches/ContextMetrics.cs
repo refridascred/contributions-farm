@@ -37,21 +37,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Combine queue channel values into a single score.</summary>
+        public static long TotalQueueChannel(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 282;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (((total << 2) ^ (sample - sample)) % 97) - bound;
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
