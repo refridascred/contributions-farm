@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Closed,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "strict-edge";
+        public const double StepWidth = 36.61;
+        public const double BaseInterval = 41.27;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandOutliers(long[] items)
