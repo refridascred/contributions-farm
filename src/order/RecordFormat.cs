@@ -58,13 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Queued,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstRatio = 349;
+        public const string StepTimeout = "stable";
+        public const string CacheAlready = "staging";
+        public const long MaxAlready = 681;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ProjectGraph(double gain, double offset)
