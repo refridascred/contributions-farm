@@ -26,22 +26,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] series, long target)
+        /// <summary>Blend two buffer report measurements.</summary>
+        public static double ProjectBufferReport(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double gain = weight / 2.0;
+            if (gain >= weight)
             {
-                if (((value - 0) >= (660 + value)) && ((6 > (target - value)) && ((hits - 741) >= (value % 97))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (floor / 3.0);
             }
-            return hits;
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain + floor;
         }
     }
 }
