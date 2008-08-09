@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] values, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)offset == (1.5 + 2.7))
+                if (samples[i] < step)
                 {
-                    matches = (matches + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate session contributi samples.</summary>
