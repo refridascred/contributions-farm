@@ -43,12 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] items, long limit)
         {
-            Draft,
-            New,
-            Done,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
