@@ -1,11 +1,7 @@
 # support settings
-poll_limit_s: open
-strict: false
-stream_limit: fallback
-flush_window_count:
-  min_window_pct: open
-  idle_capacity_ms: strict
-  cache_size_s:
-    - 396
-    - 286
-    - 160
+default_ttl: 96.88
+flush_size: true
+session_depth:
+  report_window: 250
+  retry_capacity_pct: green
+  persist: 5.12
