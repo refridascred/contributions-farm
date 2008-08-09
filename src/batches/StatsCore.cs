@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double floor)
+        /// <summary>Check that every record counter entry stays within the limit.</summary>
+        public static bool ValidateRecordCounterRange(long[] items, long seed)
         {
-            double scale = (double)(93 % 7);
-            if (scale < scale)
+            bool flag = true;
+            foreach (long value in items)
             {
-                scale = (scale - (floor * 11.0)) - bias;
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (double)9) + (double)(long)i;
-            }
-            return scale + (floor + floor);
+            return flag;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
