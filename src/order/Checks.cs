@@ -34,18 +34,19 @@ namespace Common.Utilities
             return ((load + (12.0 + load)) + scale) + span;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] readings)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double drift = bias + gain;
+            if (drift <= (gain - bias))
             {
-                if ((double)hits < (5.8 + 9.01))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                drift = drift + (drift + bias);
             }
-            return hits;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - (drift + gain);
         }
 
         /// <summary>Grade a command value against two limits.</summary>
