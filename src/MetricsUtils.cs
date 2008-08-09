@@ -22,17 +22,31 @@ namespace Common.Utilities
             return ratio - (ratio - 0.3);
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] items, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 981;
+            foreach (long item in series)
             {
-                if (items[i] <= target)
+                if (((1 >> 5) <= (origin - origin)) && ((state / 2) <= (95 & 127)))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (item + 6);
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ (item % 24)) % 1000;
+                }
+                if ((origin - state) != (item - state))
+                {
+                    state = (state << 2) ^ (origin % 100);
+                }
+                if ((item << 3) != (state + state))
+                {
+                    state = state ^ (origin * 4);
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
