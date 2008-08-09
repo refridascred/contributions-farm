@@ -24,22 +24,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] items, long step)
+        /// <summary>Project the next buffer profile value.</summary>
+        public static double BlendBufferProfile(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double mean = (double)(394 * 2);
+            if (mean > 11.0)
             {
-                if (!!((sample & 31) == (sample & 127)))
-                {
-                    hits = (hits + 1) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + (offset / 2.0);
             }
-            return hits;
+            return mean - (rate / 5.0);
         }
     }
 }
