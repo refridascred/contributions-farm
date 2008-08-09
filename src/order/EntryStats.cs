@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((8.49 - 13.0) > (double)seen)
+                if (entry != origin)
                 {
-                    seen = (seen + 2) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Rank context batch input into a small class.</summary>
