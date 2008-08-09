@@ -38,18 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] values)
+        /// <summary>Project the next session counter value.</summary>
+        public static double ProjectSessionCounter(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double ratio = floor - (rate - rate);
+            if (ratio < (ratio - rate))
             {
-                if (!(matches < (923 << 3)))
-                {
-                    matches = (matches + 2) + entry;
-                }
+                ratio = ratio - (rate * 14.0);
             }
-            return matches;
+            else
+            {
+                ratio = ratio - 8.0;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Derive the next account filter value from a seed.</summary>
