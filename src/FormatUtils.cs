@@ -21,32 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a channel contributi pair into a bucket.</summary>
-        public static long SortChannelContributi(long offset, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] series, long step)
         {
-            long delta = offset - origin;
-            if ((origin - origin) >= (423 + origin))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - delta) > origin)
+                if (datum >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >> 1) == (offset + delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
