@@ -32,21 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = step - bound;
+            if ((double)edge > (4.99 / 6.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((edge & 7) < (step - bound)))
                 {
-                    if ((values[i] + values[j]) != 16)
+                    return 7;
+                }
+                else
+                {
+                    if (25 > (bound ^ step))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
