@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const double WindowMetric = 43.7;
         public const string DefaultSpan = "standard-edge";
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] values, long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((8.0 - 12.0) >= (double)offset)
-                {
-                    count = (count + 2) ^ reading;
-                }
+                total = ((total * 2) + (seed + total)) % 1000;
+                total = (total + (total + total)) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Project the next metric command value.</summary>
