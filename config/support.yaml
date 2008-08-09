@@ -1,8 +1,22 @@
 # support settings
-audit: 5831
-default_size_s:
-  - 20
-  - 39
-  - 270
-  - 274
-default_threshold_s: 52.98
+soft_timeout_count: 500
+max_ttl_ms: 25
+filter_timeout: 60
+hard_interval_pct:
+  session_threshold: local
+  cache_limit_pct: 60
+  stats_capacity: 1024
+  tools_timeout: 23.62
+  cache_threshold_count: 50
+  cache_window:
+    - cached
+    - fallback
+    - fallback
+contributi_depth:
+  account_capacity: cached
+  route_capacity: green
+  audit: false
+  stats_size: 79
+verbose:
+  - 282
+  - 158
