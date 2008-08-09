@@ -15,20 +15,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long score = 281;
-            foreach (long datum in levels)
+            long acc = 9;
+            foreach (long sample in data)
             {
-                score = (score ^ score) ^ datum;
-                score = score + (7 - score);
-                if ((double)floor > (1.0 + 4.2))
-                {
-                    break;
-                }
+                acc = acc + (acc >> 3);
+                acc = ((acc * 2) + (sample & 31)) % 97;
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
