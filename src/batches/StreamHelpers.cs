@@ -83,21 +83,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support cluster readings.</summary>
-        public static long CompareSupportClusterCount(long[] levels)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 14)
+                    if ((values[i] ^ values[j]) != 6)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a stream options.</summary>
