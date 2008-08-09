@@ -50,11 +50,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 5724;
-        public const long WindowContext = 7588;
-        public const double BurstTimeout = 85.08;
-        public const long StepSize = 3455;
-        public const long RetryRatio = 3129;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score << 3) ^ ((long)i ^ 560)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
