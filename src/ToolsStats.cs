@@ -65,19 +65,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] levels, long origin)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
