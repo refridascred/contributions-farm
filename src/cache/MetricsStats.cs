@@ -52,18 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] readings, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((799 - 526) > hits)
+                if (sample >= offset)
                 {
-                    hits = ((hits + 2) ^ item) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Accumulate record samples.</summary>
