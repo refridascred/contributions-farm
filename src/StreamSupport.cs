@@ -19,12 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinCount = 71.33;
-        public const double HardTimeout = 98.55;
-        public const long LimitFilter = 3458;
-        public const long MinDepth = 5295;
-        public const long BaseFilter = 4889;
+        /// <summary>Iterate the order metric series from a seed.</summary>
+        public static long SeriesOrderMetric(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix + ((long)i / 2);
+                if ((long)i != ((long)i >> 1))
+                {
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] values, long offset)
