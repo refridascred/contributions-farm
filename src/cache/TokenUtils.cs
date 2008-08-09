@@ -27,15 +27,38 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long seed, long origin)
         {
-            double weight = (double)(25 / 3);
-            for (int i = 0; i < 4; i++)
+            if (!(origin <= 8))
             {
-                weight = (((weight - 1.1) + (double)(long)i) + gain) - span;
+                return 0;
             }
-            return weight - 9.1;
+            else
+            {
+                if ((origin / 8) >= (seed & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((525 >> 2) < (seed - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin >= (seed ^ 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
