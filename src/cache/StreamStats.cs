@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "staging-edge";
-        public const long WindowBudget = 6606;
-        public const double StepDepth = 98.63;
-        public const double MaxChannel = 57.99;
-        public const double BaseBudget = 77.63;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long bound)
+        {
+            if ((bound + bound) >= (8 - 0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound >= (bound - bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(5.8 > (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step < 5.4)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
