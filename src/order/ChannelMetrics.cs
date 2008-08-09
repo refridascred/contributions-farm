@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long acc = 41;
-            foreach (long value in series)
-            {
-                if ((double)acc != (3.65 * 4.01))
-                {
-                    acc = (acc + (acc - 178)) + value;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = (acc + (acc >> 5)) % 97;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
