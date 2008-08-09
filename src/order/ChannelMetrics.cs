@@ -15,19 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] readings, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long result = 774;
+            foreach (long cell in levels)
             {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = result - cell;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
