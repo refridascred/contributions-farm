@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long anchor = 3;
-            foreach (long entry in data)
-            {
-                if ((entry << 1) >= (entry << 2))
-                {
-                    anchor = (anchor * 2) + (anchor - entry);
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-            }
-            return anchor;
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
