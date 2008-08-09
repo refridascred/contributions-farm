@@ -1,12 +1,7 @@
 {
-  "enabled": 250,
-  "readonly": 250,
-  "min_ttl": {
-    "soft_window_s": 48,
-    "idle_timeout_s": 11.71,
-    "queue_capacity": "latest",
-    "enabled": 500,
-    "command_retries": 5724,
-    "min_size": "blue"
-  }
+  "base_size_s": 8357,
+  "batch_depth": 41,
+  "compress": false,
+  "persist": false,
+  "notes_size": true
 }
