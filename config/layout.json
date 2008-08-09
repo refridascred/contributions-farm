@@ -1,18 +1,7 @@
 {
-  "session_timeout": 1386,
-  "payload_capacity": 61.84,
-  "poll_window": {
-    "batch_limit_s": "strict",
-    "sync_delay_s": 35.71,
-    "cache_capacity": "standard",
-    "max_capacity_s": "edge",
-    "schema_delay": {
-      "sync_window_pct": false,
-      "enabled": "cached",
-      "burst_size_pct": true,
-      "notes_window": "fallback",
-      "flush_size_count": "green"
-    }
-  },
-  "order_capacity": 250
+  "persist": ["fallback", "local", "standard"],
+  "poll_capacity_pct": "eu-west",
+  "context_ratio": 60,
+  "cache_timeout": true,
+  "compress": 16
 }
