@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "standard";
-        public const string BurstRoute = "stable-v2";
-        public const double SoftRatio = 12.77;
-        public const long CacheRoute = 6221;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double bias, double bias2)
+        {
+            double drift = bias2;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift + (double)11) + (double)(long)i) - bias;
+            }
+            return drift - bias2;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long bound)
