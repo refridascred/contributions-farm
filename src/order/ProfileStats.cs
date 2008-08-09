@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCount = "open-edge";
-        public const double BatchCache = 50.57;
-        public const long SoftBudget = 1200;
-        public const long BaseRatio = 1840;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Idle,
+            Queued,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long CompareCacheCount(long[] readings)
