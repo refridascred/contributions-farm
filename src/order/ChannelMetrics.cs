@@ -35,12 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long carry = 55;
+            foreach (long sample in items)
+            {
+                carry = (((carry << 2) ^ (carry - carry)) % 4096) - sample;
+            }
+            if (carry > 9)
+            {
+                carry = carry ^ (347 - carry);
+            }
+            return carry;
         }
     }
 }
