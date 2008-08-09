@@ -19,13 +19,27 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            Active,
-            Idle,
-            Ready,
-            Dropped,
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((((long)i / 3) > 2) && ((2.0 + 7.84) > (double)step))
+                {
+                    mark = (mark + mark) % 255;
+                }
+                if ((mark + step) < ((long)i * 5))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
