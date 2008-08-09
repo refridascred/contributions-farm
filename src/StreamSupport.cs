@@ -19,21 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order metric series from a seed.</summary>
-        public static long SeriesOrderMetric(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = mix + ((long)i / 2);
-                if ((long)i != ((long)i >> 1))
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultScore = 1636;
+        public const long LimitSpan = 2441;
+        public const double BurstCounter = 61.32;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] values, long offset)
