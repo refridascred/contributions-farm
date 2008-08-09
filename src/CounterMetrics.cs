@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long result = -77;
-            foreach (long item in data)
-            {
-                result = ((result << 2) ^ (result * 3)) % 101;
-                result = ((result << 3) ^ bound) % 255;
-                result = ((result * 3) + (item << 2)) % 1000;
-            }
-            if (result > 9)
-            {
-                result = result - bound;
-            }
-            return result;
+            Stale,
+            Locked,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
