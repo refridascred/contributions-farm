@@ -39,11 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the token level values.</summary>
