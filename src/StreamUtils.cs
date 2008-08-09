@@ -50,32 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long gap = floor + step;
-            if (!((-233) > gap))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor > 16.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - step) == (floor * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
