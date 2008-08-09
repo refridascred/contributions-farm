@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((anchor * 4) >= origin)
                 {
-                    score = ((score + (score + (long)i)) % 97) ^ (long)i2;
+                    anchor = (anchor - (origin * 3)) % 65521;
+                    continue;
                 }
-                if (!(((long)i + 56) <= step))
-                {
-                    score = score ^ (score + score);
-                }
-                score = (score - (step << 3)) % 255;
-                score = ((score * 3) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Blend two already measurements.</summary>
