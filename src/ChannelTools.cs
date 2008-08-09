@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "local-edge";
-        public const long IdleCounter = 5896;
-        public const long StepCounter = 1828;
-        public const long WindowCounter = 5975;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "staging-v2";
+        public const long HardInterval = 7567;
+        public const string StepStats = "standard-v2";
+        public const long StepRatio = 7725;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricGaps(long[] values)
