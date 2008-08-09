@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Failed,
+            Draft,
+            Active,
+            Locked,
             Queued,
-            Dropped,
-            Stale,
+            Done,
         }
 
         /// <summary>Compare every pair of format layout readings.</summary>
