@@ -23,38 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a cluster already value against two limits.</summary>
-        public static long GradeClusterAlready(long floor, long seed)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if ((9 - seed) <= 7)
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (seed & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor - floor) != (344 >> 4)) && ((double)floor < (8.9 - 4.33)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed < 1.29)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate token samples.</summary>
