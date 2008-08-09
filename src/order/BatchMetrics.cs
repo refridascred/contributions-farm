@@ -77,15 +77,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Grade a notes stats value against two limits.</summary>
+        public static long BucketNotesStats(long bound, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            long prev = bound - origin;
+            if (((double)bound == (double)(-9)) && ((8.6 + 15.0) < (double)prev))
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (prev > (bound << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >= (bound * 3)) || ((origin - origin) >= (210 << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((95 + bound) == (origin - bound)) || ((6 % 97) == (bound << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
