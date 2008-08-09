@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Check that every cluster counter entry stays within the limit.</summary>
+        public static bool GuardClusterCounterBounds(long[] levels, long limit)
         {
-            Retry,
-            Queued,
-            New,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
