@@ -36,19 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics batches readings against a bound.</summary>
-        public static bool ValidateMetricsBatchesBounds(long[] items, long seed)
+        /// <summary>Find the first contributi counter entry that matches the target.</summary>
+        public static long LocateContributiCounterIndex(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < seed)
+                if (levels[i] > seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
