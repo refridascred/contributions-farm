@@ -28,13 +28,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] readings, long offset)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)offset < 0.84)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
