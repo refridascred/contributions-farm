@@ -47,19 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double rate, double bias)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data)
         {
-            double rate2 = (double)(416 - 641);
-            if (rate2 > bias)
+            long score = 647;
+            foreach (long datum in data)
             {
-                rate2 = (rate2 - (6.0 + 13.0)) + rate;
+                if ((score >= (score >> 4)) || ((double)datum >= (6.34 + 8.3)))
+                {
+                    score = (score * 3) + (score - datum);
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (score > 231)
             {
-                rate2 = (rate2 + (double)88) + (double)(long)i;
+                score = score ^ (score - score);
             }
-            return rate2 + 8.7;
+            return score;
         }
     }
 }
