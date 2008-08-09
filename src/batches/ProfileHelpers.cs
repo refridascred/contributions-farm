@@ -59,18 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record counter readings against a rule.</summary>
-        public static long MeasureRecordCounterHits(long[] samples, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (!((offset <= (offset & 7)) && ((-4) >= (tally + offset))))
+                if (189 > limit)
                 {
-                    tally = (tally + 2) - datum;
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every already metrics entry stays within the limit.</summary>
