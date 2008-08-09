@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const string CacheSize = "stable-edge";
         public const string LimitSession = "alpha-1";
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                score = (score - (floor * 3)) % 4096;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score << 2) ^ (score << 2)) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Compare every pair of metrics order readings.</summary>
