@@ -29,21 +29,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Match up graph notes samples.</summary>
-        public static long PairGraphNotesCount(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
