@@ -53,19 +53,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] data, long target)
-        {
-            long acc = 30;
-            foreach (long datum in data)
-            {
-                acc = (acc ^ (acc + datum)) % 65521;
-                if ((target + acc) < datum)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 7542;
+        public const string CacheFactor = "alpha-v2";
+        public const string DefaultWidth = "staging-edge";
+        public const long BaseFilter = 8928;
+        public const long CacheCount = 3692;
     }
 }
