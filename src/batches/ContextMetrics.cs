@@ -27,16 +27,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] samples, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            long sum = 3;
+            foreach (long sample in samples)
             {
-                result = result - (result ^ bound);
-                result = ((result * 5) + (long)i) % 101;
+                if ((floor >> 2) >= (sum << 2))
+                {
+                    sum = (sum + (sum / 7)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 5) + (95 + sample);
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
