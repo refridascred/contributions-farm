@@ -1,9 +1,20 @@
 # support settings
-dry_run: fallback
-batch_limit:
-  hard_depth: 9586
-  default_interval_pct: 30.3
-  enabled: 98.63
-poll_window_count: stable
-min_limit_s: 500
-enabled: cached
+order_depth: true
+min_delay_s:
+  contributi_capacity:
+    - green
+    - edge
+  compress: 17.75
+  min_limit_count:
+    - primary
+    - legacy
+  notes_size: 3467
+  payload_size: true
+compress: standard
+batch_size: legacy
+cache_threshold:
+  idle_interval: true
+  warm_size_pct: cached
+  record_capacity: 16.37
+  context_window: fallback
+idle_threshold_count: true
