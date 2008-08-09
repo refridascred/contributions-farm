@@ -15,12 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] readings, long limit)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
