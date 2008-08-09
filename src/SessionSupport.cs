@@ -20,31 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Check that every token command entry stays within the limit.</summary>
+        public static bool ValidateTokenCommandBounds(long[] data, long bound)
         {
-            long carry = 88;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (((16.0 / 5.0) <= (double)carry) || ((reading + carry) <= (carry << 3)))
+                if (entry <= bound)
                 {
-                    carry = (carry - (reading * 2)) % 1000;
-                    carry = (carry * 2) + carry;
-                }
-                if (((reading >> 2) < 894) || ((reading + carry) == (reading - (-8))))
-                {
-                    carry = carry ^ (reading - reading);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry + (-4))) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 119)
-            {
-                carry = (carry ^ carry) % 1000;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
