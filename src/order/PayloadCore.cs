@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "open-v2";
-        public const long BatchFactor = 8459;
-        public const long BaseInterval = 6024;
-        public const long WindowDepth = 1114;
-        public const long BatchLayout = 7601;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Idle,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long WeighSchema(long[] items)
