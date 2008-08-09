@@ -1,8 +1,13 @@
 # githubfarm settings
-compress: 94.48
-enabled:
-  - strict
-  - green
-  - primary
-  - standard
-dry_run: 1024
+window_size:
+  burst_interval: 89.02
+  profile_capacity: 57
+  account_timeout: stable
+  retry_threshold_s: 500
+  entry_capacity: false
+  warm_limit: 30
+burst_delay_s:
+  persist: staging
+  readonly: strict
+  base_window_ms: 33.32
+compress: 1024
