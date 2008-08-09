@@ -1,19 +1,5 @@
 {
-  "retry_retries_count": {
-    "hard_interval": {
-      "min_delay_s": 5,
-      "burst_retries": false,
-      "dry_run": 9067,
-      "graph_ttl": true,
-      "cluster_capacity": 250,
-      "graph_capacity": 59.49
-    },
-    "record_retries": 16.01,
-    "poll_size_count": "latest",
-    "retry_window": 43.31,
-    "min_threshold_s": 3.06
-  },
-  "hard_size": [351, 168, 200],
-  "buffer_depth": [236, 477],
-  "burst_window_ms": true
+  "base_limit": 50.29,
+  "persist": false,
+  "stats_threshold": [395, 331, 385, 209]
 }
