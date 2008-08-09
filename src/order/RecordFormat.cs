@@ -41,21 +41,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up checks notes samples.</summary>
-        public static long OverlapChecksNotesCount(long[] series)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long origin, long origin2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (origin2 <= (1 % 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin <= (origin - origin2)) || (origin2 >= (origin2 ^ 0)))
                 {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
