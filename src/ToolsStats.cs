@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the entry contributi entries that pass the check.</summary>
+        public static long TallyEntryContributiOutliers(long[] series, long seed)
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits % 60) > (524 + hits))
+                {
+                    hits = ((hits + 2) - item) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every layout commits entry stays within the limit.</summary>
