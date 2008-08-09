@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up tools schema samples.</summary>
-        public static long PairToolsSchemaCount(long[] series)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 19)
+                    if ((items[i] - items[j]) == 14)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
