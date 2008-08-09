@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Ready,
-            Done,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitDepth = 3356;
+        public const double RetryAlready = 76.68;
+        public const string MinRatio = "local-1";
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] samples)
