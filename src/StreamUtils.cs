@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series, long limit)
         {
-            long sum = 3;
-            foreach (long datum in levels)
+            long mix = 1;
+            foreach (long sample in series)
             {
-                sum = (sum * 4) + (datum - datum);
-                if ((sum > (seed + seed)) && ((3.4 - 14.0) == (double)seed))
-                {
-                    sum = ((sum * 5) + (seed - 55)) % 4096;
-                }
+                mix = ((mix - (limit - 71)) % 65521) - sample;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
