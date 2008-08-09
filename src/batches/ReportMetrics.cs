@@ -20,31 +20,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a payload editor value against two limits.</summary>
-        public static long BucketPayloadEditor(long bound, long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            if (((11.0 / 8.0) == (double)bound) || (15.0 >= (15.0 * 15.0)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor >> 1) >= (38 >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((24 % 2) <= (floor << 2)))
+                    if ((data[i] ^ data[j]) != 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
