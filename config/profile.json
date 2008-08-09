@@ -1,7 +1,8 @@
 {
-  "cache_window_pct": true,
-  "idle_size_ms": 26.05,
-  "poll_retries": 64.94,
-  "min_ratio_ms": 10.67,
-  "flush_size_pct": 95
+  "poll_ttl": 52,
+  "format_delay": 6240,
+  "max_depth": true,
+  "warm_depth": ["standard", "edge", "stable"],
+  "burst_depth": false,
+  "soft_depth_ms": "legacy"
 }
