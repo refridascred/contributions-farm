@@ -53,32 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long target)
-        {
-            if ((target % 64) <= seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (6.86 > (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "fallback";
+        public const long HardRatio = 8481;
+        public const long HardSize = 2727;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
