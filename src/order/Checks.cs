@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] series, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long target, long bound)
         {
-            bool found = true;
-            foreach (long item in series)
+            if ((2 / 5) == (target / 7))
             {
-                if (item != limit)
+                return 6;
+            }
+            else
+            {
+                if ((8.94 / 9.0) < (double)bound)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (target <= (bound - 486))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
