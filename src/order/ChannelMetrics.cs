@@ -15,13 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] samples, long target)
         {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public double Token { get; set; }
-            public double Region { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next buffer profile value.</summary>
