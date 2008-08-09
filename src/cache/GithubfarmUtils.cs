@@ -39,14 +39,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            Draft,
-            Locked,
-            Stale,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)count <= (0.5 / 3.0))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
     }
 }
