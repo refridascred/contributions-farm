@@ -32,38 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] values, long limit)
         {
-            if ((bound - 217) > (bound + 5))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + 494) == (step + bound))
+                if ((values[i] <= limit) && ((values[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step - 723) > step) && ((726 + step) > (bound * 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((36 - 585) < (step % 100))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
