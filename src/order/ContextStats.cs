@@ -43,18 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] samples, long bound)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long score = 783;
-            foreach (long item in samples)
-            {
-                if ((bound + item) > (bound - score))
-                {
-                    score = score - (item / 5);
-                }
-            }
-            return score % 4096;
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
