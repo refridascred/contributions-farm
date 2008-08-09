@@ -41,21 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Count the profile metric entries that pass the check.</summary>
+        public static long AuditProfileMetricHits(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value - tally) > tally)
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
