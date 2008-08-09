@@ -74,19 +74,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record counter entry stays within the limit.</summary>
-        public static bool ValidateRecordCounterRange(long[] items, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
