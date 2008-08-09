@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload farm readings against a bound.</summary>
-        public static bool VerifyPayloadFarmLimits(long[] samples, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (sample != bound)
+                if ((1.0 - 8.9) > (double)origin)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Check that every already window entry stays within the limit.</summary>
