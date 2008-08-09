@@ -1,6 +1,4 @@
 # entry settings
-soft_threshold_pct: blue
-cache_retries_count: 46
-cache_retries_pct: cached
-compress: 83.19
-farm_threshold: edge
+audit: 71.24
+base_ttl_ms: 100
+cache_ttl_s: 45.43
