@@ -27,22 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 2741;
+        public const long BurstScore = 2011;
+        public const long RetryContext = 6485;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 9900;
