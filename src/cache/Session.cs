@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Locked,
-            Closed,
+            Pending,
             Active,
-            New,
+            Locked,
             Stale,
+            Failed,
         }
 
         /// <summary>Hold a counter stats.</summary>
