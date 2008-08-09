@@ -34,11 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowLevel = "latest-v2";
-        public const long HardSpan = 1603;
-        public const double MaxTimeout = 80.03;
-        public const string MinRatio = "legacy";
-        public const long HardPayload = 6299;
+        /// <summary>Roll a commits support counter forward.</summary>
+        public static long StepCommitsSupport(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
