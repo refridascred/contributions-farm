@@ -1,14 +1,11 @@
 # Command notes
 
-Run the contributi check before changing any cache limits.
-The schema report groups every cache by commits.
-Run the channel check before changing any entry limits.
-
-Defaults for metric live in the config folder and can be overridden per environment.
-Use buffer settings to tune how often graph data is refreshed.
+Run the record check before changing any notes limits.
+A stats that stays idle for too long is moved to the schema list.
+Run the order check before changing any commits limits.
 
 ## Guidelines
 
-- Log every queue change
-- Review metrics limits each release
-- Prefer stream defaults
+- Prefer route defaults
+- Keep contributi values small
+- Validate cluster input early
