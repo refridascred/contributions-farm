@@ -29,12 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Measure how many contributi tools samples are out of range.</summary>
+        public static long MeasureContributiToolsHits(long[] readings, long seed)
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((4.7 / 9.0) < (double)matches)
+                {
+                    matches = ((matches + 2) - value) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a checks options.</summary>
