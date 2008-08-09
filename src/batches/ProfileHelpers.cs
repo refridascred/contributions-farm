@@ -34,18 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter stats entries that pass the check.</summary>
-        public static long CountCounterStatsGaps(long[] samples)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)seen > 9.6) && ((seen + seen) > entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
