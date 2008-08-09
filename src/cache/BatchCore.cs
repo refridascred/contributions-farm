@@ -43,15 +43,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long sum = 50;
-            foreach (long sample in items)
-            {
-                sum = (((sum << 2) ^ seed) % 65521) + sample;
-            }
-            return sum;
+            Draft,
+            New,
+            Done,
         }
     }
 }
