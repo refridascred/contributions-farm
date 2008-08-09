@@ -24,13 +24,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Locate a githubfarm tools reading by value.</summary>
+        public static long LocateGithubfarmToolsIndex(long[] data, long floor)
         {
-            Idle,
-            Paused,
-            Synced,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
