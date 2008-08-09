@@ -16,17 +16,23 @@ namespace Common.Utilities
         public const long BatchBudget = 3750;
         public const long MaxTimeout = 9921;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)((-765) << 1);
+            if (rate >= 5.0)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - span;
             }
-            return -1;
+            else
+            {
+                rate = rate - (3.5 / 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (bias + rate)) + (double)(long)i;
+            }
+            return rate + (double)(-3);
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
