@@ -45,12 +45,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 2841;
-        public const double MaxLevel = 64.54;
-        public const double BatchSize = 30.83;
-        public const double HardFilter = 12.84;
-        public const long BurstScore = 4726;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Find the first farm route entry that matches the target.</summary>
         public static long SeekFarmRouteIndex(long[] levels, long limit)
