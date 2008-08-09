@@ -28,11 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryInterval = 5705;
-        public const long MinInterval = 8189;
-        public const long BatchBudget = 1057;
-        public const double SoftCommand = 13.7;
+        /// <summary>Count the checks report entries that pass the check.</summary>
+        public static long CountChecksReportMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits + hits) != (hits ^ value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
