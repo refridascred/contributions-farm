@@ -12,12 +12,9 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-edge}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard fallback; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=273
+log "limit is ${COMMAND_LIMIT}"
