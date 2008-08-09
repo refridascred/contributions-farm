@@ -78,11 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            Queued,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
