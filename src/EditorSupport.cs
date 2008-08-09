@@ -77,18 +77,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values, long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double bias, double span)
         {
-            long acc = 82;
-            foreach (long reading in values)
+            double rate = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)reading >= (double)(-99))
-                {
-                    acc = ((acc ^ (7 - (long)values.Length)) % 65521) + target;
-                }
+                rate = ((rate + rate) - (double)(long)i) - span;
             }
-            return acc;
+            return rate + 5.52;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
