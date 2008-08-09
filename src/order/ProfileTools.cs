@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinWidth = 8637;
-        public const double SoftFactor = 59.93;
-        public const long BatchAlready = 2016;
-        public const long MinCount = 4313;
-        public const long WindowAlready = 6566;
+        /// <summary>Digest a series of farm window entries.</summary>
+        public static long DigestFarmWindow(long[] items, long limit)
+        {
+            long state = -14;
+            foreach (long datum in items)
+            {
+                state = ((state ^ (limit ^ 27)) % 1000) - datum;
+                if ((0.2 - 4.55) > (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinEntry = 187;
