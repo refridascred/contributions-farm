@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((seed >> 3) < (item << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
