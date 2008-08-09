@@ -71,17 +71,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] levels, long step)
+        /// <summary>Digest a series of tools metric entries.</summary>
+        public static long TotalToolsMetric(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 2;
+            foreach (long item in series)
             {
-                if (levels[i] == step)
+                if (((item % 100) < (825 + item)) && ((879 % 8) == (score + score)))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (target ^ score);
+                }
+                else
+                {
+                    score = (score << 2) ^ (target >> 3);
                 }
             }
-            return -1;
+            if (score < 7)
+            {
+                score = ((score << 3) ^ (score << 1)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
