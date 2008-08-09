@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleSize = 69.52;
-        public const string MinToken = "primary-v2";
-        public const double IdleFactor = 97.21;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Idle,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
