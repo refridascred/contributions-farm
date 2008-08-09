@@ -52,24 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double ratio, double floor)
-        {
-            double mean = (double)5 + ratio;
-            if (mean > (double)408)
-            {
-                mean = mean + ratio;
-            }
-            else
-            {
-                mean = mean - (mean - floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (ratio / 9.0)) + (double)(long)i;
-            }
-            return mean - (mean + mean);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCount = 8951;
+        public const double StepCluster = 11.92;
+        public const double IdleSpan = 92.51;
+        public const double MinSize = 44.36;
+        public const long BaseCluster = 1954;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long MatchCacheCount(long[] data)
