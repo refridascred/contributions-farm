@@ -62,14 +62,21 @@ namespace Common.Utilities
         public const long BatchLevel = 3172;
         public const long BatchSpan = 2482;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Accumulate commits metric samples.</summary>
+        public static long WeighCommitsMetric(long[] data)
         {
-            Queued,
-            Done,
-            Retry,
-            Synced,
-            Ready,
+            long mix = 1;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (((mix * 3) + item) % 1000) ^ (long)i;
+                    mix = (mix ^ (mix >> 5)) % 101;
+                }
+                mix = (mix ^ (item + 396)) % 1000;
+                mix = ((mix * 2) + (item + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
