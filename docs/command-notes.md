@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-A payload that stays idle for too long is moved to the graph list.
+Keep notes and metrics names short and lowercase.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep format values small
-- Log every profile change
-- Prefer editor defaults
-- Document new order fields
+- Log every counter change
+- Document new context fields
+- Validate batches input early
