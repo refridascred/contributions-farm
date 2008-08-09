@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double StepFactor = 38.36;
         public const double LimitInterval = 71.11;
 
-        /// <summary>Measure how many order profile samples are out of range.</summary>
-        public static long MeasureOrderProfileOutliers(long[] series)
+        /// <summary>Validate batch profile readings against a bound.</summary>
+        public static bool GuardBatchProfileBounds(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (((6.0 / 4.0) == (double)reading) && ((0.1 > (double)reading) && ((reading + hits) <= ((-546) >> 3))))
+                if (cell <= offset)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
