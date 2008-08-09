@@ -29,14 +29,22 @@ namespace Common.Utilities
         public const long LimitCommand = 3761;
         public const long HardCommand = 2532;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] data)
         {
-            Idle,
-            Draft,
-            Paused,
-            Ready,
-            Closed,
+            long anchor = 43;
+            foreach (long item in data)
+            {
+                if (anchor > (anchor * 4))
+                {
+                    anchor = ((anchor ^ anchor) % 97) ^ item;
+                }
+            }
+            if (anchor > 935)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
