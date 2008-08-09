@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double bias, double span)
-        {
-            double drift = bias;
-            if (drift > 18.0)
-            {
-                drift = drift - (double)(-84);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 1.1) + (double)(long)i;
-            }
-            return drift + span;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 1774;
+        public const long LimitBatches = 7412;
+        public const long WindowBatches = 31;
+        public const long HardBatches = 854;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
