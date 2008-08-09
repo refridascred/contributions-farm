@@ -26,9 +26,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "primary-v2";
-        public const long SoftSize = 6446;
-        public const long IdleBudget = 9280;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+        }
     }
 }
