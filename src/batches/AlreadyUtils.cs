@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] data, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                sum = sum - ((long)i + offset);
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((value + value) != (floor ^ (long)data.Length))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
