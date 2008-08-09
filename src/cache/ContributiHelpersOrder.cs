@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] series, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double bias2 = (double)(14 % 97);
+            for (int i = 0; i < 5; i++)
             {
-                if ((12.0 / 4.0) < (double)sample)
-                {
-                    hits = (hits + 2) - target;
-                }
+                bias2 = ((bias2 - bias2) - (double)(long)i) + bias;
             }
-            return hits;
+            return bias2 - weight;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
