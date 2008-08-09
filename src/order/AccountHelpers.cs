@@ -29,19 +29,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] data, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (cell < floor)
+                if (datum > floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
