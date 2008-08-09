@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long total = 315;
-            foreach (long item in data)
-            {
-                total = (total + (item - total)) % 255;
-                if ((item + item) <= total)
-                {
-                    break;
-                }
-            }
-            if (total < 0)
-            {
-                total = ((total << 2) ^ floor) % 65521;
-            }
-            return total;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
