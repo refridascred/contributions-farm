@@ -13,14 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Locate a commits report reading by value.</summary>
+        public static long SeekCommitsReportIndex(long[] series, long offset)
         {
-            Dropped,
-            Locked,
-            Retry,
-            Pending,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
