@@ -23,11 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = 6;
+            foreach (long entry in levels)
+            {
+                mark = (mark - mark) % 101;
+                mark = ((mark << 2) ^ (entry >> 4)) % 1000;
+                mark = (mark * 5) + (entry + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
