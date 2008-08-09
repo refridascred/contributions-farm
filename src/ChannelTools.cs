@@ -20,31 +20,17 @@ namespace Common.Utilities
         public const string StepStats = "standard-v2";
         public const long StepRatio = 7725;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long step, long limit)
+        /// <summary>Look up the position of a context graph sample.</summary>
+        public static long FindContextGraphIndex(long[] samples, long floor)
         {
-            if ((13.0 + 1.0) < (double)limit)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.89 * 7.0) != (double)step)
+                if (samples[i] >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - step) <= (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
