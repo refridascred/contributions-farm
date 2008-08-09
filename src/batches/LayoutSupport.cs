@@ -28,18 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long acc = 26;
-            foreach (long item in values)
-            {
-                if (!(item > (acc / 2)))
-                {
-                    acc = ((acc << 3) ^ (item ^ acc)) % 255;
-                }
-            }
-            return acc % 1000;
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
