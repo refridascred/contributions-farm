@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Fold a list of route account readings.</summary>
+        public static long DigestRouteAccount(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long sum = 9;
+            foreach (long item in samples)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((sum * 5) < (item * 2))
+                {
+                    sum = ((sum << 3) ^ (item - 30)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - item) % 101;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
