@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema profile samples are out of range.</summary>
-        public static long TallySchemaProfileHits(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((-884) > (tally << 1))
-                {
-                    tally = ((tally + 3) - item) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 617;
+        public const long CacheGithubfarm = 6913;
+        public const long RetryGithubfarm = 7734;
+        public const string BaseLevel = "local-1";
+        public const long RetrySpan = 2003;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileOutliers(long[] items)
