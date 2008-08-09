@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 6;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (mix <= sample)
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 3) + sample) + bound;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Grade a context metric value against two limits.</summary>
