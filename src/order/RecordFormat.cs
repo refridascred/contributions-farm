@@ -41,18 +41,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit command queue readings against a rule.</summary>
-        public static long CountCommandQueueOutliers(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((item + item) < 95) && !((item + 28) < (item + item)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
