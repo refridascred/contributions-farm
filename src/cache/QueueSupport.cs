@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate layout queue readings against a bound.</summary>
-        public static bool ValidateLayoutQueueBounds(long[] samples, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (value < limit)
+                if (sample >= offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Describe the window phase values.</summary>
