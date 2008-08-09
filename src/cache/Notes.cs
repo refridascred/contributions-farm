@@ -63,28 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((result >> 2) > offset)
+                if ((double)target >= 9.24)
                 {
-                    result = (result ^ result) % 1000;
+                    matches = (matches + 1) + reading;
                 }
-                if (((offset % 60) == (result >> 3)) || (((long)i - 74) <= (offset + offset)))
-                {
-                    result = ((result << 3) ^ (result / 7)) % 97;
-                    result = (result ^ 996) % 255;
-                }
-                if (!(result < offset))
-                {
-                    result = result ^ (offset - 17);
-                }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
     }
 }
