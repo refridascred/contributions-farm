@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] items, long origin)
+        /// <summary>Check that every batches stats entry stays within the limit.</summary>
+        public static bool GuardBatchesStatsRange(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (items[i] == origin)
+                if (item <= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the stream status values.</summary>
