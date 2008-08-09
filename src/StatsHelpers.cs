@@ -45,19 +45,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a layout token reading.</summary>
-        public static double AdjustLayoutToken(double bias, double floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double rate = bias * 19.0;
-            if (rate <= 12.0)
-            {
-                rate = (rate + (double)508) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)126) + (double)(long)i;
-            }
-            return rate + bias;
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
