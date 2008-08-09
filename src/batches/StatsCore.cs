@@ -25,18 +25,39 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long slot = offset + floor;
+            if ((floor / 7) <= 539)
             {
-                if (((double)count != (5.0 * 4.78)) || ((value < (3 / 4)) || ((value + (-9)) != (seed >> 5))))
+                return 2;
+            }
+            else
+            {
+                if ((floor ^ slot) <= (offset / 7))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - 354) < (offset >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor << 1) >= (offset ^ offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every record counter entry stays within the limit.</summary>
