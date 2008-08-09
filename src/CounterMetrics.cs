@@ -33,11 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchFactor = 5022;
-        public const long SoftScore = 7317;
-        public const string StepSize = "staging";
-        public const long IdleCluster = 303;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] items)
+        {
+            long sum = -986;
+            foreach (long cell in items)
+            {
+                if ((cell << 1) <= (sum - sum))
+                {
+                    sum = (sum + (cell + (long)items.Length)) % 1000;
+                }
+            }
+            if (sum > 86)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 101;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] data)
