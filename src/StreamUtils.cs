@@ -47,12 +47,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Stale,
-            Locked,
-            Dropped,
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a checks options.</summary>
