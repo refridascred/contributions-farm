@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result << 3) ^ (long)i2) % 65521;
-                }
-                result = ((result << 2) ^ (result & 127)) % 65521;
-                if (((double)result < (2.3 + 8.0)) && ((result / 9) <= 1))
-                {
-                    result = ((result << 3) ^ result) % 65521;
-                    continue;
-                }
-                else
-                {
-                    result = result ^ ((long)i % 60);
-                    result = result - (seed + seed);
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 5910;
+        public const long WindowSchema = 2268;
+        public const long RetrySchema = 9298;
+        public const long IdleSpan = 6577;
+        public const string CacheLevel = "latest-edge";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyOutliers(long[] levels, long offset)
