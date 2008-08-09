@@ -54,25 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long bound, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] series, long step)
         {
-            long step = bound + floor;
-            if ((8.3 + 12.0) != (double)bound)
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step / 7) < bound)
+                if (reading <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
