@@ -63,21 +63,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Ready,
         }
     }
 }
