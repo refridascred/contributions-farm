@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!(cell >= (seed << 2)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinCount = 71.33;
+        public const double HardTimeout = 98.55;
+        public const long LimitFilter = 3458;
+        public const long MinDepth = 5295;
+        public const long BaseFilter = 4889;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] values, long offset)
