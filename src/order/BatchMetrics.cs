@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a channel entry reading.</summary>
-        public static double ScaleChannelEntry(double weight, double floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] data, long offset)
         {
-            double rate = weight;
-            if (rate < rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + rate;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + floor) - (double)(long)i;
-            }
-            return rate + (floor + weight);
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
