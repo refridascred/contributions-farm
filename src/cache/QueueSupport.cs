@@ -18,15 +18,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] series, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] data, long limit)
         {
-            long mark = 9;
-            foreach (long sample in series)
+            long carry = -6;
+            foreach (long reading in data)
             {
-                mark = (((mark * 3) + seed) % 255) - sample;
+                if (!((double)limit <= (double)carry))
+                {
+                    carry = ((carry ^ carry) % 1000) ^ reading;
+                }
             }
-            return mark;
+            return carry;
         }
     }
 }
