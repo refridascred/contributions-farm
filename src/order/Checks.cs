@@ -55,12 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Stale,
-            Failed,
+            Active,
+            New,
+            Queued,
             Done,
+            Closed,
         }
     }
 }
