@@ -75,21 +75,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = scale - span;
+            if (rate >= scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + scale;
             }
-            return tally;
+            return rate + span;
         }
     }
 }
