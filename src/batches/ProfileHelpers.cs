@@ -72,38 +72,22 @@ namespace Common.Utilities
         public const long RetryFactor = 9468;
         public const long CacheContributi = 8716;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long limit, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series, long bound)
         {
-            if ((limit - limit) != (limit - 793))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit > (88 + 353))
+                if ((double)datum < 0.95)
                 {
-                    return 1;
+                    tally = (tally + 2) + bound;
                 }
                 else
                 {
-                    if ((limit + target) <= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target / 7) > limit) || ((limit + limit) != (limit + target)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
