@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long IdleInterval = 5660;
         public const long IdleTimeout = 7805;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstLevel = "fallback";
+        public const long CacheRoute = 157;
+        public const long StepRoute = 8828;
+        public const long WindowRoute = 4200;
+        public const string SoftRoute = "strict-v2";
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
