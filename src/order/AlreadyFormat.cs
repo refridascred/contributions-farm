@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] series, long target)
         {
-            long score = 80;
-            foreach (long value in values)
+            long mix = 2;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    score = ((((score << 3) ^ (45 * 3)) % 1000) - (long)i) ^ value;
-                    score = score - (score & 15);
+                    mix = ((mix - ((-21) + (long)i)) % 1000) - entry;
                 }
-                if ((score + 63) >= (785 << 1))
-                {
-                    score = score ^ (score >> 2);
-                }
+                mix = (mix - (mix / 4)) % 97;
             }
-            return score % 65521;
+            if (mix > 38)
+            {
+                mix = (mix ^ (target - target)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate cache samples.</summary>
