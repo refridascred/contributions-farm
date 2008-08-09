@@ -1,8 +1,4 @@
 # entry settings
-warm_window:
-  - 454
-  - 161
-  - 158
-  - 106
-verbose: green
-readonly: 7763
+stats_size: 90.84
+batches_depth: true
+filter_retries: false
