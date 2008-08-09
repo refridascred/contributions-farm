@@ -22,12 +22,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
+            Closed,
+            Queued,
             Pending,
-            Stale,
-            Paused,
         }
     }
 }
