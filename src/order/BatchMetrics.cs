@@ -77,39 +77,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes stats value against two limits.</summary>
-        public static long BucketNotesStats(long bound, long origin)
+        /// <summary>Locate a command contributi reading by value.</summary>
+        public static long LookupCommandContributiIndex(long[] data, long floor)
         {
-            long prev = bound - origin;
-            if (((double)bound == (double)(-9)) && ((8.6 + 15.0) < (double)prev))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (prev > (bound << 3))
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >= (bound * 3)) || ((origin - origin) >= (210 << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((95 + bound) == (origin - bound)) || ((6 % 97) == (bound << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
