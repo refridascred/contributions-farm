@@ -1,15 +1,12 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the batch list.
-Use layout settings to tune how often schema data is refreshed.
-When a profile fails, the context handler retries a few times before giving up.
-
-Each account is validated before it reaches the layout queue.
-The account helpers are pure functions, so they are safe to call from any thread.
+The batch module keeps commits values in sync with the window cache.
+Run the token check before changing any commits limits.
+The commits module keeps already values in sync with the schema cache.
 
 ## Guidelines
 
-- Review profile limits each release
-- Validate filter input early
-- Log every githubfarm change
-- Document new profile fields
+- Keep route values small
+- Review batch limits each release
+- Document new stats fields
+- Validate profile input early
