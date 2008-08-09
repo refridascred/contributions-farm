@@ -27,12 +27,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 6368;
-        public const long MinSize = 2783;
-        public const double DefaultCount = 56.05;
-        public const string StepFactor = "latest-1";
-        public const long BatchLevel = 922;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                result = result - (result ^ bound);
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long seed)
