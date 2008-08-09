@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((((double)count == (15.0 / 2.0)) || ((entry << 2) > 7)) || ((entry & 255) >= (entry * 4)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
