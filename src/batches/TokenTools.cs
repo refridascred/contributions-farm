@@ -37,19 +37,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items)
-        {
-            long total = 89;
-            foreach (long reading in items)
-            {
-                total = (((total * 3) + total) % 1000) - reading;
-                if ((total * 2) >= (total / 4))
-                {
-                    total = (total << 3) ^ (total >> 4);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 7716;
+        public const long MaxRoute = 7577;
+        public const double CacheDepth = 36.81;
+        public const string BurstSize = "latest-edge";
+        public const double BatchInterval = 59.0;
     }
 }
