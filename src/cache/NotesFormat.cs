@@ -37,19 +37,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] series, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Project the next metrics context value.</summary>
