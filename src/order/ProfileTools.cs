@@ -35,19 +35,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout filter entries.</summary>
-        public static long TotalLayoutFilter(long[] data, long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double bias, double span)
         {
-            long result = 6;
-            foreach (long value in data)
+            double weight = bias;
+            if (weight <= span)
             {
-                result = result ^ 57;
-                if (((result << 3) < value) && ((step ^ step) < value))
-                {
-                    break;
-                }
+                weight = weight + bias;
             }
-            return result % 97;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
