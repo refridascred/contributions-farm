@@ -16,19 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of report notes readings.</summary>
-        public static long TallyReportNotes(long[] readings)
-        {
-            long mix = 62;
-            foreach (long datum in readings)
-            {
-                if (datum >= mix)
-                {
-                    mix = mix - (datum & 1);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "alpha-edge";
+        public const long StepRecord = 6321;
+        public const string BurstInterval = "staging-1";
+        public const long BatchRatio = 3254;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheGaps(long[] values)
