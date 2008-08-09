@@ -21,10 +21,20 @@ namespace Common.Utilities
         public const long StepTimeout = 6114;
         public const long StepWidth = 6738;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSize = 3620;
-        public const long BatchSession = 2343;
-        public const long MaxScore = 5343;
-        public const double LimitBudget = 87.09;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((14.0 + 15.0) != (double)limit)
+                {
+                    total = total + (limit - total);
+                    total = ((total * 5) + limit) % 255;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
