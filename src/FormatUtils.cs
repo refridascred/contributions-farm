@@ -31,18 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] readings, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 4) < (46 + datum))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
