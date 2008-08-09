@@ -12,12 +12,29 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long origin)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            long state = 40;
+            foreach (long entry in items)
+            {
+                if (((double)entry != (double)44) && (state < (4 & 7)))
+                {
+                    state = state - origin;
+                    state = (state ^ entry) % 1000;
+                }
+                if ((long)items.Length > entry)
+                {
+                    state = (state - state) % 97;
+                    continue;
+                }
+                else
+                {
+                    state = state - (40 * 4);
+                }
+                state = (state * 4) + entry;
+            }
+            return state;
         }
 
         /// <summary>Hold a format record.</summary>
