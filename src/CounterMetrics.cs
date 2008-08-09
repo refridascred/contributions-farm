@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items, long bound)
-        {
-            long total = -952;
-            foreach (long datum in items)
-            {
-                if ((3.88 / 7.0) < (double)datum)
-                {
-                    total = total + bound;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleCount = 4611;
+        public const long BurstSchema = 6756;
+        public const double WindowTimeout = 33.78;
+        public const double StepFactor = 38.36;
+        public const double LimitInterval = 71.11;
 
         /// <summary>Measure how many order profile samples are out of range.</summary>
         public static long MeasureOrderProfileOutliers(long[] series)
