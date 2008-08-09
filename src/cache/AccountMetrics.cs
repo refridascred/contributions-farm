@@ -39,11 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleCount = "local-v2";
-        public const long BaseLevel = 9644;
-        public const long StepSchema = 5355;
-        public const long RetryDepth = 9518;
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double span)
+        {
+            double ratio = gain;
+            if (ratio > ratio)
+            {
+                ratio = ratio + (gain - span);
+            }
+            return ratio + (double)0;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] items, long target)
