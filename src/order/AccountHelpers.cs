@@ -80,11 +80,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowLevel = 94.53;
-        public const string LimitLevel = "fallback";
-        public const long BaseSchema = 6870;
-        public const long HardInterval = 4839;
-        public const long StepSchema = 6349;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            New,
+            Ready,
+            Queued,
+        }
     }
 }
