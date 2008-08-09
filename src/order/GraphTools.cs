@@ -53,11 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseBudget = 1644;
-        public const long WindowToken = 3698;
-        public const long BaseCount = 1105;
-        public const long BaseToken = 833;
+        /// <summary>Measure how many command schema samples are out of range.</summary>
+        public static long AuditCommandSchemaOutliers(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum ^ origin) == (datum + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionRange(long[] items, long step)
