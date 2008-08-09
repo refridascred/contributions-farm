@@ -39,15 +39,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double bias, double bias2)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long limit, long bound)
         {
-            double drift = bias;
-            if (drift < bias)
+            if ((bound + bound) == (bound << 3))
             {
-                drift = (drift - drift) - bias2;
+                return 5;
             }
-            return drift + (bias + drift);
+            else
+            {
+                if ((limit + limit) <= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
