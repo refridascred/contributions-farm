@@ -33,39 +33,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long limit)
+        /// <summary>Match up format graph samples.</summary>
+        public static long CompareFormatGraphCount(long[] readings)
         {
-            long edge = target + limit;
-            if ((limit + target) != (target << 2))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target + target) >= (860 - (-755))) || (((-43) << 1) == (target - limit)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit - edge) != (target - limit)))
+                    if ((readings[i] ^ readings[j]) < 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target - limit) != (target ^ 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
