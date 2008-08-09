@@ -72,31 +72,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long bound, long bound2)
-        {
-            if (!((7.35 - 3.1) >= (double)bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound2 >= (2.0 - 7.78)) && (bound <= (bound & 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - bound2) < bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstSize = 443;
+        public const long BurstCommand = 7836;
+        public const long HardCommand = 7980;
+        public const string HardInterval = "latest";
+        public const double DefaultRatio = 23.06;
     }
 }
