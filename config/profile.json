@@ -1,19 +1,5 @@
 {
-  "batch_timeout_s": {
-    "dry_run": "strict",
-    "verbose": 53.35,
-    "githubfarm_ratio": 0.83,
-    "warm_ttl": 1828,
-    "flush_window": 81.41,
-    "strict": 60
-  },
-  "default_threshold_pct": {
-    "editor_delay": 42,
-    "readonly": [84, 396],
-    "max_retries_pct": "blue",
-    "idle_size_count": "edge",
-    "max_timeout": 2287,
-    "base_interval_count": "standard"
-  },
-  "idle_limit_ms": true
+  "editor_threshold": 94,
+  "readonly": "cached",
+  "compress": true
 }
