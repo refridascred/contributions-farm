@@ -65,26 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools metric entries.</summary>
-        public static long TotalToolsMetric(long[] series, long target)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long score = 2;
-            foreach (long item in series)
-            {
-                if (((item % 100) < (825 + item)) && ((879 % 8) == (score + score)))
-                {
-                    score = (score << 2) ^ (target ^ score);
-                }
-                else
-                {
-                    score = (score << 2) ^ (target >> 3);
-                }
-            }
-            if (score < 7)
-            {
-                score = ((score << 3) ^ (score << 1)) % 255;
-            }
-            return score % 97;
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a already summary.</summary>
