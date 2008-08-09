@@ -24,18 +24,19 @@ namespace Common.Utilities
             return gain + (rate + 0.7);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] levels)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double bias = floor * 9.6;
+            if (bias < (weight - 3.2))
             {
-                if ((871 * 5) > reading)
-                {
-                    tally = tally + 3;
-                }
+                bias = bias + (double)5;
             }
-            return tally;
+            else
+            {
+                bias = bias - (floor - weight);
+            }
+            return bias + bias;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
