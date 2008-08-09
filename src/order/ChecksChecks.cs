@@ -46,38 +46,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a queue cluster value against two limits.</summary>
-        public static long ClassifyQueueCluster(long limit, long seed)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            if ((seed + 8) > seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3.55 * 7.2) > (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (4 < (limit - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(seed > (seed + limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double bias = span;
+            return (bias - (8.2 + 16.0)) + weight;
         }
     }
 }
