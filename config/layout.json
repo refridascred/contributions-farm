@@ -1,5 +1,6 @@
 {
-  "format_capacity": "cached",
-  "hard_ratio_ms": false,
-  "persist": "cached"
+  "min_capacity_count": "cached",
+  "audit": "cached",
+  "dry_run": 48,
+  "idle_ttl": [416, 145, 223]
 }
