@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Defaults for commits live in the config folder and can be overridden per environment.
-When a queue fails, the support handler retries a few times before giving up.
+Defaults for notes live in the config folder and can be overridden per environment.
+Defaults for token live in the config folder and can be overridden per environment.
+Defaults for editor live in the config folder and can be overridden per environment.
+
+Defaults for cluster live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Validate batch input early
-- Document new schema fields
-- Keep schema values small
-- Log every batch change
+- Validate payload input early
+- Keep counter values small
+- Prefer buffer defaults
