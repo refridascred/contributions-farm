@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long MinCluster = 5778;
         public const long MaxCluster = 505;
 
-        /// <summary>Blend two buffer report measurements.</summary>
-        public static double ProjectBufferReport(double weight, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] levels, long target)
         {
-            double gain = weight / 2.0;
-            if (gain >= weight)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                gain = gain + (floor / 3.0);
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            return gain + floor;
+            return found;
         }
     }
 }
