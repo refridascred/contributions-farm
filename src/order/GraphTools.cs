@@ -59,13 +59,19 @@ namespace Common.Utilities
         public const long BaseCount = 1105;
         public const long BaseToken = 833;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] items, long step)
         {
-            Dropped,
-            Failed,
-            New,
-            Closed,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
