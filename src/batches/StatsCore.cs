@@ -103,11 +103,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings, long target)
         {
-            double load = rate;
-            return load + span;
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((-6) <= (target + count))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
