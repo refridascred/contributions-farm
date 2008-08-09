@@ -83,19 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] samples, long seed)
         {
-            long mix = 738;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mix = (mix + (mix % 5)) % 255;
-                if (584 > (sample ^ sample))
+                if (seed > (seed + seed))
                 {
-                    break;
+                    count = (count + 2) ^ value;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the stream phase values.</summary>
