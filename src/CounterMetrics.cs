@@ -36,19 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] items, long seed)
+        /// <summary>Compare every pair of tools command readings.</summary>
+        public static long CompareToolsCommandCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum >= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
