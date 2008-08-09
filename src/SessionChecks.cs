@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Dropped,
-            Paused,
-            Locked,
-            Retry,
+            Failed,
+            Ready,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
