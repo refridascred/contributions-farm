@@ -30,19 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] readings, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
