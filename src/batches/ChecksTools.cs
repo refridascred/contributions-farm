@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double bias)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double scale2 = scale / 2.0;
-            if (scale2 < (scale / 2.0))
-            {
-                scale2 = scale2 - scale;
-            }
-            else
-            {
-                scale2 = scale2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (bias / 4.0)) + (double)(long)i;
-            }
-            return scale2 + (bias * 7.1);
+            Ready,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Define session limits and defaults.</summary>
