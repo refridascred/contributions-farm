@@ -49,22 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = anchor - (bound << 3);
-                anchor = anchor + ((long)i ^ (long)i);
-                if ((bound > (long)i) || ((2.0 + 5.88) != (double)(long)i))
-                {
-                    anchor = (anchor + bound) % 101;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
