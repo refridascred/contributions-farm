@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] series)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (item >= (item / 4))
+                if (item >= origin)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Find the first support layout entry that matches the target.</summary>
