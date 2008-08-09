@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const double IdleTools = 4.41;
         public const long MaxLevel = 895;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Check that every contributi context entry stays within the limit.</summary>
+        public static bool VerifyContributiContextLimits(long[] series, long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
