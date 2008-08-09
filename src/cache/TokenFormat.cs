@@ -27,18 +27,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batch metric readings against a rule.</summary>
-        public static long CountBatchMetricHits(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((double)sample < (6.6 + 4.44)) || ((2.02 - 8.0) > (double)offset))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardCount = 4542;
+        public const long DefaultFactor = 6480;
+        public const long WindowTimeout = 5127;
+        public const long LimitLayout = 7580;
+        public const long LimitTimeout = 1058;
     }
 }
