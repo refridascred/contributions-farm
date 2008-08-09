@@ -58,11 +58,18 @@ namespace Common.Utilities
             return gain - (double)78;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the schema cluster entries that pass the check.</summary>
+        public static long MeasureSchemaClusterOutliers(long[] levels)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)hits <= 8.02)
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
