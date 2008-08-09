@@ -46,18 +46,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel report readings against a rule.</summary>
-        public static long AuditChannelReportMatches(long[] values)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)datum >= (1.0 - 7.27))
-                {
-                    tally = tally + 2;
-                }
+                result = (result + step) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
