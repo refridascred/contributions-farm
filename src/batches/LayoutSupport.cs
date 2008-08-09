@@ -26,26 +26,18 @@ namespace Common.Utilities
         public const long IdleSpan = 6577;
         public const string CacheLevel = "latest-edge";
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values)
         {
-            long score = 9;
-            foreach (long reading in items)
+            long acc = 26;
+            foreach (long item in values)
             {
-                if (((reading << 2) < (score - score)) || ((double)517 > (double)score))
+                if (!(item > (acc / 2)))
                 {
-                    score = (score << 2) ^ (score * 2);
-                }
-                else
-                {
-                    score = (score ^ (score - reading)) % 255;
-                }
-                if ((score + 1) <= reading)
-                {
-                    score = ((score << 3) ^ 4) % 255;
+                    acc = ((acc << 3) ^ (item ^ acc)) % 255;
                 }
             }
-            return score;
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of order entries.</summary>
