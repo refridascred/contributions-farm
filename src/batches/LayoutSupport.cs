@@ -65,11 +65,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = -451;
+            foreach (long item in data)
+            {
+                mix = (((mix - ((long)data.Length << 3)) % 97) + item) + seed;
+            }
+            return mix % 1000;
         }
     }
 }
