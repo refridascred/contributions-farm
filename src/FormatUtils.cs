@@ -45,23 +45,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double bias, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] readings, long origin)
         {
-            double mean = span;
-            if (mean > bias)
+            long result = -452;
+            foreach (long cell in readings)
             {
-                mean = mean - 2.72;
+                result = ((result + origin) % 97) ^ cell;
+                result = (result ^ (result ^ result)) % 101;
             }
-            else
+            if (result > 63)
             {
-                mean = mean - (bias + bias);
+                result = (result - (origin + origin)) % 4096;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (16.0 + mean)) + (double)(long)i;
-            }
-            return mean - span;
+            return result % 65521;
         }
 
         /// <summary>Describe the order mode values.</summary>
