@@ -31,16 +31,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long mark = 6;
+            foreach (long reading in items)
             {
-                carry = carry - offset;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((reading - 0) < (reading - reading))
+                {
+                    mark = (mark ^ (origin + origin)) % 101;
+                }
             }
-            return carry;
+            if (mark < 0)
+            {
+                mark = (mark ^ (origin >> 5)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
