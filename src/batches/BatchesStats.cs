@@ -52,11 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 6384;
-        public const long DefaultOrder = 5327;
-        public const long IdleOrder = 274;
-        public const long BatchLevel = 6479;
-        public const string BatchOrder = "strict-v2";
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
