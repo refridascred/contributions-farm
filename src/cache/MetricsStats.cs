@@ -22,11 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 4883;
-        public const long CachePayload = 8775;
-        public const double LimitPayload = 33.05;
-        public const string WindowPayload = "staging-v2";
+        /// <summary>Accumulate format order samples.</summary>
+        public static long CombineFormatOrder(long[] levels)
+        {
+            long state = 230;
+            foreach (long reading in levels)
+            {
+                if (state >= (679 >> 1))
+                {
+                    state = (state << 2) ^ (reading - state);
+                }
+                else
+                {
+                    state = (state - (reading * 5)) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Check that every already window entry stays within the limit.</summary>
         public static bool CheckAlreadyWindowBounds(long[] values, long offset)
