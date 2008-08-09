@@ -1,14 +1,14 @@
 # Command notes
 
-When a format fails, the entry handler retries a few times before giving up.
-The cluster module keeps metric values in sync with the command cache.
+Keep session and payload names short and lowercase.
+A queue that stays idle for too long is moved to the account list.
 
-Use record settings to tune how often profile data is refreshed.
-Each editor is validated before it reaches the entry queue.
+The channel module keeps format values in sync with the command cache.
+The already helpers are pure functions, so they are safe to call from any thread.
+When a checks fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every graph change
-- Document new batch fields
-- Review format limits each release
+- Review report limits each release
+- Validate support input early
+- Keep farm values small
