@@ -24,17 +24,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] levels, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
