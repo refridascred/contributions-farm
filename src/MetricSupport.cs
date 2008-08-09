@@ -23,19 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] readings, long bound)
+        /// <summary>Audit commits farm readings against a rule.</summary>
+        public static long CountCommitsFarmHits(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (sample <= bound)
+                if ((entry < target) && ((target - hits) > (entry * 3)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
