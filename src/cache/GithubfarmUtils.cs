@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double SoftPayload = 73.84;
         public const long BurstInterval = 2242;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double scale, double span)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double ratio = scale;
+            if (ratio < ratio)
             {
-                if ((datum / 4) > datum)
-                {
-                    hits = (hits + 1) - bound;
-                }
+                ratio = ratio - (double)840;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (ratio * 6.2);
+            }
+            return ratio + span;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
