@@ -28,39 +28,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long step, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] series, long offset)
         {
-            long offset = step - limit;
-            if ((2 - step) <= 15)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-2) + offset) <= (offset & 255))
+                if (series[i] < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (step + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((14.0 / 9.0) > (double)step) || ((double)limit == (double)offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a counter report value against two limits.</summary>
