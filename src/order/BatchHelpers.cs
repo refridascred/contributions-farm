@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] data)
         {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((double)count > (8.6 * 2.51)) && (entry > (entry >> 5)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
