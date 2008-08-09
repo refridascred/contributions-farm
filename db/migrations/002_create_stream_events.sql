@@ -1,10 +1,8 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    weight REAL,
-    region TEXT,
     label TEXT,
+    created_at TIMESTAMP,
     level INTEGER
 );
 
