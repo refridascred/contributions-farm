@@ -52,19 +52,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double rate, double floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double drift = (double)(358 << 3);
-            if (drift > (3.84 / 7.0))
-            {
-                drift = (drift - drift) - rate;
-            }
-            else
-            {
-                drift = drift + (double)692;
-            }
-            return drift - floor;
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
