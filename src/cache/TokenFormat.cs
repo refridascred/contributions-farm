@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm buffer readings against a rule.</summary>
-        public static long AuditFarmBufferGaps(long[] items, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (step >= (reading & 7))
+                if (((772 << 3) > (4 + hits)) || ((hits + 765) < (item - hits)))
                 {
-                    matches = matches + 1;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
