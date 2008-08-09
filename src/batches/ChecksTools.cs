@@ -41,13 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
