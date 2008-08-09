@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the notes graph entries that pass the check.</summary>
-        public static long AuditNotesGraphHits(long[] series, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] values, long step)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long datum in values)
             {
-                if ((tally + target) != (target - value))
+                if ((step ^ tally) >= (datum - step))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
