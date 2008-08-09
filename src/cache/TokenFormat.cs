@@ -37,11 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            Synced,
+            Idle,
+            Ready,
         }
     }
 }
