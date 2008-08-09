@@ -68,22 +68,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] items, long offset)
         {
-            long carry = -440;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.52 * 7.75) >= (double)carry)
+                if ((items[i] < offset) && ((items[i] % 2) == 0))
                 {
-                    carry = ((carry * 4) + carry) - cell;
+                    return (long)i;
                 }
             }
-            if (carry > (-87))
-            {
-                carry = ((carry * 4) + 149) % 101;
-            }
-            return carry;
+            return -1;
         }
     }
 }
