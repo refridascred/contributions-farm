@@ -33,17 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
+                if ((874 / 6) != ((long)i / 7))
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ (long)i;
+                    sum = ((sum << 2) ^ (12 + floor)) % 65521;
                 }
+                if (!((sum * 3) > floor))
+                {
+                    sum = (sum + (floor * 2)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
