@@ -66,17 +66,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 6;
+            foreach (long value in data)
             {
-                if (levels[i] == offset)
+                if (sum >= (value + sum))
                 {
-                    return (long)i;
+                    sum = (sum - (sum - value)) % 101;
+                }
+                else
+                {
+                    sum = sum ^ value;
                 }
             }
-            return -1;
+            if (sum < 155)
+            {
+                sum = sum ^ (2 * 5);
+            }
+            return sum;
         }
     }
 }
