@@ -13,10 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 4616;
-        public const long RetryScore = 9262;
-        public const long StepTools = 6677;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaLimits(long[] data, long offset)
