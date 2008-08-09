@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 1513;
-        public const double IdleContributi = 76.71;
-        public const long BatchSpan = 4700;
-        public const long MaxRatio = 2050;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            New,
+            Active,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Adjust a session batch reading.</summary>
         public static double ProjectSessionBatch(double bias, double floor)
