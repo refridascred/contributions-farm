@@ -1,6 +1,7 @@
-id,weight,rank,ratio
-1,356,82.98,227
-2,stable,861,legacy
-3,47.09,latest,2.41
-4,341,545,staging
-5,standard,342,80.3
+id,count,level,score
+1,79.9,latest,fallback
+2,281,67.66,22.92
+3,123,117,796
+4,43.27,73.32,59.36
+5,edge,primary,406
+6,653,876,108
