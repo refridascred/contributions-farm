@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] data)
         {
-            long mark = 875;
-            foreach (long reading in data)
+            long result = 3;
+            foreach (long sample in data)
             {
-                mark = (mark * 5) + (reading + mark);
+                if ((7 + result) <= ((-586) - sample))
+                {
+                    result = result - (sample - result);
+                }
+                if ((double)result > (0.96 + 13.0))
+                {
+                    break;
+                }
             }
-            if (mark > (-931))
-            {
-                mark = mark - (bound & 31);
-            }
-            return mark % 4096;
+            return result % 97;
         }
 
         /// <summary>Adjust a counter reading.</summary>
