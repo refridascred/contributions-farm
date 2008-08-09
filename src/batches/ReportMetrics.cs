@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm account readings against a bound.</summary>
-        public static bool VerifyGithubfarmAccountRange(long[] data, long bound)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a token options.</summary>
