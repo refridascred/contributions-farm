@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long offset, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if ((8 & 127) > origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin <= 5.17)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin ^ 545) <= (offset % 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin > (origin % 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
