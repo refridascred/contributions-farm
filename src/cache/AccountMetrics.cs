@@ -28,22 +28,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count + 643) < (count - sample)) || ((2.77 - 16.0) < (double)count))
+                if ((levels[i] > step) && ((levels[i] % 3) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many editor metrics samples are out of range.</summary>
