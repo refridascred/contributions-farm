@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
