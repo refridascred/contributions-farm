@@ -54,12 +54,11 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardRatio = 3732;
-        public const long WindowSession = 5422;
-        public const double SoftSize = 24.59;
-        public const long SoftDepth = 2863;
-        public const long CacheFactor = 3093;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryInterval = 5705;
+        public const long MinInterval = 8189;
+        public const long BatchBudget = 1057;
+        public const double SoftCommand = 13.7;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
