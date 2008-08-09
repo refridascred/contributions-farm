@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] levels)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double drift = bias;
+            if (drift > 18.0)
             {
-                if ((reading * 5) != (tally - tally))
-                {
-                    tally = tally + 2;
-                }
+                drift = drift - (double)(-84);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 1.1) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Describe the tools class values.</summary>
