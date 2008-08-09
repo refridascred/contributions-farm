@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a session queue value against two limits.</summary>
-        public static long RankSessionQueue(long offset, long target)
+        /// <summary>Count buffer checks pairs that satisfy a relation.</summary>
+        public static long PairBufferChecksCount(long[] samples)
         {
-            if ((7.0 / 4.0) == (double)offset)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset & 127) >= offset) && ((target - target) < (target * 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target & 127) >= target)
+                    if ((samples[i] - samples[j]) > 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
