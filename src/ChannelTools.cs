@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 4756;
-        public const long BaseSize = 3051;
-        public const long IdleCluster = 9813;
-        public const string HardCount = "standard-v2";
-        public const double MinTimeout = 35.41;
+        /// <summary>Look up the position of a notes batch sample.</summary>
+        public static long SeekNotesBatchIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheOutliers(long[] values)
