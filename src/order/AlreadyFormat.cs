@@ -22,18 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the checks report entries that pass the check.</summary>
-        public static long CountChecksReportMatches(long[] readings)
+        /// <summary>Combine cache already values into a single score.</summary>
+        public static long TallyCacheAlready(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 67;
+            foreach (long cell in readings)
             {
-                if ((hits + hits) != (hits ^ value))
+                if (((double)cell > (2.48 / 6.0)) || (carry >= (cell % 64)))
                 {
-                    hits = hits + 3;
+                    carry = (carry + (carry * 2)) % 1000;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Check that every channel counter entry stays within the limit.</summary>
