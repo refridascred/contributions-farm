@@ -1,13 +1,9 @@
 {
-  "flush_timeout_s": {
-    "flush_ratio_count": 32.85,
-    "poll_timeout_pct": "primary",
-    "max_ratio": [208, 472],
-    "soft_timeout": "fallback",
-    "entry_size": 6096
-  },
-  "hard_depth_count": 77.34,
-  "cache_depth": 47.06,
-  "contributi_capacity": ["standard", "blue", "open"],
-  "soft_window": "stable"
+  "commits_timeout": "eu-west",
+  "metrics_delay": 56.96,
+  "max_interval_count": {
+    "account_limit": 7719,
+    "flush_size_pct": 8677,
+    "report_ratio": 90.46
+  }
 }
