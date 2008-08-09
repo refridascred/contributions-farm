@@ -6,15 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=325
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 6 ]; do
@@ -23,7 +16,7 @@ done
 log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
