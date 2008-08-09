@@ -1,12 +1,6 @@
 {
-  "min_threshold": 95.42,
-  "dry_run": {
-    "burst_size": 77.02,
-    "burst_ttl_pct": 5319,
-    "profile_timeout": 3425
-  },
-  "base_limit_s": 21,
-  "poll_ttl": "open",
-  "filter_interval": 4747,
-  "metrics_depth": ["stable", "green"]
+  "min_ratio_ms": 19.22,
+  "max_ratio": 51,
+  "checks_depth": 3279,
+  "hard_size": ["green", "legacy"]
 }
