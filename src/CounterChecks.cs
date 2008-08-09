@@ -28,15 +28,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the metric filter series from a seed.</summary>
-        public static long SeriesMetricFilter(long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Dropped,
+            Ready,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the profile state values.</summary>
