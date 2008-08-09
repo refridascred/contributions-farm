@@ -60,12 +60,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] data, long offset)
         {
-            Done,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!(matches > cell))
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
