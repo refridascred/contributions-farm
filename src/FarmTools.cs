@@ -20,18 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine entry batches values into a single score.</summary>
-        public static long WeighEntryBatches(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] items)
         {
-            long acc = 246;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((entry - entry) >= 570) && ((entry / 6) == (entry + 35)))
+                if ((0.9 - 8.7) <= (double)datum)
                 {
-                    acc = ((acc * 5) + acc) % 101;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
