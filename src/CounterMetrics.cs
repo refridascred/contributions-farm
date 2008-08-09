@@ -20,10 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 38.31;
-        public const string MinMetric = "strict";
-        public const string SoftTimeout = "cached-1";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Failed,
+            Draft,
+            New,
+            Done,
+            Queued,
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] items)
