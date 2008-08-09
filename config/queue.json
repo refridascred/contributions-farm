@@ -1,6 +1,6 @@
 {
-  "graph_ttl": "fallback",
-  "sync_threshold_pct": 18.8,
-  "idle_interval_count": "fallback",
-  "batch_depth": ["open", "strict", "edge", "latest"]
+  "soft_capacity_count": "open",
+  "window_ratio": "standard",
+  "soft_interval": true,
+  "soft_retries_pct": "latest"
 }
