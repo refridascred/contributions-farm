@@ -41,18 +41,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel contributi readings against a rule.</summary>
-        public static long AuditChannelContributiMatches(long[] levels)
+        /// <summary>Digest a series of cluster context entries.</summary>
+        public static long DigestClusterContext(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long mark = 27;
+            foreach (long entry in samples)
             {
-                if ((count ^ count) < count)
+                mark = mark ^ (mark - bound);
+                if ((entry + 986) < (mark + bound))
                 {
-                    count = (count + 2) - reading;
+                    break;
                 }
             }
-            return count;
+            if (mark < 5)
+            {
+                mark = mark - (mark ^ bound);
+            }
+            return mark;
         }
     }
 }
