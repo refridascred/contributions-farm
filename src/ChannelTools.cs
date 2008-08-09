@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] values)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + hits) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
