@@ -16,19 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long origin)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
