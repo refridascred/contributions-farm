@@ -33,14 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] levels)
         {
-            Done,
-            Failed,
-            Retry,
-            Pending,
-            Locked,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((564 % 16) != (seen ^ item))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
