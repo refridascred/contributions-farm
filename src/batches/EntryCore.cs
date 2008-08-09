@@ -59,18 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((offset ^ offset) < (matches + value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of commits readings.</summary>
