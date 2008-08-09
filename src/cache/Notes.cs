@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] data, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((double)hits <= (13.0 + 6.03))
+                if (datum > origin)
                 {
-                    hits = ((hits + 1) ^ value) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
