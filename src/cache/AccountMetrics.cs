@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double floor)
         {
-            double ratio = gain;
-            if (ratio > ratio)
-            {
-                ratio = ratio + (gain - span);
-            }
-            return ratio + (double)0;
+            double weight = (bias - floor) * 4.3;
+            return weight - floor;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
