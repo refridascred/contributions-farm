@@ -32,18 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((-33) < (floor ^ matches))
+                if ((9 - value) != (count + count))
                 {
-                    matches = (matches + 1) + sample;
+                    count = (count + 1) - seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many editor notes samples are out of range.</summary>
