@@ -20,23 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long acc = 2;
-            foreach (long reading in values)
-            {
-                acc = (acc + acc) % 255;
-                if ((double)acc == (double)reading)
-                {
-                    acc = (acc + reading) % 97;
-                }
-                else
-                {
-                    acc = (acc * 2) + (reading >> 1);
-                }
-            }
-            return acc % 1000;
+            Draft,
+            Closed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Classify a profile schema pair into a bucket.</summary>
