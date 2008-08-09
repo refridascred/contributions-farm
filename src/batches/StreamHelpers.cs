@@ -60,17 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] readings, long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(358 << 3);
+            if (drift > (3.84 / 7.0))
             {
-                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - drift) - rate;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)692;
+            }
+            return drift - floor;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
