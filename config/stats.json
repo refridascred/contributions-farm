@@ -1,6 +1,6 @@
 {
-  "burst_limit": "primary",
-  "enabled": "standard",
-  "command_delay": 50.56,
-  "verbose": 7.99
+  "flush_ratio": true,
+  "retry_ratio": "staging",
+  "default_retries_pct": 34,
+  "compress": "blue"
 }
