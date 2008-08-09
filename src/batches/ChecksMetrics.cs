@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Locked,
-            New,
-            Stale,
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine cache values into a single score.</summary>
