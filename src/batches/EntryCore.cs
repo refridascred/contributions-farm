@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Roll a format farm counter forward.</summary>
+        public static long RollFormatFarm(long limit)
         {
-            Closed,
-            Retry,
-            Paused,
-            Locked,
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (sum + (limit * 5)) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a checks info.</summary>
