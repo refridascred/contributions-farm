@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] levels, long floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading & 3) != (543 % 97)))
-                {
-                    tally = (tally + 1) + floor;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
