@@ -22,14 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double bias, double bias2)
         {
-            Failed,
-            Draft,
-            New,
-            Done,
-            Queued,
+            double scale = (double)86 - 3.0;
+            if (scale > scale)
+            {
+                scale = ((scale - scale) - bias) - bias2;
+            }
+            else
+            {
+                scale = scale + (scale * 7.3);
+            }
+            return scale + (double)253;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
