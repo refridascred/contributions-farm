@@ -21,25 +21,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a layout filter value against two limits.</summary>
-        public static long RankLayoutFilter(long bound, long bound2)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            long gap = bound + bound2;
-            if (((-26) >> 2) >= bound)
+            double gain = weight;
+            if (gain < (double)3)
             {
-                return 6;
+                gain = (gain + (17.0 / 3.0)) + span;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (!((gap & 255) == (bound2 >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                gain = (gain - (19.0 / 6.0)) + (double)(long)i;
             }
+            return gain + (double)4;
         }
     }
 }
