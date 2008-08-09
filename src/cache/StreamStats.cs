@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long limit, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] data, long floor)
         {
-            if (((8.0 - 1.0) != (double)limit) && ((double)step <= (2.0 + 7.51)))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ step) == (91 / 2))
+                if ((double)value < 2.32)
                 {
-                    return 7;
+                    matches = (matches + 3) - floor;
                 }
                 else
                 {
-                    if ((step > (limit + 8)) || ((double)limit > 4.8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
