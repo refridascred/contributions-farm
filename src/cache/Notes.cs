@@ -49,11 +49,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 9665;
-        public const double BaseCount = 87.16;
-        public const long MinChecks = 3749;
-        public const long BurstWidth = 1281;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] levels, long offset)
