@@ -28,15 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a commits support counter forward.</summary>
-        public static long StepCommitsSupport(long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            double bias = (double)(489 >> 1);
+            if (bias < (floor - weight))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                bias = bias - (weight / 4.0);
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - floor) - (double)(long)i;
+            }
+            return bias + (floor - 7.5);
         }
     }
 }
