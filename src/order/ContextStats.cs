@@ -57,20 +57,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((total % 60) == (142 + total))
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepWidth = 5042;
+        public const string DefaultDepth = "cached";
+        public const string BatchOrder = "local-edge";
+        public const double LimitDepth = 12.1;
 
         /// <summary>Compare every pair of batches layout readings.</summary>
         public static long PairBatchesLayoutCount(long[] items)
