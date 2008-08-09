@@ -49,13 +49,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long origin)
         {
-            Locked,
-            Retry,
-            Synced,
-            Done,
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total - (total + total);
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
