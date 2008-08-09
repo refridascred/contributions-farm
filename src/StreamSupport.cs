@@ -12,22 +12,21 @@ namespace Common.Utilities
             return ((drift - (double)(-95)) + weight) + span;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] series, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value >> 5) >= (value - 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up format checks samples.</summary>
