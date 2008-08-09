@@ -13,24 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            if ((double)bound >= (8.0 * 7.5))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step & 127) != (bound ^ step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
