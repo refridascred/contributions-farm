@@ -60,21 +60,22 @@ namespace Common.Utilities
         public const string BurstContributi = "open-edge";
         public const long BatchContributi = 6088;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 5;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (7 <= (reading % 8))
                 {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ (reading ^ reading)) % 4096;
                 }
             }
-            return tally;
+            if (acc > 6)
+            {
+                acc = ((acc << 2) ^ (838 << 1)) % 101;
+            }
+            return acc;
         }
     }
 }
