@@ -43,26 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine entry commits values into a single score.</summary>
-        public static long TallyEntryCommits(long[] samples)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long sum = 613;
-            foreach (long datum in samples)
-            {
-                if (((224 + 37) >= datum) || (datum > (datum + datum)))
-                {
-                    sum = (sum << 3) ^ (sum >> 4);
-                }
-                if ((sum << 2) >= (3 / 6))
-                {
-                    break;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = (sum - (sum >> 5)) % 101;
-            }
-            return sum % 1000;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
