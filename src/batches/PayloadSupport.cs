@@ -28,21 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = 0;
-            foreach (long cell in series)
-            {
-                result = result - (result ^ step);
-                result = ((result << 2) ^ (cell + result)) % 97;
-                result = (result << 2) ^ step;
-            }
-            if (result > 866)
-            {
-                result = ((result << 3) ^ (result ^ step)) % 1000;
-            }
-            return result % 97;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
