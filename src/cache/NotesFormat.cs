@@ -12,18 +12,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks batch entries.</summary>
-        public static long CombineChecksBatch(long[] values)
+        /// <summary>Audit batches buffer readings against a rule.</summary>
+        public static long MeasureBatchesBufferOutliers(long[] samples, long target)
         {
-            long anchor = 6;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((11.0 - 4.5) >= (double)anchor)
+                if ((double)target < 3.6)
                 {
-                    anchor = (anchor + ((long)values.Length / 9)) + reading;
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
