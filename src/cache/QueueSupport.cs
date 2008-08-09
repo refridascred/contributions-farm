@@ -21,24 +21,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((((long)i + target) != (acc + (long)i)) || ((long)i < ((long)i ^ acc)))
+                if ((sample ^ sample) >= hits)
                 {
-                    acc = acc - (acc + (long)i);
-                    continue;
+                    hits = hits + 2;
                 }
-                if (((long)i >= target) && ((target << 3) == (acc ^ acc)))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
     }
 }
