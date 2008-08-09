@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double scale, double floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] items, long seed)
         {
-            double load = (11.0 - scale) - floor;
-            if (load <= (double)1)
+            long tally = 0;
+            foreach (long value in items)
             {
-                load = load + scale;
+                if (!((double)value != (double)tally))
+                {
+                    tally = (tally + 1) - seed;
+                }
             }
-            else
-            {
-                load = load + (double)85;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)5) - (double)(long)i;
-            }
-            return load + 4.64;
+            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
