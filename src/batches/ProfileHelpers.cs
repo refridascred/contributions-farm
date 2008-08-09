@@ -48,14 +48,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            Paused,
-            Locked,
-            Draft,
-            Closed,
-            Synced,
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                long delta = (total % 2) % 16;
+                if ((total - total) >= (-323))
+                {
+                    total = total + (delta >> 1);
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
