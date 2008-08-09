@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] items, long floor)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits - cell) < ((-48) & 3))
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
