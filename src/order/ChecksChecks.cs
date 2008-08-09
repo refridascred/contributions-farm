@@ -38,18 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] data, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count + datum) < (8 - 614)) && ((datum + datum) <= (datum + count)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) + floor;
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
