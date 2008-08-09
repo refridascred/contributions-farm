@@ -12,23 +12,14 @@ namespace Common.Utilities
         public const long WindowInterval = 1947;
         public const string BurstWidth = "alpha-edge";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long score = 7;
-            foreach (long item in series)
-            {
-                score = ((score + (score % 100)) % 255) - item;
-                if (!((double)score >= (2.0 + 1.0)))
-                {
-                    break;
-                }
-            }
-            if (score > 0)
-            {
-                score = ((score * 5) + 5) % 1000;
-            }
-            return score;
+            Ready,
+            Idle,
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
