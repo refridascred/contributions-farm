@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double rate, double bias)
-        {
-            double scale = 3.6;
-            if (scale >= (0.7 - scale))
-            {
-                scale = scale - (bias * 8.6);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (rate + scale);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "stable-v2";
+        public const double SoftPayload = 73.84;
+        public const long BurstInterval = 2242;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesOutliers(long[] readings, long bound)
