@@ -63,17 +63,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] levels, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Done,
         }
     }
 }
