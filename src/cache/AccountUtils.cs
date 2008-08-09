@@ -19,22 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series, long floor)
         {
-            long mix = 59;
-            foreach (long value in levels)
+            long score = 70;
+            foreach (long cell in series)
             {
-                if (!(value > (seed - value)))
+                if (!((score + floor) < (floor / 2)))
                 {
-                    mix = ((mix * 4) + mix) % 4096;
+                    score = (score ^ floor) % 97;
+                    score = score - score;
                 }
-                else
-                {
-                    mix = (mix * 2) + (value + value);
-                }
+                score = score - (cell & 1);
             }
-            return mix % 1000;
+            return score % 4096;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
