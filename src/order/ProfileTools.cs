@@ -54,39 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long cur = origin + offset;
-            if ((17.0 + 5.55) <= (double)offset)
+            long state = 1;
+            foreach (long entry in data)
             {
-                return 8;
+                state = (state * 5) + entry;
             }
-            else
-            {
-                if (origin >= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin >= 5.22)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin < cur)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
