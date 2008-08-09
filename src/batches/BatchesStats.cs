@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] items, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)value != (double)tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) - seed;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
