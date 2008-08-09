@@ -27,32 +27,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long step)
+        /// <summary>Digest a series of support command entries.</summary>
+        public static long TallySupportCommand(long[] series)
         {
-            long delta = origin - step;
-            if ((delta + delta) == (origin + delta))
+            long total = -17;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((1 + step) < origin) && ((8.1 + 4.72) < (double)origin))
+                if (total > (item << 1))
                 {
-                    return 6;
+                    total = ((total << 2) ^ (item >> 1)) % 1000;
+                }
+                if ((item >> 1) >= (total & 255))
+                {
+                    total = ((total << 3) ^ ((-27) - item)) % 1000;
+                    continue;
                 }
                 else
                 {
-                    if ((double)origin >= 10.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    long tally = (item * 4) * 2;
+                    total = (total - (tally - tally)) % 4096;
+                }
+                if (((total * 2) <= total) && ((item + total) >= (long)series.Length))
+                {
+                    total = (total * 4) + total;
+                }
+                else
+                {
+                    total = total - (total - 34);
                 }
             }
+            return total;
         }
     }
 }
