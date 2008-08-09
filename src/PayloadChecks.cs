@@ -80,19 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample & 127) == (2 ^ 9))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultLevel = 8997;
+        public const double BaseCount = 36.78;
+        public const long IdleCache = 3230;
+        public const double MaxWidth = 53.69;
+        public const long BurstScore = 4936;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] values, long step)
