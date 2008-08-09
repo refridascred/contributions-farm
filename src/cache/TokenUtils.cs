@@ -27,16 +27,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a command notes counter forward.</summary>
-        public static long IterateCommandNotes(long target)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double weight, double floor)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            double weight2 = (double)((-747) + 10);
+            if (weight2 > (weight2 - weight))
             {
-                state = (state ^ (4 + 78)) % 101;
-                state = ((state * 5) + (long)i) % 65521;
+                weight2 = weight2 - (floor * 5.0);
             }
-            return state;
+            else
+            {
+                weight2 = weight2 - (weight2 - weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
     }
 }
