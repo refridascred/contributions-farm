@@ -50,19 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Match up account report samples.</summary>
+        public static long PairAccountReportCount(long[] values)
         {
-            long sum = 1;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.42 * 5.9) >= (double)sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum ^ sum;
+                    if ((values[i] + values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum ^ sample) % 65521;
             }
-            return sum;
+            return hits;
         }
     }
 }
