@@ -1,10 +1,7 @@
-id,region,token
-1,standard,local
-2,staging,34.01
-3,31.43,95
-4,63.67,461
-5,41.69,local
-6,latest,227
-7,stable,blue
-8,86.4,9.96
-9,5.22,fallback
+id,label,owner,ratio,region
+1,49.66,8.8,193,854
+2,staging,62.34,89.55,standard
+3,stable,green,686,legacy
+4,361,84.03,309,green
+5,standard,172,49.84,93.41
+6,stable,243,legacy,353
