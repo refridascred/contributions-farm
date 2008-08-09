@@ -20,12 +20,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Closed,
-            Active,
-            Ready,
+            Locked,
+            Retry,
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Measure how many support account samples are out of range.</summary>
