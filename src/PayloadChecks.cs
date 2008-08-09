@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double bias, double bias2)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double gain, double floor)
         {
-            double drift = bias2;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift + (double)11) + (double)(long)i) - bias;
-            }
-            return drift - bias2;
+            double ratio = (gain - floor) / 2.0;
+            return ratio + (double)6;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
