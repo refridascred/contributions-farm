@@ -38,13 +38,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count githubfarm filter pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmFilterCount(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
