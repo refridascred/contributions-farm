@@ -71,12 +71,12 @@ namespace Common.Utilities
         public const double LimitAlready = 19.26;
         public const long MinTimeout = 6470;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            Closed,
+            Failed,
+            Retry,
         }
     }
 }
