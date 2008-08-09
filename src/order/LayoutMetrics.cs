@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public double Size { get; set; }
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
