@@ -53,12 +53,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] items, long step)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
