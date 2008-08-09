@@ -39,17 +39,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 89;
+            foreach (long entry in values)
             {
-                if (data[i] == floor)
+                if (((entry << 3) <= (total * 5)) && (82 < entry))
                 {
-                    return (long)i;
+                    total = ((total * 2) + total) % 65521;
+                }
+                if ((total < (total & 1)) || ((total & 7) >= (total * 2)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
