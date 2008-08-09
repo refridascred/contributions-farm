@@ -32,23 +32,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double weight, double floor)
+        /// <summary>Count the entry profile entries that pass the check.</summary>
+        public static long MeasureEntryProfileOutliers(long[] series, long step)
         {
-            double weight2 = (double)((-747) + 10);
-            if (weight2 > (weight2 - weight))
+            long count = 0;
+            foreach (long reading in series)
             {
-                weight2 = weight2 - (floor * 5.0);
+                if ((reading + reading) <= (reading - step))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight2 - weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            return count;
         }
     }
 }
