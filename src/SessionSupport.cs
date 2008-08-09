@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultInterval = 28.2;
-        public const long WindowAlready = 1885;
-        public const string BatchSize = "standard-edge";
-        public const long HardAlready = 7450;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 8) >= 42)
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
