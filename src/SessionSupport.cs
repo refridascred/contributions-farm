@@ -12,38 +12,31 @@ namespace Common.Utilities
         public const long IdleSize = 9523;
         public const double HardLevel = 80.81;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long floor, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values)
         {
-            if (step < (step + 30))
+            long carry = 88;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor * 3) < step) && (floor < (step >> 3)))
+                if (((16.0 / 5.0) <= (double)carry) || ((reading + carry) <= (carry << 3)))
                 {
-                    return 7;
+                    carry = (carry - (reading * 2)) % 1000;
+                    carry = (carry * 2) + carry;
+                }
+                if (((reading >> 2) < 894) || ((reading + carry) == (reading - (-8))))
+                {
+                    carry = carry ^ (reading - reading);
                 }
                 else
                 {
-                    if (((floor + step) <= (floor - step)) || ((8 << 2) > (step + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >= (floor * 3)) && ((floor + (-83)) < (step + (-84))))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = ((carry * 3) + (carry + (-4))) % 255;
                 }
             }
+            if (carry < 119)
+            {
+                carry = (carry ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a queue reading.</summary>
