@@ -42,32 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long target, long floor)
+        /// <summary>Derive the next format metrics value from a seed.</summary>
+        public static long RollFormatMetrics(long step)
         {
-            long edge = target + floor;
-            if ((floor ^ target) != (edge + (-793)))
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)edge >= 6.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)edge <= (15.0 * 8.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
