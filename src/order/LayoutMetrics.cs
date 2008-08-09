@@ -28,17 +28,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long bound)
+        /// <summary>Roll a stats payload counter forward.</summary>
+        public static long SeriesStatsPayload(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] <= bound)
+                if ((long)i != (floor << 2))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ ((long)i + 6)) % 1000;
                 }
+                state = state - floor;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
