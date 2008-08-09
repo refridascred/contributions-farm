@@ -22,23 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double bias, double span)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double rate = (double)((-765) << 1);
-            if (rate >= 5.0)
-            {
-                rate = rate - span;
-            }
-            else
-            {
-                rate = rate - (3.5 / 4.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (bias + rate)) + (double)(long)i;
-            }
-            return rate + (double)(-3);
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
