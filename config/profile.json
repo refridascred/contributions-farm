@@ -1,10 +1,7 @@
 {
-  "sync_interval_s": {
-    "max_depth_ms": 5.17,
-    "audit": "open",
-    "max_retries": 4549,
-    "verbose": "staging"
-  },
-  "min_timeout": true,
-  "strict": false
+  "enabled": [289, 125],
+  "warm_interval": 80.02,
+  "hard_threshold": ["legacy", "primary", "latest"],
+  "retry_threshold_ms": 500,
+  "idle_delay_count": "legacy"
 }
