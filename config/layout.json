@@ -1,6 +1,14 @@
 {
-  "min_capacity_count": "cached",
-  "audit": "cached",
-  "dry_run": 48,
-  "idle_ttl": [416, 145, 223]
+  "flush_window_count": ["staging", "edge", "staging"],
+  "default_depth": {
+    "verbose": ["edge", "stable", "green"],
+    "flush_retries_count": 100,
+    "batches_delay": false,
+    "soft_ratio_ms": 500,
+    "cache_threshold": 250
+  },
+  "poll_interval": 67,
+  "flush_ttl": 500,
+  "notes_size": 25,
+  "cache_window": [467, 238]
 }
