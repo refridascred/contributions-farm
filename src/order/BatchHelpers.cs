@@ -19,17 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long mark = 6;
-            foreach (long entry in levels)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark - mark) % 101;
-                mark = ((mark << 2) ^ (entry >> 4)) % 1000;
-                mark = (mark * 5) + (entry + mark);
+                if ((limit * 4) < (limit / 2))
+                {
+                    state = (state * 5) + 5;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = (state + ((long)i / 8)) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Blend two layout measurements.</summary>
