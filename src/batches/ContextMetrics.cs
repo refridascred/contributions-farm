@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] samples, long bound)
+        /// <summary>Adjust a queue githubfarm reading.</summary>
+        public static double ProjectQueueGithubfarm(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            double rate = offset + offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((6 - (-891)) < (bound << 3)) || ((bound ^ bound) >= bound)) || ((datum * 2) >= bound))
-                {
-                    seen = seen + 3;
-                }
+                rate = ((rate - offset) + (double)(long)i) - scale;
             }
-            return seen;
+            return rate + (double)2;
         }
 
         /// <summary>Hold a cluster record.</summary>
