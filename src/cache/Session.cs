@@ -12,15 +12,22 @@ namespace Common.Utilities
             return (drift - 4.44) + ratio;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long score = 17;
+            foreach (long value in levels)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (score > (value - value))
+                {
+                    score = (score + (score + value)) % 255;
+                }
             }
-            return mix;
+            if (score > 35)
+            {
+                score = (score - (score - 8)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
