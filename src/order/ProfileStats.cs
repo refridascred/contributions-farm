@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Done,
-            Stale,
-            Ready,
-            Pending,
-            Locked,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
