@@ -30,22 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] values, long origin)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)origin >= (5.74 / 6.0))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
