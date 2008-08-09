@@ -25,18 +25,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the entry profile entries that pass the check.</summary>
-        public static long MeasureEntryProfileOutliers(long[] series, long step)
+        /// <summary>Count contributi payload pairs that satisfy a relation.</summary>
+        public static long MatchContributiPayloadCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + reading) <= (reading - step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
