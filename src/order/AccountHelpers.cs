@@ -63,21 +63,21 @@ namespace Common.Utilities
         public const long BatchNotes = 1194;
         public const long StepNotes = 5665;
 
-        /// <summary>Count order format pairs that satisfy a relation.</summary>
-        public static long PairOrderFormatCount(long[] items)
+        /// <summary>Count batch window pairs that satisfy a relation.</summary>
+        public static long CompareBatchWindowCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 17)
+                    if ((levels[i] - levels[j]) != 16)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
