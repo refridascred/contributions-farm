@@ -19,17 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                if ((carry << 2) >= (51 & 31))
                 {
-                    return (long)i;
+                    carry = carry - (carry - bound);
+                    break;
                 }
+                if (((long)i <= carry) && (carry < (carry ^ (long)i)))
+                {
+                    carry = (carry + bound) % 97;
+                    carry = (carry + 44) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate layout samples.</summary>
