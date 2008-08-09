@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (seen <= (seen + item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a farm options.</summary>
