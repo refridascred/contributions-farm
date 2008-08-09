@@ -29,22 +29,26 @@ namespace Common.Utilities
         public const long IdleSpan = 6577;
         public const string CacheLevel = "latest-edge";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] levels, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] items)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long score = 9;
+            foreach (long reading in items)
             {
-                if (4 > offset)
+                if (((reading << 2) < (score - score)) || ((double)517 > (double)score))
                 {
-                    count = (count + 3) + item;
+                    score = (score << 2) ^ (score * 2);
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score ^ (score - reading)) % 255;
+                }
+                if ((score + 1) <= reading)
+                {
+                    score = ((score << 3) ^ 4) % 255;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
