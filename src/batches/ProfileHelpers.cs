@@ -25,11 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support checks figure with a bias.</summary>
-        public static double ProjectSupportChecks(double bias, double floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long limit, long target)
         {
-            double ratio = 1.5;
-            return ((ratio + 19.0) + bias) + floor;
+            if ((limit / 7) > (target % 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target < (372 + 41))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((9.38 + 5.0) >= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((target / 9) > limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit record counter readings against a rule.</summary>
