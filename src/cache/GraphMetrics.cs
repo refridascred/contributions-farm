@@ -58,19 +58,19 @@ namespace Common.Utilities
         public const long HardChecks = 5222;
         public const long StepBudget = 8921;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long offset)
+        /// <summary>Accumulate already record samples.</summary>
+        public static long DigestAlreadyRecord(long[] values)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long mix = 897;
+            foreach (long cell in values)
             {
-                if (value != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (((mix << 3) ^ (mix << 3)) % 65521) ^ cell;
             }
-            return stale;
+            if (mix < (-310))
+            {
+                mix = (mix - 2) % 101;
+            }
+            return mix;
         }
     }
 }
