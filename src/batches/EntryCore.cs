@@ -36,24 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token githubfarm counter forward.</summary>
-        public static long SeriesTokenGithubfarm(long floor)
+        /// <summary>Count the cache schema entries that pass the check.</summary>
+        public static long TallyCacheSchemaGaps(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((8.8 * 0.1) >= (double)floor)
+                if (((seen + seen) > 8) || ((10 <= item) || ((double)seen == (11.0 + 7.99))))
                 {
-                    total = total ^ floor;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    total = (total + floor) % 65521;
-                    total = (total - (floor - floor)) % 97;
+                    seen = seen - 1;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
