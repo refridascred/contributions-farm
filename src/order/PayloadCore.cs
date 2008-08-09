@@ -49,18 +49,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] samples)
-        {
-            long acc = 426;
-            foreach (long sample in samples)
-            {
-                if (acc < (acc + acc))
-                {
-                    acc = (((acc * 3) + (acc >> 5)) % 97) - sample;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "local-1";
+        public const long CacheCommits = 4137;
+        public const string BurstCount = "alpha-edge";
     }
 }
