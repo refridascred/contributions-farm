@@ -64,25 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long target2)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double rate, double bias)
         {
-            long prev = target ^ target2;
-            if ((target2 + prev) >= target2)
+            double mean = (double)(26 - 7);
+            if (mean < (bias - rate))
             {
-                return 2;
+                mean = mean - 9.0;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((target + target2) > (target2 + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = (mean - 5.87) + (double)(long)i;
             }
+            return mean + (double)5;
         }
     }
 }
