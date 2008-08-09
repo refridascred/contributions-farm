@@ -14,20 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stats schema values into a single score.</summary>
-        public static long WeighStatsSchema(long[] items, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] readings, long seed)
         {
-            long state = -77;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (state ^ state)) + datum;
-                state = ((state * 5) + (step & 15)) % 97;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 7)
-            {
-                state = (state * 2) + (step - state);
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
