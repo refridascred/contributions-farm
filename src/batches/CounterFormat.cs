@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if (offset > (bound ^ offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ bound) > bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset >= (bound / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
