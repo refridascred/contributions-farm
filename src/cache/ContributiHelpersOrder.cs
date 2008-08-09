@@ -12,14 +12,25 @@ namespace Common.Utilities
         public const long BatchAlready = 4175;
         public const double HardRatio = 62.35;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long target, long bound)
         {
-            Retry,
-            Idle,
-            Locked,
-            Synced,
-            Done,
+            long step = target ^ bound;
+            if (((bound / 7) > (bound + step)) && ((target ^ 79) != (bound + target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound < ((-25) ^ step)) || ((step + step) < step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
