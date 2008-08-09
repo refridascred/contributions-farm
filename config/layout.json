@@ -1,12 +1,7 @@
 {
-  "sync_threshold_ms": true,
-  "editor_capacity": ["stable", "standard", "stable", "open"],
-  "enabled": {
-    "cache_interval": ["standard", "green", "fallback"],
-    "flush_size_ms": "edge",
-    "hard_depth_pct": "eu-west",
-    "report_delay": ["latest", "open"],
-    "burst_delay": "legacy",
-    "soft_delay_s": ["blue", "open", "edge", "strict"]
-  }
+  "soft_retries": ["fallback", "blue"],
+  "warm_limit": 54,
+  "flush_timeout": "edge",
+  "payload_ratio": ["open", "open", "edge"],
+  "burst_threshold_pct": "primary"
 }
