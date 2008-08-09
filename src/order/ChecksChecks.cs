@@ -32,9 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleDepth = 60.4;
-        public const long DefaultDepth = 3789;
-        public const long HardCluster = 7593;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
