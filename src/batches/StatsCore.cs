@@ -26,39 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long slot = offset + floor;
-            if ((floor / 7) <= 539)
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
+                anchor = ((anchor * 5) + (anchor - target)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor ^ slot) <= (offset / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - 354) < (offset >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor << 1) >= (offset ^ offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
