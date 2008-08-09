@@ -29,31 +29,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a profile schema pair into a bucket.</summary>
-        public static long SortProfileSchema(long target, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long target)
         {
-            if ((target < (215 - target)) || (target > origin))
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin > (double)target)
+                if ((((long)i + target) != (acc + (long)i)) || ((long)i < ((long)i ^ acc)))
                 {
-                    return 5;
+                    acc = acc - (acc + (long)i);
+                    continue;
                 }
-                else
+                if (((long)i >= target) && ((target << 3) == (acc ^ acc)))
                 {
-                    if (!((9 << 2) <= (origin + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
     }
 }
