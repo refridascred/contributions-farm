@@ -49,11 +49,12 @@ namespace Common.Utilities
             return load + (load + bias);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitGithubfarm = "latest-1";
-        public const long RetryGithubfarm = 5042;
-        public const double SoftDepth = 71.51;
-        public const long BatchLevel = 2973;
-        public const long HardGithubfarm = 7463;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Stale,
+            Failed,
+            Done,
+        }
     }
 }
