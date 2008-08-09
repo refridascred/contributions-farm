@@ -14,18 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] samples)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count - 109) < (count ^ 1))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Retry,
+            Idle,
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
