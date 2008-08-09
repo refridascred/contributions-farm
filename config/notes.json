@@ -1,5 +1,6 @@
 {
-  "notes_ttl": 69,
-  "base_ttl_pct": 30,
-  "enabled": [237, 419, 464, 430]
+  "warm_interval": 36.85,
+  "base_retries": [476, 443, 115, 411],
+  "batch_capacity_pct": 60,
+  "burst_ttl_count": ["cached", "fallback"]
 }
