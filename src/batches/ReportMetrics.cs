@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next batch githubfarm value from a seed.</summary>
-        public static long SeriesBatchGithubfarm(long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] values, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long mark = 915;
+            foreach (long reading in values)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                mark = mark ^ (reading + seed);
+                if ((9.77 * 15.0) <= (double)reading)
+                {
+                    break;
+                }
             }
-            return mix;
+            if (mark < 88)
+            {
+                mark = (mark ^ (seed / 5)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a counter info.</summary>
