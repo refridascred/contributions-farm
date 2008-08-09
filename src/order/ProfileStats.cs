@@ -37,17 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
+                if (item < ((long)items.Length - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up account report samples.</summary>
