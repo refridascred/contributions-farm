@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor ^ anchor) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
