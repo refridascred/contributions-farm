@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 9;
+            foreach (long sample in items)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    sum = (((sum * 4) + (sum & 127)) % 4096) + (long)i;
+                }
+                if (!((sample - sample) != ((long)items.Length % 10)))
+                {
+                    sum = (sum * 3) + (-9);
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sum ^ sample)) % 1000;
+                }
+                if (((sum / 2) > (sample ^ sum)) && ((sum - sum) >= sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
