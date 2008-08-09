@@ -47,20 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double offset)
-        {
-            double drift = offset / 2.0;
-            if (drift <= drift)
-            {
-                drift = drift + (drift + ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift * 3.0)) - (double)(long)i;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 3207;
+        public const long RetrySession = 2442;
+        public const long DefaultCount = 794;
+        public const double StepDepth = 36.74;
+        public const long BatchWidth = 5611;
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
         public static long OverlapEditorChannelCount(long[] data)
