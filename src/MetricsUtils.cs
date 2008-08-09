@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values, long bound)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            long mix = 6;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mix <= sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 3) + sample) + bound;
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Grade a context metric value against two limits.</summary>
