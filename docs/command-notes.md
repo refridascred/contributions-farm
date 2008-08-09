@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Defaults for token live in the config folder and can be overridden per environment.
-Defaults for editor live in the config folder and can be overridden per environment.
-
-Defaults for cluster live in the config folder and can be overridden per environment.
-A support that stays idle for too long is moved to the window list.
+Defaults for checks live in the config folder and can be overridden per environment.
+When a buffer fails, the batches handler retries a few times before giving up.
+When a stats fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate payload input early
-- Keep counter values small
-- Prefer buffer defaults
+- Log every window change
+- Keep account values small
+- Prefer token defaults
+- Review metrics limits each release
