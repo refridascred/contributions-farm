@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double ratio, double bias)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double gain = (double)(2 * 2);
-            return ((gain + (double)(-98)) + ratio) + bias;
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the batch class values.</summary>
