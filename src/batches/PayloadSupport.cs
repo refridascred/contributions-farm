@@ -33,15 +33,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long TallyCommandPayload(long[] readings, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long state = 428;
-            foreach (long datum in readings)
-            {
-                state = ((state + datum) % 101) - bound;
-            }
-            return state % 97;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
