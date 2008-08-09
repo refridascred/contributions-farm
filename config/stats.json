@@ -1,5 +1,25 @@
 {
-  "max_size_ms": true,
-  "batch_threshold": false,
-  "commits_ttl": 250
+  "soft_size_pct": {
+    "readonly": 2834,
+    "retry_depth": 74,
+    "verbose": {
+      "hard_retries_s": "standard",
+      "format_capacity": 3795,
+      "warm_depth": 8150
+    }
+  },
+  "readonly": ["staging", "local"],
+  "support_timeout": 50.9,
+  "stream_timeout": 5972,
+  "soft_depth_pct": {
+    "warm_delay_ms": 30,
+    "max_depth": 730,
+    "checks_size": 30,
+    "compress": "local"
+  },
+  "poll_window_s": {
+    "warm_capacity_ms": 22.02,
+    "sync_depth_s": "eu-west",
+    "compress": "standard"
+  }
 }
