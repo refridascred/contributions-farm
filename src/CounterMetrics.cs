@@ -55,14 +55,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long offset)
         {
-            Failed,
-            Retry,
-            Closed,
-            Ready,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
