@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
