@@ -23,14 +23,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long step, long step2)
         {
-            Idle,
-            Ready,
-            Closed,
-            Synced,
-            Failed,
+            long diff = step ^ step2;
+            if (((diff + diff) >= (3 + step)) || ((diff - step2) < (414 * 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)diff < (9.7 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Match up format graph samples.</summary>
