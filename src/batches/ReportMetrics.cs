@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long seed)
         {
-            long state = 358;
-            foreach (long value in levels)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((((state * 2) + (state & 3)) % 1000) + value) + bound;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (mix << 3) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (state > 1)
-            {
-                state = (state ^ ((long)levels.Length * 3)) % 101;
-            }
-            return state % 97;
+            return mix;
         }
 
         /// <summary>Describe the editor kind values.</summary>
