@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long step)
+        /// <summary>Count the order stats entries that pass the check.</summary>
+        public static long MeasureOrderStatsHits(long[] readings)
         {
-            long bound = offset ^ step;
-            if (!(5.3 >= (double)step))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound <= (15.0 + 0.93))
+                if (((value >> 3) >= (value * 4)) && ((18.0 / 4.0) < 0.21))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + step) <= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many batches stats samples are out of range.</summary>
