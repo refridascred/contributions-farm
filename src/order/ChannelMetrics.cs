@@ -14,31 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long bound)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if (!((target & 7) <= bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (2 < (69 + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target <= (target ^ bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Fold a list of route readings.</summary>
