@@ -15,12 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 53.71;
-        public const long MaxBudget = 8006;
-        public const string MinMetric = "latest-v2";
-        public const long CacheRatio = 4454;
-        public const long StepLevel = 489;
+        /// <summary>Measure how many session queue samples are out of range.</summary>
+        public static long TallySessionQueueMatches(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell == (5.06 / 2.0))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryMatches(long[] values)
