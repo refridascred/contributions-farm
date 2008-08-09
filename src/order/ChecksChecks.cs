@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double ratio2 = (double)69 + (floor - ratio);
+            return ratio2 - (floor - ratio);
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
