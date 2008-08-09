@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] samples, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = 9;
+            foreach (long value in data)
             {
-                if (!(datum <= (90 + seen)) || (((0.09 / 4.0) == (double)datum) || ((datum - seen) == (seen << 3))))
+                if ((step + (long)data.Length) <= (6 & 31))
                 {
-                    seen = (seen + 1) - floor;
+                    mix = (mix << 3) ^ (value - value);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the stats mode values.</summary>
