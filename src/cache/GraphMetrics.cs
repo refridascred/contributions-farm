@@ -82,18 +82,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batches queue samples are out of range.</summary>
-        public static long MeasureBatchesQueueOutliers(long[] readings)
+        /// <summary>Locate a token payload reading by value.</summary>
+        public static long LookupTokenPayloadIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen >= (seen + datum))
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
