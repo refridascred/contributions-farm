@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long limit, long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            if ((limit % 100) != (limit / 6))
+            double rate = (double)(63 / 8);
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                rate = ((rate - 0.15) + (double)(long)i) - bias;
             }
-            else
-            {
-                if (((3 % 2) <= limit) && ((target - target) == ((-2) ^ limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return rate + (weight / 4.0);
         }
 
         /// <summary>Hold a metric header.</summary>
