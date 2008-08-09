@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches stats entry stays within the limit.</summary>
-        public static bool GuardBatchesStatsRange(long[] values, long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
