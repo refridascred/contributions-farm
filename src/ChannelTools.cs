@@ -20,18 +20,31 @@ namespace Common.Utilities
         public const string StepStats = "standard-v2";
         public const long StepRatio = 7725;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long step, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((13.0 + 1.0) < (double)limit)
             {
-                if ((reading + hits) > hits)
+                return 1;
+            }
+            else
+            {
+                if ((3.89 * 7.0) != (double)step)
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((step - step) <= (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
