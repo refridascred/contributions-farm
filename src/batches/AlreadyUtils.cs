@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] samples, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long result = 2;
-            foreach (long datum in samples)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result << 3) ^ (bound / 8);
-                if (((2.2 * 3.8) < (double)bound) || (0.2 <= (double)datum))
-                {
-                    result = ((result * 5) + (datum + bound)) % 1000;
-                }
+                sum = sum - ((long)i + offset);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
