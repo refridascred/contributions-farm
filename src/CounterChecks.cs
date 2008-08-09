@@ -46,18 +46,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] levels, long offset)
+        /// <summary>Count editor channel pairs that satisfy a relation.</summary>
+        public static long OverlapEditorChannelCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((offset >> 5) < offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a filter already counter forward.</summary>
