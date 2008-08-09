@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const string BatchSize = "standard-edge";
         public const long HardAlready = 7450;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Measure how many tools entry samples are out of range.</summary>
+        public static long AuditToolsEntryGaps(long[] values, long origin)
         {
-            double weight = (span * 19.0) - span;
-            if (weight <= weight)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                weight = weight + weight;
+                if ((origin & 1) != (cell / 5))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (weight + ratio)) + (double)(long)i;
-            }
-            return weight - (span * 6.51);
+            return hits;
         }
     }
 }
