@@ -13,22 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] samples)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (entry > 33)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Scale a command layout figure with a bias.</summary>
