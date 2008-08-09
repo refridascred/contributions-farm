@@ -34,21 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 3;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((8.6 * 9.43) < (double)origin) && ((total * 3) >= (total + datum)))
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 2) ^ (origin ^ datum)) % 65521;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
