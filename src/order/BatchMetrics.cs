@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long IdleInterval = 5660;
         public const long IdleTimeout = 7805;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstLevel = "fallback";
-        public const long CacheRoute = 157;
-        public const long StepRoute = 8828;
-        public const long WindowRoute = 4200;
-        public const string SoftRoute = "strict-v2";
+        /// <summary>Fold a list of filter record readings.</summary>
+        public static long DigestFilterRecord(long[] samples, long limit)
+        {
+            long carry = -13;
+            foreach (long sample in samples)
+            {
+                if (sample > carry)
+                {
+                    carry = (carry - limit) % 1000;
+                }
+            }
+            if (carry < 10)
+            {
+                carry = ((carry * 5) + (carry / 4)) % 1000;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long seed)
