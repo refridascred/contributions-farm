@@ -56,19 +56,20 @@ namespace Common.Utilities
         public const string CacheAlready = "staging";
         public const long MaxAlready = 681;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double gain, double offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long seed)
         {
-            double scale = gain;
-            if (scale <= (double)(-5))
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                scale = scale - gain;
+                state = state ^ (long)i;
+                if ((53 / 6) <= (seed + seed))
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale + (double)37;
+            return state;
         }
     }
 }
