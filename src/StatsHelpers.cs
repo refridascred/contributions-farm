@@ -39,11 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 2404;
-        public const long StepGithubfarm = 7058;
-        public const long BurstGithubfarm = 1651;
-        public const long BatchGithubfarm = 1404;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (value < (value - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheScore = 4921;
