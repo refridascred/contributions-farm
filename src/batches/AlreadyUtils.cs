@@ -34,20 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 15.41;
+        public const double StepDepth = 91.23;
+        public const string BurstInterval = "latest-1";
+        public const double HardBatch = 77.25;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleBudget = 2415;
