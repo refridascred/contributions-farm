@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            Idle,
-            Ready,
-            Synced,
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the batches kind values.</summary>
