@@ -43,10 +43,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 4477;
-        public const long BurstBudget = 6151;
-        public const string BaseFactor = "cached";
-        public const string SoftFormat = "primary-v2";
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Stale,
+            Done,
+            Closed,
+        }
     }
 }
