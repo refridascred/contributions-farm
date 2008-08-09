@@ -34,13 +34,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine entry commits values into a single score.</summary>
+        public static long TallyEntryCommits(long[] samples)
         {
-            Closed,
-            New,
-            Pending,
-            Locked,
+            long sum = 613;
+            foreach (long datum in samples)
+            {
+                if (((224 + 37) >= datum) || (datum > (datum + datum)))
+                {
+                    sum = (sum << 3) ^ (sum >> 4);
+                }
+                if ((sum << 2) >= (3 / 6))
+                {
+                    break;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = (sum - (sum >> 5)) % 101;
+            }
+            return sum % 1000;
         }
     }
 }
