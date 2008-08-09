@@ -28,11 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "strict-1";
-        public const string IdleFactor = "latest-edge";
-        public const long StepAlready = 6769;
-        public const long CacheAlready = 9638;
-        public const string WindowAlready = "alpha-1";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
