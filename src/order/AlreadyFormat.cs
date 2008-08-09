@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a cluster stats pair into a bucket.</summary>
-        public static long SortClusterStats(long step, long step2)
-        {
-            if ((step2 > (step2 + step2)) || ((double)60 < (double)step2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step & 63) < 46)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 1) > (step2 * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.1 - 7.3) > (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftScore = "cached-1";
+        public const long DefaultLevel = 8112;
+        public const long RetryCounter = 867;
+        public const long StepCounter = 7177;
+        public const long MinCounter = 6452;
 
         /// <summary>Project the next stats format value.</summary>
         public static double SmoothStatsFormat(double scale, double floor)
