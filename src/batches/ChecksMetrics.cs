@@ -40,20 +40,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine metric already values into a single score.</summary>
-        public static long WeighMetricAlready(long[] levels, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long state = 3;
-            foreach (long reading in levels)
+            long anchor = 813;
+            foreach (long reading in readings)
             {
-                state = (state + (reading - (long)levels.Length)) % 101;
-                state = ((state * 3) + (limit - (long)levels.Length)) % 255;
+                if ((7.4 / 7.0) > (double)reading)
+                {
+                    anchor = ((anchor << 2) ^ (reading - anchor)) % 1000;
+                }
             }
-            if (state > 0)
+            if (anchor < 97)
             {
-                state = ((state * 3) + (state + limit)) % 4096;
+                anchor = anchor ^ (anchor ^ anchor);
             }
-            return state % 65521;
+            return anchor % 97;
         }
 
         /// <summary>Describe the token phase values.</summary>
