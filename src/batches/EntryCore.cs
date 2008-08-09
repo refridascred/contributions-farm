@@ -22,12 +22,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 2;
-        public const long LimitSpan = 2684;
-        public const long DefaultSize = 3817;
-        public const double WindowCommits = 12.7;
-        public const long DefaultCommits = 3112;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen < (seen - item))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a token githubfarm counter forward.</summary>
         public static long SeriesTokenGithubfarm(long floor)
