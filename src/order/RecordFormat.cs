@@ -55,15 +55,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the batch commits series from a seed.</summary>
-        public static long RollBatchCommits(long floor)
+        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
+        public static bool CheckSchemaContributiRange(long[] values, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
     }
 }
