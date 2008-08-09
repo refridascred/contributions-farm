@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Measure how many profile window samples are out of range.</summary>
+        public static long AuditProfileWindowHits(long[] series, long offset)
         {
-            long sum = 96;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (((long)items.Length <= sum) && ((418 + sum) > value))
+                if ((hits + offset) == (hits - 84))
                 {
-                    sum = sum ^ (value << 3);
-                }
-                if ((value < (sum + sum)) && ((double)sum != (4.9 + 18.0)))
-                {
-                    sum = ((sum * 4) + sum) % 4096;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
