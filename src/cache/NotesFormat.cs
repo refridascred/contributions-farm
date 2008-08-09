@@ -37,11 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics context value.</summary>
-        public static double BlendMetricsContext(double scale, double bias)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] values, long origin)
         {
-            double scale2 = scale;
-            return (scale2 + (double)254) + bias;
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)origin >= (5.74 / 6.0))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
