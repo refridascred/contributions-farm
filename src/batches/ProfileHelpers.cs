@@ -50,10 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "fallback";
-        public const long HardRatio = 8481;
-        public const long HardSize = 2727;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Paused,
+            Locked,
+            Draft,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepWidth = 13.15;
