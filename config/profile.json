@@ -1,7 +1,13 @@
 {
-  "soft_interval": "green",
-  "hard_capacity": "standard",
-  "cache_retries_pct": 19.32,
-  "base_delay": false,
-  "poll_retries_pct": "staging"
+  "hard_retries_count": {
+    "metric_window": "staging",
+    "burst_timeout": "latest",
+    "warm_timeout": true,
+    "batch_ratio": ["green", "open", "eu-west"]
+  },
+  "idle_timeout_count": true,
+  "sync_limit_count": true,
+  "cache_ratio": "latest",
+  "readonly": 78,
+  "profile_size": false
 }
