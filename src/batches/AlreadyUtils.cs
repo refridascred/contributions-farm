@@ -55,11 +55,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items, long target)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long mix = 661;
+            foreach (long sample in items)
+            {
+                mix = (((mix << 3) ^ (sample / 7)) % 65521) - target;
+            }
+            if (mix < (-2))
+            {
+                mix = (mix << 2) ^ ((-98) >> 3);
+            }
+            return mix % 65521;
         }
     }
 }
