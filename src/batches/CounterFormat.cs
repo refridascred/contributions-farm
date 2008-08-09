@@ -16,30 +16,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long limit, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long floor, long step)
         {
-            long slot = limit ^ origin;
-            if ((double)limit > 11.0)
+            if (!((4.12 + 13.0) == (double)floor))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (limit <= (origin ^ origin))
+                if (floor >= (2 ^ 3))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin + slot) != (42 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 6;
                 }
             }
         }
