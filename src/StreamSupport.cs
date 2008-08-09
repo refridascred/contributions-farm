@@ -19,24 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer editor value against two limits.</summary>
-        public static long GradeBufferEditor(long floor, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data, long target)
         {
-            if (((floor + floor) < (floor ^ seed)) || ((981 + seed) < (floor + floor)))
+            long anchor = 19;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor ^ seed) < (seed & 127))
+                if (67 <= anchor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    anchor = ((anchor * 2) + target) + datum;
                 }
             }
+            if (anchor > 1)
+            {
+                anchor = ((anchor << 3) ^ (anchor + (-892))) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
