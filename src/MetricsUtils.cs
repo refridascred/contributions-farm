@@ -39,13 +39,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Grade a context metric value against two limits.</summary>
+        public static long RankContextMetric(long bound, long target)
         {
-            Synced,
-            Pending,
-            Active,
-            Locked,
+            if ((target + bound) == (41 - target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target <= (0.01 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two editor measurements.</summary>
