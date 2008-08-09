@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] data, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] values)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 474;
+            foreach (long cell in values)
             {
-                if ((reading * 2) <= count)
-                {
-                    count = (count + 1) - target;
-                }
+                carry = ((carry ^ 174) % 65521) - cell;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
