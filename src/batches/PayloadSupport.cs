@@ -13,17 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a commits report reading by value.</summary>
-        public static long SeekCommitsReportIndex(long[] series, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] <= offset)
+                if ((double)319 == (double)bound)
                 {
-                    return (long)i;
+                    state = (state - 2) % 4096;
+                    break;
                 }
+                state = ((state * 4) + (state ^ state)) % 255;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of report readings.</summary>
