@@ -26,21 +26,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Look up the position of a batch counter sample.</summary>
+        public static long FindBatchCounterIndex(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= target)
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
