@@ -49,13 +49,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 93.76;
+        public const long IdleAlready = 7555;
+        public const long MinSize = 8315;
     }
 }
