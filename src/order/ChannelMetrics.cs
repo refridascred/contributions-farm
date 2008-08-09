@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] items, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
