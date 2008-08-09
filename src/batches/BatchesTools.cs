@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] series, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            double scale = 7.5;
+            if (scale < (double)(-967))
             {
-                if (count < 770)
-                {
-                    count = ((count + 1) ^ item) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = scale - offset;
             }
-            return count;
+            return scale + (ratio - 15.0);
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
