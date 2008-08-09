@@ -29,22 +29,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many farm tools samples are out of range.</summary>
-        public static long CountFarmToolsHits(long[] samples, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (((target ^ seen) <= (seen + 72)) || !((entry - entry) < (seen - target)))
+                if (cell < floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
