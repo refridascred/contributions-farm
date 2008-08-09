@@ -49,18 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits farm readings against a rule.</summary>
-        public static long CountCommitsFarmHits(long[] data, long target)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry < target) && ((target - hits) > (entry * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
