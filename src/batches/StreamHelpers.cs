@@ -28,22 +28,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinSpan = 91.47;
+        public const double IdleSpan = 37.46;
+        public const long RetryFarm = 776;
 
         /// <summary>Blend two route session measurements.</summary>
         public static double SmoothRouteSession(double scale, double offset)
