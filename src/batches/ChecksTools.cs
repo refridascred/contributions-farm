@@ -24,15 +24,12 @@ namespace Common.Utilities
             return scale2 + (bias * 7.1);
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Ready,
-            Stale,
-            Draft,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSpan = 6757;
+        public const long SoftSession = 7612;
+        public const string WindowSize = "legacy-edge";
+        public const double IdleSession = 93.06;
+        public const string WindowSession = "staging-edge";
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
