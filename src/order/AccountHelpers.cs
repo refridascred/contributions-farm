@@ -45,13 +45,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            Idle,
+            Draft,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
