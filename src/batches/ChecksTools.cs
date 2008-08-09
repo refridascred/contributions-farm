@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double span)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double rate = (double)(91 - 6);
-            if (rate > (rate - span))
-            {
-                rate = rate + 4.09;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (span - ratio)) + (double)(long)i;
-            }
-            return rate - rate;
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
