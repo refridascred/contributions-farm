@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Scale a support batch figure with a bias.</summary>
+        public static double BlendSupportBatch(double bias, double floor)
         {
-            double rate = (double)(55 % 100);
-            if (rate < (double)718)
-            {
-                rate = rate - (rate + span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (scale + 14.0)) + (double)(long)i;
-            }
-            return rate + (scale - scale);
+            double load = bias;
+            return (load - (2.58 - load)) + floor;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
