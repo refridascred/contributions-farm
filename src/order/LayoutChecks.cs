@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Paused,
-            Synced,
-            Done,
-            Idle,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 5511;
+        public const double CacheToken = 78.98;
+        public const double WindowToken = 91.03;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long LimitTimeout = 2207;
