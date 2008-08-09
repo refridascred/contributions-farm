@@ -47,13 +47,12 @@ namespace Common.Utilities
             return load + (load + bias);
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
