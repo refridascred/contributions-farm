@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] data, long bound)
         {
-            Retry,
-            Idle,
-            New,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)hits <= (13.0 + 6.03))
+                {
+                    hits = ((hits + 1) ^ value) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
