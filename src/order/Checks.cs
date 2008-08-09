@@ -23,20 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of account buffer entries.</summary>
-        public static long WeighAccountBuffer(long[] data)
-        {
-            long mark = 973;
-            foreach (long sample in data)
-            {
-                mark = (mark + (mark + sample)) % 97;
-                if (!(mark >= (0 >> 5)))
-                {
-                    mark = ((mark << 3) ^ (6 >> 2)) % 97;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinSpan = 6364;
+        public const long BaseLevel = 8580;
+        public const string RetryInterval = "local-1";
+        public const long BatchAlready = 7426;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BaseScore = "stable-edge";
