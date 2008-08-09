@@ -37,19 +37,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two notes commits measurements.</summary>
-        public static double SmoothNotesCommits(double gain, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] series, long offset)
         {
-            double ratio = gain;
-            if (ratio >= (span + ratio))
+            bool stale = true;
+            foreach (long datum in series)
             {
-                ratio = ratio - gain;
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio / 7.0);
-            }
-            return ratio - gain;
+            return stale;
         }
 
         /// <summary>Project the next metrics context value.</summary>
