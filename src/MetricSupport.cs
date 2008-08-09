@@ -29,15 +29,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] series, long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double offset)
         {
-            long result = 0;
-            foreach (long sample in series)
+            double ratio = bias;
+            if (ratio < (double)470)
             {
-                result = (((result * 2) + (sample * 5)) % 101) + seed;
+                ratio = ratio + ratio;
             }
-            return result;
+            else
+            {
+                ratio = ratio + (ratio - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (bias * 3.4)) + (double)(long)i;
+            }
+            return ratio + (ratio / 8.0);
         }
     }
 }
