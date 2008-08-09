@@ -86,11 +86,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double span)
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            double load = span;
+            return (load - 7.51) + scale;
         }
     }
 }
