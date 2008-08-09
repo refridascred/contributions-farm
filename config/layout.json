@@ -1,21 +1,5 @@
 {
-  "max_limit_pct": true,
-  "soft_ttl_ms": 82,
-  "counter_ratio": "green",
-  "cache_ttl": "stable",
-  "persist": {
-    "enabled": 8931,
-    "counter_ttl": "open",
-    "soft_interval_ms": "open",
-    "hard_window_pct": true,
-    "readonly": [27, 153, 344],
-    "burst_timeout": {
-      "poll_size_pct": 7,
-      "hard_threshold": 1503,
-      "warm_timeout": true,
-      "retry_depth_pct": "blue",
-      "sync_interval_pct": "primary"
-    }
-  },
-  "enabled": 4150
+  "format_capacity": "cached",
+  "hard_ratio_ms": false,
+  "persist": "cached"
 }
