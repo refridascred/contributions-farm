@@ -46,21 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                sum = sum + origin;
-                if ((sum * 4) > (sum + origin))
+                if (!(((1 ^ entry) <= tally) && ((entry & 127) < (entry >> 2))))
                 {
-                    sum = (sum + (origin ^ sum)) % 4096;
+                    tally = tally + 1;
                 }
-                sum = (sum * 2) + (519 * 3);
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the token phase values.</summary>
