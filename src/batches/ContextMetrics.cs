@@ -42,21 +42,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of report stats readings.</summary>
-        public static long MatchReportStatsCount(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result ^ result) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
