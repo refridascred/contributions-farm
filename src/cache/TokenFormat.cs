@@ -32,32 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long step, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long edge = step - bound;
-            if ((double)edge > (4.99 / 6.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((edge & 7) < (step - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (25 > (bound ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Draft,
+            Queued,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
