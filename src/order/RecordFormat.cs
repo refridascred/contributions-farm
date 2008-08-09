@@ -37,22 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel filter readings against a rule.</summary>
-        public static long AuditChannelFilterOutliers(long[] series)
+        /// <summary>Match up checks notes samples.</summary>
+        public static long OverlapChecksNotesCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)series.Length <= (hits << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the format mode values.</summary>
