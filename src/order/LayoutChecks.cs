@@ -72,14 +72,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many order batches samples are out of range.</summary>
+        public static long TallyOrderBatchesMatches(long[] samples, long floor)
         {
-            Stale,
-            Draft,
-            Idle,
-            Closed,
-            Ready,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((9.88 + 4.96) > (double)reading) && ((count + count) != (reading - 8)))
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter stats.</summary>
