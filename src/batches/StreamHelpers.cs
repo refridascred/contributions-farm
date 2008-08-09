@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double load = (weight / 4.0) / 5.0;
-            if (load > 4.95)
-            {
-                load = load + floor;
-            }
-            else
-            {
-                load = load - (double)21;
-            }
-            return load - (8.9 - load);
+            Active,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Fold a list of cluster editor readings.</summary>
