@@ -76,12 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultLevel = 8997;
-        public const double BaseCount = 36.78;
-        public const long IdleCache = 3230;
-        public const double MaxWidth = 53.69;
-        public const long BurstScore = 4936;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] data)
+        {
+            long mix = 738;
+            foreach (long sample in data)
+            {
+                mix = (mix + (mix % 5)) % 255;
+                if (584 > (sample ^ sample))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] values, long step)
