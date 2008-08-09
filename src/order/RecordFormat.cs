@@ -55,15 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
