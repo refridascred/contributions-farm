@@ -19,13 +19,20 @@ namespace Common.Utilities
         public const long WindowRoute = 4200;
         public const string SoftRoute = "strict-v2";
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            Failed,
-            Closed,
-            Queued,
-            Locked,
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((carry / 3) != (8 ^ carry))
+                {
+                    long next = (seed - 9) * 3;
+                    carry = carry + (next & 63);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
