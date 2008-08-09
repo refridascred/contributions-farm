@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftScore = "cached-1";
-        public const long DefaultLevel = 8112;
-        public const long RetryCounter = 867;
-        public const long StepCounter = 7177;
-        public const long MinCounter = 6452;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinWidth = 98.64;
+        public const long RetryScore = 6581;
+        public const string BaseInterval = "stable-v2";
+        public const long LimitWidth = 5323;
 
         /// <summary>Iterate the batch graph series from a seed.</summary>
         public static long IterateBatchGraph(long bound)
