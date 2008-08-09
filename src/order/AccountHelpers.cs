@@ -57,18 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] values)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum > (double)matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Active,
+            Failed,
         }
     }
 }
