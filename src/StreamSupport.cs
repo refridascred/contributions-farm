@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Ready,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 41.21;
+        public const string BaseCache = "legacy-edge";
+        public const long HardCache = 7092;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
