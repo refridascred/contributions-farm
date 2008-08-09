@@ -38,11 +38,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 72.5;
-        public const long DefaultProfile = 1723;
-        public const string BatchFactor = "legacy-v2";
-        public const double StepCount = 39.04;
-        public const long MinSpan = 2539;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!(((-418) + datum) <= datum))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
