@@ -66,11 +66,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
