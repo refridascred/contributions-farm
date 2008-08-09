@@ -37,15 +37,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Roll a entry metrics counter forward.</summary>
-        public static long SeriesEntryMetrics(long target)
+        /// <summary>Blend two notes commits measurements.</summary>
+        public static double SmoothNotesCommits(double gain, double span)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            double ratio = gain;
+            if (ratio >= (span + ratio))
             {
-                total = ((total * 2) + (long)i) % 1000;
+                ratio = ratio - gain;
             }
-            return total;
+            else
+            {
+                ratio = ratio - (ratio / 7.0);
+            }
+            return ratio - gain;
         }
 
         /// <summary>Check that every metrics context entry stays within the limit.</summary>
