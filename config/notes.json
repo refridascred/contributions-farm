@@ -1,6 +1,19 @@
 {
-  "record_window": 63.06,
-  "readonly": "cached",
-  "sync_retries": "latest",
-  "route_capacity": 20
+  "max_window": false,
+  "flush_interval_ms": true,
+  "audit": {
+    "sync_interval_count": 712,
+    "burst_threshold_count": "fallback",
+    "enabled": 55.22,
+    "max_timeout_s": 8783,
+    "batch_depth": true,
+    "context_limit": "fallback"
+  },
+  "buffer_window": 500,
+  "profile_threshold": {
+    "already_threshold": false,
+    "base_ratio_count": 100,
+    "warm_ratio": "legacy"
+  },
+  "enabled": "legacy"
 }
