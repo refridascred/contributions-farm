@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long limit, long seed)
+        /// <summary>Locate a cluster already reading by value.</summary>
+        public static long LookupClusterAlreadyIndex(long[] readings, long step)
         {
-            long gap = limit + seed;
-            if ((5 - seed) != (seed - seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit >= (seed >> 5))
+                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((-266) <= gap)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
