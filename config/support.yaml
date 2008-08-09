@@ -1,11 +1,5 @@
 # support settings
-hard_delay: 39.71
-persist: true
-burst_window_pct:
-  farm_delay: 11.8
-  readonly: 96
-  record_retries:
-    channel_delay: standard
-    idle_size_pct: legacy
-    min_size_count: 86.23
-retry_limit_ms: 8468
+format_limit: latest
+checks_capacity: true
+tools_threshold: 5694
+max_window_s: 36.37
