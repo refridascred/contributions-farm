@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
