@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] series, long bound)
+        /// <summary>Scale a token account figure with a bias.</summary>
+        public static double AdjustTokenAccount(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = span;
+            return (gain + (double)858) + ratio;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
