@@ -15,19 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count << 3) > (count + value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultInterval = 28.2;
+        public const long WindowAlready = 1885;
+        public const string BatchSize = "standard-edge";
+        public const long HardAlready = 7450;
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double ratio, double span)
