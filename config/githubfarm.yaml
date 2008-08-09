@@ -1,4 +1,6 @@
 # githubfarm settings
-base_capacity: 250
-retry_interval_ms: 26.6
-audit: 2.95
+stats_capacity: primary
+schema_limit: false
+profile_depth: false
+window_depth: 1685
+soft_ttl_s: standard
