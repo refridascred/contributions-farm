@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] levels, long origin)
         {
-            Locked,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((316 ^ origin) > (sample % 60))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batches kind values.</summary>
