@@ -1,6 +1,19 @@
 # support settings
-persist: 61.92
-entry_depth: stable
-strict: 74.79
-min_interval_count: standard
-soft_ratio_s: false
+metrics_window:
+  sync_window_count: 4426
+  soft_window_s: 100
+  dry_run: strict
+  burst_depth_ms: 90.41
+min_depth_count:
+  - eu-west
+  - open
+payload_capacity: false
+strict: 56
+batch_delay_s:
+  default_threshold_ms: true
+  notes_timeout:
+    - strict
+    - stable
+    - edge
+    - green
+  notes_window: 66.05
