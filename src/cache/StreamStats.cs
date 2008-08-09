@@ -12,14 +12,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] samples, long offset)
         {
-            Queued,
-            Draft,
-            Stale,
-            Dropped,
-            Active,
+            long carry = 467;
+            foreach (long cell in samples)
+            {
+                if (!((4.9 / 2.0) > (double)(long)samples.Length))
+                {
+                    carry = carry ^ (offset - cell);
+                }
+                else
+                {
+                    carry = (carry ^ ((long)samples.Length + cell)) % 4096;
+                }
+            }
+            if (carry > 105)
+            {
+                carry = carry + ((-68) ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Match up graph samples.</summary>
