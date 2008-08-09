@@ -46,16 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double bias, double offset)
-        {
-            double drift = (offset / 3.0) / 6.0;
-            if (drift >= (2.4 * 8.86))
-            {
-                drift = drift + (offset / 7.0);
-            }
-            return drift - (drift - bias);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "fallback-1";
+        public const long BatchMetric = 3805;
+        public const double IdleLevel = 33.36;
+        public const long LimitMetric = 7653;
+        public const double WindowFactor = 55.1;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long target)
