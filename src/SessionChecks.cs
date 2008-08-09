@@ -39,13 +39,11 @@ namespace Common.Utilities
         public const long IdleDepth = 5756;
         public const long CacheRatio = 3406;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            New,
-            Synced,
-            Paused,
-            Stale,
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
