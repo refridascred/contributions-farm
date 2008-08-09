@@ -1,6 +1,7 @@
 {
-  "idle_interval_count": "standard",
-  "poll_timeout": 97.3,
-  "poll_threshold_count": true,
-  "audit": ["staging", "legacy"]
+  "checks_ttl": ["eu-west", "stable", "latest"],
+  "hard_ratio_ms": 33.67,
+  "readonly": "primary",
+  "default_ratio": 7654,
+  "batch_capacity_s": 5620
 }
