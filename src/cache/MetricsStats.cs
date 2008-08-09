@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long sum = 22;
-            foreach (long cell in samples)
-            {
-                if ((9.57 + 0.6) <= (double)offset)
-                {
-                    sum = sum ^ (cell + cell);
-                }
-            }
-            return sum;
+            public bool Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every already window entry stays within the limit.</summary>
