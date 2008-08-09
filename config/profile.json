@@ -1,13 +1,14 @@
 {
-  "hard_retries_count": {
-    "metric_window": "staging",
-    "burst_timeout": "latest",
-    "warm_timeout": true,
-    "batch_ratio": ["green", "open", "eu-west"]
+  "format_depth": 30,
+  "dry_run": {
+    "window_capacity": "latest",
+    "hard_delay": "open",
+    "batches_ttl": "standard",
+    "strict": "legacy",
+    "poll_limit_count": "strict",
+    "checks_depth": 72
   },
-  "idle_timeout_count": true,
-  "sync_limit_count": true,
-  "cache_ratio": "latest",
-  "readonly": 78,
-  "profile_size": false
+  "min_retries": ["standard", "legacy", "fallback", "eu-west"],
+  "warm_window_ms": ["strict", "local", "green", "eu-west"],
+  "max_limit_count": 69
 }
