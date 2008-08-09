@@ -49,31 +49,12 @@ namespace Common.Utilities
         public const double HardTimeout = 55.49;
         public const string DefaultSession = "staging-edge";
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long origin, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            if ((floor % 60) != (floor % 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + 68) != (3 + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 4) != (origin & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
