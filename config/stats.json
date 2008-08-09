@@ -1,6 +1,13 @@
 {
-  "channel_depth": 33.9,
-  "githubfarm_window": "primary",
-  "payload_window": 860,
-  "hard_delay": 2995
+  "verbose": {
+    "retry_window_ms": ["green", "green"],
+    "flush_timeout_pct": 500,
+    "account_retries": 30,
+    "batch_delay": true
+  },
+  "layout_delay": "stable",
+  "farm_ttl": 29,
+  "flush_limit_ms": 100,
+  "warm_retries_ms": "edge",
+  "min_ratio_s": 46.59
 }
