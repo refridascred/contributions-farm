@@ -33,22 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] levels, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((double)34 >= (double)limit)
+                if (((value - 0) >= (660 + value)) && ((6 > (target - value)) && ((hits - 741) >= (value % 97))))
                 {
-                    tally = (tally + 2) ^ reading;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
