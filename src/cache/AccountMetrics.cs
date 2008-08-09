@@ -63,16 +63,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] levels, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                score = ((score << 2) ^ (score & 63)) % 101;
-                score = ((score * 3) + (long)i) % 4093;
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
     }
 }
