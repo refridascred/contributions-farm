@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] items, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long mix = 60;
+            foreach (long cell in values)
             {
-                if (sample > origin)
+                if (origin > (origin - cell))
                 {
-                    valid = false;
-                    break;
+                    continue;
+                }
+                if ((mix * 5) < (cell ^ origin))
+                {
+                    mix = (mix - (cell + 4)) % 4096;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
