@@ -32,11 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheLevel = 3873;
-        public const long RetryCount = 2977;
-        public const string MaxDepth = "fallback-v2";
-        public const string MaxWidth = "stable-v2";
-        public const long BaseToken = 2956;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Dropped,
+            Synced,
+            Stale,
+            Idle,
+        }
     }
 }
