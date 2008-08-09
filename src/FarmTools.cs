@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 6842;
-        public const long BatchLayout = 9552;
-        public const long MaxSize = 6167;
+        /// <summary>Check that every format command entry stays within the limit.</summary>
+        public static bool CheckFormatCommandRange(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] data, long bound)
