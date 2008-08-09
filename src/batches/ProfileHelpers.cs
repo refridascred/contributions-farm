@@ -25,14 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Ready,
-            Draft,
-            Closed,
+            New,
             Synced,
-            Pending,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
