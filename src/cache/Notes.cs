@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two report entry measurements.</summary>
-        public static double BlendReportEntry(double ratio, double floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double load = floor * 8.57;
-            if (load <= (floor - load))
-            {
-                load = load - (ratio / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (double)39) + (double)(long)i;
-            }
-            return load + (floor * 4.14);
+            Retry,
+            Idle,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a window summary.</summary>
