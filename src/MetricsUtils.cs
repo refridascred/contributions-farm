@@ -50,12 +50,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long seed)
         {
-            Ready,
-            Paused,
-            Closed,
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score << 3) ^ score) % 4096;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
