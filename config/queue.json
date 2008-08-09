@@ -1,8 +1,11 @@
 {
-  "hard_size_count": "strict",
-  "cache_limit_s": "standard",
-  "cluster_timeout": [424, 232, 460, 20],
-  "entry_ttl": [274, 228, 134],
-  "min_retries_pct": 500,
-  "dry_run": true
+  "compress": {
+    "verbose": "staging",
+    "strict": [192, 404, 346, 335],
+    "soft_depth_pct": 7490,
+    "retry_window_count": 42.09,
+    "flush_capacity": 64.76
+  },
+  "hard_retries": "cached",
+  "farm_capacity": 93.49
 }
