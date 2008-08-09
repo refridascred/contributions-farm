@@ -23,38 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long limit, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] series, long bound)
         {
-            if ((target + target) < (target - target))
+            long anchor = 7;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target > (target - 0)) && ((limit + 95) <= (target - limit)))
+                if (9.7 >= (double)sample)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 127) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target + target) >= (limit - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (anchor * 5) + (bound + sample);
                 }
             }
+            if (anchor > (-10))
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Locate a cluster stream reading by value.</summary>
