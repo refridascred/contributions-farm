@@ -34,19 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long seed)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            long sum = 2;
-            foreach (long reading in values)
+            double load = (scale * 2.1) - scale;
+            if (load >= offset)
             {
-                sum = (((sum * 4) + 786) % 4096) - reading;
-                if ((5.0 - 4.87) < (double)seed)
-                {
-                    sum = (sum ^ (seed + sum)) % 65521;
-                }
+                load = load + (7.59 * 5.0);
             }
-            return sum;
+            else
+            {
+                load = load + scale;
+            }
+            return load - (load / 2.0);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
