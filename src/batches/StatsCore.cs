@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] readings, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seed >> 3) < (item << 3))
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Locate a context reading by value.</summary>
