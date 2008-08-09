@@ -28,18 +28,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] readings, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)offset < 0.84)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            Idle,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
