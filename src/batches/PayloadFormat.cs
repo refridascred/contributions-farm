@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double ratio, double bias)
+        /// <summary>Count the support cache entries that pass the check.</summary>
+        public static long TallySupportCacheOutliers(long[] levels, long target)
         {
-            double bias2 = (bias * 0.76) - (double)695;
-            if (bias2 > 16.0)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                bias2 = (bias2 + bias) + ratio;
+                if (!(entry >= (tally + entry)))
+                {
+                    tally = (tally + 2) - target;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (bias2 * 11.0)) + (double)(long)i;
-            }
-            return bias2 - (double)11;
+            return tally;
         }
 
         /// <summary>Describe the farm kind values.</summary>
