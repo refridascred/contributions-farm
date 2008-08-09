@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many editor entry samples are out of range.</summary>
+        public static long MeasureEditorEntryHits(long[] readings)
         {
-            Failed,
-            Idle,
-            Synced,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry == (10.0 * 4.3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of checks batch entries.</summary>
