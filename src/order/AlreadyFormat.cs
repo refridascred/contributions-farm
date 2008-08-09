@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "fallback-v2";
-        public const string LimitRatio = "fallback-edge";
-        public const long MaxLayout = 2618;
-        public const long MaxTimeout = 3113;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] levels, long offset)
