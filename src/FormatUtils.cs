@@ -25,18 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!(((1.18 / 3.0) != (double)cell) || ((7.0 + 20.0) <= (double)matches)))
+                if ((double)sample > (18.0 + 8.55))
                 {
-                    matches = matches + 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
