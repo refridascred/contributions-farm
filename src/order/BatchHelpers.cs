@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = 688;
+            foreach (long reading in series)
             {
-                if (!((double)count > (8.6 * 2.51)) && (entry > (entry >> 5)))
+                if (((reading + reading) == (mix >> 5)) && ((double)reading > (4.68 + 8.0)))
                 {
-                    count = count + 2;
+                    mix = mix - (mix + reading);
+                }
+                else
+                {
+                    mix = (mix ^ reading) % 1000;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
