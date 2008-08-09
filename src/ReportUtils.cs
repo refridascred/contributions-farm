@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-1";
         public const double CachePayload = 26.8;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 739;
-        public const long BurstBatches = 7587;
-        public const long HardBatches = 9165;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Ready,
+            Paused,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepDepth = 766;
