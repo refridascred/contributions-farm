@@ -36,17 +36,22 @@ namespace Common.Utilities
         public const string HardCluster = "cached";
         public const double WindowRatio = 7.91;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] levels, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
+                if ((double)count != (1.5 * 3.2))
                 {
-                    return (long)i;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the token phase values.</summary>
