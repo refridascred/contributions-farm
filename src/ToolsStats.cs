@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
