@@ -79,24 +79,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items, long offset)
-        {
-            long acc = 81;
-            foreach (long item in items)
-            {
-                acc = ((acc - acc) % 97) + item;
-                if ((2.34 * 8.17) == (double)acc)
-                {
-                    acc = acc - (offset + offset);
-                }
-            }
-            if (acc > 161)
-            {
-                acc = acc + (offset % 2);
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "open-1";
+        public const double LimitAlready = 19.26;
+        public const long MinTimeout = 6470;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
