@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long step)
         {
-            long mark = -763;
-            foreach (long sample in values)
+            if (((8.0 - 1.0) != (double)limit) && ((double)step <= (2.0 + 7.51)))
             {
-                if ((mark >= (sample - sample)) || (((long)values.Length / 9) <= sample))
+                return 3;
+            }
+            else
+            {
+                if ((step ^ step) == (91 / 2))
                 {
-                    mark = mark ^ sample;
-                    mark = (mark * 4) + mark;
+                    return 7;
                 }
-                if (((-83) - sample) > (mark % 3))
+                else
                 {
-                    mark = mark + (sample / 5);
+                    if ((step > (limit + 8)) || ((double)limit > 4.8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mark > 9)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
