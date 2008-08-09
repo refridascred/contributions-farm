@@ -56,11 +56,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowRatio = 25.53;
-        public const double RetryRatio = 64.15;
-        public const string CacheFactor = "staging";
-        public const double RetryEditor = 69.77;
-        public const string DefaultScore = "cached-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 44.37;
+        public const long MaxStream = 1211;
+        public const long HardLevel = 406;
+        public const double DefaultInterval = 14.44;
+        public const long BatchStream = 9452;
     }
 }
