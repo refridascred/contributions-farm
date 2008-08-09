@@ -82,17 +82,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a token payload reading by value.</summary>
-        public static long LookupTokenPayloadIndex(long[] values, long offset)
+        /// <summary>Compare every pair of command already readings.</summary>
+        public static long OverlapCommandAlreadyCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
