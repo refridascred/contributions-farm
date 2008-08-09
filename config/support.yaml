@@ -1,17 +1,18 @@
 # support settings
-poll_window: true
-sync_threshold_s:
-  max_window_s: 63
-  cache_interval: 30
-  soft_timeout: true
-audit: green
-burst_size_s:
-  sync_delay_s: standard
-  burst_ttl_ms: false
-  readonly: eu-west
-  batch_ratio_s:
-    - 169
-    - 323
-  strict: 5511
-max_interval_pct: staging
-retry_limit: 6721
+verbose: 6972
+default_ratio:
+  - 166
+  - 122
+  - 452
+filter_delay:
+  audit: 30
+  strict: staging
+  soft_timeout_count: edge
+  max_ttl_ms: fallback
+  report_size: 250
+batch_ratio: 68.71
+max_window_count:
+  warm_retries_ms: false
+  retry_threshold_pct: 37.81
+  window_limit: 7875
+  max_threshold: 2191
