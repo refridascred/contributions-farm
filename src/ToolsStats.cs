@@ -14,18 +14,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count + cell) > 2)
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
