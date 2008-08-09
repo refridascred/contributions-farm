@@ -20,22 +20,12 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Audit profile notes readings against a rule.</summary>
-        public static long CountProfileNotesGaps(long[] items, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((24 < (377 + matches)) || (458 <= (matches + 7)))
-                {
-                    matches = ((matches + 1) ^ sample) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
