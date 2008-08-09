@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double drift = bias;
+            if (drift <= (weight - drift))
             {
-                if (!(seen <= (seen + datum)))
-                {
-                    seen = seen + 3;
-                }
+                drift = drift + bias;
             }
-            return seen;
+            else
+            {
+                drift = drift - bias;
+            }
+            return drift - weight;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
