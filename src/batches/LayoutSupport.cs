@@ -51,13 +51,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings, long target)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public double Label { get; set; }
+            long score = 804;
+            foreach (long value in readings)
+            {
+                if (target < score)
+                {
+                    score = (((score * 3) + (score - target)) % 1000) ^ value;
+                }
+            }
+            if (score > 3)
+            {
+                score = score ^ (score << 2);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
