@@ -50,9 +50,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "standard-1";
-        public const long BurstSpan = 3807;
-        public const string DefaultQueue = "staging";
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
