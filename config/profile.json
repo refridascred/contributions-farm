@@ -1,6 +1,16 @@
 {
-  "retry_interval": 7,
-  "retry_delay_ms": 49.27,
-  "graph_timeout": 500,
-  "window_ttl": 35.66
+  "min_capacity_ms": 90,
+  "warm_ttl_count": 2400,
+  "dry_run": {
+    "sync_limit_s": 1024,
+    "retry_timeout": 9066,
+    "sync_retries": {
+      "default_threshold_pct": "legacy",
+      "retry_limit_count": "open",
+      "flush_capacity": 1222,
+      "already_ttl": 60
+    }
+  },
+  "metrics_timeout": "stable",
+  "batch_depth_s": "legacy"
 }
