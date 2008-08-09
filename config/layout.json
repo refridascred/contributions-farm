@@ -1,7 +1,7 @@
 {
-  "persist": ["fallback", "local", "standard"],
-  "poll_capacity_pct": "eu-west",
-  "context_ratio": 60,
-  "cache_timeout": true,
-  "compress": 16
+  "persist": 16,
+  "retry_retries": [80, 361, 198, 199],
+  "poll_depth_count": [303, 184, 236, 498],
+  "enabled": 100,
+  "batch_window_count": "open"
 }
