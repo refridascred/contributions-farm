@@ -46,15 +46,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] values)
+        /// <summary>Audit channel report readings against a rule.</summary>
+        public static long AuditChannelReportMatches(long[] values)
         {
             long tally = 0;
-            foreach (long entry in values)
+            foreach (long datum in values)
             {
-                if (!(((1 ^ entry) <= tally) && ((entry & 127) < (entry >> 2))))
+                if ((double)datum >= (1.0 - 7.27))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
