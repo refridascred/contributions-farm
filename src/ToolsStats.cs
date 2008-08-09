@@ -22,22 +22,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] levels, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((reading << 3) < (179 << 3))
+                if (sample >= bound)
                 {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of command entries.</summary>
