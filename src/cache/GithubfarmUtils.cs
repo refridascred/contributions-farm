@@ -41,13 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Done,
-            New,
-            Active,
-            Paused,
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a token header.</summary>
