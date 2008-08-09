@@ -22,18 +22,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 2;
+        public const long LimitSpan = 2684;
+        public const long DefaultSize = 3817;
+        public const double WindowCommits = 12.7;
+        public const long DefaultCommits = 3112;
 
         /// <summary>Roll a token githubfarm counter forward.</summary>
         public static long SeriesTokenGithubfarm(long floor)
