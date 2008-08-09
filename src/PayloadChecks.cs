@@ -78,13 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            Queued,
-            Stale,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample & 127) == (2 ^ 9))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
