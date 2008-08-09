@@ -33,24 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((874 / 6) != ((long)i / 7))
+                if (target >= (482 + acc))
                 {
-                    sum = (sum << 2) ^ (long)i;
-                    sum = ((sum << 2) ^ (12 + floor)) % 65521;
+                    acc = (acc * 4) + acc;
                 }
-                if (!((sum * 3) > floor))
-                {
-                    sum = (sum + (floor * 2)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
     }
 }
