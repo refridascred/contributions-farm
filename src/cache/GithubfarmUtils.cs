@@ -27,12 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] levels)
         {
-            Closed,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry % 12) < (hits / 7)) && (((long)levels.Length + hits) == (hits * 4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
