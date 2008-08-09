@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every format command entry stays within the limit.</summary>
-        public static bool CheckFormatCommandRange(long[] data, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long target)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
