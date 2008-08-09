@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of route contributi readings.</summary>
-        public static long CombineRouteContributi(long[] samples, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] readings, long origin)
         {
-            long score = 209;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (((-25) * 5) >= (floor * 5))
+                if (value <= origin)
                 {
-                    score = ((score * 3) + (505 + floor)) - datum;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 456)
-            {
-                score = (score * 5) + (score / 6);
-            }
-            return score % 65521;
+            return flag;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
