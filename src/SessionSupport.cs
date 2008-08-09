@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two session filter measurements.</summary>
-        public static double ScaleSessionFilter(double scale, double span)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double mean = 12.0;
-            if (mean < scale)
-            {
-                mean = mean + scale;
-            }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean + (13.0 * 2.51);
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
