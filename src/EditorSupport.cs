@@ -29,19 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 2) < (tally - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "cached-v2";
+        public const long HardScore = 5608;
+        public const long IdleToken = 2738;
+        public const long SoftFactor = 2023;
+        public const long RetryCount = 907;
 
         /// <summary>Audit graph route readings against a rule.</summary>
         public static long AuditGraphRouteMatches(long[] data, long offset)
