@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 6266;
-        public const string BaseTimeout = "cached-1";
-        public const long HardSpan = 8469;
-        public const long BatchAlready = 4175;
-        public const double HardRatio = 62.35;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Count cluster githubfarm pairs that satisfy a relation.</summary>
         public static long MatchClusterGithubfarmCount(long[] data)
