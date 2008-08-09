@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((20 & 255) != (sum >> 2))
-                {
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 6842;
+        public const long BatchLayout = 9552;
+        public const long MaxSize = 6167;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
