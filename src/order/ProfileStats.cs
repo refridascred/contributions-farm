@@ -47,19 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long anchor = 82;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 3) + (anchor % 97)) % 65521;
-                if ((value & 7) >= (anchor % 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor - (value * 5);
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
