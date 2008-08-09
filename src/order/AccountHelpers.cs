@@ -52,18 +52,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] samples, long seed)
+        /// <summary>Combine stats cluster values into a single score.</summary>
+        public static long CombineStatsCluster(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long state = -5;
+            foreach (long item in samples)
             {
-                if ((seed + seed) >= ((-147) & 3))
+                if ((1 + item) <= (state + item))
                 {
-                    matches = (matches + 3) ^ sample;
+                    state = (state + (state / 6)) % 255;
+                }
+                if (6.6 > (double)state)
+                {
+                    break;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Describe the payload level values.</summary>
