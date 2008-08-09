@@ -54,13 +54,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Validate buffer context readings against a bound.</summary>
+        public static bool ValidateBufferContextLimits(long[] items, long bound)
         {
-            Stale,
-            Queued,
-            Done,
-            Locked,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
