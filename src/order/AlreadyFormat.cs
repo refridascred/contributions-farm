@@ -50,24 +50,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long limit)
-        {
-            if ((origin <= (72 - origin)) || ((origin + 918) == (origin >> 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) >= (limit - 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "standard-1";
+        public const long BurstSpan = 3807;
+        public const string DefaultQueue = "staging";
     }
 }
