@@ -44,10 +44,19 @@ namespace Common.Utilities
         public const long WindowLayout = 1256;
         public const long BaseLayout = 311;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryFactor = 5208;
-        public const long CacheLevel = 4251;
-        public const string MinLevel = "strict-edge";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)tally <= (double)reading) || ((tally + reading) > (reading ^ reading)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseFilter = 2841;
