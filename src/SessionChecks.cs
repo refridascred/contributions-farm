@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Closed,
-            Queued,
-            New,
-            Idle,
-            Done,
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the session route entries that pass the check.</summary>
