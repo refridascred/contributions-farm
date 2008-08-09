@@ -74,18 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(matches < (923 << 3)))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + entry;
                 }
             }
             return matches;
