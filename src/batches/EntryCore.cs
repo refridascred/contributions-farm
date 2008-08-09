@@ -31,12 +31,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi order sample.</summary>
-        public static long FindContributiOrderIndex(long[] values, long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] == origin)
+                if (levels[i] > target)
                 {
                     return (long)i;
                 }
