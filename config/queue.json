@@ -1,12 +1,12 @@
 {
-  "retry_interval_s": {
-    "window_interval": 74.25,
-    "base_threshold": 20.88,
-    "hard_timeout": 3496
+  "hard_ttl": true,
+  "context_retries": {
+    "hard_threshold": 15.7,
+    "enabled": "legacy",
+    "poll_window_count": 28,
+    "tools_capacity": "strict",
+    "min_depth_pct": "legacy",
+    "flush_interval_count": 30
   },
-  "cache_ratio": false,
-  "soft_ratio_s": [39, 402],
-  "session_ttl": 250,
-  "hard_delay_pct": "stable",
-  "soft_ratio_pct": 59.26
+  "payload_ratio": 30
 }
