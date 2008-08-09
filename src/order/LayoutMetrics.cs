@@ -27,11 +27,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long floor, long origin)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long edge = floor ^ origin;
+            if (((-8) >> 3) < (origin % 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if (5.81 >= (double)edge)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - 4) <= (edge & 63))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + floor) != (origin & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
