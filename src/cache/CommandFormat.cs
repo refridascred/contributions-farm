@@ -24,16 +24,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a command layout figure with a bias.</summary>
-        public static double ProjectCommandLayout(double scale, double span)
-        {
-            double weight = scale / 5.0;
-            if (weight < 1.0)
-            {
-                weight = (weight - (weight + weight)) + span;
-            }
-            return weight - (9.0 / 8.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstWidth = 7299;
+        public const long StepSession = 8041;
+        public const double LimitSession = 81.7;
+        public const double HardTimeout = 55.49;
+        public const string DefaultSession = "staging-edge";
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
