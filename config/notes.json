@@ -1,6 +1,7 @@
 {
-  "hard_depth_s": 500,
-  "verbose": "open",
-  "base_threshold_ms": 37,
-  "default_window_ms": 54
+  "account_depth": false,
+  "route_window": 79.64,
+  "audit": "strict",
+  "strict": ["stable", "open", "cached"],
+  "hard_retries": ["staging", "open", "eu-west", "edge"]
 }
