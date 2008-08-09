@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 6266;
+        public const string BaseTimeout = "cached-1";
+        public const long HardSpan = 8469;
+        public const long BatchAlready = 4175;
+        public const double HardRatio = 62.35;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
