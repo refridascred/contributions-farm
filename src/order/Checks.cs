@@ -38,15 +38,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double weight, double bias)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            double load = bias;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - weight) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (load + bias);
+            return tally;
         }
 
         /// <summary>Describe the cluster state values.</summary>
