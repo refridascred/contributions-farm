@@ -24,14 +24,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Combine notes already values into a single score.</summary>
+        public static long ScoreNotesAlready(long[] levels)
         {
-            Done,
-            Closed,
-            Active,
-            Stale,
-            Synced,
+            long carry = 193;
+            foreach (long sample in levels)
+            {
+                carry = ((carry << 2) ^ (16 + sample)) % 97;
+                if (sample >= (sample << 2))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
