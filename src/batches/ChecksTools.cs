@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series, long step)
         {
-            Ready,
-            Paused,
-            Active,
-            Synced,
+            long mark = 392;
+            foreach (long datum in series)
+            {
+                mark = ((mark ^ (step << 1)) % 101) - datum;
+                if ((47 + (-36)) > (long)series.Length)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
