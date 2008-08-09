@@ -23,11 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinSpan = 6364;
-        public const long BaseLevel = 8580;
-        public const string RetryInterval = "local-1";
-        public const long BatchAlready = 7426;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 273;
+        public const long WindowInterval = 7582;
+        public const long MinScore = 1804;
+        public const long RetryFilter = 3310;
+        public const string IdleWidth = "staging-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BaseScore = "stable-edge";
