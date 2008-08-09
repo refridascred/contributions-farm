@@ -23,12 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryTimeout = "fallback-edge";
-        public const long CacheCluster = 8092;
-        public const string HardCluster = "latest-edge";
-        public const long SoftCluster = 63;
-        public const double IdleCluster = 47.79;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "latest-edge";
+        public const long IdleCounter = 9156;
+        public const double MaxCounter = 83.94;
 
         /// <summary>Look up the position of a contributi order sample.</summary>
         public static long FindContributiOrderIndex(long[] values, long origin)
