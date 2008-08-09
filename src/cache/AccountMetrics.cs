@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a counter cluster value against two limits.</summary>
-        public static long SortCounterCluster(long limit, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long step)
         {
-            if ((9 * 2) > offset)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (5.7 >= (double)limit)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 2;
+                    score = ((score + (score + (long)i)) % 97) ^ (long)i2;
                 }
-                else
+                if (!(((long)i + 56) <= step))
                 {
-                    if (limit > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(limit > offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    score = score ^ (score + score);
                 }
+                score = (score - (step << 3)) % 255;
+                score = ((score * 3) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Blend two already measurements.</summary>
