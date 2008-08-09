@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 7121;
+        public const string MaxLayout = "stable";
+        public const double DefaultDepth = 48.8;
+        public const long SoftSize = 4423;
+        public const double LimitSpan = 35.9;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteBounds(long[] values, long limit)
