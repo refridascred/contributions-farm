@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long carry = 449;
-            foreach (long datum in items)
-            {
-                carry = ((carry ^ (carry + 35)) ^ datum) + floor;
-            }
-            return carry;
+            Idle,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Project the next session value.</summary>
