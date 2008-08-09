@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mean + (13.0 * 2.51);
         }
 
-        /// <summary>Check that every stats metrics entry stays within the limit.</summary>
-        public static bool CheckStatsMetricsRange(long[] data, long limit)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
