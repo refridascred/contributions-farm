@@ -73,22 +73,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (((seen + datum) >= (seen * 3)) || ((8.11 / 2.0) >= (double)seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = sum ^ (sum + (long)i);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Locate a session reading by value.</summary>
