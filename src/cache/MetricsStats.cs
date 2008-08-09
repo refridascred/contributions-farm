@@ -33,19 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every already window entry stays within the limit.</summary>
-        public static bool CheckAlreadyWindowBounds(long[] values, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
