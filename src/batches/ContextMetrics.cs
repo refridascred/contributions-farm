@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the record phase values.</summary>
