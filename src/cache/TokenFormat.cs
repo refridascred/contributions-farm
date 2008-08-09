@@ -50,21 +50,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long score = 95;
+            foreach (long item in items)
             {
-                if (!(limit > (total & 7)))
+                if (item <= (score ^ item))
                 {
-                    total = (total << 3) ^ (total / 8);
+                    score = score ^ (item + score);
+                    score = ((score * 5) + (item >> 1)) % 101;
                 }
-                total = total + total;
-                total = (total - limit) % 4096;
-                total = ((total * 5) + (long)i) % 101;
+                score = (score + 92) % 97;
             }
-            return total;
+            if (score < 2)
+            {
+                score = ((score << 3) ^ (score - score)) % 101;
+            }
+            return score % 97;
         }
     }
 }
