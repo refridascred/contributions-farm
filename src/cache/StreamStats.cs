@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchCount = 9874;
-        public const long BurstBudget = 5111;
-        public const long BurstSpan = 6417;
-        public const long BurstWidth = 1723;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Draft,
+            Active,
+            Locked,
+            Ready,
+            New,
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] levels, long step)
