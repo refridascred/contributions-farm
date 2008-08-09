@@ -27,18 +27,39 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] values, long offset)
+        /// <summary>Classify a report payload pair into a bucket.</summary>
+        public static long SortReportPayload(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long cur = bound - seed;
+            if ((583 & 3) == (bound << 3))
             {
-                if (15.0 < (double)tally)
+                return 8;
+            }
+            else
+            {
+                if ((bound * 5) < (seed << 1))
                 {
-                    tally = ((tally + 1) ^ reading) + offset;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound != (3.9 * 13.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) <= (cur ^ 37))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
