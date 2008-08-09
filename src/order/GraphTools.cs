@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] series, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Active,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a command summary.</summary>
