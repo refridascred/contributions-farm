@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Retry,
-            Active,
-            Locked,
-            Idle,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 6187;
+        public const long DefaultTimeout = 3091;
+        public const long LimitAlready = 6706;
+        public const long BurstRatio = 1835;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] items, long target)
