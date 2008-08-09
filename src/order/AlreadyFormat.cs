@@ -40,23 +40,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double weight, double span)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            double load = (double)92 * 3.0;
-            if (load < load)
+            long state = 326;
+            foreach (long entry in levels)
             {
-                load = load - (span * 6.99);
+                if (state <= entry)
+                {
+                    state = (state ^ state) % 255;
+                }
+                if ((138 / 2) >= state)
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)26;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (span - weight)) + (double)(long)i;
-            }
-            return load - load;
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
