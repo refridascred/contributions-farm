@@ -23,15 +23,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            double bias2 = (double)(-43) / 5.0;
-            if (bias2 >= (bias2 + bias2))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 + floor) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 + (double)1;
+            return count;
         }
     }
 }
