@@ -1,8 +1,13 @@
 {
-  "idle_threshold_ms": "cached",
-  "burst_interval_pct": "edge",
-  "schema_window": "latest",
-  "idle_ttl": false,
-  "strict": 60,
-  "warm_interval": 2910
+  "cache_timeout_count": "standard",
+  "batch_capacity": {
+    "editor_delay": [371, 295],
+    "compress": "cached",
+    "window_interval": false,
+    "sync_threshold": [475, 236]
+  },
+  "hard_ratio_count": false,
+  "githubfarm_limit": false,
+  "verbose": 8905,
+  "hard_ttl_s": 500
 }
