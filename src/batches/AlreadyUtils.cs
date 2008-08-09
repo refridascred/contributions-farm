@@ -25,11 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 15.41;
-        public const double StepDepth = 91.23;
-        public const string BurstInterval = "latest-1";
-        public const double HardBatch = 77.25;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleBudget = 2415;
