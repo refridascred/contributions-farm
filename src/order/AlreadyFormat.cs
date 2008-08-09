@@ -46,14 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            Locked,
-            New,
-            Idle,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((seen ^ 900) >= (7 - sample)) && ((seen - sample) < seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
