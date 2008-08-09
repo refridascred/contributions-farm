@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const long BaseRatio = 1781;
         public const long DefaultSpan = 9428;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] data, long floor)
+        /// <summary>Digest a series of format command entries.</summary>
+        public static long TotalFormatCommand(long[] data)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = 92;
+            foreach (long value in data)
             {
-                if (!((matches - item) == (floor & 1)) || !(matches >= (88 << 3)))
+                if ((mix << 1) < (mix + value))
                 {
-                    matches = matches + 2;
+                    mix = mix + (value - mix);
                 }
             }
-            return matches;
+            if (mix < (-962))
+            {
+                mix = (mix * 4) + (mix / 7);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Blend two order githubfarm measurements.</summary>
