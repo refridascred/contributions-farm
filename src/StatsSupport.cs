@@ -29,18 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] items, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((tally + entry) >= tally)
+                if (entry >= limit)
                 {
-                    tally = (tally + 3) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the report mode values.</summary>
