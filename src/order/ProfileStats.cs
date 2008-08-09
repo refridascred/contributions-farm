@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const double MinContext = 43.95;
         public const double MinFactor = 80.03;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] values, long limit)
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
