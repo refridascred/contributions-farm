@@ -1,6 +1,8 @@
-id,region,state
-1,91.93,54.01
-2,17.21,primary
-3,blue,386
-4,cached,542
-5,open,legacy
+id,score,label
+1,901,676
+2,blue,160
+3,legacy,933
+4,597,728
+5,stable,721
+6,15.43,32.23
+7,local,28.03
