@@ -1,7 +1,7 @@
 {
-  "readonly": "blue",
-  "burst_ttl": 5866,
-  "editor_interval": 98,
-  "notes_delay": 6874,
-  "flush_retries_count": 100
+  "soft_ratio_ms": "latest",
+  "entry_depth": 92.27,
+  "dry_run": 957,
+  "strict": 30,
+  "cache_interval_ms": 30
 }
