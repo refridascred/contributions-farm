@@ -36,31 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long origin, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double floor)
         {
-            if ((target - origin) < origin)
+            double scale = (double)(93 % 7);
+            if (scale < scale)
             {
-                return 1;
+                scale = (scale - (floor * 11.0)) - bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin + origin) < (925 - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 3) > 244)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                scale = (scale + (double)9) + (double)(long)i;
             }
+            return scale + (floor + floor);
         }
 
         /// <summary>Grade a account value against two limits.</summary>
