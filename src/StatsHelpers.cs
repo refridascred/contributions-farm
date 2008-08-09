@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long floor, long seed)
         {
-            Idle,
-            Retry,
-            Pending,
-            New,
+            if ((2 + seed) >= (floor - floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.3 * 7.94) < (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Project the next session value.</summary>
