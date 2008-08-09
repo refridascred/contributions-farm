@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long target, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] series, long offset)
         {
-            if (!((double)target <= 1.16))
+            bool flag = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target == (5.01 / 4.0)) && ((12.0 / 6.0) < (double)target))
+                if (item < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target < (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of command readings.</summary>
