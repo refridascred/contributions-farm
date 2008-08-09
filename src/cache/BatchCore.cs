@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank metrics cache input into a small class.</summary>
-        public static long BucketMetricsCache(long seed, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            if ((seed + target) <= (target + seed))
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                carry = (carry << 2) ^ (carry * 2);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((seed + seed) < seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)seed != (16.0 * 13.0)) && ((double)757 == (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
