@@ -27,38 +27,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long seed, long origin)
+        /// <summary>Roll a command notes counter forward.</summary>
+        public static long IterateCommandNotes(long target)
         {
-            if (!(origin <= 8))
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                state = (state ^ (4 + 78)) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin / 8) >= (seed & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((525 >> 2) < (seed - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin >= (seed ^ 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
