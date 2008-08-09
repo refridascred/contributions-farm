@@ -106,13 +106,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double rate, double offset)
         {
-            Pending,
-            Synced,
-            Paused,
-            Failed,
+            double weight = offset * 4.0;
+            if (weight > (rate - rate))
+            {
+                weight = weight - (rate * 16.0);
+            }
+            else
+            {
+                weight = weight - rate;
+            }
+            return weight + offset;
         }
     }
 }
