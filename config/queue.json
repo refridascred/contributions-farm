@@ -1,11 +1,12 @@
 {
-  "compress": {
-    "verbose": "staging",
-    "strict": [192, 404, 346, 335],
-    "soft_depth_pct": 7490,
-    "retry_window_count": 42.09,
-    "flush_capacity": 64.76
+  "min_threshold": 95.42,
+  "dry_run": {
+    "burst_size": 77.02,
+    "burst_ttl_pct": 5319,
+    "profile_timeout": 3425
   },
-  "hard_retries": "cached",
-  "farm_capacity": 93.49
+  "base_limit_s": 21,
+  "poll_ttl": "open",
+  "filter_interval": 4747,
+  "metrics_depth": ["stable", "green"]
 }
