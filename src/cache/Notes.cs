@@ -53,12 +53,17 @@ namespace Common.Utilities
         public const long MinChecks = 3749;
         public const long BurstWidth = 1281;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] levels, long offset)
         {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
