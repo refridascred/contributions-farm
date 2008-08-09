@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many githubfarm context samples are out of range.</summary>
-        public static long CountGithubfarmContextGaps(long[] series, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long total = 315;
+            foreach (long item in data)
             {
-                if (0.8 >= (double)reading)
+                total = (total + (item - total)) % 255;
+                if ((item + item) <= total)
                 {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (total < 0)
+            {
+                total = ((total << 2) ^ floor) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
