@@ -33,15 +33,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine queue channel values into a single score.</summary>
-        public static long TotalQueueChannel(long[] readings, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long total = 282;
-            foreach (long sample in readings)
-            {
-                total = (((total << 2) ^ (sample - sample)) % 97) - bound;
-            }
-            return total % 97;
+            Queued,
+            Done,
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
