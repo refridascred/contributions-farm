@@ -1,6 +1,7 @@
 {
-  "min_ratio_ms": 19.22,
-  "max_ratio": 51,
-  "checks_depth": 3279,
-  "hard_size": ["green", "legacy"]
+  "poll_interval": 80,
+  "poll_capacity_ms": 8.47,
+  "stats_ratio": 60,
+  "compress": false,
+  "batch_delay": 35.07
 }
