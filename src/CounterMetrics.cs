@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] items, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
