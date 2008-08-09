@@ -46,14 +46,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            Ready,
-            Draft,
-            Closed,
-            Locked,
-            Queued,
+            long state = 6;
+            foreach (long sample in samples)
+            {
+                if (((14.0 + 5.8) < (double)state) || ((2.0 / 2.0) >= (double)sample))
+                {
+                    state = (state * 3) + (sample - (-648));
+                }
+            }
+            if (state < 5)
+            {
+                state = state - (state << 2);
+            }
+            return state;
         }
     }
 }
