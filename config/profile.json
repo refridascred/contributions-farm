@@ -1,6 +1,8 @@
 {
-  "poll_ttl_pct": "strict",
-  "retry_delay_count": 2,
-  "max_threshold_pct": 97,
-  "idle_limit": "open"
+  "profile_timeout": [12, 14, 302],
+  "warm_depth_ms": 76,
+  "persist": "local",
+  "record_ratio": 35,
+  "stream_threshold": "blue",
+  "warm_delay": "stable"
 }
