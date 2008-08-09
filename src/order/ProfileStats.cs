@@ -51,21 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account report samples.</summary>
-        public static long PairAccountReportCount(long[] values)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 82;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = ((anchor * 3) + (anchor % 97)) % 65521;
+                if ((value & 7) >= (anchor % 3))
                 {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor - (value * 5);
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
