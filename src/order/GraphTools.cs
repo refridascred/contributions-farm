@@ -49,12 +49,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 595;
-        public const long DefaultMetrics = 7961;
-        public const long BaseMetrics = 6826;
-        public const long BaseCount = 5367;
-        public const double SoftMetrics = 27.7;
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double rate, double span)
+        {
+            double drift = rate;
+            if (drift > span)
+            {
+                drift = drift + (span + span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (rate + span)) + (double)(long)i;
+            }
+            return drift + (9.0 - rate);
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionRange(long[] items, long step)
