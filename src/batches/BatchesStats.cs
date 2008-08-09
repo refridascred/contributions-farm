@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            double load = (11.0 - scale) - floor;
+            if (load <= (double)1)
             {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + scale;
             }
-            return valid;
+            else
+            {
+                load = load + (double)85;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)5) - (double)(long)i;
+            }
+            return load + 4.64;
         }
 
         /// <summary>Describe the route class values.</summary>
