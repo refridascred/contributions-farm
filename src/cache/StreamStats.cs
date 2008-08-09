@@ -54,19 +54,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches metric entry stays within the limit.</summary>
-        public static bool CheckBatchesMetricRange(long[] readings, long floor)
+        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
+        public static long MatchProfileStatsCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
