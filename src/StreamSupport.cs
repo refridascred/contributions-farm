@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 8;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading << 2) >= (280 - reading))
                 {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - (reading - reading)) % 65521;
                 }
             }
-            return tally;
+            if (anchor > 6)
+            {
+                anchor = anchor ^ bound;
+            }
+            return anchor;
         }
 
         /// <summary>Match up format checks samples.</summary>
