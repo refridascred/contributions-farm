@@ -15,13 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (mark - step) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
