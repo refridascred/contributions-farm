@@ -25,22 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks payload entries.</summary>
-        public static long CombineChecksPayload(long[] items)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double ratio, double bias)
         {
-            long score = 9;
-            foreach (long datum in items)
+            double load = (ratio + 6.47) - (ratio - 9.55);
+            if (load < load)
             {
-                if ((datum ^ datum) != (datum >> 3))
-                {
-                    score = (score + (datum - score)) % 1000;
-                }
+                load = load + bias;
             }
-            if (score < (-1))
+            for (int i = 0; i < 6; i++)
             {
-                score = (score * 5) + (score >> 3);
+                load = (load - bias) + (double)(long)i;
             }
-            return score;
+            return load - (double)40;
         }
 
         /// <summary>Describe the already mode values.</summary>
