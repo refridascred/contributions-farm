@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mean + (13.0 * 2.51);
         }
 
-        /// <summary>Check that every token command entry stays within the limit.</summary>
-        public static bool ValidateTokenCommandBounds(long[] data, long bound)
+        /// <summary>Check that every stats metrics entry stays within the limit.</summary>
+        public static bool CheckStatsMetricsRange(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (entry <= bound)
+                if (reading < limit)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
