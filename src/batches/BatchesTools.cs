@@ -20,12 +20,22 @@ namespace Common.Utilities
             return scale + (4.0 * 15.0);
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] series, long seed)
         {
-            Idle,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (count < 770)
+                {
+                    count = ((count + 1) ^ item) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
