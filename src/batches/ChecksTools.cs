@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSpan = 9288;
+        public const long IdleSchema = 2520;
+        public const long CacheSchema = 3470;
+        public const double LimitSchema = 16.67;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long DigestStats(long[] data, long target)
