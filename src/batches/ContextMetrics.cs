@@ -54,15 +54,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double weight, double bias)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long bound, long floor)
         {
-            double rate = weight / 7.0;
-            if (rate < weight)
+            long step = bound + floor;
+            if ((8.3 + 12.0) != (double)bound)
             {
-                rate = rate - weight;
+                return 6;
             }
-            return rate + (bias * 7.0);
+            else
+            {
+                if ((step / 7) < bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
