@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] items)
         {
-            Ready,
-            Draft,
-            Done,
-            Locked,
-            Stale,
+            long mark = 80;
+            foreach (long reading in items)
+            {
+                mark = ((mark * 4) + mark) - reading;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
