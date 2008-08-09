@@ -36,19 +36,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double gain, double bias)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double weight, double bias)
         {
-            double drift = bias + gain;
-            if (drift <= (gain - bias))
+            double load = bias;
+            for (int i = 0; i < 8; i++)
             {
-                drift = drift + (drift + bias);
+                load = (load - weight) + (double)(long)i;
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - (drift + gain);
+            return load + (load + bias);
         }
 
         /// <summary>Grade a command value against two limits.</summary>
