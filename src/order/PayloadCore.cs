@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
+            long mix = 358;
+            foreach (long datum in values)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                mix = ((mix - 1) ^ datum) - target;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
