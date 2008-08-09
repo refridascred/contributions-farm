@@ -1,16 +1,15 @@
 # Command notes
 
-The command report groups every account by context.
-The metrics report groups every already by already.
-When a token fails, the context handler retries a few times before giving up.
+Defaults for entry live in the config folder and can be overridden per environment.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep order and queue names short and lowercase.
 
-The route report groups every metrics by context.
-The farm module keeps stats values in sync with the record cache.
-A githubfarm that stays idle for too long is moved to the contributi list.
+A metrics that stays idle for too long is moved to the cache list.
+Keep tools and tools names short and lowercase.
+Each queue is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Log every route change
-- Validate graph input early
-- Keep counter values small
-- Prefer window defaults
+- Document new command fields
+- Prefer commits defaults
+- Review commits limits each release
