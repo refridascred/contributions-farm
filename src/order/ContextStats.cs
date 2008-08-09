@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] series, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] levels)
         {
-            long mix = 5;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((mix >> 4) != (offset % 8))
+                if ((reading * 5) != (tally - tally))
                 {
-                    mix = ((mix << 2) ^ (offset - offset)) ^ entry;
+                    tally = tally + 2;
                 }
             }
-            if (mix < 41)
-            {
-                mix = (mix - (mix ^ mix)) % 255;
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
