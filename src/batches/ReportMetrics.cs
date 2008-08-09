@@ -37,19 +37,21 @@ namespace Common.Utilities
             return ratio - bias2;
         }
 
-        /// <summary>Validate support buffer readings against a bound.</summary>
-        public static bool ValidateSupportBufferRange(long[] data, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
