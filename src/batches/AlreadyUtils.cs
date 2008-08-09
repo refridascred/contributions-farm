@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long origin)
+        /// <summary>Validate buffer entry readings against a bound.</summary>
+        public static bool ValidateBufferEntryBounds(long[] data, long origin)
         {
-            long mark = 5;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((double)origin < (1.93 * 0.5))
+                if (entry != origin)
                 {
-                    mark = (((mark << 2) ^ (mark + origin)) % 4096) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < 415)
-            {
-                mark = (mark * 2) + (mark - mark);
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
