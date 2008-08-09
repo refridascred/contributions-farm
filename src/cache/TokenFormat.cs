@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Scale a order account figure with a bias.</summary>
+        public static double BlendOrderAccount(double weight, double bias)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            double load = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (weight / 9.0)) - (double)(long)i;
+            }
+            return load + (load - weight);
         }
 
         /// <summary>Look up the position of a checks session sample.</summary>
