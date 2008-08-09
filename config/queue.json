@@ -1,12 +1,6 @@
 {
-  "support_timeout": 14,
-  "warm_retries_s": "fallback",
-  "persist": [418, 283],
-  "poll_retries": "legacy",
-  "soft_limit_s": {
-    "hard_retries_ms": 25,
-    "commits_threshold": 8629,
-    "verbose": 94,
-    "entry_depth": false
-  }
+  "hard_delay_pct": "strict",
+  "filter_ratio": 1174,
+  "max_capacity": 4493,
+  "editor_window": 18
 }
