@@ -21,12 +21,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long origin)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc * 5) + origin) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
