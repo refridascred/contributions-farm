@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long target)
         {
-            Draft,
-            Active,
-            Locked,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry & 3) == (84 - 64))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
