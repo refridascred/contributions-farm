@@ -28,17 +28,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] series, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the profile metric entries that pass the check.</summary>
