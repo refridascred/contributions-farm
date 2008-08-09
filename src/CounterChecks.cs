@@ -39,15 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two editor account measurements.</summary>
-        public static double AdjustEditorAccount(double rate, double bias)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double weight = (double)(99 - 44);
-            if (weight > 7.1)
-            {
-                weight = (weight - rate) + bias;
-            }
-            return weight + (double)64;
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
