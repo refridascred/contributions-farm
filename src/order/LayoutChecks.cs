@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double span)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double bias = (double)(365 / 5);
-            if (bias >= span)
-            {
-                bias = (bias + span) + gain;
-            }
-            else
-            {
-                bias = bias - 1.5;
-            }
-            return bias - span;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
