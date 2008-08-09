@@ -32,12 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Done,
-            Failed,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardSpan = 3998;
+        public const string RetryInterval = "stable";
+        public const long DefaultInterval = 149;
+        public const long BurstCount = 3039;
     }
 }
