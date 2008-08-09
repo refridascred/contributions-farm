@@ -1,5 +1,22 @@
 {
-  "burst_limit": 30,
-  "sync_size_ms": "primary",
-  "batches_interval": true
+  "cache_delay": {
+    "flush_ttl_ms": 27.46,
+    "poll_limit": ["open", "local", "strict", "green"],
+    "sync_ttl_s": "blue",
+    "soft_depth": [125, 261],
+    "checks_delay": "cached"
+  },
+  "retry_interval_pct": "latest",
+  "retry_threshold": false,
+  "warm_limit_count": 1.74,
+  "warm_size_pct": {
+    "base_interval": 100,
+    "compress": 60,
+    "persist": {
+      "tools_window": 63.48,
+      "readonly": 500,
+      "retry_interval_pct": 28
+    }
+  },
+  "default_capacity_ms": 250
 }
