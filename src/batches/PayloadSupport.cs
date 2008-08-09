@@ -10,14 +10,39 @@ namespace Common.Utilities
         public const long BaseAccount = 2596;
         public const double MaxBudget = 70.18;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long step, long target)
         {
-            Dropped,
-            Closed,
-            Idle,
-            Synced,
-            Stale,
+            long slot = step ^ target;
+            if (((step * 3) != (target + 52)) && ((15.0 * 3.0) == (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (slot >= (step + 444))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((target * 4) != (target / 5)) || ((target + slot) > slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target >> 1) < (step << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
