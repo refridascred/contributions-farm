@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] values, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) != 0))
+                if ((double)matches == (2.06 + 2.0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank entry farm input into a small class.</summary>
