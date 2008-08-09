@@ -72,18 +72,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit channel profile readings against a rule.</summary>
-        public static long CountChannelProfileHits(long[] values)
+        /// <summary>Compare every pair of batches layout readings.</summary>
+        public static long PairBatchesLayoutCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum ^ datum) >= hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
