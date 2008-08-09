@@ -31,21 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up token githubfarm samples.</summary>
-        public static long MatchTokenGithubfarmCount(long[] values)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(25 / 3);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (((weight - 1.1) + (double)(long)i) + gain) - span;
             }
-            return seen;
+            return weight - 9.1;
         }
     }
 }
