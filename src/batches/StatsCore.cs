@@ -63,18 +63,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long origin, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            if ((origin ^ 36) >= origin)
             {
-                if (value >= (value << 1))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor >= (0.24 - 6.63))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >> 2) != (floor / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((66 + floor) > (floor & 255))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a session reading by value.</summary>
