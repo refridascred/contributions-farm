@@ -45,15 +45,21 @@ namespace Common.Utilities
         public const long StepTimeout = 6114;
         public const long StepWidth = 6738;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Match up token githubfarm samples.</summary>
+        public static long MatchTokenGithubfarmCount(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
