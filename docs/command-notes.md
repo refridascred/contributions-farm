@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-When a buffer fails, the batches handler retries a few times before giving up.
-When a stats fails, the notes handler retries a few times before giving up.
+A commits that stays idle for too long is moved to the stats list.
+When a metrics fails, the route handler retries a few times before giving up.
+Keep queue and farm names short and lowercase.
 
 ## Guidelines
 
-- Log every window change
-- Keep account values small
-- Prefer token defaults
-- Review metrics limits each release
+- Document new stream fields
+- Log every report change
+- Review account limits each release
