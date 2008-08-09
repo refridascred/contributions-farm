@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long limit)
         {
-            Pending,
-            Paused,
-            Active,
-            Retry,
+            long score = 51;
+            foreach (long sample in data)
+            {
+                score = ((score ^ 519) ^ sample) - limit;
+            }
+            return score % 97;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
