@@ -12,26 +12,12 @@ namespace Common.Utilities
         public const double MaxChannel = 57.99;
         public const double BaseBudget = 77.63;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] samples, long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long carry = 467;
-            foreach (long cell in samples)
-            {
-                if (!((4.9 / 2.0) > (double)(long)samples.Length))
-                {
-                    carry = carry ^ (offset - cell);
-                }
-                else
-                {
-                    carry = (carry ^ ((long)samples.Length + cell)) % 4096;
-                }
-            }
-            if (carry > 105)
-            {
-                carry = carry + ((-68) ^ carry);
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
