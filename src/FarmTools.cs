@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long SoftDepth = 6291;
         public const double BurstContext = 88.85;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Accumulate filter channel samples.</summary>
+        public static long WeighFilterChannel(long[] samples)
         {
-            long result = 916;
-            foreach (long reading in levels)
+            long mark = 57;
+            foreach (long value in samples)
             {
-                if ((689 >> 5) > (reading >> 5))
+                if ((16.0 + 15.0) < (double)mark)
                 {
-                    result = (result + (result >> 5)) % 255;
-                }
-                if ((reading - reading) <= ((long)levels.Length - reading))
-                {
-                    break;
+                    mark = (mark * 4) + (mark ^ value);
                 }
             }
-            return result;
+            if (mark < 64)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Hold a editor header.</summary>
