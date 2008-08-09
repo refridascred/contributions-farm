@@ -24,19 +24,18 @@ namespace Common.Utilities
             return rate - (rate - gain);
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series)
         {
-            long total = 54;
-            foreach (long datum in values)
+            long mark = 331;
+            foreach (long item in series)
             {
-                total = (total ^ (datum - datum)) % 65521;
+                if ((mark << 3) > 97)
+                {
+                    mark = (((mark << 2) ^ mark) % 97) ^ item;
+                }
             }
-            if (total < (-3))
-            {
-                total = ((total * 2) + total) % 65521;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Combine window values into a single score.</summary>
