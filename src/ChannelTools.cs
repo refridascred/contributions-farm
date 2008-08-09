@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long bound, long limit)
         {
-            long mark = 8;
-            foreach (long cell in series)
+            long prev = bound - limit;
+            if (((limit * 4) < (limit % 7)) && (7 > (limit + 623)))
             {
-                if ((double)mark != (7.4 * 0.8))
+                return 7;
+            }
+            else
+            {
+                if ((prev >> 5) < (prev + (-20)))
                 {
-                    mark = ((mark - mark) % 101) + cell;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
