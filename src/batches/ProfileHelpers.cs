@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first report filter entry that matches the target.</summary>
-        public static long SeekReportFilterIndex(long[] data, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long seed, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound < 2.17)
             {
-                if (data[i] <= seed)
+                return 3;
+            }
+            else
+            {
+                if (seed <= 7)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a support checks figure with a bias.</summary>
