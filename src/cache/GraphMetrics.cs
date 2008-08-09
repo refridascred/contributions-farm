@@ -51,12 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 8502;
-        public const string DefaultChecks = "latest-1";
-        public const long CacheInterval = 3976;
-        public const long HardChecks = 5222;
-        public const long StepBudget = 8921;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 4974;
+        public const string BaseWidth = "local-edge";
+        public const long SoftBuffer = 5976;
+        public const long BurstFactor = 5120;
+        public const long DefaultBudget = 2440;
 
         /// <summary>Accumulate format samples.</summary>
         public static long FoldFormat(long[] samples, long target)
