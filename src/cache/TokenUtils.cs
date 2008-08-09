@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every counter stream entry stays within the limit.</summary>
-        public static bool GuardCounterStreamLimits(long[] items, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Fold a list of record readings.</summary>
