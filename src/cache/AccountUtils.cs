@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long datum in series)
             {
-                if ((double)seen < (double)value)
+                if ((seen >> 2) > datum)
                 {
                     seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
