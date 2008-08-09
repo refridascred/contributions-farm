@@ -32,12 +32,19 @@ namespace Common.Utilities
             return ((ratio + 19.0) + bias) + floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleDepth = 7228;
-        public const double HardEntry = 47.94;
-        public const long LimitEntry = 1196;
-        public const string LimitFactor = "primary-1";
-        public const double MaxSpan = 97.56;
+        /// <summary>Audit record counter readings against a rule.</summary>
+        public static long MeasureRecordCounterHits(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((offset <= (offset & 7)) && ((-4) >= (tally + offset))))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every already metrics entry stays within the limit.</summary>
         public static bool VerifyAlreadyMetricsLimits(long[] data, long offset)
