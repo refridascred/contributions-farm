@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long BatchSpan = 4700;
         public const long MaxRatio = 2050;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] items, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
