@@ -1,6 +1,6 @@
 {
-  "batch_timeout": 89,
-  "graph_limit": false,
-  "burst_window": "standard",
-  "idle_ratio_s": "eu-west"
+  "record_window": 63.06,
+  "readonly": "cached",
+  "sync_retries": "latest",
+  "route_capacity": 20
 }
