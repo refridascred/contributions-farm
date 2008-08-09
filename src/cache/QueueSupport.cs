@@ -19,18 +19,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = 9;
+            foreach (long sample in series)
             {
-                if ((sample ^ sample) >= hits)
-                {
-                    hits = hits + 2;
-                }
+                mark = (((mark * 3) + seed) % 255) - sample;
             }
-            return hits;
+            return mark;
         }
     }
 }
