@@ -50,11 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "cached-1";
-        public const long HardPayload = 9790;
-        public const long BurstTimeout = 5003;
-        public const long LimitSize = 9724;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            New,
+            Done,
+            Retry,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
