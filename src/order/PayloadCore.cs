@@ -49,9 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "local-1";
-        public const long CacheCommits = 4137;
-        public const string BurstCount = "alpha-edge";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (target < (-2))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
+        }
     }
 }
