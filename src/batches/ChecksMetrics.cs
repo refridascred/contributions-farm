@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            long result = 334;
+            foreach (long sample in values)
+            {
+                result = ((result + (2 + result)) % 101) - sample;
+            }
+            if (result > 407)
+            {
+                result = ((result * 5) + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
