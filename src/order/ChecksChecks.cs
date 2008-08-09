@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] samples, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (value <= offset)
+                if (sample > origin)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
