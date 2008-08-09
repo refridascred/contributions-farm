@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long score = 9;
+            foreach (long value in levels)
             {
-                score = ((score << 3) ^ (bound / 2)) % 65521;
-                score = ((score * 4) + (long)i) % 101;
+                if (((value & 31) >= 5) && ((54 + score) < (seed - seed)))
+                {
+                    score = ((score << 3) ^ (7 ^ 555)) % 101;
+                }
             }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Hold a command info.</summary>
