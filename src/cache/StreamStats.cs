@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 3112;
+        public const long BaseBudget = 9476;
+        public const long MinInterval = 3001;
+        public const long DefaultLevel = 1427;
+        public const long MinTimeout = 8455;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] items, long target)
