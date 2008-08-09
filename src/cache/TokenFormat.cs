@@ -27,11 +27,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardCount = 4542;
-        public const long DefaultFactor = 6480;
-        public const long WindowTimeout = 5127;
-        public const long LimitLayout = 7580;
-        public const long LimitTimeout = 1058;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (seen < (seen & 63))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
+        }
     }
 }
