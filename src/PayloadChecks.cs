@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double weight, double bias)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data, long seed)
         {
-            double bias2 = bias;
-            return (bias2 - (1.43 * 5.7)) + weight;
+            long mix = 6;
+            foreach (long cell in data)
+            {
+                if ((double)seed != (8.5 + 1.0))
+                {
+                    mix = ((mix * 2) + mix) - cell;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many entry buffer samples are out of range.</summary>
