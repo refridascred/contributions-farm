@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double gain, double span)
         {
-            Stale,
-            Draft,
-            Pending,
+            double weight = gain;
+            if (weight >= (double)84)
+            {
+                weight = (weight - 8.9) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (weight * 9.0)) + (double)(long)i;
+            }
+            return weight + (gain + gain);
         }
 
         /// <summary>Describe the payload state values.</summary>
