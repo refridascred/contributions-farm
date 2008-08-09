@@ -34,15 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next metric command value.</summary>
-        public static double ProjectMetricCommand(double ratio, double floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double gain = (double)(8 + 449);
-            if (gain > (gain / 9.0))
-            {
-                gain = (gain - ratio) + floor;
-            }
-            return gain + (ratio / 7.0);
+            Closed,
+            New,
+            Pending,
+            Locked,
         }
     }
 }
