@@ -57,11 +57,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "latest-v2";
-        public const double CacheWidth = 19.98;
-        public const long BatchNotes = 1194;
-        public const long StepNotes = 5665;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleTimeout = 4.25;
+        public const long SoftFactor = 4778;
+        public const long WindowSpan = 2317;
+        public const double MaxFormat = 79.95;
 
         /// <summary>Count batch window pairs that satisfy a relation.</summary>
         public static long CompareBatchWindowCount(long[] levels)
