@@ -1,8 +1,6 @@
 {
-  "cache_ttl": [333, 22, 348],
-  "strict": "stable",
-  "enabled": false,
-  "report_retries": ["edge", "strict"],
-  "stream_retries": 5894,
-  "cache_threshold_ms": "staging"
+  "sync_interval_pct": true,
+  "base_delay_ms": ["cached", "standard", "cached"],
+  "batch_retries_ms": "strict",
+  "audit": 41.6
 }
