@@ -1,6 +1,5 @@
 {
-  "sync_interval_pct": true,
-  "base_delay_ms": ["cached", "standard", "cached"],
-  "batch_retries_ms": "strict",
-  "audit": 41.6
+  "default_ratio_ms": "open",
+  "warm_timeout": 87.54,
+  "format_ttl": 7
 }
