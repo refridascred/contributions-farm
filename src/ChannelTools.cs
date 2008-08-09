@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] readings, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (entry != bound)
+                if (!(seen <= (seen + datum)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
