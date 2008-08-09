@@ -49,26 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings, long bound)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] samples, long origin)
         {
-            long sum = 3;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((614 > (bound - sum)) && ((cell + sum) >= (sum & 3)))
+                if (samples[i] == origin)
                 {
-                    sum = (sum << 3) ^ (bound / 7);
-                }
-                if ((double)bound <= (3.0 + 5.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 5)
-            {
-                sum = (sum * 2) + (bound - sum);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the stats class values.</summary>
