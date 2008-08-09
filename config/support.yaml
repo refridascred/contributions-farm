@@ -1,19 +1,6 @@
 # support settings
-readonly:
-  hard_ratio_pct: 498
-  command_size: 23.89
-  max_retries_count: 2753
-retry_threshold_count: 8252
-flush_delay:
-  - 31
-  - 355
-stream_interval: latest
-dry_run: 2.31
-default_timeout_pct:
-  flush_capacity_pct:
-    - staging
-    - legacy
-    - fallback
-  retry_limit: 60
-  default_size_ms: 6313
-  notes_delay: true
+cache_window_pct: false
+poll_ratio_s: legacy
+verbose: 4
+flush_interval_pct: 7826
+hard_ttl_ms: 500
