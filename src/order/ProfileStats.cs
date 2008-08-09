@@ -31,25 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            long gap = floor ^ origin;
-            if ((floor / 7) > floor)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)gap == (double)floor) || ((origin / 3) >= 230))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
