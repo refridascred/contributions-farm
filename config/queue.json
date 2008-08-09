@@ -1,12 +1,7 @@
 {
-  "max_ratio_s": {
-    "support_limit": false,
-    "strict": 580,
-    "checks_interval": ["blue", "eu-west", "open", "open"],
-    "retry_delay_ms": 55.99,
-    "persist": "local",
-    "warm_depth": 850
-  },
-  "base_ratio_ms": [474, 309, 340],
-  "queue_ratio": 30
+  "readonly": "local",
+  "sync_size_pct": 85.24,
+  "cache_delay_ms": 250,
+  "poll_depth": 27.21,
+  "verbose": true
 }
