@@ -23,15 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Ready,
-            Failed,
-            Active,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 37.93;
+        public const long StepFilter = 6397;
+        public const long DefaultWidth = 1404;
+        public const double MaxCount = 13.76;
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] items, long floor)
