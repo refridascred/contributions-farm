@@ -12,13 +12,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long floor)
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            long total = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = (total + ((long)i + (long)i2)) % 101;
+                    total = (total ^ (70 + 0)) % 65521;
+                }
+                total = (total << 2) ^ total;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Blend two window measurements.</summary>
