@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 772;
-        public const double LimitMetrics = 8.71;
-        public const long RetryMetrics = 6933;
-        public const string BurstMetrics = "staging-1";
-        public const string CacheMetrics = "staging-1";
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values)
+        {
+            long mark = -763;
+            foreach (long sample in values)
+            {
+                if ((mark >= (sample - sample)) || (((long)values.Length / 9) <= sample))
+                {
+                    mark = mark ^ sample;
+                    mark = (mark * 4) + mark;
+                }
+                if (((-83) - sample) > (mark % 3))
+                {
+                    mark = mark + (sample / 5);
+                }
+            }
+            if (mark > 9)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseNotes = 63;
