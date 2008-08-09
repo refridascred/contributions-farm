@@ -20,18 +20,21 @@ namespace Common.Utilities
             return scale - 20.0;
         }
 
-        /// <summary>Count the session route entries that pass the check.</summary>
-        public static long CountSessionRouteHits(long[] readings)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value & 63) <= count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the record kind values.</summary>
