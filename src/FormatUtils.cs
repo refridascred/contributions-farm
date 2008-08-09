@@ -73,15 +73,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] values, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
