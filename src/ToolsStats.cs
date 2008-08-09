@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout commits entry stays within the limit.</summary>
-        public static bool CheckLayoutCommitsRange(long[] levels, long origin)
+        /// <summary>Audit payload buffer readings against a rule.</summary>
+        public static long AuditPayloadBufferOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (item != origin)
+                if ((double)item >= 7.19)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a schema info.</summary>
