@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the entry contributi entries that pass the check.</summary>
-        public static long TallyEntryContributiOutliers(long[] series, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits % 60) > (524 + hits))
-                {
-                    hits = ((hits + 2) - item) - seed;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Check that every layout commits entry stays within the limit.</summary>
