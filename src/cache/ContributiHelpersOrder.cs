@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + offset) >= offset)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
