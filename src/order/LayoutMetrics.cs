@@ -27,36 +27,29 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long floor, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long limit, long limit2)
         {
-            long edge = floor ^ origin;
-            if (((-8) >> 3) < (origin % 7))
+            long next = limit + limit2;
+            if ((limit2 / 3) > (next - next))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if (5.81 >= (double)edge)
+                if (((limit + limit) < limit2) && ((double)next == (double)7))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin - 4) <= (edge & 63))
+                    if ((limit2 ^ next) <= (42 + limit))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        if ((floor + floor) != (origin & 63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 3;
                     }
                 }
             }
