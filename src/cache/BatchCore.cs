@@ -38,15 +38,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of metrics queue readings.</summary>
-        public static long TotalMetricsQueue(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] series, long step)
         {
-            long mark = 19;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 2) + (value + mark)) % 4096;
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
