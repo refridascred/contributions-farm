@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchSpan = "cached-1";
+        public const long BurstAlready = 9907;
+        public const string SoftAlready = "staging-v2";
+        public const string LimitSize = "cached";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] levels, long offset)
