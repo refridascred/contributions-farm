@@ -60,12 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many editor metrics samples are out of range.</summary>
+        public static long TallyEditorMetricsGaps(long[] data, long origin)
         {
-            Active,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (datum < (datum + datum))
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm header.</summary>
