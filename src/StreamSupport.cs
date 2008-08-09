@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 41.21;
-        public const string BaseCache = "legacy-edge";
-        public const long HardCache = 7092;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((810 - (-988)) < (value ^ count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
