@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const string StepMetric = "alpha-v2";
         public const long StepRatio = 826;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] levels, long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((3.2 + 7.1) != (double)target) && ((sample % 100) >= hits)) || ((3 * 5) > (sample & 15)))
+                if (series[i] < target)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
