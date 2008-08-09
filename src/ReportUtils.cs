@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-1";
         public const double CachePayload = 26.8;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Ready,
-            Paused,
-            Pending,
-            Dropped,
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
