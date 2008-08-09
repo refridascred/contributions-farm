@@ -1,6 +1,22 @@
 {
-  "cache_depth": "primary",
-  "enabled": "legacy",
-  "schema_threshold": [105, 333, 257, 50],
-  "commits_ttl": 3793
+  "audit": ["standard", "blue"],
+  "poll_capacity": ["strict", "strict", "stable", "edge"],
+  "default_interval_ms": true,
+  "commits_window": {
+    "token_ttl": [446, 446, 454, 388],
+    "default_capacity_ms": {
+      "max_depth": 60,
+      "cache_threshold": 99,
+      "min_capacity_pct": [490, 187, 399],
+      "compress": "legacy",
+      "max_limit_count": true,
+      "poll_threshold_count": true
+    },
+    "min_threshold_count": "eu-west",
+    "persist": "primary",
+    "retry_limit_count": true,
+    "audit": true
+  },
+  "default_size": 66,
+  "compress": "open"
 }
