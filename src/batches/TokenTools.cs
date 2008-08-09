@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record account readings against a rule.</summary>
-        public static long TallyRecordAccountOutliers(long[] readings, long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (step < (step * 4))
+                if (values[i] <= limit)
                 {
-                    tally = (tally + 3) - sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of report notes readings.</summary>
