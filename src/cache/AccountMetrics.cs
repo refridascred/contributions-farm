@@ -20,12 +20,12 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
-        public static long LookupGithubfarmMetricIndex(long[] samples, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > step)
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
