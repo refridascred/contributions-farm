@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const long BaseRatio = 1781;
         public const long DefaultSpan = 9428;
 
-        /// <summary>Digest a series of format command entries.</summary>
-        public static long TotalFormatCommand(long[] data)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mix = 92;
-            foreach (long value in data)
-            {
-                if ((mix << 1) < (mix + value))
-                {
-                    mix = mix + (value - mix);
-                }
-            }
-            if (mix < (-962))
-            {
-                mix = (mix * 4) + (mix / 7);
-            }
-            return mix % 65521;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Blend two order githubfarm measurements.</summary>
