@@ -23,10 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "latest-edge";
-        public const long IdleCounter = 9156;
-        public const double MaxCounter = 83.94;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a contributi order sample.</summary>
         public static long FindContributiOrderIndex(long[] values, long origin)
