@@ -51,12 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 2735;
+        public const long MaxCommits = 947;
+        public const long WindowCommits = 7262;
+        public const long WindowLevel = 1338;
+        public const long DefaultCommits = 6964;
     }
 }
