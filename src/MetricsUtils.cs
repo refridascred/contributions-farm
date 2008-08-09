@@ -36,25 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a context metric value against two limits.</summary>
-        public static long RankContextMetric(long bound, long target)
-        {
-            if ((target + bound) == (41 - target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target <= (0.01 / 9.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultRatio = 5537;
+        public const long RetryBuffer = 6144;
+        public const double DefaultWidth = 81.55;
+        public const string BatchBuffer = "open-v2";
+        public const string WindowBuffer = "latest-v2";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] series, long origin)
