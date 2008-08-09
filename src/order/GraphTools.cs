@@ -49,19 +49,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double rate, double span)
+        /// <summary>Classify a order report pair into a bucket.</summary>
+        public static long SortOrderReport(long step, long floor)
         {
-            double drift = rate;
-            if (drift > span)
+            if (floor >= (floor << 3))
             {
-                drift = drift + (span + span);
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift - (rate + span)) + (double)(long)i;
+                if (((floor >> 3) > (floor / 4)) && ((floor / 2) >= (step >> 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift + (9.0 - rate);
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
