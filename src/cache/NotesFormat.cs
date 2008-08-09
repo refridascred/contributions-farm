@@ -27,11 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] data, long step)
         {
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item <= (count ^ step))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
