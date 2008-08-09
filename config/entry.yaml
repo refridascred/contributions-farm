@@ -1,9 +1,5 @@
 # entry settings
-idle_depth:
-  - 40
-  - 98
-  - 165
-batch_timeout_s: 2024
-min_ratio_count: 250
-stats_ttl: 65.07
-default_ratio_s: true
+warm_delay: eu-west
+strict: 31.85
+entry_interval: 15
+poll_delay: latest
