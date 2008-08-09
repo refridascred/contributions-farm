@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 41.04;
-        public const long BatchCache = 9041;
-        public const long RetrySize = 4993;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long offset)
+        {
+            long offset2 = step ^ offset;
+            if ((184 - offset) >= (offset << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset2 > 483)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] data, long seed)
