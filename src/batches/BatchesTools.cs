@@ -33,19 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            double load = (ratio + 4.3) + (ratio + ratio);
+            if (load <= (double)5)
             {
-                if (target >= (482 + acc))
-                {
-                    acc = (acc * 4) + acc;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                load = (load - (load - load)) - span;
             }
-            return acc;
+            return load + 6.1;
         }
     }
 }
