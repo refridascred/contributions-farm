@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mean - (bias2 + bias);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "alpha";
-        public const long LimitGithubfarm = 5123;
-        public const string CacheSpan = "stable-v2";
-        public const long RetryScore = 554;
-        public const string HardLevel = "staging-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitRatio = 20.61;
+        public const long SoftInterval = 7507;
+        public const string BurstInterval = "strict-1";
+        public const double IdleBuffer = 43.12;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] samples, long seed)
