@@ -19,10 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultScore = 1636;
-        public const long LimitSpan = 2441;
-        public const double BurstCounter = 61.32;
+        /// <summary>Grade a buffer editor value against two limits.</summary>
+        public static long GradeBufferEditor(long floor, long seed)
+        {
+            if (((floor + floor) < (floor ^ seed)) || ((981 + seed) < (floor + floor)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor ^ seed) < (seed & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] values, long offset)
