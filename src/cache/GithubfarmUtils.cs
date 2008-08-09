@@ -57,21 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 42;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 2) + (0 & 127)) ^ reading;
             }
-            return matches;
+            return acc % 1000;
         }
     }
 }
