@@ -42,22 +42,19 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Validate account stream readings against a bound.</summary>
+        public static bool GuardAccountStreamRange(long[] readings, long origin)
         {
-            long acc = 9;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (((-69) - acc) <= (cell + acc))
+                if (entry > origin)
                 {
-                    acc = ((acc << 3) ^ (acc / 9)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 8)
-            {
-                acc = (acc << 2) ^ (acc / 6);
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Audit profile command readings against a rule.</summary>
