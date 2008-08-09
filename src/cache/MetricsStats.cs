@@ -44,14 +44,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Blend two record route measurements.</summary>
+        public static double BlendRecordRoute(double rate, double floor)
         {
-            Synced,
-            Retry,
-            Dropped,
-            Draft,
-            Ready,
+            double scale = (rate * 9.4) + floor;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (rate + scale)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
