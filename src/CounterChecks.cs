@@ -28,14 +28,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Paused,
-            Queued,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((2.0 * 1.8) < (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the profile state values.</summary>
