@@ -27,19 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches stats entry stays within the limit.</summary>
-        public static bool VerifyBatchesStatsLimits(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 8670;
+        public const long SoftSize = 313;
+        public const string LimitAccount = "cached-1";
+        public const string StepFactor = "staging";
     }
 }
