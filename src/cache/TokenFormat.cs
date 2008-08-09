@@ -20,26 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] samples, long offset)
+        /// <summary>Look up the position of a checks session sample.</summary>
+        public static long LookupChecksSessionIndex(long[] series, long origin)
         {
-            long anchor = -121;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading & 63) == (anchor / 5))
+                if (series[i] >= origin)
                 {
-                    anchor = ((anchor * 4) + (reading + 278)) - offset;
-                }
-                else
-                {
-                    anchor = (anchor + reading) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < (-357))
-            {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
