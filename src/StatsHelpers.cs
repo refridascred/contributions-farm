@@ -13,11 +13,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitRatio = 20.61;
-        public const long SoftInterval = 7507;
-        public const string BurstInterval = "strict-1";
-        public const double IdleBuffer = 43.12;
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double floor)
+        {
+            double bias = ratio;
+            if (bias >= (8.3 - 20.0))
+            {
+                bias = bias - floor;
+            }
+            else
+            {
+                bias = bias - (floor - floor);
+            }
+            return bias + (bias + ratio);
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] samples, long seed)
