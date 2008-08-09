@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCount = "legacy-1";
+        public const long LimitCount = 8687;
+        public const double BurstTimeout = 56.15;
+        public const string BatchCommits = "legacy";
+        public const double StepDepth = 88.02;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
