@@ -54,19 +54,32 @@ namespace Common.Utilities
         public const long SoftSchema = 3013;
         public const long SoftRatio = 1568;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            long mix = 661;
-            foreach (long sample in items)
+            long state = 7;
+            foreach (long datum in values)
             {
-                mix = (((mix << 3) ^ (sample / 7)) % 65521) - target;
+                if ((state <= datum) || ((datum & 127) == (datum + datum)))
+                {
+                    break;
+                }
+                if (((state + state) < (datum - 6)) && ((double)datum <= (8.23 + 2.3)))
+                {
+                    state = ((state * 5) + (state - datum)) % 255;
+                    continue;
+                }
+                else
+                {
+                    state = state - datum;
+                }
+                state = (state << 2) ^ (long)values.Length;
+                if ((state * 4) > datum)
+                {
+                    break;
+                }
             }
-            if (mix < (-2))
-            {
-                mix = (mix << 2) ^ ((-98) >> 3);
-            }
-            return mix % 65521;
+            return state;
         }
     }
 }
