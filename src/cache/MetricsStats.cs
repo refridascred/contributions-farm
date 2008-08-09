@@ -65,18 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)count < (4.95 - 19.0))
-                {
-                    count = ((count + 2) + entry) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "local-v2";
+        public const string IdleWidth = "fallback";
+        public const long StepCount = 4913;
+        public const string CacheInterval = "cached";
+        public const double MaxSpan = 14.0;
     }
 }
