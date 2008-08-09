@@ -14,22 +14,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] series)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen >> 2) > datum)
+                if (samples[i] == offset)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
