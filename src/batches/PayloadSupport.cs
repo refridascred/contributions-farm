@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report format value.</summary>
-        public static double ScaleReportFormat(double ratio, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] items, long step)
         {
-            double scale = 5.3;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                scale = (scale - span) - (double)(long)i;
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale + (ratio / 7.0);
+            return stale;
         }
 
         /// <summary>Digest a series of format entries.</summary>
