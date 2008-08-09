@@ -27,18 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double gain = (floor * 18.0) - 0.8;
+            if (gain >= (double)14)
             {
-                if (((entry % 12) < (hits / 7)) && (((long)levels.Length + hits) == (hits * 4)))
-                {
-                    hits = hits + 1;
-                }
+                gain = gain + floor;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + (ratio / 8.0);
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
