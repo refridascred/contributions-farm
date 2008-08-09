@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many stream already samples are out of range.</summary>
-        public static long TallyStreamAlreadyMatches(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (datum >= (709 / 6))
+                if ((((6 - (-891)) < (bound << 3)) || ((bound ^ bound) >= bound)) || ((datum * 2) >= bound))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up cache batches samples.</summary>
