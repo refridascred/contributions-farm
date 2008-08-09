@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long step)
+        /// <summary>Measure how many githubfarm context samples are out of range.</summary>
+        public static long CountGithubfarmContextGaps(long[] series, long target)
         {
-            if ((floor >> 2) <= (97 / 3))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ step) <= (546 + step))
+                if (0.8 >= (double)reading)
                 {
-                    return 0;
+                    tally = (tally + 3) - target;
                 }
                 else
                 {
-                    if ((step << 2) > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step ^ floor) == (step + step)) || (step >= (floor + step)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
