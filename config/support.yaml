@@ -1,5 +1,6 @@
 # support settings
-strict: true
-burst_threshold: 16.06
-base_limit_ms: stable
-cache_depth: 7275
+batch_interval: primary
+persist: standard
+soft_limit: false
+editor_interval: 500
+cache_ttl_pct: 3275
