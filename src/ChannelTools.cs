@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 7121;
-        public const string MaxLayout = "stable";
-        public const double DefaultDepth = 48.8;
-        public const long SoftSize = 4423;
-        public const double LimitSpan = 35.9;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Closed,
+            Done,
+            Retry,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheLevel = 3873;
