@@ -1,6 +1,32 @@
 # entry settings
-batch_depth_pct: 90.54
-sync_limit_s: 98.55
-githubfarm_depth: 22.91
-window_retries: primary
-cache_window: false
+burst_interval_s:
+  cache_depth: edge
+  warm_threshold_pct: 250
+  enabled:
+    - 451
+    - 301
+  soft_ttl: 500
+verbose: open
+queue_delay:
+  - strict
+  - open
+  - stable
+idle_depth_ms: 67.19
+warm_window_ms: 13.6
+strict:
+  verbose:
+    base_delay_count: 32
+    counter_timeout: 62.22
+    verbose: true
+    default_window_s: true
+    audit: 41.99
+  batch_capacity_count: 32.9
+  persist: local
+  compress: 37
+  enabled:
+    compress: 73.97
+    batches_threshold: 1180
+    warm_retries_s: eu-west
+  record_timeout:
+    - stable
+    - latest
