@@ -51,13 +51,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepCount = 8404;
+        public const long StepAlready = 7187;
+        public const double MinFactor = 13.7;
+        public const long LimitRatio = 3008;
+        public const long LimitLevel = 1100;
     }
 }
