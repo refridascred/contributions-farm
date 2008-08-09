@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] values, long floor)
         {
-            long sum = 81;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + sample) > (sample % 24))
+                if ((values[i] == floor) && ((values[i] % 2) == 0))
                 {
-                    sum = ((sum << 3) ^ 67) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + 7) % 255;
-                sum = (sum + (sum + sum)) % 255;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the commits phase values.</summary>
