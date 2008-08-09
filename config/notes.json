@@ -1,14 +1,8 @@
 {
-  "retry_ttl": 97,
-  "batch_capacity_pct": 249,
-  "account_ratio": {
-    "soft_threshold_pct": 13.4,
-    "default_size": 42.64,
-    "queue_delay": true,
-    "audit": 99,
-    "base_interval_count": "fallback",
-    "min_capacity": 8295
-  },
-  "cache_threshold": 53,
-  "window_timeout": 7742
+  "window_window": ["primary", "local", "fallback"],
+  "cache_interval_count": "strict",
+  "soft_capacity_ms": "fallback",
+  "persist": 100,
+  "flush_ttl": false,
+  "account_ttl": "blue"
 }
