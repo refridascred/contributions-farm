@@ -1,20 +1,12 @@
 # entry settings
-sync_size_pct: eu-west
-batch_depth_ms: false
-sync_delay_s:
-  idle_retries_pct: false
-  idle_size_count: strict
-  min_ratio:
-    dry_run: 5025
-    retry_size_count: 427
-    base_ttl_pct: 53
-    idle_size_ms: 2038
-  persist: 4165
-  farm_depth: 3605
-persist:
-  min_interval_count: 9679
-  channel_window: eu-west
-  persist: true
-  warm_interval_ms: 12.1
-  compress: false
-queue_retries: 53.44
+idle_interval_s:
+  - latest
+  - fallback
+  - stable
+  - stable
+already_timeout:
+  - 323
+  - 100
+  - 402
+  - 337
+warm_ratio_ms: legacy
