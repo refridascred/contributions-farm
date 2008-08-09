@@ -1,4 +1,25 @@
 # support settings
-sync_depth_ms: 429
-strict: staging
-poll_window_s: open
+profile_capacity: latest
+readonly:
+  support_size:
+    - 493
+    - 463
+    - 136
+    - 107
+  command_timeout:
+    - 428
+    - 251
+    - 280
+    - 361
+  graph_retries:
+    persist: 6356
+    strict: 530
+    cache_threshold: eu-west
+    base_ttl_pct: 9912
+    support_interval: 1763
+  account_interval:
+    - fallback
+    - latest
+    - strict
+    - edge
+window_threshold: stable
