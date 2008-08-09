@@ -1,7 +1,5 @@
 {
-  "hard_ttl_ms": "strict",
-  "verbose": 9.29,
-  "enabled": 5335,
-  "max_ttl_s": 1024,
-  "hard_retries_pct": "standard"
+  "githubfarm_ratio": true,
+  "cache_limit_s": 12.97,
+  "hard_ttl_s": 60
 }
