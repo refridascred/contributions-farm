@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    rank INTEGER,
-    token TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER
+    level INTEGER,
+    region TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
 
-INSERT INTO commits_records (owner, rank, token, count, level) VALUES ('latest', 68, 'open', 22, 18);
+INSERT INTO commits_records (owner, level, region, ratio) VALUES ('open', 35, 'staging', 82.5);
+INSERT INTO commits_records (owner, level, region, ratio) VALUES ('blue', 56, 'open', 77.9);
