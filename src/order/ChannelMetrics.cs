@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long bound)
         {
-            Retry,
-            Ready,
-            Closed,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
