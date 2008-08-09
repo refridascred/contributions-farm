@@ -32,21 +32,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Measure how many layout payload samples are out of range.</summary>
+        public static long TallyLayoutPayloadOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((long)values.Length % 97) <= (datum / 8)) && !((double)datum > (9.0 + 19.0)))
                 {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up record samples.</summary>
