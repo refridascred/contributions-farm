@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long floor, long target)
         {
-            long state = 27;
-            foreach (long reading in samples)
+            if (floor > target)
             {
-                if (((4 - state) < (reading ^ offset)) && ((double)offset >= (16.0 * 0.6)))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (20.0 * 4.49))
                 {
-                    state = (state ^ (offset + state)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target <= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)floor < (double)target) || ((double)floor > 12.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
