@@ -22,21 +22,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state + (state ^ offset)) % 65521;
-                state = (state + (state - 7)) % 1000;
-                if ((double)state <= (2.31 + 5.51))
-                {
-                    state = state ^ offset;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a route header.</summary>
