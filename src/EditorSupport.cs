@@ -48,22 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit graph route readings against a rule.</summary>
-        public static long AuditGraphRouteMatches(long[] data, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (offset <= (value + 8))
+                if ((cell - count) == (origin << 2))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the commits class values.</summary>
