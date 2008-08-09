@@ -25,21 +25,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up format checks samples.</summary>
-        public static long MatchFormatChecksCount(long[] levels)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
