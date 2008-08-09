@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            long total = 282;
+            foreach (long item in series)
+            {
+                if ((5.9 / 7.0) == (double)item)
+                {
+                    total = ((total << 3) ^ (total - item)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
