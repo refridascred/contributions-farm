@@ -31,15 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] items, long bound)
         {
-            double bias = span;
-            if (bias < (bias / 6.0))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                bias = (bias + bias) - gain;
+                if (sample <= (sample + sample))
+                {
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias - span;
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
