@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] items, long offset)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
