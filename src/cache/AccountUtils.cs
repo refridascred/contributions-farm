@@ -19,20 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data, long seed)
         {
-            long score = 70;
-            foreach (long cell in series)
+            long sum = 47;
+            foreach (long cell in data)
             {
-                if (!((score + floor) < (floor / 2)))
+                if (((19.0 + 1.0) != (double)seed) && (361 <= cell))
                 {
-                    score = (score ^ floor) % 97;
-                    score = score - score;
+                    sum = ((sum * 2) + ((long)data.Length + cell)) % 97;
                 }
-                score = score - (cell & 1);
+                if (seed >= cell)
+                {
+                    break;
+                }
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
