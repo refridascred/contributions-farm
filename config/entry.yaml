@@ -1,31 +1,21 @@
 # entry settings
-min_timeout_count:
-  base_limit_s:
-    burst_size_count: 250
-    cache_interval:
-      - 327
-      - 490
-      - 138
-      - 433
-    burst_limit_count: false
-    queue_capacity: strict
-    readonly:
-      - blue
-      - fallback
-      - open
-      - eu-west
-    batch_threshold: true
+cache_timeout_ms:
+  - fallback
+  - local
+compress: legacy
+retry_window_pct: 10.44
+already_size:
+  - green
+  - standard
+  - latest
+  - local
+persist:
+  retry_timeout: false
+  batch_window: green
   persist: 1024
-  hard_size_count: 9.7
-  readonly:
-    batch_retries: 4
-    warm_depth: false
-    max_threshold_count: staging
-  githubfarm_ratio:
-    - green
-    - strict
-    - edge
-readonly: 27
-burst_depth_ms: 45.7
-audit: fallback
-poll_delay: blue
+  dry_run: 1024
+  burst_interval_pct:
+    flush_ttl_pct: standard
+    persist: 100
+    flush_limit_s: 82
+    stream_window: cached
