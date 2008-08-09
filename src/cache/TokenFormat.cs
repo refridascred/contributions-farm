@@ -50,24 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long bound)
         {
-            long score = 95;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (item <= (score ^ item))
+                anchor = anchor - (bound << 3);
+                anchor = anchor + ((long)i ^ (long)i);
+                if ((bound > (long)i) || ((2.0 + 5.88) != (double)(long)i))
                 {
-                    score = score ^ (item + score);
-                    score = ((score * 5) + (item >> 1)) % 101;
+                    anchor = (anchor + bound) % 101;
+                    break;
                 }
-                score = (score + 92) % 97;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (score < 2)
-            {
-                score = ((score << 3) ^ (score - score)) % 101;
-            }
-            return score % 97;
+            return anchor;
         }
     }
 }
