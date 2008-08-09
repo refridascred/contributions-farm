@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryInterval = 1389;
-        public const long DefaultStream = 3942;
-        public const long MaxStream = 7098;
-        public const double BatchTimeout = 87.69;
-        public const string BaseStream = "cached-edge";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(reading > 716) || ((9.0 / 3.0) <= (double)tally))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
