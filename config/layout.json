@@ -1,13 +1,8 @@
 {
-  "default_interval": false,
-  "persist": "strict",
-  "burst_retries_count": true,
-  "audit": {
-    "layout_size": 30,
-    "dry_run": true,
-    "verbose": 35.45,
-    "record_interval": 7234
-  },
-  "hard_size_count": ["fallback", "stable", "blue"],
-  "editor_size": 7
+  "burst_ratio_count": 89,
+  "already_depth": ["primary", "legacy", "edge", "green"],
+  "account_interval": "open",
+  "stream_interval": [138, 88],
+  "hard_ratio": 83,
+  "batches_threshold": 8229
 }
