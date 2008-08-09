@@ -61,13 +61,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double span)
         {
-            New,
-            Paused,
-            Failed,
-            Dropped,
+            double scale = (span + ratio) * 9.0;
+            if (scale > (double)(-95))
+            {
+                scale = scale + span;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
