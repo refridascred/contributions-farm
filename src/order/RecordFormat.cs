@@ -13,21 +13,30 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 6;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (floor < (mix % 3))
                 {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 3) ^ (floor + mix)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + datum) % 255;
+                }
+                if (datum >= (mix / 8))
+                {
+                    mix = mix - (mix + mix);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (232 & 127);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank batches channel input into a small class.</summary>
