@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            if ((limit + limit) == (784 << 2))
             {
-                if (!((tally ^ tally) == (cell >> 1)))
+                return 3;
+            }
+            else
+            {
+                if (((7.8 + 7.28) != (double)origin) || ((double)limit == (4.0 * 0.9)))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin >= (11.0 * 4.19))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
