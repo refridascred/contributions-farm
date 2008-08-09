@@ -64,21 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Validate checks cluster readings against a bound.</summary>
+        public static bool CheckChecksClusterRange(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item <= origin)
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
