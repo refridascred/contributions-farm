@@ -32,23 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (189 > limit)
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBudget = 27.81;
+        public const long BatchWidth = 2103;
+        public const double HardBatches = 31.59;
+        public const long DefaultSpan = 5768;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
