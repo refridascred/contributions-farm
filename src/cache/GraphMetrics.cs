@@ -41,11 +41,10 @@ namespace Common.Utilities
         public const string MaxCount = "fallback-edge";
         public const long BaseContext = 9935;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 61.22;
-        public const double WindowSchema = 69.39;
-        public const long CacheSchema = 9847;
-        public const double SoftSchema = 16.36;
-        public const long RetrySchema = 1118;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFactor = 9544;
+        public const double HardFilter = 57.12;
+        public const double WindowDepth = 77.15;
+        public const long CacheBudget = 1259;
     }
 }
