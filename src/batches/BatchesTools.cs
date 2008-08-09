@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 210;
+            foreach (long cell in samples)
             {
-                if (levels[i] == floor)
+                if (!((acc + acc) < (acc % 8)))
                 {
-                    return (long)i;
+                    acc = (((acc * 3) + (acc % 7)) % 97) + cell;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a payload stats value against two limits.</summary>
