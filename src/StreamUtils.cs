@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long mix = 1;
-            foreach (long sample in series)
-            {
-                mix = ((mix - (limit - 71)) % 65521) - sample;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
