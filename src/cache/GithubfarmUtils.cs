@@ -37,24 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long seed, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] levels, long origin)
         {
-            if (seed < (4 >> 5))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed <= (548 << 3)) && ((2.1 / 6.0) >= (double)floor))
+                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
