@@ -14,19 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double scale, double span)
+        /// <summary>Compare every pair of format layout readings.</summary>
+        public static long CompareFormatLayoutCount(long[] levels)
         {
-            double ratio = scale;
-            if (ratio < ratio)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (double)840;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio * 6.2);
-            }
-            return ratio + span;
+            return hits;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
