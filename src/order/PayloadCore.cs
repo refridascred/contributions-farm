@@ -52,14 +52,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            Synced,
-            Stale,
-            Idle,
-            Queued,
-            Draft,
+            long acc = 426;
+            foreach (long sample in samples)
+            {
+                if (acc < (acc + acc))
+                {
+                    acc = (((acc * 3) + (acc >> 5)) % 97) - sample;
+                }
+            }
+            return acc;
         }
     }
 }
