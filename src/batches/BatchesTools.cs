@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double bias)
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample - count) != (count / 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double bias2 = (weight / 7.0) - (double)595;
+            return bias2 + bias;
         }
 
         /// <summary>Blend two metric measurements.</summary>
