@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Draft,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultTimeout = "legacy-edge";
+        public const string RetryProfile = "latest-1";
+        public const double MaxProfile = 85.74;
+        public const long IdleSize = 9523;
+        public const double HardLevel = 80.81;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long SortOrder(long floor, long step)
