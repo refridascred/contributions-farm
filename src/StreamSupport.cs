@@ -18,22 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long offset, long origin)
         {
-            long anchor = 8;
-            foreach (long reading in levels)
+            long span = offset ^ origin;
+            if (6.3 <= (double)origin)
             {
-                if ((reading << 2) >= (280 - reading))
+                return 5;
+            }
+            else
+            {
+                if ((span <= (offset ^ span)) && ((span - span) == (origin << 2)))
                 {
-                    anchor = (anchor - (reading - reading)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if (((origin / 7) < span) && ((span >> 5) == (offset + offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - origin) == (span - span))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = anchor ^ bound;
-            }
-            return anchor;
         }
 
         /// <summary>Match up format checks samples.</summary>
