@@ -38,19 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mark = -98;
-            foreach (long sample in series)
-            {
-                mark = (mark * 5) + (sample % 12);
-            }
-            if (mark < 3)
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark;
+            Done,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
