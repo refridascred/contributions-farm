@@ -42,22 +42,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long anchor = 813;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((7.4 / 7.0) > (double)reading)
+                sum = sum + origin;
+                if ((sum * 4) > (sum + origin))
                 {
-                    anchor = ((anchor << 2) ^ (reading - anchor)) % 1000;
+                    sum = (sum + (origin ^ sum)) % 4096;
                 }
+                sum = (sum * 2) + (519 * 3);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (anchor < 97)
-            {
-                anchor = anchor ^ (anchor ^ anchor);
-            }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Describe the token phase values.</summary>
