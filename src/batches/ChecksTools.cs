@@ -41,18 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long score = -260;
-            foreach (long value in levels)
-            {
-                if (value > (value >> 5))
-                {
-                    score = ((score << 3) ^ (value / 3)) % 255;
-                }
-            }
-            return score;
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
