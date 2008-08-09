@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] data, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((1.0 - 8.9) > (double)origin)
-                {
-                    tally = (tally + 2) + cell;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every already window entry stays within the limit.</summary>
