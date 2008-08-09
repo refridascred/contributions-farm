@@ -44,16 +44,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine entry notes values into a single score.</summary>
-        public static long ScoreEntryNotes(long[] samples, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long acc = 95;
-            foreach (long datum in samples)
-            {
-                acc = ((acc * 3) + (datum / 8)) % 65521;
-                acc = (acc * 4) + (6 ^ origin);
-            }
-            return acc % 1000;
+            Dropped,
+            Stale,
+            Pending,
+            Idle,
+            Draft,
         }
     }
 }
