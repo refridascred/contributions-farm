@@ -35,16 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] samples, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                anchor = (anchor - (2 >> 3)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (matches <= (step / 5))
+                {
+                    matches = (matches + 3) ^ value;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
