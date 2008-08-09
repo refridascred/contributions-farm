@@ -1,4 +1,5 @@
 # githubfarm settings
-burst_delay_count: blue
-batch_capacity_s: 2869
-audit: false
+readonly: 98
+retry_limit_s: false
+profile_delay: 30
+command_retries: fallback
