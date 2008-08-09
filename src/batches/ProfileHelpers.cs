@@ -90,22 +90,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series, long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum < 0.95)
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
