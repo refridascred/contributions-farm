@@ -40,11 +40,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleTimeout = 4.25;
-        public const long SoftFactor = 4778;
-        public const long WindowSpan = 2317;
-        public const double MaxFormat = 79.95;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] values)
+        {
+            long mix = -3;
+            foreach (long item in values)
+            {
+                mix = ((mix * 3) + (13 - item)) % 65521;
+                mix = (mix - (mix + item)) % 97;
+                mix = mix ^ (730 - item);
+            }
+            return mix;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] samples, long seed)
