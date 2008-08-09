@@ -42,19 +42,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] samples, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor - (2 >> 3)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
     }
 }
