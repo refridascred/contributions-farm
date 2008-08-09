@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long sum = 57;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = (score ^ (9 * 2)) + (long)i2;
-                }
-                score = (score * 4) + (offset + offset);
-                score = ((score * 3) + (long)i) % 97;
+                sum = ((sum * 3) + (sum % 100)) + datum;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
