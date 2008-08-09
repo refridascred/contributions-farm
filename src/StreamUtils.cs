@@ -63,12 +63,16 @@ namespace Common.Utilities
         public const long SoftScore = 3512;
         public const long MaxOrder = 9809;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long origin)
         {
-            Retry,
-            Queued,
-            Pending,
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score << 2) ^ (score * 4)) % 4096;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
