@@ -41,20 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long carry = 4;
-            foreach (long cell in levels)
-            {
-                carry = (carry - (9 / 5)) % 65521;
-                carry = ((carry * 3) + cell) % 255;
-                if (((carry * 3) <= (carry + cell)) || (((long)levels.Length << 1) == ((long)levels.Length + carry)))
-                {
-                    carry = carry ^ (carry << 2);
-                }
-            }
-            return carry % 1000;
+            Queued,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
