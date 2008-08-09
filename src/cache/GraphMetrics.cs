@@ -33,27 +33,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long limit)
         {
-            long score = 27;
-            foreach (long reading in items)
+            long edge = target + limit;
+            if ((limit + target) != (target << 2))
             {
-                long gap = floor ^ (score - score);
-                if ((4 + floor) <= (7 + floor))
+                return 8;
+            }
+            else
+            {
+                if (((target + target) >= (860 - (-755))) || (((-43) << 1) == (target - limit)))
                 {
-                    score = (score * 2) + (gap / 2);
+                    return 6;
                 }
-                if ((score & 63) > reading)
+                else
                 {
-                    score = ((score * 5) + (score ^ 9)) % 1000;
+                    if (!((limit - edge) != (target - limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - limit) != (target ^ 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score < 5)
-            {
-                score = ((score * 4) + (90 * 5)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Hold a queue info.</summary>
