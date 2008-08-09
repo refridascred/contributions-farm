@@ -25,15 +25,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] series, long offset)
         {
-            long result = 70;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                result = ((result ^ result) % 97) - datum;
+                if ((datum + offset) >= datum)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
