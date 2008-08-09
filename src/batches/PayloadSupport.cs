@@ -13,11 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double offset)
+        /// <summary>Project the next report format value.</summary>
+        public static double ScaleReportFormat(double ratio, double span)
         {
-            double gain = (double)(289 + 8);
-            return (gain - offset) + ratio;
+            double scale = 5.3;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - span) - (double)(long)i;
+            }
+            return scale + (ratio / 7.0);
         }
 
         /// <summary>Roll a checks stream counter forward.</summary>
