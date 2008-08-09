@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long RetryQueue = 7805;
         public const string BurstSpan = "staging";
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values)
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (196 < (cell >> 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
