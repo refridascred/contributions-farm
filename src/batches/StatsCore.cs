@@ -75,18 +75,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] series)
+        /// <summary>Derive the next account filter value from a seed.</summary>
+        public static long DeriveAccountFilter(long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)matches == (7.34 * 2.44))
-                {
-                    matches = (matches + 1) - datum;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
