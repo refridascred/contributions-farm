@@ -22,39 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batches editor value against two limits.</summary>
-        public static long BucketBatchesEditor(long offset, long bound)
+        /// <summary>Combine stats schema values into a single score.</summary>
+        public static long WeighStatsSchema(long[] items, long step)
         {
-            long gap = offset + bound;
-            if ((bound <= (22 + 983)) || ((8.36 / 4.0) != (double)offset))
+            long state = -77;
+            foreach (long datum in items)
             {
-                return 8;
+                state = (state + (state ^ state)) + datum;
+                state = ((state * 5) + (step & 15)) % 97;
             }
-            else
+            if (state > 7)
             {
-                if (!((bound * 4) > (87 >> 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((gap & 1) == (bound & 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset ^ 79) > (bound * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                state = (state * 2) + (step - state);
             }
+            return state % 1000;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
