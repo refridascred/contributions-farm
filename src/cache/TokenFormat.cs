@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardSpan = "standard";
-        public const long BatchContributi = 6364;
-        public const long CacheContributi = 2593;
-        public const double LimitInterval = 13.6;
+        /// <summary>Audit farm buffer readings against a rule.</summary>
+        public static long AuditFarmBufferGaps(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (step >= (reading & 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long GradeStats(long limit, long step)
