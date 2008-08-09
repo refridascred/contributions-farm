@@ -13,24 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] series, long step)
         {
-            if ((17.0 / 5.0) == (double)limit)
+            long total = 66;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >= (limit / 7)) && (target > (limit & 63)))
+                if ((double)step >= (5.0 + 3.1))
                 {
-                    return 3;
+                    total = (((total << 3) ^ 604) % 4096) ^ value;
                 }
-                else
-                {
-                    return 1;
-                }
+                total = (total - (step << 1)) % 101;
             }
+            return total % 97;
         }
 
         /// <summary>Accumulate token samples.</summary>
