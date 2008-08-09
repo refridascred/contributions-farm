@@ -15,13 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] values, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen + seen) >= (seen - entry))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
