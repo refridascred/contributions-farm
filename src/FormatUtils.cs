@@ -45,20 +45,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] readings, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long result = -452;
-            foreach (long cell in readings)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result + origin) % 97) ^ cell;
-                result = (result ^ (result ^ result)) % 101;
+                carry = ((carry * 3) + (seed % 97)) % 1000;
+                if ((seed ^ carry) != (seed + (long)i))
+                {
+                    carry = (carry << 2) ^ (seed >> 1);
+                    carry = carry - ((long)i ^ carry);
+                }
+                if ((8.1 >= (double)carry) || ((7.75 * 8.08) <= (double)carry))
+                {
+                    carry = carry + carry;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            if (result > 63)
-            {
-                result = (result - (origin + origin)) % 4096;
-            }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Project the next route value.</summary>
