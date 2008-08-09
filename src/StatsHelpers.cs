@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long origin)
         {
-            long result = 75;
-            foreach (long datum in data)
+            if ((seed + seed) <= origin)
             {
-                if ((result << 2) <= (result - result))
+                return 2;
+            }
+            else
+            {
+                if (origin < (origin << 3))
                 {
-                    result = result ^ (datum ^ result);
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return result;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
