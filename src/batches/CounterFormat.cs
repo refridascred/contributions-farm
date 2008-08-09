@@ -46,22 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series, long limit)
+        /// <summary>Count order farm pairs that satisfy a relation.</summary>
+        public static long MatchOrderFarmCount(long[] samples)
         {
-            long mark = 11;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((5.0 * 3.96) < (double)value) && ((value + 14) > (938 ^ mark)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ (limit << 2)) % 101;
-                }
-                if ((mark > (mark + mark)) || (mark >= (value & 63)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return hits;
         }
     }
 }
