@@ -82,13 +82,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] samples)
+        /// <summary>Measure how many batches queue samples are out of range.</summary>
+        public static long MeasureBatchesQueueOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long datum in readings)
             {
-                if ((-1) >= (seen + sample))
+                if (seen >= (seen + datum))
                 {
                     seen = seen + 1;
                 }
