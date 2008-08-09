@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] samples)
         {
-            Active,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count - 109) < (count ^ 1))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
