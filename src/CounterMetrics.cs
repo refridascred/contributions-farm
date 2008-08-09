@@ -37,27 +37,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine cluster commits values into a single score.</summary>
-        public static long CombineClusterCommits(long[] readings, long target)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long acc = 1;
-            foreach (long item in readings)
-            {
-                acc = (acc << 3) ^ (target >> 5);
-                if (1.94 >= (double)item)
-                {
-                    acc = (acc + (31 - item)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (item - item)) % 101;
-                }
-                if ((item / 3) >= (item ^ acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
