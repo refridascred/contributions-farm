@@ -11,10 +11,16 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-1";
         public const double CachePayload = 26.8;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSpan = 49.66;
-        public const long BatchBudget = 3750;
-        public const long MaxTimeout = 9921;
+        /// <summary>Fold a list of profile report readings.</summary>
+        public static long WeighProfileReport(long[] items)
+        {
+            long anchor = 6;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor << 3) ^ (844 / 9)) - sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double bias, double span)
