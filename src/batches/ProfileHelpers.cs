@@ -25,38 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long limit, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((limit / 7) > (target % 16))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target < (372 + 41))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.38 + 5.0) >= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((target / 9) > limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
