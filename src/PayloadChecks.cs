@@ -19,10 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "local-v2";
-        public const long RetryGithubfarm = 5948;
-        public const double BatchScore = 17.27;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] values, long bound)
