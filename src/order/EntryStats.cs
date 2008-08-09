@@ -53,21 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 0)
+                    if ((items[i] + items[j]) == 13)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the cache window entries that pass the check.</summary>
