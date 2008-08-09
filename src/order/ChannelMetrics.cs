@@ -15,15 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = 774;
-            foreach (long cell in levels)
-            {
-                result = result - cell;
-            }
-            return result;
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
