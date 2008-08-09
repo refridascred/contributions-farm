@@ -20,12 +20,14 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 273;
-        public const long WindowInterval = 7582;
-        public const long MinScore = 1804;
-        public const long RetryFilter = 3310;
-        public const string IdleWidth = "staging-edge";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
