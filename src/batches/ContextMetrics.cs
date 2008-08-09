@@ -24,12 +24,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a githubfarm tools reading by value.</summary>
-        public static long LocateGithubfarmToolsIndex(long[] data, long floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] < floor)
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
