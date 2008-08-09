@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long SoftBudget = 1200;
         public const long BaseRatio = 1840;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (5.02 <= (double)tally)
-                {
-                    tally = ((tally + 3) + datum) - target;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a format value against two limits.</summary>
