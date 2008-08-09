@@ -14,40 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a report payload pair into a bucket.</summary>
-        public static long SortReportPayload(long bound, long seed)
-        {
-            long cur = bound - seed;
-            if ((583 & 3) == (bound << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 5) < (seed << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound != (3.9 * 13.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) <= (cur ^ 37))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitTimeout = 2207;
+        public const string BurstBuffer = "standard-edge";
+        public const long DefaultWidth = 8380;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LookupCommitsIndex(long[] samples, long origin)
