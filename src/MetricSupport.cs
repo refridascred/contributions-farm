@@ -19,10 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 854;
-        public const long CacheEntry = 6470;
-        public const double CacheScore = 49.13;
+        /// <summary>Roll a tools queue counter forward.</summary>
+        public static long SeriesToolsQueue(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] series, long seed)
