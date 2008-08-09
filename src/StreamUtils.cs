@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] items, long target)
+        /// <summary>Classify a entry stream pair into a bucket.</summary>
+        public static long GradeEntryStream(long target, long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if ((offset & 255) < (-98))
             {
-                if ((1 ^ 26) > (hits % 60))
+                return 5;
+            }
+            else
+            {
+                if ((613 ^ 361) == (1 - offset))
                 {
-                    hits = ((hits + 2) + reading) - target;
+                    return 2;
+                }
+                else
+                {
+                    if (7.91 > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset < (8.85 * 16.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate tools samples.</summary>
