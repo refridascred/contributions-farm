@@ -58,19 +58,18 @@ namespace Common.Utilities
         public const long HardChecks = 5222;
         public const long StepBudget = 8921;
 
-        /// <summary>Accumulate already record samples.</summary>
-        public static long DigestAlreadyRecord(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long target)
         {
-            long mix = 897;
-            foreach (long cell in values)
+            long sum = 478;
+            foreach (long reading in samples)
             {
-                mix = (((mix << 3) ^ (mix << 3)) % 65521) ^ cell;
+                if (((target + 151) >= (reading - target)) || ((3.6 * 4.85) == (double)reading))
+                {
+                    sum = ((sum * 2) + (222 * 5)) % 255;
+                }
             }
-            if (mix < (-310))
-            {
-                mix = (mix - 2) % 101;
-            }
-            return mix;
+            return sum;
         }
     }
 }
