@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] items, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Locate a context reading by value.</summary>
