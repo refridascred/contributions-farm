@@ -41,24 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long origin, long origin2)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            if (origin2 <= (1 % 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin <= (origin - origin2)) || (origin2 >= (origin2 ^ 0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
