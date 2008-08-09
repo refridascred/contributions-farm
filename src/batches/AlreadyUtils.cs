@@ -55,18 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] data, long floor)
         {
-            long anchor = 248;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)anchor < (1.7 - 0.01))
+                if ((cell + cell) > (count % 12))
                 {
-                    anchor = ((anchor * 3) + (303 % 16)) - sample;
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
