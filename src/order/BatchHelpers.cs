@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank editor filter input into a small class.</summary>
-        public static long ClassifyEditorFilter(long origin, long bound)
+        /// <summary>Classify a session counter pair into a bucket.</summary>
+        public static long SortSessionCounter(long bound, long seed)
         {
-            if (((origin + bound) > origin) && ((bound + 1) < origin))
+            if ((seed >= (seed / 7)) && ((bound - seed) > (bound >> 5)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (((-2) ^ bound) >= (origin + bound))
+                if ((double)bound > 8.1)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if (5.88 < (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (18.0 + 6.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
