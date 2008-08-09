@@ -30,22 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 2404;
+        public const long StepGithubfarm = 7058;
+        public const long BurstGithubfarm = 1651;
+        public const long BatchGithubfarm = 1404;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheScore = 4921;
