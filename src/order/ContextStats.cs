@@ -23,11 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 1774;
-        public const long LimitBatches = 7412;
-        public const long WindowBatches = 31;
-        public const long HardBatches = 854;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of farm entry readings.</summary>
         public static long FoldFarmEntry(long[] values)
