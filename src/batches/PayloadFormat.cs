@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long step, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            if ((step + step) != (offset + step))
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((offset - 25) <= (offset >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset == (8.0 * 9.71))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
