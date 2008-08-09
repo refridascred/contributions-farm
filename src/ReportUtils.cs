@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-1";
         public const double CachePayload = 26.8;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] data)
         {
-            long state = 79;
-            foreach (long sample in values)
+            long total = 41;
+            foreach (long value in data)
             {
-                if (!((11.0 + 2.19) >= (double)sample))
+                if ((7.0 / 2.0) == (double)total)
                 {
-                    state = ((state * 2) + bound) % 65521;
+                    total = ((total - (-6)) % 97) + value;
                 }
             }
-            return state;
+            if (total < 52)
+            {
+                total = (total + (total ^ total)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Match up profile samples.</summary>
