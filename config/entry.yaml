@@ -1,11 +1,31 @@
 # entry settings
-hard_ratio_count:
-  enabled: 83.68
-  soft_ratio: 54.09
-  sync_size: 18
-idle_timeout_pct: 7
-default_retries:
-  - 66
-  - 248
-cache_size_s: false
-hard_retries_s: strict
+min_timeout_count:
+  base_limit_s:
+    burst_size_count: 250
+    cache_interval:
+      - 327
+      - 490
+      - 138
+      - 433
+    burst_limit_count: false
+    queue_capacity: strict
+    readonly:
+      - blue
+      - fallback
+      - open
+      - eu-west
+    batch_threshold: true
+  persist: 1024
+  hard_size_count: 9.7
+  readonly:
+    batch_retries: 4
+    warm_depth: false
+    max_threshold_count: staging
+  githubfarm_ratio:
+    - green
+    - strict
+    - edge
+readonly: 27
+burst_depth_ms: 45.7
+audit: fallback
+poll_delay: blue
