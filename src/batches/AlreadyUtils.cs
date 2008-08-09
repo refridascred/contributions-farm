@@ -34,11 +34,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "strict-1";
-        public const long MaxGithubfarm = 4911;
-        public const long DefaultGithubfarm = 8049;
-        public const long WindowScore = 2958;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleBudget = 2415;
