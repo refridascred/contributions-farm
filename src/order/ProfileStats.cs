@@ -19,15 +19,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate command account samples.</summary>
-        public static long TotalCommandAccount(long[] data)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long carry = 28;
-            foreach (long cell in data)
-            {
-                carry = (carry + (cell * 2)) % 97;
-            }
-            return carry % 65521;
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
