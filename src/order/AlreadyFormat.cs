@@ -33,18 +33,12 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Locate a stats counter reading by value.</summary>
-        public static long SeekStatsCounterIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardRatio = 3732;
+        public const long WindowSession = 5422;
+        public const double SoftSize = 24.59;
+        public const long SoftDepth = 2863;
+        public const long CacheFactor = 3093;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
