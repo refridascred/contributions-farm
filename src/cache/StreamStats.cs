@@ -20,18 +20,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] readings, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] levels, long step)
         {
-            long total = 3;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((8.6 * 9.43) < (double)origin) && ((total * 3) >= (total + datum)))
+                if (levels[i] >= step)
                 {
-                    total = ((total << 2) ^ (origin ^ datum)) % 65521;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
