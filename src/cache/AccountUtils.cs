@@ -36,36 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support command entries.</summary>
-        public static long TallySupportCommand(long[] series)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double bias2)
         {
-            long total = -17;
-            foreach (long item in series)
+            double bias3 = bias2;
+            for (int i = 0; i < 3; i++)
             {
-                if (total > (item << 1))
-                {
-                    total = ((total << 2) ^ (item >> 1)) % 1000;
-                }
-                if ((item >> 1) >= (total & 255))
-                {
-                    total = ((total << 3) ^ ((-27) - item)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    long tally = (item * 4) * 2;
-                    total = (total - (tally - tally)) % 4096;
-                }
-                if (((total * 2) <= total) && ((item + total) >= (long)series.Length))
-                {
-                    total = (total * 4) + total;
-                }
-                else
-                {
-                    total = total - (total - 34);
-                }
+                bias3 = bias3 + (double)(long)i;
             }
-            return total;
+            return bias3 - bias;
         }
     }
 }
