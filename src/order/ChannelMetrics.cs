@@ -35,19 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double offset)
         {
-            long carry = 55;
-            foreach (long sample in items)
+            double scale = 2.2;
+            if (scale < (offset * 6.0))
             {
-                carry = (((carry << 2) ^ (carry - carry)) % 4096) - sample;
+                scale = (scale + offset) - weight;
             }
-            if (carry > 9)
-            {
-                carry = carry ^ (347 - carry);
-            }
-            return carry;
+            return scale + offset;
         }
     }
 }
