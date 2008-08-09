@@ -29,10 +29,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 1495;
-        public const long BurstWidth = 4930;
-        public const string MinCommand = "latest";
-        public const long MaxFactor = 420;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry * 4) + carry;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
