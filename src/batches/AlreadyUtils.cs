@@ -47,12 +47,26 @@ namespace Common.Utilities
         public const long MinMetrics = 691;
         public const long BatchTimeout = 8450;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstInterval = "primary-edge";
-        public const long BaseSchema = 4666;
-        public const double CacheInterval = 77.51;
-        public const long SoftSchema = 3013;
-        public const long SoftRatio = 1568;
+        /// <summary>Grade a cluster cache value against two limits.</summary>
+        public static long BucketClusterCache(long seed, long offset)
+        {
+            long slot = seed - offset;
+            if (((2.0 * 4.2) != (double)seed) && ((slot + offset) < offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)slot >= (11.0 * 0.98)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] values)
