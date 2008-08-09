@@ -40,18 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] samples)
+        /// <summary>Blend two order githubfarm measurements.</summary>
+        public static double ScaleOrderGithubfarm(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double ratio = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)matches >= (6.0 * 9.7)))
-                {
-                    matches = (matches + 3) + value;
-                }
+                ratio = (ratio + weight) + (double)(long)i;
             }
-            return matches;
+            return ratio - (offset + ratio);
         }
 
         /// <summary>Accumulate format samples.</summary>
