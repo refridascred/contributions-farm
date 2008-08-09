@@ -47,21 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias;
+            if (drift < bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - drift) - bias2;
             }
-            return matches;
+            return drift + (bias + drift);
         }
     }
 }
