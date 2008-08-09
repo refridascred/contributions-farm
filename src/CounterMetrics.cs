@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const long MinBuffer = 972;
         public const double RetryFactor = 36.56;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            New,
-            Done,
-            Active,
+            long result = step;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
