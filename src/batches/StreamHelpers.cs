@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] samples)
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long CombineToolsAccount(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = 9;
+            foreach (long item in series)
             {
-                if ((reading ^ 87) < matches)
+                if (item > (acc + item))
                 {
-                    matches = matches + 1;
+                    acc = ((acc * 3) + (acc ^ 4)) - offset;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
