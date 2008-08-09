@@ -1,32 +1,10 @@
 # githubfarm settings
-hard_delay_count: 61
-readonly: latest
-min_threshold_ms: 500
-sync_ttl_s:
-  dry_run:
-    enabled: 11
-    verbose:
-      - 450
-      - 420
-      - 267
-      - 219
-    metric_delay: 55
-    strict: eu-west
-    base_delay_count: 82.23
-    base_delay_pct: true
-  batch_threshold_pct: 27
-  enabled:
-    - 63
-    - 344
-    - 305
-  session_size: true
-  cache_threshold:
-    hard_threshold: 1024
-    hard_limit_s: 5473
-    min_delay_ms: staging
-  queue_size: true
-strict: legacy
-flush_size_pct:
-  - standard
-  - blue
-  - blue
+schema_limit: 1024
+burst_size:
+  - 4
+  - 321
+  - 309
+persist: standard
+layout_interval: false
+min_window: 90.35
+audit: 6450
