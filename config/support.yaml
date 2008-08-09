@@ -1,18 +1,28 @@
 # support settings
-poll_depth_count: 4481
-warm_threshold:
-  - 379
-  - 136
-default_size_s: 2156
-dry_run: false
-enabled: staging
-cache_depth_pct:
-  hard_size_count: 13
-  enabled: standard
-  burst_delay:
-    - 399
-    - 289
-    - 383
-    - 255
-  dry_run: staging
-  retry_window_ms: open
+hard_limit_ms: latest
+compress:
+  cluster_size:
+    readonly: 1024
+    sync_delay: 41
+    layout_retries: 9522
+    cluster_retries: 5377
+    hard_size_count: 80.59
+    strict: 4858
+  warm_threshold_pct: strict
+  account_interval: 25.14
+  strict:
+    hard_limit_ms: local
+    soft_interval: 43
+    burst_window: 500
+    max_size: 5
+    retry_size_count:
+      - open
+      - edge
+      - edge
+    commits_retries: 2573
+  idle_depth_ms:
+    - standard
+    - cached
+    - latest
+  base_size_ms: 27.42
+batch_delay_ms: 3779
