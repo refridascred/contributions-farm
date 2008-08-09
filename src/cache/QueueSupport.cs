@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardSpan = 760;
+        public const string BurstRatio = "staging-v2";
+        public const string RetryInterval = "legacy";
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
