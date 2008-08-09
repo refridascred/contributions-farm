@@ -21,24 +21,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long target, long seed)
+        /// <summary>Classify a channel contributi pair into a bucket.</summary>
+        public static long SortChannelContributi(long offset, long origin)
         {
-            if (!((double)seed >= (double)target))
+            long delta = offset - origin;
+            if ((origin - origin) >= (423 + origin))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (target > (849 + seed))
+                if ((offset - delta) > origin)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (((seed - 35) != (target >> 4)) && ((double)target > (2.03 / 2.0)))
+                    if ((origin >> 1) == (offset + delta))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
