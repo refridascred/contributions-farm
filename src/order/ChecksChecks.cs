@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series, long target)
         {
-            Ready,
-            Pending,
-            Idle,
-            Synced,
-            Locked,
+            long mark = 85;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = ((mark ^ (cell - cell)) % 1000) ^ (long)i;
+                }
+                mark = mark + cell;
+                if (!((mark + target) < (48 - target)))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
