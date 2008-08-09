@@ -42,19 +42,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] items, long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
