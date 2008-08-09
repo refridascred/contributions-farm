@@ -87,19 +87,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] values, long origin)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
