@@ -13,13 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] samples)
         {
-            Active,
-            Draft,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (entry > 33)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a command layout figure with a bias.</summary>
