@@ -37,26 +37,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i + 50) >= ((-1) % 12))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result << 3) ^ (28 + seed)) % 4096;
-                    break;
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    result = ((result << 3) ^ seed) % 97;
-                    result = (result - (0 + result)) % 4096;
-                }
-                result = (result + ((long)i ^ seed)) % 65521;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Rank format input into a small class.</summary>
