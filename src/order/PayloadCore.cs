@@ -49,18 +49,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] readings, long target)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target < (-2))
+                if (items[i] <= target)
                 {
-                    tally = (tally + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
