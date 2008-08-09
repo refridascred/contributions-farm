@@ -37,18 +37,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = 89;
+            foreach (long reading in items)
             {
-                if (((-50) + tally) >= (item << 2))
+                total = (((total * 3) + total) % 1000) - reading;
+                if ((total * 2) >= (total / 4))
                 {
-                    tally = tally + 3;
+                    total = (total << 3) ^ (total >> 4);
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
