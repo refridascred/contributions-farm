@@ -27,18 +27,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long limit, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if (step < 455)
             {
-                if (seen < (seen & 63))
+                return 3;
+            }
+            else
+            {
+                if (((limit ^ limit) > (step - step)) && ((limit % 12) >= (48 & 63)))
                 {
-                    seen = (seen + 3) + item;
+                    return 4;
+                }
+                else
+                {
+                    if (3 > (step + 703))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
