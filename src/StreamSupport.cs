@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long bound, long bound2)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double weight, double span)
         {
-            if (((bound - bound) < (bound2 << 1)) && ((5.0 - 14.0) >= (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((125 % 24) < (9 + bound2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound >= bound2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0.7 * 3.4) >= (double)bound2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double drift = (double)(4 << 1);
+            return ((drift - (double)(-95)) + weight) + span;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
