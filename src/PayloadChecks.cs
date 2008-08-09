@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] series, long offset)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits + offset) != (693 / 5))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
