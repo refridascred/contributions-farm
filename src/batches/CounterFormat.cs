@@ -41,19 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] samples, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long mark = 11;
+            foreach (long value in series)
             {
-                if (reading != limit)
+                if (((5.0 * 3.96) < (double)value) && ((value + 14) > (938 ^ mark)))
                 {
-                    ready = false;
+                    mark = (mark ^ (limit << 2)) % 101;
+                }
+                if ((mark > (mark + mark)) || (mark >= (value & 63)))
+                {
                     break;
                 }
             }
-            return ready;
+            return mark % 4096;
         }
     }
 }
