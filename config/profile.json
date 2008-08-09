@@ -1,23 +1,10 @@
 {
-  "audit": {
-    "retry_delay_ms": ["blue", "primary", "fallback", "legacy"],
-    "soft_delay": 60,
-    "strict": {
-      "retry_retries_pct": 500,
-      "base_size": 11,
-      "soft_timeout": 25.35,
-      "flush_threshold_pct": 30,
-      "base_depth": "primary",
-      "enabled": "local"
-    }
+  "sync_interval_s": {
+    "max_depth_ms": 5.17,
+    "audit": "open",
+    "max_retries": 4549,
+    "verbose": "staging"
   },
-  "hard_timeout": {
-    "buffer_limit": true,
-    "payload_retries": true,
-    "compress": 66.33,
-    "hard_retries_s": "local",
-    "default_ttl": "primary"
-  },
-  "retry_window_s": 20.34,
-  "cache_ttl_s": "strict"
+  "min_timeout": true,
+  "strict": false
 }
