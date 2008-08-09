@@ -37,19 +37,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] items, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] series, long step)
         {
-            long acc = 60;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 2) + (step & 255)) % 97;
-                if ((item >> 4) <= (long)items.Length)
+                if ((series[i] == step) && ((series[i] % 2) == 0))
                 {
-                    acc = (acc ^ item) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
