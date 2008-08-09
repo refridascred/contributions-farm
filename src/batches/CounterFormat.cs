@@ -12,38 +12,17 @@ namespace Common.Utilities
         public const long BatchSchema = 8247;
         public const string BatchSize = "primary-v2";
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long step, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long step)
         {
-            if (step < (step * 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit << 2) < (limit % 100))
+                if ((series[i] == step) && ((series[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step > (11.0 * 2.6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >> 4) <= (1 >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a graph entry.</summary>
