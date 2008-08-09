@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Ready,
-            Synced,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardSpan = "standard";
+        public const long BatchContributi = 6364;
+        public const long CacheContributi = 2593;
+        public const double LimitInterval = 13.6;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long GradeStats(long limit, long step)
