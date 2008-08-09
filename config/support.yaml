@@ -1,11 +1,12 @@
 # support settings
-poll_ttl_count: true
-soft_window_ms: 11.57
-persist: true
-already_size:
-  - fallback
-  - strict
+default_timeout_s: 43.7
+strict:
   - cached
-  - green
-counter_size: 1
-command_delay: 500
+  - local
+  - latest
+  - standard
+default_size:
+  - standard
+  - legacy
+  - standard
+  - fallback
