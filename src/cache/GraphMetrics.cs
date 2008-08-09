@@ -63,9 +63,19 @@ namespace Common.Utilities
         public const string MaxCount = "fallback-edge";
         public const long BaseContext = 9935;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowDepth = 6399;
-        public const long MaxTimeout = 8723;
-        public const long RetryEntry = 7939;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
