@@ -38,15 +38,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double scale, double bias)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data)
         {
-            double gain = (double)(-688) + (double)1;
-            if (gain < (gain * 5.0))
+            long mix = 0;
+            foreach (long entry in data)
             {
-                gain = ((gain - 0.1) - scale) + bias;
+                mix = (((mix * 4) + (long)data.Length) % 97) ^ entry;
             }
-            return gain - gain;
+            return mix;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
