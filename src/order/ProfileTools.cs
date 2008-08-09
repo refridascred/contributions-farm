@@ -35,23 +35,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double bias, double span)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long seed, long floor)
         {
-            double weight = bias;
-            if (weight <= span)
+            if (((double)seed < (6.8 / 8.0)) && ((floor + floor) >= (floor / 4)))
             {
-                weight = weight + bias;
+                return 2;
             }
             else
             {
-                weight = weight - weight;
+                if ((2.0 - 4.48) == (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + 8) < (seed % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + weight;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
