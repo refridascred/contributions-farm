@@ -1,15 +1,11 @@
 # support settings
-account_ratio:
-  dry_run: true
-  idle_depth: false
-  min_ttl: 100
-  sync_size: 2
-  retry_ttl_count:
-    cache_delay: latest
-    account_size: 1024
-    strict: false
-    window_interval: legacy
-flush_delay_pct: true
-burst_timeout_count:
-  - green
+poll_ttl_count: true
+soft_window_ms: 11.57
+persist: true
+already_size:
+  - fallback
+  - strict
   - cached
+  - green
+counter_size: 1
+command_delay: 500
