@@ -43,12 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Audit graph route readings against a rule.</summary>
+        public static long AuditGraphRouteMatches(long[] data, long offset)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (offset <= (value + 8))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a entry record.</summary>
