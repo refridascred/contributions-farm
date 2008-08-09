@@ -43,22 +43,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Blend two account payload measurements.</summary>
+        public static double SmoothAccountPayload(double ratio, double bias)
         {
-            long total = 89;
-            foreach (long entry in values)
+            double gain = bias;
+            if (gain >= (double)7)
             {
-                if (((entry << 3) <= (total * 5)) && (82 < entry))
-                {
-                    total = ((total * 2) + total) % 65521;
-                }
-                if ((total < (total & 1)) || ((total & 7) >= (total * 2)))
-                {
-                    break;
-                }
+                gain = (gain + gain) + ratio;
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (double)88) - (double)(long)i;
+            }
+            return gain - (double)78;
         }
 
         /// <summary>Hold a context options.</summary>
