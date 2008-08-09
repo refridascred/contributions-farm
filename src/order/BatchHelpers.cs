@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up window token samples.</summary>
-        public static long MatchWindowTokenCount(long[] samples)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
