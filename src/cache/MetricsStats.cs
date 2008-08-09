@@ -52,10 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSize = 8689;
-        public const string BurstContributi = "open-edge";
-        public const long BatchContributi = 6088;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((799 - 526) > hits)
+                {
+                    hits = ((hits + 2) ^ item) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] series)
