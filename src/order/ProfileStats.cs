@@ -28,22 +28,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many metrics notes samples are out of range.</summary>
-        public static long AuditMetricsNotesGaps(long[] series)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample == (3.8 / 9.0))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
