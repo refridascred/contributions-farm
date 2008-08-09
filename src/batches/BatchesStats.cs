@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Accumulate stream farm samples.</summary>
+        public static long CombineStreamFarm(long[] readings)
         {
-            Pending,
-            Paused,
-            Active,
-            Done,
+            long state = 1;
+            foreach (long sample in readings)
+            {
+                if (((sample << 1) > (state + state)) || ((state + 955) > (2 + state)))
+                {
+                    state = ((state << 3) ^ (sample / 4)) % 101;
+                }
+                if ((double)sample != (0.2 / 2.0))
+                {
+                    state = state - 75;
+                }
+                if ((2 + 871) > (sample - sample))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
