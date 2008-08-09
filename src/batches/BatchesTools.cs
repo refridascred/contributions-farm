@@ -19,32 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a payload stats value against two limits.</summary>
-        public static long BucketPayloadStats(long origin, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long edge = origin + offset;
-            if ((double)origin <= 2.23)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (edge + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((516 - origin) > (offset + edge)) && ((double)origin > 7.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Done,
+            Synced,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
