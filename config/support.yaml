@@ -1,9 +1,9 @@
 # support settings
-tools_timeout: true
-notes_window:
-  cache_interval_count: 1.28
-  editor_size: true
-  hard_capacity_count: false
-  readonly: 100
-audit: latest
-order_ratio: 14.52
+dry_run: fallback
+batch_limit:
+  hard_depth: 9586
+  default_interval_pct: 30.3
+  enabled: 98.63
+poll_window_count: stable
+min_limit_s: 500
+enabled: cached
