@@ -16,12 +16,20 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((double)state == (9.33 - 0.18)) && ((step + state) > ((long)i >> 1)))
+                {
+                    state = (state ^ (step - (long)i)) % 255;
+                }
+                state = (state << 3) ^ step;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a route snapshot.</summary>
