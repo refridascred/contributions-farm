@@ -58,10 +58,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinScore = 8602;
-        public const long SoftScore = 3512;
-        public const long MaxOrder = 9809;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long origin)
