@@ -57,10 +57,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchInterval = 62.64;
-        public const long BatchLevel = 3172;
-        public const long BatchSpan = 2482;
+        /// <summary>Find the first batch farm entry that matches the target.</summary>
+        public static long SeekBatchFarmIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate commits metric samples.</summary>
         public static long WeighCommitsMetric(long[] data)
