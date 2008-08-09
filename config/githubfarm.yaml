@@ -1,5 +1,17 @@
 # githubfarm settings
-support_limit: 39
-warm_interval_pct: 39.27
-strict: open
-default_size_count: green
+command_delay: false
+format_interval: edge
+min_size_ms: eu-west
+persist: 100
+default_threshold_ms: green
+soft_timeout:
+  account_ttl: true
+  audit: 30
+  cache_capacity: 4830
+  readonly:
+    hard_interval: 9529
+    base_depth_s: 2837
+    sync_interval_pct: 9298
+    retry_ratio: true
+    dry_run: 48
+    queue_depth: staging
