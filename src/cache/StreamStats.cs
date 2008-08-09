@@ -39,19 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric notes entry stays within the limit.</summary>
-        public static bool ValidateMetricNotesBounds(long[] values, long target)
+        /// <summary>Check that every cache support entry stays within the limit.</summary>
+        public static bool GuardCacheSupportRange(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (reading < target)
+                if (item >= origin)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
