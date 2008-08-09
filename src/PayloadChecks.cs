@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double gain, double floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double ratio = (gain - floor) / 2.0;
-            return ratio + (double)6;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
