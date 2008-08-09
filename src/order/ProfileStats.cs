@@ -46,17 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum - ((long)i - step);
-                sum = sum - step;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
