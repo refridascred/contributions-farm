@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many token cache samples are out of range.</summary>
-        public static long CountTokenCacheOutliers(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if (((9 << 3) > (bound2 + 0)) && ((553 >> 3) > bound))
             {
-                if ((item * 5) > (seen * 2))
+                return 2;
+            }
+            else
+            {
+                if ((bound * 4) <= (bound2 - bound2))
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!(bound2 >= (bound2 / 6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound2 <= (2 / 9))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
