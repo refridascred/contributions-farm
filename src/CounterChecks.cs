@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi command readings against a rule.</summary>
-        public static long TallyContributiCommandHits(long[] values)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((53 % 7) >= cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
