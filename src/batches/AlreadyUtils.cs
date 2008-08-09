@@ -37,19 +37,12 @@ namespace Common.Utilities
         public const long MinMetrics = 691;
         public const long BatchTimeout = 8450;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(reading >= (reading % 2)))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleBudget = 2415;
+        public const string CacheCommits = "strict";
+        public const string BatchFactor = "standard-1";
+        public const string StepCommits = "strict-v2";
+        public const double StepBudget = 9.95;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long offset)
