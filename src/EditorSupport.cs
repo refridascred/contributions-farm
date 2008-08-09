@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] series, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = 66;
-            foreach (long value in series)
-            {
-                if ((double)step >= (5.0 + 3.1))
-                {
-                    total = (((total << 3) ^ 604) % 4096) ^ value;
-                }
-                total = (total - (step << 1)) % 101;
-            }
-            return total % 97;
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Accumulate token samples.</summary>
