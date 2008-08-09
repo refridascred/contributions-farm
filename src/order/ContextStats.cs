@@ -31,16 +31,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 8273;
+        public const long CacheReport = 876;
+        public const string DefaultTimeout = "open-v2";
 
         /// <summary>Measure how many counter layout samples are out of range.</summary>
         public static long AuditCounterLayoutGaps(long[] data, long origin)
