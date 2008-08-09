@@ -1,6 +1,5 @@
 {
-  "max_ttl_count": true,
-  "burst_size_ms": 20.41,
-  "batch_interval_s": [214, 299, 135, 430],
-  "readonly": "eu-west"
+  "notes_ttl": 69,
+  "base_ttl_pct": 30,
+  "enabled": [237, 419, 464, 430]
 }
