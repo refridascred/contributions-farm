@@ -21,12 +21,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] values, long origin)
         {
-            Pending,
-            Failed,
-            New,
+            long state = -67;
+            foreach (long entry in values)
+            {
+                if ((origin ^ 65) < (state * 3))
+                {
+                    state = ((state + (0 + origin)) % 65521) ^ entry;
+                }
+            }
+            if (state > 831)
+            {
+                state = (state + (origin - state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the stats metric entries that pass the check.</summary>
