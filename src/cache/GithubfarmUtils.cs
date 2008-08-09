@@ -39,18 +39,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((double)count <= (0.5 / 3.0))
+                if (reading >= floor)
                 {
-                    count = (count + 3) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
