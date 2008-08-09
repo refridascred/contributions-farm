@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 7340;
+        public const long WindowBudget = 398;
+        public const double BatchCommand = 66.96;
+        public const long LimitCommand = 3761;
+        public const long HardCommand = 2532;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
