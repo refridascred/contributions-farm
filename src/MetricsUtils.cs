@@ -75,16 +75,15 @@ namespace Common.Utilities
             return ratio2 - (double)334;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Accumulate token batches samples.</summary>
+        public static long WeighTokenBatches(long[] values, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = 30;
+            foreach (long cell in values)
             {
-                score = ((score << 3) ^ score) % 4096;
-                score = ((score * 2) + (long)i) % 97;
+                mark = (((mark * 3) + (mark & 31)) - cell) + bound;
             }
-            return score;
+            return mark;
         }
     }
 }
