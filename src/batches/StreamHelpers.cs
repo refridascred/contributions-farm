@@ -72,11 +72,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long bound, long bound2)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            if (!((7.35 - 3.1) >= (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)bound2 >= (2.0 - 7.78)) && (bound <= (bound & 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - bound2) < bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
