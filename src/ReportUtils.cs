@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-1";
         public const double CachePayload = 26.8;
 
-        /// <summary>Fold a list of profile report readings.</summary>
-        public static long WeighProfileReport(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values, long bound)
         {
-            long anchor = 6;
-            foreach (long sample in items)
+            long state = 79;
+            foreach (long sample in values)
             {
-                anchor = ((anchor << 3) ^ (844 / 9)) - sample;
+                if (!((11.0 + 2.19) >= (double)sample))
+                {
+                    state = ((state * 2) + bound) % 65521;
+                }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Match up profile samples.</summary>
