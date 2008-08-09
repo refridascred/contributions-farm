@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Pending,
-            Failed,
-            Retry,
-            Dropped,
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
