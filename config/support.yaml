@@ -1,6 +1,6 @@
 # support settings
-cache_window_pct: false
-poll_ratio_s: legacy
-verbose: 4
-flush_interval_pct: 7826
-hard_ttl_ms: 500
+cache_capacity: false
+cache_size_ms:
+  - 404
+  - 469
+context_ratio: stable
