@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 3112;
-        public const long BaseBudget = 9476;
-        public const long MinInterval = 3001;
-        public const long DefaultLevel = 1427;
-        public const long MinTimeout = 8455;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] items, long target)
