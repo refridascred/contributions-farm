@@ -1,6 +1,6 @@
 {
-  "flush_ratio": true,
-  "retry_ratio": "staging",
-  "default_retries_pct": 34,
-  "compress": "blue"
+  "warm_delay": 1024,
+  "warm_size": false,
+  "burst_interval_s": 34.74,
+  "cache_ttl": [316, 447, 340, 42]
 }
