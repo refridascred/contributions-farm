@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] values, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values, long limit)
         {
-            long mark = 915;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mark = mark ^ (reading + seed);
-                if ((9.77 * 15.0) <= (double)reading)
+                if ((hits / 2) < (1 + 8))
                 {
-                    break;
+                    hits = ((hits + 3) ^ value) + limit;
                 }
             }
-            if (mark < 88)
-            {
-                mark = (mark ^ (seed / 5)) % 1000;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a counter info.</summary>
