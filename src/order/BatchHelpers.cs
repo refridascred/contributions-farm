@@ -38,15 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double scale, double span)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] readings, long origin)
         {
-            double load = scale;
-            if (load <= (double)28)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                load = (load - (double)269) + span;
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load + (double)0;
+            return valid;
         }
     }
 }
