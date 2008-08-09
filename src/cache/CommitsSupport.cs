@@ -49,21 +49,17 @@ namespace Common.Utilities
         public const long CacheLevel = 4251;
         public const string MinLevel = "strict-edge";
 
-        /// <summary>Accumulate commits metric samples.</summary>
-        public static long WeighCommitsMetric(long[] data)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] series, long bound)
         {
-            long mix = 1;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if ((series[i] < bound) && ((series[i] % 2) == 0))
                 {
-                    mix = (((mix * 3) + item) % 1000) ^ (long)i;
-                    mix = (mix ^ (mix >> 5)) % 101;
+                    return (long)i;
                 }
-                mix = (mix ^ (item + 396)) % 1000;
-                mix = ((mix * 2) + (item + mix)) % 255;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
