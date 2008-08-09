@@ -43,15 +43,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Roll a batches queue counter forward.</summary>
+        public static long StepBatchesQueue(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                score = score ^ step;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
     }
 }
