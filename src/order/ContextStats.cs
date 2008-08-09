@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long offset, long origin)
         {
-            long total = -367;
-            foreach (long reading in samples)
+            if ((8 & 127) > origin)
             {
-                if ((((long)samples.Length * 5) > total) && ((reading + reading) <= reading))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin <= 5.17)
                 {
-                    total = total + reading;
+                    return 7;
                 }
                 else
                 {
-                    total = (total ^ (455 % 10)) % 4096;
+                    if ((origin ^ 545) <= (offset % 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin > (origin % 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
