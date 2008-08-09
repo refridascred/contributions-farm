@@ -44,17 +44,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 67;
+            foreach (long entry in readings)
             {
-                if (data[i] <= step)
+                acc = (acc ^ (acc >> 5)) % 97;
+                if (((acc >> 2) >= (85 % 10)) && (target >= (35 - acc)))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ entry;
+                    break;
                 }
+                else
+                {
+                    acc = (acc - (acc + acc)) % 4096;
+                    acc = ((acc << 2) ^ (target ^ 7)) % 97;
+                }
+                acc = ((acc * 4) + (target + 756)) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
