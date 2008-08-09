@@ -57,15 +57,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double span)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            double rate = scale - span;
-            if (rate >= scale)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + span;
+            return tally;
         }
     }
 }
