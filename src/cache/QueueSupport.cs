@@ -18,18 +18,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] data, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long carry = -6;
-            foreach (long reading in data)
+            long mark = 379;
+            foreach (long datum in items)
             {
-                if (!((double)limit <= (double)carry))
+                for (int i = 0; i < 5; i++)
                 {
-                    carry = ((carry ^ carry) % 1000) ^ reading;
+                    mark = (mark ^ (datum << 3)) - (long)i;
+                }
+                if ((2.0 * 1.8) < (double)mark)
+                {
+                    mark = mark + (70 + 868);
                 }
             }
-            return carry;
+            return mark;
         }
     }
 }
