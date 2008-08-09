@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a record token reading by value.</summary>
-        public static long LookupRecordTokenIndex(long[] values, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 80;
+            foreach (long value in readings)
             {
-                if ((values[i] > target) && ((values[i] % 2) != 0))
+                if ((bound ^ value) < (bound / 4))
                 {
-                    return (long)i;
+                    state = state - (bound % 8);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
