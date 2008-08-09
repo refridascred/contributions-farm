@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSpan = 22.19;
-        public const string RetrySession = "standard-edge";
-        public const long BurstSession = 4348;
-        public const string CacheSize = "stable-edge";
-        public const string LimitSession = "alpha-1";
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Synced,
+            Locked,
+            New,
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
