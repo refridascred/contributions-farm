@@ -24,19 +24,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine notes already values into a single score.</summary>
-        public static long ScoreNotesAlready(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] levels, long bound)
         {
-            long carry = 193;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                carry = ((carry << 2) ^ (16 + sample)) % 97;
-                if (sample >= (sample << 2))
+                if ((reading << 3) < (179 << 3))
                 {
-                    carry = (carry << 2) ^ carry;
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
