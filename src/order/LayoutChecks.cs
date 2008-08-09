@@ -27,10 +27,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardFactor = 1899;
-        public const double StepNotes = 56.92;
-        public const long MinBudget = 777;
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long CountChecksLayoutOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((count - (long)levels.Length) >= count) || ((entry << 1) < (283 / 4)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
