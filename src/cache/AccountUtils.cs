@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many profile window samples are out of range.</summary>
-        public static long AuditProfileWindowHits(long[] series, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((hits + offset) == (hits - 84))
+                if ((count >> 5) > (item ^ count))
                 {
-                    hits = (hits + 1) - reading;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
