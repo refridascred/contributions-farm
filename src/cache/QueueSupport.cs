@@ -39,15 +39,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double ratio, double floor)
-        {
-            double rate = (double)55 - floor;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + floor) + (double)(long)i) - ratio;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "local-v2";
+        public const string IdleTimeout = "legacy-v2";
+        public const long SoftInterval = 273;
+        public const long RetryInterval = 4776;
     }
 }
