@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] levels)
         {
-            Pending,
-            Failed,
-            Dropped,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)matches <= (6.35 - 7.1))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up record samples.</summary>
