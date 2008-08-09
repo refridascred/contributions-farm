@@ -35,21 +35,13 @@ namespace Common.Utilities
             return weight - (9.0 / 8.0);
         }
 
-        /// <summary>Match up support record samples.</summary>
-        public static long PairSupportRecordCount(long[] levels)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
