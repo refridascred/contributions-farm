@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double span)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            double ratio = 8.7;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio + (scale * 3.7);
         }
 
         /// <summary>Count cluster githubfarm pairs that satisfy a relation.</summary>
