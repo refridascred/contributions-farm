@@ -1,7 +1,8 @@
 # githubfarm settings
-batch_ratio_count: blue
-min_delay_pct: stable
-idle_ratio_s: 64.5
-checks_ratio: staging
-window_retries: 2914
-dry_run: 4481
+flush_ratio_ms:
+  - latest
+  - stable
+  - standard
+  - local
+context_retries: 6.8
+audit: 472
