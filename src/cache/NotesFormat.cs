@@ -36,11 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowRatio = 7621;
-        public const long BaseFactor = 1585;
-        public const string RetryGraph = "strict-edge";
-        public const long DefaultGraph = 5983;
-        public const long SoftGraph = 5111;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowDepth = 8295;
+        public const long MaxEditor = 9933;
+        public const double IdleEditor = 12.36;
+        public const long BatchEditor = 8225;
     }
 }
