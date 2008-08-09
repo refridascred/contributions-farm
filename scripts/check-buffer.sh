@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=26
+log "limit is ${BUFFER_LIMIT}"
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in fallback latest primary; do
-    log "checking ${item}"
-done
