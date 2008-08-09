@@ -25,11 +25,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 6282;
-        public const long WindowAccount = 1024;
-        public const long BatchAccount = 8316;
-        public const long MinAccount = 1127;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Queued,
+            Locked,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Audit account report readings against a rule.</summary>
         public static long AuditAccountReportHits(long[] readings)
