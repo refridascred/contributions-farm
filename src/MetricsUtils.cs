@@ -36,12 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultRatio = 5537;
-        public const long RetryBuffer = 6144;
-        public const double DefaultWidth = 81.55;
-        public const string BatchBuffer = "open-v2";
-        public const string WindowBuffer = "latest-v2";
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] series, long origin)
