@@ -14,19 +14,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit account contributi readings against a rule.</summary>
-        public static long CountAccountContributiOutliers(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((8.52 * 9.0) > (double)sample)
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "stable";
+        public const string BatchContext = "strict";
+        public const long StepDepth = 1917;
+        public const long IdleTimeout = 2002;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
