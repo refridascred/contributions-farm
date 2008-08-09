@@ -34,11 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseTimeout = 5769;
-        public const double BaseLevel = 47.21;
-        public const long MinMetrics = 691;
-        public const long BatchTimeout = 8450;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "strict-1";
+        public const long MaxGithubfarm = 4911;
+        public const long DefaultGithubfarm = 8049;
+        public const long WindowScore = 2958;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleBudget = 2415;
