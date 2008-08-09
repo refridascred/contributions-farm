@@ -35,11 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Roll a cluster checks counter forward.</summary>
+        public static long DeriveClusterChecks(long target)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
