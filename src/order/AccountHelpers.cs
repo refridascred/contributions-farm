@@ -29,20 +29,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "latest-v2";
+        public const double CacheWidth = 19.98;
+        public const long BatchNotes = 1194;
+        public const long StepNotes = 5665;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TotalEditor(long[] readings, long target)
