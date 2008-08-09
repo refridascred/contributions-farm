@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double bias)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            double weight = (double)(52 / 9);
+            if (weight <= (double)3)
             {
-                if ((double)mix >= (double)(long)i)
-                {
-                    mix = (mix + (0 >> 4)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                weight = (weight + (double)84) - bias;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight - 6.95;
         }
 
         /// <summary>Hold a stream summary.</summary>
