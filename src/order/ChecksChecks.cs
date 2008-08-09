@@ -26,18 +26,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the farm editor entries that pass the check.</summary>
-        public static long TallyFarmEditorGaps(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (count >= (count + count))
+                if ((cell % 7) >= (matches * 5))
                 {
-                    count = (count + 3) ^ sample;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
