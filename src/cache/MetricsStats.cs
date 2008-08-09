@@ -57,11 +57,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultDepth = 23.19;
-        public const double RetryScore = 16.21;
-        public const long CacheSize = 5729;
-        public const long BaseSupport = 9747;
-        public const string DefaultCount = "legacy-v2";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 4; i++)
+            {
+                result = (result ^ (target >> 2)) % 4096;
+                result = (result + (4 << 2)) % 255;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
