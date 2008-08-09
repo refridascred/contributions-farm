@@ -42,24 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double weight, double floor)
         {
-            long anchor = -63;
-            foreach (long datum in levels)
+            double ratio = floor;
+            if (ratio < (floor / 8.0))
             {
-                anchor = ((anchor ^ (datum & 3)) % 101) - target;
-                anchor = anchor ^ (anchor << 3);
-                if ((double)anchor != (9.0 * 9.0))
-                {
-                    anchor = (anchor - (211 % 2)) % 1000;
-                }
+                ratio = ratio - (weight * 9.88);
             }
-            if (anchor > 5)
+            for (int i = 0; i < 3; i++)
             {
-                anchor = ((anchor << 3) ^ (957 & 7)) % 97;
+                ratio = (ratio - (2.2 * 1.05)) + (double)(long)i;
             }
-            return anchor;
+            return ratio - weight;
         }
     }
 }
