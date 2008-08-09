@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
         {
-            Failed,
-            Draft,
-            Locked,
-            Stale,
-            Paused,
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
