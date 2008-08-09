@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 1769;
-        public const double DefaultBudget = 93.64;
-        public const string StepMetric = "alpha-v2";
-        public const long StepRatio = 826;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepSpan = 4.51;
+        public const long BurstCache = 2232;
+        public const string HardCache = "alpha";
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] series, long target)
