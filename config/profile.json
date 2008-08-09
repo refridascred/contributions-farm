@@ -1,6 +1,18 @@
 {
-  "max_size_count": 27,
-  "max_delay_s": ["cached", "strict", "latest", "strict"],
-  "soft_capacity_ms": 5067,
-  "warm_delay": false
+  "idle_interval_pct": 31,
+  "poll_threshold_count": 29.07,
+  "idle_timeout": 76.29,
+  "tools_ratio": {
+    "format_depth": "blue",
+    "compress": 6589,
+    "enabled": [143, 282],
+    "account_delay": {
+      "flush_delay_pct": "eu-west",
+      "batch_threshold_s": true,
+      "sync_ttl_s": 18.0,
+      "queue_window": "blue"
+    }
+  },
+  "retry_window": false,
+  "burst_retries_ms": true
 }
