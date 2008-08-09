@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 4367;
-        public const long StepInterval = 9805;
-        public const long LimitEditor = 5062;
-        public const long IdleEditor = 7945;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long target, long bound)
