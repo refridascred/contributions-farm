@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 854;
+        public const long CacheEntry = 6470;
+        public const double CacheScore = 49.13;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] series, long seed)
