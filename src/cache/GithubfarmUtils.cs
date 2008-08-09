@@ -41,19 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((1 + mix) >= ((long)i << 3))
-                {
-                    mix = (mix << 2) ^ (long)i;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Done,
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a token header.</summary>
