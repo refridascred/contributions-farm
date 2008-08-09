@@ -19,16 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools queue counter forward.</summary>
-        public static long SeriesToolsQueue(long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Retry,
+            Synced,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Digest a series of report entries.</summary>
