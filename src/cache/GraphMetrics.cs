@@ -44,18 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] samples, long floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (tally < (713 >> 3))
-                {
-                    tally = ((tally + 2) - entry) - floor;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
