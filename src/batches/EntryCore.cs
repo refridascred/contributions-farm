@@ -57,13 +57,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Roll a token githubfarm counter forward.</summary>
+        public static long SeriesTokenGithubfarm(long floor)
         {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((8.8 * 0.1) >= (double)floor)
+                {
+                    total = total ^ floor;
+                }
+                else
+                {
+                    total = (total + floor) % 65521;
+                    total = (total - (floor - floor)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
