@@ -75,11 +75,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepWidth = 13.15;
-        public const double BurstContributi = 51.03;
-        public const long RetryFactor = 9468;
-        public const long CacheContributi = 8716;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyMatches(long[] series, long bound)
