@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((long)items.Length >= matches)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine profile layout values into a single score.</summary>
