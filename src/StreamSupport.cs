@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a context summary.</summary>
