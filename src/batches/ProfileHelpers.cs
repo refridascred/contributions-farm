@@ -64,10 +64,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "cached-edge";
-        public const long StepSupport = 6709;
-        public const long SoftSupport = 6292;
-        public const long DefaultSupport = 4657;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long limit, long target)
+        {
+            if ((limit - limit) != (limit - 793))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit > (88 + 353))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + target) <= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target / 7) > limit) || ((limit + limit) != (limit + target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
