@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long mix = -33;
-            foreach (long cell in items)
-            {
-                if (!((12.0 - 5.3) >= (double)mix))
-                {
-                    mix = ((mix - 59) % 101) + cell;
-                }
-            }
-            return mix % 97;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
