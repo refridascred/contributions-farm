@@ -20,11 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 5768;
-        public const long BaseSize = 8416;
-        public const long LimitGithubfarm = 3363;
-        public const long BurstScore = 1489;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)mix >= (double)(long)i)
+                {
+                    mix = (mix + (0 >> 4)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
