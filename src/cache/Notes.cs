@@ -42,17 +42,18 @@ namespace Common.Utilities
             return load - (load / 2.0);
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] series, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (series[i] > bound)
+                if (((double)sample >= (7.2 / 4.0)) && ((double)tally == (double)895))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
