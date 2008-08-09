@@ -28,18 +28,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((2.0 * 1.8) < (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
