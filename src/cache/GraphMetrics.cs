@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Paused,
-            Draft,
-            Locked,
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
