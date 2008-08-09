@@ -14,25 +14,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((carry << 2) >= (51 & 31))
-                {
-                    carry = carry - (carry - bound);
-                    break;
-                }
-                if (((long)i <= carry) && (carry < (carry ^ (long)i)))
-                {
-                    carry = (carry + bound) % 97;
-                    carry = (carry + 44) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Failed,
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Measure how many entry buffer samples are out of range.</summary>
