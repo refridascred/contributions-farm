@@ -13,13 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Retry,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count the checks report entries that pass the check.</summary>
