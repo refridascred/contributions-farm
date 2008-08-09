@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long sum = 444;
+            foreach (long value in readings)
             {
-                if ((3 * 2) != (value + hits))
+                if ((target ^ 285) <= (sum + target))
                 {
-                    hits = hits + 3;
+                    sum = (sum + (35 - value)) % 101;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
