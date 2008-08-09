@@ -22,12 +22,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] data, long floor)
         {
-            Closed,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((count + datum) < (8 - 614)) && ((datum + datum) <= (datum + count)))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
     }
 }
