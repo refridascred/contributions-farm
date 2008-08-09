@@ -1,7 +1,8 @@
-id,label,owner,ratio,region
-1,49.66,8.8,193,854
-2,staging,62.34,89.55,standard
-3,stable,green,686,legacy
-4,361,84.03,309,green
-5,standard,172,49.84,93.41
-6,stable,243,legacy,353
+id,ratio,owner
+1,55.09,69.87
+2,42.16,open
+3,cached,strict
+4,858,32.47
+5,387,807
+6,60.61,legacy
+7,latest,364
