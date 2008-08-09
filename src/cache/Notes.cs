@@ -45,18 +45,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] items)
+        /// <summary>Count record report pairs that satisfy a relation.</summary>
+        public static long PairRecordReportCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)sample >= (7.2 / 4.0)) && ((double)tally == (double)895))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
