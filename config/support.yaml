@@ -1,8 +1,16 @@
 # support settings
-hard_retries_count: true
-min_window:
-  - 454
-  - 487
-  - 187
-dry_run: false
-command_depth: legacy
+default_retries: 86
+retry_retries_pct:
+  batch_size_count: latest
+  batch_size_ms:
+    payload_limit: 45.56
+    strict: true
+    enabled: false
+    cache_timeout_s: false
+    flush_depth_ms:
+      - primary
+      - strict
+      - standard
+    buffer_ratio: 3389
+  burst_capacity_pct: false
+hard_threshold_ms: stable
