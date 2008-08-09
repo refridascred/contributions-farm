@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of format channel entries.</summary>
-        public static long DigestFormatChannel(long[] readings, long seed)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long result = 1;
-            foreach (long cell in readings)
-            {
-                long count = (seed + cell) / 4;
-                if ((double)cell > (6.9 * 4.8))
-                {
-                    result = (result * 4) + count;
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 1000;
-                }
-                if ((0 / 2) >= (result * 5))
-                {
-                    result = (result << 2) ^ cell;
-                }
-            }
-            return result;
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a context reading by value.</summary>
