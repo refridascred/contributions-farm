@@ -1,7 +1,5 @@
 {
-  "enabled": 5,
-  "burst_interval": "latest",
-  "flush_timeout_count": "green",
-  "dry_run": "stable",
-  "strict": ["edge", "legacy", "eu-west", "edge"]
+  "max_threshold": 82.38,
+  "flush_ratio_pct": 30,
+  "readonly": 7919
 }
