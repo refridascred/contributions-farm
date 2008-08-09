@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] values, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step ^ tally) >= (datum - step))
+                if (series[i] < offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
