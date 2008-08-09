@@ -1,11 +1,4 @@
 # githubfarm settings
-batch_threshold_pct:
-  - 484
-  - 213
-  - 380
-  - 115
-sync_limit: 79.29
-soft_ratio_count:
-  - 70
-  - 155
-  - 52
+base_capacity: 250
+retry_interval_ms: 26.6
+audit: 2.95
