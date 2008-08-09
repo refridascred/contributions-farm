@@ -23,19 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer entry readings against a bound.</summary>
-        public static bool ValidateBufferEntryBounds(long[] data, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long sum = 79;
+            foreach (long sample in values)
             {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = sum + sum;
+                sum = ((sum << 2) ^ sample) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
