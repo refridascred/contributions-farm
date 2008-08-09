@@ -1,17 +1,6 @@
 {
-  "persist": {
-    "cluster_size": "blue",
-    "verbose": "cached",
-    "tools_timeout": {
-      "base_capacity": 20.58,
-      "hard_ratio_count": false,
-      "enabled": [317, 448],
-      "poll_limit": 11,
-      "context_size": "open",
-      "poll_interval_pct": "cached"
-    }
-  },
-  "burst_delay_count": 87.1,
-  "min_delay": 2911,
-  "compress": 1024
+  "max_delay_count": 90,
+  "max_size_s": 8808,
+  "soft_interval_count": [339, 273, 448, 440],
+  "editor_delay": 34.77
 }
