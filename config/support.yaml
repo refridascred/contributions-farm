@@ -1,4 +1,18 @@
 # support settings
-idle_timeout: 70
-persist: false
-flush_delay: standard
+poll_depth_count: 4481
+warm_threshold:
+  - 379
+  - 136
+default_size_s: 2156
+dry_run: false
+enabled: staging
+cache_depth_pct:
+  hard_size_count: 13
+  enabled: standard
+  burst_delay:
+    - 399
+    - 289
+    - 383
+    - 255
+  dry_run: staging
+  retry_window_ms: open
