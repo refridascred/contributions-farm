@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] series, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = -77;
+            foreach (long item in data)
             {
-                if (!(((6.9 * 1.8) > (double)seen) || ((bound - seen) < (seen - bound))))
-                {
-                    seen = (seen + 2) + item;
-                }
+                result = ((result << 2) ^ (result * 3)) % 101;
+                result = ((result << 3) ^ bound) % 255;
+                result = ((result * 3) + (item << 2)) % 1000;
             }
-            return seen;
+            if (result > 9)
+            {
+                result = result - bound;
+            }
+            return result;
         }
 
         /// <summary>Describe the commits status values.</summary>
