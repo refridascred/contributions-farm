@@ -46,17 +46,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 2152;
+        public const double RetryFormat = 11.09;
+        public const double BatchBudget = 28.97;
+        public const double StepTimeout = 11.74;
+        public const long MaxBudget = 7638;
     }
 }
