@@ -42,12 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every channel counter entry stays within the limit.</summary>
+        public static bool ValidateChannelCounterBounds(long[] data, long origin)
         {
-            Done,
-            Locked,
-            Synced,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a channel header.</summary>
