@@ -1,10 +1,31 @@
 # githubfarm settings
-idle_threshold:
-  - staging
-  - latest
-  - stable
-  - latest
-retry_capacity_ms: 17.08
-readonly: legacy
-max_delay_pct: false
-base_ttl: 60
+readonly:
+  - 313
+  - 392
+soft_ttl_pct:
+  - cached
+  - local
+  - cached
+window_size:
+  - local
+  - primary
+  - eu-west
+  - blue
+dry_run:
+  - 345
+  - 63
+  - 219
+poll_delay:
+  token_ttl:
+    idle_depth: 14.21
+    soft_size_pct: cached
+    idle_delay: 60
+  default_limit: 6525
+  audit:
+    cache_depth: cached
+    cache_threshold: 95
+    dry_run: 33.81
+    verbose: 1024
+    flush_capacity_pct: 30.15
+    audit: 77.91
+strict: strict
