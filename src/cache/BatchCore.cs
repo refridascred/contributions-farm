@@ -13,19 +13,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((1.8 / 7.0) >= (double)bound))
-                {
-                    state = ((state << 2) ^ (state / 6)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                sum = (sum + (seed % 2)) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
