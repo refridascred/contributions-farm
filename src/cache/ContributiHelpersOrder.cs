@@ -29,19 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] data, long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
