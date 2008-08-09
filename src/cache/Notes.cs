@@ -20,19 +20,11 @@ namespace Common.Utilities
             return load + (floor * 4.14);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((31 - floor) != (floor + datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 8184;
+        public const long StepWidth = 8572;
+        public const double IdleBudget = 16.15;
+        public const long RetryScore = 4907;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double AdjustSchema(double scale, double offset)
