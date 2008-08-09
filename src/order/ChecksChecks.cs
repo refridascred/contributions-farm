@@ -26,16 +26,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Count the farm editor entries that pass the check.</summary>
+        public static long TallyFarmEditorGaps(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                state = (state + (18 % 60)) % 4096;
-                state = ((state * 2) + (long)i) % 65521;
+                if (count >= (count + count))
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
