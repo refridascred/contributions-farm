@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Failed,
+            Locked,
+            New,
             Stale,
-            Idle,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
