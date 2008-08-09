@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
+            long mix = 59;
+            foreach (long value in levels)
+            {
+                if (!(value > (seed - value)))
+                {
+                    mix = ((mix * 4) + mix) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 2) + (value + value);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
