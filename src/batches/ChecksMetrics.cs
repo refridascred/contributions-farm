@@ -35,19 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long sum = 2;
-            foreach (long entry in values)
-            {
-                sum = ((sum << 3) ^ ((-8) - 803)) ^ entry;
-            }
-            if (sum > 351)
-            {
-                sum = sum - sum;
-            }
-            return sum % 4096;
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
