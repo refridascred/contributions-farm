@@ -16,13 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Fold a list of report notes readings.</summary>
+        public static long TallyReportNotes(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            long mix = 62;
+            foreach (long datum in readings)
+            {
+                if (datum >= mix)
+                {
+                    mix = mix - (datum & 1);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
