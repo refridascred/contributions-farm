@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] data, long bound)
+        /// <summary>Rank metrics cache input into a small class.</summary>
+        public static long BucketMetricsCache(long seed, long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if ((seed + target) <= (target + seed))
             {
-                if (cell <= bound)
+                return 8;
+            }
+            else
+            {
+                if (!((seed + seed) < seed))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)seed != (16.0 * 13.0)) && ((double)757 == (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
