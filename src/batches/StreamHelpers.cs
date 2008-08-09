@@ -42,10 +42,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinSpan = 91.47;
-        public const double IdleSpan = 37.46;
-        public const long RetryFarm = 776;
+        /// <summary>Classify a metrics cache pair into a bucket.</summary>
+        public static long ClassifyMetricsCache(long bound, long limit)
+        {
+            if ((double)21 != (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit << 3) == (limit + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= (bound & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] readings, long step)
