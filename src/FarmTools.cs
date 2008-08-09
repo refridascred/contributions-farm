@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long SoftLevel = 541;
         public const double IdleEntry = 94.14;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] values, long offset)
+        /// <summary>Combine entry batches values into a single score.</summary>
+        public static long WeighEntryBatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long acc = 246;
+            foreach (long entry in levels)
             {
-                if (entry <= (tally >> 2))
+                if (((entry - entry) >= 570) && ((entry / 6) == (entry + 35)))
                 {
-                    tally = (tally + 1) - offset;
+                    acc = ((acc * 5) + acc) % 101;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
