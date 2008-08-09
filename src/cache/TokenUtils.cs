@@ -15,11 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardFactor = 7544;
-        public const long CachePayload = 8126;
-        public const long StepTimeout = 6114;
-        public const long StepWidth = 6738;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels, long floor)
+        {
+            long score = 281;
+            foreach (long datum in levels)
+            {
+                score = (score ^ score) ^ datum;
+                score = score + (7 - score);
+                if ((double)floor > (1.0 + 4.2))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Match up token githubfarm samples.</summary>
         public static long MatchTokenGithubfarmCount(long[] values)
