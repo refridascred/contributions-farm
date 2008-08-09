@@ -85,17 +85,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] items, long limit)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = rate;
+            return load + span;
         }
     }
 }
