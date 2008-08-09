@@ -1,5 +1,13 @@
 # githubfarm settings
-notes_capacity: 100
-warm_window: 161
-cache_capacity_s: 75
-warm_delay_s: true
+default_size: 37
+warm_size_count:
+  - 126
+  - 434
+  - 124
+base_window_count: true
+batch_ttl_pct: 60
+flush_ratio:
+  - 354
+  - 215
+  - 235
+  - 304
