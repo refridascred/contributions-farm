@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] readings)
         {
-            Idle,
-            Queued,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)count == (9.37 - 15.0))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
