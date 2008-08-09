@@ -74,11 +74,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Roll a filter already counter forward.</summary>
+        public static long DeriveFilterAlready(long target)
         {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
+            long total = target;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
