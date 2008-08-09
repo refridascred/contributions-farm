@@ -37,24 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double ratio, double bias)
-        {
-            double weight = 7.03;
-            if (weight > 0.1)
-            {
-                weight = (weight - (weight - weight)) - ratio;
-            }
-            else
-            {
-                weight = weight - (bias - 0.1);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (double)14) - (double)(long)i;
-            }
-            return weight + (double)612;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchRatio = 37.25;
+        public const long IdleDepth = 5756;
+        public const long CacheRatio = 3406;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
