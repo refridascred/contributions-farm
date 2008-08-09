@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Check that every counter metric entry stays within the limit.</summary>
+        public static bool GuardCounterMetricBounds(long[] items, long offset)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Synced,
-            Idle,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
