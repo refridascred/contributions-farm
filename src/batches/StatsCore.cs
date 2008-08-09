@@ -26,16 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 5) + (anchor - target)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next session counter value.</summary>
