@@ -45,13 +45,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxInterval = "fallback";
+        public const string WindowAccount = "legacy-edge";
+        public const long LimitAccount = 1585;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
