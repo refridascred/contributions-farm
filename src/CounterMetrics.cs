@@ -44,31 +44,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long bound, long limit)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            if ((bound >= ((-662) + 6)) && ((55 * 2) == (6 - bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((5.37 / 7.0) >= (double)limit) || ((double)bound != (0.68 + 1.6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
