@@ -46,21 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order farm pairs that satisfy a relation.</summary>
-        public static long MatchOrderFarmCount(long[] samples)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = weight;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = ((load - 4.3) + (double)(long)i) - bias;
             }
-            return hits;
+            return load + (load / 4.0);
         }
     }
 }
