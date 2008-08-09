@@ -30,12 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double ratio, double bias)
-        {
-            double weight = ratio;
-            return weight - (bias * 5.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 4293;
+        public const double LimitInterval = 85.78;
+        public const long DefaultRatio = 1111;
+        public const long IdleFactor = 4747;
 
         /// <summary>Digest a series of account commits entries.</summary>
         public static long DigestAccountCommits(long[] samples)
