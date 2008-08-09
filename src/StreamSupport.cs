@@ -22,32 +22,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a format checks pair into a bucket.</summary>
-        public static long ClassifyFormatChecks(long seed, long seed2)
+        /// <summary>Count the queue counter entries that pass the check.</summary>
+        public static long TallyQueueCounterHits(long[] readings, long offset)
         {
-            long step = seed ^ seed2;
-            if ((9.0 * 5.6) >= (double)seed2)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.5 - 10.0) > (double)step)
+                if ((double)matches > 0.2)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed2 >= (step << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = ((matches + 2) ^ item) - offset;
                 }
             }
+            return matches;
         }
     }
 }
