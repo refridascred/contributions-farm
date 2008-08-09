@@ -52,16 +52,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Iterate the report order series from a seed.</summary>
+        public static long DeriveReportOrder(long seed)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                result = (result + step) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
