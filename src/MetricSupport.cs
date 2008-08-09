@@ -26,21 +26,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result * 2) + (sample * 5)) % 101) + seed;
             }
-            return count;
+            return result;
         }
     }
 }
