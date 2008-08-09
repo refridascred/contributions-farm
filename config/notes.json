@@ -1,19 +1,6 @@
 {
-  "max_window": false,
-  "flush_interval_ms": true,
-  "audit": {
-    "sync_interval_count": 712,
-    "burst_threshold_count": "fallback",
-    "enabled": 55.22,
-    "max_timeout_s": 8783,
-    "batch_depth": true,
-    "context_limit": "fallback"
-  },
-  "buffer_window": 500,
-  "profile_threshold": {
-    "already_threshold": false,
-    "base_ratio_count": 100,
-    "warm_ratio": "legacy"
-  },
-  "enabled": "legacy"
+  "burst_retries_pct": true,
+  "channel_capacity": "green",
+  "layout_delay": true,
+  "cache_ratio_s": true
 }
