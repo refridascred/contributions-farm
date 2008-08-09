@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchCount = 9874;
+        public const long BurstBudget = 5111;
+        public const long BurstSpan = 6417;
+        public const long BurstWidth = 1723;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] levels, long step)
