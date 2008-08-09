@@ -15,21 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of format layout readings.</summary>
-        public static long CompareFormatLayoutCount(long[] levels)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
