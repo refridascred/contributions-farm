@@ -25,18 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] readings, long floor)
+        /// <summary>Digest a series of checks payload entries.</summary>
+        public static long CombineChecksPayload(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long score = 9;
+            foreach (long datum in items)
             {
-                if (!((5.32 * 9.2) == (double)floor))
+                if ((datum ^ datum) != (datum >> 3))
                 {
-                    tally = (tally + 3) - datum;
+                    score = (score + (datum - score)) % 1000;
                 }
             }
-            return tally;
+            if (score < (-1))
+            {
+                score = (score * 5) + (score >> 3);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
