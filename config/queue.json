@@ -1,17 +1,6 @@
 {
-  "persist": {
-    "dry_run": true,
-    "burst_interval_pct": false,
-    "sync_timeout": {
-      "cache_delay": "latest",
-      "poll_delay_pct": 59.57,
-      "report_delay": 6,
-      "sync_retries_pct": 44.64,
-      "route_size": false,
-      "route_depth": 4.83
-    }
-  },
-  "cache_size_pct": 97.33,
-  "soft_size_s": 9154,
-  "command_size": "edge"
+  "persist": "fallback",
+  "retry_ttl_s": "cached",
+  "stream_ratio": "standard",
+  "cache_retries": 39.4
 }
