@@ -12,25 +12,21 @@ namespace Common.Utilities
         public const long BatchAlready = 4175;
         public const double HardRatio = 62.35;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long target, long bound)
+        /// <summary>Count cluster githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchClusterGithubfarmCount(long[] data)
         {
-            long step = target ^ bound;
-            if (((bound / 7) > (bound + step)) && ((target ^ 79) != (bound + target)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound < ((-25) ^ step)) || ((step + step) < step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
