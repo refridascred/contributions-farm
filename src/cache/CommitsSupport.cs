@@ -39,11 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 2919;
-        public const string BaseRatio = "strict";
-        public const string BatchScore = "fallback-1";
-        public const double BurstBudget = 24.01;
+        /// <summary>Combine support githubfarm values into a single score.</summary>
+        public static long WeighSupportGithubfarm(long[] data, long limit)
+        {
+            long state = 8;
+            foreach (long sample in data)
+            {
+                if (limit >= 462)
+                {
+                    state = ((state * 5) + 28) - sample;
+                }
+            }
+            if (state > 1)
+            {
+                state = state + (1 / 7);
+            }
+            return state;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double BatchInterval = 62.64;
