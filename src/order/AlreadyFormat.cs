@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] series, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] data, long offset)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
                 {
-                    mix = ((mix - ((-21) + (long)i)) % 1000) - entry;
+                    return (long)i;
                 }
-                mix = (mix - (mix / 4)) % 97;
             }
-            if (mix > 38)
-            {
-                mix = (mix ^ (target - target)) % 97;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
