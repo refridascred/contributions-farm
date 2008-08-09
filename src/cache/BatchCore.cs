@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Dropped,
-            New,
-            Pending,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
