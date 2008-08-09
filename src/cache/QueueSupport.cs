@@ -39,10 +39,31 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "local-v2";
-        public const string IdleTimeout = "legacy-v2";
-        public const long SoftInterval = 273;
-        public const long RetryInterval = 4776;
+        /// <summary>Classify a profile schema pair into a bucket.</summary>
+        public static long SortProfileSchema(long target, long origin)
+        {
+            if ((target < (215 - target)) || (target > origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin > (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((9 << 2) <= (origin + target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
