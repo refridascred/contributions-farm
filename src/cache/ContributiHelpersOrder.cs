@@ -29,26 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] items, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] data, long limit)
         {
-            long acc = 3;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (!((target << 2) < (item * 5)))
+                if (item > limit)
                 {
-                    acc = (acc + (acc << 1)) % 65521;
-                }
-                else
-                {
-                    acc = acc ^ (acc - acc);
+                    stale = false;
+                    break;
                 }
             }
-            if (acc > 64)
-            {
-                acc = ((acc * 3) + target) % 97;
-            }
-            return acc;
+            return stale;
         }
     }
 }
