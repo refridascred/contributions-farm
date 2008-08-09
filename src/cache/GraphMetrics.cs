@@ -41,19 +41,11 @@ namespace Common.Utilities
         public const string MaxCount = "fallback-edge";
         public const long BaseContext = 9935;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 61.22;
+        public const double WindowSchema = 69.39;
+        public const long CacheSchema = 9847;
+        public const double SoftSchema = 16.36;
+        public const long RetrySchema = 1118;
     }
 }
