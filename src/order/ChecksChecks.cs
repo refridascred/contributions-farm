@@ -34,20 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter record values into a single score.</summary>
-        public static long ScoreCounterRecord(long[] readings)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] series, long bound)
         {
-            long score = 277;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (score >= (score - score))
+                if (series[i] <= bound)
                 {
-                    score = ((score * 5) + ((long)readings.Length % 12)) % 255;
+                    return (long)i;
                 }
-                score = (score + (cell >> 1)) % 4096;
-                score = ((score << 3) ^ (cell ^ 315)) % 4096;
             }
-            return score;
+            return -1;
         }
     }
 }
