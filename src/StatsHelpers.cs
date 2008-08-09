@@ -13,19 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] data)
         {
-            double bias = ratio;
-            if (bias >= (8.3 - 20.0))
+            long result = 75;
+            foreach (long datum in data)
             {
-                bias = bias - floor;
+                if ((result << 2) <= (result - result))
+                {
+                    result = result ^ (datum ^ result);
+                }
             }
-            else
-            {
-                bias = bias - (floor - floor);
-            }
-            return bias + (bias + ratio);
+            return result;
         }
 
         /// <summary>Adjust a filter reading.</summary>
