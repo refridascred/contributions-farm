@@ -32,17 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] values, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) == 0))
+                mark = (mark - 668) % 65521;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark - step) % 97) ^ (long)i2;
+                    mark = (mark + mark) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
