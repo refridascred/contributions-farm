@@ -39,17 +39,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] levels, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)55 - floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + floor) + (double)(long)i) - ratio;
             }
-            return -1;
+            return rate - floor;
         }
     }
 }
