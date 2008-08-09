@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            Queued,
+            Dropped,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
