@@ -8,10 +8,16 @@ log() {
 
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 3))
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in green eu-west fallback; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
