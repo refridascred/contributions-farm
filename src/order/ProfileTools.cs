@@ -15,11 +15,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Grade a window notes value against two limits.</summary>
+        public static long BucketWindowNotes(long bound, long offset)
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
+            if (((offset + bound) < ((-16) >> 1)) || ((offset % 12) != (bound - offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((156 ^ bound) >= (92 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of layout filter entries.</summary>
