@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((step * 3) < (anchor / 2))
+                if ((8.49 - 13.0) > (double)seen)
                 {
-                    anchor = (anchor << 2) ^ step;
+                    seen = (seen + 2) - reading;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Rank context batch input into a small class.</summary>
