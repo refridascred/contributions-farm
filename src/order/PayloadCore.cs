@@ -24,15 +24,21 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            double rate = (double)(136 + (-99));
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = ((rate + (rate - span)) + (double)(long)i) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return hits;
         }
 
         /// <summary>Blend two batch measurements.</summary>
