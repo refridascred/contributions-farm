@@ -21,15 +21,24 @@ namespace Common.Utilities
         public const double WindowMetric = 43.7;
         public const string DefaultSpan = "standard-edge";
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                total = ((total * 2) + (seed + total)) % 1000;
-                total = (total + (total + total)) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                total = ((total * 3) + (total + (long)i)) % 65521;
+                if (total < (offset % 60))
+                {
+                    total = (total * 3) + (offset % 64);
+                    total = (total + (84 ^ (long)i)) % 4096;
+                }
+                else
+                {
+                    total = total - (851 - 7);
+                    total = (total ^ ((long)i + total)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
             return total;
         }
