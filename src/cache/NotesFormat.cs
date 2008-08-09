@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many editor entry samples are out of range.</summary>
-        public static long MeasureEditorEntryHits(long[] readings)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry == (10.0 * 4.3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of checks batch entries.</summary>
