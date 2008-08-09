@@ -82,18 +82,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of layout cluster readings.</summary>
-        public static long CompareLayoutClusterCount(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((-1) >= (seen + sample))
                 {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
