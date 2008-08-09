@@ -52,12 +52,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCount = 8951;
-        public const double StepCluster = 11.92;
-        public const double IdleSpan = 92.51;
-        public const double MinSize = 44.36;
-        public const long BaseCluster = 1954;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long MatchCacheCount(long[] data)
