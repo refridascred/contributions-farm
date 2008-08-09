@@ -13,18 +13,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the queue counter entries that pass the check.</summary>
-        public static long AuditQueueCounterOutliers(long[] series)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count + reading) <= (929 >> 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
