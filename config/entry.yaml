@@ -1,15 +1,11 @@
 # entry settings
-route_ratio: 87.73
-readonly: 53.82
-strict:
-  enabled: strict
-  base_depth_count:
-    warm_interval_pct: 9.89
-    min_ratio_count: edge
-    max_timeout: strict
-  persist:
-    - local
-    - blue
-  idle_window: standard
-metric_interval: local
-persist: false
+persist: latest
+compress:
+  - 407
+  - 310
+  - 45
+route_capacity:
+  - fallback
+  - legacy
+  - legacy
+readonly: latest
