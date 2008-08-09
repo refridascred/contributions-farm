@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double rate, double bias)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            double scale = 3.6;
+            if (scale >= (0.7 - scale))
             {
-                carry = ((carry << 3) ^ (2 - carry)) % 65521;
-                if ((double)carry >= 15.0)
-                {
-                    carry = carry - ((long)i + seed);
-                    carry = ((carry << 3) ^ (163 - 89)) % 101;
-                }
-                carry = (carry * 5) + (long)i;
-                carry = ((carry * 2) + (long)i) % 1000;
+                scale = scale - (bias * 8.6);
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (rate + scale);
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
