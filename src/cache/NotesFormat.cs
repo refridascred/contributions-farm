@@ -27,22 +27,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] data, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (item <= (count ^ step))
+                if ((16 * 4) <= (cell + cell))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) + floor;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
