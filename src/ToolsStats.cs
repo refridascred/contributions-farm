@@ -52,15 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Draft,
-            Pending,
-            Closed,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 8334;
+        public const long BurstTimeout = 8889;
+        public const long MinWidth = 63;
+        public const double RetryAlready = 11.39;
+        public const long CacheBudget = 1782;
 
         /// <summary>Check that every metrics counter entry stays within the limit.</summary>
         public static bool CheckMetricsCounterRange(long[] data, long step)
