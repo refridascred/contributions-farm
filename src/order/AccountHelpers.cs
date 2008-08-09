@@ -61,13 +61,19 @@ namespace Common.Utilities
         public const long BatchNotes = 1194;
         public const long StepNotes = 5665;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Validate farm graph readings against a bound.</summary>
+        public static bool VerifyFarmGraphRange(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
