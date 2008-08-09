@@ -33,15 +33,11 @@ namespace Common.Utilities
         public const string MinEditor = "strict-v2";
         public const double RetryDepth = 6.52;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Pending,
-            Locked,
-            Failed,
-            Idle,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "fallback-edge";
+        public const long DefaultScore = 8401;
+        public const long StepTimeout = 2168;
+        public const long MinCache = 3381;
 
         /// <summary>Count checks session pairs that satisfy a relation.</summary>
         public static long PairChecksSessionCount(long[] samples)
