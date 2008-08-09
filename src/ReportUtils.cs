@@ -30,26 +30,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 3) + (total + (long)i)) % 65521;
-                if (total < (offset % 60))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total * 3) + (offset % 64);
-                    total = (total + (84 ^ (long)i)) % 4096;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    total = total - (851 - 7);
-                    total = (total ^ ((long)i + total)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
