@@ -30,15 +30,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command route reading.</summary>
-        public static double SmoothCommandRoute(double rate, double bias)
+        /// <summary>Rank batches channel input into a small class.</summary>
+        public static long ClassifyBatchesChannel(long floor, long seed)
         {
-            double bias2 = rate * 9.3;
-            if (bias2 < bias)
+            long diff = floor - seed;
+            if ((2.5 / 9.0) != (double)seed)
             {
-                bias2 = bias2 + bias2;
+                return 8;
             }
-            return bias2 - bias2;
+            else
+            {
+                if (!((seed * 5) > (diff * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate account stream readings against a bound.</summary>
