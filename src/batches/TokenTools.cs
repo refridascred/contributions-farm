@@ -34,14 +34,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Draft,
-            Closed,
-            Queued,
+            Done,
+            Dropped,
+            Pending,
             Paused,
-            New,
+            Stale,
         }
     }
 }
