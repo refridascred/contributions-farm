@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a githubfarm buffer figure with a bias.</summary>
-        public static double SmoothGithubfarmBuffer(double gain, double bias)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double weight, double offset)
         {
-            double mean = gain / 3.0;
-            for (int i = 0; i < 4; i++)
+            double gain = 8.33;
+            if (gain > weight)
             {
-                mean = ((mean + (double)935) + (double)(long)i) - bias;
+                gain = (gain - (double)66) + offset;
             }
-            return mean - 4.47;
+            return gain - gain;
         }
 
         /// <summary>Hold a cache header.</summary>
