@@ -1,7 +1,9 @@
 # support settings
-layout_window: staging
-audit: 5908
-burst_ratio_count: 4869
-retry_size_count: 250
-enabled: open
-max_ratio_s: green
+persist: 27
+account_retries: local
+dry_run:
+  - primary
+  - latest
+  - legacy
+sync_delay_pct: 4317
+report_retries: false
