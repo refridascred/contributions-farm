@@ -21,14 +21,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Locate a buffer command reading by value.</summary>
+        public static long FindBufferCommandIndex(long[] data, long target)
         {
-            Draft,
-            Idle,
-            Dropped,
-            Queued,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
