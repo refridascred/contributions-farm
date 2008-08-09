@@ -23,23 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] readings)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long limit, long target)
         {
-            long sum = 8;
-            foreach (long item in readings)
+            if ((target + target) < (target - target))
             {
-                sum = (sum << 3) ^ sum;
-                if ((sum % 60) < item)
+                return 2;
+            }
+            else
+            {
+                if ((target > (target - 0)) && ((limit + 95) <= (target - limit)))
                 {
-                    sum = (sum - sum) % 255;
+                    return 8;
                 }
-                if (!((item % 100) > (long)readings.Length))
+                else
                 {
-                    break;
+                    if ((limit & 127) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + target) >= (limit - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
