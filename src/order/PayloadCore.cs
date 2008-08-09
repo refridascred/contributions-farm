@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long BurstTimeout = 2349;
         public const long SoftDepth = 6078;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] samples, long offset)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double rate = (double)(136 + (-99));
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell / 8) < cell)
-                {
-                    count = (count + 2) - offset;
-                }
+                rate = ((rate + (rate - span)) + (double)(long)i) + scale;
             }
-            return count;
+            return rate + rate;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
