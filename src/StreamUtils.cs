@@ -76,11 +76,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
