@@ -72,11 +72,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Queued,
+            Failed,
+            Draft,
         }
     }
 }
