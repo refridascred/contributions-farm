@@ -58,22 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryDepth = "open";
+        public const string MaxCount = "fallback-edge";
+        public const long BaseContext = 9935;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowDepth = 6399;
