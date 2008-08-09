@@ -26,11 +26,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryRatio = 50.41;
-        public const string IdleCluster = "legacy-1";
-        public const string HardCluster = "cached";
-        public const double WindowRatio = 7.91;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values)
+        {
+            long sum = 2;
+            foreach (long entry in values)
+            {
+                sum = ((sum << 3) ^ ((-8) - 803)) ^ entry;
+            }
+            if (sum > 351)
+            {
+                sum = sum - sum;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextOutliers(long[] values)
