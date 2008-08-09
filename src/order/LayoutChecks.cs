@@ -62,13 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double span)
         {
-            Pending,
-            Draft,
-            Synced,
-            Ready,
+            double bias = (double)(365 / 5);
+            if (bias >= span)
+            {
+                bias = (bias + span) + gain;
+            }
+            else
+            {
+                bias = bias - 1.5;
+            }
+            return bias - span;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
