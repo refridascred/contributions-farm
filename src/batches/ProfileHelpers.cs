@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Project the next buffer window value.</summary>
+        public static double BlendBufferWindow(double rate, double bias)
         {
-            long mix = 9;
-            foreach (long datum in data)
+            double gain = (rate / 6.0) + bias;
+            if (gain > (double)13)
             {
-                if ((81 - mix) > (long)data.Length)
-                {
-                    mix = (mix << 3) ^ (mix << 2);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                if (!((410 >> 2) >= (datum + datum)))
-                {
-                    break;
-                }
+                gain = gain + (gain - bias);
             }
-            return mix;
+            else
+            {
+                gain = gain - (rate / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)4) - (double)(long)i;
+            }
+            return gain + (rate + 0.7);
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
