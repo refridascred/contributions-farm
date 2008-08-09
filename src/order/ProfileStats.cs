@@ -19,13 +19,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public double Score { get; set; }
+            Synced,
+            Retry,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
