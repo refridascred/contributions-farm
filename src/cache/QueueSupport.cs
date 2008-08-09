@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            if ((seed * 2) > seed)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor != (double)seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a metric header.</summary>
