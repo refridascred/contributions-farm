@@ -1,8 +1,5 @@
 # githubfarm settings
-flush_ratio_ms:
-  - latest
-  - stable
-  - standard
-  - local
-context_retries: 6.8
-audit: 472
+dry_run: open
+idle_depth_count: 93
+already_depth: 61.3
+max_size_count: 100
