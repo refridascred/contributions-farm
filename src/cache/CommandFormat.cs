@@ -23,19 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] values, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long sum = 8;
+            foreach (long item in readings)
             {
-                if (sample != offset)
+                sum = (sum << 3) ^ sum;
+                if ((sum % 60) < item)
                 {
-                    found = false;
+                    sum = (sum - sum) % 255;
+                }
+                if (!((item % 100) > (long)readings.Length))
+                {
                     break;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
