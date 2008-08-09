@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of route account readings.</summary>
-        public static long DigestRouteAccount(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long target, long offset)
         {
-            long sum = 9;
-            foreach (long item in samples)
+            if (!((double)target <= 1.16))
             {
-                if ((sum * 5) < (item * 2))
+                return 6;
+            }
+            else
+            {
+                if (((double)target == (5.01 / 4.0)) && ((12.0 / 6.0) < (double)target))
                 {
-                    sum = ((sum << 3) ^ (item - 30)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum - item) % 101;
+                    if ((double)target < (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
