@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double scale = (double)(1 - 741);
-            if (scale < (5.0 * 3.9))
-            {
-                scale = (scale + bias2) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (bias2 * 1.3)) + (double)(long)i;
-            }
-            return scale + (bias2 / 7.0);
+            Closed,
+            Failed,
+            Draft,
+            Pending,
         }
     }
 }
