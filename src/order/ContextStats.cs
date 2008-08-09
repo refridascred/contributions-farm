@@ -62,14 +62,18 @@ namespace Common.Utilities
         public const long CacheSpan = 7473;
         public const string IdleBuffer = "alpha-edge";
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] samples, long bound)
         {
-            Pending,
-            Queued,
-            Paused,
-            Idle,
-            Active,
+            long score = 783;
+            foreach (long item in samples)
+            {
+                if ((bound + item) > (bound - score))
+                {
+                    score = score - (item / 5);
+                }
+            }
+            return score % 4096;
         }
     }
 }
