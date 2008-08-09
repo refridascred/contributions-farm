@@ -17,13 +17,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Ready,
+            Queued,
+            Active,
+            Paused,
             New,
-            Failed,
-            Closed,
+            Retry,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
