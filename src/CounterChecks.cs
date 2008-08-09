@@ -75,24 +75,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long bound, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            if ((bound / 4) > (73 & 7))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound >> 4) >= (step ^ bound)) && (bound >= step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
