@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long SoftBudget = 1200;
         public const long BaseRatio = 1840;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
