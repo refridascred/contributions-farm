@@ -1,19 +1,8 @@
 {
-  "verbose": ["cached", "open", "staging", "edge"],
-  "poll_limit_s": {
-    "burst_threshold_pct": 2744,
-    "soft_timeout_pct": [320, 176, 66, 447],
-    "hard_ttl": [393, 334, 429],
-    "strict": "strict",
-    "persist": 79,
-    "cache_delay": {
-      "strict": 33.92,
-      "hard_threshold": 28.93,
-      "poll_interval_ms": 100,
-      "default_timeout_count": 60
-    }
-  },
-  "payload_retries": 75.32,
-  "cache_window": "strict",
-  "burst_threshold_pct": 39
+  "account_retries": 6300,
+  "hard_timeout_count": 100,
+  "soft_window": 3482,
+  "dry_run": "edge",
+  "retry_ratio_ms": "stable",
+  "burst_depth_count": "cached"
 }
