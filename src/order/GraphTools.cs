@@ -34,20 +34,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total << 2) ^ (floor >> 1)) % 1000;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = total - ((long)i2 + floor);
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the payload status values.</summary>
