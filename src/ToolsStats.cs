@@ -25,19 +25,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate editor tools readings against a bound.</summary>
-        public static bool CheckEditorToolsLimits(long[] data, long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit account report readings against a rule.</summary>
