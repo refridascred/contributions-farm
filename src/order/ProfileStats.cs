@@ -19,14 +19,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate command account samples.</summary>
+        public static long TotalCommandAccount(long[] data)
         {
-            Synced,
-            Retry,
-            Ready,
-            Pending,
-            Dropped,
+            long carry = 28;
+            foreach (long cell in data)
+            {
+                carry = (carry + (cell * 2)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every entry account entry stays within the limit.</summary>
