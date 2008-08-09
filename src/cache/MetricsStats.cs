@@ -55,16 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two record route measurements.</summary>
-        public static double BlendRecordRoute(double rate, double floor)
-        {
-            double scale = (rate * 9.4) + floor;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (rate + scale)) + (double)(long)i;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSize = 8689;
+        public const string BurstContributi = "open-edge";
+        public const long BatchContributi = 6088;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long CompareStreamCount(long[] items)
