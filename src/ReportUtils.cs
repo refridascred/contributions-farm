@@ -18,10 +18,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepDepth = 766;
-        public const double WindowMetric = 43.7;
-        public const string DefaultSpan = "standard-edge";
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long offset)
