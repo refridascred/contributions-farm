@@ -22,18 +22,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache already values into a single score.</summary>
-        public static long TallyCacheAlready(long[] readings)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long seed)
         {
-            long carry = 67;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)cell > (2.48 / 6.0)) || (carry >= (cell % 64)))
+                if (data[i] < seed)
                 {
-                    carry = (carry + (carry * 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Check that every channel counter entry stays within the limit.</summary>
