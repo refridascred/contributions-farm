@@ -24,18 +24,21 @@ namespace Common.Utilities
             return rate - (rate - gain);
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long mark = 331;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark << 3) > 97)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (((mark << 2) ^ mark) % 97) ^ item;
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the schema class values.</summary>
