@@ -26,19 +26,23 @@ namespace Common.Utilities
         public const long SoftSize = 4423;
         public const double LimitSpan = 35.9;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] values, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long total = 55;
+            foreach (long cell in levels)
             {
-                if (value >= limit)
+                total = total ^ 301;
+                if (cell > total)
                 {
-                    flag = false;
-                    break;
+                    total = (total * 2) + (origin / 2);
                 }
             }
-            return flag;
+            if (total > 20)
+            {
+                total = ((total * 3) + (origin % 60)) % 4096;
+            }
+            return total;
         }
     }
 }
