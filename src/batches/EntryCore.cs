@@ -22,18 +22,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] series, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (seen < (seen - item))
+                if ((entry - (long)series.Length) <= (entry ^ entry))
                 {
-                    seen = (seen + 2) + bound;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the cache schema entries that pass the check.</summary>
