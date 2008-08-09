@@ -20,12 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long offset)
         {
-            Synced,
-            Queued,
-            Idle,
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if (offset < ((long)i & 1))
+                {
+                    sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
+                }
+                if ((offset * 4) == (sum % 97))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = sum + offset;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate token samples.</summary>
