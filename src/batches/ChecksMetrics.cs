@@ -63,11 +63,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 5906;
-        public const long DefaultSchema = 1517;
-        public const double MaxWidth = 4.21;
-        public const double CacheSchema = 13.41;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Draft,
+            Pending,
+            Active,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 7281;
