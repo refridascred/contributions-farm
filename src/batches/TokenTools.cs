@@ -20,26 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = 217;
-            foreach (long cell in series)
-            {
-                if (((cell >> 5) < (cell >> 4)) && ((double)score < (7.3 - 3.0)))
-                {
-                    score = (score << 2) ^ (cell * 3);
-                }
-                else
-                {
-                    score = (score ^ (score % 12)) % 101;
-                }
-            }
-            if (score > 0)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score % 4096;
+            Queued,
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
