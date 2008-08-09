@@ -13,21 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)319 == (double)bound)
+                if (!((step - carry) > (carry + step)))
                 {
-                    state = (state - 2) % 4096;
                     break;
                 }
-                state = ((state * 4) + (state ^ state)) % 255;
-                state = ((state * 3) + (long)i) % 97;
+                if (!(carry < (carry >> 2)))
+                {
+                    carry = (carry - (carry >> 1)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
