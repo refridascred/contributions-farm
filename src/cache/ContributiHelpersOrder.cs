@@ -13,15 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double weight, double bias)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double bias2 = (double)(14 % 97);
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = ((bias2 - bias2) - (double)(long)i) + bias;
-            }
-            return bias2 - weight;
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
