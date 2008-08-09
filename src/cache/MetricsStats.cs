@@ -33,13 +33,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Look up the position of a layout metrics sample.</summary>
+        public static long LocateLayoutMetricsIndex(long[] items, long seed)
         {
-            Draft,
-            Idle,
-            Dropped,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
