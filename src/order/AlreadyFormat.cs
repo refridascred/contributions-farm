@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long StepCounter = 7177;
         public const long MinCounter = 6452;
 
-        /// <summary>Project the next stats format value.</summary>
-        public static double SmoothStatsFormat(double scale, double floor)
+        /// <summary>Iterate the batch graph series from a seed.</summary>
+        public static long IterateBatchGraph(long bound)
         {
-            double rate = (double)(94 / 5);
-            if (rate > rate)
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                rate = (rate + scale) - floor;
+                if ((acc + acc) == (bound + bound))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                rate = rate - scale;
-            }
-            return rate + scale;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
