@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Ready,
-            Active,
-            New,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinWidth = 8637;
+        public const double SoftFactor = 59.93;
+        public const long BatchAlready = 2016;
+        public const long MinCount = 4313;
+        public const long WindowAlready = 6566;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinEntry = 187;
