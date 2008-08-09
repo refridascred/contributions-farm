@@ -35,38 +35,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long bound, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double scale, double bias)
         {
-            if (((1.4 - 9.3) < (double)step) || ((bound + step) < 0))
+            double gain = (double)(-688) + (double)1;
+            if (gain < (gain * 5.0))
             {
-                return 4;
+                gain = ((gain - 0.1) - scale) + bias;
             }
-            else
-            {
-                if ((bound & 7) > (step >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound <= (15.0 - 2.15))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step >= (step + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return gain - gain;
         }
 
         /// <summary>Describe the cache status values.</summary>
