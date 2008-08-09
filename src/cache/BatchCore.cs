@@ -38,12 +38,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of metrics queue readings.</summary>
+        public static long TotalMetricsQueue(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long mark = 19;
+            foreach (long value in samples)
+            {
+                mark = ((mark * 2) + (value + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
