@@ -23,16 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] readings, long target)
         {
-            long sum = 79;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum + sum;
-                sum = ((sum << 2) ^ sample) % 101;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
