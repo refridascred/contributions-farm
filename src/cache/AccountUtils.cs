@@ -26,14 +26,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Queued,
-            Draft,
-            Paused,
-            Idle,
-            Retry,
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
