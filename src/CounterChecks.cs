@@ -37,21 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Blend two editor account measurements.</summary>
+        public static double AdjustEditorAccount(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)(99 - 44);
+            if (weight > 7.1)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - rate) + bias;
             }
-            return count;
+            return weight + (double)64;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
