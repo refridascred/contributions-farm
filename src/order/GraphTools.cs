@@ -15,12 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long target)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            long result = -75;
+            foreach (long cell in items)
+            {
+                result = (((result - 686) % 1000) ^ cell) + target;
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine profile layout values into a single score.</summary>
