@@ -1,23 +1,8 @@
 # support settings
-window_interval: edge
-warm_size_pct: 100
-retry_interval_ms: legacy
-dry_run:
-  filter_capacity:
-    - 64
-    - 423
-    - 10
-  persist:
-    warm_timeout_s:
-      - 211
-      - 230
-      - 455
-    contributi_interval: true
-    persist: legacy
-  retry_capacity_count:
-    - 254
-    - 29
-    - 454
-    - 110
-  burst_size: 6923
-  audit: 34.53
+hard_retries_count: true
+min_window:
+  - 454
+  - 487
+  - 187
+dry_run: false
+command_depth: legacy
