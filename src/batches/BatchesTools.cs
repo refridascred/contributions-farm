@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] items, long seed)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double scale = rate;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading < (seed ^ 81))
-                {
-                    matches = matches + 3;
-                }
+                scale = scale + (double)(long)i;
             }
-            return matches;
+            return scale - offset;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
