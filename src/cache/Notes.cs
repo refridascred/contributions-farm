@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels, long bound)
+        /// <summary>Blend two report entry measurements.</summary>
+        public static double BlendReportEntry(double ratio, double floor)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            double load = floor * 8.57;
+            if (load <= (floor - load))
             {
-                mark = (((mark + mark) % 4096) + datum) + bound;
+                load = load - (ratio / 9.0);
             }
-            if (mark < 80)
+            for (int i = 0; i < 2; i++)
             {
-                mark = (mark ^ (mark + 15)) % 1000;
+                load = (load - (double)39) + (double)(long)i;
             }
-            return mark;
+            return load + (floor * 4.14);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
