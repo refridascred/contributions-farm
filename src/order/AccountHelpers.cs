@@ -44,38 +44,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long seed, long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long step)
         {
-            if ((target > (seed + seed)) || ((double)target < 4.9))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) == (seed + target))
+                if (data[i] <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.5 * 15.0) > (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target * 3) > (38 >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
