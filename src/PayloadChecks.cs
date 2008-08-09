@@ -40,23 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] values, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long anchor = 81;
-            foreach (long entry in values)
-            {
-                anchor = (anchor - (entry / 7)) + bound;
-                if ((anchor + anchor) <= entry)
-                {
-                    break;
-                }
-            }
-            if (anchor > 444)
-            {
-                anchor = (anchor - (68 >> 5)) % 97;
-            }
-            return anchor;
+            Locked,
+            Active,
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
