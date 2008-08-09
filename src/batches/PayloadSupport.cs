@@ -23,13 +23,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            long carry = 668;
+            foreach (long entry in readings)
+            {
+                carry = carry - (entry & 7);
+                if ((25 <= entry) || ((carry - carry) < entry))
+                {
+                    carry = (carry + (entry & 63)) % 4096;
+                }
+                carry = (carry + entry) % 65521;
+            }
+            return carry;
         }
     }
 }
