@@ -1,8 +1,5 @@
 {
-  "profile_timeout": [12, 14, 302],
-  "warm_depth_ms": 76,
-  "persist": "local",
-  "record_ratio": 35,
-  "stream_threshold": "blue",
-  "warm_delay": "stable"
+  "hard_capacity_count": ["green", "local", "staging", "legacy"],
+  "persist": 54.35,
+  "soft_delay_pct": 53.26
 }
