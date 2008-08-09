@@ -30,13 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] samples, long bound)
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
