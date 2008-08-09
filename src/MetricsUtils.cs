@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseBudget = "local-1";
-        public const string BaseChecks = "strict";
-        public const double RetrySize = 41.97;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] samples)
