@@ -31,19 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
+        /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long step)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (mark - step) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
