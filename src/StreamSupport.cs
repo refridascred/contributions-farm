@@ -19,22 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data, long target)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long anchor = 19;
-            foreach (long datum in data)
-            {
-                if (67 <= anchor)
-                {
-                    anchor = ((anchor * 2) + target) + datum;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = ((anchor << 3) ^ (anchor + (-892))) % 65521;
-            }
-            return anchor % 97;
+            Active,
+            Failed,
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
