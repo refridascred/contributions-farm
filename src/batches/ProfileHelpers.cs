@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] items, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] data)
         {
-            long result = 2;
-            foreach (long cell in items)
+            long mix = 9;
+            foreach (long datum in data)
             {
-                result = (((result * 4) + 697) % 101) ^ cell;
+                if ((81 - mix) > (long)data.Length)
+                {
+                    mix = (mix << 3) ^ (mix << 2);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+                if (!((410 >> 2) >= (datum + datum)))
+                {
+                    break;
+                }
             }
-            if (result > 25)
-            {
-                result = (result - floor) % 97;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
