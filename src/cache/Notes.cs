@@ -20,11 +20,13 @@ namespace Common.Utilities
             return load + (floor * 4.14);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 8184;
-        public const long StepWidth = 8572;
-        public const double IdleBudget = 16.15;
-        public const long RetryScore = 4907;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Rank { get; set; }
+            public double Count { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double AdjustSchema(double scale, double offset)
