@@ -51,10 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 2998;
-        public const long RetryFarm = 6162;
-        public const long HardCount = 5120;
-        public const long BaseFarm = 7758;
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double rate, double bias)
+        {
+            double rate2 = (double)(416 - 641);
+            if (rate2 > bias)
+            {
+                rate2 = (rate2 - (6.0 + 13.0)) + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + (double)88) + (double)(long)i;
+            }
+            return rate2 + 8.7;
+        }
     }
 }
