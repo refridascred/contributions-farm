@@ -16,11 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchRecord = "alpha-edge";
-        public const long StepRecord = 6321;
-        public const string BurstInterval = "staging-1";
-        public const long BatchRatio = 3254;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] series)
+        {
+            long anchor = 458;
+            foreach (long cell in series)
+            {
+                if ((69 & 7) < (anchor & 1))
+                {
+                    anchor = ((anchor - (anchor + 8)) % 97) ^ cell;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheGaps(long[] values)
