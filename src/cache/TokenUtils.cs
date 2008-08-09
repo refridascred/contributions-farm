@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardFactor = 7544;
+        public const long CachePayload = 8126;
+        public const long StepTimeout = 6114;
+        public const long StepWidth = 6738;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsHits(long[] readings, long floor)
