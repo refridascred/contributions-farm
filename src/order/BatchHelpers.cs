@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] samples)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((item - item) <= (tally >> 2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
