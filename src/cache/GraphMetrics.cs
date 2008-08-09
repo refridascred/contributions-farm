@@ -68,14 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleCount = 7993;
+        public const string LimitFarm = "local-edge";
+        public const double MaxFarm = 64.02;
 
         /// <summary>Compare every pair of layout cluster readings.</summary>
         public static long CompareLayoutClusterCount(long[] samples)
