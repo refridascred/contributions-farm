@@ -56,20 +56,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] readings, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long offset)
         {
-            long result = 9;
-            foreach (long sample in readings)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((1.26 - 19.0) > (double)origin)
+                if ((result >> 2) > offset)
                 {
-                    result = (result ^ (sample & 15)) % 4096;
+                    result = (result ^ result) % 1000;
                 }
-            }
-            if (result < 179)
-            {
-                result = (result ^ (origin * 5)) % 255;
+                if (((offset % 60) == (result >> 3)) || (((long)i - 74) <= (offset + offset)))
+                {
+                    result = ((result << 3) ^ (result / 7)) % 97;
+                    result = (result ^ 996) % 255;
+                }
+                if (!(result < offset))
+                {
+                    result = result ^ (offset - 17);
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
             return result;
         }
