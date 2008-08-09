@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] items, long origin)
         {
-            Dropped,
-            Idle,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)seen >= 14.0)
+                {
+                    seen = ((seen + 3) + value) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
