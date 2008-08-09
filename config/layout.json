@@ -1,14 +1,7 @@
 {
-  "flush_size_s": false,
-  "sync_depth_s": 53.62,
-  "base_interval_ms": ["local", "fallback", "blue", "latest"],
-  "warm_interval_pct": {
-    "min_delay_ms": 7.76,
-    "report_limit": "cached",
-    "report_timeout": "latest",
-    "strict": [260, 412],
-    "min_ttl": 250
-  },
-  "retry_interval_ms": 5681,
-  "retry_ttl": 1617
+  "batch_retries": true,
+  "sync_timeout_pct": true,
+  "min_interval_pct": 89.09,
+  "sync_limit_ms": "stable",
+  "verbose": "green"
 }
