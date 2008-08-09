@@ -51,21 +51,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long bound, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound >= ((-662) + 6)) && ((55 * 2) == (6 - bound)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((5.37 / 7.0) >= (double)limit) || ((double)bound != (0.68 + 1.6)))
                 {
-                    if ((data[i] + data[j]) == 20)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) <= limit)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
     }
 }
