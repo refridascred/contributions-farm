@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] values)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (double)hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
