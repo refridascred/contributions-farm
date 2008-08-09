@@ -51,17 +51,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] items, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
