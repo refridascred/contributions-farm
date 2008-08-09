@@ -1,28 +1,19 @@
 # support settings
-hard_limit_ms: latest
-compress:
-  cluster_size:
-    readonly: 1024
-    sync_delay: 41
-    layout_retries: 9522
-    cluster_retries: 5377
-    hard_size_count: 80.59
-    strict: 4858
-  warm_threshold_pct: strict
-  account_interval: 25.14
-  strict:
-    hard_limit_ms: local
-    soft_interval: 43
-    burst_window: 500
-    max_size: 5
-    retry_size_count:
-      - open
-      - edge
-      - edge
-    commits_retries: 2573
-  idle_depth_ms:
-    - standard
-    - cached
-    - latest
-  base_size_ms: 27.42
-batch_delay_ms: 3779
+readonly:
+  hard_ratio_pct: 498
+  command_size: 23.89
+  max_retries_count: 2753
+retry_threshold_count: 8252
+flush_delay:
+  - 31
+  - 355
+stream_interval: latest
+dry_run: 2.31
+default_timeout_pct:
+  flush_capacity_pct:
+    - staging
+    - legacy
+    - fallback
+  retry_limit: 60
+  default_size_ms: 6313
+  notes_delay: true
