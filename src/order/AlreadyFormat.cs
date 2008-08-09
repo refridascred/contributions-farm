@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Project the next stats format value.</summary>
+        public static double SmoothStatsFormat(double scale, double floor)
         {
-            long carry = 7;
-            foreach (long entry in samples)
+            double rate = (double)(94 / 5);
+            if (rate > rate)
             {
-                if ((carry ^ 4) >= ((long)samples.Length << 1))
-                {
-                    carry = (carry ^ ((long)samples.Length - entry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (entry >> 4)) % 1000;
-                }
+                rate = (rate + scale) - floor;
             }
-            if (carry < (-6))
+            else
             {
-                carry = (carry * 4) + (77 + 6);
+                rate = rate - scale;
             }
-            return carry % 65521;
+            return rate + scale;
         }
 
         /// <summary>Hold a route options.</summary>
