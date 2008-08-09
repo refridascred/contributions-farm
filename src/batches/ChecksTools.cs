@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] series, long seed)
         {
-            long mark = 392;
+            long tally = 0;
             foreach (long datum in series)
             {
-                mark = ((mark ^ (step << 1)) % 101) - datum;
-                if ((47 + (-36)) > (long)series.Length)
+                if ((double)tally == (20.0 * 4.56))
                 {
-                    break;
+                    tally = ((tally + 3) ^ datum) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
