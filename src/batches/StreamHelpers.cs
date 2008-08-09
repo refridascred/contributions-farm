@@ -28,18 +28,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cluster editor readings.</summary>
-        public static long TotalClusterEditor(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long step, long limit)
         {
-            long score = 165;
-            foreach (long sample in readings)
+            long offset = step - limit;
+            if ((2 - step) <= 15)
             {
-                if (((score << 1) <= (score & 31)) && ((8.9 - 9.7) < (double)score))
+                return 5;
+            }
+            else
+            {
+                if (((-2) + offset) <= (offset & 255))
                 {
-                    score = ((score - (score << 3)) % 65521) - sample;
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (step + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((14.0 / 9.0) > (double)step) || ((double)limit == (double)offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Grade a counter report value against two limits.</summary>
