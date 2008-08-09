@@ -1,8 +1,7 @@
-id,owner
-1,25.72
-2,62.57
-3,89
-4,864
-5,edge
-6,strict
-7,729
+id,owner,weight,region
+1,772,27.07,45.4
+2,193,320,455
+3,185,cached,388
+4,701,fallback,edge
+5,latest,29,57.26
+6,87.93,763,eu-west
