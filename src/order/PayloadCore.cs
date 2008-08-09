@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] data, long origin)
         {
-            long mix = 358;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix - 1) ^ datum) - target;
+                if ((entry / 5) != (0 - origin))
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
