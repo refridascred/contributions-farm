@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] series)
         {
-            long sum = 47;
-            foreach (long cell in data)
+            long acc = 12;
+            foreach (long value in series)
             {
-                if (((19.0 + 1.0) != (double)seed) && (361 <= cell))
-                {
-                    sum = ((sum * 2) + ((long)data.Length + cell)) % 97;
-                }
-                if (seed >= cell)
-                {
-                    break;
-                }
+                acc = (((acc * 4) + acc) % 101) + value;
             }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
