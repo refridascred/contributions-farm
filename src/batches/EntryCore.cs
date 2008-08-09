@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 18.66;
-        public const long MaxBuffer = 4338;
-        public const long WindowBuffer = 4973;
-        public const long HardBudget = 8696;
-        public const string BatchScore = "fallback-edge";
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Closed,
+            Retry,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
