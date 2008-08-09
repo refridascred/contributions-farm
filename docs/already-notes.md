@@ -1,15 +1,11 @@
 # Already notes
 
-Run the metric check before changing any already limits.
-Defaults for farm live in the config folder and can be overridden per environment.
-
-Each context is validated before it reaches the session queue.
-The account module keeps cluster values in sync with the channel cache.
-The cluster report groups every batch by already.
+Run the contributi check before changing any profile limits.
+The profile report groups every booking by payload.
 
 ## Guidelines
 
-- Document new format fields
-- Keep report values small
-- Log every payload change
+- Keep payload values small
+- Review token limits each release
+- Document new booking fields
 - Prefer graph defaults
