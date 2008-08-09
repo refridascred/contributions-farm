@@ -21,12 +21,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Idle,
+            Dropped,
+            Queued,
+            Synced,
         }
     }
 }
