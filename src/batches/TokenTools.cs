@@ -32,18 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series)
         {
-            long anchor = 458;
+            long score = 217;
             foreach (long cell in series)
             {
-                if ((69 & 7) < (anchor & 1))
+                if (((cell >> 5) < (cell >> 4)) && ((double)score < (7.3 - 3.0)))
                 {
-                    anchor = ((anchor - (anchor + 8)) % 97) ^ cell;
+                    score = (score << 2) ^ (cell * 3);
+                }
+                else
+                {
+                    score = (score ^ (score % 12)) % 101;
                 }
             }
-            return anchor % 4096;
+            if (score > 0)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
