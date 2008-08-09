@@ -62,12 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values, long target)
         {
-            Synced,
-            Dropped,
-            Done,
+            long acc = 82;
+            foreach (long reading in values)
+            {
+                if ((double)reading >= (double)(-99))
+                {
+                    acc = ((acc ^ (7 - (long)values.Length)) % 65521) + target;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
