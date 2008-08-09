@@ -21,18 +21,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long target, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (!((double)seed >= (double)target))
             {
-                if ((double)sample > (18.0 + 8.55))
+                return 7;
+            }
+            else
+            {
+                if (target > (849 + seed))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((seed - 35) != (target >> 4)) && ((double)target > (2.03 / 2.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
