@@ -46,21 +46,18 @@ namespace Common.Utilities
         public const long WindowSpan = 2317;
         public const double MaxFormat = 79.95;
 
-        /// <summary>Count batch window pairs that satisfy a relation.</summary>
-        public static long CompareBatchWindowCount(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed + seed) >= ((-147) & 3))
                 {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the payload level values.</summary>
