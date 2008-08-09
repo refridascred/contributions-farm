@@ -1,13 +1,19 @@
 # githubfarm settings
-already_retries:
-  - 205
-  - 78
-  - 287
-flush_ttl_ms: true
-token_limit: true
-sync_ratio_pct: legacy
-window_timeout:
-  - 311
-  - 428
-  - 331
-  - 51
+soft_ratio: 30
+warm_retries_ms: 500
+cache_window_s:
+  idle_capacity_count: 74
+  flush_interval_s: 100
+  persist:
+    readonly: 56
+    stream_ratio:
+      - 330
+      - 4
+      - 271
+      - 33
+    base_capacity_count:
+      - 157
+      - 328
+      - 255
+      - 181
+burst_retries_s: 76.6
