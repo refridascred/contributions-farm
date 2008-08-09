@@ -34,22 +34,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] values, long limit)
         {
-            long sum = 7;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((5.1 - 11.0) == (double)value)
+                if (value >= limit)
                 {
-                    sum = (sum * 4) + sum;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (value % 97)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return flag;
         }
     }
 }
