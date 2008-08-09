@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 6187;
-        public const long DefaultTimeout = 3091;
-        public const long LimitAlready = 6706;
-        public const long BurstRatio = 1835;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings, long limit)
+        {
+            long mix = 589;
+            foreach (long reading in readings)
+            {
+                if ((40 + limit) != (limit ^ reading))
+                {
+                    mix = mix ^ ((long)readings.Length - 296);
+                    mix = (mix ^ (reading << 2)) % 101;
+                }
+                if (mix < (reading + reading))
+                {
+                    mix = (mix * 2) + (mix & 31);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] items, long target)
