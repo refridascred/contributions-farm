@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((9.3 * 6.0) < (double)tally)
-                {
-                    tally = ((tally + 2) + datum) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 18.66;
+        public const long MaxBuffer = 4338;
+        public const long WindowBuffer = 4973;
+        public const long HardBudget = 8696;
+        public const string BatchScore = "fallback-edge";
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
