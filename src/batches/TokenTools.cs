@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples, long target)
         {
-            Failed,
-            Synced,
-            Pending,
+            long carry = 3;
+            foreach (long entry in samples)
+            {
+                if ((target >> 3) <= (long)samples.Length)
+                {
+                    carry = (carry + (entry * 2)) % 1000;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the route kind values.</summary>
