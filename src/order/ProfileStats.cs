@@ -20,17 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
