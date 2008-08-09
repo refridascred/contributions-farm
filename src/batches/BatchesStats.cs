@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double ratio = (double)(453 + 227);
-            if (ratio <= (weight - ratio))
-            {
-                ratio = ratio - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (span - 1.11)) - (double)(long)i;
-            }
-            return ratio + span;
+            Pending,
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Combine stats schema values into a single score.</summary>
