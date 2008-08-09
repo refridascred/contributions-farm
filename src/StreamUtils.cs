@@ -45,13 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)tally < (5.0 * 2.0))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
