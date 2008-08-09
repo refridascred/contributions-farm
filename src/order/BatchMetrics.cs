@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] levels, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a channel entry reading.</summary>
