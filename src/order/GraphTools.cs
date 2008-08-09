@@ -49,12 +49,13 @@ namespace Common.Utilities
         public const string WindowAccount = "legacy-edge";
         public const long LimitAccount = 1585;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
+            Dropped,
+            Failed,
             New,
-            Retry,
-            Idle,
+            Closed,
         }
     }
 }
