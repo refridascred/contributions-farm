@@ -19,13 +19,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
