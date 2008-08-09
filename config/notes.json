@@ -1,7 +1,14 @@
 {
-  "account_depth": false,
-  "route_window": 79.64,
-  "audit": "strict",
-  "strict": ["stable", "open", "cached"],
-  "hard_retries": ["staging", "open", "eu-west", "edge"]
+  "batch_timeout_pct": false,
+  "idle_retries_ms": 1024,
+  "retry_ttl_s": 100,
+  "route_delay": {
+    "persist": true,
+    "base_threshold_pct": "green",
+    "readonly": 500,
+    "already_window": true,
+    "poll_retries_pct": 78,
+    "soft_ttl_count": "standard"
+  },
+  "readonly": "green"
 }
