@@ -40,12 +40,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine metric already values into a single score.</summary>
+        public static long WeighMetricAlready(long[] levels, long limit)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            long state = 3;
+            foreach (long reading in levels)
+            {
+                state = (state + (reading - (long)levels.Length)) % 101;
+                state = ((state * 3) + (limit - (long)levels.Length)) % 255;
+            }
+            if (state > 0)
+            {
+                state = ((state * 3) + (state + limit)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the token phase values.</summary>
