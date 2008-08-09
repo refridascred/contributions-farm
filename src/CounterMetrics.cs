@@ -39,9 +39,21 @@ namespace Common.Utilities
         public const string StepSize = "staging";
         public const long IdleCluster = 303;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryBudget = 4802;
-        public const long LimitSpan = 8213;
-        public const long BurstTimeout = 3953;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
