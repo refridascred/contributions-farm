@@ -19,12 +19,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 5910;
-        public const long WindowSchema = 2268;
-        public const long RetrySchema = 9298;
-        public const long IdleSpan = 6577;
-        public const string CacheLevel = "latest-edge";
+        /// <summary>Audit account contributi readings against a rule.</summary>
+        public static long CountAccountContributiOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.52 * 9.0) > (double)sample)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long ScoreContext(long[] values)
