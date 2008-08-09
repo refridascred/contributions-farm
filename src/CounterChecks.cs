@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            if (((origin % 5) != (origin - origin)) && (12 >= (origin - seed)))
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                score = ((score << 3) ^ (bound / 2)) % 65521;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)24 != (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.0 + 9.8) > (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed << 2) > (927 / 9)) || ((origin % 12) > origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the buffer status values.</summary>
