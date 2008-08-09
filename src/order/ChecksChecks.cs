@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if (((limit % 97) == (target / 8)) && ((target / 3) >= (limit & 31)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (8 < (target - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((target * 4) < limit) || ((limit & 127) <= (target >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((97 ^ target) >= (target + target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a schema info.</summary>
