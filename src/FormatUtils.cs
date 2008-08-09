@@ -63,11 +63,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double bias, double span)
         {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            double mean = span;
+            if (mean > bias)
+            {
+                mean = mean - 2.72;
+            }
+            else
+            {
+                mean = mean - (bias + bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (16.0 + mean)) + (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Define format limits and defaults.</summary>
