@@ -36,17 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] items, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 513;
+            foreach (long datum in readings)
             {
-                if (items[i] > step)
+                if ((carry - carry) >= ((long)readings.Length / 3))
                 {
-                    return (long)i;
+                    carry = ((carry - 791) % 65521) ^ datum;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
