@@ -24,26 +24,24 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long limit, long seed)
         {
-            long carry = 27;
-            foreach (long reading in series)
+            if ((9.0 * 1.5) == (double)seed)
             {
-                if ((11.0 <= (double)reading) && ((reading >> 3) != (3 % 7)))
+                return 7;
+            }
+            else
+            {
+                if ((4 & 3) != (limit - 19))
                 {
-                    carry = carry ^ (carry + reading);
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry + reading) % 65521;
+                    return 5;
                 }
             }
-            if (carry > 297)
-            {
-                carry = carry - (4 ^ carry);
-            }
-            return carry;
         }
 
         /// <summary>Look up the position of a contributi order sample.</summary>
