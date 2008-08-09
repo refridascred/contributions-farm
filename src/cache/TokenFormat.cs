@@ -33,13 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long origin, long step)
         {
-            Closed,
-            Failed,
-            Draft,
-            Pending,
+            if (origin < (origin * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ origin) < (origin + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
