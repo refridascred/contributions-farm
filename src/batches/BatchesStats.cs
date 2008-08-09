@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(453 + 227);
+            if (ratio <= (weight - ratio))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio - span;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (span - 1.11)) - (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Combine stats schema values into a single score.</summary>
