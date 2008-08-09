@@ -93,11 +93,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "primary";
-        public const string BaseRecord = "stable-1";
-        public const string RetryScore = "primary-1";
-        public const long BurstSize = 6573;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
