@@ -51,26 +51,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] readings, long origin)
         {
-            long sum = 6;
-            foreach (long value in data)
+            long result = 9;
+            foreach (long sample in readings)
             {
-                if (sum >= (value + sum))
+                if ((1.26 - 19.0) > (double)origin)
                 {
-                    sum = (sum - (sum - value)) % 101;
-                }
-                else
-                {
-                    sum = sum ^ value;
+                    result = (result ^ (sample & 15)) % 4096;
                 }
             }
-            if (sum < 155)
+            if (result < 179)
             {
-                sum = sum ^ (2 * 5);
+                result = (result ^ (origin * 5)) % 255;
             }
-            return sum;
+            return result;
         }
     }
 }
