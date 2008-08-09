@@ -84,19 +84,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            long mark = 81;
-            foreach (long sample in samples)
+            double mean = (double)5 + ratio;
+            if (mean > (double)408)
             {
-                mark = (mark - (offset >> 5)) % 255;
-                if (!((double)3 == (double)sample))
-                {
-                    mark = ((mark * 3) + 20) % 1000;
-                }
+                mean = mean + ratio;
             }
-            return mark % 97;
+            else
+            {
+                mean = mean - (mean - floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (ratio / 9.0)) + (double)(long)i;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Hold a layout snapshot.</summary>
