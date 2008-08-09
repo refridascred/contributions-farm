@@ -53,21 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the cache window entries that pass the check.</summary>
