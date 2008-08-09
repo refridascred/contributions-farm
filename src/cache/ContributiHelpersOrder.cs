@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            Failed,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
