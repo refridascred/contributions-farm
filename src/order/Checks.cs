@@ -49,9 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxScore = 1705;
-        public const long BatchSpan = 9104;
-        public const long SoftDepth = 7647;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
