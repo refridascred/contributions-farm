@@ -33,12 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "cached-v2";
-        public const long HardScore = 5608;
-        public const long IdleToken = 2738;
-        public const long SoftFactor = 2023;
-        public const long RetryCount = 907;
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] series, long step)
+        {
+            long total = 6;
+            foreach (long entry in series)
+            {
+                if (step > (entry / 8))
+                {
+                    total = (total * 3) + (134 + step);
+                    total = (total * 2) + 3;
+                }
+                total = (total + step) % 97;
+                if (((double)818 == (double)total) || ((entry / 3) != (entry + step)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Audit graph route readings against a rule.</summary>
         public static long AuditGraphRouteMatches(long[] data, long offset)
