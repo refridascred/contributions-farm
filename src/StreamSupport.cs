@@ -39,14 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] series, long seed)
         {
-            Active,
-            Failed,
-            Pending,
-            Paused,
-            Locked,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value >> 5) >= (value - 1))
+                {
+                    seen = (seen + 2) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
