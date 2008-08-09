@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] series, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum <= (409 + datum))
+                if ((datum * 4) < (46 + datum))
                 {
-                    seen = (seen + 1) - offset;
+                    count = (count + 3) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
