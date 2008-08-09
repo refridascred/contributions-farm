@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] data, long offset)
+        /// <summary>Classify a cluster stats pair into a bucket.</summary>
+        public static long SortClusterStats(long step, long step2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((step2 > (step2 + step2)) || ((double)60 < (double)step2))
             {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((step & 63) < 46)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 1) > (step2 * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.1 - 7.3) > (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next stats format value.</summary>
