@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metrics counter entry that matches the target.</summary>
-        public static long LookupMetricsCounterIndex(long[] readings, long step)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
