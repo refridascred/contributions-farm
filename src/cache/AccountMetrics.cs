@@ -13,12 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double floor)
-        {
-            double weight = (bias - floor) * 4.3;
-            return weight - floor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSize = 6351;
+        public const long SoftAccount = 6153;
+        public const long LimitSize = 109;
+        public const string BatchScore = "standard-1";
+        public const long HardAccount = 8623;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
