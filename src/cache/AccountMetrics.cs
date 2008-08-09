@@ -20,12 +20,17 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
+        public static long LookupGithubfarmMetricIndex(long[] samples, long step)
         {
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
