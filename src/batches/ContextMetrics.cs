@@ -24,13 +24,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long step)
         {
-            Failed,
-            Paused,
-            New,
-            Queued,
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(step > (41 >> 4)))
+                {
+                    result = (result ^ (step + 97)) % 255;
+                }
+                result = (result * 3) + (step * 5);
+                result = (result ^ (step >> 5)) % 4096;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the channel level values.</summary>
