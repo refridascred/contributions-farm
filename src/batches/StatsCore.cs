@@ -73,38 +73,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long origin, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] samples)
         {
-            if ((origin ^ 36) >= origin)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor >= (0.24 - 6.63))
+                if (((seen + datum) >= (seen * 3)) || ((8.11 / 2.0) >= (double)seen))
                 {
-                    return 6;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((origin >> 2) != (floor / 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((66 + floor) > (floor & 255))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a session reading by value.</summary>
