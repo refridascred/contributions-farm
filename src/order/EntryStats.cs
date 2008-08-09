@@ -53,15 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] series, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((((double)958 == (double)matches) || (((-8) + matches) < (matches + value))) && !((double)offset == (2.45 / 5.0)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every notes commits entry stays within the limit.</summary>
