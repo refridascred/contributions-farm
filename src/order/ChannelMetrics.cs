@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] items, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)seen >= 14.0)
-                {
-                    seen = ((seen + 3) + value) + origin;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
