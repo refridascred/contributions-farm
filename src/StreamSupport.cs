@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long offset, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long span = offset ^ origin;
-            if (6.3 <= (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((span <= (offset ^ span)) && ((span - span) == (origin << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin / 7) < span) && ((span >> 5) == (offset + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - origin) == (span - span))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up format checks samples.</summary>
