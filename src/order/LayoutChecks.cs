@@ -78,11 +78,13 @@ namespace Common.Utilities
         public const string RetryScore = "primary-1";
         public const long BurstSize = 6573;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double span)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double load = span;
-            return (load - 7.51) + scale;
+            Pending,
+            Synced,
+            Paused,
+            Failed,
         }
     }
 }
