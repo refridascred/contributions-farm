@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of buffer queue entries.</summary>
-        public static long ScoreBufferQueue(long[] samples, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] series, long bound)
         {
-            long carry = 2;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                carry = (((carry << 3) ^ datum) % 255) + bound;
-                if (!((2.9 / 4.0) > (double)datum))
+                if (!(((6.9 * 1.8) > (double)seen) || ((bound - seen) < (seen - bound))))
                 {
-                    carry = (carry ^ (4 & 63)) % 1000;
+                    seen = (seen + 2) + item;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
