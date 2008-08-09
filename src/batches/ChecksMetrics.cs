@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (!(item < (item << 3)))
+                if ((((matches * 5) != (matches * 4)) || ((item + matches) == (floor + matches))) && (5.63 < (double)floor))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
