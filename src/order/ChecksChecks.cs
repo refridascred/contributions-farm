@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= offset)
                 {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
