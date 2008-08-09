@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] samples, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double bias, double floor)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double gain = (double)(52 * 3);
+            if (gain > 7.2)
             {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - gain) - bias;
             }
-            return found;
+            return gain + floor;
         }
 
         /// <summary>Hold a already stats.</summary>
