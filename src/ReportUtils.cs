@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of already metric readings.</summary>
-        public static long CompareAlreadyMetricCount(long[] items)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
