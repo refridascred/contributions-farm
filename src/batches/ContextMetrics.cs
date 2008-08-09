@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long score = 16;
-            foreach (long reading in values)
-            {
-                score = (score ^ (6 + reading)) % 255;
-            }
-            return score;
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
