@@ -51,12 +51,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 7770;
-        public const string StepDepth = "strict-edge";
-        public const long BaseChannel = 4297;
-        public const long DefaultChannel = 9887;
-        public const string LimitChannel = "legacy-v2";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] levels)
