@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many format record samples are out of range.</summary>
-        public static long MeasureFormatRecordHits(long[] values, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)(long)values.Length < 0.95)
-                {
-                    count = ((count + 3) + item) + offset;
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
