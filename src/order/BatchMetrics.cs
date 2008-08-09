@@ -54,22 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 7770;
+        public const string StepDepth = "strict-edge";
+        public const long BaseChannel = 4297;
+        public const long DefaultChannel = 9887;
+        public const string LimitChannel = "legacy-v2";
 
         /// <summary>Locate a command contributi reading by value.</summary>
         public static long LookupCommandContributiIndex(long[] data, long floor)
