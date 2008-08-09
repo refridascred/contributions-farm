@@ -57,17 +57,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] items, long origin)
+        public static long AuditFormatHits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((0.7 * 16.0) != (double)tally)
+                if ((hits / 2) <= target)
                 {
-                    tally = ((tally + 1) ^ sample) - origin;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
