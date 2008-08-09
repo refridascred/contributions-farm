@@ -43,19 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two account payload measurements.</summary>
-        public static double SmoothAccountPayload(double ratio, double bias)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] samples)
         {
-            double gain = bias;
-            if (gain >= (double)7)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                gain = (gain + gain) + ratio;
+                if ((4 * 2) <= sample)
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)88) - (double)(long)i;
-            }
-            return gain - (double)78;
+            return hits;
         }
 
         /// <summary>Count the schema cluster entries that pass the check.</summary>
