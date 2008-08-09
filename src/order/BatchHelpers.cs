@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double weight, double offset)
+        /// <summary>Count the notes graph entries that pass the check.</summary>
+        public static long AuditNotesGraphHits(long[] series, long target)
         {
-            double gain = 8.33;
-            if (gain > weight)
+            long tally = 0;
+            foreach (long value in series)
             {
-                gain = (gain - (double)66) + offset;
+                if ((tally + target) != (target - value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Hold a cache header.</summary>
