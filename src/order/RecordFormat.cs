@@ -55,20 +55,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                state = state ^ (long)i;
-                if ((53 / 6) <= (seed + seed))
-                {
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
