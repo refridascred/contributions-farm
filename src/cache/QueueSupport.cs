@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCount = "legacy-1";
-        public const long LimitCount = 8687;
-        public const double BurstTimeout = 56.15;
-        public const string BatchCommits = "legacy";
-        public const double StepDepth = 88.02;
+        /// <summary>Combine channel contributi values into a single score.</summary>
+        public static long WeighChannelContributi(long[] data, long step)
+        {
+            long total = 26;
+            foreach (long sample in data)
+            {
+                if ((19.0 / 7.0) < (double)sample)
+                {
+                    total = (((total << 3) ^ (sample - 5)) % 1000) + step;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (8 - total)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
