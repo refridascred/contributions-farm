@@ -22,12 +22,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up record samples.</summary>
