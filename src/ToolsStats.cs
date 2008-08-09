@@ -53,13 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Pending,
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a record header.</summary>
