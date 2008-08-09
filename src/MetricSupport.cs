@@ -23,9 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 6178;
-        public const double HardRatio = 29.78;
-        public const long BatchFactor = 5868;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
