@@ -1,14 +1,10 @@
 # Command notes
 
-A account that stays idle for too long is moved to the payload list.
-The already module keeps layout values in sync with the channel cache.
-
-The farm report groups every order by tools.
-When a graph fails, the account handler retries a few times before giving up.
+Use schema settings to tune how often payload data is refreshed.
+Keep batch and cache names short and lowercase.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate cluster input early
-- Prefer buffer defaults
-- Log every filter change
+- Document new metric fields
+- Keep batches values small
+- Validate channel input early
