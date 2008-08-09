@@ -13,21 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Digest a series of checks batch entries.</summary>
+        public static long CombineChecksBatch(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((11.0 - 4.5) >= (double)anchor)
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + ((long)values.Length / 9)) + reading;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a context header.</summary>
