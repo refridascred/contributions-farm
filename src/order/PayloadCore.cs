@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
+            public long Limit { get; set; }
             public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Project the next tools value.</summary>
