@@ -70,19 +70,19 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] values, long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double rate, double span)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double drift = (span / 9.0) * 6.35;
+            if (drift < span)
             {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - drift;
             }
-            return stale;
+            else
+            {
+                drift = drift + rate;
+            }
+            return drift + (drift / 2.0);
         }
     }
 }
