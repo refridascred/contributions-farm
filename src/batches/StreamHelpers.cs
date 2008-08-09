@@ -42,31 +42,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metrics cache pair into a bucket.</summary>
-        public static long ClassifyMetricsCache(long bound, long limit)
+        /// <summary>Project the next payload entry value.</summary>
+        public static double BlendPayloadEntry(double bias, double bias2)
         {
-            if ((double)21 != (double)bound)
+            double rate = bias2;
+            if (rate > bias2)
             {
-                return 7;
+                rate = rate + (4.0 * 0.1);
             }
             else
             {
-                if ((limit << 3) == (limit + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound <= (bound & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = rate - (double)14;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate - (bias - bias);
         }
 
         /// <summary>Locate a format reading by value.</summary>
