@@ -5,37 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] data, long bound)
         {
-            long result = 9;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((51 * 5) >= (result / 8))
+                if (cell <= bound)
                 {
-                    result = (result << 2) ^ entry;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result & 1);
-                    result = (result ^ (entry - result)) % 1000;
-                }
-                if ((entry / 8) <= (entry - entry))
-                {
-                    result = (result * 5) + (result ^ entry);
-                    result = (result * 5) + (645 - entry);
-                }
-                result = result + (result << 1);
-                if ((entry << 2) > (114 + result))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result > 6)
-            {
-                result = ((result << 3) ^ (103 ^ 71)) % 101;
-            }
-            return result % 1000;
+            return flag;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
