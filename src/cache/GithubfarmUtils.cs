@@ -39,19 +39,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] data, long floor)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
