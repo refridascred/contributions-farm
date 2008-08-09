@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] series)
         {
-            long score = 9;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((value & 31) >= 5) && ((54 + score) < (seed - seed)))
+                if (item >= (item / 4))
                 {
-                    score = ((score << 3) ^ (7 ^ 555)) % 101;
+                    tally = tally + 1;
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Find the first support layout entry that matches the target.</summary>
