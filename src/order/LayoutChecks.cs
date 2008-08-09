@@ -27,23 +27,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long CountChecksLayoutOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((count - (long)levels.Length) >= count) || ((entry << 1) < (283 / 4)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 3.11;
+        public const long MaxSize = 8111;
+        public const long LimitMetric = 8550;
+        public const long HardSpan = 5717;
+        public const long HardLevel = 8933;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
