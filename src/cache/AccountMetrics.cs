@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a filter cache sample.</summary>
-        public static long SeekFilterCacheIndex(long[] series, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
