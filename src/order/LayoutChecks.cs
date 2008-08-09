@@ -27,12 +27,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 3.11;
-        public const long MaxSize = 8111;
-        public const long LimitMetric = 8550;
-        public const long HardSpan = 5717;
-        public const long HardLevel = 8933;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (15.0 < (double)tally)
+                {
+                    tally = ((tally + 1) ^ reading) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
