@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((reading + matches) > (matches - reading)) || (((double)matches == (7.0 + 18.0)) && ((matches * 5) == (matches - reading))))
+                if ((datum / 4) > datum)
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
