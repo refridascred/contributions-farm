@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many token cache samples are out of range.</summary>
+        public static long CountTokenCacheOutliers(long[] levels)
         {
-            Failed,
-            Ready,
-            Locked,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item * 5) > (seen * 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
