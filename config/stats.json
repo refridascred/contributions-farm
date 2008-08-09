@@ -1,11 +1,7 @@
 {
-  "hard_retries_pct": false,
-  "audit": {
-    "queue_limit": 7329,
-    "session_ttl": "green",
-    "dry_run": 30
-  },
-  "tools_delay": true,
-  "readonly": 7530,
-  "enabled": 44.36
+  "flush_threshold": 100,
+  "profile_limit": 8.0,
+  "persist": [284, 1],
+  "dry_run": true,
+  "buffer_depth": 77
 }
