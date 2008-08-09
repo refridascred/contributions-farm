@@ -40,13 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] readings, long floor)
         {
-            Idle,
-            Active,
-            Dropped,
-            Failed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((((floor ^ 53) >= (item ^ seen)) || (floor <= seen)) && !(seen < (floor ^ seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
