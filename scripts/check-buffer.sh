@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge fallback primary latest; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=99
-log "limit is ${BUFFER_LIMIT}"
+for item in local blue strict standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
