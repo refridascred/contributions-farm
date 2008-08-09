@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable green; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=105
+log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
