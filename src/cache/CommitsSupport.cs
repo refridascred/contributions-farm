@@ -44,18 +44,10 @@ namespace Common.Utilities
         public const long WindowLayout = 1256;
         public const long BaseLayout = 311;
 
-        /// <summary>Find the first batch farm entry that matches the target.</summary>
-        public static long SeekBatchFarmIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryFactor = 5208;
+        public const long CacheLevel = 4251;
+        public const string MinLevel = "strict-edge";
 
         /// <summary>Accumulate commits metric samples.</summary>
         public static long WeighCommitsMetric(long[] data)
