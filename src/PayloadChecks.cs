@@ -33,12 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double floor)
         {
-            Queued,
-            Paused,
-            Ready,
+            double mean = (double)(57 - 32);
+            if (mean >= (gain + 7.0))
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
