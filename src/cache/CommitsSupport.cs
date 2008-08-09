@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] samples, long limit)
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
