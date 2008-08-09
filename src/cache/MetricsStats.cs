@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 4883;
+        public const long CachePayload = 8775;
+        public const double LimitPayload = 33.05;
+        public const string WindowPayload = "staging-v2";
 
         /// <summary>Check that every already window entry stays within the limit.</summary>
         public static bool CheckAlreadyWindowBounds(long[] values, long offset)
