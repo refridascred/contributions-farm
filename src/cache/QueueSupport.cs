@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] series, long seed)
+        /// <summary>Validate layout queue readings against a bound.</summary>
+        public static bool ValidateLayoutQueueBounds(long[] samples, long limit)
         {
-            long score = 857;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                score = ((score - entry) % 65521) + seed;
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (score > 814)
-            {
-                score = score - (score ^ score);
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the window phase values.</summary>
