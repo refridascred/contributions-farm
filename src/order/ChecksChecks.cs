@@ -15,22 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples)
+        /// <summary>Audit account buffer readings against a rule.</summary>
+        public static long TallyAccountBufferMatches(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (tally <= (value + 339))
+                if ((double)seen <= (double)cell)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
