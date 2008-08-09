@@ -1,9 +1,35 @@
 # support settings
-enabled: strict
-min_interval: 70.39
-max_depth:
-  - 313
-  - 357
-  - 414
-cache_delay: 79.6
-dry_run: 64.79
+dry_run: false
+audit: true
+poll_retries_s:
+  soft_delay:
+    max_interval_ms: 35.87
+    retry_capacity_count:
+      - 434
+      - 352
+      - 368
+      - 449
+    dry_run: 5403
+  idle_ratio_ms:
+    poll_limit_ms: 2767
+    verbose:
+      - cached
+      - fallback
+    compress: standard
+    enabled:
+      - 73
+      - 273
+      - 407
+      - 238
+  readonly:
+    - local
+    - edge
+    - edge
+    - legacy
+  compress:
+    - 57
+    - 261
+    - 464
+  tools_ttl: 80.01
+compress: blue
+githubfarm_capacity: 82
