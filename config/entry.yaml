@@ -1,12 +1,8 @@
 # entry settings
-enabled: 20.93
-burst_limit: true
-max_depth_s: stable
-max_ratio_pct:
-  format_ttl: open
-  cache_threshold: edge
-  audit: true
-  cluster_delay: standard
-  base_capacity_pct: 500
-cluster_limit: true
-default_size: cached
+warm_window:
+  - 454
+  - 161
+  - 158
+  - 106
+verbose: green
+readonly: 7763
