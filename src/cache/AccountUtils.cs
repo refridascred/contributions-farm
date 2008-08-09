@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up counter checks samples.</summary>
-        public static long CompareCounterChecksCount(long[] series)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
