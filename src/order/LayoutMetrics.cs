@@ -27,32 +27,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long limit, long limit2)
+        /// <summary>Fold a list of token account readings.</summary>
+        public static long TallyTokenAccount(long[] levels, long seed)
         {
-            long next = limit + limit2;
-            if ((limit2 / 3) > (next - next))
+            long mix = 5;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit + limit) < limit2) && ((double)next == (double)7))
+                if ((seed << 1) <= (22 % 24))
                 {
-                    return 6;
+                    mix = mix ^ (cell << 1);
+                    break;
                 }
-                else
+                if (!(9 > seed))
                 {
-                    if ((limit2 ^ next) <= (42 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = (mix * 5) + (seed + (long)levels.Length);
                 }
             }
+            return mix;
         }
     }
 }
