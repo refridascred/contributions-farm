@@ -70,13 +70,38 @@ namespace Common.Utilities
         public const double HardFilter = 12.84;
         public const long BurstScore = 4726;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long limit, long target)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            if (((8.0 + 15.0) != (double)target) || ((target - limit) == (target / 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.51 * 4.5) >= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)target != (6.8 + 9.34)) && ((6.6 - 6.99) != (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target << 2) <= (limit % 100))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support phase values.</summary>
