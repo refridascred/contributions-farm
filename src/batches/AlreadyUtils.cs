@@ -47,13 +47,12 @@ namespace Common.Utilities
         public const long MinMetrics = 691;
         public const long BatchTimeout = 8450;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstInterval = "primary-edge";
+        public const long BaseSchema = 4666;
+        public const double CacheInterval = 77.51;
+        public const long SoftSchema = 3013;
+        public const long SoftRatio = 1568;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] items, long target)
