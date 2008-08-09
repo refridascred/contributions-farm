@@ -56,12 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] series, long origin)
         {
-            Draft,
-            Active,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate token batches samples.</summary>
