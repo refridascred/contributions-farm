@@ -12,11 +12,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Stale,
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
