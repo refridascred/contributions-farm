@@ -15,14 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] levels, long target)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Idle,
-            Ready,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((((3.2 + 7.1) != (double)target) && ((sample % 100) >= hits)) || ((3 * 5) > (sample & 15)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
