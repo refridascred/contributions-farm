@@ -1,13 +1,12 @@
 # githubfarm settings
-default_size: 37
-warm_size_count:
-  - 126
+min_depth:
   - 434
-  - 124
-base_window_count: true
-batch_ttl_pct: 60
-flush_ratio:
-  - 354
-  - 215
-  - 235
-  - 304
+  - 494
+  - 122
+default_depth_s: cached
+base_ratio:
+  - primary
+  - open
+  - eu-west
+min_depth_s: 83
+soft_ratio_pct: 3
