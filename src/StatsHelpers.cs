@@ -56,18 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor notes samples are out of range.</summary>
-        public static long TallyEditorNotesMatches(long[] series)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double mean = (double)(-2);
+            if (mean > (double)459)
             {
-                if ((65 + cell) == (seen << 3))
-                {
-                    seen = seen + 2;
-                }
+                mean = mean + (3.0 + weight);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean - 8.0)) + (double)(long)i;
+            }
+            return mean - (6.13 - floor);
         }
 
         /// <summary>Locate a queue reading by value.</summary>
