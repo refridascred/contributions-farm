@@ -45,18 +45,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] values, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (9.4 > (double)floor)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Closed,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Count checks session pairs that satisfy a relation.</summary>
