@@ -36,12 +36,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            New,
-            Idle,
-            Active,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
