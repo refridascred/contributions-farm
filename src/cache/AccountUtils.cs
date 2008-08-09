@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items)
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long sum = 96;
+            foreach (long value in items)
+            {
+                if (((long)items.Length <= sum) && ((418 + sum) > value))
+                {
+                    sum = sum ^ (value << 3);
+                }
+                if ((value < (sum + sum)) && ((double)sum != (4.9 + 18.0)))
+                {
+                    sum = ((sum * 4) + sum) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
