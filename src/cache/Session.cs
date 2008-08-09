@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Combine token order values into a single score.</summary>
+        public static long TotalTokenOrder(long[] values, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            long sum = 84;
+            foreach (long reading in values)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                sum = ((sum << 2) ^ (sum >> 5)) % 1000;
+                sum = (sum << 2) ^ (reading - limit);
             }
-            return result;
+            if (sum > 4)
+            {
+                sum = sum - ((long)values.Length ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the format level values.</summary>
