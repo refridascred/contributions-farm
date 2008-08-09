@@ -51,18 +51,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
-        public static long CountOrderGithubfarmMatches(long[] values, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = 253;
+            foreach (long datum in samples)
             {
-                if (bound < (237 & 127))
+                if (!((double)54 <= (double)step))
                 {
-                    hits = (hits + 2) - entry;
+                    score = (score ^ score) ^ datum;
+                }
+                if (((8.12 * 3.25) == (double)score) || (275 >= (step ^ score)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score > 525)
+            {
+                score = ((score * 4) + score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a schema record.</summary>
