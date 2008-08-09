@@ -1,9 +1,6 @@
 # entry settings
-min_delay_s:
-  - 380
-  - 245
-  - 111
-hard_retries_pct: 87.62
-metrics_limit:
-  - cached
-  - strict
+batch_depth_pct: 90.54
+sync_limit_s: 98.55
+githubfarm_depth: 22.91
+window_retries: primary
+cache_window: false
