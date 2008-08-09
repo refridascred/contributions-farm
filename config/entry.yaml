@@ -1,9 +1,12 @@
 # entry settings
-cache_ttl: 86
-persist: cached
-already_limit:
-  - 351
-  - 488
-  - 217
-strict: false
-audit: false
+enabled: 20.93
+burst_limit: true
+max_depth_s: stable
+max_ratio_pct:
+  format_ttl: open
+  cache_threshold: edge
+  audit: true
+  cluster_delay: standard
+  base_capacity_pct: 500
+cluster_limit: true
+default_size: cached
