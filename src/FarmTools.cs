@@ -24,18 +24,9 @@ namespace Common.Utilities
         public const long RetryQueue = 7805;
         public const string BurstSpan = "staging";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (196 < (cell >> 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "primary-v2";
+        public const long SoftSize = 6446;
+        public const long IdleBudget = 9280;
     }
 }
