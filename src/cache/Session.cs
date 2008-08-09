@@ -22,19 +22,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] samples, long origin)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Ready,
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
