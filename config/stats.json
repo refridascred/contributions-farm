@@ -1,6 +1,6 @@
 {
-  "warm_delay": 1024,
-  "warm_size": false,
-  "burst_interval_s": 34.74,
-  "cache_ttl": [316, 447, 340, 42]
+  "batch_depth_pct": 500,
+  "compress": ["green", "edge", "legacy", "blue"],
+  "soft_capacity_pct": "strict",
+  "strict": false
 }
