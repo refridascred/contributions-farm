@@ -61,12 +61,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 8334;
-        public const long BurstTimeout = 8889;
-        public const long MinWidth = 63;
-        public const double RetryAlready = 11.39;
-        public const long CacheBudget = 1782;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MaxInterval = 7.12;
