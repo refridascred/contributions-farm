@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long floor, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] data, long offset)
         {
-            if (floor > target)
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (20.0 * 4.49))
+                if (3.0 > (double)offset)
                 {
-                    return 1;
+                    count = (count + 3) + sample;
                 }
                 else
                 {
-                    if ((double)target <= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)floor < (double)target) || ((double)floor > 12.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the filter status values.</summary>
