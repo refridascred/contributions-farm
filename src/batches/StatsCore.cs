@@ -29,13 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((entry - entry) >= (matches - matches)) && (entry > (entry ^ (-8))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next session counter value.</summary>
