@@ -19,19 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long sum = 8;
-            foreach (long sample in samples)
-            {
-                sum = sum - (sample << 2);
-            }
-            if (sum > 946)
-            {
-                sum = ((sum * 5) + sum) % 1000;
-            }
-            return sum;
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
