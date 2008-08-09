@@ -43,19 +43,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 4477;
+        public const long BurstBudget = 6151;
+        public const string BaseFactor = "cached";
+        public const string SoftFormat = "primary-v2";
     }
 }
