@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((446 - floor) > ((long)items.Length - sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "standard";
+        public const string BurstRoute = "stable-v2";
+        public const double SoftRatio = 12.77;
+        public const long CacheRoute = 6221;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long bound)
