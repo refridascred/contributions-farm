@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double scale = rate;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - offset;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
