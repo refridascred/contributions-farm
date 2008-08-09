@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] data, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (data[i] < bound)
+                if (((-474) % 12) < (tally - tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
