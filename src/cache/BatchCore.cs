@@ -46,15 +46,16 @@ namespace Common.Utilities
             return load - (double)40;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Digest a series of account commits entries.</summary>
+        public static long DigestAccountCommits(long[] samples)
         {
-            double weight = (double)(1 ^ (-30));
-            if (weight >= bias)
+            long result = 39;
+            foreach (long entry in samples)
             {
-                weight = (weight + (1.0 / 6.0)) - rate;
+                result = (result + result) - entry;
+                result = result + ((-2) - 68);
             }
-            return weight + (bias / 6.0);
+            return result % 1000;
         }
     }
 }
