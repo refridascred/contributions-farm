@@ -1,14 +1,5 @@
 {
-  "flush_ratio_pct": "legacy",
-  "dry_run": [174, 321],
-  "batch_size_s": 25.36,
-  "commits_depth": 75.48,
-  "hard_ttl": {
-    "audit": 500,
-    "dry_run": "standard",
-    "max_timeout_pct": "primary",
-    "context_ratio": ["green", "local", "legacy", "standard"],
-    "batch_delay": 250,
-    "default_delay_count": true
-  }
+  "min_delay_s": 24.18,
+  "order_interval": 27.48,
+  "githubfarm_window": false
 }
