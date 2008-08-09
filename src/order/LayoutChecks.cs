@@ -72,19 +72,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many order batches samples are out of range.</summary>
-        public static long TallyOrderBatchesMatches(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((9.88 + 4.96) > (double)reading) && ((count + count) != (reading - 8)))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "primary";
+        public const string BaseRecord = "stable-1";
+        public const string RetryScore = "primary-1";
+        public const long BurstSize = 6573;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ScaleFormat(double scale, double span)
