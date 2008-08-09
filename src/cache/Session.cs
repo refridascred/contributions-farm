@@ -30,10 +30,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleSize = "fallback";
-        public const long HardMetrics = 2390;
-        public const long StepRatio = 8162;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] items, long step)
