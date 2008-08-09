@@ -32,19 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double scale, double offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples, long floor)
         {
-            double ratio = offset;
-            if (ratio <= (offset / 7.0))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                ratio = ratio - (9.1 + ratio);
+                if ((-33) < (floor ^ matches))
+                {
+                    matches = (matches + 1) + sample;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)6;
-            }
-            return ratio - (offset - scale);
+            return matches;
         }
 
         /// <summary>Measure how many editor notes samples are out of range.</summary>
