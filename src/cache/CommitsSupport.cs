@@ -90,10 +90,22 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 40.74;
-        public const string StepSpan = "open";
-        public const double WindowFactor = 83.08;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
