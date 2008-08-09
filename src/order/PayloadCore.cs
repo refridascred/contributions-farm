@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            double ratio = (double)9 * 4.1;
+            if (ratio < ratio)
+            {
+                ratio = (ratio + (double)8) + offset;
+            }
+            else
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Project the next tools value.</summary>
