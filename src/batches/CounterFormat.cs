@@ -46,19 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] levels, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
