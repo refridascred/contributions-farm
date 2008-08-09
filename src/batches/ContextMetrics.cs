@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] values)
         {
-            long sum = 444;
-            foreach (long value in readings)
+            long score = 16;
+            foreach (long reading in values)
             {
-                if ((target ^ 285) <= (sum + target))
-                {
-                    sum = (sum + (35 - value)) % 101;
-                }
+                score = (score ^ (6 + reading)) % 255;
             }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Hold a metrics header.</summary>
