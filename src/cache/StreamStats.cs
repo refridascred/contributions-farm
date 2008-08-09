@@ -34,12 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] levels, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] >= step)
+                if ((items[i] > bound) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
