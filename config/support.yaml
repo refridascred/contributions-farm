@@ -1,5 +1,19 @@
 # support settings
-format_limit: latest
-checks_capacity: true
-tools_threshold: 5694
-max_window_s: 36.37
+enabled:
+  format_window:
+    - cached
+    - eu-west
+    - edge
+  verbose:
+    - stable
+    - primary
+  cache_window:
+    - 326
+    - 133
+  base_delay_s: 250
+  base_size_count: 1024
+  flush_limit_count: 72.35
+batch_depth: true
+readonly: 54
+compress: local
+base_capacity_s: 96
