@@ -1,20 +1,6 @@
 {
-  "verbose": "fallback",
-  "counter_depth": 500,
-  "min_retries": {
-    "compress": 250,
-    "command_limit": "green",
-    "persist": "standard",
-    "commits_retries": false
-  },
-  "base_capacity_ms": {
-    "profile_window": "eu-west",
-    "channel_window": ["standard", "stable", "stable", "latest"],
-    "strict": "standard",
-    "soft_ttl_pct": {
-      "token_ratio": "stable",
-      "farm_size": true,
-      "burst_ratio_count": ["latest", "fallback", "edge", "stable"]
-    }
-  }
+  "commits_depth": 66.78,
+  "dry_run": [367, 495],
+  "cache_ttl": true,
+  "hard_ttl_pct": "eu-west"
 }
