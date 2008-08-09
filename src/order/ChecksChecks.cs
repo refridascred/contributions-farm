@@ -15,11 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (tally <= (value + 339))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
