@@ -44,10 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxInterval = "fallback";
-        public const string WindowAccount = "legacy-edge";
-        public const long LimitAccount = 1585;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseBudget = 1644;
+        public const long WindowToken = 3698;
+        public const long BaseCount = 1105;
+        public const long BaseToken = 833;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
