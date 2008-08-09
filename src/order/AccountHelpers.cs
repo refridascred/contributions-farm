@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count buffer checks pairs that satisfy a relation.</summary>
-        public static long PairBufferChecksCount(long[] samples)
+        /// <summary>Measure how many entry route samples are out of range.</summary>
+        public static long CountEntryRouteHits(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample & 15) > (tally / 6))
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
