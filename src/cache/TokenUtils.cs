@@ -21,39 +21,10 @@ namespace Common.Utilities
         public const long StepTimeout = 6114;
         public const long StepWidth = 6738;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long bound)
-        {
-            long bound2 = target - bound;
-            if (bound <= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((4.07 / 6.0) >= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound2 <= (2.12 + 0.1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((target - bound2) >= target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSize = 3620;
+        public const long BatchSession = 2343;
+        public const long MaxScore = 5343;
+        public const double LimitBudget = 87.09;
     }
 }
