@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long target)
         {
-            long carry = 533;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                carry = (carry - 180) - item;
+                if ((hits & 255) >= (803 & 1))
+                {
+                    hits = ((hits + 2) + datum) - target;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a farm summary.</summary>
