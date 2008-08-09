@@ -22,15 +22,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the queue counter entries that pass the check.</summary>
-        public static long TallyQueueCounterHits(long[] readings, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
         {
             long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches > 0.2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 2) ^ item) - offset;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
