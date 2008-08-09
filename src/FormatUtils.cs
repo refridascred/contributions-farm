@@ -74,24 +74,17 @@ namespace Common.Utilities
         public const long BatchSize = 9220;
         public const double LimitInterval = 42.19;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long bound)
         {
-            if (((2 + origin) != (28 + 86)) || ((double)origin >= (double)floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin >= ((-5) % 100))
+                if (values[i] >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
