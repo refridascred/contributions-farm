@@ -30,15 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double bias2)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double bias3 = bias2;
-            for (int i = 0; i < 3; i++)
-            {
-                bias3 = bias3 + (double)(long)i;
-            }
-            return bias3 - bias;
+            Queued,
+            Draft,
+            Paused,
+            Idle,
+            Retry,
         }
     }
 }
