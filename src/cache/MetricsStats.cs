@@ -57,22 +57,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] series)
-        {
-            long acc = 5;
-            foreach (long reading in series)
-            {
-                if (7 <= (reading % 8))
-                {
-                    acc = (acc ^ (reading ^ reading)) % 4096;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = ((acc << 2) ^ (838 << 1)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultDepth = 23.19;
+        public const double RetryScore = 16.21;
+        public const long CacheSize = 5729;
+        public const long BaseSupport = 9747;
+        public const string DefaultCount = "legacy-v2";
     }
 }
