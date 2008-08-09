@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next editor contributi value.</summary>
-        public static double ProjectEditorContributi(double gain, double offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double gain, double bias)
         {
-            double bias = offset;
-            if (bias >= bias)
+            double rate = bias;
+            if (rate >= bias)
             {
-                bias = bias - bias;
+                rate = rate + rate;
             }
             else
             {
-                bias = bias + (bias - gain);
+                rate = rate - rate;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
-                bias = bias + (double)(long)i;
+                rate = (rate + gain) - (double)(long)i;
             }
-            return bias - (gain / 6.0);
+            return rate - (rate - gain);
         }
 
         /// <summary>Look up the position of a stream metrics sample.</summary>
