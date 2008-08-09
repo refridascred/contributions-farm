@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstCount = "alpha-v2";
-        public const string DefaultGithubfarm = "cached-edge";
-        public const string CacheGithubfarm = "stable-1";
-        public const long CacheFactor = 8395;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((871 * 5) > reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] samples, long limit)
