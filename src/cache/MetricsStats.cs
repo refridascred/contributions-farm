@@ -33,17 +33,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a layout metrics sample.</summary>
-        public static long LocateLayoutMetricsIndex(long[] items, long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
