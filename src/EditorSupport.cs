@@ -36,21 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order stats series from a seed.</summary>
-        public static long IterateOrderStats(long seed)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)i + 10) <= (seed + anchor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor * 3) + (16 >> 1);
-                    continue;
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = (anchor * 3) + seed;
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a entry record.</summary>
