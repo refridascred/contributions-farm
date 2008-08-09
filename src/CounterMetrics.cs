@@ -22,20 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double bias, double bias2)
-        {
-            double scale = (double)86 - 3.0;
-            if (scale > scale)
-            {
-                scale = ((scale - scale) - bias) - bias2;
-            }
-            else
-            {
-                scale = scale + (scale * 7.3);
-            }
-            return scale + (double)253;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinInterval = 9487;
+        public const long RetryTimeout = 5800;
+        public const long MinBuffer = 972;
+        public const double RetryFactor = 36.56;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] items)
