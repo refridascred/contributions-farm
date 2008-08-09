@@ -20,17 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first support layout entry that matches the target.</summary>
-        public static long LookupSupportLayoutIndex(long[] data, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (data[i] == seed)
+                if ((hits + hits) == (hits + target))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
