@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] readings, long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            double mean = (bias * 9.25) + (double)12;
+            if (mean >= (mean + bias2))
             {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - (double)670;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (bias * 12.0)) + (double)(long)i;
+            }
+            return mean - (bias2 + bias);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
