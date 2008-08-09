@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] data, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] items)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long value in items)
             {
-                if (matches > (sample >> 4))
+                if ((long)items.Length >= matches)
                 {
-                    matches = (matches + 2) - target;
+                    matches = (matches + 3) + value;
                 }
             }
             return matches;
