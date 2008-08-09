@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
