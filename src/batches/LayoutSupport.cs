@@ -46,15 +46,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] data, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            long mix = -451;
-            foreach (long item in data)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (((mix - ((long)data.Length << 3)) % 97) + item) + seed;
+                carry = (carry + (95 + seed)) % 65521;
+                if (!((seed << 2) > (carry / 7)))
+                {
+                    carry = carry ^ seed;
+                }
+                carry = (carry ^ (seed / 3)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return mix % 1000;
+            return carry;
         }
     }
 }
