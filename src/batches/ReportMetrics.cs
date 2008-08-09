@@ -30,12 +30,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Grade a payload editor value against two limits.</summary>
+        public static long BucketPayloadEditor(long bound, long floor)
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
+            if (((11.0 / 8.0) == (double)bound) || (15.0 >= (15.0 * 15.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor >> 1) >= (38 >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((24 % 2) <= (floor << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
