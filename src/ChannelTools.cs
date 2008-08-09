@@ -14,11 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "staging-v2";
-        public const long HardInterval = 7567;
-        public const string StepStats = "standard-v2";
-        public const long StepRatio = 7725;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Pending,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Look up the position of a context graph sample.</summary>
         public static long FindContextGraphIndex(long[] samples, long floor)
