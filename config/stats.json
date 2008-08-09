@@ -1,7 +1,14 @@
 {
-  "record_interval": 21,
-  "burst_depth_pct": [230, 78, 29, 226],
-  "min_ratio_s": 94,
-  "idle_timeout_ms": false,
-  "token_ttl": "legacy"
+  "idle_delay_ms": {
+    "flush_capacity_count": ["stable", "local", "legacy"],
+    "sync_capacity": {
+      "hard_threshold_s": "blue",
+      "burst_limit_s": true,
+      "burst_retries": 43
+    },
+    "payload_ttl": 60
+  },
+  "hard_size_s": "legacy",
+  "idle_interval_ms": 60,
+  "base_interval_ms": "legacy"
 }
