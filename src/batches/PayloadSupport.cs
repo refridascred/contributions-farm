@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const long BaseAccount = 2596;
         public const double MaxBudget = 70.18;
 
-        /// <summary>Rank entry farm input into a small class.</summary>
-        public static long RankEntryFarm(long offset, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            if ((76 < (bound - bound)) && ((20.0 / 7.0) == (double)bound))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound - 564) > (bound - offset)) && ((offset - bound) < (725 * 3)))
+                if ((long)samples.Length == (entry % 97))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((5 ^ bound) == (bound >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
