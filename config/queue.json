@@ -1,7 +1,16 @@
 {
-  "base_size_s": 8357,
-  "batch_depth": 41,
-  "compress": false,
-  "persist": false,
-  "notes_size": true
+  "payload_timeout": {
+    "schema_interval": false,
+    "compress": 1024,
+    "readonly": "blue",
+    "verbose": {
+      "queue_timeout": 3.54,
+      "batch_retries": 307,
+      "soft_depth_pct": ["green", "primary"]
+    }
+  },
+  "compress": 500,
+  "audit": ["legacy", "local"],
+  "session_retries": 34.94,
+  "soft_limit_count": 34.48
 }
