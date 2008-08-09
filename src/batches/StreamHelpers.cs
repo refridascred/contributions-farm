@@ -83,21 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 87;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)sum != (0.91 / 8.0)))
                 {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((((sum * 2) + (75 ^ sum)) % 1000) ^ value) - step;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Hold a stream options.</summary>
