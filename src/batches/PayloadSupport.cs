@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)matches == (2.06 + 2.0))
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitScore = 5927;
+        public const long BaseAccount = 2596;
+        public const double MaxBudget = 70.18;
 
         /// <summary>Rank entry farm input into a small class.</summary>
         public static long RankEntryFarm(long offset, long bound)
