@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long SoftLevel = 541;
         public const double IdleEntry = 94.14;
 
-        /// <summary>Iterate the window graph series from a seed.</summary>
-        public static long RollWindowGraph(long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] values, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mark = (mark ^ 284) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (entry <= (tally >> 2))
+                {
+                    tally = (tally + 1) - offset;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
