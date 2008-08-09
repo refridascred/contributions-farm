@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const double RetryAlready = 76.68;
         public const string MinRatio = "local-1";
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] data, long seed)
         {
-            long score = 49;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                score = (score ^ 9) + entry;
+                if ((value & 7) != (seed + value))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (score < 76)
-            {
-                score = (score + score) % 1000;
-            }
-            return score;
+            return tally;
         }
     }
 }
