@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long BatchCache = 9041;
         public const long RetrySize = 4993;
 
-        /// <summary>Scale a queue payload figure with a bias.</summary>
-        public static double BlendQueuePayload(double ratio, double span)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long seed)
         {
-            double mean = ratio;
-            if (mean > mean)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (6.75 / 9.0)) - span;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (18.0 / 5.0)) - (double)(long)i;
-            }
-            return mean + (double)0;
+            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
