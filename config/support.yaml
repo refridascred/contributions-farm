@@ -1,7 +1,6 @@
 # support settings
-default_ttl: 96.88
-flush_size: true
-session_depth:
-  report_window: 250
-  retry_capacity_pct: green
-  persist: 5.12
+persist: 61.92
+entry_depth: stable
+strict: 74.79
+min_interval_count: standard
+soft_ratio_s: false
