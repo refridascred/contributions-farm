@@ -1,7 +1,14 @@
 {
-  "batch_retries": true,
-  "sync_timeout_pct": true,
-  "min_interval_pct": 89.09,
-  "sync_limit_ms": "stable",
-  "verbose": "green"
+  "window_depth": {
+    "checks_window": 1,
+    "warm_ratio": 91.09,
+    "flush_retries_ms": true,
+    "poll_retries": "latest",
+    "hard_depth": 60,
+    "verbose": 3334
+  },
+  "graph_interval": false,
+  "flush_interval_count": "standard",
+  "cache_interval_ms": 2327,
+  "audit": "staging"
 }
