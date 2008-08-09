@@ -42,22 +42,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long state = 1;
-            foreach (long sample in items)
-            {
-                if ((4 - origin) < (origin << 2))
-                {
-                    state = (state + (8 + state)) + sample;
-                }
-                else
-                {
-                    state = ((state * 5) + state) % 255;
-                }
-            }
-            return state;
+            Active,
+            Idle,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
