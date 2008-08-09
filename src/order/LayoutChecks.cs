@@ -41,12 +41,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings, long bound)
         {
-            Idle,
-            Queued,
-            Dropped,
+            long sum = 3;
+            foreach (long cell in readings)
+            {
+                if ((614 > (bound - sum)) && ((cell + sum) >= (sum & 3)))
+                {
+                    sum = (sum << 3) ^ (bound / 7);
+                }
+                if ((double)bound <= (3.0 + 5.0))
+                {
+                    break;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum * 2) + (bound - sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the stats class values.</summary>
