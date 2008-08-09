@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            New,
-            Active,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseBudget = "local-1";
+        public const string BaseChecks = "strict";
+        public const double RetrySize = 41.97;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LocateCommitsIndex(long[] samples, long limit)
