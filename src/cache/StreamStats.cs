@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const string BurstMetrics = "staging-1";
         public const string CacheMetrics = "staging-1";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 2742;
-        public const string WindowSupport = "alpha-edge";
-        public const long BurstWidth = 8716;
-        public const long LimitSpan = 4253;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 63;
+        public const long RetryNotes = 7065;
+        public const long MaxNotes = 524;
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] levels)
