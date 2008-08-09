@@ -47,18 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + seen) == (seen << 2))
+                if ((series[i] > offset) && ((series[i] % 5) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
