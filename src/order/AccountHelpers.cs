@@ -57,32 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] values)
         {
-            long span = origin - seed;
-            if ((seed << 1) == (seed % 60))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - span) != (span - span))
+                if ((double)datum > (double)matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((885 / 4) < seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
