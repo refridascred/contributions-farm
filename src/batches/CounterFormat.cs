@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 17.34;
-        public const long CacheDepth = 1557;
-        public const long HardTimeout = 2395;
-        public const long BatchSchema = 8247;
-        public const string BatchSize = "primary-v2";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LocateSupportIndex(long[] series, long step)
