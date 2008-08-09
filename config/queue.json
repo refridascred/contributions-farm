@@ -1,6 +1,7 @@
 {
-  "hard_delay_pct": "strict",
-  "filter_ratio": 1174,
-  "max_capacity": 4493,
-  "editor_window": 18
+  "flush_interval": 58,
+  "max_interval_s": true,
+  "retry_ratio_pct": 57,
+  "cache_threshold": "staging",
+  "poll_ratio_pct": true
 }
