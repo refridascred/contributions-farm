@@ -42,15 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Active,
-            Idle,
-            Pending,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseDepth = "primary-v2";
+        public const double HardCluster = 20.21;
+        public const string RetryCluster = "fallback-v2";
+        public const string BatchCluster = "stable";
+        public const double StepCluster = 94.81;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] samples, long step)
