@@ -1,6 +1,6 @@
 # entry settings
-retry_retries_ms:
-  - primary
-  - blue
-default_interval_count: 250
-queue_timeout: 32
+layout_ratio: blue
+queue_ttl: true
+min_limit_count: 73.99
+retry_ttl_pct: 1122
+retry_interval: standard
