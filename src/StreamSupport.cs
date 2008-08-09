@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two channel buffer measurements.</summary>
-        public static double ScaleChannelBuffer(double scale, double bias)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] samples, long origin)
         {
-            double bias2 = scale;
-            return bias2 - (bias + bias2);
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
