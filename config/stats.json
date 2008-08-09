@@ -1,14 +1,6 @@
 {
-  "idle_delay_ms": {
-    "flush_capacity_count": ["stable", "local", "legacy"],
-    "sync_capacity": {
-      "hard_threshold_s": "blue",
-      "burst_limit_s": true,
-      "burst_retries": 43
-    },
-    "payload_ttl": 60
-  },
-  "hard_size_s": "legacy",
-  "idle_interval_ms": 60,
-  "base_interval_ms": "legacy"
+  "warm_timeout_count": 500,
+  "idle_capacity_s": 54.44,
+  "min_retries": "latest",
+  "sync_retries_pct": 16
 }
