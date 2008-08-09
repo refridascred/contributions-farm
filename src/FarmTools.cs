@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] series, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!(reading > 716) || ((9.0 / 3.0) <= (double)tally))
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a editor header.</summary>
