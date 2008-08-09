@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entry entries that pass the check.</summary>
-        public static long AuditAlreadyEntryMatches(long[] data, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)offset < (5.7 - 9.39))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Accumulate token batches samples.</summary>
