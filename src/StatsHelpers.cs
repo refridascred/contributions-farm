@@ -12,24 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long seed, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            if ((seed + seed) <= origin)
+            double rate = (double)(55 % 100);
+            if (rate < (double)718)
             {
-                return 2;
+                rate = rate - (rate + span);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (origin < (origin << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate = (rate - (scale + 14.0)) + (double)(long)i;
             }
+            return rate + (scale - scale);
         }
 
         /// <summary>Audit layout notes readings against a rule.</summary>
