@@ -1,6 +1,5 @@
 {
-  "max_delay_count": 90,
-  "max_size_s": 8808,
-  "soft_interval_count": [339, 273, 448, 440],
-  "editor_delay": 34.77
+  "burst_limit": 30,
+  "sync_size_ms": "primary",
+  "batches_interval": true
 }
