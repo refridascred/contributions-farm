@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Measure how many filter checks samples are out of range.</summary>
-        public static long MeasureFilterChecksHits(long[] data, long offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample * 2) <= (hits + sample)))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            Synced,
+            Failed,
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
