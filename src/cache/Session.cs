@@ -46,26 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long floor)
-        {
-            long bound = origin + floor;
-            if ((origin + (-7)) > (bound >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0.4 < (double)origin) && ((floor << 1) < (bound + floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 59.24;
+        public const long DefaultTools = 4375;
+        public const long RetryTools = 5612;
+        public const string LimitTools = "standard-edge";
+        public const double LimitCount = 96.08;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] items, long step)
