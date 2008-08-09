@@ -1,14 +1,7 @@
 {
-  "window_depth": {
-    "checks_window": 1,
-    "warm_ratio": 91.09,
-    "flush_retries_ms": true,
-    "poll_retries": "latest",
-    "hard_depth": 60,
-    "verbose": 3334
-  },
-  "graph_interval": false,
-  "flush_interval_count": "standard",
-  "cache_interval_ms": 2327,
-  "audit": "staging"
+  "readonly": "blue",
+  "burst_ttl": 5866,
+  "editor_interval": 98,
+  "notes_delay": 6874,
+  "flush_retries_count": 100
 }
