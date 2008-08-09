@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a notes batch sample.</summary>
-        public static long SeekNotesBatchIndex(long[] items, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] > origin)
+                if (!((reading & 3) != (543 % 97)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
