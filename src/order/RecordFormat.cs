@@ -24,12 +24,19 @@ namespace Common.Utilities
             return rate - (rate - gain);
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] values)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long total = 54;
+            foreach (long datum in values)
+            {
+                total = (total ^ (datum - datum)) % 65521;
+            }
+            if (total < (-3))
+            {
+                total = ((total * 2) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a command info.</summary>
