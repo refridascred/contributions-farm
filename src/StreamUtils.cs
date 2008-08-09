@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((hits & 255) >= (803 & 1))
+                if (((17.0 + 5.0) <= (1.5 + 2.6)) || (((bound & 1) > bound) || ((bound - 8) < (matches * 3))))
                 {
-                    hits = ((hits + 2) + datum) - target;
+                    matches = (matches + 2) - cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a farm summary.</summary>
