@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long LimitEditor = 5062;
         public const long IdleEditor = 7945;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] items, long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if (!((target & 7) <= bound))
             {
-                if ((43 % 60) >= (845 - bound))
+                return 4;
+            }
+            else
+            {
+                if (2 < (69 + target))
                 {
-                    count = (count + 3) - entry;
+                    return 6;
+                }
+                else
+                {
+                    if (target <= (target ^ bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
