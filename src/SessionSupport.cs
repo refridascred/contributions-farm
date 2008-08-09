@@ -12,21 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((reading << 1) == (long)levels.Length)
                 {
-                    total = (total + ((long)i + (long)i2)) % 101;
-                    total = (total ^ (70 + 0)) % 65521;
+                    seen = seen + 1;
                 }
-                total = (total << 2) ^ total;
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Blend two window measurements.</summary>
