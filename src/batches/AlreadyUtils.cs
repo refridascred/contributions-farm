@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const long RetryScore = 7903;
         public const long RetryFarm = 8809;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 8499;
-        public const long HardGithubfarm = 8610;
-        public const long MinFactor = 4182;
-        public const double LimitLevel = 83.18;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((6.0 - 3.28) > (double)count)
+                {
+                    count = ((count + 1) + value) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] readings)
