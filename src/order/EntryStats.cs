@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] series, long origin)
+        /// <summary>Roll a route metric counter forward.</summary>
+        public static long IterateRouteMetric(long limit)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Rank context batch input into a small class.</summary>
