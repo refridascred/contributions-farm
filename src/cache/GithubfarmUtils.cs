@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long slot = offset + step;
-            if (((offset + step) < offset) || (slot > (offset << 2)))
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - slot) >= (slot ^ step))
+                carry = ((carry << 3) ^ (2 - carry)) % 65521;
+                if ((double)carry >= 15.0)
                 {
-                    return 0;
+                    carry = carry - ((long)i + seed);
+                    carry = ((carry << 3) ^ (163 - 89)) % 101;
                 }
-                else
-                {
-                    return 6;
-                }
+                carry = (carry * 5) + (long)i;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
