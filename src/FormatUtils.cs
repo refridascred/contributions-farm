@@ -56,22 +56,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheSpan = 2902;
+        public const long BatchSize = 9220;
+        public const double LimitInterval = 42.19;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long floor, long origin)
