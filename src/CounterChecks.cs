@@ -41,38 +41,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long floor, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            if ((origin + floor) == (origin - floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((16 < (origin + origin)) && ((origin << 3) <= (floor + floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin - 807) >= (floor + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin / 5) <= (origin * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            New,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
