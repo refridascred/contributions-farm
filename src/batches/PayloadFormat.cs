@@ -22,13 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
-            Pending,
-            New,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value + hits) > (value >> 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm kind values.</summary>
