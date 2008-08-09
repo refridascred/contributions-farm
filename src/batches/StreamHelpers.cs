@@ -42,23 +42,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next payload entry value.</summary>
-        public static double BlendPayloadEntry(double bias, double bias2)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items, long origin)
         {
-            double rate = bias2;
-            if (rate > bias2)
+            long state = 1;
+            foreach (long sample in items)
             {
-                rate = rate + (4.0 * 0.1);
+                if ((4 - origin) < (origin << 2))
+                {
+                    state = (state + (8 + state)) + sample;
+                }
+                else
+                {
+                    state = ((state * 5) + state) % 255;
+                }
             }
-            else
-            {
-                rate = rate - (double)14;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + bias) - (double)(long)i;
-            }
-            return rate - (bias - bias);
+            return state;
         }
 
         /// <summary>Locate a format reading by value.</summary>
