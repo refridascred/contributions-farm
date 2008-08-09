@@ -47,11 +47,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double drift = (double)(9 ^ 8);
-            return ((drift + (drift - 15.0)) + scale) + floor;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
