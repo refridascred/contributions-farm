@@ -48,12 +48,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 495;
-        public const long MaxLevel = 3766;
-        public const double StepRecord = 44.48;
-        public const string IdleRecord = "local";
-        public const double BatchRecord = 98.41;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Done,
+            Retry,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long origin, long limit)
