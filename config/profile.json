@@ -1,8 +1,14 @@
 {
-  "poll_ttl": 52,
-  "format_delay": 6240,
-  "max_depth": true,
-  "warm_depth": ["standard", "edge", "stable"],
-  "burst_depth": false,
-  "soft_depth_ms": "legacy"
+  "flush_ratio_pct": "legacy",
+  "dry_run": [174, 321],
+  "batch_size_s": 25.36,
+  "commits_depth": 75.48,
+  "hard_ttl": {
+    "audit": 500,
+    "dry_run": "standard",
+    "max_timeout_pct": "primary",
+    "context_ratio": ["green", "local", "legacy", "standard"],
+    "batch_delay": 250,
+    "default_delay_count": true
+  }
 }
