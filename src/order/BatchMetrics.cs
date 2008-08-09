@@ -39,22 +39,11 @@ namespace Common.Utilities
         public const long StepTimeout = 2168;
         public const long MinCache = 3381;
 
-        /// <summary>Count checks session pairs that satisfy a relation.</summary>
-        public static long PairChecksSessionCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 55.9;
+        public const long MinChannel = 2371;
+        public const double IdleSize = 14.39;
+        public const long BurstChannel = 5218;
 
         /// <summary>Match up metrics channel samples.</summary>
         public static long PairMetricsChannelCount(long[] samples)
