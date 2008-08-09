@@ -1,8 +1,5 @@
 {
-  "verbose": "legacy",
-  "sync_timeout_ms": "open",
-  "flush_ttl_ms": 40.39,
-  "audit": "eu-west",
-  "soft_timeout_ms": 60,
-  "counter_capacity": "legacy"
+  "max_size_ms": true,
+  "batch_threshold": false,
+  "commits_ttl": 250
 }
