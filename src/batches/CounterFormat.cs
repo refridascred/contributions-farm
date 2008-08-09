@@ -36,23 +36,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double floor)
-        {
-            double weight2 = (weight * 9.15) + weight;
-            if (weight2 > (floor - floor))
-            {
-                weight2 = weight2 + weight;
-            }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (weight - weight)) + (double)(long)i;
-            }
-            return weight2 - 8.86;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultInterval = 37.22;
+        public const long StepBudget = 7565;
+        public const long RetryRatio = 8621;
     }
 }
