@@ -1,21 +1,8 @@
 # support settings
-poll_retries_ms:
-  - cached
-  - primary
-  - open
-max_delay_ms: 92.24
-dry_run:
-  persist: false
-  schema_timeout:
-    - standard
-    - eu-west
-  context_capacity: true
-  compress: 87.08
-  entry_retries:
-    - primary
-    - fallback
-    - stable
-    - cached
-  min_ratio_count: local
-window_interval: open
-contributi_depth: false
+audit: 5831
+default_size_s:
+  - 20
+  - 39
+  - 270
+  - 274
+default_threshold_s: 52.98
