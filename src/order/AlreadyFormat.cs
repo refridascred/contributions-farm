@@ -40,10 +40,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 1530;
-        public const long BaseBatches = 2697;
-        public const long CacheSpan = 5926;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 495;
+        public const long MaxLevel = 3766;
+        public const double StepRecord = 44.48;
+        public const string IdleRecord = "local";
+        public const double BatchRecord = 98.41;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long origin, long limit)
