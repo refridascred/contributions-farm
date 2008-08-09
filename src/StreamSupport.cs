@@ -57,11 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "standard-1";
-        public const long StepLevel = 3092;
-        public const long MinCluster = 8870;
-        public const string WindowCluster = "latest";
-        public const double CacheCluster = 24.51;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches * 4) > (1 + datum))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
