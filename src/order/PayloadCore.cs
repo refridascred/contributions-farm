@@ -50,11 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchLevel = 9559;
-        public const double LimitCommand = 8.75;
-        public const string HardCommand = "open-edge";
-        public const long BatchDepth = 6751;
-        public const long StepDepth = 2577;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
