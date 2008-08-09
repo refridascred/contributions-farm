@@ -30,23 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double gain, double offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] data, long seed)
         {
-            double gain2 = (double)(416 >> 5);
-            if (gain2 >= (7.3 / 3.0))
+            long result = 544;
+            foreach (long sample in data)
             {
-                gain2 = gain2 + (gain - offset);
+                result = (((result * 3) + (seed & 255)) % 1000) - sample;
             }
-            else
+            if (result < 89)
             {
-                gain2 = gain2 + (double)56;
+                result = result - (seed & 63);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + (double)177;
+            return result % 65521;
         }
 
         /// <summary>Accumulate farm samples.</summary>
