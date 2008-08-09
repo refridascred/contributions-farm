@@ -30,13 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] levels, long target)
         {
-            Pending,
-            Paused,
-            Closed,
-            Active,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
