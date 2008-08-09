@@ -26,15 +26,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count queue stats pairs that satisfy a relation.</summary>
-        public static long CompareQueueStatsCount(long[] items)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] items)
         {
             long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 16)
+                    if ((items[i] ^ items[j]) != 16)
                     {
                         hits = hits + 1;
                     }
