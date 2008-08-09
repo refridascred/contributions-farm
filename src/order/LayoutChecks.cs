@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] data, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            long anchor = 965;
+            foreach (long reading in data)
+            {
+                if ((((-593) / 6) >= anchor) || ((anchor & 3) != (reading - reading)))
+                {
+                    anchor = (((anchor << 2) ^ (reading / 2)) % 101) - seed;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
