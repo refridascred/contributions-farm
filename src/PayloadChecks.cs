@@ -35,19 +35,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double floor)
+        /// <summary>Measure how many entry buffer samples are out of range.</summary>
+        public static long TallyEntryBufferHits(long[] levels)
         {
-            double mean = (double)(57 - 32);
-            if (mean >= (gain + 7.0))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                mean = mean - mean;
+                if ((cell * 3) < cell)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + floor;
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
