@@ -13,16 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum + (seed % 2)) % 101;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((7 / 8) >= ((long)levels.Length * 3))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Project the next counter value.</summary>
