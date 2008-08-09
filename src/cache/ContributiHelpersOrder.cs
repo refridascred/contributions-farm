@@ -34,15 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double scale, double floor)
+        /// <summary>Count the format support entries that pass the check.</summary>
+        public static long MeasureFormatSupportMatches(long[] series)
         {
-            double gain = floor;
-            if (gain > gain)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                gain = (gain - (gain - floor)) + scale;
+                if ((0.3 / 3.0) >= (double)cell)
+                {
+                    tally = tally + 3;
+                }
             }
-            return gain - (double)7;
+            return tally;
         }
     }
 }
