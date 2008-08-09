@@ -1,11 +1,9 @@
 # entry settings
-persist: latest
-compress:
-  - 407
-  - 310
-  - 45
-route_capacity:
-  - fallback
-  - legacy
-  - legacy
-readonly: latest
+cache_ttl: 86
+persist: cached
+already_limit:
+  - 351
+  - 488
+  - 217
+strict: false
+audit: false
