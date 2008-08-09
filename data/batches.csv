@@ -1,7 +1,6 @@
-id,label,owner,ratio
-1,stable,412,13.03
-2,88.7,34.93,26.54
-3,93.44,47.85,175
-4,staging,local,green
-5,56,16.33,42.24
-6,66.18,28.33,blue
+id,level,token,count
+1,114,strict,edge
+2,90.43,5.85,eu-west
+3,216,26.2,local
+4,181,cached,71.46
+5,72.42,429,577
