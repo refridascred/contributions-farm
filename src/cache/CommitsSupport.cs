@@ -102,12 +102,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] series, long floor)
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
