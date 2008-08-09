@@ -55,12 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            Synced,
+            Stale,
+            Idle,
+            Queued,
+            Draft,
         }
     }
 }
