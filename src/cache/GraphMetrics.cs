@@ -58,28 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            long anchor = 46;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor + (anchor * 2);
-                anchor = ((anchor << 2) ^ (74 & 3)) % 101;
-                if ((8.5 * 19.0) >= (double)item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor + anchor) % 101;
-                }
-                else
-                {
-                    anchor = anchor + (item * 3);
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 96)
-            {
-                anchor = (anchor - (anchor ^ anchor)) % 97;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
