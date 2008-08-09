@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Look up the position of a filter cache sample.</summary>
+        public static long SeekFilterCacheIndex(long[] series, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor * 4) >= origin)
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
                 {
-                    anchor = (anchor - (origin * 3)) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
