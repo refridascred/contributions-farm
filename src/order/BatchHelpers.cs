@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items, long target)
+        /// <summary>Scale a githubfarm buffer figure with a bias.</summary>
+        public static double SmoothGithubfarmBuffer(double gain, double bias)
         {
-            long anchor = 326;
-            foreach (long sample in items)
+            double mean = gain / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (((anchor ^ (-478)) % 65521) - sample) - target;
+                mean = ((mean + (double)935) + (double)(long)i) - bias;
             }
-            return anchor;
+            return mean - 4.47;
         }
 
         /// <summary>Hold a cache header.</summary>
