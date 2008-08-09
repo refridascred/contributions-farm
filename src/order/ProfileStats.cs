@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 841;
+        public const long SoftFarm = 5325;
+        public const long SoftTimeout = 5334;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
