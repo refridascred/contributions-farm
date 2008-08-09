@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + seen) == (seen << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
