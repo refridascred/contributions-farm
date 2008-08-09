@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels)
-        {
-            long result = 754;
-            foreach (long datum in levels)
-            {
-                if (((datum + 91) > (datum ^ result)) && ((double)datum >= 0.8))
-                {
-                    result = (result ^ (long)levels.Length) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "strict-v2";
+        public const long WindowLevel = 1163;
+        public const long BatchToken = 3626;
+        public const long BaseToken = 7148;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
