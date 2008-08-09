@@ -38,22 +38,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((7 / 8) >= ((long)levels.Length * 3))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
