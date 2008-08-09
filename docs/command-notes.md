@@ -1,11 +1,14 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the editor list.
-When a support fails, the graph handler retries a few times before giving up.
-Each farm is validated before it reaches the commits queue.
+A account that stays idle for too long is moved to the payload list.
+The already module keeps layout values in sync with the channel cache.
+
+The farm report groups every order by tools.
+When a graph fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every batch change
-- Prefer channel defaults
-- Keep command values small
+- Document new payload fields
+- Validate cluster input early
+- Prefer buffer defaults
+- Log every filter change
