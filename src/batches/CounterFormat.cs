@@ -36,17 +36,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = (weight * 9.15) + weight;
+            if (weight2 > (floor - floor))
             {
-                if ((data[i] > origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + weight;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (weight - weight)) + (double)(long)i;
+            }
+            return weight2 - 8.86;
         }
     }
 }
