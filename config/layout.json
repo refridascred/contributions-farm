@@ -1,14 +1,12 @@
 {
-  "flush_window_count": ["staging", "edge", "staging"],
-  "default_depth": {
-    "verbose": ["edge", "stable", "green"],
-    "flush_retries_count": 100,
-    "batches_delay": false,
-    "soft_ratio_ms": 500,
-    "cache_threshold": 250
+  "window_depth": {
+    "idle_ttl_pct": "eu-west",
+    "cache_size": "fallback",
+    "sync_timeout": 6466,
+    "cache_delay_count": 86,
+    "base_retries": "cached",
+    "soft_capacity_count": "blue"
   },
-  "poll_interval": 67,
-  "flush_ttl": 500,
-  "notes_size": 25,
-  "cache_window": [467, 238]
+  "persist": 1024,
+  "compress": "cached"
 }
