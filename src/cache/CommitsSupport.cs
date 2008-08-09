@@ -66,10 +66,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "open-1";
-        public const double LimitAlready = 19.26;
-        public const long MinTimeout = 6470;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
