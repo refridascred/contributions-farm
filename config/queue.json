@@ -1,6 +1,5 @@
 {
-  "soft_capacity_count": "open",
-  "window_ratio": "standard",
-  "soft_interval": true,
-  "soft_retries_pct": "latest"
+  "burst_timeout": 73,
+  "format_interval": "primary",
+  "batches_window": "eu-west"
 }
