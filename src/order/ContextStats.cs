@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 5;
+            foreach (long entry in series)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) == 0))
+                if ((mix >> 4) != (offset % 8))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (offset - offset)) ^ entry;
                 }
             }
-            return -1;
+            if (mix < 41)
+            {
+                mix = (mix - (mix ^ mix)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
