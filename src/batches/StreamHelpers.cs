@@ -45,18 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long AuditProfileMetricHits(long[] values, long origin)
+        /// <summary>Blend two route session measurements.</summary>
+        public static double SmoothRouteSession(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double scale2 = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if ((value - tally) > tally)
-                {
-                    tally = (tally + 1) - origin;
-                }
+                scale2 = (scale2 + (double)(long)i) - offset;
             }
-            return tally;
+            return scale2 + (scale2 * 4.35);
         }
 
         /// <summary>Combine tools values into a single score.</summary>
