@@ -49,18 +49,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long offset)
         {
-            long result = 1;
-            foreach (long sample in readings)
+            long cur = origin + offset;
+            if ((17.0 + 5.55) <= (double)offset)
             {
-                if ((7.7 - 15.0) != (double)sample)
+                return 8;
+            }
+            else
+            {
+                if (origin >= offset)
                 {
-                    result = result + (offset + result);
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin >= 5.22)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin < cur)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
