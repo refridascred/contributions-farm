@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data, long offset)
         {
-            Ready,
-            New,
-            Synced,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + offset) >= offset)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
