@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!(14.0 > (double)seen))
+                if ((446 - floor) > ((long)items.Length - sample))
                 {
-                    seen = (seen + 2) - sample;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
