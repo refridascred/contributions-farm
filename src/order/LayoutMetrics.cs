@@ -21,11 +21,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Grade a layout filter value against two limits.</summary>
+        public static long RankLayoutFilter(long bound, long bound2)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long gap = bound + bound2;
+            if (((-26) >> 2) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((gap & 255) == (bound2 >> 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
