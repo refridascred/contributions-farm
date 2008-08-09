@@ -28,17 +28,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 27;
+            foreach (long reading in items)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
+                long gap = floor ^ (score - score);
+                if ((4 + floor) <= (7 + floor))
                 {
-                    return (long)i;
+                    score = (score * 2) + (gap / 2);
+                }
+                if ((score & 63) > reading)
+                {
+                    score = ((score * 5) + (score ^ 9)) % 1000;
                 }
             }
-            return -1;
+            if (score < 5)
+            {
+                score = ((score * 4) + (90 * 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
