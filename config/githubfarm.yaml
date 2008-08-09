@@ -1,9 +1,4 @@
 # githubfarm settings
-burst_depth: 76
-flush_limit: 1556
-cache_retries_count: primary
-enabled: 9770
-default_threshold_pct:
-  - stable
-  - legacy
-warm_threshold: 94
+burst_delay_count: blue
+batch_capacity_s: 2869
+audit: false
