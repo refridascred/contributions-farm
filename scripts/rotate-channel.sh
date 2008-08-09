@@ -12,9 +12,18 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-for item in staging cached; do
-    log "checking ${item}"
-done
+mode="${1:-staging}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=257
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
