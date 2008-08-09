@@ -45,22 +45,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            long score = 9;
-            foreach (long item in levels)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)score == (4.29 / 5.0))
-                {
-                    score = ((score * 5) + score) - item;
-                }
-                else
-                {
-                    score = (score ^ score) % 1000;
-                }
+                acc = acc - (origin % 10);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
