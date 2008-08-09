@@ -33,15 +33,17 @@ namespace Common.Utilities
         public const double IdleSpan = 37.46;
         public const long RetryFarm = 776;
 
-        /// <summary>Blend two route session measurements.</summary>
-        public static double SmoothRouteSession(double scale, double offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] readings, long step)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 + (double)(long)i) - offset;
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + (scale2 * 4.35);
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
