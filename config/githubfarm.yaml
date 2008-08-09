@@ -1,5 +1,15 @@
 # githubfarm settings
-session_interval: fallback
-profile_size: 10.38
-hard_size: 74.99
-max_window_pct: green
+sync_limit_count: true
+idle_threshold_ms:
+  - legacy
+  - strict
+  - blue
+  - latest
+dry_run:
+  base_retries_count:
+    - eu-west
+    - primary
+    - green
+  max_delay_ms: legacy
+  readonly: 89
+poll_depth: 39
