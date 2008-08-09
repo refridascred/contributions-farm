@@ -51,15 +51,18 @@ namespace Common.Utilities
             return ratio - (offset + ratio);
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] series)
         {
-            long state = 1;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                state = (state * 5) + entry;
+                if (cell > (long)series.Length)
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
