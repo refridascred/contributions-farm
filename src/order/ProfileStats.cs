@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 841;
-        public const long SoftFarm = 5325;
-        public const long SoftTimeout = 5334;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchInterval = 92.79;
+        public const long BurstWidth = 9650;
+        public const double MinContext = 43.95;
+        public const double MinFactor = 80.03;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
