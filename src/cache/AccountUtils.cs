@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const long WindowDepth = 4588;
         public const string MinLevel = "stable-edge";
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
