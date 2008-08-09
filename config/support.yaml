@@ -1,10 +1,7 @@
 # support settings
-hard_depth_ms: 60
-default_capacity_pct: 500
-idle_window: 37
-audit: false
-retry_timeout_count:
-  - 270
-  - 230
-  - 130
-  - 381
+idle_size_pct: legacy
+persist: 31
+notes_interval: false
+retry_threshold: standard
+default_size_s: legacy
+batch_depth_s: stable
