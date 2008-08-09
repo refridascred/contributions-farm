@@ -55,13 +55,11 @@ namespace Common.Utilities
         public const long HardRatio = 8481;
         public const long HardSize = 2727;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepWidth = 13.15;
+        public const double BurstContributi = 51.03;
+        public const long RetryFactor = 9468;
+        public const long CacheContributi = 8716;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long limit, long target)
