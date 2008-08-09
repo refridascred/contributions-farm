@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 3689;
-        public const long LimitPayload = 7487;
-        public const string MinPayload = "fallback-1";
-        public const double CachePayload = 26.8;
+        /// <summary>Compare every pair of already metric readings.</summary>
+        public static long CompareAlreadyMetricCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] data)
