@@ -47,11 +47,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 2152;
-        public const double RetryFormat = 11.09;
-        public const double BatchBudget = 28.97;
-        public const double StepTimeout = 11.74;
-        public const long MaxBudget = 7638;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long step)
+        {
+            long cur = limit ^ step;
+            if ((limit & 127) < limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)cur > (7.77 * 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - (-53)) != (step % 10))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (9.3 / 8.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
