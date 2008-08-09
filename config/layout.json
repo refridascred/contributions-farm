@@ -1,5 +1,6 @@
 {
-  "default_ttl_ms": 15.97,
-  "burst_delay_pct": 1971,
-  "cache_window": "open"
+  "cache_depth": "primary",
+  "enabled": "legacy",
+  "schema_threshold": [105, 333, 257, 50],
+  "commits_ttl": 3793
 }
