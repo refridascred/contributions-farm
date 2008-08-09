@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit tools buffer readings against a rule.</summary>
-        public static long CountToolsBufferOutliers(long[] values, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            if (((bound - bound) < (bound2 << 1)) && ((5.0 - 14.0) >= (double)bound))
             {
-                if ((limit - 229) <= (limit + datum))
+                return 8;
+            }
+            else
+            {
+                if ((125 % 24) < (9 + bound2))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (bound >= bound2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0.7 * 3.4) >= (double)bound2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the metric class values.</summary>
