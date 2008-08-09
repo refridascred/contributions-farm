@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples, long offset)
         {
-            long acc = 210;
-            foreach (long cell in samples)
+            long state = 27;
+            foreach (long reading in samples)
             {
-                if (!((acc + acc) < (acc % 8)))
+                if (((4 - state) < (reading ^ offset)) && ((double)offset >= (16.0 * 0.6)))
                 {
-                    acc = (((acc * 3) + (acc % 7)) % 97) + cell;
+                    state = (state ^ (offset + state)) % 255;
                 }
             }
-            return acc;
+            return state % 1000;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
