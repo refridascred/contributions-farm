@@ -66,26 +66,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] levels, long seed)
         {
-            long carry = 293;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (carry < (carry & 15))
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
                 {
-                    break;
-                }
-                if ((sample / 8) >= (sample / 7))
-                {
-                    carry = (carry << 2) ^ (long)values.Length;
+                    return (long)i;
                 }
             }
-            if (carry > 6)
-            {
-                carry = (carry << 2) ^ (carry & 3);
-            }
-            return carry;
+            return -1;
         }
     }
 }
