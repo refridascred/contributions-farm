@@ -1,12 +1,9 @@
 # entry settings
-retry_retries_count: 3056
-batch_depth: 1024
-burst_retries:
-  window_ttl:
-    - latest
-    - legacy
-    - blue
-  buffer_delay: standard
-  hard_delay_count: true
-default_size: 6957
-tools_limit: latest
+idle_depth:
+  - 40
+  - 98
+  - 165
+batch_timeout_s: 2024
+min_ratio_count: 250
+stats_ttl: 65.07
+default_ratio_s: true
