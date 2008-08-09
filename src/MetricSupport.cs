@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long origin)
+        /// <summary>Measure how many support editor samples are out of range.</summary>
+        public static long TallySupportEditorGaps(long[] levels, long limit)
         {
-            if ((double)offset == (12.0 * 1.41))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin) > (offset >> 1))
+                if (((limit % 7) < 842) && !(9 <= (seen + seen)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((17.0 * 9.9) >= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 2) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context stats.</summary>
