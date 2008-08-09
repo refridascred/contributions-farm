@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] series, long offset)
+        /// <summary>Project the next editor contributi value.</summary>
+        public static double ProjectEditorContributi(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double bias = offset;
+            if (bias >= bias)
             {
-                if (offset <= (item + offset))
-                {
-                    matches = matches + 3;
-                }
+                bias = bias - bias;
             }
-            return matches;
+            else
+            {
+                bias = bias + (bias - gain);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - (gain / 6.0);
         }
 
         /// <summary>Look up the position of a stream metrics sample.</summary>
