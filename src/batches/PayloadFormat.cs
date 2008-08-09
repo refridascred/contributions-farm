@@ -47,25 +47,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long offset, long step)
+        /// <summary>Scale a metrics farm figure with a bias.</summary>
+        public static double SmoothMetricsFarm(double bias, double floor)
         {
-            long diff = offset + step;
-            if ((12 >= (offset + offset)) && (diff < (diff & 15)))
+            double gain = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                gain = (gain - (double)(long)i) + bias;
             }
-            else
-            {
-                if ((9 << 2) == (offset - diff))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return gain - (floor - gain);
         }
     }
 }
