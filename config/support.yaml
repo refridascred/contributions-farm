@@ -1,22 +1,17 @@
 # support settings
-soft_timeout_count: 500
-max_ttl_ms: 25
-filter_timeout: 60
-hard_interval_pct:
-  session_threshold: local
-  cache_limit_pct: 60
-  stats_capacity: 1024
-  tools_timeout: 23.62
-  cache_threshold_count: 50
-  cache_window:
-    - cached
-    - fallback
-    - fallback
-contributi_depth:
-  account_capacity: cached
-  route_capacity: green
-  audit: false
-  stats_size: 79
-verbose:
-  - 282
-  - 158
+poll_window: true
+sync_threshold_s:
+  max_window_s: 63
+  cache_interval: 30
+  soft_timeout: true
+audit: green
+burst_size_s:
+  sync_delay_s: standard
+  burst_ttl_ms: false
+  readonly: eu-west
+  batch_ratio_s:
+    - 169
+    - 323
+  strict: 5511
+max_interval_pct: staging
+retry_limit: 6721
