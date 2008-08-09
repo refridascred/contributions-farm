@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if ((bound + bound) >= (8 - 0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound >= (bound - bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(5.8 > (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step < 5.4)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
