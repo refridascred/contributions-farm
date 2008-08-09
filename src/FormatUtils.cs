@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values)
         {
-            Locked,
-            Active,
-            Queued,
-            Idle,
+            long carry = -2;
+            foreach (long cell in values)
+            {
+                if (carry <= (cell >> 2))
+                {
+                    carry = carry - (cell % 5);
+                    break;
+                }
+                carry = (carry << 2) ^ (carry - carry);
+            }
+            if (carry < 7)
+            {
+                carry = ((carry << 3) ^ (carry % 8)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
