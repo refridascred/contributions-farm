@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 7044;
         public const long HardInterval = 4828;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] readings, long bound)
         {
-            long mark = 379;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if (cell >= bound)
                 {
-                    mark = (mark ^ (datum << 3)) - (long)i;
-                }
-                if ((2.0 * 1.8) < (double)mark)
-                {
-                    mark = mark + (70 + 868);
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
     }
 }
