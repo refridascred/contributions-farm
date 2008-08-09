@@ -18,25 +18,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long floor, long offset)
-        {
-            if ((double)570 > (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor < (floor << 1)) && (4 > (floor + floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 8790;
+        public const long BaseCount = 8017;
+        public const long MinCluster = 2425;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] levels)
