@@ -25,13 +25,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Validate editor tools readings against a bound.</summary>
+        public static bool CheckEditorToolsLimits(long[] data, long offset)
         {
-            Queued,
-            Locked,
-            Pending,
-            Draft,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit account report readings against a rule.</summary>
