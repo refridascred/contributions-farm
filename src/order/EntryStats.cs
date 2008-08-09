@@ -32,23 +32,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context batch input into a small class.</summary>
-        public static long GradeContextBatch(long step, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long bound)
         {
-            long prev = step + bound;
-            if ((step >> 2) > (552 + prev))
+            if ((bound - 217) > (bound + 5))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (!((bound * 5) < (2 + prev)))
+                if ((step + 494) == (step + bound))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if (((step - 723) > step) && ((726 + step) > (bound * 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((36 - 585) < (step % 100))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
