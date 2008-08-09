@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            long carry = -2;
-            foreach (long cell in values)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (carry <= (cell >> 2))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    carry = carry - (cell % 5);
-                    break;
+                    score = (score ^ (9 * 2)) + (long)i2;
                 }
-                carry = (carry << 2) ^ (carry - carry);
+                score = (score * 4) + (offset + offset);
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (carry < 7)
-            {
-                carry = ((carry << 3) ^ (carry % 8)) % 1000;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
