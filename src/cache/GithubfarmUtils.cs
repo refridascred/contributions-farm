@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "stable-v2";
-        public const double SoftPayload = 73.84;
-        public const long BurstInterval = 2242;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Failed,
+            Queued,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double scale, double span)
