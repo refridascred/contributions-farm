@@ -39,10 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "stable";
-        public const long WindowLayout = 1256;
-        public const long BaseLayout = 311;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Ready,
+            Draft,
+            Done,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamGaps(long[] readings)
