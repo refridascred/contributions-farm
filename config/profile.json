@@ -1,5 +1,11 @@
 {
-  "editor_threshold": 94,
-  "readonly": "cached",
-  "compress": true
+  "min_capacity": 87,
+  "enabled": true,
+  "burst_depth_ms": "stable",
+  "burst_ttl_ms": {
+    "soft_delay_ms": 100,
+    "batch_depth": 14,
+    "strict": [496, 96],
+    "compress": ["eu-west", "cached"]
+  }
 }
