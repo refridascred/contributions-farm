@@ -50,11 +50,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstRatio = 349;
-        public const string StepTimeout = "stable";
-        public const string CacheAlready = "staging";
-        public const long MaxAlready = 681;
+        /// <summary>Audit command queue readings against a rule.</summary>
+        public static long CountCommandQueueOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((item + item) < 95) && !((item + 28) < (item + item)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long seed)
