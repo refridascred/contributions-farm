@@ -21,31 +21,18 @@ namespace Common.Utilities
         public const long BaseRatio = 1781;
         public const long DefaultSpan = 9428;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] data, long floor)
         {
-            if (((double)seed < (6.8 / 8.0)) && ((floor + floor) >= (floor / 4)))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.0 - 4.48) == (double)seed)
+                if (!((matches - item) == (floor & 1)) || !(matches >= (88 << 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + 8) < (seed % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
