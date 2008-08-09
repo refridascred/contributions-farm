@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (mix <= (target ^ target))
+                {
+                    mix = (mix * 5) + mix;
+                    mix = (mix + mix) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of command entries.</summary>
