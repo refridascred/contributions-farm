@@ -54,12 +54,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the filter account series from a seed.</summary>
+        public static long RollFilterAccount(long offset)
         {
-            Stale,
-            Paused,
-            Draft,
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = mark - (1 & 31);
+                mark = (mark - ((long)i / 9)) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Roll a schema order counter forward.</summary>
