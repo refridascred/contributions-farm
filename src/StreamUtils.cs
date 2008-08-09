@@ -64,13 +64,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
