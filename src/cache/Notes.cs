@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] readings, long floor)
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
