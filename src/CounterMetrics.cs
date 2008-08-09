@@ -28,22 +28,12 @@ namespace Common.Utilities
         public const long MinBuffer = 972;
         public const double RetryFactor = 36.56;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long sum = -986;
-            foreach (long cell in items)
-            {
-                if ((cell << 1) <= (sum - sum))
-                {
-                    sum = (sum + (cell + (long)items.Length)) % 1000;
-                }
-            }
-            if (sum > 86)
-            {
-                sum = ((sum * 5) + (sum + sum)) % 101;
-            }
-            return sum % 65521;
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Define format limits and defaults.</summary>
