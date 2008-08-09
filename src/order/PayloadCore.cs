@@ -24,21 +24,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -567;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)reading == (3.1 + 2.04))
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc - acc) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Blend two batch measurements.</summary>
