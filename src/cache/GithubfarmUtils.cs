@@ -37,12 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
             public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
         }
     }
 }
