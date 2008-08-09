@@ -33,10 +33,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 7170;
-        public const long CacheLevel = 1722;
-        public const string MinBudget = "fallback";
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long seed)
