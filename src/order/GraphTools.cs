@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine cluster command values into a single score.</summary>
-        public static long FoldClusterCommand(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] readings, long seed)
         {
-            long carry = 7;
-            foreach (long value in items)
+            long state = 63;
+            foreach (long reading in readings)
             {
-                if ((double)carry >= (double)value)
+                if (!(reading > (state >> 5)))
                 {
-                    carry = (carry * 5) + 527;
+                    state = state ^ (86 % 64);
+                }
+                if ((4.0 + 1.8) <= (double)seed)
+                {
+                    break;
                 }
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
