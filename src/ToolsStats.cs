@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheCount = 189;
-        public const long LimitGithubfarm = 7342;
-        public const long LimitLevel = 7925;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Check that every layout commits entry stays within the limit.</summary>
         public static bool CheckLayoutCommitsRange(long[] levels, long origin)
