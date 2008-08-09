@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Paused,
+            Locked,
+            Retry,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
