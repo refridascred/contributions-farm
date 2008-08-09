@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data, long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((item >> 3) > (item >> 1)) || ((seed - item) <= (matches - matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Queued,
+            New,
         }
 
         /// <summary>Measure how many session queue samples are out of range.</summary>
