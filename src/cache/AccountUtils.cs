@@ -17,10 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitChecks = "standard-1";
-        public const long MinChecks = 91;
-        public const string HardInterval = "fallback";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
