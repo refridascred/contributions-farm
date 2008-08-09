@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long BurstCache = 2232;
         public const string HardCache = "alpha";
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] series, long target)
+        /// <summary>Compare every pair of channel queue readings.</summary>
+        public static long MatchChannelQueueCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] < target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit commits farm readings against a rule.</summary>
