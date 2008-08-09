@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
