@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 1516;
-        public const string BurstCache = "strict-1";
-        public const string CacheInterval = "fallback-1";
-        public const long SoftCache = 7827;
-        public const long IdleCache = 8370;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long limit, long seed)
+        {
+            long gap = limit + seed;
+            if ((5 - seed) != (seed - seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit >= (seed >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((-266) <= gap)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryInterval = 27.59;
