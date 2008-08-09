@@ -51,19 +51,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            long mix = 60;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mix = mix - (sample + sample);
+                if ((datum / 2) == (tally + datum))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (mix > 7)
-            {
-                mix = (mix + (mix - mix)) % 4096;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
