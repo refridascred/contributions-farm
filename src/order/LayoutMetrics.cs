@@ -20,22 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate tools checks samples.</summary>
-        public static long TallyToolsChecks(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] series, long seed)
         {
-            long carry = 8;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((item >> 4) == (item + item))
+                if (reading != seed)
                 {
-                    carry = ((carry * 5) + carry) % 97;
-                }
-                else
-                {
-                    carry = carry ^ (carry % 10);
+                    found = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return found;
         }
 
         /// <summary>Hold a stream summary.</summary>
