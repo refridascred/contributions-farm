@@ -1,17 +1,15 @@
 # support settings
-sync_ratio:
-  poll_timeout_pct: 96.48
-  sync_window: 4861
-  persist:
-    - 8
-    - 169
-  poll_retries_s: false
-  min_interval_count:
-    - legacy
-    - strict
-batch_window_pct: 25.37
-persist:
-  - 329
-  - 488
-compress: cached
-soft_limit: cached
+account_ratio:
+  dry_run: true
+  idle_depth: false
+  min_ttl: 100
+  sync_size: 2
+  retry_ttl_count:
+    cache_delay: latest
+    account_size: 1024
+    strict: false
+    window_interval: legacy
+flush_delay_pct: true
+burst_timeout_count:
+  - green
+  - cached
