@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 769;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.75 / 5.0) > (double)(long)series.Length)
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 4) + (total & 3)) - datum;
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
