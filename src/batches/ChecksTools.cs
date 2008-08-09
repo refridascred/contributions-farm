@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Paused,
-            Queued,
-            Synced,
+            Pending,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
