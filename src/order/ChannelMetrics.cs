@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitDepth = 3356;
-        public const double RetryAlready = 76.68;
-        public const string MinRatio = "local-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 3492;
+        public const long BaseNotes = 8868;
+        public const string WindowFactor = "strict";
+        public const double BurstNotes = 50.42;
+        public const long IdleInterval = 2568;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long origin)
