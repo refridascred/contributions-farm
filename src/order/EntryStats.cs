@@ -46,18 +46,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Count the cache window entries that pass the check.</summary>
+        public static long AuditCacheWindowMatches(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((datum / 2) == (tally + datum))
+                if (!(((count + floor) > (floor % 7)) || ((count >> 5) != (floor + floor))))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) - sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
