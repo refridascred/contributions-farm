@@ -67,13 +67,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Stale,
-            Pending,
-            Active,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowLevel = 94.53;
+        public const string LimitLevel = "fallback";
+        public const long BaseSchema = 6870;
+        public const long HardInterval = 4839;
+        public const long StepSchema = 6349;
     }
 }
