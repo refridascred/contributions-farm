@@ -50,24 +50,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a order report pair into a bucket.</summary>
-        public static long SortOrderReport(long step, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            if (floor >= (floor << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((floor >> 3) > (floor / 4)) && ((floor / 2) >= (step >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Closed,
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
