@@ -24,11 +24,18 @@ namespace Common.Utilities
             return scale + (ratio / 7.0);
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] levels)
         {
-            double load = bias;
-            return (load - (double)156) + weight;
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits & 1) != (hits ^ hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
