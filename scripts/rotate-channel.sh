@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=72
+CHANNEL_LIMIT=347
 log "limit is ${CHANNEL_LIMIT}"
 
 count=0
@@ -15,8 +15,6 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for item in strict open fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
