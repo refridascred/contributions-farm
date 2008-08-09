@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinWidth = 9471;
+        public const long MinCluster = 5778;
+        public const long MaxCluster = 505;
 
         /// <summary>Blend two buffer report measurements.</summary>
         public static double ProjectBufferReport(double weight, double floor)
