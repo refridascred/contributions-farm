@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 2814;
+        public const long BurstSize = 2681;
+        public const long MaxContext = 8039;
+        public const double SoftScore = 20.04;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsLimits(long[] items, long offset)
