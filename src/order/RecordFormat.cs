@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter order readings against a rule.</summary>
-        public static long AuditFilterOrderHits(long[] values)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((406 - cell) >= (22 << 1)) || (tally < (tally - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
