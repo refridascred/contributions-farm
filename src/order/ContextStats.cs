@@ -53,17 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] items, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 30;
+            foreach (long datum in data)
             {
-                if (items[i] < step)
+                acc = (acc ^ (acc + datum)) % 65521;
+                if ((target + acc) < datum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
