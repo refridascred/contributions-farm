@@ -37,18 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] samples, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if (!((target ^ 0) > (limit * 5)))
             {
-                if (matches <= (step / 5))
+                return 8;
+            }
+            else
+            {
+                if ((double)target != (5.0 + 2.91))
                 {
-                    matches = (matches + 3) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
