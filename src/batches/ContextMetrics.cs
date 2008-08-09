@@ -56,11 +56,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardDepth = 2851;
-        public const long MaxChecks = 9088;
-        public const long BaseChecks = 6753;
-        public const string IdleChecks = "open-v2";
-        public const string HardChecks = "fallback-v2";
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double weight, double bias)
+        {
+            double rate = weight / 7.0;
+            if (rate < weight)
+            {
+                rate = rate - weight;
+            }
+            return rate + (bias * 7.0);
+        }
     }
 }
