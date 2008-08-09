@@ -1,4 +1,13 @@
 # entry settings
-poll_window: legacy
-audit: true
-batch_window_ms: true
+retry_threshold_pct: 61
+stats_timeout:
+  warm_ratio_count: staging
+  flush_limit_count: standard
+  readonly: strict
+  persist: strict
+retry_delay_count: cached
+enabled: 31.5
+token_limit:
+  command_delay: legacy
+  contributi_interval: 4159
+  order_ttl: 31
