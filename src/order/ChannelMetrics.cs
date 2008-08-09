@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const double IdleTools = 4.41;
         public const long MaxLevel = 895;
 
-        /// <summary>Check that every contributi context entry stays within the limit.</summary>
-        public static bool VerifyContributiContextLimits(long[] series, long bound)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
