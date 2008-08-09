@@ -16,20 +16,12 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((double)state == (9.33 - 0.18)) && ((step + state) > ((long)i >> 1)))
-                {
-                    state = (state ^ (step - (long)i)) % 255;
-                }
-                state = (state << 3) ^ step;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a route snapshot.</summary>
