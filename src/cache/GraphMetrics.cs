@@ -51,19 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (((seen << 2) <= (53 - 796)) && ((59 ^ datum) == (datum % 60)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 8502;
+        public const string DefaultChecks = "latest-1";
+        public const long CacheInterval = 3976;
+        public const long HardChecks = 5222;
+        public const long StepBudget = 8921;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandBounds(long[] readings, long offset)
