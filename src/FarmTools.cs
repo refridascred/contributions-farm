@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryInterval = 27.59;
-        public const long MinQueue = 4240;
-        public const long RetryQueue = 7805;
-        public const string BurstSpan = "staging";
+        /// <summary>Iterate the window graph series from a seed.</summary>
+        public static long RollWindowGraph(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark ^ 284) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxNotes = "primary-v2";
