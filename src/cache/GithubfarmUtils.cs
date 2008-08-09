@@ -40,22 +40,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] series, long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (seed < (4 >> 5))
             {
-                if ((datum + offset) >= datum)
+                return 0;
+            }
+            else
+            {
+                if ((seed <= (548 << 3)) && ((2.1 / 6.0) >= (double)floor))
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
