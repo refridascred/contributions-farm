@@ -43,15 +43,15 @@ namespace Common.Utilities
             return ratio - (offset - scale);
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] readings)
+        /// <summary>Measure how many editor notes samples are out of range.</summary>
+        public static long TallyEditorNotesMatches(long[] series)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long cell in series)
             {
-                if (value < (value - seen))
+                if ((65 + cell) == (seen << 3))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
                 }
             }
             return seen;
