@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const long RetryFilter = 3310;
         public const string IdleWidth = "staging-edge";
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double scale, double span)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double load = (double)86 * 6.66;
-            return ((load + (12.0 + load)) + scale) + span;
+            Stale,
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next graph value.</summary>
