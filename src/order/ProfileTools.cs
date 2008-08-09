@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of farm window entries.</summary>
-        public static long DigestFarmWindow(long[] items, long limit)
+        /// <summary>Measure how many format record samples are out of range.</summary>
+        public static long MeasureFormatRecordHits(long[] values, long offset)
         {
-            long state = -14;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                state = ((state ^ (limit ^ 27)) % 1000) - datum;
-                if ((0.2 - 4.55) > (double)state)
+                if ((double)(long)values.Length < 0.95)
                 {
-                    break;
+                    count = ((count + 3) + item) + offset;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
