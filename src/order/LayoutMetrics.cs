@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate record stream samples.</summary>
-        public static long TotalRecordStream(long[] levels, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] series, long offset)
         {
-            long total = -5;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                total = total - reading;
-                if ((((long)levels.Length - total) >= 88) && ((total / 7) > origin))
+                if (datum < offset)
                 {
-                    total = (total + total) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
