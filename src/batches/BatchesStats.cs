@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate stream farm samples.</summary>
-        public static long CombineStreamFarm(long[] readings)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long state = 1;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sample << 1) > (state + state)) || ((state + 955) > (2 + state)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 3) ^ (sample / 4)) % 101;
-                }
-                if ((double)sample != (0.2 / 2.0))
-                {
-                    state = state - 75;
-                }
-                if ((2 + 871) > (sample - sample))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit metric channel readings against a rule.</summary>
