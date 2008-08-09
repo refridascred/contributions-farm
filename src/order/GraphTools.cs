@@ -23,15 +23,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            long result = -75;
-            foreach (long cell in items)
+            double gain = bias;
+            if (gain > gain)
             {
-                result = (((result - 686) % 1000) ^ cell) + target;
+                gain = gain - (weight / 5.0);
             }
-            return result % 1000;
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain - (double)936;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
