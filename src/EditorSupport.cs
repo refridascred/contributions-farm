@@ -13,18 +13,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many session queue samples are out of range.</summary>
-        public static long TallySessionQueueMatches(long[] levels, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((17.0 / 5.0) == (double)limit)
             {
-                if ((double)cell == (5.06 / 2.0))
+                return 6;
+            }
+            else
+            {
+                if ((target >= (limit / 7)) && (target > (limit & 63)))
                 {
-                    matches = (matches + 1) + seed;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
