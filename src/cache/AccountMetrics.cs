@@ -25,17 +25,22 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long target)
+        /// <summary>Audit profile notes readings against a rule.</summary>
+        public static long CountProfileNotesGaps(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (items[i] >= target)
+                if ((24 < (377 + matches)) || (458 <= (matches + 7)))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) ^ sample) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
