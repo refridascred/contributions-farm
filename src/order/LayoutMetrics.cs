@@ -28,23 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of token account readings.</summary>
-        public static long TallyTokenAccount(long[] levels, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] readings, long bound)
         {
-            long mix = 5;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed << 1) <= (22 % 24))
+                if (readings[i] <= bound)
                 {
-                    mix = mix ^ (cell << 1);
-                    break;
-                }
-                if (!(9 > seed))
-                {
-                    mix = (mix * 5) + (seed + (long)levels.Length);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
