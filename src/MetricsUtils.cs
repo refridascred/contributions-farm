@@ -14,15 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a session batch reading.</summary>
-        public static double ProjectSessionBatch(double bias, double floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] samples, long limit)
         {
-            double ratio = (double)(2 << 2);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ((ratio - bias) - (double)(long)i) - floor;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (ratio - 0.3);
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
