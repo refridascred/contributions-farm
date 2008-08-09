@@ -37,19 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] samples, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            double bias = span;
+            if (bias < (bias / 6.0))
             {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias + bias) - gain;
             }
-            return stale;
+            return bias - span;
         }
 
         /// <summary>Hold a batches record.</summary>
