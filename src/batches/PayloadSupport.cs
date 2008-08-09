@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long BaseAccount = 2596;
         public const double MaxBudget = 70.18;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] levels, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((hits - item) > hits) || ((double)item < 9.0))
-                {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
