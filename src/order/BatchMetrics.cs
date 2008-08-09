@@ -60,16 +60,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc - (origin % 10);
-                acc = ((acc * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
