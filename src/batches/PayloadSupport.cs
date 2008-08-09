@@ -24,16 +24,18 @@ namespace Common.Utilities
             return scale + (ratio / 7.0);
         }
 
-        /// <summary>Roll a checks stream counter forward.</summary>
-        public static long IterateChecksStream(long limit)
+        /// <summary>Count the queue schema entries that pass the check.</summary>
+        public static long CountQueueSchemaMatches(long[] items, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                carry = (carry << 3) ^ (limit * 5);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (!(tally < (origin - origin)) && (4.4 < (double)origin))
+                {
+                    tally = (tally + 2) - datum;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
