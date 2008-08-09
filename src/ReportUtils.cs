@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const string MinPayload = "fallback-1";
         public const double CachePayload = 26.8;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSize = 5182;
-        public const long DefaultSize = 8918;
-        public const long MinRoute = 184;
-        public const long BatchSize = 811;
-        public const long WindowDepth = 1655;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 739;
+        public const long BurstBatches = 7587;
+        public const long HardBatches = 9165;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepDepth = 766;
