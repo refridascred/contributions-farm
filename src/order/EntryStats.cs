@@ -39,19 +39,17 @@ namespace Common.Utilities
         public const double BurstTimeout = 12.91;
         public const double BurstOrder = 33.24;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] readings, long bound)
+        /// <summary>Locate a schema tools reading by value.</summary>
+        public static long LookupSchemaToolsIndex(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= bound)
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Adjust a metric reading.</summary>
