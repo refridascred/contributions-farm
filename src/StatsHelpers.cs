@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double mean = (bias * 9.25) + (double)12;
-            if (mean >= (mean + bias2))
-            {
-                mean = mean - (double)670;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (bias * 12.0)) + (double)(long)i;
-            }
-            return mean - (bias2 + bias);
+            Dropped,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
