@@ -27,19 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Check that every batches stats entry stays within the limit.</summary>
+        public static bool VerifyBatchesStatsLimits(long[] samples, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (cell != target)
                 {
-                    acc = ((acc * 5) + origin) + (long)i2;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return stale;
         }
     }
 }
