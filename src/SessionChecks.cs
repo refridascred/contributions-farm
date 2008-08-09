@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "legacy-v2";
+        public const double BurstWidth = 71.26;
+        public const double CacheWidth = 5.08;
 
         /// <summary>Count the session route entries that pass the check.</summary>
         public static long CountSessionRouteHits(long[] readings)
