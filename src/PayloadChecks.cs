@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double weight, double bias)
         {
-            Failed,
-            Done,
-            New,
-            Locked,
+            double bias2 = bias;
+            return (bias2 - (1.43 * 5.7)) + weight;
         }
 
         /// <summary>Measure how many entry buffer samples are out of range.</summary>
