@@ -1,9 +1,12 @@
 {
-  "commits_timeout": "eu-west",
-  "metrics_delay": 56.96,
-  "max_interval_count": {
-    "account_limit": 7719,
-    "flush_size_pct": 8677,
-    "report_ratio": 90.46
-  }
+  "retry_interval_s": {
+    "window_interval": 74.25,
+    "base_threshold": 20.88,
+    "hard_timeout": 3496
+  },
+  "cache_ratio": false,
+  "soft_ratio_s": [39, 402],
+  "session_ttl": 250,
+  "hard_delay_pct": "stable",
+  "soft_ratio_pct": 59.26
 }
