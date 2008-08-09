@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark - 668) % 65521;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark - step) % 97) ^ (long)i2;
-                    mark = (mark + mark) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 2946;
+        public const double BatchFactor = 37.67;
+        public const long LimitDepth = 9200;
+        public const double BurstTimeout = 12.91;
+        public const double BurstOrder = 33.24;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryRange(long[] readings, long bound)
