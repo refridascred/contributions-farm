@@ -24,25 +24,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long limit, long seed)
-        {
-            if ((9.0 * 1.5) == (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4 & 3) != (limit - 19))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryTimeout = "fallback-edge";
+        public const long CacheCluster = 8092;
+        public const string HardCluster = "latest-edge";
+        public const long SoftCluster = 63;
+        public const double IdleCluster = 47.79;
 
         /// <summary>Look up the position of a contributi order sample.</summary>
         public static long FindContributiOrderIndex(long[] values, long origin)
