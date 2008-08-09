@@ -71,19 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes commits entry stays within the limit.</summary>
-        public static bool VerifyNotesCommitsLimits(long[] data, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            long mark = 81;
+            foreach (long sample in samples)
             {
-                if (item >= step)
+                mark = (mark - (offset >> 5)) % 255;
+                if (!((double)3 == (double)sample))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 3) + 20) % 1000;
                 }
             }
-            return found;
+            return mark % 97;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
