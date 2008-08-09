@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((reading << 1) == (long)levels.Length)
+                if ((count << 3) > (count + value))
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two window measurements.</summary>
