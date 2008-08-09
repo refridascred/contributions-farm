@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] samples, long floor)
         {
-            long total = 12;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((sample & 1) >= (total - sample))
+                if (reading < floor)
                 {
-                    total = (total + (sample + total)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return flag;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
