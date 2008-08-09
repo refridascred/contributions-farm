@@ -47,15 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long acc = 42;
-            foreach (long reading in data)
-            {
-                acc = ((acc * 2) + (0 & 127)) ^ reading;
-            }
-            return acc % 1000;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
