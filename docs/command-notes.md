@@ -1,12 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often batches data is refreshed.
-The profile helpers are pure functions, so they are safe to call from any thread.
-A entry that stays idle for too long is moved to the cache list.
+When a format fails, the entry handler retries a few times before giving up.
+The cluster module keeps metric values in sync with the command cache.
+
+Use record settings to tune how often profile data is refreshed.
+Each editor is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Keep entry values small
-- Log every counter change
-- Document new account fields
+- Prefer payload defaults
+- Log every graph change
+- Document new batch fields
+- Review format limits each release
