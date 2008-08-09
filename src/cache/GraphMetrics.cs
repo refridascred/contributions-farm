@@ -58,18 +58,13 @@ namespace Common.Utilities
         public const long BurstFactor = 5120;
         public const long DefaultBudget = 2440;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long target)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long sum = 478;
-            foreach (long reading in samples)
-            {
-                if (((target + 151) >= (reading - target)) || ((3.6 * 4.85) == (double)reading))
-                {
-                    sum = ((sum * 2) + (222 * 5)) % 255;
-                }
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
