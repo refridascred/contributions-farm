@@ -32,19 +32,21 @@ namespace Common.Utilities
             return weight - (9.0 / 8.0);
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] readings, long target)
+        /// <summary>Match up support record samples.</summary>
+        public static long PairSupportRecordCount(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
