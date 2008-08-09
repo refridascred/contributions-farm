@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Check that every counter stream entry stays within the limit.</summary>
+        public static bool GuardCounterStreamLimits(long[] items, long origin)
         {
-            Done,
-            Idle,
-            Pending,
-            New,
-            Closed,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of record readings.</summary>
