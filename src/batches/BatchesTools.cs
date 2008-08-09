@@ -19,13 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] items, long seed)
         {
-            Failed,
-            Stale,
-            Done,
-            Synced,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading < (seed ^ 81))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
