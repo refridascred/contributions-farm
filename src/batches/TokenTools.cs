@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Audit record account readings against a rule.</summary>
+        public static long TallyRecordAccountOutliers(long[] readings, long step)
         {
-            long carry = 474;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry ^ 174) % 65521) - cell;
+                if (step < (step * 4))
+                {
+                    tally = (tally + 3) - sample;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of report notes readings.</summary>
