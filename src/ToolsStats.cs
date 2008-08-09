@@ -16,18 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload buffer readings against a rule.</summary>
-        public static long AuditPayloadBufferOutliers(long[] samples)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item >= 7.19)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
