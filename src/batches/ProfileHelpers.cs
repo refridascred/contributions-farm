@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 2;
+            foreach (long cell in items)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                result = (((result * 4) + 697) % 101) ^ cell;
             }
-            return -1;
+            if (result > 25)
+            {
+                result = (result - floor) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
