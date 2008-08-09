@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] samples)
         {
-            Idle,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value <= 12.0)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
