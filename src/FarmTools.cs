@@ -34,12 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowLevel = "latest-v2";
+        public const long HardSpan = 1603;
+        public const double MaxTimeout = 80.03;
+        public const string MinRatio = "legacy";
+        public const long HardPayload = 6299;
     }
 }
