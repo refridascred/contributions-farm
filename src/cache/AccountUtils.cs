@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] series)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count >> 5) > (item ^ count))
+                if ((values[i] < origin) && ((values[i] % 3) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
