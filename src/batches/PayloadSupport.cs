@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long RetryScore = 9262;
         public const long StepTools = 6677;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long offset)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
