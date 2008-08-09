@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels, long bound)
         {
-            Done,
-            Pending,
-            Failed,
+            long state = 358;
+            foreach (long value in levels)
+            {
+                state = ((((state * 2) + (state & 3)) % 1000) + value) + bound;
+            }
+            if (state > 1)
+            {
+                state = (state ^ ((long)levels.Length * 3)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the batch class values.</summary>
