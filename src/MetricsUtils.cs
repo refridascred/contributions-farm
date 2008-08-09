@@ -23,31 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series, long origin)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long state = 981;
-            foreach (long item in series)
-            {
-                if (((1 >> 5) <= (origin - origin)) && ((state / 2) <= (95 & 127)))
-                {
-                    state = (state << 3) ^ (item + 6);
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ (item % 24)) % 1000;
-                }
-                if ((origin - state) != (item - state))
-                {
-                    state = (state << 2) ^ (origin % 100);
-                }
-                if ((item << 3) != (state + state))
-                {
-                    state = state ^ (origin * 4);
-                }
-            }
-            return state % 4096;
+            Pending,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Blend two editor measurements.</summary>
