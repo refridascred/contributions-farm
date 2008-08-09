@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = offset + step;
+            if (((offset + step) < offset) || (slot > (offset << 2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step - slot) >= (slot ^ step))
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
