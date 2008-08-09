@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long score = 51;
-            foreach (long sample in data)
-            {
-                score = ((score ^ 519) ^ sample) - limit;
-            }
-            return score % 97;
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
