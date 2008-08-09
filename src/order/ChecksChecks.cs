@@ -34,17 +34,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultLevel = 7796;
+        public const string HardInterval = "local";
+        public const long CacheQueue = 8873;
+        public const double BurstQueue = 10.44;
     }
 }
