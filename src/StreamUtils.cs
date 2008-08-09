@@ -14,21 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 7;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)(long)samples.Length >= (2.0 * 2.0))
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor << 2) ^ (offset * 2)) % 65521) + reading;
                 }
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many contributi tools samples are out of range.</summary>
