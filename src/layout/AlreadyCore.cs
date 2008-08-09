@@ -59,17 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order route sample.</summary>
-        public static long LocateOrderRouteIndex(long[] data, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Closed,
+            Ready,
         }
     }
 }
