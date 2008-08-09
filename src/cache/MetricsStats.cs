@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format order samples.</summary>
-        public static long CombineFormatOrder(long[] levels)
+        /// <summary>Validate payload farm readings against a bound.</summary>
+        public static bool VerifyPayloadFarmLimits(long[] samples, long bound)
         {
-            long state = 230;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (state >= (679 >> 1))
+                if (sample != bound)
                 {
-                    state = (state << 2) ^ (reading - state);
-                }
-                else
-                {
-                    state = (state - (reading * 5)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Check that every already window entry stays within the limit.</summary>
