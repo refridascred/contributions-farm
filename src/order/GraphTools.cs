@@ -35,22 +35,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine profile layout values into a single score.</summary>
-        public static long FoldProfileLayout(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] values)
         {
-            long result = 8;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (cell < (result - result))
+                if ((double)reading <= (16.0 + 6.4))
                 {
-                    result = result ^ (cell * 5);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    result = result + result;
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
