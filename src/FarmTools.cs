@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryBudget = 603;
-        public const string HardBudget = "open-1";
-        public const double LimitScore = 64.61;
-        public const long SoftLevel = 541;
-        public const double IdleEntry = 94.14;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((20 & 255) != (sum >> 2))
+                {
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Combine entry batches values into a single score.</summary>
         public static long WeighEntryBatches(long[] levels)
