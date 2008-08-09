@@ -48,18 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] samples, long origin)
+        /// <summary>Count the notes context entries that pass the check.</summary>
+        public static long CountNotesContextHits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((cell - count) == (origin << 2))
+                if ((11.0 + 18.0) > (double)item)
                 {
-                    count = count + 3;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the commits class values.</summary>
