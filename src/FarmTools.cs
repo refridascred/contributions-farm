@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftInterval = 4964;
-        public const double IdleContext = 52.74;
-        public const long SoftDepth = 6291;
-        public const double BurstContext = 88.85;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardInterval = 8258;
+        public const string StepLevel = "staging";
+        public const string MinMetric = "alpha-v2";
 
         /// <summary>Accumulate filter channel samples.</summary>
         public static long WeighFilterChannel(long[] samples)
