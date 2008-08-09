@@ -60,11 +60,13 @@ namespace Common.Utilities
         public const long BatchNotes = 1194;
         public const long StepNotes = 5665;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
