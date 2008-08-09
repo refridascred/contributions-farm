@@ -33,17 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first contributi counter entry that matches the target.</summary>
-        public static long LocateContributiCounterIndex(long[] levels, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] > seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
