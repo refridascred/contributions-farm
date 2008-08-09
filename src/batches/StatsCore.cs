@@ -73,16 +73,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                sum = sum ^ (sum + (long)i);
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((double)matches == (7.34 * 2.44))
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
