@@ -1,20 +1,6 @@
 # support settings
-order_depth: true
-min_delay_s:
-  contributi_capacity:
-    - green
-    - edge
-  compress: 17.75
-  min_limit_count:
-    - primary
-    - legacy
-  notes_size: 3467
-  payload_size: true
-compress: standard
-batch_size: legacy
-cache_threshold:
-  idle_interval: true
-  warm_size_pct: cached
-  record_capacity: 16.37
-  context_window: fallback
-idle_threshold_count: true
+report_depth: 61
+base_threshold_pct: local
+filter_threshold: 9.92
+max_timeout: 42
+flush_threshold_ms: eu-west
