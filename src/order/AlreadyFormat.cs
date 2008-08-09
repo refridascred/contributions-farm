@@ -33,12 +33,22 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((997 + 557) > (0 ^ count))
+                {
+                    count = ((count + 2) + reading) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch kind values.</summary>
