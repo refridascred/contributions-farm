@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double gain, double bias)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double rate = bias;
-            if (rate >= bias)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + gain) - (double)(long)i;
-            }
-            return rate - (rate - gain);
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
