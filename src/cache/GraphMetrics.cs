@@ -86,13 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Compare every pair of layout cluster readings.</summary>
+        public static long CompareLayoutClusterCount(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
