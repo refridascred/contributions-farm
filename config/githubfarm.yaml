@@ -1,15 +1,5 @@
 # githubfarm settings
-sync_limit_count: true
-idle_threshold_ms:
-  - legacy
-  - strict
-  - blue
-  - latest
-dry_run:
-  base_retries_count:
-    - eu-west
-    - primary
-    - green
-  max_delay_ms: legacy
-  readonly: 89
-poll_depth: 39
+notes_capacity: 100
+warm_window: 161
+cache_capacity_s: 75
+warm_delay_s: true
