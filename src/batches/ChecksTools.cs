@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long CacheSchema = 3470;
         public const double LimitSchema = 16.67;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] data, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long score = 57;
-            foreach (long cell in data)
-            {
-                score = score - (target - score);
-                if (80 > score)
-                {
-                    score = ((score * 2) + (cell & 31)) % 255;
-                }
-            }
-            if (score > 41)
-            {
-                score = ((score * 3) + (score - target)) % 65521;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
