@@ -46,11 +46,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] series)
         {
-            double bias = span;
-            return (bias - (8.2 + 16.0)) + weight;
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((35 % 16) > (datum % 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
