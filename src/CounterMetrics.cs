@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double StepFactor = 38.36;
         public const double LimitInterval = 71.11;
 
-        /// <summary>Validate batch profile readings against a bound.</summary>
-        public static bool GuardBatchProfileBounds(long[] samples, long offset)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
