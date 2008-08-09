@@ -60,19 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > origin)
+                result = ((result * 5) + (origin >> 2)) % 4096;
+                result = (result - (result << 3)) % 97;
+                if ((long)i == (result * 2))
                 {
-                    flag = false;
-                    break;
+                    result = (result - (result + result)) % 1000;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
