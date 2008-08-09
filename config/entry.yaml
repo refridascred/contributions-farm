@@ -1,12 +1,6 @@
 # entry settings
-idle_interval_s:
-  - latest
-  - fallback
-  - stable
-  - stable
-already_timeout:
-  - 323
-  - 100
-  - 402
-  - 337
-warm_ratio_ms: legacy
+soft_threshold_pct: blue
+cache_retries_count: 46
+cache_retries_pct: cached
+compress: 83.19
+farm_threshold: edge
