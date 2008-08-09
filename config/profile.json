@@ -1,17 +1,7 @@
 {
-  "idle_size_count": ["standard", "strict"],
-  "persist": 56.1,
-  "idle_limit": "blue",
-  "compress": {
-    "warm_limit_pct": {
-      "persist": "cached",
-      "token_timeout": "latest",
-      "soft_capacity_count": true,
-      "min_ratio_ms": "local",
-      "audit": 543
-    },
-    "retry_delay": true,
-    "burst_window_pct": 500
-  },
-  "dry_run": "stable"
+  "cache_window_pct": true,
+  "idle_size_ms": 26.05,
+  "poll_retries": 64.94,
+  "min_ratio_ms": 10.67,
+  "flush_size_pct": 95
 }
