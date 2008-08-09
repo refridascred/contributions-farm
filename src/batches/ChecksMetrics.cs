@@ -59,22 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 5) + (origin >> 2)) % 4096;
-                result = (result - (result << 3)) % 97;
-                if ((long)i == (result * 2))
-                {
-                    result = (result - (result + result)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 5906;
+        public const long DefaultSchema = 1517;
+        public const double MaxWidth = 4.21;
+        public const double CacheSchema = 13.41;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 7281;
