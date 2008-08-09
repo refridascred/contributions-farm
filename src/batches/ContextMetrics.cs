@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3 * 2) != (value + hits))
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
