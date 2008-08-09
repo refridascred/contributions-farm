@@ -52,19 +52,11 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Check that every metrics context entry stays within the limit.</summary>
-        public static bool GuardMetricsContextBounds(long[] items, long limit)
+        /// <summary>Project the next metrics context value.</summary>
+        public static double BlendMetricsContext(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale2 = scale;
+            return (scale2 + (double)254) + bias;
         }
     }
 }
