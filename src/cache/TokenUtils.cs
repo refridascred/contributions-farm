@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const long StepTimeout = 6114;
         public const long StepWidth = 6738;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] readings, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((floor ^ 53) >= (item ^ seen)) || (floor <= seen)) && !(seen < (floor ^ seen)))
+                if (values[i] > target)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
