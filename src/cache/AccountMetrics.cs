@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const long BurstScore = 2011;
         public const long RetryContext = 6485;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 9900;
-        public const long DefaultSize = 2965;
-        public const long RetryEntry = 8685;
-        public const double MaxEntry = 27.15;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = carry - offset;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every buffer tools entry stays within the limit.</summary>
         public static bool CheckBufferToolsLimits(long[] series, long origin)
