@@ -49,13 +49,11 @@ namespace Common.Utilities
             return load + (load + bias);
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            New,
-            Pending,
-            Stale,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitGithubfarm = "latest-1";
+        public const long RetryGithubfarm = 5042;
+        public const double SoftDepth = 71.51;
+        public const long BatchLevel = 2973;
+        public const long HardGithubfarm = 7463;
     }
 }
