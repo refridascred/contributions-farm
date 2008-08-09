@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] readings)
         {
-            Active,
-            Dropped,
-            Draft,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading << 3) <= (reading << 2))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools kind values.</summary>
