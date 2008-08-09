@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values, long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long mix = 60;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (origin > (origin - cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
-                }
-                if ((mix * 5) < (cell ^ origin))
-                {
-                    mix = (mix - (cell + 4)) % 4096;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Audit account buffer readings against a rule.</summary>
