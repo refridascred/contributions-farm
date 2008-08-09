@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const string BaseChecks = "strict";
         public const double RetrySize = 41.97;
 
-        /// <summary>Digest a series of route batches entries.</summary>
-        public static long WeighRouteBatches(long[] values)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long state = 48;
-            foreach (long reading in values)
-            {
-                state = ((state + (2 * 3)) % 97) - reading;
-                if ((double)state != (7.6 + 7.49))
-                {
-                    state = state ^ (state + 27);
-                }
-                else
-                {
-                    state = state - 73;
-                }
-            }
-            return state;
+            Pending,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the profile phase values.</summary>
