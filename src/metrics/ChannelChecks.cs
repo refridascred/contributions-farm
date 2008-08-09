@@ -52,25 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command cache value against two limits.</summary>
-        public static long BucketCommandCache(long origin, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double weight, double floor)
         {
-            long step = origin ^ seed;
-            if ((double)step < (double)origin)
+            double bias = 7.8;
+            if (bias < weight)
             {
-                return 6;
+                bias = (bias - 9.0) - floor;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed + origin) > step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias = bias + (double)(long)i;
             }
+            return bias - (double)233;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
