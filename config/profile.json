@@ -1,16 +1,23 @@
 {
-  "min_capacity_ms": 90,
-  "warm_ttl_count": 2400,
-  "dry_run": {
-    "sync_limit_s": 1024,
-    "retry_timeout": 9066,
-    "sync_retries": {
-      "default_threshold_pct": "legacy",
-      "retry_limit_count": "open",
-      "flush_capacity": 1222,
-      "already_ttl": 60
+  "audit": {
+    "retry_delay_ms": ["blue", "primary", "fallback", "legacy"],
+    "soft_delay": 60,
+    "strict": {
+      "retry_retries_pct": 500,
+      "base_size": 11,
+      "soft_timeout": 25.35,
+      "flush_threshold_pct": 30,
+      "base_depth": "primary",
+      "enabled": "local"
     }
   },
-  "metrics_timeout": "stable",
-  "batch_depth_s": "legacy"
+  "hard_timeout": {
+    "buffer_limit": true,
+    "payload_retries": true,
+    "compress": 66.33,
+    "hard_retries_s": "local",
+    "default_ttl": "primary"
+  },
+  "retry_window_s": 20.34,
+  "cache_ttl_s": "strict"
 }
