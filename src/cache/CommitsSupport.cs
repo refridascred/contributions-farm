@@ -45,13 +45,10 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-1";
         public const double BurstBudget = 24.01;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchInterval = 62.64;
+        public const long BatchLevel = 3172;
+        public const long BatchSpan = 2482;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
