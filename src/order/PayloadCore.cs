@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value <= 12.0)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleFactor = "alpha-edge";
+        public const long BurstTimeout = 2349;
+        public const long SoftDepth = 6078;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricMatches(long[] samples, long offset)
