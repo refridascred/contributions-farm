@@ -19,21 +19,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Find the first support layout entry that matches the target.</summary>
+        public static long LookupSupportLayoutIndex(long[] data, long seed)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] == seed)
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit contributi command readings against a rule.</summary>
