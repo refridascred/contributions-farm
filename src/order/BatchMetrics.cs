@@ -50,12 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Ready,
             Active,
-            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Accumulate cache samples.</summary>
