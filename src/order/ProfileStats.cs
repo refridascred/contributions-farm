@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long step)
         {
-            Done,
-            Failed,
-            Queued,
-            Synced,
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
