@@ -46,23 +46,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double ratio = bias;
-            if (ratio < (double)470)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio + (ratio - offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (bias * 3.4)) + (double)(long)i;
-            }
-            return ratio + (ratio / 8.0);
+            Ready,
+            Paused,
+            Stale,
+            Retry,
+            Dropped,
         }
     }
 }
