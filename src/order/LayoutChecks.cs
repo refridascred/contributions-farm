@@ -20,10 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitTimeout = 2207;
-        public const string BurstBuffer = "standard-edge";
-        public const long DefaultWidth = 8380;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)value >= 12.0)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long DefaultBudget = 1879;
