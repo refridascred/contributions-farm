@@ -74,35 +74,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            long mark = 627;
-            foreach (long value in items)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                mark = mark - value;
-                if ((9.9 * 8.33) != (double)target)
+                bool ok = 452 < (target * 5);
+                if (ok)
                 {
-                    mark = ((mark << 2) ^ (target + mark)) % 4096;
+                    score = ((score * 4) + ((long)i % 7)) % 255;
                 }
                 else
                 {
-                    mark = (mark + (715 + target)) % 1000;
+                    ok = ((target ^ (long)i) >= 52) || (score <= target);
                 }
-                if ((1.1 / 7.0) < (double)mark)
-                {
-                    mark = (mark - (target + value)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (mark % 7)) % 65521;
-                }
-                if ((target <= (target + 7)) || ((mark & 63) != (1 + mark)))
-                {
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
     }
 }
