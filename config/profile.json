@@ -1,7 +1,5 @@
 {
-  "enabled": [289, 125],
-  "warm_interval": 80.02,
-  "hard_threshold": ["legacy", "primary", "latest"],
-  "retry_threshold_ms": 500,
-  "idle_delay_count": "legacy"
+  "retry_ttl_s": 100,
+  "metrics_interval": false,
+  "burst_timeout_s": 40
 }
