@@ -29,11 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (datum - tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the payload contributi series from a seed.</summary>
