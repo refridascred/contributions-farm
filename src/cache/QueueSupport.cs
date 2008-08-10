@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double gain, double span)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            double bias = 2.1;
-            if (bias >= (double)(-4))
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                bias = (bias - span) - gain;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias + (8.54 * 0.7);
-            }
-            return bias + 5.0;
+            return carry;
         }
 
         /// <summary>Hold a stats summary.</summary>
