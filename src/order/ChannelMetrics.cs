@@ -11,17 +11,26 @@ namespace Common.Utilities
         public const double DefaultWindow = 43.96;
         public const long HardWindow = 7541;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long floor)
+        /// <summary>Combine batch token values into a single score.</summary>
+        public static long WeighBatchToken(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 10;
+            foreach (long cell in items)
             {
-                if (series[i] == floor)
+                if ((cell - (long)items.Length) >= (total % 2))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (total - cell)) % 255;
+                }
+                if ((double)total >= 16.0)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 45)
+            {
+                total = (total ^ total) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the session phase values.</summary>
