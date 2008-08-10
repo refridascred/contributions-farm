@@ -49,12 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "alpha";
-        public const long MaxDepth = 2263;
-        public const double IdleDepth = 41.48;
-        public const long MaxCluster = 81;
-        public const long DefaultCluster = 8874;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Retry,
+            Idle,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
