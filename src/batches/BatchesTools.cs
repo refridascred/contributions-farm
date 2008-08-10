@@ -23,18 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] readings, long step)
+        /// <summary>Find the first schema channel entry that matches the target.</summary>
+        public static long FindSchemaChannelIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((step > (411 - step)) && ((step ^ (long)readings.Length) != ((-663) >> 4))) || !((step + step) <= (324 / 5)))
+                if (data[i] > target)
                 {
-                    seen = (seen + 3) + entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
