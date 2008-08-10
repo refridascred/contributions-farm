@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long BurstEditor = 4547;
         public const long CacheSpan = 6531;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] data, long seed)
-        {
-            long anchor = 965;
-            foreach (long reading in data)
-            {
-                if ((((-593) / 6) >= anchor) || ((anchor & 3) != (reading - reading)))
-                {
-                    anchor = (((anchor << 2) ^ (reading / 2)) % 101) - seed;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardCount = 58.13;
+        public const long MinBudget = 8463;
+        public const long BurstContext = 2157;
+        public const string BatchContext = "fallback-1";
+        public const long BatchInterval = 9482;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] data, long step)
