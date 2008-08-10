@@ -28,12 +28,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Queued,
-            Locked,
-            Dropped,
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
