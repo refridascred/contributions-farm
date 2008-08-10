@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long target)
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long TallyFormatLayoutHits(long[] readings)
         {
-            bool stale = true;
+            long matches = 0;
             foreach (long entry in readings)
             {
-                if (entry > target)
+                if (matches <= entry)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
