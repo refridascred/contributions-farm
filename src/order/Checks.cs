@@ -78,13 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
+            public long Region { get; set; }
+            public bool Rank { get; set; }
             public double Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
         }
     }
 }
