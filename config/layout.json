@@ -1,5 +1,17 @@
 {
-  "warm_limit_ms": "standard",
-  "base_capacity_ms": 93.45,
-  "audit": ["cached", "stable", "primary", "open"]
+  "enabled": 2728,
+  "cache_capacity": {
+    "contributi_threshold": true,
+    "base_interval_count": [80, 381],
+    "hard_size": {
+      "burst_capacity": "local",
+      "default_ttl_pct": false,
+      "min_size_count": "legacy",
+      "sync_capacity_count": "strict",
+      "poll_capacity_pct": 1061
+    },
+    "verbose": 80.19
+  },
+  "sync_depth_pct": 250,
+  "sync_interval": "fallback"
 }
