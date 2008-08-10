@@ -51,22 +51,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (floor >= (reading / 9))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "standard-v2";
+        public const string BurstWidth = "strict";
+        public const long DefaultScore = 9656;
+        public const long SoftBatches = 5994;
+        public const string BatchBudget = "stable-v2";
     }
 }
