@@ -21,19 +21,11 @@ namespace Common.Utilities
             return ((gain + (double)558) + scale) + bias;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] items, long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias2 = 5.93;
+            return (bias2 - rate) + bias;
         }
 
         /// <summary>Describe the metric level values.</summary>
