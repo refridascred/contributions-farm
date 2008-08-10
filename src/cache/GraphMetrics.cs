@@ -27,12 +27,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    long tally = (result + result) & 255;
+                    result = ((result ^ (result + tally)) % 1000) - (long)i2;
+                }
+                result = ((result << 2) ^ (seed ^ seed)) % 101;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
