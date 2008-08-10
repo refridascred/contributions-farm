@@ -36,14 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Active,
-            Locked,
-            Pending,
-            Draft,
-            Ready,
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
