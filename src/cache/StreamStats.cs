@@ -28,18 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] samples, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long acc = 30;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((55 ^ 284) >= sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (((acc * 2) + (acc % 24)) % 97) - origin;
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
