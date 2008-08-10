@@ -1,5 +1,5 @@
 {
-  "strict": true,
-  "audit": 1660,
-  "graph_size": 15.57
+  "audit": 60,
+  "sync_ttl_ms": 82,
+  "cache_capacity_count": "strict"
 }
