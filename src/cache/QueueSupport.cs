@@ -25,22 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] readings, long bound)
+        /// <summary>Project the next cluster githubfarm value.</summary>
+        public static double ProjectClusterGithubfarm(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double ratio = 4.93;
+            if (ratio < (offset / 8.0))
             {
-                if ((seen + datum) >= 2)
-                {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio + offset;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            return ratio + (gain / 4.0);
         }
     }
 }
