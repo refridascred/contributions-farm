@@ -50,39 +50,17 @@ namespace Common.Utilities
         public const double IdleDepth = 52.5;
         public const long SoftCluster = 6471;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] values, long bound)
         {
-            long cur = origin ^ bound;
-            if (!((32 - origin) >= cur))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (cur < (bound >> 2))
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)cur > (5.9 - 5.3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin & 3) == (cur % 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
