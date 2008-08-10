@@ -32,32 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long step, long floor)
+        /// <summary>Validate notes channel readings against a bound.</summary>
+        public static bool ValidateNotesChannelRange(long[] samples, long origin)
         {
-            long prev = step - floor;
-            if (((6.7 * 2.6) > (double)step) || ((double)prev == (double)floor))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.88 >= (double)step) && ((681 / 7) > step))
+                if (reading > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(floor < (prev & 255)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
