@@ -27,22 +27,24 @@ namespace Common.Utilities
             return (load - (2.58 - load)) + floor;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long acc = 17;
-            foreach (long reading in levels)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (0.48 >= (double)acc)
+                if (!((10.0 / 3.0) == (double)(long)i))
                 {
-                    acc = acc ^ (104 * 2);
+                    score = ((score << 3) ^ (294 - (-123))) % 4096;
+                    break;
                 }
-                else
+                if (((score >> 2) >= 47) && ((origin / 5) == (32 / 5)))
                 {
-                    acc = acc ^ (acc + reading);
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the channel level values.</summary>
