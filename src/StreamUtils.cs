@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheDepth = 806;
-        public const long BatchFilter = 8484;
-        public const double HardWidth = 51.26;
-        public const long DefaultRatio = 2298;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long DigestAlready(long[] samples, long bound)
