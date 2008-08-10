@@ -46,20 +46,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Compare every pair of checks command readings.</summary>
+        public static long OverlapChecksCommandCount(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (origin % 10)) - (long)i2;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = (mix - mix) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
