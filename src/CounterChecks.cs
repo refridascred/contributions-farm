@@ -69,21 +69,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
