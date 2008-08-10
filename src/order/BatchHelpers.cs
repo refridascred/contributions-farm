@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long floor)
         {
-            if ((step - step) >= 24)
+            long anchor = 2;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= 3.73)
+                anchor = (anchor - (anchor - item)) % 65521;
+                if ((anchor % 100) == (anchor - floor))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            if (anchor < 63)
+            {
+                anchor = (anchor ^ (9 << 3)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache class values.</summary>
