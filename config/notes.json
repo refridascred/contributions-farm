@@ -1,7 +1,5 @@
 {
-  "stats_threshold": false,
-  "min_threshold_pct": false,
-  "githubfarm_timeout": "standard",
-  "cache_ttl_s": false,
-  "base_delay": "green"
+  "soft_timeout": "standard",
+  "min_timeout_count": true,
+  "persist": false
 }
