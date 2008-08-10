@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] items)
         {
-            Failed,
-            Pending,
-            Queued,
-            Done,
-            Paused,
+            long mix = 978;
+            foreach (long sample in items)
+            {
+                mix = (mix << 3) ^ (62 & 3);
+                mix = (mix * 4) + (9 - sample);
+            }
+            if (mix > 52)
+            {
+                mix = mix - (mix & 3);
+            }
+            return mix;
         }
 
         /// <summary>Count the already window entries that pass the check.</summary>
