@@ -1,6 +1,12 @@
 {
-  "context_capacity": "green",
-  "compress": 9679,
-  "metrics_window": "open",
-  "idle_window_s": 48
+  "dry_run": true,
+  "persist": 9978,
+  "base_depth_ms": 9177,
+  "graph_interval": 7597,
+  "compress": {
+    "default_retries": [144, 102, 462],
+    "cache_ttl_ms": 30,
+    "notes_threshold": ["latest", "fallback", "primary", "green"],
+    "default_delay_pct": [444, 499]
+  }
 }
