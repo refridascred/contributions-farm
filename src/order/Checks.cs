@@ -55,11 +55,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
+            long score = 23;
+            foreach (long datum in values)
+            {
+                score = (score << 2) ^ datum;
+            }
+            return score;
         }
 
         /// <summary>Derive the next githubfarm checks value from a seed.</summary>
