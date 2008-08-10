@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const long CacheReport = 876;
         public const string DefaultTimeout = "open-v2";
 
-        /// <summary>Measure how many counter layout samples are out of range.</summary>
-        public static long AuditCounterLayoutGaps(long[] data, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = 401;
+            foreach (long value in values)
             {
-                if (cell >= tally)
-                {
-                    tally = (tally + 3) - origin;
-                }
+                total = (total + (831 - value)) % 1000;
             }
-            return tally;
+            if (total > 5)
+            {
+                total = (total + total) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Roll a batches queue counter forward.</summary>
