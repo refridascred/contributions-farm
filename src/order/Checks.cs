@@ -46,13 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every already profile entry stays within the limit.</summary>
+        public static bool VerifyAlreadyProfileLimits(long[] levels, long target)
         {
-            Stale,
-            New,
-            Idle,
-            Paused,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
