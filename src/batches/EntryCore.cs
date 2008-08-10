@@ -41,19 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] items, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != bound)
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
