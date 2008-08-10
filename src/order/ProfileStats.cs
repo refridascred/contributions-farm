@@ -27,21 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
