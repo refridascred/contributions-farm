@@ -33,16 +33,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Validate notes checks readings against a bound.</summary>
+        public static bool CheckNotesChecksLimits(long[] levels, long limit)
         {
-            long total = 7;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                total = (total << 2) ^ (total + 4);
-                total = (total - (value * 4)) % 101;
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return ok;
         }
     }
 }
