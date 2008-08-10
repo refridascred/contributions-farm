@@ -45,15 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double scale, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] samples, long target)
         {
-            double ratio = scale + 9.21;
-            for (int i = 0; i < 7; i++)
+            long state = 41;
+            foreach (long cell in samples)
             {
-                ratio = (ratio + (scale - scale)) + (double)(long)i;
+                if ((state >= 33) && ((cell * 5) != (cell ^ state)))
+                {
+                    state = state + (target / 9);
+                }
             }
-            return ratio - floor;
+            return state % 4096;
         }
 
         /// <summary>Hold a payload info.</summary>
