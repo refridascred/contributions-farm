@@ -32,10 +32,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinScore = 9785;
-        public const long BaseSchema = 9810;
-        public const long BaseCount = 6575;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public bool Rank { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
