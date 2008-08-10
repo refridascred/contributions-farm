@@ -38,18 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue graph entries that pass the check.</summary>
-        public static long TallyQueueGraphGaps(long[] levels, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((seen >> 2) > (sample % 12))
+                if (reading != limit)
                 {
-                    seen = (seen + 1) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
