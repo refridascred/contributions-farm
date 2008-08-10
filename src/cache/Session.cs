@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const long BatchLevel = 7216;
         public const long DefaultCount = 5707;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = -626;
-            foreach (long cell in values)
-            {
-                if ((cell < (anchor / 2)) && ((75 + 3) == (cell << 3)))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 101;
-                }
-            }
-            return anchor % 65521;
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
