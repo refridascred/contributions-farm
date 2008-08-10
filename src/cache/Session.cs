@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 3332;
+        public const string LimitCount = "standard-edge";
+        public const long HardSpan = 27;
+        public const long BatchLevel = 7216;
+        public const long DefaultCount = 5707;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long ScoreAccount(long[] values)
