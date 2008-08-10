@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit commits already readings against a rule.</summary>
-        public static long CountCommitsAlreadyGaps(long[] levels, long step)
+        /// <summary>Audit window already readings against a rule.</summary>
+        public static long CountWindowAlreadyMatches(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((0 + cell) > 58)
+                if (!((seen - seen) >= (739 >> 4)))
                 {
-                    hits = (hits + 1) - step;
+                    seen = ((seen + 1) - reading) - origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
