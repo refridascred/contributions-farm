@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Done,
-            Draft,
-            Active,
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
