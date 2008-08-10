@@ -14,22 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] levels, long origin)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(((value & 7) != (tally - origin)) && ((double)tally < (double)origin)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Stale,
+            Ready,
+            Pending,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
