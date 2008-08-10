@@ -23,23 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)matches < (9.0 - 0.7)) && ((789 * 5) >= matches))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "staging-1";
+        public const string LimitRatio = "stable-v2";
+        public const string LimitScore = "latest-v2";
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] values)
