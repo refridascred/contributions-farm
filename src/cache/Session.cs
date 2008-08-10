@@ -41,19 +41,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already farm entries.</summary>
-        public static long WeighAlreadyFarm(long[] values)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long seed)
         {
-            long anchor = 67;
-            foreach (long entry in values)
+            long step = limit - seed;
+            if (((step << 2) > (seed + step)) || ((seed & 31) <= limit))
             {
-                anchor = ((anchor - (anchor / 8)) % 97) + entry;
+                return 8;
             }
-            if (anchor < 627)
+            else
             {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 97;
+                if (943 <= (step + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step >= 8.89) && ((step - step) <= step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-2) - limit) < step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
