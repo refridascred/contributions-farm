@@ -90,19 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream window entries that pass the check.</summary>
-        public static long AuditStreamWindowMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((((tally & 255) != (tally << 2)) && (tally > cell)) || ((long)values.Length != (1 + cell)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "stable-edge";
+        public const double WindowEntry = 84.08;
+        public const string BaseEntry = "open-edge";
+        public const double LimitEntry = 92.13;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] data)
