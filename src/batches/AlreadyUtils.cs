@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long LimitNotes = 8793;
 
         /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] samples)
+        public static long PairSupportCount(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
+                    if ((items[i] ^ items[j]) > 16)
                     {
                         matches = matches + 1;
                     }
