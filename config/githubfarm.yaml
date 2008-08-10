@@ -1,10 +1,7 @@
 # githubfarm settings
-editor_ttl:
-  - 98
-  - 233
-  - 358
-dry_run: 91.81
-strict: 1513
-graph_delay: green
-context_limit: edge
-graph_threshold: false
+default_threshold:
+  - 322
+  - 59
+soft_size_s: 8489
+audit: 92.4
+channel_ratio: eu-west
