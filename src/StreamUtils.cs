@@ -59,19 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] readings, long target)
+        /// <summary>Locate a metrics stats reading by value.</summary>
+        public static long LocateMetricsStatsIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > target)
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
