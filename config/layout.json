@@ -1,8 +1,16 @@
 {
-  "poll_limit_s": [416, 400, 395, 497],
-  "compress": "local",
-  "strict": "cached",
-  "audit": true,
-  "contributi_limit": 3137,
-  "report_window": false
+  "cache_threshold_s": "open",
+  "base_limit_s": "open",
+  "max_ratio_pct": 30,
+  "warm_capacity": false,
+  "batch_timeout_ms": true,
+  "audit": {
+    "min_size_pct": 8138,
+    "base_capacity_pct": false,
+    "sync_ttl_pct": {
+      "channel_size": 7,
+      "batch_interval_count": "green",
+      "context_delay": 1024
+    }
+  }
 }
