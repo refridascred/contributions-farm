@@ -1,13 +1,7 @@
 {
-  "metrics_capacity": "strict",
-  "dry_run": 76,
-  "channel_limit": {
-    "strict": [315, 249, 105, 141],
-    "base_interval_s": 14.87,
-    "dry_run": 1.82,
-    "retry_size_pct": true
-  },
-  "idle_capacity_count": "legacy",
-  "verbose": 95.95,
-  "notes_size": true
+  "audit": 63.85,
+  "account_threshold": 60,
+  "batch_ratio_pct": 51.91,
+  "base_size_s": 3,
+  "record_ratio": 1024
 }
