@@ -1,12 +1,6 @@
 {
-  "idle_timeout": 73.24,
-  "audit": "strict",
-  "persist": {
-    "report_timeout": "edge",
-    "cache_limit_count": 4540,
-    "cache_delay_count": true,
-    "min_delay_count": 12.79
-  },
-  "batch_interval": "fallback",
-  "hard_delay_count": 27.04
+  "metrics_window": 11.33,
+  "command_threshold": 100,
+  "layout_ratio": false,
+  "commits_threshold": 28.3
 }
