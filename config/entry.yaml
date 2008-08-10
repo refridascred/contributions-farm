@@ -1,10 +1,27 @@
 # entry settings
-audit: open
-max_limit_count: 100
-session_delay: eu-west
-base_window_count: edge
-idle_delay_ms: 87
-soft_ttl_pct:
-  - fallback
+schema_retries:
   - cached
-  - latest
+  - legacy
+  - staging
+cluster_window: 100
+dry_run:
+  compress: 12
+  idle_window_count: 100
+  flush_retries:
+    - staging
+    - staging
+  max_depth_ms:
+    - 404
+    - 42
+    - 173
+  soft_depth:
+    warm_threshold_s: strict
+    command_limit: 5
+    burst_delay: cached
+    burst_ratio_s: 15.15
+    buffer_capacity:
+      - primary
+      - eu-west
+      - legacy
+      - strict
+sync_delay_pct: stable
