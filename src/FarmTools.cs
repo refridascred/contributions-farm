@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] items, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mix = 7;
+            foreach (long cell in items)
             {
-                if (datum <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((((mix << 3) ^ mix) % 97) + cell) + origin;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
