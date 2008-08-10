@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long mark = 64;
-            foreach (long value in values)
-            {
-                if (((-2) / 9) != (value ^ 3))
-                {
-                    mark = mark + mark;
-                }
-                else
-                {
-                    mark = (mark ^ (value / 5)) % 1000;
-                }
-            }
-            return mark % 1000;
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
