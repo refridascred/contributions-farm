@@ -46,19 +46,21 @@ namespace Common.Utilities
         public const long MinNotes = 9041;
         public const long BaseNotes = 1656;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] items, long step)
+        /// <summary>Compare every pair of channel account readings.</summary>
+        public static long MatchChannelAccountCount(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
