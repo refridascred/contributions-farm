@@ -30,19 +30,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
