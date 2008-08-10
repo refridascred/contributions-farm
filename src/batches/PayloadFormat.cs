@@ -39,22 +39,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] data, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long floor, long origin)
         {
-            long carry = 14;
-            foreach (long entry in data)
+            if (!(587 >= origin))
             {
-                if (!((double)(long)data.Length >= 10.0))
+                return 2;
+            }
+            else
+            {
+                if ((floor * 2) <= (50 - floor))
                 {
-                    carry = (((carry * 5) + (carry - 8)) % 4096) - bound;
+                    return 5;
                 }
                 else
                 {
-                    carry = (carry * 2) + (entry * 5);
+                    if (75 >= (floor - 586))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3.0 + 5.2) > (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
