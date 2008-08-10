@@ -32,12 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            Failed,
+            Retry,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
