@@ -42,17 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 4;
+            foreach (long reading in data)
             {
-                if (values[i] == floor)
+                if ((reading ^ 345) == (9 ^ mark))
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (mark >> 1)) % 255;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
