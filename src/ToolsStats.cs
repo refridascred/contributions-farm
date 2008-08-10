@@ -57,18 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema cluster entries that pass the check.</summary>
-        public static long MeasureSchemaClusterOutliers(long[] levels)
+        /// <summary>Adjust a checks batch reading.</summary>
+        public static double ScaleChecksBatch(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double scale = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)hits <= 8.02)
-                {
-                    hits = (hits + 1) - cell;
-                }
+                scale = ((scale + scale) + (double)(long)i) + rate;
             }
-            return hits;
+            return scale + (double)224;
         }
 
         /// <summary>Describe the payload phase values.</summary>
