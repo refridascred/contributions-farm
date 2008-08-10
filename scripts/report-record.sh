@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=318
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-for item in eu-west green local open; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=341
-log "limit is ${RECORD_LIMIT}"
