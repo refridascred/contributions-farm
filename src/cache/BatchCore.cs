@@ -34,19 +34,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long bound = origin + floor;
+            if ((3 - origin) >= (origin + bound))
             {
-                if (item >= step)
+                return 6;
+            }
+            else
+            {
+                if (origin < (bound * 5))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
     }
 }
