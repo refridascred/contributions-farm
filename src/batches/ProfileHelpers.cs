@@ -36,14 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine support layout values into a single score.</summary>
+        public static long WeighSupportLayout(long[] series, long seed)
         {
-            Stale,
-            Retry,
-            Active,
-            Ready,
-            Queued,
+            long sum = 327;
+            foreach (long item in series)
+            {
+                if (3.81 <= (double)seed)
+                {
+                    sum = ((sum * 2) + (item * 5)) % 101;
+                }
+                if (((-8) / 9) > (item + 728))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the already class values.</summary>
