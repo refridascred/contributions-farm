@@ -23,13 +23,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
