@@ -1,5 +1,13 @@
 {
-  "contributi_timeout": "eu-west",
-  "base_timeout_s": 7845,
-  "cache_retries_ms": 1024
+  "batches_limit": ["standard", "local"],
+  "verbose": "blue",
+  "persist": {
+    "farm_retries": 60.16,
+    "idle_size": "cached",
+    "cache_threshold_pct": "latest",
+    "batches_ttl": "standard",
+    "base_ttl": "eu-west"
+  },
+  "record_retries": [110, 100, 27, 334],
+  "poll_limit": "standard"
 }
