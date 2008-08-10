@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double ratio, double floor)
         {
-            Pending,
-            Dropped,
-            Done,
+            double ratio2 = (double)((-3) >> 1);
+            if (ratio2 >= ratio2)
+            {
+                ratio2 = ratio2 + floor;
+            }
+            else
+            {
+                ratio2 = ratio2 - (ratio * 18.0);
+            }
+            return ratio2 + (ratio * 7.2);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
