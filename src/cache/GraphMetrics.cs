@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            Locked,
+            Draft,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a token record.</summary>
