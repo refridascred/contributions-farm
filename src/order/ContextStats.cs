@@ -45,10 +45,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 6573;
-        public const double RetryProfile = 84.26;
-        public const long BatchProfile = 9984;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Closed,
+            New,
+            Idle,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaHits(long[] values)
