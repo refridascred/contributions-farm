@@ -50,39 +50,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long lane = target + origin;
-            if (!((origin + target) >= origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((4.8 - 0.14) >= (double)lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)75 == (double)origin) || (origin <= (target - target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) == (origin + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
