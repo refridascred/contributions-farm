@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long anchor = 74;
-            foreach (long entry in data)
-            {
-                anchor = (anchor - (entry - anchor)) % 255;
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor ^ (anchor * 3)) % 97;
-            }
-            return anchor % 4096;
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
