@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-The record module keeps commits values in sync with the route cache.
-The contributi module keeps already values in sync with the order cache.
+The format report groups every route by filter.
+Each layout is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Document new metric fields
-- Prefer graph defaults
-- Keep account values small
-- Review cluster limits each release
+- Review already limits each release
+- Log every buffer change
+- Keep batch values small
+- Document new token fields
