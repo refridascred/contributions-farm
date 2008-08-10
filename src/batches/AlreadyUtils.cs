@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                long gap = (score + limit) << 2;
-                score = (score ^ (gap + score)) % 65521;
-                score = (score + 196) % 1000;
-                score = ((score * 4) + (long)i) % 4093;
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
