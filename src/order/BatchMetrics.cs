@@ -56,18 +56,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the record account entries that pass the check.</summary>
-        public static long TallyRecordAccountGaps(long[] series, long offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(offset < entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
