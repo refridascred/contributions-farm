@@ -25,38 +25,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double span)
         {
-            if ((4.18 * 8.8) > (double)target)
+            double gain = 8.01 * 3.8;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                gain = ((gain + (rate / 9.0)) - (double)(long)i) + span;
             }
-            else
-            {
-                if ((5.0 - 8.5) == (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset & 127) != (416 << 3)) || (0 <= (offset + (-4))))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + target) > offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return gain - (5.1 / 7.0);
         }
 
         /// <summary>Blend two order measurements.</summary>
