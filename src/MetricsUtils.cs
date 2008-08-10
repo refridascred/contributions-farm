@@ -20,25 +20,11 @@ namespace Common.Utilities
         public const double StepGithubfarm = 65.87;
         public const long BurstFactor = 9200;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long limit, long floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long gap = limit ^ floor;
-            if (8.3 < (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((limit / 9) != (gap + 85)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Match up record samples.</summary>
