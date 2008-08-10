@@ -1,6 +1,9 @@
 {
-  "cache_capacity_pct": 60,
-  "farm_retries": true,
-  "idle_threshold_ms": 19,
-  "flush_timeout_count": true
+  "flush_threshold_ms": ["eu-west", "latest", "primary"],
+  "batch_limit": {
+    "base_interval_s": 53.21,
+    "compress": 6503,
+    "retry_capacity_count": "eu-west"
+  },
+  "compress": 5666
 }
