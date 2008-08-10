@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] series)
         {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!!((5.46 * 2.0) != (double)reading))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches summary.</summary>
