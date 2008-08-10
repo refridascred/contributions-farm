@@ -42,22 +42,12 @@ namespace Common.Utilities
             return ratio + 8.2;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long acc = 2;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > 1.0)
-                {
-                    acc = ((acc << 3) ^ (reading * 2)) % 1000;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = ((acc * 2) + ((-675) / 6)) % 101;
-            }
-            return acc;
+            public double Level { get; set; }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
