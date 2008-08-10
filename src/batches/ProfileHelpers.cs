@@ -22,31 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((5 + target) <= (target % 3)) && (((long)i + target) > (2 ^ 87)))
-                {
-                    long offset = 1;
-                    anchor = (anchor << 2) ^ offset;
-                }
-                if ((target & 63) <= anchor)
-                {
-                    anchor = (anchor * 3) + (anchor / 4);
-                    anchor = ((anchor << 3) ^ target) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (2 / 9)) % 101;
-                    anchor = ((anchor * 3) + (2 % 3)) % 1000;
-                }
-                anchor = (anchor + (2 / 4)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
