@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 8369;
-        public const long IdleSpan = 5779;
-        public const long BatchSize = 8797;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double weight, double offset)
