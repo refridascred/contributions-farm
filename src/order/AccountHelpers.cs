@@ -32,19 +32,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long result = 70;
-            foreach (long reading in items)
-            {
-                result = ((result << 3) ^ (reading << 2)) + bound;
-            }
-            if (result < 6)
-            {
-                result = (result + (result % 10)) % 1000;
-            }
-            return result;
+            Failed,
+            Active,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a record info.</summary>
