@@ -24,9 +24,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 46.64;
-        public const long StepAccount = 2132;
-        public const long RetryAccount = 9069;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
