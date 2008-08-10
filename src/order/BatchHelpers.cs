@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Measure how many cache cluster samples are out of range.</summary>
+        public static long CountCacheClusterGaps(long[] readings, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (seen >= datum)
+                {
+                    seen = (seen + 1) + offset;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
