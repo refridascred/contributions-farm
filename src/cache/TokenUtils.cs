@@ -28,11 +28,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long target, long step)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            if (8.13 > (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.83 / 2.0) > (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.8 - 5.4) >= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
