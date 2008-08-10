@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "open-v2";
-        public const long SoftTimeout = 8000;
-        public const long BurstLevel = 2324;
-        public const string BurstTimeout = "stable-edge";
-        public const double RetryQueue = 6.07;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowLayout = 34.49;
+        public const double BurstInterval = 7.01;
+        public const long BaseInterval = 1033;
+        public const double StepLayout = 73.76;
+        public const long BurstFactor = 1421;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ScaleEditor(double rate, double offset)
