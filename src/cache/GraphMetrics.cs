@@ -32,15 +32,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
