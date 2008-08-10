@@ -34,18 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long CountStatsBufferGaps(long[] items, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] items, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((long)items.Length + seed) > (count + seed))
+                if ((datum >= (datum + step)) || ((datum ^ tally) >= step))
                 {
-                    count = (count + 2) - item;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
