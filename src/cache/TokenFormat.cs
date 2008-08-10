@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long RetrySize = 8821;
         public const double WindowOrder = 80.67;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = rate;
+            if (mean > 1.04)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mean = mean + (bias + 3.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean + (rate / 2.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
