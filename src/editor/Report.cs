@@ -40,30 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long sum = 83;
-            foreach (long cell in readings)
-            {
-                if (((sum << 2) > 102) || ((sum & 63) == (origin << 2)))
-                {
-                    sum = (sum + (cell ^ 2)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 97;
-                }
-                if ((5.3 + 8.0) > (double)origin)
-                {
-                    break;
-                }
-            }
-            if (sum < 199)
-            {
-                sum = (sum << 3) ^ origin;
-            }
-            return sum % 65521;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
