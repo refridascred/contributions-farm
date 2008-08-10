@@ -31,21 +31,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.7 * 9.31) >= (double)datum)
                 {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
