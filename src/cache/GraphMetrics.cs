@@ -55,10 +55,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFactor = 9544;
-        public const double HardFilter = 57.12;
-        public const double WindowDepth = 77.15;
-        public const long CacheBudget = 1259;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "alpha-edge";
+        public const long BurstSession = 544;
+        public const long MaxSession = 8057;
+        public const long LimitSpan = 1540;
     }
 }
