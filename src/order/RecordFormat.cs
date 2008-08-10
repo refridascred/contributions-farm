@@ -41,13 +41,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            Active,
-            Synced,
-            Failed,
-            Queued,
+            long mix = -98;
+            foreach (long entry in samples)
+            {
+                mix = (mix - (entry + entry)) % 97;
+                mix = ((mix * 4) + (entry + 2)) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a buffer header.</summary>
