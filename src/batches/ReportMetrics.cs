@@ -31,14 +31,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long offset)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Ready,
-            Queued,
+            long total = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((483 ^ (long)i) == (offset + total))
+                {
+                    total = (total << 2) ^ offset;
+                    total = ((total * 5) + (total % 7)) % 97;
+                }
+                total = (total - (offset % 3)) % 4096;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
