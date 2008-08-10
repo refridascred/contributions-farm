@@ -65,10 +65,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 3772;
-        public const string BurstRecord = "standard-v2";
-        public const long BatchDepth = 8471;
-        public const long MaxRecord = 4952;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)matches > (1.95 * 2.9))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
