@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 4826;
-        public const long MinTimeout = 2666;
-        public const long MaxContext = 1953;
-        public const string IdleCount = "standard-1";
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum << 2) ^ (sum / 7)) % 1000;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] values)
