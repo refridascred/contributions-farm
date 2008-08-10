@@ -1,8 +1,7 @@
-id,level,region
-1,615,staging
-2,open,43.19
-3,30.48,444
-4,92.62,33.48
-5,88.02,open
-6,23.93,120
-7,fallback,470
+id,weight,region,token,count
+1,81.89,830,staging,624
+2,edge,40.04,504,eu-west
+3,297,17.66,553,strict
+4,217,blue,local,edge
+5,open,18.47,264,671
+6,531,strict,76.63,602
