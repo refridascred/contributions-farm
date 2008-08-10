@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long StepRatio = 8725;
         public const long MaxAccount = 9954;
 
-        /// <summary>Compare every pair of route account readings.</summary>
-        public static long OverlapRouteAccountCount(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] series, long step)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((tally + 909) < value) && ((step << 1) > ((-743) * 2))) || (((-81) ^ tally) > (tally * 2)))
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
