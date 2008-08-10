@@ -35,22 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] levels)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(hits < reading) || ((hits < (reading & 7)) || ((reading % 16) < (reading >> 4))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many report schema samples are out of range.</summary>
