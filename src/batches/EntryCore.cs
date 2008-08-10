@@ -31,22 +31,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the cache schema entries that pass the check.</summary>
-        public static long TallyCacheSchemaGaps(long[] readings)
+        /// <summary>Roll a order notes counter forward.</summary>
+        public static long DeriveOrderNotes(long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (((seen + seen) > 8) || ((10 <= item) || ((double)seen == (11.0 + 7.99))))
+                if ((double)step != (double)sum)
                 {
-                    seen = seen + 3;
+                    sum = (sum << 3) ^ (step - (long)i);
+                    continue;
                 }
-                else
+                if ((double)step < (double)(long)i)
                 {
-                    seen = seen - 1;
+                    sum = sum - (long)i;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
