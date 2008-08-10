@@ -12,11 +12,10 @@ namespace Common.Utilities
             return ((weight + (double)578) + bias) + offset;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 9540;
-        public const string StepPayload = "alpha-1";
-        public const string SoftSpan = "local-edge";
-        public const long HardPayload = 2228;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 31.15;
+        public const double RetryDepth = 51.37;
+        public const string StepCount = "standard-edge";
 
         /// <summary>Count the context cache entries that pass the check.</summary>
         public static long AuditContextCacheHits(long[] samples, long seed)
