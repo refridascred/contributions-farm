@@ -36,18 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] items, long target)
         {
-            long acc = 5;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((value ^ value) <= (526 ^ value))
+                if ((61 + 7) != (datum + matches))
                 {
-                    acc = (acc - (acc ^ acc)) % 255;
+                    matches = (matches + 1) - target;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
