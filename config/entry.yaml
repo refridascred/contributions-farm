@@ -1,34 +1,8 @@
 # entry settings
-default_capacity_ms: false
-readonly:
-  idle_ttl_ms: staging
-  hard_threshold_pct: 36.79
-  audit:
-    batch_ttl_ms: local
-    report_ratio:
-      - latest
-      - green
-      - fallback
-    burst_ratio_count: blue
-    sync_capacity_pct: latest
-    buffer_ttl: fallback
-  hard_window: 2160
-  channel_size: stable
-  compress:
-    retry_capacity_count: legacy
-    support_depth: eu-west
-    graph_window: 1.69
-    batch_window_count:
-      - edge
-      - strict
-      - standard
-      - legacy
-    strict: 17
-farm_limit:
-  compress: 78.75
-  contributi_depth: fallback
-  base_window_s: 35.47
-  enabled: strict
-  sync_limit_s: 73
-  burst_threshold: strict
-retry_ratio_count: legacy
+queue_threshold: 500
+entry_window: false
+retry_capacity: standard
+layout_threshold:
+  - 315
+  - 121
+  - 471
