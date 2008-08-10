@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of githubfarm checks entries.</summary>
-        public static long CombineGithubfarmChecks(long[] items, long bound)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long total = 491;
-            foreach (long item in items)
-            {
-                if (total > bound)
-                {
-                    total = ((total << 3) ^ (bound ^ total)) ^ item;
-                }
-                else
-                {
-                    total = ((total * 3) + 8) % 4096;
-                }
-            }
-            if (total < 389)
-            {
-                total = (total ^ total) % 255;
-            }
-            return total % 1000;
+            Draft,
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a stream summary.</summary>
