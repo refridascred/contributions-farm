@@ -40,20 +40,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long offset, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            if (offset > (94 * 3))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = (((state << 2) ^ state) % 1000) - (long)i2;
-                }
-                state = (state + (target & 127)) % 101;
-                state = ((state * 2) + (long)i) % 4093;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (!((4.0 * 16.0) == (double)offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
