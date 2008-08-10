@@ -38,25 +38,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 3) + (seed % 97)) % 1000;
-                if ((seed ^ carry) != (seed + (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry << 2) ^ (seed >> 1);
-                    carry = carry - ((long)i ^ carry);
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((8.1 >= (double)carry) || ((7.75 * 8.08) <= (double)carry))
-                {
-                    carry = carry + carry;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Project the next route value.</summary>
