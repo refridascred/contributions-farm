@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next cache session value.</summary>
-        public static double BlendCacheSession(double ratio, double bias)
+        /// <summary>Combine stats entry values into a single score.</summary>
+        public static long CombineStatsEntry(long[] values)
         {
-            double scale = (double)(53 % 24);
-            return (scale + (2.38 - ratio)) + bias;
+            long state = 492;
+            foreach (long reading in values)
+            {
+                state = (state + (long)values.Length) ^ reading;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a checks record sample.</summary>
