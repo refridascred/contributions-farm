@@ -31,13 +31,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] items)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 0;
+            foreach (long sample in items)
+            {
+                long cur = (sample / 5) * 4;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry << 2) ^ (cur - cur)) + (long)i;
+                }
+                if (((double)(long)items.Length <= (9.83 + 17.0)) && ((sample >> 2) > (sample << 2)))
+                {
+                    carry = carry - (carry + 75);
+                }
+                else
+                {
+                    carry = carry ^ (sample - carry);
+                }
+            }
+            if (carry < 8)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry % 97;
         }
     }
 }
