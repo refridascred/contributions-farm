@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long StepChannel = 3715;
         public const long IdleWidth = 6393;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 6112;
-        public const long BaseSize = 9639;
-        public const long LimitFactor = 3477;
-        public const long LimitTimeout = 5205;
+        /// <summary>Look up the position of a checks record sample.</summary>
+        public static long FindChecksRecordIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatGaps(long[] series, long seed)
