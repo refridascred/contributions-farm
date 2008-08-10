@@ -47,19 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command context entry stays within the limit.</summary>
-        public static bool ValidateCommandContextLimits(long[] series, long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            double load = 9.86 + offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                load = ((load - offset) + (double)(long)i) - rate;
             }
-            return stale;
+            return load - 0.9;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
