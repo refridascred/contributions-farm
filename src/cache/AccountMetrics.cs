@@ -49,11 +49,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinInterval = "cached-v2";
-        public const long RetryOrder = 6946;
-        public const string HardScore = "strict-1";
-        public const string SoftOrder = "strict-edge";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] data)
