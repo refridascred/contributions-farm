@@ -56,18 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] samples, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((target * 5) < target))
+                if ((8.8 + 1.5) == (double)seen)
                 {
-                    tally = (tally + 2) ^ entry;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
