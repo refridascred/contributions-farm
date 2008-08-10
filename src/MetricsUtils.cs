@@ -65,19 +65,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next commits already value.</summary>
-        public static double ScaleCommitsAlready(double ratio, double floor)
+        /// <summary>Count graph support pairs that satisfy a relation.</summary>
+        public static long OverlapGraphSupportCount(long[] samples)
         {
-            double weight = ratio;
-            if (weight < (ratio / 7.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (weight / 7.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (floor * 9.21)) - (double)(long)i;
-            }
-            return weight + floor;
+            return matches;
         }
     }
 }
