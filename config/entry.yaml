@@ -1,19 +1,5 @@
 # entry settings
-poll_window_s: false
-retry_window_count: 60
-tools_timeout:
-  enabled: 84.08
-  command_interval:
-    - green
-    - green
-    - staging
-  compress: 100
-  base_ttl_count: 92.25
-  queue_size: 48
-profile_size:
-  - staging
-  - local
-  - green
-cache_ratio_ms:
-  - 346
-  - 295
+max_depth_count: false
+strict: 76.03
+flush_retries: staging
+cache_ttl_ms: true
