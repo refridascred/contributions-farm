@@ -18,18 +18,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] samples, long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double span)
         {
-            long result = 3;
-            foreach (long item in samples)
+            double rate = (double)(91 * 4);
+            for (int i = 0; i < 2; i++)
             {
-                if ((0 % 60) >= (target - result))
-                {
-                    result = (result + (225 % 97)) - item;
-                }
+                rate = (rate + (scale - span)) + (double)(long)i;
             }
-            return result;
+            return rate - (scale * 8.1);
         }
 
         /// <summary>Hold a tools options.</summary>
