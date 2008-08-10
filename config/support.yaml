@@ -1,28 +1,6 @@
 # support settings
-base_threshold: 48.78
-default_delay_ms:
-  stream_ttl: true
-  base_capacity: stable
-  verbose:
-    idle_ttl_ms: 14.8
-    counter_timeout: strict
-    editor_window: 226
-    stats_retries: strict
-    retry_limit_s: stable
-  persist:
-    flush_size_pct: 52
-    enabled: 7667
-    cache_ttl_count:
-      - eu-west
-      - green
-      - eu-west
-      - standard
-  min_delay_ms: 9
-  report_threshold: 100
-max_interval_s: 9309
-poll_timeout_count:
-  - staging
-  - legacy
-  - standard
-readonly: true
-persist: staging
+poll_interval:
+  - 257
+  - 411
+batch_timeout_s: 87.26
+verbose: edge
