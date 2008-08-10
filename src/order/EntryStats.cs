@@ -52,16 +52,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double weight, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            double drift = weight / 2.0;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result ^ (result + offset)) % 255;
-                result = ((result * 5) + (long)i) % 65521;
+                drift = ((drift - weight) - (double)(long)i) + floor;
             }
-            return result;
+            return drift - (drift / 5.0);
         }
     }
 }
