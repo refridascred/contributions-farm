@@ -47,19 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Check that every command githubfarm entry stays within the limit.</summary>
+        public static bool GuardCommandGithubfarmBounds(long[] values, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (offset > (offset ^ (long)i))
+                if (sample > seed)
                 {
-                    score = (score + (0 << 1)) % 1000;
+                    found = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Fold a list of order readings.</summary>
