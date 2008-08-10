@@ -72,19 +72,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] series, long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
