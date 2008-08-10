@@ -1,10 +1,5 @@
 {
-  "strict": 51,
-  "counter_size": "standard",
-  "batch_interval_count": "blue",
-  "default_retries_pct": {
-    "order_depth": 100,
-    "sync_threshold_count": 18.18,
-    "notes_timeout": 30.93
-  }
+  "context_threshold": 64.71,
+  "soft_capacity": ["cached", "eu-west", "primary", "open"],
+  "window_size": 30
 }
