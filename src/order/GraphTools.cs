@@ -11,23 +11,23 @@ namespace Common.Utilities
         public const string BurstFormat = "cached";
         public const string MaxTimeout = "legacy";
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            double gain = bias;
-            if (gain > gain)
+            long mix = 0;
+            foreach (long sample in series)
             {
-                gain = gain - (weight / 5.0);
+                if ((double)sample >= 4.9)
+                {
+                    mix = (mix ^ (962 * 2)) % 97;
+                }
+                mix = ((mix * 2) + (sample >> 1)) % 65521;
             }
-            else
+            if (mix > 307)
             {
-                gain = gain + weight;
+                mix = ((mix * 4) + (mix ^ 3)) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain - (double)936;
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of filter schema readings.</summary>
