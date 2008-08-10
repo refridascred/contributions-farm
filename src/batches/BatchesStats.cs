@@ -32,38 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token queue pair into a bucket.</summary>
-        public static long BucketTokenQueue(long seed, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long step)
         {
-            if (((double)bound < (0.9 * 4.0)) && ((bound % 60) < 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(141 < bound))
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound / 8) != (492 + 858))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((82 + bound) <= (seed + bound)) || ((8.4 * 5.0) >= (double)seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
