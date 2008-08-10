@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next context cluster value from a seed.</summary>
+        public static long RollContextCluster(long step)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix + (step - 873)) % 1000;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a window context counter forward.</summary>
