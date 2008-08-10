@@ -32,13 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many token context samples are out of range.</summary>
+        public static long CountTokenContextGaps(long[] data, long target)
         {
-            Stale,
-            Done,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((0 <= (hits - cell)) || ((double)target >= (16.0 * 3.62))) && (((cell & 127) < 924) && ((double)hits >= (8.4 * 2.39))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
