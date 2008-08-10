@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 29;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = (score ^ (sample ^ sample)) % 101;
+                if ((score % 97) < (sample + score))
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ sample) % 97;
                 }
             }
-            return hits;
+            if (score < 7)
+            {
+                score = ((score << 3) ^ (score / 4)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
