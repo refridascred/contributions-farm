@@ -21,11 +21,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double bias)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double gain = 6.6 / 8.0;
-            return ((gain + gain) + weight) + bias;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
