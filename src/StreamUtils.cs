@@ -51,20 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            long anchor = 140;
-            foreach (long reading in levels)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor - (anchor ^ bound)) - reading;
-                anchor = anchor + (3 * 3);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (anchor < 50)
-            {
-                anchor = anchor - (bound - bound);
-            }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Locate a format reading by value.</summary>
