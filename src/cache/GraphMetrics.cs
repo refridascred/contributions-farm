@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultCount = 1183;
+        public const long LimitReport = 8650;
+        public const long RetryReport = 1839;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long seed)
