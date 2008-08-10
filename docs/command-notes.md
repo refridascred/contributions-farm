@@ -1,11 +1,12 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Each batches is validated before it reaches the buffer queue.
+The payload module keeps stream values in sync with the order cache.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use token settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every support change
-- Keep metrics values small
-- Validate record input early
+- Document new tools fields
+- Review metric limits each release
+- Validate format input early
+- Log every batches change
