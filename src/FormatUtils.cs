@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const string RetryAlready = "local-v2";
         public const long HardAlready = 9254;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] levels, long floor)
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine format buffer values into a single score.</summary>
