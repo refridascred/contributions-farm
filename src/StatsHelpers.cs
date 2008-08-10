@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long HardMetric = 1853;
         public const long BurstCount = 3000;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] samples, long offset)
         {
-            Stale,
-            Closed,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every command context entry stays within the limit.</summary>
