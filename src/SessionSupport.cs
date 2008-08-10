@@ -18,10 +18,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 3707;
-        public const double IdleInterval = 43.17;
-        public const long HardLevel = 767;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Measure how many batches filter samples are out of range.</summary>
         public static long AuditBatchesFilterOutliers(long[] samples)
