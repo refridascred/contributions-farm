@@ -1,5 +1,10 @@
 {
-  "burst_ratio_s": 1,
-  "token_limit": ["cached", "staging", "strict"],
-  "enabled": 30
+  "enabled": 5594,
+  "retry_interval": {
+    "cache_ratio": 60,
+    "min_ratio_s": "staging",
+    "max_ratio": 68.74
+  },
+  "cache_size": true,
+  "strict": false
 }
