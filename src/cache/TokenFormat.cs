@@ -22,17 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long floor, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = floor + bound;
+            if ((diff < 650) && ((double)diff < 9.3))
             {
-                if (samples[i] == limit)
+                return 7;
+            }
+            else
+            {
+                if ((2 + floor) == (8 - floor))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes phase values.</summary>
