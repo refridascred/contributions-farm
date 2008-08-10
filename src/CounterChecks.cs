@@ -16,23 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits + hits) == (hits + target))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepWidth = 9933;
+        public const string MinScore = "alpha-1";
+        public const long StepScore = 8180;
+        public const long MinBudget = 4106;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long floor)
