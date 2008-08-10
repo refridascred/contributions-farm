@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (load + offset) + scale;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] data, long limit)
         {
-            long total = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                total = ((total - (datum >> 1)) % 4096) + origin;
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
