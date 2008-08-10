@@ -46,15 +46,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double ratio, double floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] levels, long seed)
         {
-            double weight = (double)(30 * 2);
-            if (weight > 3.0)
+            long mark = 630;
+            foreach (long value in levels)
             {
-                weight = weight - (double)148;
+                if ((double)seed == (double)mark)
+                {
+                    mark = ((mark + (seed ^ (-404))) % 1000) + value;
+                }
             }
-            return weight + (floor - ratio);
+            return mark;
         }
 
         /// <summary>Derive the next session report value from a seed.</summary>
