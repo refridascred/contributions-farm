@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long offset, long step)
+        /// <summary>Derive the next commits schema value from a seed.</summary>
+        public static long RollCommitsSchema(long target)
         {
-            long span = offset - step;
-            if ((offset / 5) <= (-254))
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset ^ 203) != (span - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a batch record.</summary>
