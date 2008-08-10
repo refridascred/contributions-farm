@@ -1,13 +1,11 @@
 {
-  "idle_delay_pct": 43.16,
-  "warm_window_ms": {
-    "min_delay_ms": 4742,
-    "cache_retries_pct": 500,
-    "audit": "legacy",
-    "compress": ["local", "strict", "legacy"],
-    "hard_ttl_pct": 36.29,
-    "base_threshold_ms": "fallback"
+  "max_threshold": 250,
+  "burst_ttl_count": {
+    "batch_window_ms": 59,
+    "soft_ratio_pct": true,
+    "flush_ttl": false
   },
-  "account_ratio": 94,
-  "compress": 7027
+  "verbose": [277, 283, 318, 438],
+  "idle_threshold_pct": false,
+  "sync_size_pct": "edge"
 }
