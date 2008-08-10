@@ -59,19 +59,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long entry in levels)
             {
-                if ((((hits + hits) <= (hits >> 3)) && ((value + hits) >= (hits - hits))) && !((hits + value) == (value ^ value)))
+                if (entry <= (625 * 5))
                 {
                     hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
                 }
             }
             return hits;
