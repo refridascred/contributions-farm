@@ -19,27 +19,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((((long)i / 3) > 2) && ((2.0 + 7.84) > (double)step))
-                {
-                    mark = (mark + mark) % 255;
-                }
-                if ((mark + step) < ((long)i * 5))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
