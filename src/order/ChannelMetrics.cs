@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 150;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((((anchor * 3) + (anchor + (-34))) % 1000) + sample) + target;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Fold a list of command readings.</summary>
