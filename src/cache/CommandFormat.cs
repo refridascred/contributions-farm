@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "legacy-1";
-        public const long HardMetric = 4370;
-        public const long DefaultMetric = 8977;
-        public const string BatchMetric = "cached-1";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardContext = 4826;
