@@ -12,21 +12,39 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Classify a booking pair into a bucket.</summary>
+        public static long GradeBooking(long seed, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long span = seed + origin;
+            if ((double)origin >= (double)seed)
             {
-                mark = (mark - (792 + (long)i)) % 4096;
-                if (!(((bound / 9) == (mark - mark)) && (mark > bound)))
-                {
-                    mark = (mark - (mark / 9)) % 97;
-                }
-                mark = mark ^ bound;
-                mark = ((mark * 5) + (long)i) % 97;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((origin >> 3) >= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((span + 26) != (seed + span)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed < (85 >> 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next profile value.</summary>
