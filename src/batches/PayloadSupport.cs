@@ -28,22 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batch format samples are out of range.</summary>
-        public static long AuditBatchFormatGaps(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((value % 64) != (matches / 6)))
+                if ((double)917 < (double)tally)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Match up editor samples.</summary>
