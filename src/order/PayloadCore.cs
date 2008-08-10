@@ -48,11 +48,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count the layout entry entries that pass the check.</summary>
+        public static long MeasureLayoutEntryHits(long[] data)
         {
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading >= (0.26 - 4.34))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
