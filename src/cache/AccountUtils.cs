@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of cache stream readings.</summary>
-        public static long MatchCacheStreamCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen * 4) > seen)
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + datum;
                 }
             }
             return seen;
