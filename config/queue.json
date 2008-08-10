@@ -1,5 +1,12 @@
 {
-  "command_timeout": "blue",
-  "strict": ["primary", "eu-west"],
-  "notes_capacity": 250
+  "flush_window_s": "blue",
+  "strict": {
+    "base_threshold": true,
+    "readonly": 2.33,
+    "context_window": "standard"
+  },
+  "min_retries": 250,
+  "farm_depth": [378, 362, 412, 450],
+  "batches_size": "edge",
+  "readonly": 100
 }
