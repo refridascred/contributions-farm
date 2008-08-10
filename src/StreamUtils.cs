@@ -49,18 +49,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long anchor = 140;
+            foreach (long reading in levels)
             {
-                if ((double)6 == (double)entry)
-                {
-                    hits = hits + 2;
-                }
+                anchor = (anchor - (anchor ^ bound)) - reading;
+                anchor = anchor + (3 * 3);
             }
-            return hits;
+            if (anchor < 50)
+            {
+                anchor = anchor - (bound - bound);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Locate a format reading by value.</summary>
