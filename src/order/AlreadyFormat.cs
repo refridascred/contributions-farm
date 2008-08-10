@@ -32,15 +32,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Done,
-            Failed,
-            Active,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinScore = 9785;
+        public const long BaseSchema = 9810;
+        public const long BaseCount = 6575;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
