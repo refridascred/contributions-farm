@@ -25,12 +25,9 @@ namespace Common.Utilities
         public const long LimitCommits = 6311;
         public const long CacheCommits = 180;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 9093;
+        public const long RetryInterval = 4598;
+        public const string MaxCounter = "alpha";
     }
 }
