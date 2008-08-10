@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const double BurstSpan = 49.03;
         public const long MinInterval = 4554;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long bound, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] samples)
         {
-            if (!((bound - bound) <= (bound * 3)))
+            long anchor = 8;
+            foreach (long sample in samples)
             {
-                return 3;
+                anchor = (anchor * 4) + (anchor - sample);
             }
-            else
+            if (anchor < 482)
             {
-                if (((849 + floor) <= (78 + bound)) || (floor >= (bound + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                anchor = (anchor + ((long)samples.Length >> 1)) % 1000;
             }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the schema kind values.</summary>
