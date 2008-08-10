@@ -59,17 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metrics stats sample.</summary>
-        public static long LookupMetricsStatsIndex(long[] data, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
