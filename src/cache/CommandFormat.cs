@@ -34,19 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] readings, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
