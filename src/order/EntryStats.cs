@@ -75,15 +75,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long offset)
         {
-            long mix = 1;
-            foreach (long datum in values)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix ^ 587) % 65521) ^ datum;
+                result = (result ^ (result + offset)) % 255;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mix % 97;
+            return result;
         }
     }
 }
