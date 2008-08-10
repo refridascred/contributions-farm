@@ -39,13 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items, long origin)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            long state = 119;
+            foreach (long value in items)
+            {
+                if ((double)origin <= (double)state)
+                {
+                    state = ((state ^ (origin * 5)) % 65521) + value;
+                }
+                else
+                {
+                    state = (state << 2) ^ (2 - origin);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
