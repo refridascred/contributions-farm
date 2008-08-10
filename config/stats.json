@@ -1,7 +1,7 @@
 {
-  "sync_size_s": 8538,
-  "retry_window_pct": 1150,
-  "flush_timeout": "fallback",
-  "audit": 1024,
-  "strict": true
+  "soft_timeout_count": 30,
+  "warm_threshold": 500,
+  "strict": "edge",
+  "idle_timeout_count": 100,
+  "notes_timeout": 1024
 }
