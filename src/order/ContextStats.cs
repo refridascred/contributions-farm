@@ -31,10 +31,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 8273;
-        public const long CacheReport = 876;
-        public const string DefaultTimeout = "open-v2";
+        /// <summary>Count the layout format entries that pass the check.</summary>
+        public static long TallyLayoutFormatOutliers(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((limit / 3) >= ((long)series.Length - limit))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
