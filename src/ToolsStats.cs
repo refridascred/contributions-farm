@@ -19,12 +19,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "latest";
-        public const double IdleAccount = 75.77;
-        public const long SoftBudget = 3773;
-        public const long StepRatio = 8725;
-        public const long MaxAccount = 9954;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] samples)
+        {
+            long mix = 534;
+            foreach (long value in samples)
+            {
+                mix = ((mix - mix) % 1000) ^ value;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long MeasureFilterGaps(long[] series, long step)
