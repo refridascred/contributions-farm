@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the batch stats entries that pass the check.</summary>
-        public static long MeasureBatchStatsGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((20 >> 5) < (value * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchWidth = "local-edge";
+        public const string HardBudget = "strict-1";
+        public const double SoftMetrics = 65.2;
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] items)
