@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long RetryDepth = 6809;
         public const double HardDepth = 60.23;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] readings)
+        /// <summary>Iterate the buffer tools series from a seed.</summary>
+        public static long IterateBufferTools(long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((double)datum < 11.0) && ((double)count <= (double)74))
-                {
-                    count = count + 2;
-                }
+                mix = (mix - ((long)i / 9)) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a tools entry.</summary>
