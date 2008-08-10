@@ -22,13 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Locked,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 9540;
+        public const string StepPayload = "alpha-1";
+        public const string SoftSpan = "local-edge";
+        public const long HardPayload = 2228;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] series)
