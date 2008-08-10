@@ -19,21 +19,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor + ((long)i ^ anchor)) % 101;
-                if ((anchor % 10) > (anchor + (long)i))
-                {
-                    anchor = (anchor ^ (offset & 15)) % 97;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 2545;
+        public const double BaseToken = 98.47;
+        public const string RetryToken = "latest";
+        public const long DefaultSize = 1682;
     }
 }
