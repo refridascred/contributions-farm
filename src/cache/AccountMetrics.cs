@@ -70,19 +70,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] levels, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (datum >= bound)
+                if ((((datum ^ datum) >= (1 ^ datum)) && ((matches % 3) == (floor - matches))) || ((1.0 / 3.0) == (double)matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
