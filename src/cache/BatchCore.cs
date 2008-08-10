@@ -29,21 +29,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(30 * 2);
+            if (weight > 3.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - (double)148;
             }
-            return tally;
+            return weight + (floor - ratio);
         }
 
         /// <summary>Derive the next session report value from a seed.</summary>
