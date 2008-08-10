@@ -22,24 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Look up the position of a buffer notes sample.</summary>
+        public static long FindBufferNotesIndex(long[] samples, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i + 992) <= (offset << 1))
+                if (samples[i] >= seed)
                 {
-                    sum = sum + (sum << 1);
-                    sum = ((sum * 2) + (offset ^ sum)) % 97;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = sum + ((long)i2 + 993);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
