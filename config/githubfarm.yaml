@@ -1,9 +1,4 @@
 # githubfarm settings
-batch_ratio_s: 9.73
-githubfarm_timeout:
-  persist: 100
-  enabled: primary
-  editor_ratio: 48
-  sync_ttl: strict
-graph_retries: 83.28
-compress: 1292
+cluster_threshold: false
+readonly: 1199
+sync_depth_ms: 3775
