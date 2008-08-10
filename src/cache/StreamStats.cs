@@ -16,17 +16,22 @@ namespace Common.Utilities
         public const long SoftDepth = 8819;
         public const long BurstRatio = 6014;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] items, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((items[i] > bound) && ((items[i] % 3) != 0))
+                if ((((9.57 * 2.81) == (double)count) || ((double)item != (double)0)) || ((6.0 - 18.0) == (double)count))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a token summary.</summary>
