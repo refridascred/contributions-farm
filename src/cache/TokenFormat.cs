@@ -22,14 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Classify a tools window pair into a bucket.</summary>
+        public static long GradeToolsWindow(long step, long offset)
         {
-            Active,
-            Pending,
-            Queued,
-            Locked,
-            Ready,
+            if ((offset << 1) > (step << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > (10.0 * 8.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a order entry.</summary>
