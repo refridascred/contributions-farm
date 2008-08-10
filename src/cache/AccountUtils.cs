@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] values)
+        /// <summary>Count the filter support entries that pass the check.</summary>
+        public static long CountFilterSupportMatches(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((value >> 2) < (-73))
+                if (!(hits <= (hits * 4)))
                 {
-                    matches = matches + 2;
+                    hits = ((hits + 1) - entry) + origin;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of already readings.</summary>
