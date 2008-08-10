@@ -72,14 +72,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Derive the next githubfarm checks value from a seed.</summary>
+        public static long DeriveGithubfarmChecks(long floor)
         {
-            Active,
-            New,
-            Queued,
-            Done,
-            Closed,
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
