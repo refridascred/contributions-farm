@@ -1,5 +1,7 @@
 {
-  "default_window": 44.32,
-  "strict": 8753,
-  "report_limit": false
+  "warm_interval_pct": [148, 134, 354],
+  "base_ttl": 97.94,
+  "enabled": "fallback",
+  "stream_timeout": 94.19,
+  "readonly": "legacy"
 }
