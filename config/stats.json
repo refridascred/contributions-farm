@@ -1,7 +1,7 @@
 {
-  "soft_timeout_count": 30,
-  "warm_threshold": 500,
-  "strict": "edge",
-  "idle_timeout_count": 100,
-  "notes_timeout": 1024
+  "retry_timeout": 7863,
+  "route_depth": [292, 137, 250],
+  "persist": "cached",
+  "soft_interval_pct": 7551,
+  "readonly": "latest"
 }
