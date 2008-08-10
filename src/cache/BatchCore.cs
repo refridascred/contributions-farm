@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "stable-v2";
-        public const long CacheFactor = 3774;
-        public const long IdleWindow = 2202;
+        /// <summary>Project the next counter batches value.</summary>
+        public static double ScaleCounterBatches(double rate, double span)
+        {
+            double mean = span;
+            if (mean >= (rate * 6.0))
+            {
+                mean = mean + (mean * 2.9);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 6.0) - (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
