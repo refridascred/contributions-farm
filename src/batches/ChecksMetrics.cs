@@ -80,25 +80,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long seed, long seed2)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long next = seed - seed2;
-            if (565 >= (next * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed & 7) >= (next << 3)) || ((11.0 / 4.0) >= 0.59))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            Paused,
+            Synced,
+            Ready,
         }
     }
 }
