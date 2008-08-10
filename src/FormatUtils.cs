@@ -77,19 +77,11 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double rate, double span)
-        {
-            double drift = (span / 9.0) * 6.35;
-            if (drift < span)
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + rate;
-            }
-            return drift + (drift / 2.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardLevel = 6805;
+        public const long WindowSpan = 6970;
+        public const long IdleScore = 3937;
+        public const long DefaultSession = 8909;
+        public const string IdleSession = "open-edge";
     }
 }
