@@ -26,10 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "primary-1";
-        public const long SoftDepth = 9450;
-        public const string RetryTimeout = "open-v2";
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 8356;
