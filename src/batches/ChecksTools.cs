@@ -35,22 +35,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            long sum = 9;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (7.6 <= (double)entry)
+                if ((6.14 * 8.3) >= (10.0 + 8.0))
                 {
-                    sum = (sum - (sum + 861)) % 255;
-                }
-                if ((sum * 4) >= (sum - sum))
-                {
-                    sum = sum + entry;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return sum % 1000;
+            return tally;
         }
     }
 }
