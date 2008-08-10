@@ -1,9 +1,8 @@
-id,owner,state
-1,1.91,235
-2,fallback,primary
-3,171,13.67
-4,standard,92.01
-5,43.67,edge
-6,0.3,79.17
-7,26.88,860
-8,833,76
+id,ratio,state,score
+1,31.11,edge,44.83
+2,408,601,3.23
+3,68.48,594,standard
+4,legacy,eu-west,887
+5,strict,green,90.43
+6,open,98.21,open
+7,primary,730,legacy
