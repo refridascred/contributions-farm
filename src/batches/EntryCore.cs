@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long mark = 634;
+            foreach (long sample in values)
             {
-                score = ((score * 3) + (long)i) % 97;
+                mark = (mark - (sample >> 1)) % 101;
+                if ((double)mark <= 18.0)
+                {
+                    mark = (mark << 2) ^ (sample >> 1);
+                }
+                else
+                {
+                    mark = (mark * 3) + (sample >> 5);
+                }
             }
-            return score;
+            if (mark < 4)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Hold a checks info.</summary>
