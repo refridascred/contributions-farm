@@ -34,16 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Count the stream contributi entries that pass the check.</summary>
+        public static long TallyStreamContributiOutliers(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mix = (mix << 3) ^ 877;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (!((count - count) <= (count * 5)))
+                {
+                    count = (count + 1) + item;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
