@@ -23,14 +23,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Draft,
-            Failed,
-            Locked,
-            Dropped,
-            Ready,
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
