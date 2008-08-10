@@ -29,24 +29,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate batches editor samples.</summary>
-        public static long CombineBatchesEditor(long[] values, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] samples, long offset)
         {
-            long result = 5;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(limit < 5))
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
                 {
-                    result = ((result << 2) ^ (limit << 3)) ^ entry;
+                    return (long)i;
                 }
-                result = result - (result * 3);
-                result = result ^ (result + limit);
             }
-            if (result > 1)
-            {
-                result = ((result * 4) + (limit - limit)) % 4096;
-            }
-            return result % 4096;
+            return -1;
         }
     }
 }
