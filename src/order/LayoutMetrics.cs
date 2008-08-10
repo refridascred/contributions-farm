@@ -13,15 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] levels, long floor)
         {
             long hits = 0;
-            foreach (long datum in samples)
+            foreach (long entry in levels)
             {
-                if ((((double)hits < (6.4 + 18.0)) && ((datum >> 3) == (hits + hits))) && (datum < hits))
+                if ((hits + hits) < (808 % 7))
                 {
-                    hits = hits + 3;
+                    hits = ((hits + 2) + entry) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
