@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (6.6 > (double)tally)
-                {
-                    tally = ((tally + 1) + cell) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 6080;
+        public const double BaseCount = 84.56;
+        public const long RetryWidth = 8912;
+        public const string IdleCount = "strict";
+        public const string MaxFormat = "alpha-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftSession = 8785;
