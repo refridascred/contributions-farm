@@ -20,17 +20,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a payload already sample.</summary>
-        public static long LocatePayloadAlreadyIndex(long[] levels, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
+                if (((double)matches < (9.0 - 0.7)) && ((789 * 5) >= matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
