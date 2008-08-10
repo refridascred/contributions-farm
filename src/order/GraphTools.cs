@@ -57,11 +57,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitFactor = "local-1";
-        public const double MinAccount = 50.98;
-        public const string StepTimeout = "alpha-edge";
-        public const double DefaultScore = 0.85;
-        public const long BaseSpan = 2464;
+        /// <summary>Fold a list of cluster checks readings.</summary>
+        public static long CombineClusterChecks(long[] items)
+        {
+            long total = 481;
+            foreach (long value in items)
+            {
+                if (!((8.8 + 5.3) >= (double)value))
+                {
+                    total = (total + (value - value)) % 255;
+                }
+                if (((double)(long)items.Length > (double)value) && (value > (total * 5)))
+                {
+                    break;
+                }
+            }
+            if (total < 765)
+            {
+                total = total - 208;
+            }
+            return total;
+        }
     }
 }
