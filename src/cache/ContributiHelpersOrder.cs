@@ -42,10 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 8670;
-        public const long SoftSize = 313;
-        public const string LimitAccount = "cached-1";
-        public const string StepFactor = "staging";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell % 10) > (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
