@@ -40,15 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits command readings against a rule.</summary>
-        public static long CountCommitsCommandOutliers(long[] items, long limit)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= (limit << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
