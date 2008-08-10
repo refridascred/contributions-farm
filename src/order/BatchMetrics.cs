@@ -13,15 +13,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            New,
-            Draft,
-            Pending,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryTimeout = 51.91;
+        public const long SoftSize = 323;
+        public const long WindowInterval = 3284;
+        public const string MaxDepth = "standard";
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] data)
