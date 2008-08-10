@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            Draft,
-            Retry,
-            Ready,
+            long anchor = -626;
+            foreach (long cell in values)
+            {
+                if ((cell < (anchor / 2)) && ((75 + 3) == (cell << 3)))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 101;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
