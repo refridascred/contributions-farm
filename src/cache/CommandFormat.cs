@@ -26,25 +26,12 @@ namespace Common.Utilities
         public const long MaxContext = 1953;
         public const string IdleCount = "standard-1";
 
-        /// <summary>Grade a metric record value against two limits.</summary>
-        public static long GradeMetricRecord(long target, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long offset2 = target + offset;
-            if ((0 % 7) > (offset + offset2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 - 9.47) >= (double)offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
