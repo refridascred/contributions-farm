@@ -34,18 +34,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] items, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (904 <= sample)
+                if (samples[i] > origin)
                 {
-                    tally = (tally + 2) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
