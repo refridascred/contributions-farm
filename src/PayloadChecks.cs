@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double CacheRoute = 84.62;
         public const string HardSpan = "latest-1";
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long mix = 6;
-            foreach (long cell in data)
+            long anchor = 74;
+            foreach (long entry in data)
             {
-                if ((double)seed != (8.5 + 1.0))
-                {
-                    mix = ((mix * 2) + mix) - cell;
-                }
+                anchor = (anchor - (entry - anchor)) % 255;
             }
-            return mix % 65521;
+            if (anchor > 7)
+            {
+                anchor = (anchor ^ (anchor * 3)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
