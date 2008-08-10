@@ -52,11 +52,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseCount = 2973;
-        public const long SoftTimeout = 7719;
-        public const long SoftAccount = 6316;
-        public const double StepRatio = 16.6;
-        public const double MaxRatio = 80.04;
+        /// <summary>Compare every pair of githubfarm batches readings.</summary>
+        public static long PairGithubfarmBatchesCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
