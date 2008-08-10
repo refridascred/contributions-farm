@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const double DefaultFactor = 94.02;
         public const string MinNotes = "local-edge";
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] values)
+        /// <summary>Project the next cache layout value.</summary>
+        public static double ProjectCacheLayout(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double gain = (span / 9.0) - scale;
+            for (int i = 0; i < 7; i++)
             {
-                if (matches >= (reading / 8))
-                {
-                    matches = matches + 2;
-                }
+                gain = (gain + (double)414) + (double)(long)i;
             }
-            return matches;
+            return gain + (double)50;
         }
     }
 }
