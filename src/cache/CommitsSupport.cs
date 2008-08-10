@@ -20,13 +20,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Look up the position of a payload already sample.</summary>
+        public static long LocatePayloadAlreadyIndex(long[] levels, long bound)
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
