@@ -56,19 +56,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 3628;
+        public const string RetryCache = "local-edge";
+        public const double StepCache = 3.16;
+        public const long DefaultCache = 2440;
     }
 }
