@@ -22,15 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double weight, double span)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            double drift = (double)(7 / 4);
-            if (drift >= drift)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                drift = drift + span;
+                mix = (mix ^ (target >> 2)) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return drift - (weight - 17.0);
+            return mix;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
