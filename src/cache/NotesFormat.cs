@@ -27,15 +27,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a batches schema figure with a bias.</summary>
-        public static double BlendBatchesSchema(double bias, double offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double mean = offset;
-            if (mean < offset)
-            {
-                mean = (mean + offset) + bias;
-            }
-            return mean - (double)31;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
