@@ -45,11 +45,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepInterval = 3526;
-        public const long MaxCount = 3934;
-        public const double CacheRatio = 97.69;
-        public const long BurstSupport = 751;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Draft,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesLimits(long[] samples, long origin)
