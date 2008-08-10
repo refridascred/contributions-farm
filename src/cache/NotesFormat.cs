@@ -28,22 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data)
-        {
-            long result = 908;
-            foreach (long item in data)
-            {
-                if ((1 << 2) >= item)
-                {
-                    result = result - (result + 64);
-                }
-            }
-            if (result > 170)
-            {
-                result = ((result * 3) + (result + result)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleWidth = 51.05;
+        public const string BurstCommits = "latest";
+        public const long IdleCommits = 3985;
+        public const long HardCommits = 8828;
+        public const long DefaultCommits = 4848;
     }
 }
