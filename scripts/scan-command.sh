@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=377
-log "limit is ${COMMAND_LIMIT}"
+for item in edge open local; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in cached strict; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=247
+log "limit is ${COMMAND_LIMIT}"
