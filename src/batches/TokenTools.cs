@@ -20,22 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit already commits readings against a rule.</summary>
-        public static long TallyAlreadyCommitsMatches(long[] series)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item << 3) < (6 + item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
