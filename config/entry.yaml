@@ -1,9 +1,32 @@
 # entry settings
-hard_retries: cached
-support_size: eu-west
-cache_interval: 90
-poll_window_pct:
-  - green
+warm_depth_count:
   - fallback
-  - fallback
-  - cached
+  - open
+layout_threshold: 92
+poll_ratio: 90
+verbose: 5578
+sync_limit_s:
+  readonly:
+    - 174
+    - 458
+    - 492
+    - 373
+  batch_depth_pct: 42.03
+  idle_retries_pct:
+    dry_run: 27.46
+    batch_interval: false
+    retry_interval_count: true
+    sync_capacity_ms: 52
+    retry_ratio_ms: 4
+  retry_ratio:
+    burst_delay:
+      - cached
+      - staging
+      - legacy
+    poll_delay_count: 48.25
+    burst_ttl_s: 9
+    dry_run: 17.71
+    flush_window_ms: 250
+    soft_retries_count: true
+  enabled: 53
+hard_timeout_count: 4070
