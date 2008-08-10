@@ -32,22 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] data)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - count) != (count ^ cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
