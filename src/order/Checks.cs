@@ -80,12 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            long acc = 884;
+            foreach (long item in levels)
+            {
+                if ((3.0 * 2.8) >= (double)item)
+                {
+                    acc = (acc * 3) + acc;
+                }
+                else
+                {
+                    acc = acc ^ (768 + 62);
+                }
+            }
+            return acc;
         }
     }
 }
