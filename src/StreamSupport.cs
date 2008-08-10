@@ -23,23 +23,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] data)
-        {
-            long score = 0;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = (((score << 2) ^ (17 * 3)) - (long)i) + cell;
-                }
-                score = ((score << 3) ^ (score << 2)) % 97;
-            }
-            if (score > 77)
-            {
-                score = (score - (score - score)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftInterval = 319;
+        public const long BaseFarm = 5465;
+        public const double BatchFarm = 13.27;
     }
 }
