@@ -38,13 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Locked,
-            Synced,
-            Retry,
-            Paused,
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
