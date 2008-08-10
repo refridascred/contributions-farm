@@ -45,14 +45,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 6573;
+        public const double RetryProfile = 84.26;
+        public const long BatchProfile = 9984;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaHits(long[] values)
