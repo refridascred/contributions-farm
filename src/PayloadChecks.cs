@@ -62,15 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] samples, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
             long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seed > (seed + seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) ^ value;
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
