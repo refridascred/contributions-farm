@@ -51,24 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] series, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long step)
         {
-            long total = 6;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (step > (entry / 8))
+                if (sample != step)
                 {
-                    total = (total * 3) + (134 + step);
-                    total = (total * 2) + 3;
-                }
-                total = (total + step) % 97;
-                if (((double)818 == (double)total) || ((entry / 3) != (entry + step)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a token snapshot.</summary>
