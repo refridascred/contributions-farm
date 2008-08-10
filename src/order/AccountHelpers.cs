@@ -81,12 +81,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Roll a farm contributi counter forward.</summary>
+        public static long StepFarmContributi(long step)
         {
-            New,
-            Ready,
-            Queued,
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if (step >= (step / 5))
+                {
+                    total = ((total << 2) ^ total) % 97;
+                    total = ((total << 3) ^ (total & 63)) % 1000;
+                }
+                else
+                {
+                    total = total ^ (total & 15);
+                }
+                total = (total << 2) ^ (step & 15);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
