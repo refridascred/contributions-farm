@@ -1,4 +1,9 @@
 # support settings
-retry_timeout_count: 7558
-notes_window: 44.36
-stats_delay: 250
+strict: true
+flush_size: fallback
+base_depth_pct: local
+layout_limit: 7518
+max_interval_count:
+  - edge
+  - latest
+  - green
