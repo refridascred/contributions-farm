@@ -1,20 +1,7 @@
 {
-  "hard_depth_count": {
-    "base_depth": false,
-    "audit": "cached",
-    "notes_size": true,
-    "max_retries": 250
-  },
-  "warm_delay": {
-    "warm_threshold_count": 14.64,
-    "min_depth": ["fallback", "eu-west", "fallback", "strict"],
-    "warm_threshold": 58.8,
-    "poll_capacity_s": {
-      "idle_limit_ms": 59,
-      "counter_interval": 79,
-      "audit": 3498,
-      "readonly": 2486
-    }
-  },
-  "batch_size": 14.72
+  "idle_retries_s": "fallback",
+  "max_depth": 94.12,
+  "checks_threshold": [443, 377],
+  "channel_interval": true,
+  "metric_ttl": 250
 }
