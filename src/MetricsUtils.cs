@@ -53,12 +53,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (seen <= (step - value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
