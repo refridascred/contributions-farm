@@ -15,20 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a notes profile counter forward.</summary>
-        public static long RollNotesProfile(long step)
+        /// <summary>Count the already window entries that pass the check.</summary>
+        public static long TallyAlreadyWindowMatches(long[] readings, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (step >= (step * 2))
+                if (((33 / 9) != (offset - count)) || (898 >= (offset / 9)))
                 {
-                    mix = (mix - step) % 65521;
-                    continue;
+                    count = (count + 2) - reading;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
