@@ -1,7 +1,13 @@
 {
-  "retry_timeout": 7863,
-  "route_depth": [292, 137, 250],
-  "persist": "cached",
-  "soft_interval_pct": 7551,
-  "readonly": "latest"
+  "payload_capacity": {
+    "flush_capacity_count": "local",
+    "min_interval_pct": 54.37,
+    "flush_capacity": "edge",
+    "soft_limit_pct": false,
+    "payload_delay": 64.61
+  },
+  "enabled": true,
+  "graph_delay": [390, 190],
+  "hard_limit": [165, 234, 143],
+  "base_limit": false
 }
