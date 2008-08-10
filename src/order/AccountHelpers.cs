@@ -77,25 +77,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a farm contributi counter forward.</summary>
-        public static long StepFarmContributi(long step)
+        /// <summary>Combine cache window values into a single score.</summary>
+        public static long TotalCacheWindow(long[] samples)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long acc = 0;
+            foreach (long datum in samples)
             {
-                if (step >= (step / 5))
+                if (((datum - datum) <= (datum + datum)) && ((datum + acc) <= 6))
                 {
-                    total = ((total << 2) ^ total) % 97;
-                    total = ((total << 3) ^ (total & 63)) % 1000;
+                    acc = (acc + (acc % 24)) % 101;
                 }
-                else
-                {
-                    total = total ^ (total & 15);
-                }
-                total = (total << 2) ^ (step & 15);
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return acc;
         }
     }
 }
