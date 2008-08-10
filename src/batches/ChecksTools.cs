@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double scale, double span)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double drift = scale;
-            if (drift < (drift * 6.8))
-            {
-                drift = (drift - (scale / 5.0)) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)411) + (double)(long)i;
-            }
-            return drift + scale;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a commits tools sample.</summary>
