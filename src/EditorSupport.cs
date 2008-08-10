@@ -51,12 +51,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long acc = 2;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > 1.0)
+                {
+                    acc = ((acc << 3) ^ (reading * 2)) % 1000;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = ((acc * 2) + ((-675) / 6)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a order record.</summary>
