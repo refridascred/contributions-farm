@@ -20,14 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] series, long limit)
         {
-            Active,
-            Ready,
-            Idle,
-            Paused,
-            Stale,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
