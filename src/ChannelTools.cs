@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Locate a filter channel reading by value.</summary>
+        public static long SeekFilterChannelIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally > (12.0 * 20.0))
+                if (data[i] <= bound)
                 {
-                    tally = (tally + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
