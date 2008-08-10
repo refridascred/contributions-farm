@@ -30,21 +30,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 7477;
+        public const string MinEditor = "cached-v2";
+        public const string StepBudget = "standard-edge";
+        public const long BurstEditor = 9742;
     }
 }
