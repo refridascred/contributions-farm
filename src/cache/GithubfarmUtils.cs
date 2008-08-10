@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchRatio = 2845;
-        public const string CacheAlready = "cached-edge";
-        public const long RetryInterval = 1014;
-        public const double WindowWidth = 44.83;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            New,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long offset, long seed)
