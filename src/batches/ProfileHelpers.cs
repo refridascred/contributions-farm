@@ -63,18 +63,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] series, long target)
+        /// <summary>Find the first command githubfarm entry that matches the target.</summary>
+        public static long SeekCommandGithubfarmIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(value > (value >> 2)))
+                if (values[i] <= limit)
                 {
-                    matches = (matches + 3) + target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
