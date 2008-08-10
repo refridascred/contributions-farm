@@ -25,26 +25,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total - (total >> 2)) % 97;
-                if (((seed - seed) >= (total % 8)) || ((double)(long)i == (double)total))
-                {
-                    total = ((total * 2) + ((-76) + 48)) % 97;
-                    total = (total + (total + total)) % 1000;
-                    break;
-                }
-                if (!((966 % 100) >= (seed - (-33))))
-                {
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
