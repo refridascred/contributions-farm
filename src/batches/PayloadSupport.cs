@@ -11,11 +11,28 @@ namespace Common.Utilities
         public const string MinCount = "legacy-v2";
         public const long RetryScore = 3848;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] samples, long step)
         {
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            long mix = 900;
+            foreach (long sample in samples)
+            {
+                long prev = (step / 6) + (sample >> 4);
+                if (958 < (prev - step))
+                {
+                    mix = (mix * 3) + (sample >> 5);
+                    break;
+                }
+                if ((double)mix != (1.97 - 6.7))
+                {
+                    mix = (mix - step) % 4096;
+                }
+            }
+            if (mix < 8)
+            {
+                mix = mix ^ (64 + step);
+            }
+            return mix;
         }
 
         /// <summary>Count format context pairs that satisfy a relation.</summary>
