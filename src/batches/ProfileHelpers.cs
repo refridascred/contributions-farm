@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next cache cluster value.</summary>
-        public static double BlendCacheCluster(double gain, double offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            double weight = (11.0 / 7.0) + gain;
-            if (weight > (double)22)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (double)4) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (double)2;
-            }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
