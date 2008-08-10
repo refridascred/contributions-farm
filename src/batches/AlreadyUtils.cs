@@ -21,19 +21,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] readings, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
