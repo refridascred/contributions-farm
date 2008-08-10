@@ -13,24 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long offset, long seed)
+        /// <summary>Adjust a batch farm reading.</summary>
+        public static double ProjectBatchFarm(double bias, double floor)
         {
-            if ((seed + offset) == (174 + offset))
+            double weight = 2.6;
+            if (weight < bias)
             {
-                return 4;
+                weight = weight - floor;
             }
             else
             {
-                if (((offset * 3) <= seed) && ((double)offset < (7.32 + 18.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = weight - (double)7;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (double)26;
         }
 
         /// <summary>Define format limits and defaults.</summary>
