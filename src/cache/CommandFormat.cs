@@ -15,12 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] series)
         {
-            Paused,
-            Retry,
-            Locked,
+            long mix = 73;
+            foreach (long reading in series)
+            {
+                mix = (mix - (reading / 5)) % 255;
+            }
+            if (mix < 6)
+            {
+                mix = (mix ^ (mix + mix)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
