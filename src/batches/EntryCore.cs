@@ -28,19 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] items, long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > target)
+                if (levels[i] == limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the channel cache series from a seed.</summary>
