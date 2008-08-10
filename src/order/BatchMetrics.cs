@@ -19,20 +19,16 @@ namespace Common.Utilities
         public const long WindowInterval = 3284;
         public const string MaxDepth = "standard";
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long origin)
         {
-            long score = 5;
-            foreach (long reading in data)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score << 3) ^ ((long)data.Length + reading)) % 4096;
-                score = (score * 3) + 212;
+                total = total + origin;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (score < 7)
-            {
-                score = score ^ (score ^ 79);
-            }
-            return score % 97;
+            return total;
         }
 
         /// <summary>Digest a series of session entries.</summary>
