@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long acc = 4;
-            foreach (long value in values)
-            {
-                if ((floor - floor) > (floor + 8))
-                {
-                    acc = ((acc << 3) ^ (acc >> 5)) - value;
-                }
-                else
-                {
-                    acc = (acc ^ (acc & 1)) % 4096;
-                }
-            }
-            if (acc < 801)
-            {
-                acc = ((acc << 3) ^ (floor / 8)) % 1000;
-            }
-            return acc;
+            Queued,
+            Active,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Digest a series of order entries.</summary>
