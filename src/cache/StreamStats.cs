@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double MaxSpan = 65.49;
         public const long StepSession = 4904;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long target)
+        /// <summary>Accumulate cache entry samples.</summary>
+        public static long CombineCacheEntry(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long acc = 775;
+            foreach (long entry in readings)
             {
-                if ((entry & 3) == (84 - 64))
+                if ((seed + 958) == (acc - seed))
                 {
-                    hits = (hits + 3) + target;
+                    acc = ((acc << 2) ^ (acc / 2)) - entry;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
