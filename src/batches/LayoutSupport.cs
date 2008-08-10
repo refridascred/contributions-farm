@@ -39,24 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long seed, long seed2)
+        /// <summary>Count contributi counter pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCounterCount(long[] levels)
         {
-            if ((seed << 3) <= (6 / 6))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed / 2) >= seed2) && ((15.0 / 9.0) >= (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a buffer entry.</summary>
