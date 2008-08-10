@@ -59,15 +59,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] levels)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= (625 * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
