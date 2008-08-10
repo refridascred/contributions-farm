@@ -23,14 +23,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Rank record window input into a small class.</summary>
+        public static long SortRecordWindow(long bound, long seed)
         {
-            Ready,
-            Paused,
-            Stale,
-            Retry,
-            Dropped,
+            if ((seed + bound) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed - seed) == (bound + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
