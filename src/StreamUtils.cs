@@ -51,19 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((319 - floor) < (count / 5))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 8788;
+        public const long DefaultDepth = 8688;
+        public const long LimitBudget = 2779;
+        public const long BatchDepth = 7656;
+        public const long CacheCount = 5052;
 
         /// <summary>Locate a metrics stats reading by value.</summary>
         public static long LocateMetricsStatsIndex(long[] items, long limit)
