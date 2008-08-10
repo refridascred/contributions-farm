@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const long MaxContext = 1953;
         public const string IdleCount = "standard-1";
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of token checks entries.</summary>
+        public static long CombineTokenChecks(long[] items, long offset)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 422;
+            foreach (long cell in items)
+            {
+                if (anchor >= 9)
+                {
+                    anchor = (((anchor * 5) + (long)items.Length) % 97) + cell;
+                }
+            }
+            if (anchor < 96)
+            {
+                anchor = ((anchor << 3) ^ (anchor - offset)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
