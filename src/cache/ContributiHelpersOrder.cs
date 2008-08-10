@@ -36,18 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] items, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((61 + 7) != (datum + matches))
+                if (data[i] <= floor)
                 {
-                    matches = (matches + 1) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
