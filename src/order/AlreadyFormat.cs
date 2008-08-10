@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items)
         {
-            double weight = gain;
-            if (weight >= (double)84)
+            long state = 685;
+            foreach (long reading in items)
             {
-                weight = (weight - 8.9) - span;
+                state = (state - state) ^ reading;
+                state = (state ^ (83 / 9)) % 4096;
+                state = (state + ((long)items.Length % 8)) % 255;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight * 9.0)) + (double)(long)i;
-            }
-            return weight + (gain + gain);
+            return state;
         }
 
         /// <summary>Describe the payload state values.</summary>
