@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Classify a farm filter pair into a bucket.</summary>
+        public static long SortFarmFilter(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long next = seed + bound;
+            if (bound < (next % 5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound >= 3.76)
                 {
-                    if ((levels[i] ^ levels[j]) == 16)
+                    return 5;
+                }
+                else
+                {
+                    if ((2.94 * 8.0) < (double)seed)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)bound > 6.16) || ((5.1 + 5.44) >= (double)seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
