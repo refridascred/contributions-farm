@@ -40,13 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] data)
         {
-            Pending,
-            Draft,
-            Paused,
-            Queued,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!(((long)data.Length + count) > (count / 6)))
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
