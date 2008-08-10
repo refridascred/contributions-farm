@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 474;
+            foreach (long reading in items)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
+                if ((reading >> 2) <= reading)
                 {
-                    return (long)i;
+                    result = ((result + 1) % 255) + step;
+                }
+                else
+                {
+                    result = (result ^ (result / 8)) % 255;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
