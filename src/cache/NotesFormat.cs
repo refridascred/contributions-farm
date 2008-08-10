@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] readings, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double mean = (span * 17.0) / 9.0;
+            if (mean > (double)(-8))
             {
-                if ((target - cell) <= (target - target))
-                {
-                    tally = tally + 1;
-                }
+                mean = mean + (mean + span);
             }
-            return tally;
+            return mean - gain;
         }
 
         /// <summary>Find the first buffer tools entry that matches the target.</summary>
