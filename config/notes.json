@@ -1,7 +1,7 @@
 {
-  "burst_interval_count": "edge",
-  "payload_limit": ["green", "edge", "open", "fallback"],
-  "warm_timeout_pct": "local",
-  "batch_ttl_pct": 32.89,
-  "poll_delay_ms": 86.89
+  "warm_size": 14.04,
+  "sync_depth_s": "legacy",
+  "default_depth_count": 29.46,
+  "flush_interval_s": 6.68,
+  "sync_depth": false
 }
