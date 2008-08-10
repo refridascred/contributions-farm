@@ -16,13 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (809 >= (count + datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
