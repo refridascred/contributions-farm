@@ -36,22 +36,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long limit, long seed)
         {
-            long total = 72;
-            foreach (long datum in series)
+            long diff = limit + seed;
+            if ((double)diff != (5.0 - 17.0))
             {
-                if (total <= (-937))
+                return 7;
+            }
+            else
+            {
+                if ((0 > diff) && ((limit + diff) < (639 ^ diff)))
                 {
-                    total = total ^ total;
+                    return 8;
                 }
-                if ((7.9 < (double)datum) || ((total & 255) >= (datum << 1)))
+                else
                 {
-                    break;
+                    if ((double)seed >= (2.67 / 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((diff - diff) == (825 & 7)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
