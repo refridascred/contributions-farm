@@ -1,11 +1,11 @@
 # Command notes
 
-When a buffer fails, the metric handler retries a few times before giving up.
-Keep window and checks names short and lowercase.
-Use farm settings to tune how often route data is refreshed.
+A format that stays idle for too long is moved to the session list.
+When a profile fails, the payload handler retries a few times before giving up.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every metric change
-- Validate cache input early
-- Keep notes values small
+- Review batches limits each release
+- Prefer format defaults
+- Log every filter change
