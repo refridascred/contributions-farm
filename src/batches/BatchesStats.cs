@@ -49,10 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinSize = 5762;
-        public const long DefaultLevel = 9348;
-        public const long BaseRatio = 6187;
-        public const long HardContext = 8756;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
