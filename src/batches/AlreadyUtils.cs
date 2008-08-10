@@ -31,18 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] items, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!(((13.0 / 5.0) != (double)hits) && ((hits + limit) >= (limit & 63))))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the profile queue entries that pass the check.</summary>
