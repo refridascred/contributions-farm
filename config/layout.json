@@ -1,5 +1,5 @@
 {
-  "min_threshold_s": true,
-  "idle_capacity": 92.91,
-  "flush_depth": "cached"
+  "max_timeout": "edge",
+  "idle_ttl_ms": 30.25,
+  "editor_threshold": 88.06
 }
