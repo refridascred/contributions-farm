@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseBudget = 1819;
-        public const double CacheRoute = 84.62;
-        public const string HardSpan = "latest-1";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + count) > (datum - datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long CombineChannel(long[] data)
