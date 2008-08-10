@@ -23,22 +23,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long acc = 3;
+            foreach (long reading in series)
             {
-                if ((((9.57 * 2.81) == (double)count) || ((double)item != (double)0)) || ((6.0 - 18.0) == (double)count))
+                acc = (acc + reading) % 4096;
+                acc = (acc ^ (5 + 3)) % 97;
+                if (((double)90 <= (double)reading) || ((target / 4) > (acc << 1)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = acc ^ (acc >> 4);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Classify a stats already pair into a bucket.</summary>
