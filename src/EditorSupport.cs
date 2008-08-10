@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define context limits and defaults.</summary>
