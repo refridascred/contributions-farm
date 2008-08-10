@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseRatio = 9494;
+        public const string WindowSpan = "stable-v2";
+        public const string RetryScore = "cached";
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
