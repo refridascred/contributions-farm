@@ -85,21 +85,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell + matches) > 4)
                 {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
