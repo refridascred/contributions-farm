@@ -58,17 +58,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = target + origin;
+            if (!((origin + target) >= origin))
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (!((4.8 - 0.14) >= (double)lane))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)75 == (double)origin) || (origin <= (target - target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) == (origin + target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
