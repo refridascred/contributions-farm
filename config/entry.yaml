@@ -1,4 +1,14 @@
 # entry settings
-base_size_count: 1024
-warm_threshold: 1024
-warm_ttl_pct: 7987
+verbose: 500
+max_threshold_s:
+  default_delay: true
+  warm_delay: 1024
+  soft_retries_count:
+    warm_retries_s:
+      - staging
+      - local
+    retry_timeout_count: true
+    compress: 100
+    route_interval: fallback
+dry_run: 1874
+min_ttl: false
