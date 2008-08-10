@@ -22,25 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long offset, long bound)
-        {
-            if (!((71 - bound) < (bound >> 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((57 - offset) < (bound / 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitCount = "cached-v2";
+        public const string StepQueue = "legacy-v2";
+        public const string BatchRatio = "local-1";
+        public const long RetryTimeout = 2951;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyBounds(long[] values, long bound)
