@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Check that every channel tools entry stays within the limit.</summary>
+        public static bool CheckChannelToolsLimits(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit already commits readings against a rule.</summary>
