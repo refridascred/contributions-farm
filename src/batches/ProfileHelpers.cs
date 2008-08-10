@@ -77,12 +77,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Roll a contributi stats counter forward.</summary>
+        public static long SeriesContributiStats(long seed)
         {
-            Paused,
-            Dropped,
-            Done,
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result - ((long)i - seed)) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
