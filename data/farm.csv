@@ -1,7 +1,9 @@
-id,token,ratio
-1,eu-west,168
-2,1,81.01
-3,525,94.25
-4,331,707
-5,primary,staging
-6,60.12,140
+id,ratio,weight,active,level
+1,50.9,legacy,cached,54.49
+2,178,17.93,strict,legacy
+3,791,legacy,strict,34
+4,6.9,766,455,latest
+5,83.07,219,83.98,latest
+6,426,fallback,876,59.45
+7,open,1.0,206,green
+8,243,13.37,711,45.2
