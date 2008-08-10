@@ -1,11 +1,8 @@
 {
-  "persist": 41.91,
-  "cache_retries_s": false,
-  "batch_retries": {
-    "min_window_count": true,
-    "warm_window_pct": "local",
-    "idle_timeout": "stable"
-  },
-  "burst_size_s": false,
-  "filter_timeout": true
+  "retry_capacity": "cached",
+  "warm_limit_s": 3146,
+  "base_retries_pct": true,
+  "layout_capacity": [191, 126],
+  "counter_threshold": 48.44,
+  "batch_retries_ms": 1024
 }
