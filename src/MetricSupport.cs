@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
