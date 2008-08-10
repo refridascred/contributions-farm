@@ -13,16 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double ratio, double offset)
         {
-            long mark = 213;
-            foreach (long cell in readings)
-            {
-                mark = (((mark * 5) + (offset << 3)) % 255) - cell;
-                mark = mark - mark;
-            }
-            return mark % 97;
+            double ratio2 = (offset / 7.0) * 3.9;
+            return (ratio2 - (double)462) + ratio;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
