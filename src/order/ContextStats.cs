@@ -31,26 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next window counter value from a seed.</summary>
-        public static long DeriveWindowCounter(long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double gain, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            double rate = floor * 2.0;
+            if (rate >= (gain * 4.8))
             {
-                bool found = ((0 + step) >= (anchor - (long)i)) || ((1 * 5) > (long)i);
-                if (found)
-                {
-                    found = (anchor + step) < step;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (anchor & 7);
-                    found = found;
-                }
-                found = (anchor + step) < anchor;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                rate = rate - 13.0;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 5.0) + (double)(long)i;
+            }
+            return rate + (floor * 4.78);
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
