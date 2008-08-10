@@ -89,15 +89,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] items, long origin)
         {
             long hits = 0;
-            foreach (long item in items)
+            foreach (long entry in items)
             {
-                if ((double)hits >= (14.0 + 1.35))
+                if (!((hits + hits) < 19))
                 {
-                    hits = (hits + 1) + item;
+                    hits = ((hits + 1) ^ entry) + origin;
                 }
             }
             return hits;
