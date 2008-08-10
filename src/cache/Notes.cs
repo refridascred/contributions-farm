@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items, long limit)
+        /// <summary>Audit commits already readings against a rule.</summary>
+        public static long CountCommitsAlreadyGaps(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((2.85 * 20.0) == (double)reading)
+                if ((0 + cell) > 58)
                 {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) - step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
