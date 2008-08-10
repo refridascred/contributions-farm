@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            Done,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
