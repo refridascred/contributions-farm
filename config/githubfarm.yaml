@@ -1,14 +1,17 @@
 # githubfarm settings
-support_ttl:
-  poll_interval: true
-  batches_delay: 100
-  layout_delay: standard
-  farm_capacity: fallback
-  poll_ttl_ms: strict
-cache_capacity:
-  - 39
-  - 302
-  - 150
-  - 46
-dry_run: 500
-cluster_depth: 500
+readonly: strict
+idle_depth_pct:
+  persist: staging
+  hard_retries_pct: blue
+  max_delay_ms:
+    - legacy
+    - strict
+    - strict
+  max_size_ms:
+    batch_size: green
+    window_interval: 46.19
+    burst_retries_pct: local
+  entry_threshold: 69
+persist: 21.55
+idle_ttl_pct: 884
+poll_threshold_ms: 1054
