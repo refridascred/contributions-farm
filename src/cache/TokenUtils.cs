@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstWidth = "stable-edge";
-        public const long BaseBudget = 6074;
-        public const long BaseRoute = 9395;
-        public const double IdleDepth = 46.99;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Ready,
+            Closed,
+            Idle,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
