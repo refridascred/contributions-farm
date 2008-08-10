@@ -77,15 +77,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double bias, double span)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double bias, double span)
         {
-            double rate = bias;
-            for (int i = 0; i < 8; i++)
+            double bias2 = span;
+            if (bias2 > (span + 6.58))
             {
-                rate = ((rate + rate) - (double)(long)i) - span;
+                bias2 = (bias2 + 1.66) - bias;
             }
-            return rate + 5.52;
+            return bias2 - bias2;
         }
 
         /// <summary>Define account limits and defaults.</summary>
