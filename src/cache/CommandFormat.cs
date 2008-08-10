@@ -43,15 +43,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings, long step)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long total = 23;
+            foreach (long item in readings)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((step - step) > total)
+                {
+                    total = (total + item) % 65521;
+                }
+                else
+                {
+                    total = (total + total) % 65521;
+                }
             }
-            return result;
+            return total;
         }
     }
 }
