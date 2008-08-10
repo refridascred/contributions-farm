@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels, long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            long anchor = 9;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ value) - step;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Project the next already filter value.</summary>
