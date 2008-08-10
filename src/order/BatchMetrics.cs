@@ -28,11 +28,11 @@ namespace Common.Utilities
         public const string MinEditor = "strict-v2";
         public const double RetryDepth = 6.52;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "fallback-edge";
-        public const long DefaultScore = 8401;
-        public const long StepTimeout = 2168;
-        public const long MinCache = 3381;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 5795;
+        public const long StepFilter = 9319;
+        public const long DefaultWidth = 9249;
+        public const double BatchFilter = 43.24;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double SoftChannel = 55.9;
