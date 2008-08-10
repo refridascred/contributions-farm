@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long MinChannel = 206;
         public const long BurstSize = 3438;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Compare every pair of githubfarm counter readings.</summary>
+        public static long CompareGithubfarmCounterCount(long[] data)
         {
-            Locked,
-            Draft,
-            Failed,
-            Idle,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a token record.</summary>
