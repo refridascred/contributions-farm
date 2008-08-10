@@ -15,12 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Project the next buffer entry value.</summary>
+        public static double SmoothBufferEntry(double bias, double floor)
         {
-            Dropped,
-            Draft,
-            Done,
+            double scale = bias;
+            if (scale < (scale / 2.0))
+            {
+                scale = scale - floor;
+            }
+            return scale + floor;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
