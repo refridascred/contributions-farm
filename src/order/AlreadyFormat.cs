@@ -32,11 +32,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "alpha-1";
-        public const long BatchTimeout = 9785;
-        public const double DefaultTimeout = 42.87;
-        public const long DefaultReport = 2877;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double rate, double offset)
+        {
+            double mean = rate;
+            if (mean < offset)
+            {
+                mean = mean - offset;
+            }
+            else
+            {
+                mean = mean + (mean - rate);
+            }
+            return mean - (9.33 - rate);
+        }
 
         /// <summary>Check that every counter tools entry stays within the limit.</summary>
         public static bool ValidateCounterToolsBounds(long[] levels, long origin)
