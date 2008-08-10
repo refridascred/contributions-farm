@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a checks cache sample.</summary>
-        public static long LookupChecksCacheIndex(long[] data, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                if (items[i] == target)
                 {
                     return (long)i;
                 }
