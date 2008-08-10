@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Grade a command order value against two limits.</summary>
+        public static long ClassifyCommandOrder(long bound, long seed)
         {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
+            long prev = bound + seed;
+            if ((prev + (-539)) > (bound ^ prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + prev) <= prev)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.78 - 4.13) >= (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
