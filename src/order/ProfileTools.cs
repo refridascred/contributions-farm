@@ -34,13 +34,10 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Synced,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSpan = 2735;
+        public const long WindowInterval = 7840;
+        public const long SoftBuffer = 2360;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftPayload = 3645;
