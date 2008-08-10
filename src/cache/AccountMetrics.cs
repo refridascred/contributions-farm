@@ -43,18 +43,22 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] values, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((((datum ^ datum) >= (1 ^ datum)) && ((matches % 3) == (floor - matches))) || ((1.0 / 3.0) == (double)matches))
+                if (((243 + count) >= sample) || !(bound >= 4))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
