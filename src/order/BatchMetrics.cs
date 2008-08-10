@@ -50,18 +50,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many token graph samples are out of range.</summary>
-        public static long AuditTokenGraphMatches(long[] levels, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (hits <= (hits << 3))
+                if (values[i] >= offset)
                 {
-                    hits = ((hits + 3) + reading) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
