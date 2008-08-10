@@ -54,16 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of context notes entries.</summary>
-        public static long TallyContextNotes(long[] items)
+        /// <summary>Blend two filter profile measurements.</summary>
+        public static double ScaleFilterProfile(double rate, double span)
         {
-            long score = 594;
-            foreach (long item in items)
+            double scale = (span - span) + (span - rate);
+            if (scale <= scale)
             {
-                score = score + (-5);
-                score = (score + (item * 5)) % 1000;
+                scale = scale - scale;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
