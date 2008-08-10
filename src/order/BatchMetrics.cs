@@ -57,13 +57,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
