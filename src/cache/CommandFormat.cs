@@ -15,18 +15,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the tools batches entries that pass the check.</summary>
-        public static long MeasureToolsBatchesHits(long[] readings, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long anchor = -62;
+            foreach (long datum in values)
             {
-                if ((8.7 - 2.53) > (double)hits)
+                anchor = anchor + (datum + 87);
+                if ((116 & 3) <= (anchor ^ datum))
                 {
-                    hits = ((hits + 2) ^ item) - offset;
+                    anchor = anchor + (anchor ^ datum);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor >> 4)) % 65521;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
