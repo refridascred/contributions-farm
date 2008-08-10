@@ -13,17 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] readings, long floor)
+        /// <summary>Fold a list of batches notes readings.</summary>
+        public static long CombineBatchesNotes(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 3;
+            foreach (long reading in items)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (50 - 7)) + reading;
             }
-            return -1;
+            if (state < 85)
+            {
+                state = (state + (state >> 5)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of already record readings.</summary>
