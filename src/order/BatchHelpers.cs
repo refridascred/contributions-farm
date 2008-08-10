@@ -12,14 +12,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            Retry,
-            Locked,
-            Failed,
-            Ready,
-            New,
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
