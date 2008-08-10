@@ -18,15 +18,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double span)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double scale, double span)
         {
-            double rate = (double)(91 * 4);
-            for (int i = 0; i < 2; i++)
+            double mean = (double)5 / 6.0;
+            if (mean <= (double)(-64))
             {
-                rate = (rate + (scale - span)) + (double)(long)i;
+                mean = mean + (scale * 2.1);
             }
-            return rate - (scale * 8.1);
+            else
+            {
+                mean = mean + (span + span);
+            }
+            return mean + 1.31;
         }
 
         /// <summary>Define report limits and defaults.</summary>
