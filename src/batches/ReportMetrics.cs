@@ -42,15 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double span)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double scale = bias;
-            if (scale > bias)
-            {
-                scale = (scale - bias) - span;
-            }
-            return scale + (bias / 6.0);
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
