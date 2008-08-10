@@ -1,4 +1,11 @@
 # support settings
-default_ttl_pct: 626
-stream_size: true
-hard_size_count: true
+burst_capacity: primary
+burst_limit:
+  - edge
+  - strict
+  - edge
+base_timeout_ms:
+  - staging
+  - eu-west
+  - blue
+base_timeout_pct: stable
