@@ -42,21 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Pending,
+            Draft,
+            Ready,
         }
     }
 }
