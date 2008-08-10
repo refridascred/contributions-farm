@@ -51,26 +51,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] series, long bound)
         {
-            long score = 253;
-            foreach (long datum in samples)
+            long result = 7;
+            foreach (long value in series)
             {
-                if (!((double)54 <= (double)step))
+                if ((result + bound) > (bound / 8))
                 {
-                    score = (score ^ score) ^ datum;
+                    result = ((result << 3) ^ (value & 7)) % 97;
+                    continue;
                 }
-                if (((8.12 * 3.25) == (double)score) || (275 >= (step ^ score)))
+                if ((result - bound) >= bound)
                 {
-                    break;
+                    result = (result - (781 >> 2)) % 255;
+                }
+                if ((1.0 / 9.0) < (double)bound)
+                {
+                    result = (result ^ (bound + value)) % 4096;
                 }
             }
-            if (score > 525)
+            if (result > 83)
             {
-                score = ((score * 4) + score) % 255;
+                result = (result + result) % 65521;
             }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Hold a schema record.</summary>
