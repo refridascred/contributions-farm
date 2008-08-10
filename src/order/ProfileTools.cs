@@ -15,14 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] values, long origin)
         {
-            Done,
-            Queued,
-            Ready,
-            Idle,
-            Pending,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
