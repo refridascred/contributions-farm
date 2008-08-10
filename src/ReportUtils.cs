@@ -32,10 +32,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftDepth = 4680;
-        public const long WindowFactor = 5578;
-        public const long DefaultDepth = 7251;
+        /// <summary>Digest a series of context report entries.</summary>
+        public static long CombineContextReport(long[] values, long offset)
+        {
+            long score = 6;
+            foreach (long reading in values)
+            {
+                score = ((score * 4) + (reading ^ offset)) % 101;
+                if (((score * 5) > (score + reading)) && ((double)reading >= (1.0 + 8.97)))
+                {
+                    break;
+                }
+            }
+            if (score > 401)
+            {
+                score = ((score * 3) + offset) % 97;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowOutliers(long[] values, long bound)
