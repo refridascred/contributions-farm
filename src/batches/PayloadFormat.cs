@@ -39,26 +39,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long origin)
+        /// <summary>Combine stream counter values into a single score.</summary>
+        public static long WeighStreamCounter(long[] samples, long origin)
         {
-            long mark = 75;
-            foreach (long cell in series)
+            long score = 314;
+            foreach (long sample in samples)
             {
-                if ((mark << 2) > (cell * 5))
+                score = score ^ (score * 5);
+                if (!((9 % 10) < (origin / 5)))
                 {
-                    mark = ((mark << 2) ^ (mark / 8)) % 97;
+                    score = (score ^ origin) % 65521;
                 }
                 else
                 {
-                    mark = (mark + (mark % 97)) % 65521;
+                    score = (score * 4) + (sample % 7);
                 }
             }
-            if (mark < (-26))
-            {
-                mark = (mark * 3) + (origin - origin);
-            }
-            return mark % 4096;
+            return score;
         }
     }
 }
