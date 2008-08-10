@@ -18,19 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] data)
         {
-            double mean = (double)5 / 6.0;
-            if (mean <= (double)(-64))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                mean = mean + (scale * 2.1);
+                if ((double)(-87) < (double)sample)
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                mean = mean + (span + span);
-            }
-            return mean + 1.31;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
