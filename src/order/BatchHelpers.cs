@@ -22,11 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every farm graph entry stays within the limit.</summary>
+        public static bool VerifyFarmGraphRange(long[] series, long step)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
