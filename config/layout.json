@@ -1,16 +1,6 @@
 {
-  "cache_ttl_ms": ["latest", "stable"],
-  "min_ttl_pct": 93.16,
-  "compress": {
-    "base_timeout": 18.02,
-    "sync_interval_count": 374,
-    "flush_depth_count": {
-      "buffer_capacity": "eu-west",
-      "metrics_delay": "open",
-      "warm_ratio_count": [492, 491, 190],
-      "hard_retries_pct": "latest",
-      "metrics_threshold": ["blue", "green"]
-    }
-  },
-  "sync_retries": 44.43
+  "commits_depth": [468, 264],
+  "idle_limit_s": true,
+  "enabled": 30,
+  "report_retries": false
 }
