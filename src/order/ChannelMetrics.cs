@@ -16,27 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long result = 74;
-            foreach (long cell in levels)
-            {
-                result = (result ^ (result ^ cell)) % 1000;
-                if ((cell & 127) != (result + (-4)))
-                {
-                    result = ((result << 3) ^ (long)levels.Length) % 4096;
-                }
-                else
-                {
-                    result = (result * 5) + (cell << 2);
-                }
-            }
-            if (result > 461)
-            {
-                result = ((result * 3) + (8 * 4)) % 255;
-            }
-            return result;
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
