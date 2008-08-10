@@ -49,13 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Audit filter notes readings against a rule.</summary>
+        public static long CountFilterNotesGaps(long[] levels, long floor)
         {
-            New,
-            Ready,
-            Draft,
-            Queued,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((3 << 3) >= reading)
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
