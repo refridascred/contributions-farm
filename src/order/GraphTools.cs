@@ -64,10 +64,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 8112;
-        public const long HardChannel = 7238;
-        public const long IdleRatio = 1672;
-        public const string StepInterval = "cached";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitFactor = "local-1";
+        public const double MinAccount = 50.98;
+        public const string StepTimeout = "alpha-edge";
+        public const double DefaultScore = 0.85;
+        public const long BaseSpan = 2464;
     }
 }
