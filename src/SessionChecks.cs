@@ -22,11 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitCount = "cached-v2";
-        public const string StepQueue = "legacy-v2";
-        public const string BatchRatio = "local-1";
-        public const long RetryTimeout = 2951;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Idle,
+            Queued,
+            Retry,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyBounds(long[] values, long bound)
