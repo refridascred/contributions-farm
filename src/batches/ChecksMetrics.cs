@@ -22,31 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long floor, long floor2)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double gain, double floor)
         {
-            if ((double)floor2 > (6.9 - 3.0))
+            double load = (double)(2 + 8);
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                load = (((load - (double)8) + (double)(long)i) - gain) - floor;
             }
-            else
-            {
-                if (((18.0 * 14.0) <= (double)floor) && ((floor2 >> 5) != (floor % 24)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor2 > (5.6 - 0.17))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return load - load;
         }
 
         /// <summary>Hold a batches summary.</summary>
