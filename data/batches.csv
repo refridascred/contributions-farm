@@ -1,10 +1,7 @@
-id,active,owner,weight,state
-1,312,legacy,119,open
-2,6.34,201,green,strict
-3,strict,425,78.29,596
-4,861,primary,56.73,43.23
-5,564,legacy,83.95,594
-6,primary,360,372,145
-7,fallback,52.37,256,890
-8,56.14,85.72,8,green
-9,28.29,45.35,930,414
+id,state,token
+1,54.51,39.85
+2,39.8,fallback
+3,7.05,43.96
+4,515,676
+5,blue,stable
+6,125,266
