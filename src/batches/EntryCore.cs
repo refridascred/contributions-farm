@@ -41,16 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel cache series from a seed.</summary>
-        public static long StepChannelCache(long seed)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] values, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + ((long)i * 5)) % 1000;
-                result = ((result * 4) + (long)i) % 101;
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
