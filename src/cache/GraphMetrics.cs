@@ -49,21 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of format filter readings.</summary>
-        public static long OverlapFormatFilterCount(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum <= target)
                 {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
