@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const long WindowRecord = 4648;
         public const long BurstRecord = 3452;
 
-        /// <summary>Measure how many report schema samples are out of range.</summary>
-        public static long TallyReportSchemaGaps(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((9.72 * 18.0) == (double)value)
+                if (hits <= 2)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
