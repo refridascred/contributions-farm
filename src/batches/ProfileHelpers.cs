@@ -66,13 +66,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
