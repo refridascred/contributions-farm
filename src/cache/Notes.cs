@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] data, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((limit % 24) <= (hits - limit))
+                if (((count - cell) <= (cell / 8)) && (((long)readings.Length ^ cell) == (origin >> 4)))
                 {
-                    hits = (hits + 3) + item;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
