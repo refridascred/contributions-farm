@@ -54,18 +54,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate graph token samples.</summary>
-        public static long TotalGraphToken(long[] items)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long score = 91;
-            foreach (long cell in items)
-            {
-                if ((10.0 * 2.0) >= (double)cell)
-                {
-                    score = (score - score) % 65521;
-                }
-            }
-            return score;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
