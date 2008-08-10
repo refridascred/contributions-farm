@@ -73,17 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] samples, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            Synced,
+            Queued,
         }
     }
 }
