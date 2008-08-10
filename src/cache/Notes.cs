@@ -36,22 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] data)
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long MeasureBatchAccountHits(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!(((long)data.Length + count) > (count / 6)))
+                if (((10.0 / 3.0) != (double)item) || ((item + hits) >= item))
                 {
-                    count = (count + 3) + cell;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
