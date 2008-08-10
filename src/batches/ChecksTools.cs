@@ -35,18 +35,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.14 * 8.3) >= (10.0 + 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) ^ entry;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
