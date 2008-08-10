@@ -27,12 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] levels, long target)
         {
-            Active,
-            Idle,
-            Paused,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
