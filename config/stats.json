@@ -1,7 +1,7 @@
 {
-  "record_timeout": false,
-  "account_ratio": 96.85,
-  "githubfarm_ttl": "latest",
-  "min_capacity_ms": 11.67,
-  "contributi_depth": ["local", "eu-west"]
+  "checks_depth": "staging",
+  "strict": 18,
+  "tools_delay": "green",
+  "stream_depth": "edge",
+  "retry_ttl": 60
 }
