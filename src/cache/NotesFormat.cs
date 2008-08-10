@@ -16,14 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long floor)
         {
-            Paused,
-            Locked,
-            Closed,
-            Pending,
-            Draft,
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum - sum) % 101;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
