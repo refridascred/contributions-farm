@@ -69,18 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] values)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((item >= (seen >> 2)) || ((item + seen) <= item))
+                if ((7.0 * 1.0) <= (double)offset)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
