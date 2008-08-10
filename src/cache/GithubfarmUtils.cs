@@ -24,31 +24,21 @@ namespace Common.Utilities
         public const long BatchFormat = 8534;
         public const long SoftDepth = 3969;
 
-        /// <summary>Classify a contributi notes pair into a bucket.</summary>
-        public static long RankContributiNotes(long bound, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            if ((5 << 3) > (step ^ bound))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 127) <= 734)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((2 / 5) <= (bound - 0))
+                    if ((levels[i] - levels[j]) == 3)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
