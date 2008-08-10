@@ -20,22 +20,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the layout format entries that pass the check.</summary>
-        public static long TallyLayoutFormatOutliers(long[] series, long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit / 3) >= ((long)series.Length - limit))
+                if (((long)i * 4) >= (8 ^ step))
                 {
-                    seen = (seen + 3) ^ reading;
+                    carry = (carry * 5) + (long)i;
+                    carry = ((carry << 2) ^ step) % 255;
+                    continue;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    long step3 = ((-966) + step) / 6;
+                    carry = carry - (step3 - step);
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a batches record.</summary>
