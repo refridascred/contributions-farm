@@ -46,15 +46,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
