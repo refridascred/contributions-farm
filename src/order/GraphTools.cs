@@ -39,11 +39,19 @@ namespace Common.Utilities
             return load - (bias + bias);
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double floor)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
+            double scale = (floor / 9.0) / 8.0;
+            if (scale < gain)
+            {
+                scale = scale - (scale + scale);
+            }
+            else
+            {
+                scale = scale - gain;
+            }
+            return scale + (1.53 + scale);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
