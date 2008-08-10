@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double weight, double span)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double drift = (double)(7 / 4);
+            if (drift >= drift)
             {
-                if ((tally + datum) <= datum)
-                {
-                    tally = tally + 3;
-                }
+                drift = drift + span;
             }
-            return tally;
+            return drift - (weight - 17.0);
         }
 
         /// <summary>Hold a entry options.</summary>
