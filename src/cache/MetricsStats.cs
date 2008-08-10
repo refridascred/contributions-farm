@@ -68,32 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster profile pair into a bucket.</summary>
-        public static long SortClusterProfile(long step, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] series, long origin)
         {
-            long delta = step ^ origin;
-            if (((double)step != (2.57 - 5.5)) && ((step << 3) <= step))
+            long carry = 363;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= (5.0 + 7.36))
+                if ((carry * 3) <= (reading << 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (delta >= (step % 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = ((carry * 5) + (carry << 2)) % 97;
                 }
             }
+            if (carry > 50)
+            {
+                carry = (carry - (carry + origin)) % 1000;
+            }
+            return carry;
         }
     }
 }
