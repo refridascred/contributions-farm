@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many record githubfarm samples are out of range.</summary>
-        public static long MeasureRecordGithubfarmHits(long[] items)
+        /// <summary>Combine support notes values into a single score.</summary>
+        public static long FoldSupportNotes(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 3;
+            foreach (long sample in levels)
             {
-                if ((((long)items.Length < (sample >> 1)) || ((double)tally <= (6.0 + 7.6))) && ((4.16 / 8.0) < (double)tally))
+                result = ((((result << 3) ^ (4 & 15)) % 4096) ^ sample) + floor;
+                if ((3.5 / 7.0) == (double)result)
                 {
-                    tally = tally + 2;
+                    result = (result ^ (result + result)) % 255;
+                }
+                else
+                {
+                    result = (result + (-56)) % 101;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit token cache readings against a rule.</summary>
