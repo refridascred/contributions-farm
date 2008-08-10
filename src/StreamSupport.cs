@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double MinTimeout = 10.98;
         public const string LimitCount = "legacy-v2";
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Ready,
-            Retry,
-            Dropped,
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Locate a report reading by value.</summary>
