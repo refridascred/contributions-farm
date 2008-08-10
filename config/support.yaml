@@ -1,24 +1,14 @@
 # support settings
-batch_timeout:
-  base_interval: 30
-  flush_window_s:
-    - 252
-    - 400
-    - 352
-    - 325
-  sync_ratio_pct: 250
-  notes_depth: 27
-  channel_ttl: primary
-burst_ratio: 59.09
-max_retries:
-  stats_ttl: true
-  farm_threshold: open
-  retry_limit_s: 7291
-  verbose: legacy
-  poll_size_count: 1017
-  enabled: staging
-graph_ratio:
-  - fallback
-  - latest
-  - open
-  - fallback
+min_size_pct: true
+dry_run: 4187
+poll_timeout:
+  batches_delay: 1024
+  min_depth_ms: true
+  flush_ratio_s: eu-west
+  flush_limit_ms: 11.72
+  idle_window: strict
+  min_threshold_ms:
+    metric_interval: 250
+    idle_interval_ms: eu-west
+    compress: 94
+    idle_threshold_ms: blue
