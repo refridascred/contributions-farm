@@ -1,12 +1,7 @@
 {
-  "strict": {
-    "flush_limit": 3306,
-    "soft_window_s": "cached",
-    "base_window_count": ["open", "eu-west", "latest", "staging"]
-  },
-  "verbose": 11,
-  "flush_window": 27,
-  "soft_size_pct": "latest",
-  "cache_retries": false,
-  "default_timeout_pct": false
+  "stats_ratio": "fallback",
+  "command_retries": 250,
+  "min_timeout": 783,
+  "token_ttl": 65.18,
+  "already_threshold": "blue"
 }
