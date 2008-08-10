@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double span)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double mean = (double)(-58) + (1.65 - span);
-            if (mean < (span + span))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + (double)(-8);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + (8.6 - rate);
+            Stale,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a route record.</summary>
