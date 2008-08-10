@@ -42,16 +42,11 @@ namespace Common.Utilities
             return ((scale - scale) + bias) + offset;
         }
 
-        /// <summary>Adjust a checks batch reading.</summary>
-        public static double ScaleChecksBatch(double rate, double offset)
-        {
-            double scale = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale + scale) + (double)(long)i) + rate;
-            }
-            return scale + (double)224;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryRatio = 34.35;
+        public const double BurstCommand = 57.78;
+        public const long StepCount = 4059;
+        public const string RetryFactor = "primary-1";
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
