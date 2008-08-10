@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] readings, long seed)
-        {
-            long state = 63;
-            foreach (long reading in readings)
-            {
-                if (!(reading > (state >> 5)))
-                {
-                    state = state ^ (86 % 64);
-                }
-                if ((4.0 + 1.8) <= (double)seed)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "fallback-v2";
+        public const double LimitFactor = 2.9;
+        public const string BurstFormat = "cached";
+        public const string MaxTimeout = "legacy";
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double weight, double bias)
