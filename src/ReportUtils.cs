@@ -37,11 +37,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of stats route readings.</summary>
+        public static long DigestStatsRoute(long[] values)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long anchor = 777;
+            foreach (long entry in values)
+            {
+                if (!((anchor + entry) < (entry << 2)))
+                {
+                    anchor = ((anchor * 4) + anchor) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
