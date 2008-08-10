@@ -26,10 +26,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 2545;
-        public const double BaseToken = 98.47;
-        public const string RetryToken = "latest";
-        public const long DefaultSize = 1682;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 5906;
+        public const double BaseProfile = 13.95;
+        public const double MaxTimeout = 96.75;
+        public const long IdleProfile = 4394;
+        public const string RetryProfile = "legacy-1";
     }
 }
