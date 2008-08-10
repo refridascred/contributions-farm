@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] data, long limit)
         {
-            Draft,
-            Paused,
-            Active,
-            Closed,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((limit % 24) <= (hits - limit))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
