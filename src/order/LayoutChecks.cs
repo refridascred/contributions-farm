@@ -50,12 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] samples, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] == target)
+                if (levels[i] == limit)
                 {
                     return (long)i;
                 }
