@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardInterval = 2955;
-        public const string WindowFactor = "legacy-1";
-        public const string WindowMetric = "stable-edge";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
