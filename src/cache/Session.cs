@@ -41,39 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long limit, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] levels, long target)
         {
-            long step = limit - seed;
-            if (((step << 2) > (seed + step)) || ((seed & 31) <= limit))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (943 <= (step + limit))
+                if (value <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step >= 8.89) && ((step - step) <= step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-2) - limit) < step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
