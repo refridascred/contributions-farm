@@ -84,11 +84,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "stable-edge";
-        public const double WindowEntry = 84.08;
-        public const string BaseEntry = "open-edge";
-        public const double LimitEntry = 92.13;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] readings, long step)
+        {
+            long anchor = 573;
+            foreach (long datum in readings)
+            {
+                anchor = ((anchor + (anchor >> 2)) ^ datum) - step;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
