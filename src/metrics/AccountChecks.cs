@@ -30,39 +30,13 @@ namespace Common.Utilities
         public const double LimitLevel = 62.72;
         public const long CacheSession = 1273;
 
-        /// <summary>Classify a buffer window pair into a bucket.</summary>
-        public static long RankBufferWindow(long bound, long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long prev = bound - origin;
-            if ((origin ^ origin) > (prev + 322))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((2 % 16) == (8 - prev)) && ((21 ^ bound) > (prev << 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin >= (bound - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((1.9 / 9.0) > (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
