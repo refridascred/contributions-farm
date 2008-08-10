@@ -45,14 +45,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepInterval = 3526;
+        public const long MaxCount = 3934;
+        public const double CacheRatio = 97.69;
+        public const long BurstSupport = 751;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueBounds(long[] series, long seed)
