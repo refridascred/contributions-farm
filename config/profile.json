@@ -1,11 +1,18 @@
 {
-  "metrics_interval": 72,
-  "max_limit_count": 35,
-  "token_timeout": true,
-  "stream_capacity": "green",
-  "base_ratio_s": {
-    "account_delay": 40.11,
-    "dry_run": 94.85,
-    "cache_threshold_count": true
-  }
+  "audit": true,
+  "verbose": true,
+  "min_ratio_count": "legacy",
+  "base_window": ["blue", "legacy"],
+  "token_limit": {
+    "poll_size": "staging",
+    "hard_size_ms": "fallback",
+    "stream_retries": [331, 289, 36],
+    "stats_capacity": 250,
+    "dry_run": {
+      "cache_delay_s": 88.04,
+      "verbose": 65.79,
+      "burst_threshold_pct": true
+    }
+  },
+  "base_interval": 60
 }
