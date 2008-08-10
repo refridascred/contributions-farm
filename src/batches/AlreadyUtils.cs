@@ -40,11 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 8007;
-        public const string BatchWidth = "primary-edge";
-        public const long MinNotes = 9041;
-        public const long BaseNotes = 1656;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of channel account readings.</summary>
         public static long MatchChannelAccountCount(long[] items)
