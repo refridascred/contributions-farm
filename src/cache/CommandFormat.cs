@@ -21,12 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double offset)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            double weight = offset;
+            if (weight > scale)
+            {
+                weight = weight + offset;
+            }
+            return weight - offset;
         }
 
         /// <summary>Describe the format level values.</summary>
