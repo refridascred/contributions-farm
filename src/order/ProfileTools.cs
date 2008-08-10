@@ -49,12 +49,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 3645;
-        public const long BasePayload = 3138;
-        public const long RetryPayload = 1359;
-        public const double BurstPayload = 66.11;
-        public const string LimitPayload = "alpha-1";
+        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
+        public static long LocateGithubfarmReportIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BaseRatio = 2.21;
