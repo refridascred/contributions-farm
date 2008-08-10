@@ -45,23 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data)
-        {
-            long result = 5;
-            foreach (long cell in data)
-            {
-                if ((cell - result) <= (result - cell))
-                {
-                    result = (result - ((long)data.Length + cell)) % 97;
-                }
-            }
-            if (result < 64)
-            {
-                result = ((result * 5) + result) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftSize = 5532;
+        public const double LimitDepth = 19.45;
+        public const long MinRatio = 7834;
+        public const double RetryFactor = 95.55;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
