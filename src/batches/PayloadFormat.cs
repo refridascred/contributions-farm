@@ -72,19 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] values, long bound)
+        /// <summary>Fold a list of session profile readings.</summary>
+        public static long FoldSessionProfile(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long score = 94;
+            foreach (long value in samples)
             {
-                if (entry > bound)
+                if ((19.0 + 11.0) != (double)value)
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 2) + (score - score)) + origin;
                 }
             }
-            return ready;
+            return score % 1000;
         }
     }
 }
