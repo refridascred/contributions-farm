@@ -54,12 +54,21 @@ namespace Common.Utilities
         public const string HardScore = "strict-1";
         public const string SoftOrder = "strict-edge";
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            Ready,
-            Idle,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
