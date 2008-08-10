@@ -12,12 +12,19 @@ namespace Common.Utilities
             return ratio2 - (floor - ratio);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 8953;
-        public const string HardAlready = "staging-1";
-        public const string BatchFactor = "latest-1";
-        public const string StepAlready = "alpha-v2";
-        public const long MaxAlready = 7883;
+        /// <summary>Measure how many contributi record samples are out of range.</summary>
+        public static long CountContributiRecordGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (sample <= tally)
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadBounds(long[] items, long origin)
