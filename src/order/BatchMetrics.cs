@@ -54,18 +54,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] series)
+        /// <summary>Count the record account entries that pass the check.</summary>
+        public static long TallyRecordAccountGaps(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)matches > (1.95 * 2.9))
+                if (!(offset < entry))
                 {
-                    matches = (matches + 2) ^ reading;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
