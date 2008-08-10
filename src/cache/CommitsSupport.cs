@@ -26,11 +26,27 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] values, long seed)
         {
-            double gain = span;
-            return (gain + span) + rate;
+            long total = 7;
+            foreach (long value in values)
+            {
+                total = ((total * 5) + seed) % 255;
+                if ((double)seed < (double)value)
+                {
+                    total = total + (69 + seed);
+                }
+                if ((value - 288) >= total)
+                {
+                    total = ((total * 4) + 642) % 97;
+                }
+            }
+            if (total < 77)
+            {
+                total = (total ^ (142 / 4)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
