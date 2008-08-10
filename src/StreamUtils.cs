@@ -57,15 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] readings, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Count notes record pairs that satisfy a relation.</summary>
