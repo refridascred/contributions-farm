@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "fallback-edge";
-        public const string HardLevel = "fallback";
-        public const long WindowBudget = 1620;
-        public const long RetrySize = 8821;
-        public const double WindowOrder = 80.67;
+        /// <summary>Match up token layout samples.</summary>
+        public static long OverlapTokenLayoutCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] series)
