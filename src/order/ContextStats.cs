@@ -74,9 +74,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 4419;
-        public const long LimitAlready = 1116;
-        public const string CacheAlready = "cached";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (count >= (datum * 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
