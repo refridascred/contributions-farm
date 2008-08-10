@@ -41,20 +41,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 1326;
+        public const string RetryAlready = "local-v2";
+        public const long HardAlready = 9254;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
