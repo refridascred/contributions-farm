@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Rank window format input into a small class.</summary>
+        public static long BucketWindowFormat(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = floor + floor2;
+            if ((cur + floor) > 188)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor + cur) > (cur + floor))
                 {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the cache phase values.</summary>
