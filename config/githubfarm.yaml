@@ -1,28 +1,5 @@
 # githubfarm settings
-cache_threshold:
-  default_interval:
-    default_capacity: cached
-    min_ratio_s:
-      - green
-      - stable
-      - cached
-    cache_size_pct: 250
-  soft_timeout: 63.91
-  readonly: 250
-  max_threshold_s:
-    - 318
-    - 376
-    - 433
-    - 147
-  max_window: 60
-  flush_threshold_pct: blue
-retry_depth:
-  - green
-  - blue
-readonly: false
-support_depth:
-  cache_size: 69
-  readonly: 5581
-  idle_capacity: 47
-  base_timeout_ms: true
-  cache_retries_s: edge
+context_delay: false
+profile_limit: local
+poll_size_count: 60
+batch_delay: latest
