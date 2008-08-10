@@ -31,12 +31,15 @@ namespace Common.Utilities
             return load - 9.45;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long limit)
         {
-            Stale,
-            Synced,
-            Paused,
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
