@@ -46,32 +46,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long bound, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] values, long limit)
         {
-            long offset = bound ^ seed;
-            if ((989 + offset) <= (bound / 8))
+            bool stale = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset * 2) <= (seed % 24))
+                if (value <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound ^ seed) < (bound << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
