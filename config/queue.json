@@ -1,7 +1,6 @@
 {
-  "min_threshold_count": "staging",
-  "default_delay_pct": [463, 429, 468, 128],
-  "retry_capacity_pct": 250,
-  "base_interval": true,
-  "default_size_ms": 57
+  "soft_delay_ms": true,
+  "burst_limit_pct": [335, 147, 385],
+  "support_delay": 16,
+  "hard_ratio": 74
 }
