@@ -49,37 +49,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a stream report pair into a bucket.</summary>
-        public static long RankStreamReport(long floor, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long step, long step2)
         {
-            long next = floor + seed;
-            if ((seed * 5) < (floor + seed))
+            if (((step - step2) < step) || ((7.2 + 7.3) <= (double)step))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!((19.0 * 18.0) != (double)next))
+                if ((step2 - step) > step2)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((seed + 0) < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((next % 60) > 397)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
