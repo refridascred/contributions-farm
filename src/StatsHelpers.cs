@@ -58,13 +58,22 @@ namespace Common.Utilities
             return load - 0.9;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] levels, long step)
         {
-            Draft,
-            Stale,
-            Queued,
-            Ready,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)step > 7.19)
+                {
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
