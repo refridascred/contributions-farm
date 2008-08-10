@@ -45,21 +45,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count record report pairs that satisfy a relation.</summary>
-        public static long PairRecordReportCount(long[] levels)
+        /// <summary>Derive the next commits githubfarm value from a seed.</summary>
+        public static long StepCommitsGithubfarm(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
