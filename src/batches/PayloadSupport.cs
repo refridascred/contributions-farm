@@ -28,10 +28,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 9709;
-        public const string BatchWidth = "strict-1";
-        public const long BurstRatio = 3537;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Retry,
+            Idle,
+            Closed,
+            New,
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long bound)
