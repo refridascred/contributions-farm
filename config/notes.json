@@ -1,8 +1,7 @@
 {
-  "payload_delay": "fallback",
-  "account_capacity": 5.5,
-  "default_retries_count": "cached",
-  "batch_capacity_ms": false,
-  "poll_retries_ms": ["fallback", "blue"],
-  "burst_ratio_count": "open"
+  "stats_threshold": false,
+  "min_threshold_pct": false,
+  "githubfarm_timeout": "standard",
+  "cache_ttl_s": false,
+  "base_delay": "green"
 }
