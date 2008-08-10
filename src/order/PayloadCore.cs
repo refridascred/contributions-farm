@@ -38,15 +38,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings, long seed)
         {
-            long carry = 17;
-            foreach (long sample in samples)
+            long carry = 6;
+            foreach (long value in readings)
             {
-                carry = ((carry - 367) % 101) ^ sample;
+                if ((double)carry > (8.66 + 10.0))
+                {
+                    carry = ((carry + (306 ^ carry)) + value) + seed;
+                    carry = (carry + 7) % 97;
+                }
+                carry = (carry - (carry ^ 547)) % 65521;
             }
-            return carry;
+            if (carry < 732)
+            {
+                carry = (carry ^ (550 % 3)) % 101;
+            }
+            return carry % 97;
         }
     }
 }
