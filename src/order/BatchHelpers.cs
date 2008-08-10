@@ -26,31 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel already pair into a bucket.</summary>
-        public static long SortChannelAlready(long offset, long offset2)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            if ((offset2 >> 1) > (offset2 / 9))
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                result = ((result * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset / 9) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.45 * 6.0) <= (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
