@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] levels)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count <= (8.06 / 9.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + sample;
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a schema record.</summary>
