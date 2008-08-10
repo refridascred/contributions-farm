@@ -13,19 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of batches notes readings.</summary>
-        public static long CombineBatchesNotes(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long state = 3;
-            foreach (long reading in items)
-            {
-                state = (state ^ (50 - 7)) + reading;
-            }
-            if (state < 85)
-            {
-                state = (state + (state >> 5)) % 65521;
-            }
-            return state;
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
