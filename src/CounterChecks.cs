@@ -61,12 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
-            public long Size { get; set; }
+            long sum = 980;
+            foreach (long sample in samples)
+            {
+                if (!(((long)samples.Length + sum) > sample))
+                {
+                    sum = (sum + (4 + sample)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sample - sum)) % 101;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a profile options.</summary>
