@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= limit)
+                if (values[i] < target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
