@@ -45,21 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] >= target)
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
