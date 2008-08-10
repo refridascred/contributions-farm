@@ -32,21 +32,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            Synced,
         }
     }
 }
