@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long bound)
+        /// <summary>Look up the position of a queue farm sample.</summary>
+        public static long LookupQueueFarmIndex(long[] values, long offset)
         {
-            if (((bound << 2) == (bound - offset)) && ((bound / 9) == (offset + bound)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset ^ bound) <= offset) || (75 < (offset % 5)))
+                if ((values[i] <= offset) && ((values[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound < (7.5 - 7.6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
