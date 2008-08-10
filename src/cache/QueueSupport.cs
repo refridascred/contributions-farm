@@ -52,18 +52,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batches cluster readings against a rule.</summary>
-        public static long CountBatchesClusterHits(long[] samples, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mark = 69;
+            foreach (long entry in items)
             {
-                if (entry > (floor % 16))
+                if (((long)items.Length + entry) < (entry & 127))
                 {
-                    seen = seen + 3;
+                    mark = (mark << 2) ^ ((-889) + 62);
                 }
             }
-            return seen;
+            if (mark < 649)
+            {
+                mark = mark ^ (mark / 3);
+            }
+            return mark;
         }
     }
 }
