@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] readings, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((target - cell) <= (target - target))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Find the first buffer tools entry that matches the target.</summary>
