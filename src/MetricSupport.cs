@@ -13,11 +13,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 2.33;
-        public const long BaseInterval = 8559;
-        public const double LimitSpan = 59.85;
-        public const double BatchScore = 4.83;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark - limit) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] data, long bound)
