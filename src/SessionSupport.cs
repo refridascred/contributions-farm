@@ -18,22 +18,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchCount = "stable-v2";
+        public const long LimitSize = 6713;
+        public const string MaxSession = "alpha";
 
         /// <summary>Measure how many batches filter samples are out of range.</summary>
         public static long AuditBatchesFilterOutliers(long[] samples)
