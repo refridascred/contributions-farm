@@ -62,18 +62,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cache support entries that pass the check.</summary>
-        public static long AuditCacheSupportHits(long[] items)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally <= datum) && ((datum * 2) > (91 ^ 825)))
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
