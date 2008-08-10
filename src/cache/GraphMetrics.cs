@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next commits schema value from a seed.</summary>
-        public static long RollCommitsSchema(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 77.5;
+        public const string LimitBuffer = "legacy";
+        public const long LimitRatio = 1118;
+        public const double HardScore = 35.5;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
