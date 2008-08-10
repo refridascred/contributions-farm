@@ -1,5 +1,16 @@
 {
-  "enabled": 100,
-  "sync_size_pct": "local",
-  "default_delay_ms": "local"
+  "poll_capacity_pct": {
+    "channel_limit": {
+      "commits_size": [212, 129, 40, 391],
+      "layout_retries": 250,
+      "burst_window": 49,
+      "audit": 49.41
+    },
+    "persist": "cached",
+    "sync_delay": "edge",
+    "base_delay_s": [60, 297, 349]
+  },
+  "strict": ["cached", "eu-west"],
+  "flush_interval_s": 60,
+  "filter_threshold": 64.66
 }
