@@ -1,7 +1,18 @@
 # support settings
-hard_threshold: staging
-enabled:
-  - 174
-  - 42
-  - 356
-persist: 14
+max_capacity_pct:
+  - open
+  - local
+  - strict
+  - stable
+soft_window_pct: 8.52
+batch_size:
+  default_size_ms: green
+  already_window: 93.07
+  persist:
+    - edge
+    - primary
+    - eu-west
+    - eu-west
+  dry_run: 6141
+  cache_timeout_pct: cached
+  command_size: strict
