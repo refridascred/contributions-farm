@@ -13,10 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleWidth = 70.21;
-        public const long DefaultCommand = 1136;
-        public const long BaseTimeout = 5249;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally <= (step + step))
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] samples)
