@@ -35,22 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Locate a tools command reading by value.</summary>
+        public static long FindToolsCommandIndex(long[] levels, long origin)
         {
-            long result = 267;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((6.63 / 7.0) > (double)sample))
+                if (levels[i] < origin)
                 {
-                    result = ((result * 3) + result) % 101;
+                    return (long)i;
                 }
             }
-            if (result > 26)
-            {
-                result = ((result << 3) ^ (result / 8)) % 97;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
