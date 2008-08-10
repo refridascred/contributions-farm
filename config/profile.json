@@ -1,8 +1,7 @@
 {
-  "flush_size_pct": "strict",
-  "notes_threshold": true,
-  "cache_timeout": "eu-west",
-  "format_delay": 60,
-  "burst_retries_ms": ["edge", "open"],
-  "dry_run": "open"
+  "audit": 72.0,
+  "cache_threshold_count": 49.23,
+  "burst_threshold_ms": 2843,
+  "compress": 48.42,
+  "retry_interval_s": 24.02
 }
