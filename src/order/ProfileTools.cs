@@ -39,10 +39,15 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSpan = 2735;
-        public const long WindowInterval = 7840;
-        public const long SoftBuffer = 2360;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Locked,
+            Failed,
+            Closed,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftPayload = 3645;
