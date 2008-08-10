@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every editor token entry stays within the limit.</summary>
-        public static bool GuardEditorTokenBounds(long[] series, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (item >= floor)
+                if (reading > origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Project the next counter value.</summary>
