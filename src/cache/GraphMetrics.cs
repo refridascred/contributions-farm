@@ -72,17 +72,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] values, long bound)
+        /// <summary>Count token report pairs that satisfy a relation.</summary>
+        public static long OverlapTokenReportCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
