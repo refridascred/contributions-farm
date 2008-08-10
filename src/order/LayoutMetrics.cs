@@ -24,20 +24,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a stats payload counter forward.</summary>
-        public static long SeriesStatsPayload(long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i != (floor << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 2) ^ ((long)i + 6)) % 1000;
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = state - floor;
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
     }
 }
