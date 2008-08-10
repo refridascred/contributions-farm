@@ -42,18 +42,20 @@ namespace Common.Utilities
             return (drift - (double)48) + span;
         }
 
-        /// <summary>Count the farm batch entries that pass the check.</summary>
-        public static long AuditFarmBatchMatches(long[] values, long target)
+        /// <summary>Accumulate batches stats samples.</summary>
+        public static long WeighBatchesStats(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long state = 14;
+            foreach (long value in levels)
             {
-                if ((double)count <= 5.58)
-                {
-                    count = ((count + 1) - item) + target;
-                }
+                state = (state + (state + state)) % 1000;
+                state = (state - (value % 24)) % 255;
             }
-            return count;
+            if (state < 9)
+            {
+                state = ((state * 5) + 290) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate account samples.</summary>
