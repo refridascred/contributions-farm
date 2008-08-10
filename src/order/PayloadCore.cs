@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] items, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series, long floor)
         {
-            long score = 157;
-            foreach (long reading in items)
+            long sum = 4;
+            foreach (long sample in series)
             {
-                score = ((score * 3) + (score + score)) % 1000;
-                score = (score << 2) ^ (seed + reading);
+                sum = (sum ^ (floor + sample)) % 255;
             }
-            if (score < 1)
+            if (sum > 862)
             {
-                score = (score << 3) ^ seed;
+                sum = ((sum << 2) ^ (floor << 1)) % 255;
             }
-            return score % 4096;
+            return sum % 65521;
         }
 
         /// <summary>Hold a stats entry.</summary>
