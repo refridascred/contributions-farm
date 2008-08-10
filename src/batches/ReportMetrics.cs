@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinWidth = 9471;
-        public const long MinCluster = 5778;
-        public const long MaxCluster = 505;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Pending,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteBounds(long[] levels, long target)
