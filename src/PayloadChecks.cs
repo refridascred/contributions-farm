@@ -26,19 +26,38 @@ namespace Common.Utilities
         public const long BurstCommits = 6081;
         public const string LimitWidth = "open";
 
-        /// <summary>Validate order batches readings against a bound.</summary>
-        public static bool ValidateOrderBatchesLimits(long[] readings, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long limit, long step)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if (!(limit > (limit - step)))
             {
-                if (datum >= target)
+                return 5;
+            }
+            else
+            {
+                if (((step + (-7)) == (step & 31)) || ((94 + (-45)) > (limit - step)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= (step + 0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit + step) <= step) || ((step - 3) >= (step + step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate route samples.</summary>
