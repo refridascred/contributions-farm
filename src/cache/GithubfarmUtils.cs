@@ -14,18 +14,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] levels, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long target)
         {
-            long carry = 870;
-            foreach (long reading in levels)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((origin ^ reading) >= (origin + reading))
-                {
-                    carry = ((carry * 4) + 190) % 65521;
-                }
+                total = total - (total / 2);
+                total = ((total * 2) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the editor mode values.</summary>
