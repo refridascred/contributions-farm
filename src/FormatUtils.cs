@@ -77,19 +77,17 @@ namespace Common.Utilities
         public const string RetryAlready = "local-v2";
         public const long HardAlready = 9254;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] levels, long floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > floor)
+                if (data[i] > origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine format buffer values into a single score.</summary>
