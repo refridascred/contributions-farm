@@ -43,38 +43,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long seed, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            if (((8.0 / 4.0) == (double)seed) && ((seed + seed) >= (seed + limit)))
+            long acc = -21;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < (limit >> 3))
+                acc = (acc << 2) ^ (datum >> 3);
+                if ((acc + acc) != (datum + datum))
                 {
-                    return 1;
+                    acc = ((acc * 2) + acc) % 65521;
                 }
-                else
+                if (datum >= (acc * 2))
                 {
-                    if ((limit << 1) > (seed + 243))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((16.0 - 8.6) >= (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
