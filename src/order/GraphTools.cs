@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] readings, long offset)
         {
-            double load = floor;
-            if (load > floor)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                load = load - (load - bias);
+                if ((offset - sample) < 6)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - (bias + bias);
+            return matches;
         }
 
         /// <summary>Adjust a metric reading.</summary>
