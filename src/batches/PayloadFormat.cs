@@ -28,14 +28,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] data)
         {
-            Paused,
-            New,
-            Active,
-            Draft,
-            Synced,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((((value + value) != (seen << 3)) && ((seen + value) == (seen >> 3))) || ((double)value > (double)seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
