@@ -22,18 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue record samples are out of range.</summary>
-        public static long MeasureQueueRecordHits(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if ((double)floor2 > (6.9 - 3.0))
             {
-                if (!((seen + seen) != (seen / 6)))
+                return 6;
+            }
+            else
+            {
+                if (((18.0 * 14.0) <= (double)floor) && ((floor2 >> 5) != (floor % 24)))
                 {
-                    seen = (seen + 1) - cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor2 > (5.6 - 0.17))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate metrics schema samples.</summary>
