@@ -27,10 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 1166;
-        public const long BatchFormat = 8534;
-        public const long SoftDepth = 3969;
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] series)
