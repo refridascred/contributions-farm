@@ -68,10 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxInterval = 7.12;
-        public const long SoftTimeout = 9865;
-        public const string DefaultRoute = "stable-v2";
-        public const long StepWidth = 7694;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Pending,
+            Ready,
+            Dropped,
+        }
     }
 }
