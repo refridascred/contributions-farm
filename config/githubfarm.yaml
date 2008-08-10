@@ -1,14 +1,14 @@
 # githubfarm settings
-retry_capacity:
-  checks_size: 500
-  warm_timeout_s:
-    - 214
-    - 343
-    - 408
-  retry_ttl_s:
-    - 232
-    - 262
-dry_run: 1024
-payload_ttl: staging
-batch_ratio_ms: 1024
-buffer_timeout: 60
+burst_ttl_pct: 48
+counter_delay: 1362
+base_window_pct: strict
+checks_capacity: 8593
+sync_delay_s:
+  poll_size_ms: false
+  session_threshold:
+    - 76
+    - 357
+  dry_run: strict
+  enabled: stable
+  window_threshold: 7.96
+channel_interval: local
