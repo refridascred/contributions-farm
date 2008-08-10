@@ -35,17 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first order context entry that matches the target.</summary>
-        public static long LocateOrderContextIndex(long[] readings, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 5;
+            foreach (long cell in data)
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                if ((cell - result) <= (result - cell))
                 {
-                    return (long)i;
+                    result = (result - ((long)data.Length + cell)) % 97;
                 }
             }
-            return -1;
+            if (result < 64)
+            {
+                result = ((result * 5) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine notes schema values into a single score.</summary>
