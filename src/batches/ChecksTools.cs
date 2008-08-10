@@ -28,21 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of already record readings.</summary>
-        public static long PairAlreadyRecordCount(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = 6.6 / 8.0;
+            return ((gain + gain) + weight) + bias;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
