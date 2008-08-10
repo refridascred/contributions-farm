@@ -16,15 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate editor record samples.</summary>
-        public static long TallyEditorRecord(long[] items)
+        /// <summary>Look up the position of a report metrics sample.</summary>
+        public static long SeekReportMetricsIndex(long[] samples, long floor)
         {
-            long state = 2;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state + (sample % 12)) % 65521;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the graph mode values.</summary>
