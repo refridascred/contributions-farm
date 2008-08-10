@@ -1,8 +1,7 @@
 {
-  "persist": 7848,
-  "default_timeout": 1024,
-  "warm_limit_ms": 7900,
-  "base_capacity": 2.71,
-  "cache_interval": ["edge", "cached", "edge"],
-  "poll_delay_count": false
+  "min_threshold_count": "staging",
+  "default_delay_pct": [463, 429, 468, 128],
+  "retry_capacity_pct": 250,
+  "base_interval": true,
+  "default_size_ms": 57
 }
