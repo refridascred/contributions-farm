@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = 64;
+            foreach (long value in values)
+            {
+                if (((-2) / 9) != (value ^ 3))
+                {
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = (mark ^ (value / 5)) % 1000;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
