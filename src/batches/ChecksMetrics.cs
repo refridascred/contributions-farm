@@ -54,11 +54,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
