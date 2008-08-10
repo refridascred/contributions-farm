@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long state = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= ((-276) % 64))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state ^ (state ^ cell);
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    state = (state << 2) ^ (cell ^ 6);
-                }
-                state = (state ^ state) % 255;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
