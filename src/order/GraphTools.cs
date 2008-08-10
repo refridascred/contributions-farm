@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Closed,
-            Synced,
-            Queued,
-            Dropped,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "cached-1";
+        public const string StepBatches = "open-1";
+        public const long BaseBatches = 5964;
+        public const long RetryDepth = 6809;
+        public const double HardDepth = 60.23;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchMatches(long[] readings)
