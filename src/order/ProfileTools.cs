@@ -26,21 +26,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)(long)i != (0.52 + 6.0))
-                {
-                    sum = ((sum << 2) ^ (step ^ step)) % 255;
-                    sum = ((sum * 2) + (step + (long)i)) % 4096;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
