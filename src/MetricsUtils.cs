@@ -14,18 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long TallyOrderCacheHits(long[] items, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((7.1 + 2.0) != (double)limit) || ((double)164 == (double)datum))
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
