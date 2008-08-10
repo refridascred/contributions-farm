@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const long HardContext = 7227;
         public const double LimitContext = 47.92;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double ratio = (double)(16 / 6);
+            if (ratio > (span / 6.0))
             {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - bias;
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + 8.2;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
