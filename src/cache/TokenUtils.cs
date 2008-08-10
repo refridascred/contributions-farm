@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] data, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (item > (64 * 3))
+                if ((double)tally < (double)datum)
                 {
-                    count = (count + 2) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
