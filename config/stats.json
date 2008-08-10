@@ -1,5 +1,8 @@
 {
-  "audit": 60,
-  "sync_ttl_ms": 82,
-  "cache_capacity_count": "strict"
+  "soft_retries": 100,
+  "audit": [270, 48, 142],
+  "batch_ratio": 60,
+  "enabled": 30,
+  "persist": "primary",
+  "warm_ttl_s": 30
 }
