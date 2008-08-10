@@ -20,22 +20,19 @@ namespace Common.Utilities
         public const long LimitInterval = 776;
         public const long MinRatio = 4990;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] items, long bound)
+        /// <summary>Roll a command commits counter forward.</summary>
+        public static long RollCommandCommits(long step)
         {
-            long total = 15;
-            foreach (long item in items)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item / 6) >= (548 - total))
+                if (!((-663) <= (step + step)))
                 {
-                    total = (total ^ 15) + bound;
+                    score = (score + (step % 97)) % 97;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (total > 16)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
