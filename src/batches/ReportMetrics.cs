@@ -33,10 +33,18 @@ namespace Common.Utilities
         public const string MaxWindow = "primary-edge";
         public const long IdleWindow = 5463;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepInterval = 55.02;
-        public const string DefaultContext = "local-edge";
-        public const string IdleLevel = "cached";
-        public const long StepSize = 6115;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((80 << 2) > tally))
+                {
+                    tally = ((tally + 2) ^ value) + step;
+                }
+            }
+            return tally;
+        }
     }
 }
