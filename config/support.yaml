@@ -1,4 +1,18 @@
 # support settings
-burst_window: 57.02
-persist: 1024
-batch_ratio_count: 94.76
+retry_window_pct: 62.48
+route_threshold: true
+base_size_ms:
+  poll_limit_s:
+    - 216
+    - 423
+    - 113
+    - 281
+  audit: edge
+  filter_delay:
+    idle_depth: blue
+    flush_ratio_ms: 86
+    batch_interval: eu-west
+    editor_limit: false
+    base_capacity_pct: latest
+    commits_interval: 82.78
+farm_timeout: strict
