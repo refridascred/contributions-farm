@@ -42,13 +42,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long step)
         {
-            Pending,
-            Paused,
-            Synced,
-            Queued,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
