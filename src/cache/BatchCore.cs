@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long CacheFactor = 3774;
         public const long IdleWindow = 2202;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            long anchor = 8;
-            foreach (long sample in samples)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor * 4) + (anchor - sample);
+                state = ((state * 4) + (long)i) % 97;
             }
-            if (anchor < 482)
-            {
-                anchor = (anchor + ((long)samples.Length >> 1)) % 1000;
-            }
-            return anchor % 1000;
+            return state;
         }
 
         /// <summary>Describe the schema kind values.</summary>
