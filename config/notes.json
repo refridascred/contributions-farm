@@ -1,7 +1,6 @@
 {
-  "dry_run": 45.81,
-  "base_capacity_s": 25.71,
-  "flush_limit": 263,
-  "max_ratio_pct": "stable",
-  "idle_capacity_ms": ["standard", "primary"]
+  "base_ratio_s": "cached",
+  "flush_timeout_pct": false,
+  "audit": true,
+  "sync_interval_ms": false
 }
