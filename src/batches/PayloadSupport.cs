@@ -47,22 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] data, long seed)
         {
-            long acc = 122;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((double)acc != (double)bound)
+                if (!(seed >= (50 + seed)))
                 {
-                    acc = (acc - (sample + acc)) % 101;
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc > 756)
-            {
-                acc = (acc + 18) % 1000;
-            }
-            return acc;
+            return count;
         }
     }
 }
