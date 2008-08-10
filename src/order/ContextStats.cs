@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items, long origin)
         {
-            long sum = 9;
-            foreach (long sample in items)
+            long acc = 0;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = (((sum * 4) + (sum & 127)) % 4096) + (long)i;
-                }
-                if (!((sample - sample) != ((long)items.Length % 10)))
-                {
-                    sum = (sum * 3) + (-9);
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum ^ sample)) % 1000;
-                }
-                if (((sum / 2) > (sample ^ sum)) && ((sum - sum) >= sample))
-                {
-                    break;
-                }
+                acc = (((acc * 5) + (origin + acc)) % 101) + entry;
             }
-            return sum % 1000;
+            if (acc < 535)
+            {
+                acc = (acc - (808 - acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the layout format entries that pass the check.</summary>
