@@ -1,7 +1,7 @@
-id,weight,region,token,count
-1,81.89,830,staging,624
-2,edge,40.04,504,eu-west
-3,297,17.66,553,strict
-4,217,blue,local,edge
-5,open,18.47,264,671
-6,531,strict,76.63,602
+id,label,token,level
+1,729,89.48,eu-west
+2,green,577,0.78
+3,eu-west,989,78.45
+4,local,219,63.45
+5,784,3.01,staging
+6,staging,196,61.7
