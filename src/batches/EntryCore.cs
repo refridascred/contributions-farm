@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double rate, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] data, long limit)
         {
-            double mean = (double)(26 - 7);
-            if (mean < (bias - rate))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mean = mean - 9.0;
+                if ((limit + 4) != (cell * 5))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 5.87) + (double)(long)i;
-            }
-            return mean + (double)5;
+            return seen;
         }
     }
 }
