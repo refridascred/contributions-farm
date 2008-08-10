@@ -44,15 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double span)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double gain = 8.01 * 3.8;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + (rate / 9.0)) - (double)(long)i) + span;
-            }
-            return gain - (5.1 / 7.0);
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
