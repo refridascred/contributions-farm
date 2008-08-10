@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] levels, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((tally / 4) >= tally) || ((seed + (-97)) < (83 % 60)))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
