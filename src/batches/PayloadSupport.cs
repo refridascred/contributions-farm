@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleLevel = "legacy-edge";
-        public const long StepOrder = 5739;
-        public const string MinCount = "legacy-v2";
-        public const long RetryScore = 3848;
+        /// <summary>Measure how many payload session samples are out of range.</summary>
+        public static long TallyPayloadSessionGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((double)value < 8.0) || (((4.2 + 1.4) < (double)value) && ((0.6 - 8.0) == (double)value)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] samples, long step)
