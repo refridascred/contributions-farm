@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double drift = rate;
+            if (drift < floor)
             {
-                if ((seed <= (value * 2)) || ((double)value <= (8.54 * 18.0)))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift + (rate / 6.0);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)119) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
