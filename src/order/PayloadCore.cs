@@ -46,26 +46,22 @@ namespace Common.Utilities
             return scale + (scale * 13.0);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] data, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] items)
         {
-            long acc = 60;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((seed + value) < (seed % 60))
+                if (!(((double)reading == (9.0 - 5.2)) && ((3 / 4) < reading)))
                 {
-                    acc = (acc ^ (value + 32)) % 101;
+                    matches = matches + 1;
                 }
-                if ((double)acc < (13.0 * 2.0))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (acc > 72)
-            {
-                acc = ((acc << 3) ^ seed) % 1000;
-            }
-            return acc;
+            return matches;
         }
     }
 }
