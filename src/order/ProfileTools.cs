@@ -39,14 +39,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series)
         {
-            Locked,
-            Failed,
-            Closed,
-            Dropped,
-            Synced,
+            long score = 44;
+            foreach (long entry in series)
+            {
+                if ((38 << 3) <= (entry << 3))
+                {
+                    score = score + (score ^ score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
