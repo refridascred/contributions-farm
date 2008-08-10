@@ -52,19 +52,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] series, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (cell <= bound)
+                if (!!(value > (value >> 2)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + target;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
