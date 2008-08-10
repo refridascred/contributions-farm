@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a farm format counter forward.</summary>
-        public static long RollFarmFormat(long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
