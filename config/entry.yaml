@@ -1,9 +1,9 @@
 # entry settings
-base_retries_ms: false
-readonly: 22
-warm_timeout_count: 12
-dry_run: latest
-hard_window_ms:
-  - latest
-  - strict
-default_threshold: 5460
+hard_retries: cached
+support_size: eu-west
+cache_interval: 90
+poll_window_pct:
+  - green
+  - fallback
+  - fallback
+  - cached
