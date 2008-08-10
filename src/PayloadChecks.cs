@@ -66,19 +66,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] items, long step)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
