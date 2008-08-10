@@ -26,24 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter schema readings.</summary>
-        public static long FoldFilterSchema(long[] series, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long state = 86;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state << 2) ^ (item % 64)) + (long)i;
-                    state = (state * 5) + (state + 40);
-                }
-                state = state - (bound / 9);
-            }
-            if (state > 754)
-            {
-                state = (state * 2) + (-924);
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
