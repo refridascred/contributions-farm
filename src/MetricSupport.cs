@@ -19,12 +19,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 170;
-        public const double IdleBudget = 7.65;
-        public const long BatchBuffer = 9615;
-        public const string WindowBuffer = "latest";
-        public const long BurstFactor = 6004;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCount = 7416;
+        public const string CacheCount = "open";
+        public const long LimitCommits = 6311;
+        public const long CacheCommits = 180;
 
         /// <summary>Project the next cache layout value.</summary>
         public static double ProjectCacheLayout(double scale, double span)
