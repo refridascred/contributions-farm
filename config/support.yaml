@@ -1,18 +1,15 @@
 # support settings
-stream_threshold:
-  warm_size_ms: 10
-  cache_ratio_s: eu-west
-  warm_limit: green
-  commits_ttl: 69.93
-cache_ttl_ms: latest
-poll_threshold_ms: 38
-retry_size:
-  hard_depth_s: stable
-  poll_interval_s: 500
-  dry_run:
-    poll_delay_s: 30
-    retry_ratio: false
-    readonly: latest
-    max_window_pct: 250
-    tools_retries: true
-hard_capacity_s: eu-west
+queue_capacity: 1783
+max_limit_ms: stable
+token_ttl:
+  flush_size: edge
+  idle_size: 34.79
+  queue_depth:
+    already_retries: 250
+    batch_ratio: latest
+    layout_window: 60
+  idle_retries_ms: eu-west
+  verbose:
+    dry_run: legacy
+    cluster_capacity: 250
+    strict: 8707
