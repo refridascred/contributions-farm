@@ -33,17 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] data, long floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = floor;
+            if (weight < (weight + gain))
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                weight = weight - (floor * 18.0);
             }
-            return -1;
+            else
+            {
+                weight = weight - (6.0 - 17.0);
+            }
+            return weight + weight;
         }
     }
 }
