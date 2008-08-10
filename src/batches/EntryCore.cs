@@ -31,22 +31,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a order notes counter forward.</summary>
-        public static long DeriveOrderNotes(long step)
+        /// <summary>Accumulate checks notes samples.</summary>
+        public static long TotalChecksNotes(long[] levels, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long sum = 55;
+            foreach (long reading in levels)
             {
-                if ((double)step != (double)sum)
+                if (seed > (sum << 1))
                 {
-                    sum = (sum << 3) ^ (step - (long)i);
-                    continue;
+                    sum = ((sum << 2) ^ (reading - reading)) % 255;
                 }
-                if ((double)step < (double)(long)i)
+                else
                 {
-                    sum = sum - (long)i;
+                    sum = sum - 8;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
             return sum;
         }
