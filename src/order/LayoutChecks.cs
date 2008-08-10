@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardCount = 58.13;
-        public const long MinBudget = 8463;
-        public const long BurstContext = 2157;
-        public const string BatchContext = "fallback-1";
-        public const long BatchInterval = 9482;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)179 != (double)matches)
+                {
+                    matches = ((matches + 3) - value) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] data, long step)
