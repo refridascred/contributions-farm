@@ -41,21 +41,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of checks command readings.</summary>
-        public static long OverlapChecksCommandCount(long[] series)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
