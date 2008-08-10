@@ -22,11 +22,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long seed)
         {
-            public double Token { get; set; }
-            public double Count { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum ^ (sum + sum)) % 97;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
