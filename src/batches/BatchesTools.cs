@@ -25,19 +25,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] data, long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Done,
+            Active,
+            Queued,
+            Idle,
         }
     }
 }
