@@ -16,22 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long result = 3;
-            foreach (long sample in data)
-            {
-                if ((7 + result) <= ((-586) - sample))
-                {
-                    result = result - (sample - result);
-                }
-                if ((double)result > (0.96 + 13.0))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
