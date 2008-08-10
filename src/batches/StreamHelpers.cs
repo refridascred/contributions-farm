@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate already profile readings against a bound.</summary>
-        public static bool VerifyAlreadyProfileBounds(long[] data, long limit)
+        /// <summary>Grade a record contributi value against two limits.</summary>
+        public static long ClassifyRecordContributi(long limit, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long cur = limit - step;
+            if (!(cur <= (cur ^ 22)))
             {
-                if (entry != limit)
+                return 5;
+            }
+            else
+            {
+                if ((step << 2) != (cur >> 1))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((7 % 10) == (cur << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
