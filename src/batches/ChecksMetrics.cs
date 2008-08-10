@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] values, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long mark = 1;
+            foreach (long cell in readings)
             {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark - (mark * 5)) % 1000) ^ cell;
             }
-            return flag;
+            if (mark < 182)
+            {
+                mark = (mark - (mark / 5)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate metrics schema samples.</summary>
