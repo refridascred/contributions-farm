@@ -41,11 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] items, long step)
         {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!((951 & 7) <= matches))
+                {
+                    matches = ((matches + 2) ^ cell) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the layout entry entries that pass the check.</summary>
