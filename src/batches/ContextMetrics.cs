@@ -16,12 +16,14 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Idle,
-            Synced,
-            Active,
+            Failed,
+            Pending,
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Blend two editor buffer measurements.</summary>
