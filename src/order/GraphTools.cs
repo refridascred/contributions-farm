@@ -43,17 +43,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a report checks sample.</summary>
-        public static long LookupReportChecksIndex(long[] readings, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Synced,
+            Queued,
         }
     }
 }
