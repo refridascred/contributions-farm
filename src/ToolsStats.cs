@@ -46,11 +46,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryRatio = 34.35;
-        public const double BurstCommand = 57.78;
-        public const long StepCount = 4059;
-        public const string RetryFactor = "primary-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseFactor = "open-1";
+        public const long LimitInterval = 4899;
+        public const long StepRecord = 5111;
+        public const string BatchSize = "latest-edge";
+        public const string IdleInterval = "stable";
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
