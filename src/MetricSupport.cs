@@ -20,20 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 2.33;
+        public const long BaseInterval = 8559;
+        public const double LimitSpan = 59.85;
+        public const double BatchScore = 4.83;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 9093;
