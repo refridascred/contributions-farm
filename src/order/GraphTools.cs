@@ -36,13 +36,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long target)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((double)target < (3.19 * 11.0)) && ((target - total) == (target % 7)))
+                {
+                    total = total ^ target;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the channel class values.</summary>
