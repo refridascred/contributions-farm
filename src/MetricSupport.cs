@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] values)
         {
-            double scale2 = (17.0 * 9.15) / 5.0;
-            if (scale2 <= (scale2 / 5.0))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                scale2 = ((scale2 - (double)57) - scale) - span;
+                if ((entry % 7) >= (entry - 0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return scale2 + scale2;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
