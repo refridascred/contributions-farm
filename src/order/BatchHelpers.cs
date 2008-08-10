@@ -16,17 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a report metrics sample.</summary>
-        public static long SeekReportMetricsIndex(long[] samples, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (samples[i] >= floor)
+                if (!((count << 3) >= (7 + 309)))
                 {
-                    return (long)i;
+                    count = (count + 2) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the graph mode values.</summary>
