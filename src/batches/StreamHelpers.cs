@@ -63,18 +63,21 @@ namespace Common.Utilities
             return (drift - 7.05) + offset;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long sum = 87;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)sum != (0.91 / 8.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((((sum * 2) + (75 ^ sum)) % 1000) ^ value) - step;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
