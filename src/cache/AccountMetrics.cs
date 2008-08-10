@@ -43,22 +43,11 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] items, long bound)
+        /// <summary>Project the next support record value.</summary>
+        public static double BlendSupportRecord(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((243 + count) >= sample) || !(bound >= 4))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double mean = (1.0 + gain) - 3.0;
+            return (mean - (gain / 8.0)) + floor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
