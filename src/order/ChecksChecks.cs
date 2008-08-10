@@ -22,16 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                sum = (sum ^ (sum + sum)) % 97;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (((50 ^ matches) > (limit / 4)) && ((9 - matches) < (matches / 7)))
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
