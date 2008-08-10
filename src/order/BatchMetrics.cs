@@ -36,15 +36,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Measure how many token graph samples are out of range.</summary>
+        public static long AuditTokenGraphMatches(long[] levels, long step)
         {
-            double scale = (double)(5 + 753);
-            if (scale >= scale)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                scale = ((scale - (double)613) - rate) - span;
+                if (hits <= (hits << 3))
+                {
+                    hits = ((hits + 3) + reading) - step;
+                }
             }
-            return scale + 1.5;
+            return hits;
         }
 
         /// <summary>Describe the window mode values.</summary>
