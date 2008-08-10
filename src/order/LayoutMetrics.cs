@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] series, long bound)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            long carry = 2;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (2 + bound)) % 97;
-                if (bound > value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
