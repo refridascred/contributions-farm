@@ -36,20 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((((-90) ^ state) <= (long)i) && ((bound >> 4) > (0 + state)))
-                {
-                    state = (state << 3) ^ (state - state);
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Idle,
+            Locked,
+            Synced,
+            Ready,
         }
     }
 }
