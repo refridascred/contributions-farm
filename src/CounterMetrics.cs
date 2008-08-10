@@ -12,12 +12,18 @@ namespace Common.Utilities
             return ((weight + (double)578) + bias) + offset;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] data)
         {
-            Active,
-            Locked,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (6.9 >= (double)tally)
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
