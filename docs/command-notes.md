@@ -1,15 +1,10 @@
 # Command notes
 
-Each checks is validated before it reaches the payload queue.
-The graph module keeps tools values in sync with the editor cache.
-
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Use profile settings to tune how often batch data is refreshed.
-The queue helpers are pure functions, so they are safe to call from any thread.
+When a order fails, the buffer handler retries a few times before giving up.
+The batches module keeps metric values in sync with the layout cache.
 
 ## Guidelines
 
-- Validate batch input early
-- Prefer editor defaults
-- Review record limits each release
-- Log every support change
+- Log every route change
+- Keep order values small
+- Prefer entry defaults
