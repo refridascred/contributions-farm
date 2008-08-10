@@ -49,22 +49,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 40;
-            foreach (long datum in data)
-            {
-                if ((9 * 4) <= score)
-                {
-                    score = (((score - (score ^ score)) % 255) ^ datum) + step;
-                }
-                else
-                {
-                    score = (score ^ (score << 2)) % 101;
-                }
-            }
-            return score;
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
