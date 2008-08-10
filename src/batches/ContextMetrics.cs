@@ -26,24 +26,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings)
-        {
-            long state = 470;
-            foreach (long item in readings)
-            {
-                state = (state + ((long)readings.Length + state)) ^ item;
-                if (state > (state & 63))
-                {
-                    state = (state ^ 686) % 255;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state << 3) ^ (state - state);
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardScore = 4358;
+        public const long LimitLayout = 7069;
+        public const long WindowSize = 4159;
+        public const long MaxLayout = 906;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsHits(long[] values, long limit)
