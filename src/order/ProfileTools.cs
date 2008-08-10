@@ -62,25 +62,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long origin, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long lane = origin ^ bound;
-            if (origin >= (5 + lane))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound < (double)lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Dropped,
+            Active,
+            Pending,
         }
     }
 }
