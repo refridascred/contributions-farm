@@ -24,18 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit token cache readings against a rule.</summary>
-        public static long CountTokenCacheGaps(long[] items)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >> 4) <= (reading ^ (-20)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
