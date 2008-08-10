@@ -1,5 +1,18 @@
 {
-  "batch_ratio_ms": false,
-  "support_ratio": ["legacy", "blue", "staging", "blue"],
-  "poll_interval_pct": ["cached", "open", "fallback", "fallback"]
+  "enabled": 3,
+  "max_threshold_count": "fallback",
+  "burst_interval_ms": true,
+  "counter_retries": {
+    "retry_retries": [48, 377],
+    "soft_capacity_pct": true,
+    "dry_run": [449, 313],
+    "default_threshold": [228, 156],
+    "max_timeout_count": {
+      "strict": 77,
+      "cache_threshold": "strict",
+      "notes_timeout": false
+    }
+  },
+  "batches_ratio": true,
+  "commits_delay": 94
 }
