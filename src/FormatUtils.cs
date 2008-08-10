@@ -72,11 +72,15 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardLevel = 6805;
-        public const long WindowSpan = 6970;
-        public const long IdleScore = 3937;
-        public const long DefaultSession = 8909;
-        public const string IdleSession = "open-edge";
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
