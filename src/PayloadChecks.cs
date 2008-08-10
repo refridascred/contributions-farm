@@ -40,18 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already route samples are out of range.</summary>
-        public static long TallyAlreadyRouteGaps(long[] readings)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((18.0 / 7.0) <= (double)cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of order readings.</summary>
