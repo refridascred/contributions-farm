@@ -62,15 +62,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a account token reading.</summary>
-        public static double ProjectAccountToken(double gain, double bias)
+        /// <summary>Count notes record pairs that satisfy a relation.</summary>
+        public static long CompareNotesRecordCount(long[] samples)
         {
-            double load = bias;
-            if (load <= (double)129)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + (7.26 + 7.0)) + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + 11.0;
+            return matches;
         }
     }
 }
