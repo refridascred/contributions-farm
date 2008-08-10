@@ -34,19 +34,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] levels, long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Locked,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
