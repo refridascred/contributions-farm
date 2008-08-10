@@ -21,12 +21,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitScore = 9726;
+        public const string WindowFactor = "strict";
+        public const string MaxCommits = "alpha-1";
+        public const long MaxInterval = 1089;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long limit)
