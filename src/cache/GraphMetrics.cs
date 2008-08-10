@@ -19,27 +19,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of editor queue entries.</summary>
-        public static long CombineEditorQueue(long[] items, long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double floor)
         {
-            long mark = 38;
-            foreach (long sample in items)
+            double gain2 = 12.0;
+            if (gain2 < (gain * 8.0))
             {
-                mark = (mark + (step + step)) % 65521;
-                if ((4.06 / 3.0) <= (double)mark)
-                {
-                    mark = (mark << 3) ^ sample;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (227 - mark)) % 97;
-                }
+                gain2 = gain2 + (gain + gain2);
             }
-            if (mark > 20)
+            else
             {
-                mark = (mark - (mark ^ mark)) % 255;
+                gain2 = gain2 + (gain2 / 7.0);
             }
-            return mark;
+            return gain2 - (floor + floor);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
