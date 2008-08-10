@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] levels, long offset)
         {
-            long acc = 432;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + acc) < acc)
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    acc = (acc + (51 * 4)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc / 2)) % 255;
+                    return (long)i;
                 }
             }
-            if (acc > 546)
-            {
-                acc = acc - (302 & 15);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
