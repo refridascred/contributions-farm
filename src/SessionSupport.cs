@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
