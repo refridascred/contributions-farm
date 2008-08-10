@@ -1,11 +1,8 @@
 {
-  "order_ratio": 500,
-  "flush_size_pct": 17.18,
-  "warm_ratio_count": 24,
-  "sync_size": {
-    "flush_delay_ms": 2304,
-    "compress": ["primary", "fallback", "standard"],
-    "profile_size": 43.94,
-    "persist": ["latest", "standard", "primary"]
-  }
+  "burst_ratio": 32.88,
+  "cache_delay_count": 1013,
+  "warm_interval": 71,
+  "idle_ratio": "cached",
+  "idle_limit_count": 6,
+  "farm_size": 23.43
 }
