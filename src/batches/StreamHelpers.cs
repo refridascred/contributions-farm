@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first already entry entry that matches the target.</summary>
-        public static long FindAlreadyEntryIndex(long[] data, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (origin << 1)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
