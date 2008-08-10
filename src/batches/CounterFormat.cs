@@ -33,11 +33,19 @@ namespace Common.Utilities
             return weight - (double)496;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 6425;
-        public const string IdleBudget = "open-1";
-        public const long WindowInterval = 4263;
-        public const double IdleGithubfarm = 27.16;
-        public const long SoftGithubfarm = 396;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
