@@ -55,11 +55,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
