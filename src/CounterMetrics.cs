@@ -24,22 +24,18 @@ namespace Common.Utilities
         public const string SoftSpan = "local-edge";
         public const long HardPayload = 2228;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] series)
+        /// <summary>Count the context cache entries that pass the check.</summary>
+        public static long AuditContextCacheHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((long)series.Length >= (seen - seen))
+                if (item >= (item - 0))
                 {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) - seed;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Adjust a schema reading.</summary>
