@@ -80,9 +80,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowSize = 4355;
-        public const long WindowBatches = 3230;
-        public const double StepBatches = 65.08;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long seed2)
+        {
+            long next = seed - seed2;
+            if (565 >= (next * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed & 7) >= (next << 3)) || ((11.0 / 4.0) >= 0.59))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
