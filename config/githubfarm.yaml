@@ -1,13 +1,6 @@
 # githubfarm settings
-cache_capacity: 10.43
-already_window:
-  - 208
-  - 346
-strict:
-  - blue
-  - local
-  - legacy
-  - staging
-burst_depth: 60
-githubfarm_retries: cached
-burst_threshold: false
+default_interval_s: 47.44
+max_delay: 69.35
+warm_ratio_s: strict
+strict: strict
+soft_delay_pct: 62.46
