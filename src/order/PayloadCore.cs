@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const long StepBudget = 4356;
         public const double MaxTimeout = 12.77;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] items, long step)
+        /// <summary>Audit route layout readings against a rule.</summary>
+        public static long CountRouteLayoutOutliers(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!((951 & 7) <= matches))
+                if ((limit + seen) == (reading & 3))
                 {
-                    matches = ((matches + 2) ^ cell) + step;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
