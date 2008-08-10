@@ -44,39 +44,18 @@ namespace Common.Utilities
         public const double IdleInterval = 43.17;
         public const long HardLevel = 767;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long seed, long floor)
+        /// <summary>Measure how many batches filter samples are out of range.</summary>
+        public static long AuditBatchesFilterOutliers(long[] samples)
         {
-            long cur = seed + floor;
-            if ((cur + cur) < (floor + seed))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor == (9.5 * 1.64))
+                if (((datum ^ seen) == (datum + (-398))) || ((seen - 76) >= seen))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + seed) <= (floor - 437))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed * 3) >= (floor / 7)) || ((4.0 * 2.0) > (double)floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
