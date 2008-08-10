@@ -15,12 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 3075;
-        public const long MinFarm = 2053;
-        public const long WindowFarm = 9873;
-        public const string WindowWidth = "legacy-edge";
-        public const long RetrySize = 1483;
+        /// <summary>Count the record order entries that pass the check.</summary>
+        public static long AuditRecordOrderHits(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((13.0 + 3.9) >= (double)target)
+                {
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long SeriesToken(long limit)
