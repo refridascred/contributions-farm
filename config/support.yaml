@@ -1,9 +1,13 @@
 # support settings
-strict: true
-flush_size: fallback
-base_depth_pct: local
-layout_limit: 7518
-max_interval_count:
-  - edge
+idle_depth_s: primary
+hard_window_pct:
+  - legacy
+  - standard
+  - cached
   - latest
+soft_size:
+  - open
   - green
+  - green
+hard_timeout_pct: 1024
+entry_size: eu-west
