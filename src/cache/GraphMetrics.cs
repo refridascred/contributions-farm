@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Idle,
-            Synced,
-            Done,
-            Stale,
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
