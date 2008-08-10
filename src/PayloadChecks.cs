@@ -24,12 +24,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultSpan = "latest-v2";
-        public const long MaxDepth = 2804;
-        public const long CacheProfile = 8935;
-        public const double StepCount = 79.01;
-        public const string BurstProfile = "staging-1";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (904 <= sample)
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long offset)
