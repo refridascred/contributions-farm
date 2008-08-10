@@ -46,18 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] series, long seed)
+        /// <summary>Adjust a window record reading.</summary>
+        public static double ProjectWindowRecord(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double scale = (span / 7.0) - span;
+            if (scale <= (double)472)
             {
-                if ((seed << 2) >= (count - 375))
-                {
-                    count = (count + 3) ^ reading;
-                }
+                scale = scale + (span + weight);
             }
-            return count;
+            return scale + (scale * 13.0);
         }
 
         /// <summary>Describe the graph class values.</summary>
