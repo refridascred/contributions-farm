@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank payload layout input into a small class.</summary>
-        public static long GradePayloadLayout(long step, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long cur = step ^ offset;
-            if ((double)step >= (4.55 + 20.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset == (3.8 + 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((cur % 64) >= step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset < (offset & 31))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Draft,
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
