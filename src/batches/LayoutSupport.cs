@@ -35,11 +35,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double rate, double bias)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            double load = (double)81 / 9.0;
+            if (load <= 1.5)
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + (bias * 7.48);
         }
 
         /// <summary>Classify a channel notes pair into a bucket.</summary>
