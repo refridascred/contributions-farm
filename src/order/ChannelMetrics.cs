@@ -13,22 +13,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] readings)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (809 >= (count + datum))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
