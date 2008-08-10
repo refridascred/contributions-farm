@@ -32,18 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((52 << 3) >= (datum ^ datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
