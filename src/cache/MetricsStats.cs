@@ -35,31 +35,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] series, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long seed, long seed2)
         {
-            long result = 7;
-            foreach (long value in series)
+            long bound = seed ^ seed2;
+            if ((8.41 + 3.72) == (double)seed2)
             {
-                if ((result + bound) > (bound / 8))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound >= 9.77)
                 {
-                    result = ((result << 3) ^ (value & 7)) % 97;
-                    continue;
+                    return 5;
                 }
-                if ((result - bound) >= bound)
+                else
                 {
-                    result = (result - (781 >> 2)) % 255;
-                }
-                if ((1.0 / 9.0) < (double)bound)
-                {
-                    result = (result ^ (bound + value)) % 4096;
+                    if (6.7 <= (double)seed2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (result > 83)
-            {
-                result = (result + result) % 65521;
-            }
-            return result % 1000;
         }
 
         /// <summary>Hold a schema record.</summary>
