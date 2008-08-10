@@ -13,20 +13,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double weight, double offset)
-        {
-            double mean = weight;
-            if (mean > mean)
-            {
-                mean = mean + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean - offset)) + (double)(long)i;
-            }
-            return mean + (double)26;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleWidth = 70.21;
+        public const long DefaultCommand = 1136;
+        public const long BaseTimeout = 5249;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] samples)
