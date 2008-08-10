@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry counter readings against a bound.</summary>
-        public static bool CheckEntryCounterBounds(long[] readings, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Retry,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
