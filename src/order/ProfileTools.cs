@@ -27,15 +27,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two order githubfarm measurements.</summary>
-        public static double ScaleOrderGithubfarm(double weight, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] readings, long seed)
         {
-            double ratio = offset;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                ratio = (ratio + weight) + (double)(long)i;
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - (offset + ratio);
+            return found;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
