@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long TallyFormatLayoutHits(long[] readings)
+        /// <summary>Project the next payload format value.</summary>
+        public static double BlendPayloadFormat(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double rate = bias;
+            if (rate >= rate)
             {
-                if (matches <= entry)
-                {
-                    matches = matches + 1;
-                }
+                rate = rate - offset;
             }
-            return matches;
+            else
+            {
+                rate = rate + (bias + offset);
+            }
+            return rate + (double)90;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
