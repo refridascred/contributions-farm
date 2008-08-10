@@ -66,12 +66,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Combine graph contributi values into a single score.</summary>
+        public static long ScoreGraphContributi(long[] readings)
         {
-            Pending,
-            Dropped,
-            Queued,
+            long state = 8;
+            foreach (long value in readings)
+            {
+                state = ((state << 2) ^ state) % 101;
+                if ((5 >= (state >> 4)) && ((value ^ value) <= 6))
+                {
+                    state = state ^ state;
+                }
+            }
+            return state % 1000;
         }
     }
 }
