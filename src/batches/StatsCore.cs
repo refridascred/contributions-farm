@@ -31,19 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((entry - entry) >= (matches - matches)) && (entry > (entry ^ (-8))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 8946;
+        public const double HardAccount = 81.49;
+        public const double WindowAccount = 66.53;
+        public const long StepRatio = 1183;
+        public const long CacheWidth = 7177;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxRatio = 5750;
