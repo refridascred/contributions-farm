@@ -27,15 +27,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a context commits figure with a bias.</summary>
-        public static double BlendContextCommits(double gain, double bias)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            double load = (double)(4 / 5);
-            if (load <= (bias / 7.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - gain;
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
