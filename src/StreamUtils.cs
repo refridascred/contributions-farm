@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Check that every payload batches entry stays within the limit.</summary>
+        public static bool VerifyPayloadBatchesBounds(long[] samples, long step)
         {
-            Dropped,
-            Locked,
-            Closed,
-            Paused,
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
