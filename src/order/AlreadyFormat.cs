@@ -65,19 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel counter entry stays within the limit.</summary>
-        public static bool ValidateChannelCounterBounds(long[] data, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long total = 1;
+            foreach (long entry in values)
             {
-                if (reading >= origin)
+                if (total > entry)
                 {
-                    ready = false;
-                    break;
+                    total = (total + (total + total)) % 1000;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Hold a session entry.</summary>
