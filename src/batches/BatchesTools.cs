@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string SoftSupport = "local-1";
         public const long DefaultScore = 5385;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = weight;
+            if (mean > mean)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                mean = mean + weight;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean - offset)) + (double)(long)i;
+            }
+            return mean + (double)26;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
