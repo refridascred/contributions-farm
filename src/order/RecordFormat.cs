@@ -61,9 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowCount = 3905;
-        public const long WindowToken = 7608;
-        public const long IdleToken = 9021;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
+        {
+            long mark = 454;
+            foreach (long reading in values)
+            {
+                if ((reading >> 4) <= 2)
+                {
+                    mark = ((mark * 4) + 2) % 101;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (reading + reading);
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
