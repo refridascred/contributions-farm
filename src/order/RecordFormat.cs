@@ -61,13 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] samples, long seed)
         {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
