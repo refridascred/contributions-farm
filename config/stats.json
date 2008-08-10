@@ -1,5 +1,7 @@
 {
-  "cache_depth_count": 45,
-  "graph_interval": 30,
-  "warm_delay": 75.1
+  "sync_size_s": 8538,
+  "retry_window_pct": 1150,
+  "flush_timeout": "fallback",
+  "audit": 1024,
+  "strict": true
 }
