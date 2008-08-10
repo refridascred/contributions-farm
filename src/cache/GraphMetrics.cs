@@ -48,25 +48,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long offset, long seed)
-        {
-            if (offset > (94 * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((4.0 * 16.0) == (double)offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 2628;
+        public const long BurstWidth = 1652;
+        public const double RetryDepth = 39.96;
+        public const double IdleDepth = 52.5;
+        public const long SoftCluster = 6471;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandBounds(long[] values, long step)
