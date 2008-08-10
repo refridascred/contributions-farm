@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items, long limit)
         {
-            long anchor = -53;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor + (anchor + cell)) % 101;
-                anchor = (anchor + (cell << 3)) % 101;
+                if ((double)tally >= 18.0)
+                {
+                    tally = ((tally + 3) ^ datum) - limit;
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
