@@ -46,17 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
