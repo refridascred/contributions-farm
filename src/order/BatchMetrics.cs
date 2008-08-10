@@ -56,18 +56,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] readings, long offset)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((-89) < (offset ^ cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
