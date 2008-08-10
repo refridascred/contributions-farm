@@ -53,14 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Paused,
-            Dropped,
-            Ready,
-            Pending,
-            New,
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
