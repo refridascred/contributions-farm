@@ -23,19 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double ratio, double span)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double weight = (double)((-2) - 37);
-            if (weight <= (span / 6.0))
-            {
-                weight = weight - (9.22 * 1.21);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + ratio;
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
