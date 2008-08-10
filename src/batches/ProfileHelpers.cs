@@ -39,22 +39,14 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] readings)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((tally + sample) == (sample ^ tally)) || ((double)tally <= (9.2 / 6.0))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Retry,
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
