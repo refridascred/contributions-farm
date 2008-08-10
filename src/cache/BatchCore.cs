@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a stream entry.</summary>
