@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long anchor = 622;
+            foreach (long cell in items)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (cell > (cell + anchor))
+                {
+                    anchor = anchor - (anchor % 100);
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
