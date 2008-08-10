@@ -1,7 +1,7 @@
-id,score,region,ratio
-1,strict,66.13,28.68
-2,legacy,strict,93.07
-3,157,97.49,60.73
-4,87.56,190,363
-5,latest,343,183
-6,583,690,547
+id,token,ratio
+1,eu-west,168
+2,1,81.01
+3,525,94.25
+4,331,707
+5,primary,staging
+6,60.12,140
