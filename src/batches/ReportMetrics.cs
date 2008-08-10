@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 29.18;
-        public const long BaseSize = 4692;
-        public const long MinBudget = 5735;
-        public const string MaxFilter = "cached-v2";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)target != (4.48 / 9.0))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] data, long floor)
