@@ -13,27 +13,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long state = 98;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = state - (494 - (long)i);
-                    state = ((state * 2) + (long)samples.Length) % 101;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state - (4 * 5)) % 4096) + (long)i2;
-                }
-                if ((double)datum < (7.65 * 7.0))
-                {
-                    state = (state << 3) ^ (datum + state);
-                }
-            }
-            return state;
+            New,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a buffer entry.</summary>
