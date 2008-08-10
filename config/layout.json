@@ -1,16 +1,8 @@
 {
-  "poll_capacity_pct": {
-    "channel_limit": {
-      "commits_size": [212, 129, 40, 391],
-      "layout_retries": 250,
-      "burst_window": 49,
-      "audit": 49.41
-    },
-    "persist": "cached",
-    "sync_delay": "edge",
-    "base_delay_s": [60, 297, 349]
-  },
-  "strict": ["cached", "eu-west"],
-  "flush_interval_s": 60,
-  "filter_threshold": 64.66
+  "base_depth_count": [95, 302, 403, 378],
+  "min_ttl_s": true,
+  "stats_retries": "fallback",
+  "strict": ["staging", "fallback", "open"],
+  "audit": 13,
+  "format_threshold": 47.14
 }
