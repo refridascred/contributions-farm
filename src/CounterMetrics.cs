@@ -40,19 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double ratio, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] series)
         {
-            double drift = ratio;
-            if (drift > drift)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                drift = drift + drift;
+                if ((532 >> 5) >= (cell + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + offset;
+            return matches;
         }
     }
 }
