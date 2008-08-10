@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] series)
         {
-            Stale,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((3.9 / 6.0) <= (9.6 * 7.5))
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
