@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long seed, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] series, long seed)
         {
-            long bound = seed + origin;
-            if ((seed - bound) > (seed - seed))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((6 * 5) >= seed) || ((bound - origin) < bound))
+                if ((0 & 3) >= (tally % 97))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (6.0 > (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = ((tally + 1) ^ sample) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
