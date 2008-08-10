@@ -72,15 +72,11 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseCount = 2973;
+        public const long SoftTimeout = 7719;
+        public const long SoftAccount = 6316;
+        public const double StepRatio = 16.6;
+        public const double MaxRatio = 80.04;
     }
 }
