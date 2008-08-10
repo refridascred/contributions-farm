@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next buffer channel value from a seed.</summary>
-        public static long DeriveBufferChannel(long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
-            {
-                long hits = target;
-                mark = ((mark * 5) + (hits % 7)) % 255;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
