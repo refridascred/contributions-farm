@@ -26,9 +26,19 @@ namespace Common.Utilities
         public const double LimitSpan = 59.85;
         public const double BatchScore = 4.83;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 9093;
-        public const long RetryInterval = 4598;
-        public const string MaxCounter = "alpha";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
