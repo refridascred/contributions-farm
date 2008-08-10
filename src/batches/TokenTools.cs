@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
