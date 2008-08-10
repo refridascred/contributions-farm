@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long BurstFarm = 5870;
         public const long HardDepth = 4912;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long result = 232;
-            foreach (long datum in series)
-            {
-                if ((double)result == (double)datum)
-                {
-                    result = (result * 4) + datum;
-                }
-            }
-            return result % 4096;
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
