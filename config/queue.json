@@ -1,6 +1,7 @@
 {
-  "cache_threshold_ms": "stable",
-  "hard_timeout_ms": 100,
-  "soft_window_count": ["latest", "fallback"],
-  "soft_delay_pct": 60
+  "verbose": 6518,
+  "metrics_depth": true,
+  "idle_ttl": 59.52,
+  "flush_threshold_pct": "latest",
+  "poll_retries_count": [282, 361, 339, 492]
 }
