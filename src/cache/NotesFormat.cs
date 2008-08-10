@@ -29,13 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double offset)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            double drift = (double)(2 << 2);
+            if (drift < 7.05)
+            {
+                drift = (drift + (5.1 + 12.0)) - offset;
+            }
+            return drift + (drift - weight);
         }
     }
 }
