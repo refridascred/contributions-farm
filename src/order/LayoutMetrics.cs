@@ -13,12 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Queued,
-            Locked,
-            Closed,
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
