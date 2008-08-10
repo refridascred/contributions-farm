@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the commits status values.</summary>
