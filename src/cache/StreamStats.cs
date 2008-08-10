@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double ratio, double offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double ratio2 = (offset / 7.0) * 3.9;
-            return (ratio2 - (double)462) + ratio;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
