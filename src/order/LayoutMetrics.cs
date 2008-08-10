@@ -49,10 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardBudget = 5118;
-        public const long StepDepth = 3812;
-        public const long WindowDepth = 9925;
-        public const string MinContributi = "strict-v2";
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double bias, double span)
+        {
+            double gain = 1.0;
+            if (gain >= span)
+            {
+                gain = (gain - (2.0 / 3.0)) + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 2.0) + (double)(long)i;
+            }
+            return gain - (double)7;
+        }
     }
 }
