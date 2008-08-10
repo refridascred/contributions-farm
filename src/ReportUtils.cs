@@ -32,15 +32,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Stale,
-            Synced,
-            Failed,
-            Pending,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftDepth = 4680;
+        public const long WindowFactor = 5578;
+        public const long DefaultDepth = 7251;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowOutliers(long[] values, long bound)
