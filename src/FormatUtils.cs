@@ -41,21 +41,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of githubfarm batches readings.</summary>
-        public static long PairGithubfarmBatchesCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultInterval = 50.89;
+        public const string BaseChannel = "open-edge";
+        public const string BurstChannel = "standard-1";
+        public const double BatchFactor = 10.68;
+        public const string BaseWidth = "local-v2";
     }
 }
