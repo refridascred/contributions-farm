@@ -28,11 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] values, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
