@@ -57,18 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items, long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((((long)items.Length + 74) < offset) && ((double)tally >= (6.46 * 2.8))))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
