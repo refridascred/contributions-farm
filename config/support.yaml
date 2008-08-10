@@ -1,11 +1,6 @@
 # support settings
-burst_capacity: primary
-burst_limit:
-  - edge
-  - strict
-  - edge
-base_timeout_ms:
-  - staging
-  - eu-west
-  - blue
-base_timeout_pct: stable
+enabled: open
+metrics_interval: 6436
+readonly: 30
+compress: true
+burst_timeout_count: 4917
