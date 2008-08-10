@@ -10,32 +10,11 @@ namespace Common.Utilities
         public const string DefaultTimeout = "cached-1";
         public const long HardCount = 4501;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long target2)
-        {
-            if ((923 * 4) <= (target2 & 15))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target2 > (target ^ target2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.47 + 7.0) == (double)target2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryRatio = 2054;
+        public const long SoftMetrics = 7746;
+        public const string BurstMetrics = "fallback-edge";
+        public const long IdleMetrics = 6563;
 
         /// <summary>Derive the next layout metrics value from a seed.</summary>
         public static long DeriveLayoutMetrics(long offset)
