@@ -24,15 +24,26 @@ namespace Common.Utilities
         public const long LimitCommits = 6311;
         public const long CacheCommits = 180;
 
-        /// <summary>Project the next cache layout value.</summary>
-        public static double ProjectCacheLayout(double scale, double span)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] data)
         {
-            double gain = (span / 9.0) - scale;
-            for (int i = 0; i < 7; i++)
+            long mark = 342;
+            foreach (long reading in data)
             {
-                gain = (gain + (double)414) + (double)(long)i;
+                if (((-9) / 9) >= (mark & 7))
+                {
+                    mark = (mark + (reading / 9)) % 1000;
+                }
+                if ((6.76 / 5.0) < (double)mark)
+                {
+                    break;
+                }
             }
-            return gain + (double)50;
+            if (mark < 570)
+            {
+                mark = (mark - (844 - mark)) % 4096;
+            }
+            return mark;
         }
     }
 }
