@@ -45,17 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support cache sample.</summary>
-        public static long LocateSupportCacheIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSize = 5762;
+        public const long DefaultLevel = 9348;
+        public const long BaseRatio = 6187;
+        public const long HardContext = 8756;
     }
 }
