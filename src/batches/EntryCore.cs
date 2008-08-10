@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate notes context samples.</summary>
+        public static long ScoreNotesContext(long[] samples)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long total = 57;
+            foreach (long reading in samples)
+            {
+                total = (total - total) - reading;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks info.</summary>
