@@ -81,24 +81,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache channel pair into a bucket.</summary>
-        public static long GradeCacheChannel(long floor, long target)
-        {
-            if ((floor + 2) == (floor + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor > (81 & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitBudget = 7538;
+        public const long LimitContext = 7951;
+        public const long BatchWidth = 8757;
+        public const long BaseContext = 1410;
     }
 }
