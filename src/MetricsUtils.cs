@@ -65,19 +65,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stats notes readings against a bound.</summary>
-        public static bool GuardStatsNotesLimits(long[] levels, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
