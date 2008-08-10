@@ -20,15 +20,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mark = 80;
-            foreach (long reading in items)
-            {
-                mark = ((mark * 4) + mark) - reading;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
