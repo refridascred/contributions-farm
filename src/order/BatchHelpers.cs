@@ -26,15 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] readings, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if ((datum ^ bound) >= (hits + datum))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
