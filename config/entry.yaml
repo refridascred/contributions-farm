@@ -1,15 +1,9 @@
 # entry settings
-compress: 63
-enabled:
-  record_retries:
-    - 328
-    - 4
-    - 429
-  schema_size: cached
-  default_retries: 2640
-  soft_timeout_s: 30
-  dry_run: true
-  max_interval_ms: true
-readonly: open
-min_timeout_ms: 64
-burst_ttl_count: 70.48
+context_window: 1442
+sync_depth: true
+poll_threshold:
+  - open
+  - strict
+farm_window: primary
+default_delay_pct: 13.7
+max_depth: 500
