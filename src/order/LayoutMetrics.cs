@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double span)
+        /// <summary>Fold a list of session route readings.</summary>
+        public static long TallySessionRoute(long[] series, long bound)
         {
-            double scale = ratio;
-            if (scale >= ratio)
+            long state = 4;
+            foreach (long cell in series)
             {
-                scale = scale + (double)856;
+                state = (((state - (state >> 2)) % 65521) + cell) - bound;
             }
-            else
-            {
-                scale = scale - (span / 3.0);
-            }
-            return scale + (scale + span);
+            return state % 97;
         }
 
         /// <summary>Describe the graph state values.</summary>
