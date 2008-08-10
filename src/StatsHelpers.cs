@@ -35,13 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleTimeout = 8487;
+        public const double SoftScore = 8.76;
+        public const double CacheRecord = 19.06;
+        public const long WindowRecord = 4648;
+        public const long BurstRecord = 3452;
 
         /// <summary>Measure how many report schema samples are out of range.</summary>
         public static long TallyReportSchemaGaps(long[] levels)
