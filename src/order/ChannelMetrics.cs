@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values)
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 84;
+            foreach (long entry in values)
+            {
+                if ((38 ^ mix) <= (entry * 4))
+                {
+                    mix = (mix ^ (entry & 1)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the cluster level values.</summary>
