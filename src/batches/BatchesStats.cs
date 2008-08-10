@@ -12,22 +12,39 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] series)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long prev = floor ^ limit;
+            if (((prev / 5) >= 2) && ((76 + floor) != (floor + floor)))
             {
-                if (seen < (reading + reading))
+                return 4;
+            }
+            else
+            {
+                if (floor <= (limit * 4))
                 {
-                    seen = seen + 2;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((5.83 * 4.8) == (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (90 >= (limit * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
