@@ -19,19 +19,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            double bias = floor * 9.6;
-            if (bias < (weight - 3.2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + (double)5;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (floor - weight);
-            }
-            return bias + bias;
+            return matches;
         }
 
         /// <summary>Describe the filter phase values.</summary>
