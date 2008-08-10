@@ -56,12 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Idle,
+            Ready,
+            Locked,
         }
 
         /// <summary>Adjust a checks reading.</summary>
