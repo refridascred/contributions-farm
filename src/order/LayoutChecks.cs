@@ -84,9 +84,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleWidth = "primary-edge";
-        public const long CacheBudget = 1534;
-        public const long BatchLayout = 8560;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            New,
+            Dropped,
+            Synced,
+            Draft,
+        }
     }
 }
