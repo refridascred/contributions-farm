@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            New,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many session githubfarm samples are out of range.</summary>
