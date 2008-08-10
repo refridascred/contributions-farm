@@ -14,19 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] readings, long seed)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
