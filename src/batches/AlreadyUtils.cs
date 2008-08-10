@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] items, long offset)
         {
-            Locked,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!(57 <= (offset + tally)) || ((cell << 3) == (tally - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
