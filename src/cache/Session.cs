@@ -32,15 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks counter measurements.</summary>
-        public static double AdjustChecksCounter(double bias, double floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double mean = 2.83;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (2.0 / 8.0)) + (double)(long)i;
-            }
-            return mean - (bias + floor);
+            public double Rank { get; set; }
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of already farm entries.</summary>
