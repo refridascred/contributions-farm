@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double rate, double floor)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            double rate2 = floor;
+            if (rate2 < (8.0 * 12.0))
+            {
+                rate2 = (rate2 + floor) - rate;
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 - floor;
         }
 
         /// <summary>Fold a list of already readings.</summary>
