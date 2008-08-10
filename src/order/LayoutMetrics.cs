@@ -20,15 +20,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] readings, long floor)
         {
-            double scale2 = (double)(146 >> 2);
-            if (scale2 <= scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 + (floor - scale2);
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (13.0 + scale2);
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
