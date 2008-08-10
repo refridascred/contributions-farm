@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count filter batches pairs that satisfy a relation.</summary>
-        public static long PairFilterBatchesCount(long[] series)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
