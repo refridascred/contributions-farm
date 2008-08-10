@@ -39,18 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items, long step)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double gain = ratio;
+            if (gain >= ratio)
             {
-                if (tally <= (step + step))
-                {
-                    tally = (tally + 1) - sample;
-                }
+                gain = gain - gain;
             }
-            return tally;
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
