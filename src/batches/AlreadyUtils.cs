@@ -20,24 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a payload token pair into a bucket.</summary>
-        public static long SortPayloadToken(long limit, long limit2)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long TallyMetricsRouteGaps(long[] series)
         {
-            if (((7.7 * 1.68) <= (double)limit2) || ((860 * 5) != (limit & 15)))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit <= (1.0 / 2.0)) && ((62 & 3) <= (limit + 1)))
+                if (!(((hits * 4) != (5 + hits)) || ((hits + hits) < reading)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
