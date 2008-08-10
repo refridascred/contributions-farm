@@ -33,13 +33,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "alpha";
+        public const double LimitWidth = 12.59;
+        public const long BurstScore = 16;
+        public const long WindowMetric = 9988;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string LimitBatches = "standard-v2";
