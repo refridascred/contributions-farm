@@ -1,18 +1,11 @@
 {
-  "audit": true,
-  "verbose": true,
-  "min_ratio_count": "legacy",
-  "base_window": ["blue", "legacy"],
-  "token_limit": {
-    "poll_size": "staging",
-    "hard_size_ms": "fallback",
-    "stream_retries": [331, 289, 36],
-    "stats_capacity": 250,
-    "dry_run": {
-      "cache_delay_s": 88.04,
-      "verbose": 65.79,
-      "burst_threshold_pct": true
-    }
+  "audit": {
+    "metrics_delay": 375,
+    "verbose": [197, 48],
+    "sync_depth_s": "latest",
+    "compress": 91,
+    "readonly": [498, 6, 322, 266]
   },
-  "base_interval": 60
+  "strict": [42, 394, 183],
+  "queue_threshold": 55.0
 }
