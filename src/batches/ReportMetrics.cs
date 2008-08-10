@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 29.18;
+        public const long BaseSize = 4692;
+        public const long MinBudget = 5735;
+        public const string MaxFilter = "cached-v2";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] data, long floor)
