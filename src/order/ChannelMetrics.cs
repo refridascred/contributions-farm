@@ -11,20 +11,31 @@ namespace Common.Utilities
         public const double DefaultWindow = 43.96;
         public const long HardWindow = 7541;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] samples, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            long result = 65;
+            foreach (long item in samples)
             {
-                score = ((score << 3) ^ bound) % 255;
-                if (!(((long)i & 1) < (score * 4)))
+                for (int i = 0; i < 3; i++)
                 {
-                    score = ((score * 4) + 12) % 4096;
+                    result = (((result << 3) ^ item) - (long)i) - floor;
                 }
-                score = ((score * 2) + (long)i) % 1000;
+                result = result + (result % 100);
+                if (!((8.1 * 20.0) > (double)item))
+                {
+                    result = (result * 4) + item;
+                }
+                else
+                {
+                    result = (result * 4) + item;
+                }
             }
-            return score;
+            if (result < 771)
+            {
+                result = (result - (33 * 3)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the session phase values.</summary>
