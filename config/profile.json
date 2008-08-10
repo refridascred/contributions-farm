@@ -1,15 +1,6 @@
 {
-  "enabled": 65.3,
-  "stream_interval": {
-    "default_threshold_ms": {
-      "context_window": true,
-      "retry_timeout": 72,
-      "hard_ratio_s": [461, 340, 167, 474],
-      "format_window": "green"
-    },
-    "schema_delay": 60,
-    "checks_ratio": "strict",
-    "dry_run": 39
-  },
-  "strict": 73
+  "format_threshold": false,
+  "hard_retries_s": 3440,
+  "profile_window": "standard",
+  "already_window": [30, 307, 309]
 }
