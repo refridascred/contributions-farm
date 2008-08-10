@@ -54,10 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFactor = 92.97;
-        public const string BurstWidth = "strict-v2";
-        public const double BatchWidth = 97.17;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((target * 5) < target))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepPayload = "legacy";
