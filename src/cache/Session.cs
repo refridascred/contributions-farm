@@ -14,15 +14,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Ready,
-            Idle,
-            Synced,
-            Active,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 8355;
+        public const long CacheLevel = 4028;
+        public const long SoftRatio = 6540;
+        public const string BatchSize = "local-edge";
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] samples)
