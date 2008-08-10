@@ -45,39 +45,13 @@ namespace Common.Utilities
             return scale + 1.5;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long seed, long step)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long offset = seed ^ step;
-            if (!(step < (seed & 7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((seed / 4) >= seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step + offset) >= (offset >> 3)) && (((-798) - 356) == (seed + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset > step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
