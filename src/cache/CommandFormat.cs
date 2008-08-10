@@ -15,15 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double gain, double span)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double rate = (double)(76 & 15);
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (gain + 7.0)) + (double)(long)i;
-            }
-            return rate - span;
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
