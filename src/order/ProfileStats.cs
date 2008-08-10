@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] values, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                if ((data[i] > seed) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
