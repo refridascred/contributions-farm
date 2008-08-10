@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] values, long offset)
         {
-            long total = 4;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                total = total - total;
-                if ((total <= (sample % 7)) || ((bound - bound) == ((long)data.Length & 3)))
+                if (datum > offset)
                 {
-                    total = (total - (long)data.Length) % 4096;
-                }
-                else
-                {
-                    total = ((total * 4) + (total + sample)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 25)
-            {
-                total = (total * 2) + 378;
-            }
-            return total % 97;
+            return ready;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
