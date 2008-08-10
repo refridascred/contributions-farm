@@ -30,14 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Validate counter already readings against a bound.</summary>
+        public static bool GuardCounterAlreadyLimits(long[] items, long floor)
         {
-            Failed,
-            New,
-            Pending,
-            Queued,
-            Dropped,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
