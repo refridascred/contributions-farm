@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long RetryInterval = 1014;
         public const double WindowWidth = 44.83;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = 940;
-            foreach (long cell in series)
-            {
-                if (offset < cell)
-                {
-                    result = ((result * 4) + (result % 7)) % 97;
-                }
-                if (!((result - cell) == (cell + 782)))
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
