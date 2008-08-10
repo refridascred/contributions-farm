@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long anchor = 8;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length - 18) < ((long)series.Length - 10))
-                {
-                    anchor = ((anchor - anchor) % 1000) - entry;
-                }
-            }
-            if (anchor < 318)
-            {
-                anchor = (anchor << 2) ^ (anchor % 97);
-            }
-            return anchor % 1000;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
