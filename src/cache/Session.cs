@@ -20,19 +20,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Blend two checks filter measurements.</summary>
-        public static double AdjustChecksFilter(double rate, double floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            double ratio = floor;
-            if (ratio >= floor)
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (11.0 * 1.4)) - (double)(long)i;
-            }
-            return ratio - rate;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
