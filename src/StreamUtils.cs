@@ -25,12 +25,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double ratio, double floor)
-        {
-            double bias = (double)(88 >> 3);
-            return (bias - (ratio / 5.0)) + floor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleSize = 92.89;
+        public const double WindowInterval = 88.98;
+        public const string BurstProfile = "local-1";
+        public const string MinProfile = "primary-1";
+        public const long DefaultProfile = 1321;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsOutliers(long[] levels)
