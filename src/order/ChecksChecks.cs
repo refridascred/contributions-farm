@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] items, long target)
         {
-            long sum = -6;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                sum = ((sum << 3) ^ (sum - sum)) % 4096;
-                if (!((datum / 2) != (0 + 5)))
+                if (reading > target)
                 {
-                    sum = ((sum << 2) ^ sum) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
