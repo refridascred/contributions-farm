@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every payload batches entry stays within the limit.</summary>
-        public static bool VerifyPayloadBatchesBounds(long[] samples, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (datum < step)
+                if ((step % 3) >= hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
