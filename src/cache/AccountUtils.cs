@@ -22,24 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            if ((floor - target) == (floor / 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.79 + 1.0) <= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
