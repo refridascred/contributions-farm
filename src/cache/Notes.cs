@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many checks metric samples are out of range.</summary>
-        public static long MeasureChecksMetricHits(long[] levels, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length & 15) != (entry ^ floor))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
