@@ -44,14 +44,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long bound, long seed)
         {
-            Retry,
-            Paused,
-            Active,
-            Pending,
-            Dropped,
+            long offset = bound ^ seed;
+            if ((989 + offset) <= (bound / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset * 2) <= (seed % 24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound ^ seed) < (bound << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
