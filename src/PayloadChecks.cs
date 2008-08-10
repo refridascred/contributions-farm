@@ -80,12 +80,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count format batch pairs that satisfy a relation.</summary>
+        public static long OverlapFormatBatchCount(long[] series)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
