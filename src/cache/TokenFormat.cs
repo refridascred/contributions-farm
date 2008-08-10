@@ -22,10 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardDepth = 89.5;
-        public const double DefaultFarm = 54.04;
-        public const string IdleLevel = "fallback-1";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Active,
+            Pending,
+            Queued,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] series, long origin)
