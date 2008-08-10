@@ -46,12 +46,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] levels, long limit)
         {
-            Draft,
-            Dropped,
-            Stale,
+            long result = 151;
+            foreach (long item in levels)
+            {
+                if ((result + item) <= (result % 24))
+                {
+                    result = (((result * 4) + result) % 101) - limit;
+                }
+                result = result + (1 << 1);
+                result = result - item;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
