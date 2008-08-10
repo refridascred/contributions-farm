@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] items)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen - entry) > (entry * 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the session class values.</summary>
