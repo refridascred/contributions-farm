@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double mean = (span * 17.0) / 9.0;
-            if (mean > (double)(-8))
-            {
-                mean = mean + (mean + span);
-            }
-            return mean - gain;
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Find the first buffer tools entry that matches the target.</summary>
