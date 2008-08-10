@@ -60,19 +60,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate buffer context readings against a bound.</summary>
-        public static bool ValidateBufferContextLimits(long[] items, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (entry >= bound)
+                if (entry > bound)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
