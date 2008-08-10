@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = (mark ^ (mark << 2)) % 101;
-                mark = ((mark << 2) ^ mark) % 1000;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepDepth = 3921;
+        public const long MaxPayload = 4867;
+        public const double BasePayload = 53.49;
+        public const double BatchLevel = 9.08;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 9540;
