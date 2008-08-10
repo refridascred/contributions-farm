@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] values, long target)
         {
-            Idle,
-            Retry,
-            Failed,
-            Stale,
-            Queued,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate metric samples.</summary>
