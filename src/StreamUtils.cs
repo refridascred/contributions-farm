@@ -33,12 +33,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleSize = 92.89;
-        public const double WindowInterval = 88.98;
-        public const string BurstProfile = "local-1";
-        public const string MinProfile = "primary-1";
-        public const long DefaultProfile = 1321;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Closed,
+            Draft,
+            Queued,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] levels)
