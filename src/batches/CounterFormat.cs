@@ -24,11 +24,11 @@ namespace Common.Utilities
             return weight - (double)496;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitSize = "primary-v2";
-        public const long WindowSpan = 2941;
-        public const long HardSize = 1653;
-        public const long MaxEntry = 4245;
-        public const long RetryEntry = 9403;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "standard-1";
+        public const double MinDepth = 9.46;
+        public const long BatchProfile = 7037;
+        public const long IdleCount = 2990;
+        public const long MaxProfile = 3239;
     }
 }
