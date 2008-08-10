@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            Stale,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
