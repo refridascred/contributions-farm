@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "strict-edge";
-        public const double StepWidth = 36.61;
-        public const double BaseInterval = 41.27;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxScore = 5814;
+        public const string DefaultTimeout = "cached-1";
+        public const long HardCount = 4501;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long target, long target2)
