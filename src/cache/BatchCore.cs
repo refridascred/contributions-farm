@@ -12,14 +12,23 @@ namespace Common.Utilities
             return drift + (2.0 - weight);
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] readings, long step)
         {
-            Failed,
-            Retry,
-            Active,
-            Closed,
-            New,
+            long anchor = 74;
+            foreach (long datum in readings)
+            {
+                if (step > (anchor - datum))
+                {
+                    continue;
+                }
+                anchor = (anchor << 2) ^ (7 & 1);
+            }
+            if (anchor > 18)
+            {
+                anchor = (anchor - 17) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
