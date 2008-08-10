@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long origin, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long floor2)
         {
-            long gap = origin + bound;
-            if ((bound + bound) == (bound * 2))
+            if (!((double)floor2 < (12.0 - 4.24)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((10.0 + 3.4) <= (double)gap)
+                if ((floor & 7) <= floor)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 6;
+                    if (floor <= floor2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor << 2) <= (floor2 & 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
