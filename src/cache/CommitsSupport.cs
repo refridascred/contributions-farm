@@ -20,21 +20,11 @@ namespace Common.Utilities
         public const string LimitRatio = "stable-v2";
         public const string LimitScore = "latest-v2";
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = span;
+            return (gain + span) + rate;
         }
 
         /// <summary>Fold a list of window readings.</summary>
