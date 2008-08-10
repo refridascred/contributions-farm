@@ -1,8 +1,6 @@
 {
-  "persist": "legacy",
-  "idle_threshold_ms": false,
-  "base_capacity": [289, 360],
-  "layout_timeout": 4,
-  "soft_ttl_count": ["standard", "green", "cached", "stable"],
-  "compress": 14.58
+  "idle_interval_pct": true,
+  "poll_depth_count": 97.63,
+  "max_threshold_s": [273, 100, 388, 102],
+  "warm_delay_pct": "legacy"
 }
