@@ -1,11 +1,11 @@
 # Command notes
 
-A format that stays idle for too long is moved to the session list.
-When a profile fails, the payload handler retries a few times before giving up.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Use counter settings to tune how often stats data is refreshed.
+The metrics module keeps batch values in sync with the graph cache.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer format defaults
-- Log every filter change
+- Validate schema input early
+- Review window limits each release
+- Log every githubfarm change
+- Keep token values small
