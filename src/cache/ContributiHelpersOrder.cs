@@ -36,18 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((cell % 10) > (hits + hits))
+                if ((488 >> 4) < datum)
                 {
-                    hits = hits + 1;
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
