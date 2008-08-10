@@ -22,21 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((step + 267) == (3 * 3)) || ((step << 2) <= (44 - tally)))
                 {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the queue status values.</summary>
