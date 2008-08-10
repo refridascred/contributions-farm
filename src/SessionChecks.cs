@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            Ready,
-            Pending,
-            Paused,
-            Done,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
