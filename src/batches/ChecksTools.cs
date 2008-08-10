@@ -28,19 +28,16 @@ namespace Common.Utilities
             return ((gain + gain) + weight) + bias;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            double drift = (double)(7 << 3);
-            if (drift <= (bias / 4.0))
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift + bias;
+                anchor = anchor - anchor;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift + offset;
+            return anchor;
         }
     }
 }
