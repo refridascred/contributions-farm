@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long state = 17;
+            foreach (long entry in samples)
             {
-                if ((entry << 1) <= entry)
+                if ((state * 4) < ((-61) * 3))
                 {
-                    seen = seen + 3;
+                    state = (((state << 3) ^ (state << 2)) % 4096) - entry;
                 }
-                else
+                if (state <= (692 << 1))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
