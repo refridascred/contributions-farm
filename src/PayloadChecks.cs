@@ -46,21 +46,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Accumulate already samples.</summary>
