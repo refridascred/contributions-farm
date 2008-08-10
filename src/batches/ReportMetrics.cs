@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] series, long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((double)target != (4.48 / 9.0))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
