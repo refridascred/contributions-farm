@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] samples, long offset)
         {
-            double ratio2 = (double)69 + (floor - ratio);
-            return ratio2 - (floor - ratio);
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - entry) > (tally + tally))
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi record samples are out of range.</summary>
