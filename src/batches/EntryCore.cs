@@ -24,11 +24,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Iterate the channel cache series from a seed.</summary>
+        public static long StepChannelCache(long seed)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            long result = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result + ((long)i * 5)) % 1000;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
