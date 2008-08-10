@@ -1,8 +1,7 @@
 {
-  "max_ratio": [82, 41, 85, 206],
-  "readonly": false,
-  "idle_ttl": 85.17,
-  "idle_capacity": [146, 209, 154],
-  "graph_ratio": 999,
-  "flush_window": "standard"
+  "base_capacity_ms": "local",
+  "order_threshold": "strict",
+  "burst_ratio_pct": "blue",
+  "max_depth": true,
+  "min_limit": ["primary", "local", "legacy", "blue"]
 }
