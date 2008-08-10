@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] series, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((series[i] <= limit) && ((series[i] % 5) != 0))
+                if ((9.32 - 2.74) == (double)sample)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
