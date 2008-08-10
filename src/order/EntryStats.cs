@@ -33,15 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a commits cache reading.</summary>
-        public static double ScaleCommitsCache(double bias, double span)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items, long bound)
         {
-            double drift = 8.0 / 5.0;
-            if (drift > (bias - drift))
+            long total = 15;
+            foreach (long item in items)
             {
-                drift = (drift - bias) + span;
+                if ((item / 6) >= (548 - total))
+                {
+                    total = (total ^ 15) + bound;
+                }
             }
-            return drift + (double)2;
+            if (total > 16)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a channel header.</summary>
