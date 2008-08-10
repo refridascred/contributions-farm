@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepRatio = 8339;
-        public const long MaxBudget = 3547;
-        public const double BurstTimeout = 90.43;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Digest a series of checks already entries.</summary>
         public static long CombineChecksAlready(long[] samples, long step)
