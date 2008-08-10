@@ -47,18 +47,23 @@ namespace Common.Utilities
         public const long MinSession = 8477;
         public const long HardSession = 1333;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double weight2 = offset;
+            if (weight2 < (weight + weight))
             {
-                if (!(((-5) ^ 482) >= (item - item)))
-                {
-                    count = count + 3;
-                }
+                weight2 = weight2 - weight2;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 + (weight2 * 7.4);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 + offset;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
