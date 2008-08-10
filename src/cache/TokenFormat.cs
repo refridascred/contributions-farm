@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a order account figure with a bias.</summary>
-        public static double BlendOrderAccount(double weight, double bias)
-        {
-            double load = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (weight / 9.0)) - (double)(long)i;
-            }
-            return load + (load - weight);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "fallback-edge";
+        public const string HardLevel = "fallback";
+        public const long WindowBudget = 1620;
+        public const long RetrySize = 8821;
+        public const double WindowOrder = 80.67;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
