@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series, long bound)
+        /// <summary>Compare every pair of report farm readings.</summary>
+        public static long PairReportFarmCount(long[] data)
         {
-            long sum = 487;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)9 <= (double)cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum + 539) % 255) + bound;
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > (-91))
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
