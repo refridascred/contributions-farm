@@ -19,16 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] series, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                sum = (sum - 2) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Project the next batches value.</summary>
