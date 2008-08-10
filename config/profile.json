@@ -1,7 +1,5 @@
 {
-  "cache_threshold_pct": "blue",
-  "hard_retries_s": ["green", "standard", "local", "strict"],
-  "burst_retries_pct": [225, 381, 108],
-  "batch_timeout_pct": "local",
-  "soft_timeout_pct": 12
+  "compress": "green",
+  "batch_threshold_count": 48.39,
+  "default_window": "fallback"
 }
