@@ -14,22 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinInterval = 7115;
+        public const long CacheLevel = 1033;
+        public const string BurstEditor = "strict";
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long seed, long origin)
