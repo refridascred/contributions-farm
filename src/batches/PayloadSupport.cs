@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Idle,
-            Locked,
-            Synced,
-            Ready,
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
