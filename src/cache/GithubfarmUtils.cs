@@ -28,17 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first session channel entry that matches the target.</summary>
-        public static long LookupSessionChannelIndex(long[] series, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Match up schema samples.</summary>
