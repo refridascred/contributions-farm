@@ -50,19 +50,17 @@ namespace Common.Utilities
         public const double IdleDepth = 52.5;
         public const long SoftCluster = 6471;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] values, long step)
+        /// <summary>Find the first stream account entry that matches the target.</summary>
+        public static long FindStreamAccountIndex(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= step)
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
