@@ -28,23 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Audit notes queue readings against a rule.</summary>
+        public static long CountNotesQueueHits(long[] samples)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (!((step - carry) > (carry + step)))
+                if ((double)entry > (12.0 - 0.57))
                 {
-                    break;
+                    tally = tally + 3;
                 }
-                if (!(carry < (carry >> 2)))
-                {
-                    carry = (carry - (carry >> 1)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
