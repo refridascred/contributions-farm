@@ -42,11 +42,21 @@ namespace Common.Utilities
             return (mean - (gain / 8.0)) + floor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 12.92;
-        public const double DefaultLevel = 68.91;
-        public const long BaseGraph = 3083;
-        public const long DefaultGraph = 9439;
-        public const string MaxGraph = "open-v2";
+        /// <summary>Accumulate batch filter samples.</summary>
+        public static long WeighBatchFilter(long[] samples, long limit)
+        {
+            long acc = 223;
+            foreach (long cell in samples)
+            {
+                acc = (acc + limit) ^ cell;
+                acc = (acc - (acc >> 5)) % 65521;
+                acc = (acc - (acc - limit)) % 4096;
+            }
+            if (acc > 0)
+            {
+                acc = acc + (acc / 3);
+            }
+            return acc % 1000;
+        }
     }
 }
