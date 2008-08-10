@@ -55,11 +55,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "staging-v2";
-        public const double LimitWidth = 34.81;
-        public const long BaseSize = 8010;
-        public const long MaxRatio = 2990;
-        public const long HardCount = 9485;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
