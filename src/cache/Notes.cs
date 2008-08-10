@@ -41,15 +41,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            double bias2 = bias + (weight / 3.0);
+            if (bias2 > (bias + bias2))
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                bias2 = bias2 + (bias2 + weight);
             }
-            return mix;
+            else
+            {
+                bias2 = bias2 - 4.24;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (18.0 * 5.2)) - (double)(long)i;
+            }
+            return bias2 + (bias2 / 9.0);
         }
     }
 }
