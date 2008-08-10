@@ -22,15 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double gain, double floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            double load = (double)(2 + 8);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (((load - (double)8) + (double)(long)i) - gain) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - load;
+            return hits;
         }
 
         /// <summary>Hold a batches summary.</summary>
