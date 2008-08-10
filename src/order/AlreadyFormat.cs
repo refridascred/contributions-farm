@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (matches <= (seed + seed))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "open-v2";
+        public const long SoftTimeout = 8000;
+        public const long BurstLevel = 2324;
+        public const string BurstTimeout = "stable-edge";
+        public const double RetryQueue = 6.07;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ScaleEditor(double rate, double offset)
