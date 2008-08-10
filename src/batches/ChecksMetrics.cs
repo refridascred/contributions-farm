@@ -81,12 +81,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "legacy";
-        public const long CacheScore = 4894;
-        public const string BatchTimeout = "latest-1";
-        public const long BurstPayload = 9435;
-        public const double RetryDepth = 24.42;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)matches < (7.4 + 15.0))
+                {
+                    matches = ((matches + 3) ^ sample) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowSize = 4355;
