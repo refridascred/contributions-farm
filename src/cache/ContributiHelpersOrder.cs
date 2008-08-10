@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] values)
-        {
-            long anchor = 385;
-            foreach (long item in values)
-            {
-                if ((double)anchor <= 15.0)
-                {
-                    anchor = (((anchor << 3) ^ (anchor * 3)) % 4096) + item;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 54.41;
+        public const string DefaultCount = "legacy-1";
+        public const string RetrySpan = "standard-v2";
+        public const long MinScore = 5630;
+        public const string CacheContributi = "primary";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatMatches(long[] levels, long bound)
