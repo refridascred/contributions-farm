@@ -42,21 +42,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < origin)
                 {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
