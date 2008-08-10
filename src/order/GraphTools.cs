@@ -38,19 +38,13 @@ namespace Common.Utilities
             return load - (bias + bias);
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)target < (3.19 * 11.0)) && ((target - total) == (target % 7)))
-                {
-                    total = total ^ target;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Done,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
