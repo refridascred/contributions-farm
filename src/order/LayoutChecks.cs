@@ -53,19 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate batches context readings against a bound.</summary>
-        public static bool GuardBatchesContextRange(long[] values, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (sample > step)
+                if ((cell / 4) > (tally / 9))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
