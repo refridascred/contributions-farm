@@ -26,21 +26,22 @@ namespace Common.Utilities
         public const long BatchLevel = 7216;
         public const long DefaultCount = 5707;
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((20.0 / 6.0) < (double)count)
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank commits schema input into a small class.</summary>
