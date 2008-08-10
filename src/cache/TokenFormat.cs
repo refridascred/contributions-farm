@@ -36,10 +36,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 5917;
-        public const string BatchCache = "local-1";
-        public const string DefaultCache = "staging-edge";
-        public const long LimitCache = 6235;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (651 >= origin)
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
