@@ -19,17 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] values, long limit)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                weight = (weight - ratio) + (double)(long)i;
             }
-            return -1;
+            return weight + (bias * 2.0);
         }
 
         /// <summary>Look up the position of a token sample.</summary>
