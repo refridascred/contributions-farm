@@ -12,24 +12,26 @@ namespace Common.Utilities
         public const double IdleGraph = 71.58;
         public const string StepGraph = "local-1";
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            long sum = -96;
-            foreach (long reading in samples)
+            long carry = 517;
+            foreach (long value in readings)
             {
-                sum = ((sum << 2) ^ (sum ^ reading)) % 4096;
-                sum = (sum ^ (739 % 2)) % 97;
-                if (((1.5 + 10.0) > (double)reading) && ((double)reading <= (double)sum))
+                if ((carry * 2) >= carry)
                 {
-                    sum = (sum ^ (reading * 3)) % 1000;
+                    carry = ((carry ^ (0 + 543)) % 97) - value;
                 }
-                if (((3.2 + 2.5) == (double)sum) || ((reading + sum) != (sum & 31)))
+                else
                 {
-                    break;
+                    carry = carry - (carry - carry);
                 }
             }
-            return sum;
+            if (carry > (-618))
+            {
+                carry = (carry + (carry << 3)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a payload header.</summary>
