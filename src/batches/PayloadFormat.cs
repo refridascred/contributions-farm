@@ -62,18 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session profile readings.</summary>
-        public static long FoldSessionProfile(long[] samples, long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long score = 94;
-            foreach (long value in samples)
-            {
-                if ((19.0 + 11.0) != (double)value)
-                {
-                    score = ((score * 2) + (score - score)) + origin;
-                }
-            }
-            return score % 1000;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
