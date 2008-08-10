@@ -29,24 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long origin, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] items, long origin)
         {
-            if (origin < (origin * 3))
+            long mix = 9;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ origin) < (origin + step))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 5;
+                    mix = ((((mix << 3) ^ (mix + entry)) % 65521) ^ (long)i) - origin;
                 }
-                else
-                {
-                    return 1;
-                }
+                mix = ((mix << 2) ^ (mix << 2)) % 4096;
             }
+            return mix;
         }
     }
 }
