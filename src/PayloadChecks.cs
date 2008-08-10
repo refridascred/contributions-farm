@@ -65,20 +65,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] items, long step)
         {
-            long mark = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                mark = (mark + (item ^ 9)) % 97;
-                mark = (mark - (mark >> 5)) % 97;
-                if ((double)mark <= (double)item)
+                if (entry >= step)
                 {
-                    mark = ((mark * 5) + (item - item)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return flag;
         }
     }
 }
