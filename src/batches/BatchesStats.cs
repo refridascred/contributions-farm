@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 3572;
-        public const long CacheCount = 6415;
-        public const string RetryDepth = "fallback-1";
-        public const string SoftSize = "staging-v2";
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] series)
