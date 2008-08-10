@@ -36,21 +36,22 @@ namespace Common.Utilities
         public const long BatchFormat = 8534;
         public const long SoftDepth = 3969;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 774;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((result << 2) >= result)
                 {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result * 3) + (sample << 1)) % 101;
+                }
+                else
+                {
+                    result = (result + (result + result)) % 1000;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
