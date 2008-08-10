@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long target2)
-        {
-            if (48 >= (target2 + 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target2 < (target & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 71.36;
+        public const long RetryRatio = 7934;
+        public const long CacheSize = 9912;
+        public const long SoftBudget = 2285;
+        public const double LimitCount = 62.04;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] samples, long limit)
