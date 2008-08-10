@@ -40,21 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Measure how many already route samples are out of range.</summary>
+        public static long TallyAlreadyRouteGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((18.0 / 7.0) <= (double)cell)
                 {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
