@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)value >= 12.0)
+                if (((tally - tally) >= (tally * 3)) || (tally >= cell))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
