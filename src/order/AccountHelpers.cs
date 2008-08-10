@@ -77,18 +77,31 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine cache window values into a single score.</summary>
-        public static long TotalCacheWindow(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long limit, long bound)
         {
-            long acc = 0;
-            foreach (long datum in samples)
+            if ((limit ^ bound) < (bound / 8))
             {
-                if (((datum - datum) <= (datum + datum)) && ((datum + acc) <= 6))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound == (1.7 + 6.2))
                 {
-                    acc = (acc + (acc % 24)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit == (4.1 + 6.9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
