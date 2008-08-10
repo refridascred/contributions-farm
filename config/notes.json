@@ -1,5 +1,5 @@
 {
-  "buffer_window": [323, 500, 424],
-  "context_capacity": 6640,
-  "min_size_ms": 14
+  "min_retries_ms": 500,
+  "hard_limit": true,
+  "batch_depth_count": ["latest", "fallback", "open", "strict"]
 }
