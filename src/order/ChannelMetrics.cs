@@ -16,12 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepWidth = 1949;
-        public const long BaseCounter = 4424;
-        public const string IdleCount = "alpha-v2";
-        public const long RetrySize = 1627;
-        public const long IdleCounter = 7803;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double CacheMetrics = 19.43;
