@@ -30,12 +30,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Paused,
+            Failed,
+            New,
             Pending,
-            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
