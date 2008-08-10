@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
             New,
-            Closed,
-            Retry,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
