@@ -66,18 +66,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context batches entries that pass the check.</summary>
-        public static long CountContextBatchesHits(long[] levels)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value + value) >= (hits * 4)) || !((value + hits) < (value - 9)))
+                if (levels[i] < seed)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
