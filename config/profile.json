@@ -1,8 +1,5 @@
 {
-  "idle_timeout": [272, 390, 390, 365],
-  "command_limit": true,
-  "githubfarm_capacity": "eu-west",
-  "commits_retries": "stable",
-  "route_timeout": "open",
-  "poll_ttl_count": 500
+  "sync_limit": 9.72,
+  "sync_retries": [499, 485, 235, 287],
+  "batches_limit": 64.19
 }
