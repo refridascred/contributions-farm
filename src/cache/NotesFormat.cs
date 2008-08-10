@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)matches <= (6.35 - 7.1))
-                {
-                    matches = (matches + 3) ^ value;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
