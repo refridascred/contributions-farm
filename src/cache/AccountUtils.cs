@@ -34,18 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] items, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((datum >= (datum + step)) || ((datum ^ tally) >= step))
+                if (item < seed)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
