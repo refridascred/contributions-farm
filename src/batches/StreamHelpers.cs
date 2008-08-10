@@ -12,31 +12,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Look up the position of a cache window sample.</summary>
+        public static long FindCacheWindowIndex(long[] readings, long offset)
         {
-            long score = 4;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = score - (item >> 1);
-                if ((long)values.Length > item)
+                if (readings[i] <= offset)
                 {
-                    score = (score ^ (score - 1)) % 65521;
-                }
-                else
-                {
-                    score = (score - (score & 127)) % 255;
-                }
-                if (((item + score) != (71 / 3)) || ((1.0 - 6.6) != (double)score))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 72)
-            {
-                score = (score * 4) + (score % 8);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many stream stats samples are out of range.</summary>
