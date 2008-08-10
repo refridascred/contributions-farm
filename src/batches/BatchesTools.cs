@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 6976;
-        public const string SoftSupport = "local-1";
-        public const long DefaultScore = 5385;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstDepth = 8369;
+        public const long IdleSpan = 5779;
+        public const long BatchSize = 8797;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double weight, double offset)
