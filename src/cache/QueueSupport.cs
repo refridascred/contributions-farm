@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
