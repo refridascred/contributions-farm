@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] readings)
+        /// <summary>Classify a batches channel pair into a bucket.</summary>
+        public static long BucketBatchesChannel(long limit, long step)
         {
-            long carry = -783;
-            foreach (long sample in readings)
+            if ((871 < (step ^ 2)) || ((limit & 63) <= (limit ^ 59)))
             {
-                carry = ((carry - (carry / 9)) % 1000) + sample;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (((30 ^ step) != (step >> 5)) || ((step / 4) == (step << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit > (step & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
