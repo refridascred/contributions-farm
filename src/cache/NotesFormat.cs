@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter session readings.</summary>
-        public static long ScoreFilterSession(long[] readings)
-        {
-            long sum = 982;
-            foreach (long value in readings)
-            {
-                sum = (sum - 16) - value;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8169;
+        public const double MinTimeout = 98.48;
+        public const long CacheInterval = 4703;
+        public const double IdleDepth = 9.03;
 
         /// <summary>Project the next cluster value.</summary>
         public static double SmoothCluster(double weight, double offset)
