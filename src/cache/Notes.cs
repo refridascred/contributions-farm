@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] readings, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((count - cell) <= (cell / 8)) && (((long)readings.Length ^ cell) == (origin >> 4)))
+                if ((2.85 * 20.0) == (double)reading)
                 {
-                    count = count + 2;
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
