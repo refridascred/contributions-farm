@@ -79,12 +79,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Grade a stream token value against two limits.</summary>
+        public static long RankStreamToken(long seed, long step)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            if ((double)seed > 12.0)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed > (7.0 - 2.21))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((((-19) % 3) > step) && ((double)seed <= (6.28 - 3.28)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >> 5) <= (5 * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
