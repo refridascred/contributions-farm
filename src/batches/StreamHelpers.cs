@@ -39,22 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items, long origin)
+        /// <summary>Measure how many stream stats samples are out of range.</summary>
+        public static long TallyStreamStatsOutliers(long[] samples, long origin)
         {
-            long state = 119;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((double)origin <= (double)state)
+                if ((6.36 - 7.7) >= (double)origin)
                 {
-                    state = ((state ^ (origin * 5)) % 65521) + value;
-                }
-                else
-                {
-                    state = (state << 2) ^ (2 - origin);
+                    matches = (matches + 3) - sample;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
