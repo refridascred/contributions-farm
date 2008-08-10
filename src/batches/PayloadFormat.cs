@@ -28,38 +28,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long floor, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long origin)
         {
-            if (!(587 >= origin))
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 2) <= (50 - floor))
+                anchor = anchor - anchor;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 5;
+                    anchor = (anchor + (origin ^ origin)) ^ (long)i2;
                 }
-                else
-                {
-                    if (75 >= (floor - 586))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3.0 + 5.2) > (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Hold a channel options.</summary>
