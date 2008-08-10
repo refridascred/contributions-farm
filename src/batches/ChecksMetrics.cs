@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Measure how many queue record samples are out of range.</summary>
+        public static long MeasureQueueRecordHits(long[] series)
         {
-            long mark = 1;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark - (mark * 5)) % 1000) ^ cell;
+                if (!((seen + seen) != (seen / 6)))
+                {
+                    seen = (seen + 1) - cell;
+                }
             }
-            if (mark < 182)
-            {
-                mark = (mark - (mark / 5)) % 97;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate metrics schema samples.</summary>
