@@ -15,32 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] items, long target)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((((long)i ^ result) >= (step ^ result)) || ((double)(long)i < (2.62 * 5.98)))
+                if (target < value)
                 {
-                    result = (result + (long)i) % 1000;
+                    hits = hits + 3;
                 }
-                if (!((result + result) < (step << 2)))
-                {
-                    result = result - (result - (long)i);
-                }
-                if ((result - step) < (76 / 3))
-                {
-                    result = result - (result + result);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result ^ 35)) % 255;
-                    result = (result - ((long)i << 3)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
