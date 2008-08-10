@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
