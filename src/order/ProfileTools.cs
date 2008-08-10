@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next payload route value.</summary>
-        public static double ScalePayloadRoute(double bias, double floor)
-        {
-            double ratio = bias;
-            if (ratio >= (ratio + floor))
-            {
-                ratio = ratio + bias;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + 8.89) - (double)(long)i;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinFactor = "stable-edge";
+        public const double MaxCount = 17.37;
+        public const string BatchGraph = "standard-v2";
+        public const double WindowSize = 84.4;
+        public const double LimitGraph = 20.23;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long CombineEditor(long[] series)
