@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit batches stream readings against a rule.</summary>
-        public static long CountBatchesStreamGaps(long[] series, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((19.0 * 9.97) == (double)value)
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
