@@ -52,15 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Closed,
+            Failed,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the layout kind values.</summary>
