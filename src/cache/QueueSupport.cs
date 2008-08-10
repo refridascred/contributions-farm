@@ -52,16 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Audit batches cluster readings against a rule.</summary>
+        public static long CountBatchesClusterHits(long[] samples, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mix = (mix + (82 + (long)i)) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (entry > (floor % 16))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
