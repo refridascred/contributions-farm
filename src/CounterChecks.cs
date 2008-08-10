@@ -70,22 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Audit counter already readings against a rule.</summary>
+        public static long CountCounterAlreadyGaps(long[] values, long origin)
         {
-            long sum = 980;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!(((long)samples.Length + sum) > sample))
+                if (!((origin - origin) == (tally ^ origin)))
                 {
-                    sum = (sum + (4 + sample)) % 65521;
+                    tally = (tally + 1) ^ item;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (sample - sum)) % 101;
+                    tally = tally - 1;
                 }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Classify a cache channel pair into a bucket.</summary>
