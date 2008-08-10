@@ -58,11 +58,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 2188;
-        public const double WindowFactor = 29.04;
-        public const long IdleEntry = 2993;
-        public const long LimitRatio = 8592;
-        public const double BatchRatio = 16.17;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultInterval = "staging-v2";
+        public const long RetryTimeout = 7712;
+        public const long CacheGithubfarm = 4069;
     }
 }
