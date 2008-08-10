@@ -81,18 +81,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] readings, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((double)matches < (7.4 + 15.0))
+                if ((5 - tally) >= tally)
                 {
-                    matches = ((matches + 3) ^ sample) + target;
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
