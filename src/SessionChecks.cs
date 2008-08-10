@@ -60,18 +60,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit batch tools readings against a rule.</summary>
-        public static long AuditBatchToolsMatches(long[] items)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (1.24 >= (double)hits)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
