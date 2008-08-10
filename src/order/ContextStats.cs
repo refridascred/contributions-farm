@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 4225;
-        public const long BaseTimeout = 5695;
-        public const long MinGraph = 1364;
-        public const double IdleGraph = 71.58;
-        public const string StepGraph = "local-1";
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series)
+        {
+            long anchor = 8;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length - 18) < ((long)series.Length - 10))
+                {
+                    anchor = ((anchor - anchor) % 1000) - entry;
+                }
+            }
+            if (anchor < 318)
+            {
+                anchor = (anchor << 2) ^ (anchor % 97);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] readings)
