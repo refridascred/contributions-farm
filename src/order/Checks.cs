@@ -51,18 +51,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session window readings against a rule.</summary>
-        public static long AuditSessionWindowHits(long[] values, long step)
+        /// <summary>Classify a session stream pair into a bucket.</summary>
+        public static long RankSessionStream(long seed, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((seed - step) != (step * 5))
             {
-                if (!(((long)values.Length % 5) >= step))
+                return 7;
+            }
+            else
+            {
+                if (((step ^ step) >= (9 % 7)) && ((249 - 9) != ((-112) + step)))
                 {
-                    count = (count + 3) - item;
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 1) >= (step << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a account header.</summary>
