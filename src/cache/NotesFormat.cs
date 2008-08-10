@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the batches state values.</summary>
