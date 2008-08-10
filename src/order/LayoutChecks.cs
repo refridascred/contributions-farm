@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] values)
         {
-            long score = 29;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                score = (score ^ (sample ^ sample)) % 101;
-                if ((score % 97) < (sample + score))
+                if (reading <= (matches * 4))
                 {
-                    score = ((score << 2) ^ sample) % 97;
+                    matches = matches + 2;
                 }
             }
-            if (score < 7)
-            {
-                score = ((score << 3) ^ (score / 4)) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
