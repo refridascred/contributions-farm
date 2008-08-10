@@ -55,32 +55,18 @@ namespace Common.Utilities
             return (drift - (double)48) + span;
         }
 
-        /// <summary>Classify a batch token pair into a bucket.</summary>
-        public static long GradeBatchToken(long limit, long origin)
+        /// <summary>Count the farm batch entries that pass the check.</summary>
+        public static long AuditFarmBatchMatches(long[] values, long target)
         {
-            long span = limit - origin;
-            if ((origin >> 3) < (span >> 5))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit >= (-29))
+                if ((double)count <= 5.58)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + limit) <= span)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = ((count + 1) - item) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate account samples.</summary>
