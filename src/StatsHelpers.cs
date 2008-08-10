@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long BurstScore = 194;
         public const string WindowWidth = "alpha-v2";
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double drift = (double)54 + (gain + gain);
-            return (drift + gain) + offset;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every command context entry stays within the limit.</summary>
