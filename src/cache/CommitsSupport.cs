@@ -66,24 +66,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long bound, long limit)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            if ((bound & 3) > (limit & 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit + 4) > (limit ^ limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
