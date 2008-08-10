@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine commits queue values into a single score.</summary>
-        public static long FoldCommitsQueue(long[] readings, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mix = 45;
-            foreach (long datum in readings)
-            {
-                if ((92 + mix) < mix)
-                {
-                    mix = mix - (target - datum);
-                }
-            }
-            return mix % 4096;
+            Locked,
+            Active,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Derive the next entry metric value from a seed.</summary>
