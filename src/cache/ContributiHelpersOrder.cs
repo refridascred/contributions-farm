@@ -36,21 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of already counter readings.</summary>
-        public static long PairAlreadyCounterCount(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 72;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (total <= (-937))
                 {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    total = total ^ total;
+                }
+                if ((7.9 < (double)datum) || ((total & 255) >= (datum << 1)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
