@@ -30,15 +30,24 @@ namespace Common.Utilities
             return gain - (double)936;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Fold a list of filter schema readings.</summary>
+        public static long FoldFilterSchema(long[] series, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long state = 86;
+            foreach (long item in series)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int i = 0; i < 10; i++)
+                {
+                    state = ((state << 2) ^ (item % 64)) + (long)i;
+                    state = (state * 5) + (state + 40);
+                }
+                state = state - (bound / 9);
             }
-            return mix;
+            if (state > 754)
+            {
+                state = (state * 2) + (-924);
+            }
+            return state;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
