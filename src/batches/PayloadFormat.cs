@@ -45,13 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate buffer context readings against a bound.</summary>
