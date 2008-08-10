@@ -1,5 +1,7 @@
 {
-  "min_retries_ms": 500,
-  "hard_limit": true,
-  "batch_depth_count": ["latest", "fallback", "open", "strict"]
+  "dry_run": 45.81,
+  "base_capacity_s": 25.71,
+  "flush_limit": 263,
+  "max_ratio_pct": "stable",
+  "idle_capacity_ms": ["standard", "primary"]
 }
