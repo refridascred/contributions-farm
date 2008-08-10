@@ -35,11 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 712;
+        public const double BatchTimeout = 33.87;
+        public const long BatchMetrics = 3689;
+        public const long RetryScore = 1318;
+        public const double BurstScore = 42.99;
     }
 }
