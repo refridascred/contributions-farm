@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftScore = "fallback-1";
-        public const long HardDepth = 9758;
-        public const double BatchCount = 85.86;
-        public const long CacheTools = 8331;
-        public const long DefaultSize = 5948;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item >> 3) != (item + item))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long FindStatsIndex(long[] values, long offset)
