@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long AuditMetricChannelGaps(long[] data, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((double)sample == (double)hits) || (sample >= (hits + hits)))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            Closed,
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
