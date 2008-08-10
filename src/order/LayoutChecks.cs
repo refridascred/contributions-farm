@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] data, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
