@@ -29,13 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] values, long bound)
         {
-            Synced,
-            Closed,
-            Idle,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
