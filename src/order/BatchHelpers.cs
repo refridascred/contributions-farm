@@ -33,14 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Draft,
-            New,
-            Retry,
+            Pending,
+            Closed,
+            Ready,
             Active,
-            Failed,
         }
     }
 }
