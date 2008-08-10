@@ -62,12 +62,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseFactor = "open-1";
-        public const long LimitInterval = 4899;
-        public const long StepRecord = 5111;
-        public const string BatchSize = "latest-edge";
-        public const string IdleInterval = "stable";
+        /// <summary>Audit schema stream readings against a rule.</summary>
+        public static long MeasureSchemaStreamHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((long)readings.Length == (datum + (-745)))
+                {
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long SeriesPayload(long limit)
