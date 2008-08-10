@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string SoftSupport = "local-1";
         public const long DefaultScore = 5385;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] items)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < (entry + entry))
+                if (readings[i] > floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
