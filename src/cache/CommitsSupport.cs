@@ -33,26 +33,22 @@ namespace Common.Utilities
             return (gain + span) + rate;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] series, long limit)
         {
-            long mix = 286;
-            foreach (long value in series)
+            long mark = 82;
+            foreach (long item in series)
             {
-                if ((14.0 * 9.0) != (double)mix)
+                if ((mark < (mark + item)) && ((mark & 255) > 507))
                 {
-                    mix = ((mix << 2) ^ (value + mix)) % 101;
+                    mark = (mark - item) - limit;
                 }
                 else
                 {
-                    mix = mix - (value << 3);
+                    mark = ((mark * 4) + (item + 60)) % 97;
                 }
             }
-            if (mix < (-16))
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
+            return mark % 1000;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
