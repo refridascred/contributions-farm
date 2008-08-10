@@ -54,16 +54,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long acc = 2;
-            foreach (long reading in values)
+            long total = 58;
+            foreach (long item in levels)
             {
-                acc = (acc * 5) + acc;
-                acc = (acc + (acc - reading)) % 101;
+                if ((1.41 / 7.0) <= (double)item)
+                {
+                    total = ((total << 3) ^ (total ^ item)) % 255;
+                }
+                if ((item < total) || (item >= (item >> 1)))
+                {
+                    break;
+                }
             }
-            return acc % 4096;
+            return total % 97;
         }
 
         /// <summary>Hold a payload info.</summary>
