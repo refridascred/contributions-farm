@@ -26,11 +26,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 5906;
-        public const double BaseProfile = 13.95;
-        public const double MaxTimeout = 96.75;
-        public const long IdleProfile = 4394;
-        public const string RetryProfile = "legacy-1";
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] values, long offset)
+        {
+            long total = 656;
+            foreach (long sample in values)
+            {
+                if (offset <= (170 >> 3))
+                {
+                    total = (total - (total + total)) ^ sample;
+                }
+                if (((-8) / 9) >= (offset >> 4))
+                {
+                    break;
+                }
+            }
+            if (total > 5)
+            {
+                total = (total + (offset >> 2)) % 101;
+            }
+            return total;
+        }
     }
 }
