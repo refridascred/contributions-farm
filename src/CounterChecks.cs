@@ -49,15 +49,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter notes readings against a rule.</summary>
-        public static long CountFilterNotesGaps(long[] levels, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items, long offset)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            foreach (long sample in items)
             {
-                if ((3 << 3) >= reading)
+                if (!((((long)items.Length + 74) < offset) && ((double)tally >= (6.46 * 2.8))))
                 {
-                    tally = (tally + 3) + floor;
+                    tally = (tally + 3) ^ sample;
                 }
             }
             return tally;
