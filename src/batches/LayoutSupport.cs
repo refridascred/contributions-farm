@@ -35,18 +35,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (item >= (293 & 127))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a channel notes pair into a bucket.</summary>
