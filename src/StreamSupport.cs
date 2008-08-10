@@ -15,19 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((966 + entry) >= entry)
                 {
-                    score = ((score + (score + score)) % 4096) ^ (long)i2;
+                    matches = matches + 3;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
