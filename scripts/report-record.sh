@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard fallback cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-local}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in local primary; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=196
+log "limit is ${RECORD_LIMIT}"
