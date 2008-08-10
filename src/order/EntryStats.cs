@@ -56,19 +56,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes schema values into a single score.</summary>
-        public static long WeighNotesSchema(long[] levels, long floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long anchor = 3;
-            foreach (long datum in levels)
-            {
-                anchor = anchor ^ (datum - datum);
-            }
-            if (anchor < 3)
-            {
-                anchor = (anchor - (floor * 3)) % 101;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
