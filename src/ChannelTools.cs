@@ -16,19 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] data, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long acc = 4;
+            foreach (long datum in items)
             {
-                if (cell <= limit)
+                if (((1.0 / 2.0) != (double)datum) && (((long)items.Length >> 3) <= offset))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc + acc) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (offset ^ acc)) % 4096;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
