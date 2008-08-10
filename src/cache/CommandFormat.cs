@@ -26,20 +26,19 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] readings, long target)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((target - 241) >= (state - state))
+                if (datum != target)
                 {
-                    state = (state << 3) ^ state;
+                    flag = false;
+                    break;
                 }
-                state = (state - (state / 7)) % 101;
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the format level values.</summary>
