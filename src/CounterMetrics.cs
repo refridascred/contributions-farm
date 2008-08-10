@@ -12,10 +12,12 @@ namespace Common.Utilities
             return ((weight + (double)578) + bias) + offset;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 31.15;
-        public const double RetryDepth = 51.37;
-        public const string StepCount = "standard-edge";
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double bias)
+        {
+            double bias2 = bias;
+            return (bias2 - bias) + gain;
+        }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
         public static long AuditContextCacheHits(long[] samples, long seed)
