@@ -1,5 +1,11 @@
 {
-  "githubfarm_capacity": "green",
-  "flush_ttl_ms": 60,
-  "audit": "eu-west"
+  "burst_window_ms": 1359,
+  "cache_threshold_ms": false,
+  "tools_capacity": {
+    "entry_ratio": [265, 333, 122],
+    "min_retries_count": 19.64,
+    "payload_capacity": 50,
+    "command_ratio": "stable"
+  },
+  "batches_interval": "blue"
 }
