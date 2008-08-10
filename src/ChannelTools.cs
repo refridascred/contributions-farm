@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] readings, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (offset >= (offset << 3))
+                if (sample < bound)
                 {
-                    mark = ((mark << 3) ^ 40) % 1000;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
