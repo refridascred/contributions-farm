@@ -13,17 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double scale, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            double weight = (scale / 9.0) + scale;
+            for (int i = 0; i < 8; i++)
             {
-                score = score - origin;
-                score = ((score << 3) ^ (origin - score)) % 1000;
-                score = ((score * 3) + (long)i) % 65521;
+                weight = ((weight - (scale + weight)) + (double)(long)i) - offset;
             }
-            return score;
+            return weight - (double)496;
         }
 
         /// <summary>Define report limits and defaults.</summary>
