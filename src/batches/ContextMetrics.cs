@@ -46,16 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long total = 1;
+            foreach (long sample in values)
             {
-                result = (result ^ result) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                if (!((double)sample < (5.95 - 3.71)))
+                {
+                    total = ((total + (sample + sample)) % 101) - step;
+                }
             }
-            return result;
+            return total % 97;
         }
     }
 }
