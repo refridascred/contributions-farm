@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green latest blue; do
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in latest cached; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=73
+COMMAND_LIMIT=189
 log "limit is ${COMMAND_LIMIT}"
