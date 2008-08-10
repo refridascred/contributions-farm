@@ -25,12 +25,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] readings, long seed)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
