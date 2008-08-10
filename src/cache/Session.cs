@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] samples)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double weight = scale;
+            if (weight <= weight)
             {
-                if ((double)hits >= (17.0 + 18.0))
-                {
-                    hits = (hits + 3) + reading;
-                }
+                weight = (weight + scale) + offset;
             }
-            return hits;
+            return weight + 3.98;
         }
 
         /// <summary>Define support limits and defaults.</summary>
