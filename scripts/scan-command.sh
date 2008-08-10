@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=258
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-strict}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in green latest; do
+for item in edge green blue eu-west; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
