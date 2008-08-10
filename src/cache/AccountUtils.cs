@@ -22,18 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((floor - target) == (floor / 6))
             {
-                if (((cell >= (count >> 2)) && ((cell << 3) >= (-737))) || ((count <= (501 ^ count)) || (68 > cell)))
+                return 5;
+            }
+            else
+            {
+                if ((1.79 + 1.0) <= (double)target)
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
