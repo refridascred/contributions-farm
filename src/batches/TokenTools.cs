@@ -38,12 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 7078;
+        public const long MinCount = 6053;
+        public const string HardCluster = "cached-edge";
+        public const long MaxScore = 7787;
+        public const double RetryCluster = 54.24;
     }
 }
