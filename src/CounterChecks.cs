@@ -79,22 +79,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter already readings against a rule.</summary>
-        public static long CountCounterAlreadyGaps(long[] values, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((origin - origin) == (tally ^ origin)))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
