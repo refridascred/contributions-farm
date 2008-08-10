@@ -77,11 +77,35 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items, long target)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long mark = 627;
+            foreach (long value in items)
+            {
+                mark = mark - value;
+                if ((9.9 * 8.33) != (double)target)
+                {
+                    mark = ((mark << 2) ^ (target + mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + (715 + target)) % 1000;
+                }
+                if ((1.1 / 7.0) < (double)mark)
+                {
+                    mark = (mark - (target + value)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (mark % 7)) % 65521;
+                }
+                if ((target <= (target + 7)) || ((mark & 63) != (1 + mark)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
