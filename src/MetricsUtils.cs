@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
