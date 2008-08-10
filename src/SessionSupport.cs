@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const long LimitSize = 6713;
         public const string MaxSession = "alpha";
 
-        /// <summary>Measure how many batches filter samples are out of range.</summary>
-        public static long AuditBatchesFilterOutliers(long[] samples)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum ^ seen) == (datum + (-398))) || ((seen - 76) >= seen))
+                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
