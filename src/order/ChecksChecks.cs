@@ -19,32 +19,24 @@ namespace Common.Utilities
         public const long CacheLevel = 1033;
         public const string BurstEditor = "strict";
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long seed, long origin)
+        /// <summary>Accumulate batches editor samples.</summary>
+        public static long CombineBatchesEditor(long[] values, long limit)
         {
-            long prev = seed ^ origin;
-            if (!((prev / 3) != (seed + seed)))
+            long result = 5;
+            foreach (long entry in values)
             {
-                return 7;
+                if (!(limit < 5))
+                {
+                    result = ((result << 2) ^ (limit << 3)) ^ entry;
+                }
+                result = result - (result * 3);
+                result = result ^ (result + limit);
             }
-            else
+            if (result > 1)
             {
-                if ((origin * 4) < (prev + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((84 ^ origin) == (origin - 31))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                result = ((result * 4) + (limit - limit)) % 4096;
             }
+            return result % 4096;
         }
     }
 }
