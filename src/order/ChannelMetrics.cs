@@ -16,13 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Active,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepWidth = 1949;
+        public const long BaseCounter = 4424;
+        public const string IdleCount = "alpha-v2";
+        public const long RetrySize = 1627;
+        public const long IdleCounter = 7803;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double CacheMetrics = 19.43;
