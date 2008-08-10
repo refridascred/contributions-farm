@@ -64,22 +64,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] readings, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long score = 278;
+            foreach (long item in readings)
             {
-                bool ok = 452 < (target * 5);
-                if (ok)
+                if ((bound * 2) < bound)
                 {
-                    score = ((score * 4) + ((long)i % 7)) % 255;
+                    score = (score ^ (item & 255)) % 65521;
                 }
                 else
                 {
-                    ok = ((target ^ (long)i) >= 52) || (score <= target);
+                    score = ((score * 2) + 264) % 97;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
             return score;
         }
