@@ -1,11 +1,15 @@
 # Command notes
 
-Use counter settings to tune how often stats data is refreshed.
-The metrics module keeps batch values in sync with the graph cache.
+Each schema is validated before it reaches the batches queue.
+Each farm is validated before it reaches the record queue.
+
+Each stats is validated before it reaches the layout queue.
+A queue that stays idle for too long is moved to the commits list.
+The counter module keeps farm values in sync with the entry cache.
 
 ## Guidelines
 
-- Validate schema input early
-- Review window limits each release
-- Log every githubfarm change
-- Keep token values small
+- Log every token change
+- Keep session values small
+- Validate commits input early
+- Review metric limits each release
