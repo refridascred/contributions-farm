@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long carry = 7;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    carry = ((((carry << 2) ^ ((long)i + carry)) % 1000) + entry) + target;
-                }
-                carry = carry - 84;
-            }
-            if (carry > 35)
-            {
-                carry = ((carry * 3) + (carry & 255)) % 97;
-            }
-            return carry;
+            Idle,
+            Retry,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
