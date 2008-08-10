@@ -12,19 +12,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of stream already readings.</summary>
-        public static long FoldStreamAlready(long[] data)
+        /// <summary>Roll a metrics entry counter forward.</summary>
+        public static long DeriveMetricsEntry(long target)
         {
-            long score = 3;
-            foreach (long value in data)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                score = (score * 5) + (value % 8);
-                if ((1 + score) != (score + value))
-                {
-                    break;
-                }
+                state = (state ^ (target + (long)i)) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Hold a queue record.</summary>
