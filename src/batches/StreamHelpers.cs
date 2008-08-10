@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Validate already profile readings against a bound.</summary>
+        public static bool VerifyAlreadyProfileBounds(long[] data, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                anchor = (anchor ^ (origin << 1)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
