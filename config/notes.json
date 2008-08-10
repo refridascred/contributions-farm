@@ -1,13 +1,20 @@
 {
-  "batches_limit": ["standard", "local"],
-  "verbose": "blue",
-  "persist": {
-    "farm_retries": 60.16,
-    "idle_size": "cached",
-    "cache_threshold_pct": "latest",
-    "batches_ttl": "standard",
-    "base_ttl": "eu-west"
+  "hard_depth_count": {
+    "base_depth": false,
+    "audit": "cached",
+    "notes_size": true,
+    "max_retries": 250
   },
-  "record_retries": [110, 100, 27, 334],
-  "poll_limit": "standard"
+  "warm_delay": {
+    "warm_threshold_count": 14.64,
+    "min_depth": ["fallback", "eu-west", "fallback", "strict"],
+    "warm_threshold": 58.8,
+    "poll_capacity_s": {
+      "idle_limit_ms": 59,
+      "counter_interval": 79,
+      "audit": 3498,
+      "readonly": 2486
+    }
+  },
+  "batch_size": 14.72
 }
