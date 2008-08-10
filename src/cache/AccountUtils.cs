@@ -22,12 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 7379;
-        public const string HardFactor = "cached-v2";
-        public const long SoftBatches = 2846;
-        public const long DefaultTimeout = 2784;
-        public const string BaseInterval = "latest-v2";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc + ((long)i & 1)) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Count the stats buffer entries that pass the check.</summary>
         public static long CountStatsBufferGaps(long[] items, long seed)
