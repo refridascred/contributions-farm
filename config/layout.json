@@ -1,6 +1,10 @@
 {
-  "commits_depth": [468, 264],
-  "idle_limit_s": true,
-  "enabled": 30,
-  "report_retries": false
+  "batch_window_count": 78,
+  "enabled": {
+    "batch_capacity_ms": 6972,
+    "farm_ttl": "strict",
+    "batch_size_ms": "fallback",
+    "enabled": [350, 214]
+  },
+  "batch_interval": ["stable", "latest"]
 }
