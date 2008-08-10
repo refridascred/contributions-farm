@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every already entry entry stays within the limit.</summary>
-        public static bool CheckAlreadyEntryLimits(long[] levels, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long anchor = 30;
+            foreach (long entry in data)
             {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (entry - origin)) % 97;
             }
-            return ready;
+            return anchor % 65521;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
