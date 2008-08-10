@@ -37,16 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Count the cache already entries that pass the check.</summary>
+        public static long TallyCacheAlreadyGaps(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                carry = (carry * 4) + carry;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (5 <= reading)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
