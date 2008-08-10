@@ -23,12 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Done,
-            Stale,
-            Synced,
+            Retry,
+            Locked,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Accumulate stats samples.</summary>
