@@ -24,19 +24,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long limit)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the cache schema entries that pass the check.</summary>
