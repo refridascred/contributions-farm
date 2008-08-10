@@ -56,21 +56,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 55;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (bound >= (319 ^ bound))
                 {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total ^ (total % 7)) % 4096) - reading;
                 }
             }
-            return matches;
+            return total % 65521;
         }
     }
 }
