@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] items)
         {
-            long sum = 647;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                sum = (sum ^ (938 - cell)) % 101;
+                if ((value & 1) > seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Roll a report counter forward.</summary>
