@@ -33,21 +33,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token editor pairs that satisfy a relation.</summary>
-        public static long PairTokenEditorCount(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 604;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell == (20.0 - 4.86))
                 {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state - (6 - cell);
+                }
+                if ((double)state > (6.25 * 2.45))
+                {
+                    state = (state << 3) ^ (286 - cell);
+                }
+                if ((state > (cell + 4)) || ((state * 2) >= (cell / 4)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state < 5)
+            {
+                state = (state * 2) + (state + 548);
+            }
+            return state % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
