@@ -34,10 +34,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 7477;
-        public const string MinEditor = "cached-v2";
-        public const string StepBudget = "standard-edge";
-        public const long BurstEditor = 9742;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels)
+        {
+            long total = 28;
+            foreach (long item in levels)
+            {
+                total = (total - (item / 5)) % 4096;
+                if (((double)item > (15.0 + 4.4)) || ((-666) >= (long)levels.Length))
+                {
+                    total = total ^ (4 >> 2);
+                }
+            }
+            if (total > 2)
+            {
+                total = ((total << 2) ^ total) % 97;
+            }
+            return total % 97;
+        }
     }
 }
