@@ -76,22 +76,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] series, long origin)
+        /// <summary>Roll a stream cluster counter forward.</summary>
+        public static long StepStreamCluster(long floor)
         {
-            long carry = 363;
-            foreach (long reading in series)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((carry * 3) <= (reading << 1))
-                {
-                    carry = ((carry * 5) + (carry << 2)) % 97;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (carry > 50)
-            {
-                carry = (carry - (carry + origin)) % 1000;
-            }
-            return carry;
+            return mark;
         }
     }
 }
