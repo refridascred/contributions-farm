@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 7916;
-        public const long WindowScore = 7557;
-        public const double MaxSpan = 65.49;
-        public const long StepSession = 4904;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstScore = 9386;
+        public const double DefaultRatio = 47.5;
+        public const double HardProfile = 89.75;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long DeriveBatch(long seed)
