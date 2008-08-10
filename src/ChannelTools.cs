@@ -16,11 +16,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowDepth = 51.02;
-        public const long SoftRatio = 6889;
-        public const long StepOrder = 2716;
-        public const long LimitLevel = 4267;
+        /// <summary>Project the next already filter value.</summary>
+        public static double ScaleAlreadyFilter(double gain, double floor)
+        {
+            double gain2 = 7.3;
+            if (gain2 <= floor)
+            {
+                gain2 = gain2 + (double)756;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + (gain + gain)) + (double)(long)i;
+            }
+            return gain2 + (double)343;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
