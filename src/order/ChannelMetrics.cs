@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items, long target)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] samples, long step)
         {
-            long anchor = 150;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((((anchor * 3) + (anchor + (-34))) % 1000) + sample) + target;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
