@@ -1,8 +1,13 @@
 {
-  "enabled": 54,
-  "default_capacity": "legacy",
-  "strict": 14,
-  "burst_depth": true,
-  "max_ratio": 8.38,
-  "stats_ttl": 63.47
+  "cache_timeout_count": 9330,
+  "dry_run": "latest",
+  "readonly": 42.27,
+  "soft_retries_pct": {
+    "hard_ttl": 50,
+    "notes_depth": [158, 477, 333],
+    "enabled": 2022,
+    "hard_retries": "primary"
+  },
+  "warm_window_ms": true,
+  "default_ratio_ms": "blue"
 }
