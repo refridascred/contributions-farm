@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long floor)
         {
-            Locked,
-            Pending,
-            Synced,
-            Paused,
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream entry.</summary>
