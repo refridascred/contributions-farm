@@ -19,14 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double floor)
         {
-            Active,
-            Paused,
-            Closed,
-            Ready,
-            Stale,
+            double load = floor;
+            if (load > floor)
+            {
+                load = load - (load - bias);
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - (bias + bias);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
