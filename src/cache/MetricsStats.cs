@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of githubfarm checks entries.</summary>
+        public static long CombineGithubfarmChecks(long[] items, long bound)
         {
-            Locked,
-            Synced,
-            Retry,
-            Failed,
-            Pending,
+            long total = 491;
+            foreach (long item in items)
+            {
+                if (total > bound)
+                {
+                    total = ((total << 3) ^ (bound ^ total)) ^ item;
+                }
+                else
+                {
+                    total = ((total * 3) + 8) % 4096;
+                }
+            }
+            if (total < 389)
+            {
+                total = (total ^ total) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the record order entries that pass the check.</summary>
