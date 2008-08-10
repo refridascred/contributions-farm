@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double scale, double floor)
-        {
-            double gain = (double)(62 >> 2);
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + (floor / 7.0)) + (double)(long)i) - scale;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchCount = "strict-v2";
+        public const double WindowEditor = 95.54;
+        public const long SoftEditor = 6022;
+        public const long BaseEditor = 8958;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
