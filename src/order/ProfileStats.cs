@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Roll a payload metrics counter forward.</summary>
+        public static long DerivePayloadMetrics(long origin)
         {
-            long anchor = 622;
-            foreach (long cell in items)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell > (cell + anchor))
+                if ((((long)i * 4) <= (mark + (-141))) || ((mark << 1) <= ((long)i / 2)))
                 {
-                    anchor = anchor - (anchor % 100);
+                    continue;
                 }
+                else
+                {
+                    mark = mark - (origin ^ (long)i);
+                }
+                mark = (mark << 3) ^ (origin % 5);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Project the next counter value.</summary>
