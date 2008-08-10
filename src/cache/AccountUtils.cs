@@ -33,10 +33,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2784;
         public const string BaseInterval = "latest-v2";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 4553;
-        public const long StepInterval = 8223;
-        public const double BurstBatches = 3.29;
-        public const string HardSize = "primary-edge";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
