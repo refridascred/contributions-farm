@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long step)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long anchor = 9;
+            foreach (long value in levels)
+            {
+                anchor = (anchor ^ value) - step;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the farm kind values.</summary>
