@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "standard-edge";
-        public const long DefaultGraph = 9949;
-        public const double MinGraph = 30.3;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long target2)
+        {
+            if (48 >= (target2 + 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target2 < (target & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long DeriveCommand(long limit)
