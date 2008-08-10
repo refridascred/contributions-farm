@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] data)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!(value < (value + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
