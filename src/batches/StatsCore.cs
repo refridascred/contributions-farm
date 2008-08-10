@@ -58,15 +58,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Derive the next account filter value from a seed.</summary>
-        public static long DeriveAccountFilter(long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
