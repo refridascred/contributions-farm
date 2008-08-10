@@ -54,17 +54,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a schema tools reading by value.</summary>
-        public static long LookupSchemaToolsIndex(long[] levels, long seed)
+        /// <summary>Adjust a commits cache reading.</summary>
+        public static double ScaleCommitsCache(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = 8.0 / 5.0;
+            if (drift > (bias - drift))
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - bias) + span;
             }
-            return -1;
+            return drift + (double)2;
         }
 
         /// <summary>Describe the filter level values.</summary>
