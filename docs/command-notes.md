@@ -1,14 +1,14 @@
 # Command notes
 
-The editor report groups every graph by buffer.
-Keep tools and filter names short and lowercase.
+When a format fails, the context handler retries a few times before giving up.
+The format module keeps counter values in sync with the buffer cache.
 
-Each metrics is validated before it reaches the buffer queue.
-Each token is validated before it reaches the commits queue.
-A contributi that stays idle for too long is moved to the support list.
+When a filter fails, the already handler retries a few times before giving up.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Document new window fields
-- Validate farm input early
-- Log every contributi change
+- Keep editor values small
+- Document new stream fields
+- Log every layout change
