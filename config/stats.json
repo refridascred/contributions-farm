@@ -1,7 +1,6 @@
 {
-  "cache_size_pct": 9602,
-  "batches_retries": 21,
-  "hard_retries_s": false,
-  "max_ratio": 76.85,
-  "readonly": 1024
+  "route_delay": "eu-west",
+  "editor_threshold": "primary",
+  "min_ttl_s": 250,
+  "batch_capacity": 39.97
 }
