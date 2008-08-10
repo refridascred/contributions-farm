@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] items, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 3;
+            foreach (long sample in samples)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                if ((45 >= (score + target)) || (score >= (target - target)))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (2 / 3);
+                    score = (score + 262) % 97;
+                }
+                score = (score - (76 << 1)) % 1000;
+                if ((score * 2) != (sample - sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Hold a editor record.</summary>
