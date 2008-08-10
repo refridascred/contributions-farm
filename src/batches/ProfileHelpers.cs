@@ -77,16 +77,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi stats counter forward.</summary>
-        public static long SeriesContributiStats(long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                result = (result - ((long)i - seed)) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((item >= (seen >> 2)) || ((item + seen) <= item))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
