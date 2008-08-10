@@ -13,17 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 5;
+            foreach (long item in levels)
             {
-                if ((data[i] == floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + carry) ^ item;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
