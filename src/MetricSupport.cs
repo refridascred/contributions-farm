@@ -20,19 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((sum - bound) <= (long)i)
-                {
-                    sum = (sum * 2) + bound;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Active,
+            Ready,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
