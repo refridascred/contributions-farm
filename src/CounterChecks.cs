@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "legacy-1";
+        public const string SoftTimeout = "fallback-1";
+        public const string LimitSchema = "alpha";
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiHits(long[] levels, long target)
