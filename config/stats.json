@@ -1,7 +1,5 @@
 {
-  "audit": 63.85,
-  "account_threshold": 60,
-  "batch_ratio_pct": 51.91,
-  "base_size_s": 3,
-  "record_ratio": 1024
+  "strict": true,
+  "audit": 1660,
+  "graph_size": 15.57
 }
