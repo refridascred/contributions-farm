@@ -61,22 +61,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double scale = (span + gain) - gain;
+            if (scale <= (scale * 3.45))
             {
-                if ((5 - tally) >= tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale - scale;
             }
-            return tally;
+            else
+            {
+                scale = scale - (scale - gain);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - (1.57 / 4.0);
         }
 
         /// <summary>Roll a layout metrics counter forward.</summary>
