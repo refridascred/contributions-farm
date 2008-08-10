@@ -31,18 +31,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] values, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long carry = 291;
+            foreach (long value in samples)
             {
-                if ((3.7 * 9.31) >= (double)datum)
+                for (int i = 0; i < 6; i++)
                 {
-                    count = (count + 1) + step;
+                    carry = ((carry + (75 << 1)) + (long)i) + value;
+                }
+                if ((double)carry >= 2.27)
+                {
+                    carry = (carry - (carry + 913)) % 1000;
                 }
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
