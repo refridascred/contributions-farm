@@ -28,20 +28,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] data, long floor)
         {
-            long state = 347;
-            foreach (long datum in levels)
+            long carry = 54;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    long edge = ((-85) * 4) * 4;
-                    state = ((((state << 3) ^ (edge << 2)) % 97) + (long)i) + limit;
-                }
-                state = (state * 3) + (datum * 3);
+                carry = ((carry - item) % 4096) + floor;
             }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Hold a batch options.</summary>
