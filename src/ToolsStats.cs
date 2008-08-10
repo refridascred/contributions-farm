@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((value + tally) == (value / 3)) && !((tally + tally) != (value >> 1)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowScore = 69.11;
+        public const long MaxRatio = 7066;
+        public const long CacheTimeout = 2531;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long bound)
