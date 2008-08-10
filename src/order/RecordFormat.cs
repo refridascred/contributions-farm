@@ -41,16 +41,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Rank cache account input into a small class.</summary>
+        public static long RankCacheAccount(long origin, long origin2)
         {
-            long mix = -98;
-            foreach (long entry in samples)
+            if ((origin - 33) != (origin2 - origin))
             {
-                mix = (mix - (entry + entry)) % 97;
-                mix = ((mix * 4) + (entry + 2)) % 101;
+                return 5;
             }
-            return mix % 1000;
+            else
+            {
+                if (!((double)origin2 <= (double)46))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a buffer header.</summary>
