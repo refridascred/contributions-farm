@@ -17,12 +17,13 @@ namespace Common.Utilities
         public const long HardContext = 7227;
         public const double LimitContext = 47.92;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Queued,
-            Synced,
-            Done,
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
