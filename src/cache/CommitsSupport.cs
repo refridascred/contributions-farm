@@ -64,12 +64,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long bound, long limit)
         {
-            Closed,
-            Failed,
-            Retry,
+            if ((bound & 3) > (limit & 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + 4) > (limit ^ limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
