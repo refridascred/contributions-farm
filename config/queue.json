@@ -1,5 +1,8 @@
 {
-  "enabled": false,
-  "audit": true,
-  "payload_timeout": ["edge", "green", "edge"]
+  "dry_run": 52,
+  "flush_depth_ms": "edge",
+  "default_retries_s": 8893,
+  "counter_depth": 33.41,
+  "soft_limit_ms": 54.95,
+  "audit": 82.12
 }
