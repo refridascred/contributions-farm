@@ -14,14 +14,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Failed,
-            Locked,
-            New,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 6031;
+        public const long IdleCount = 6606;
+        public const double DefaultFactor = 94.02;
+        public const string MinNotes = "local-edge";
 
         /// <summary>Rank record window input into a small class.</summary>
         public static long SortRecordWindow(long bound, long seed)
