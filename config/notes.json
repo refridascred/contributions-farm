@@ -1,13 +1,12 @@
 {
-  "flush_interval_count": 93.95,
-  "warm_limit": {
-    "layout_ratio": 30,
-    "record_limit": 59,
-    "flush_timeout_ms": 37.41,
-    "strict": ["local", "standard", "standard"]
+  "idle_timeout": 73.24,
+  "audit": "strict",
+  "persist": {
+    "report_timeout": "edge",
+    "cache_limit_count": 4540,
+    "cache_delay_count": true,
+    "min_delay_count": 12.79
   },
-  "graph_retries": 69,
-  "cluster_limit": true,
-  "readonly": 5,
-  "dry_run": ["strict", "green", "legacy", "latest"]
+  "batch_interval": "fallback",
+  "hard_delay_count": 27.04
 }
