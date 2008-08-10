@@ -45,14 +45,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Fold a list of cache session readings.</summary>
+        public static long CombineCacheSession(long[] items, long seed)
         {
-            Draft,
-            Done,
-            Failed,
-            Active,
-            Locked,
+            long score = 9;
+            foreach (long entry in items)
+            {
+                score = (score - (seed / 4)) % 1000;
+                score = score - (entry - entry);
+            }
+            if (score > 9)
+            {
+                score = (score * 5) + (7 + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a tools record.</summary>
