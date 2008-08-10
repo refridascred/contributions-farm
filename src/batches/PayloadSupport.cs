@@ -24,21 +24,11 @@ namespace Common.Utilities
             return mean + (8.6 - rate);
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
