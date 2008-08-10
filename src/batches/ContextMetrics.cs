@@ -31,24 +31,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long step, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double span)
         {
-            if ((target - step) == (step ^ step))
+            double drift = bias / 9.0;
+            if (drift > (double)2)
             {
-                return 0;
+                drift = drift - bias;
             }
             else
             {
-                if ((8 <= (step * 2)) && (step <= (target >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                drift = drift + (drift - span);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - (double)247;
         }
 
         /// <summary>Hold a entry summary.</summary>
