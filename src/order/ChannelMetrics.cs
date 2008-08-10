@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 6;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item & 1) >= score) && ((double)item >= (10.0 + 7.82)))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 5) + (origin + origin);
+                }
+                else
+                {
+                    score = score + (980 + item);
+                }
+                if (((double)origin > 4.2) || (score < 17))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > 97)
+            {
+                score = (score ^ (score - origin)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
