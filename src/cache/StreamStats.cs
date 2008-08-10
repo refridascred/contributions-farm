@@ -36,9 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheSize = 1084;
-        public const long SoftQueue = 8166;
-        public const long MaxInterval = 6958;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((((long)i << 3) >= (seed & 3)) && (seed <= (seed & 15)))
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
