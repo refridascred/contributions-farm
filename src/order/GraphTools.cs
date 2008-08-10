@@ -73,18 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] samples, long limit)
         {
-            long result = 15;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((488 + result) != (result % 3))
+                if (samples[i] > limit)
                 {
-                    result = result + (109 + entry);
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
