@@ -35,15 +35,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Paused,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Look up the position of a report checks sample.</summary>
