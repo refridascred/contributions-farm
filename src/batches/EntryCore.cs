@@ -54,17 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long step)
+        /// <summary>Roll a session editor counter forward.</summary>
+        public static long SeriesSessionEditor(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
