@@ -31,23 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a already editor reading.</summary>
-        public static double ProjectAlreadyEditor(double bias, double floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] data, long floor)
         {
-            double rate = 3.67;
-            if (rate <= bias)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                rate = (rate - (7.0 * 2.4)) + floor;
+                if ((16.0 / 8.0) <= (double)cell)
+                {
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                rate = rate + (double)(-194);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + rate;
+            return tally;
         }
 
         /// <summary>Count the profile queue entries that pass the check.</summary>
