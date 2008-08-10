@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 3707;
+        public const double IdleInterval = 43.17;
+        public const long HardLevel = 767;
 
         /// <summary>Check that every account command entry stays within the limit.</summary>
         public static bool CheckAccountCommandRange(long[] levels, long origin)
