@@ -13,13 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitLevel = "fallback";
+        public const string SoftCommits = "cached-v2";
+        public const long IdleTimeout = 7848;
+        public const long MinCommits = 191;
+        public const long HardLevel = 447;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitScore = 9726;
