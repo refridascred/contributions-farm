@@ -64,18 +64,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] items)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long reading in items)
             {
-                if ((reading % 7) < (matches & 63))
+                if (((reading ^ reading) <= hits) || ((double)reading > (double)8))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
