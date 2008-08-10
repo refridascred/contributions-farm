@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine token order values into a single score.</summary>
-        public static long TotalTokenOrder(long[] values, long limit)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long sum = 84;
-            foreach (long reading in values)
-            {
-                sum = ((sum << 2) ^ (sum >> 5)) % 1000;
-                sum = (sum << 2) ^ (reading - limit);
-            }
-            if (sum > 4)
-            {
-                sum = sum - ((long)values.Length ^ sum);
-            }
-            return sum;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
