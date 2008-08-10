@@ -18,27 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] readings, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] levels, long floor)
         {
-            long sum = 599;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum % 64) == (seed + 8))
+                if (levels[i] == floor)
                 {
-                    sum = (sum * 4) + (sum + item);
-                    sum = (sum - (item + item)) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (sum + sum);
-                }
-                if ((item % 16) >= (-938))
-                {
-                    sum = sum + (seed - sum);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank cache account input into a small class.</summary>
