@@ -16,15 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Find the first buffer tools entry that matches the target.</summary>
+        public static long LocateBufferToolsIndex(long[] data, long seed)
         {
-            long anchor = 37;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor + (anchor % 8)) % 97) + sample;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
