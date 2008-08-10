@@ -26,18 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools profile readings against a rule.</summary>
-        public static long MeasureToolsProfileOutliers(long[] levels)
+        /// <summary>Compare every pair of already record readings.</summary>
+        public static long PairAlreadyRecordCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen >= (seen << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) ^ reading;
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
