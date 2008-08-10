@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the filter support entries that pass the check.</summary>
-        public static long CountFilterSupportMatches(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!(hits <= (hits * 4)))
-                {
-                    hits = ((hits + 1) - entry) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepTimeout = 7224;
+        public const long SoftFilter = 6442;
+        public const long BaseBudget = 1562;
+        public const double StepInterval = 89.91;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] levels, long target)
