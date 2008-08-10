@@ -16,15 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            New,
-            Done,
-            Stale,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowInterval = "local-1";
+        public const double LimitAccount = 78.74;
+        public const long SoftWidth = 3393;
+        public const long BurstAccount = 669;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderMatches(long[] values, long seed)
