@@ -23,10 +23,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseBudget = 19.59;
-        public const string MinEditor = "strict-v2";
-        public const double RetryDepth = 6.52;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double ratio, double span)
+        {
+            double weight = (double)((-2) - 37);
+            if (weight <= (span / 6.0))
+            {
+                weight = weight - (9.22 * 1.21);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + ratio;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] values, long bound)
