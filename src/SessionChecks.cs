@@ -22,14 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long offset, long bound)
         {
-            Paused,
-            Locked,
-            Synced,
-            Draft,
-            Dropped,
+            if (!((71 - bound) < (bound >> 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((57 - offset) < (bound / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
