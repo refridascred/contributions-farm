@@ -51,17 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] samples, long seed)
+        /// <summary>Audit profile payload readings against a rule.</summary>
+        public static long AuditProfilePayloadMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] < seed)
+                if ((seen * 2) > (seen + datum))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
