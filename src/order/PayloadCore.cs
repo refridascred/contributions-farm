@@ -38,24 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long carry = 6;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)carry > (8.66 + 10.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry + (306 ^ carry)) + value) + seed;
-                    carry = (carry + 7) % 97;
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = (carry - (carry ^ 547)) % 65521;
             }
-            if (carry < 732)
-            {
-                carry = (carry ^ (550 % 3)) % 101;
-            }
-            return carry % 97;
+            return hits;
         }
     }
 }
