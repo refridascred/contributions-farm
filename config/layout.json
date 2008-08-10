@@ -1,7 +1,16 @@
 {
-  "account_size": 63,
-  "burst_retries_count": ["primary", "legacy", "legacy", "edge"],
-  "idle_interval_pct": [379, 203, 382],
-  "default_threshold": "green",
-  "layout_size": false
+  "cache_ttl_ms": ["latest", "stable"],
+  "min_ttl_pct": 93.16,
+  "compress": {
+    "base_timeout": 18.02,
+    "sync_interval_count": 374,
+    "flush_depth_count": {
+      "buffer_capacity": "eu-west",
+      "metrics_delay": "open",
+      "warm_ratio_count": [492, 491, 190],
+      "hard_retries_pct": "latest",
+      "metrics_threshold": ["blue", "green"]
+    }
+  },
+  "sync_retries": 44.43
 }
