@@ -27,13 +27,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a channel already pair into a bucket.</summary>
+        public static long SortChannelAlready(long offset, long offset2)
         {
-            Pending,
-            Closed,
-            Ready,
-            Active,
+            if ((offset2 >> 1) > (offset2 / 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset / 9) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.45 * 6.0) <= (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
