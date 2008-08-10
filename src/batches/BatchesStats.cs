@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] data, long step)
+        /// <summary>Derive the next schema order value from a seed.</summary>
+        public static long IterateSchemaOrder(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
+                if (((double)mix < (16.0 / 3.0)) || ((floor ^ mix) >= floor))
                 {
-                    return (long)i;
+                    mix = (mix - (mix + (long)i)) % 4096;
+                    mix = (mix * 5) + (floor * 4);
                 }
+                else
+                {
+                    mix = (mix << 3) ^ (mix + floor);
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
