@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many payload session samples are out of range.</summary>
-        public static long TallyPayloadSessionGaps(long[] series)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)value < 8.0) || (((4.2 + 1.4) < (double)value) && ((0.6 - 8.0) == (double)value)))
+                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
