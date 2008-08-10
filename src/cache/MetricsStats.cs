@@ -22,16 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 3075;
+        public const long MinFarm = 2053;
+        public const long WindowFarm = 9873;
+        public const string WindowWidth = "legacy-edge";
+        public const long RetrySize = 1483;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaOutliers(long[] levels)
