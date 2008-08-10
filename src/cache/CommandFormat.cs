@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "legacy-1";
+        public const long HardMetric = 4370;
+        public const long DefaultMetric = 8977;
+        public const string BatchMetric = "cached-1";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardContext = 4826;
