@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the channel batches series from a seed.</summary>
-        public static long StepChannelBatches(long target)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((target >= ((long)i / 4)) || ((long)i == ((long)i * 3))))
-                {
-                    acc = (acc ^ (6 % 2)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a queue record.</summary>
