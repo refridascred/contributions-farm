@@ -32,14 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool CheckAccountCommandRange(long[] levels, long origin)
         {
-            Pending,
-            Done,
-            Ready,
-            Stale,
-            Closed,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
