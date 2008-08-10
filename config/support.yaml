@@ -1,15 +1,4 @@
 # support settings
-queue_capacity: 1783
-max_limit_ms: stable
-token_ttl:
-  flush_size: edge
-  idle_size: 34.79
-  queue_depth:
-    already_retries: 250
-    batch_ratio: latest
-    layout_window: 60
-  idle_retries_ms: eu-west
-  verbose:
-    dry_run: legacy
-    cluster_capacity: 250
-    strict: 8707
+batches_retries: 36.22
+compress: cached
+cache_timeout: 790
