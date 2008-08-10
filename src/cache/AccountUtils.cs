@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] values, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (item < seed)
+                if ((double)matches == (double)(-27))
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 1) - cell) - origin;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
