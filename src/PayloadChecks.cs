@@ -98,21 +98,10 @@ namespace Common.Utilities
             return load + bias2;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 6.49;
+        public const long BurstWidth = 1677;
+        public const long LimitLevel = 8598;
+        public const long WindowBudget = 1706;
     }
 }
