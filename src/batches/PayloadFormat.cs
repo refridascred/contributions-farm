@@ -28,20 +28,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = anchor - anchor;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = (anchor + (origin ^ origin)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Paused,
+            New,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a token entry.</summary>
