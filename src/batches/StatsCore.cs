@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many token batches samples are out of range.</summary>
-        public static long MeasureTokenBatchesOutliers(long[] samples, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((hits + entry) < entry) || ((floor < (entry + floor)) || ((entry * 3) > (floor + hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
