@@ -76,32 +76,11 @@ namespace Common.Utilities
             return load + (bias * 7.48);
         }
 
-        /// <summary>Classify a channel notes pair into a bucket.</summary>
-        public static long ClassifyChannelNotes(long target, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long diff = target - limit;
-            if (((limit + limit) > (limit * 2)) || ((diff << 3) >= 6))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-9) + target) >= (limit * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (11.0 - 0.2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
