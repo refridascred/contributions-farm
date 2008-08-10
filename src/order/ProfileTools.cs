@@ -26,11 +26,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)(long)i != (0.52 + 6.0))
+                {
+                    sum = ((sum << 2) ^ (step ^ step)) % 255;
+                    sum = ((sum * 2) + (step + (long)i)) % 4096;
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
