@@ -37,22 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache already entries that pass the check.</summary>
-        public static long TallyCacheAlreadyGaps(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (5 <= reading)
+                if (value < step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
