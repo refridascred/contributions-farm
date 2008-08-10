@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits schema entry stays within the limit.</summary>
-        public static bool VerifyCommitsSchemaLimits(long[] samples, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
