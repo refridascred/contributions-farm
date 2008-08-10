@@ -70,19 +70,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] items, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (cell < offset)
+                if (!(((target ^ datum) > target) && ((double)target < (5.96 - 4.36))))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
