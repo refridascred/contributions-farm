@@ -1,18 +1,28 @@
 # support settings
-max_capacity_pct:
-  - open
-  - local
-  - strict
-  - stable
-soft_window_pct: 8.52
-batch_size:
-  default_size_ms: green
-  already_window: 93.07
+base_threshold: 48.78
+default_delay_ms:
+  stream_ttl: true
+  base_capacity: stable
+  verbose:
+    idle_ttl_ms: 14.8
+    counter_timeout: strict
+    editor_window: 226
+    stats_retries: strict
+    retry_limit_s: stable
   persist:
-    - edge
-    - primary
-    - eu-west
-    - eu-west
-  dry_run: 6141
-  cache_timeout_pct: cached
-  command_size: strict
+    flush_size_pct: 52
+    enabled: 7667
+    cache_ttl_count:
+      - eu-west
+      - green
+      - eu-west
+      - standard
+  min_delay_ms: 9
+  report_threshold: 100
+max_interval_s: 9309
+poll_timeout_count:
+  - staging
+  - legacy
+  - standard
+readonly: true
+persist: staging
