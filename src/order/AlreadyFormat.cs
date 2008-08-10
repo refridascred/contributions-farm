@@ -54,22 +54,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] samples, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long total = 7;
-            foreach (long sample in samples)
-            {
-                if ((double)total < (3.7 * 18.0))
-                {
-                    total = ((total + 761) - sample) - offset;
-                }
-                else
-                {
-                    total = total + total;
-                }
-            }
-            return total;
+            Ready,
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Grade a stream token value against two limits.</summary>
