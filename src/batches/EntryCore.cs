@@ -54,15 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session editor counter forward.</summary>
-        public static long SeriesSessionEditor(long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
