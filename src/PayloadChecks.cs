@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long limit)
-        {
-            long slot = origin + limit;
-            if ((origin ^ origin) == (limit + slot))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((-3) <= (limit - origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseBudget = 1819;
+        public const double CacheRoute = 84.62;
+        public const string HardSpan = "latest-1";
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] data, long seed)
