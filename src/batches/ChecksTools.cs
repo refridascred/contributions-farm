@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Locate a window reading by value.</summary>
