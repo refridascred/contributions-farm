@@ -1,11 +1,11 @@
 {
-  "context_window": 100,
-  "support_ratio": ["latest", "eu-west", "eu-west", "standard"],
-  "metric_limit": 100,
-  "batch_ratio_ms": "open",
-  "persist": {
-    "dry_run": 1024,
-    "max_depth": true,
-    "verbose": true
-  }
+  "idle_ttl_ms": "legacy",
+  "base_size": {
+    "compress": [446, 10],
+    "strict": false,
+    "hard_capacity": ["primary", "cached"]
+  },
+  "poll_limit": "standard",
+  "record_retries": "standard",
+  "readonly": [452, 106, 24, 333]
 }
