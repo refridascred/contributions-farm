@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] series, long bound)
         {
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
