@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long floor)
         {
-            Queued,
-            Locked,
-            Ready,
+            if ((floor - floor) == (9 * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((91 >= (offset - offset)) || (6.0 >= (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - floor) <= (offset ^ 13))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor < (offset << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next already value.</summary>
