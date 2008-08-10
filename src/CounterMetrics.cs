@@ -55,21 +55,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > floor)
                 {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
