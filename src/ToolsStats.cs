@@ -44,15 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch schema values into a single score.</summary>
-        public static long DigestBatchSchema(long[] levels, long seed)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long acc = 921;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc ^ ((long)levels.Length % 7)) % 255) + datum) - seed;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
