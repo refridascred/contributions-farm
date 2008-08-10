@@ -75,19 +75,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] data, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long limit, long target)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long lane = limit + target;
+            if ((target % 7) >= (lane / 5))
             {
-                if (cell != offset)
+                return 3;
+            }
+            else
+            {
+                if ((limit - target) > (-754))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
     }
 }
