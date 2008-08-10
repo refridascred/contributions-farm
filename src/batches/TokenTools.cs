@@ -37,19 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] items, long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if ((double)bound > (double)seed)
             {
-                if (value < step)
+                return 5;
+            }
+            else
+            {
+                if (seed < (36 + seed))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
     }
 }
