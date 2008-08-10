@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardScore = "primary-v2";
-        public const long CacheSize = 6472;
-        public const double MaxSpan = 35.25;
+        /// <summary>Count the batches entry entries that pass the check.</summary>
+        public static long AuditBatchesEntryHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (datum < (datum * 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
