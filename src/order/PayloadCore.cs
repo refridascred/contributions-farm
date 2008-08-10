@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples, long offset)
-        {
-            long total = 662;
-            foreach (long datum in samples)
-            {
-                if ((datum < (82 + total)) || (total >= (845 % 12)))
-                {
-                    total = (((total * 2) + 220) % 255) + offset;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 3111;
+        public const string BatchChannel = "local-edge";
+        public const long StepChannel = 3715;
+        public const long IdleWidth = 6393;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
