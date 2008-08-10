@@ -77,10 +77,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowFactor = 9695;
-        public const long MinWidth = 7210;
-        public const long LimitFactor = 4989;
-        public const long WindowCounter = 1725;
+        /// <summary>Compare every pair of cache layout readings.</summary>
+        public static long PairCacheLayoutCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
