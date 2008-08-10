@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Locked,
-            New,
-            Stale,
-            Synced,
+            Done,
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
