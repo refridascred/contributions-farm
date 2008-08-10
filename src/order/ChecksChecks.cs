@@ -28,18 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (547 < (datum * 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
