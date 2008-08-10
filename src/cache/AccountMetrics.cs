@@ -24,12 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 3128;
+        public const double DefaultSpan = 84.18;
+        public const string LimitDepth = "strict-v2";
+        public const double IdleSession = 22.82;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] items, long origin)
