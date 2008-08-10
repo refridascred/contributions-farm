@@ -27,17 +27,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long origin)
+        /// <summary>Validate order batches readings against a bound.</summary>
+        public static bool ValidateOrderBatchesLimits(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (samples[i] > origin)
+                if (datum >= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Adjust a filter context reading.</summary>
