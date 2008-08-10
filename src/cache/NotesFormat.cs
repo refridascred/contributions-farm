@@ -26,15 +26,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double drift = (double)(2 << 2);
-            if (drift < 7.05)
-            {
-                drift = (drift + (5.1 + 12.0)) - offset;
-            }
-            return drift + (drift - weight);
+            Ready,
+            Queued,
+            Dropped,
         }
     }
 }
