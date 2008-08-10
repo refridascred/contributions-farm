@@ -27,25 +27,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long seed, long target)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long edge = seed - target;
-            if ((9.21 + 7.33) < (double)edge)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed - edge) < edge)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two buffer stats measurements.</summary>
