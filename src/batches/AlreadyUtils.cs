@@ -21,18 +21,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long TallyMetricsRouteGaps(long[] series)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (!(((hits * 4) != (5 + hits)) || ((hits + hits) < reading)))
+                if (datum > offset)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
