@@ -44,10 +44,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryDepth = "open";
-        public const string MaxCount = "fallback-edge";
-        public const long BaseContext = 9935;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFactor = 9544;
