@@ -33,11 +33,11 @@ namespace Common.Utilities
             return weight - (double)496;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "standard-1";
-        public const double MinDepth = 9.46;
-        public const long BatchProfile = 7037;
-        public const long IdleCount = 2990;
-        public const long MaxProfile = 3239;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 6425;
+        public const string IdleBudget = "open-1";
+        public const long WindowInterval = 4263;
+        public const double IdleGithubfarm = 27.16;
+        public const long SoftGithubfarm = 396;
     }
 }
