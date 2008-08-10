@@ -27,19 +27,10 @@ namespace Common.Utilities
             return weight - (double)496;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 1830;
+        public const long IdleSpan = 442;
+        public const long MinNotes = 171;
+        public const long HardDepth = 2463;
     }
 }
