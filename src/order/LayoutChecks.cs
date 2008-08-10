@@ -34,24 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry graph input into a small class.</summary>
-        public static long SortEntryGraph(long offset, long offset2)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] series)
         {
-            if ((double)offset2 < (0.56 * 3.7))
+            long result = 267;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.43 / 4.0) != (double)offset2)
+                if (!((6.63 / 7.0) > (double)sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    result = ((result * 3) + result) % 101;
                 }
             }
+            if (result > 26)
+            {
+                result = ((result << 3) ^ (result / 8)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
