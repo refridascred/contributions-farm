@@ -1,7 +1,10 @@
-id,region,state,label
-1,27.38,626,15.56
-2,local,strict,61.05
-3,558,standard,eu-west
-4,eu-west,162,98.98
-5,69,95.0,43.53
-6,853,legacy,6.78
+id,owner,score,label
+1,standard,66,cached
+2,410,167,41.34
+3,968,standard,78
+4,642,256,fallback
+5,0.3,edge,12.11
+6,9.46,fallback,322
+7,979,967,250
+8,75.37,cached,24.68
+9,395,93.75,425
