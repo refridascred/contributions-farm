@@ -16,19 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] series, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Done,
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
