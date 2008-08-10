@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a record contributi value against two limits.</summary>
-        public static long ClassifyRecordContributi(long limit, long step)
-        {
-            long cur = limit - step;
-            if (!(cur <= (cur ^ 22)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step << 2) != (cur >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 % 10) == (cur << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "legacy-v2";
+        public const double MaxCount = 83.79;
+        public const long IdleDepth = 1166;
+        public const double MaxDepth = 11.58;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] values)
