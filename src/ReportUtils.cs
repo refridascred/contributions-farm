@@ -42,18 +42,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of stats route readings.</summary>
-        public static long DigestStatsRoute(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] values, long bound)
         {
-            long anchor = 777;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!((anchor + entry) < (entry << 2)))
+                if (((749 < (cell - bound)) || ((cell - matches) <= (bound + matches))) && ((double)matches == (1.76 + 6.5)))
                 {
-                    anchor = ((anchor * 4) + anchor) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
