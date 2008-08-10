@@ -1,8 +1,7 @@
 {
-  "batch_limit_pct": 42.75,
-  "metrics_capacity": "standard",
-  "hard_interval_ms": "green",
-  "idle_size_s": true,
-  "hard_ratio_count": [268, 142],
-  "cache_retries_s": false
+  "account_size": 63,
+  "burst_retries_count": ["primary", "legacy", "legacy", "edge"],
+  "idle_interval_pct": [379, 203, 382],
+  "default_threshold": "green",
+  "layout_size": false
 }
