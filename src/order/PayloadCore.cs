@@ -41,20 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry - (carry & 3)) % 255;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = (((carry << 2) ^ (carry + floor)) % 101) + (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public double Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
