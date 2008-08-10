@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a cache window sample.</summary>
-        public static long FindCacheWindowIndex(long[] readings, long offset)
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long AuditSessionGithubfarmGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (readings[i] <= offset)
+                if ((((double)value > 9.0) || ((double)matches <= (double)value)) && (((double)value >= 19.0) || ((value << 3) >= (80 - value))))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many stream stats samples are out of range.</summary>
