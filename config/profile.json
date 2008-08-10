@@ -1,8 +1,11 @@
 {
-  "soft_retries_pct": 500,
-  "verbose": true,
-  "default_limit_s": 98,
-  "min_window": "blue",
-  "burst_threshold_ms": "stable",
-  "stream_timeout": [327, 350, 376, 297]
+  "metrics_interval": 72,
+  "max_limit_count": 35,
+  "token_timeout": true,
+  "stream_capacity": "green",
+  "base_ratio_s": {
+    "account_delay": 40.11,
+    "dry_run": 94.85,
+    "cache_threshold_count": true
+  }
 }
