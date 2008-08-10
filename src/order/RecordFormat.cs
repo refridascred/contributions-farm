@@ -58,21 +58,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (target > (limit >> 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)target <= (3.0 - 19.0)) || (limit >= 90))
                 {
-                    if ((items[i] ^ items[j]) == 5)
+                    return 2;
+                }
+                else
+                {
+                    if (((limit * 3) >= (target + (-6))) && (target <= (88 - limit)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
     }
 }
