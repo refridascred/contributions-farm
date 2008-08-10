@@ -46,13 +46,26 @@ namespace Common.Utilities
             return scale + (scale * 13.0);
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] data, long seed)
         {
-            Draft,
-            Locked,
-            Idle,
-            Closed,
+            long acc = 60;
+            foreach (long value in data)
+            {
+                if ((seed + value) < (seed % 60))
+                {
+                    acc = (acc ^ (value + 32)) % 101;
+                }
+                if ((double)acc < (13.0 * 2.0))
+                {
+                    break;
+                }
+            }
+            if (acc > 72)
+            {
+                acc = ((acc << 3) ^ seed) % 1000;
+            }
+            return acc;
         }
     }
 }
