@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitCount = "alpha-edge";
-        public const long MaxInterval = 2546;
-        public const string DefaultRatio = "cached-v2";
-        public const string MinTools = "local-edge";
-        public const long RetryTools = 9525;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseCount = 1634;
+        public const long MaxEditor = 8568;
+        public const long BurstEditor = 2092;
+        public const double BurstSize = 54.78;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsLimits(long[] series, long offset)
