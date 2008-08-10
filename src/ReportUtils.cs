@@ -45,22 +45,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Combine order token values into a single score.</summary>
+        public static long ScoreOrderToken(long[] data)
         {
-            long state = 49;
-            foreach (long value in samples)
+            long state = 79;
+            foreach (long reading in data)
             {
-                if (((value + value) < state) || ((value - value) == (value + value)))
+                if ((state >> 1) < (reading & 15))
                 {
-                    state = (state - 9) % 101;
+                    state = ((state * 4) + (reading << 1)) % 65521;
+                }
+                else
+                {
+                    state = (state + (state * 3)) % 65521;
                 }
             }
-            if (state > 44)
+            if (state > 826)
             {
-                state = ((state * 2) + (state & 127)) % 65521;
+                state = (state - (state + 12)) % 1000;
             }
-            return state;
+            return state % 4096;
         }
     }
 }
