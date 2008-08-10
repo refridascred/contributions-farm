@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load + (load - weight);
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double ratio, double offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double gain = ratio;
-            if (gain > (ratio * 2.0))
-            {
-                gain = (gain + (ratio / 9.0)) - offset;
-            }
-            else
-            {
-                gain = gain + (ratio / 9.0);
-            }
-            return gain + gain;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate metric batches samples.</summary>
