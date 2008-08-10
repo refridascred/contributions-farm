@@ -16,19 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] items, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long result = 482;
+            foreach (long value in values)
             {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result + value) - step;
+                result = ((result << 3) ^ (value * 3)) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Describe the window state values.</summary>
