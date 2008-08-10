@@ -15,10 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "staging-1";
-        public const string LimitRatio = "stable-v2";
-        public const string LimitScore = "latest-v2";
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Dropped,
+            Draft,
+            Done,
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double rate, double span)
