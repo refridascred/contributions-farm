@@ -22,16 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route stats values into a single score.</summary>
-        public static long ScoreRouteStats(long[] series, long target)
-        {
-            long mark = 715;
-            foreach (long datum in series)
-            {
-                mark = ((mark ^ (42 & 127)) ^ datum) + target;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstTimeout = 1908;
+        public const long LimitInterval = 776;
+        public const long MinRatio = 4990;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] items, long bound)
