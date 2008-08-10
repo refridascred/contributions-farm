@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long StepChannel = 3715;
         public const long IdleWidth = 6393;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 6112;
+        public const long BaseSize = 9639;
+        public const long LimitFactor = 3477;
+        public const long LimitTimeout = 5205;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatGaps(long[] series, long seed)
