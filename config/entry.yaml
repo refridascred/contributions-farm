@@ -1,20 +1,19 @@
 # entry settings
-order_window: 31.71
-flush_ttl_s:
-  - 111
-  - 462
-  - 335
-  - 66
-poll_ttl_pct:
-  max_retries:
-    - cached
-    - standard
-    - eu-west
-  batch_ttl: local
-  context_interval: blue
-  min_interval_count: false
-  dry_run: false
-  flush_delay_count: 60
-retry_size: 100
-commits_interval: 60
-cache_retries: false
+poll_window_s: false
+retry_window_count: 60
+tools_timeout:
+  enabled: 84.08
+  command_interval:
+    - green
+    - green
+    - staging
+  compress: 100
+  base_ttl_count: 92.25
+  queue_size: 48
+profile_size:
+  - staging
+  - local
+  - green
+cache_ratio_ms:
+  - 346
+  - 295
