@@ -26,23 +26,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two editor buffer measurements.</summary>
-        public static double ScaleEditorBuffer(double ratio, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            double load = ratio / 8.0;
-            if (load <= span)
+            long state = 470;
+            foreach (long item in readings)
             {
-                load = load + (span * 9.43);
+                state = (state + ((long)readings.Length + state)) ^ item;
+                if (state > (state & 63))
+                {
+                    state = (state ^ 686) % 255;
+                }
             }
-            else
+            if (state > 0)
             {
-                load = load - (double)39;
+                state = (state << 3) ^ (state - state);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - (double)7;
+            return state;
         }
 
         /// <summary>Describe the channel level values.</summary>
