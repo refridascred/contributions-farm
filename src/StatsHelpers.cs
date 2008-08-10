@@ -12,13 +12,39 @@ namespace Common.Utilities
         public const long HardMetric = 1853;
         public const long BurstCount = 3000;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long step, long floor)
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long bound = step - floor;
+            if ((double)5 != (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + floor) != (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step > (4.3 * 14.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor - 4) == (910 + step)) && ((bound >> 5) < (step - floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every command context entry stays within the limit.</summary>
