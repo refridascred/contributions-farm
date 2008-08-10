@@ -53,18 +53,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (count >= (datum * 4))
+                if (sample < origin)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
