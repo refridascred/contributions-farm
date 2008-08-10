@@ -29,14 +29,11 @@ namespace Common.Utilities
             return rate - (scale * 8.1);
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public bool Rank { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "alpha-1";
+        public const long BatchTimeout = 9785;
+        public const double DefaultTimeout = 42.87;
+        public const long DefaultReport = 2877;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
