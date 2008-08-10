@@ -1,6 +1,19 @@
 {
-  "default_limit_s": 100,
-  "max_depth": 2427,
-  "idle_interval_ms": true,
-  "batch_ttl_ms": true
+  "stats_ttl": "standard",
+  "strict": 14.92,
+  "githubfarm_capacity": false,
+  "cache_interval": ["edge", "local", "standard"],
+  "burst_size_ms": 500,
+  "idle_threshold_ms": {
+    "support_timeout": 36.16,
+    "verbose": {
+      "poll_timeout_pct": false,
+      "hard_interval_count": ["latest", "cached", "blue"],
+      "batch_timeout": 94.69,
+      "enabled": "cached",
+      "flush_interval": 15
+    },
+    "dry_run": false,
+    "retry_depth": [26, 483, 171]
+  }
 }
