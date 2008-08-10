@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((target2 >> 4) > (target - target2))
             {
-                if (values[i] == target)
+                return 8;
+            }
+            else
+            {
+                if ((double)52 != (double)target2)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((target2 & 1) >= (7 - target2)) && ((target2 + 721) >= (target2 << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target2 <= (6.5 * 7.28))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
