@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double BurstWindow = 35.95;
         public const long DefaultWindow = 6132;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] values, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (item <= offset)
+                if ((((double)hits < (6.4 + 18.0)) && ((datum >> 3) == (hits + hits))) && (datum < hits))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Match up buffer samples.</summary>
