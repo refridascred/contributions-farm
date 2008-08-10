@@ -56,19 +56,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two filter profile measurements.</summary>
-        public static double ScaleFilterProfile(double rate, double span)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] values, long step)
         {
-            double scale = (span - span) + (span - rate);
-            if (scale <= scale)
+            bool stale = true;
+            foreach (long item in values)
             {
-                scale = scale - scale;
+                if (item >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale - scale;
+            return stale;
         }
     }
 }
