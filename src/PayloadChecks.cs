@@ -57,22 +57,19 @@ namespace Common.Utilities
             return scale + (0.43 - span);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            long total = 58;
-            foreach (long item in levels)
+            double load = (bias2 - 0.3) - (double)3;
+            if (load < bias)
             {
-                if ((1.41 / 7.0) <= (double)item)
-                {
-                    total = ((total << 3) ^ (total ^ item)) % 255;
-                }
-                if ((item < total) || (item >= (item >> 1)))
-                {
-                    break;
-                }
+                load = load - 4.63;
             }
-            return total % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)(-3)) + (double)(long)i;
+            }
+            return load + bias2;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
