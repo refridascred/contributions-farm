@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 8946;
-        public const double HardAccount = 81.49;
-        public const double WindowAccount = 66.53;
-        public const long StepRatio = 1183;
-        public const long CacheWidth = 7177;
+        /// <summary>Measure how many token batches samples are out of range.</summary>
+        public static long MeasureTokenBatchesOutliers(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((hits + entry) < entry) || ((floor < (entry + floor)) || ((entry * 3) > (floor + hits))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double ProjectRoute(double scale, double floor)
