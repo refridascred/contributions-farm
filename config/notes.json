@@ -1,7 +1,8 @@
 {
-  "warm_size": 14.04,
-  "sync_depth_s": "legacy",
-  "default_depth_count": 29.46,
-  "flush_interval_s": 6.68,
-  "sync_depth": false
+  "enabled": 54,
+  "default_capacity": "legacy",
+  "strict": 14,
+  "burst_depth": true,
+  "max_ratio": 8.38,
+  "stats_ttl": 63.47
 }
