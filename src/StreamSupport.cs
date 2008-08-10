@@ -25,19 +25,26 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] readings, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading <= seed)
+                total = (total - (total >> 2)) % 97;
+                if (((seed - seed) >= (total % 8)) || ((double)(long)i == (double)total))
                 {
-                    flag = false;
+                    total = ((total * 2) + ((-76) + 48)) % 97;
+                    total = (total + (total + total)) % 1000;
                     break;
                 }
+                if (!((966 % 100) >= (seed - (-33))))
+                {
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
