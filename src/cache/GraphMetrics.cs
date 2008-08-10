@@ -24,10 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultCount = 1183;
-        public const long LimitReport = 8650;
-        public const long RetryReport = 1839;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long StepGraph(long seed)
