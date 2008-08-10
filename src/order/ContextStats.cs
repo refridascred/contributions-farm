@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a record schema counter forward.</summary>
-        public static long DeriveRecordSchema(long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = carry + (limit - carry);
-                carry = (carry ^ (limit * 3)) % 65521;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
