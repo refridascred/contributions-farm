@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long mark = 634;
-            foreach (long sample in values)
-            {
-                mark = (mark - (sample >> 1)) % 101;
-                if ((double)mark <= 18.0)
-                {
-                    mark = (mark << 2) ^ (sample >> 1);
-                }
-                else
-                {
-                    mark = (mark * 3) + (sample >> 5);
-                }
-            }
-            if (mark < 4)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
