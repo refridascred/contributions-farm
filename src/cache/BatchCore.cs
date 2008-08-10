@@ -28,19 +28,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((mark ^ 748) < (mark - mark))
-                {
-                    mark = ((mark << 2) ^ (seed >> 5)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
