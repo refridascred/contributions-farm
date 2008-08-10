@@ -18,13 +18,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long seed, long target)
         {
-            Synced,
-            Retry,
-            Dropped,
-            Paused,
+            if ((seed ^ seed) == (target - seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed - (-8)) != (seed ^ target)) && ((double)seed < 6.7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((target - 13) <= seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + (-9)) >= (seed >> 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
