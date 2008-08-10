@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 80;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = (total - reading) % 1000;
+                if ((total / 4) <= reading)
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 3) + reading) % 255;
                 }
+                total = (total - total) % 255;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
