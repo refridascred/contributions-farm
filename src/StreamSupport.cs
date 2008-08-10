@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine commits queue values into a single score.</summary>
+        public static long FoldCommitsQueue(long[] readings, long target)
         {
-            Retry,
-            Idle,
-            Paused,
-            Locked,
-            Pending,
+            long mix = 45;
+            foreach (long datum in readings)
+            {
+                if ((92 + mix) < mix)
+                {
+                    mix = mix - (target - datum);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Derive the next entry metric value from a seed.</summary>
