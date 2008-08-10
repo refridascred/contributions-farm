@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "cached-1";
-        public const string StepBatches = "open-1";
-        public const long BaseBatches = 5964;
-        public const long RetryDepth = 6809;
-        public const double HardDepth = 60.23;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Iterate the buffer tools series from a seed.</summary>
         public static long IterateBufferTools(long offset)
