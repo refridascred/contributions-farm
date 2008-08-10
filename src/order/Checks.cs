@@ -61,15 +61,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of profile queue readings.</summary>
-        public static long TallyProfileQueue(long[] items)
+        /// <summary>Audit session window readings against a rule.</summary>
+        public static long AuditSessionWindowHits(long[] values, long step)
         {
-            long state = 8;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                state = ((state - 85) % 97) + sample;
+                if (!(((long)values.Length % 5) >= step))
+                {
+                    count = (count + 3) - item;
+                }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
