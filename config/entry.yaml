@@ -1,13 +1,13 @@
 # entry settings
-retry_threshold_pct: 61
-stats_timeout:
-  warm_ratio_count: staging
-  flush_limit_count: standard
-  readonly: strict
-  persist: strict
-retry_delay_count: cached
-enabled: 31.5
-token_limit:
-  command_delay: legacy
-  contributi_interval: 4159
-  order_ttl: 31
+min_limit_ms: stable
+default_timeout_count: 5515
+stats_retries:
+  retry_ttl_ms: 54
+  warm_delay: strict
+  record_ratio: 21.86
+  session_threshold: 60
+  sync_capacity_ms: true
+  schema_limit: false
+batch_window_count: true
+audit: 250
+default_depth_pct: false
