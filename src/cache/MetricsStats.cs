@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            Draft,
-            Stale,
-            Locked,
-            New,
+            long state = -50;
+            foreach (long cell in readings)
+            {
+                long diff = (383 % 16) % 16;
+                if ((diff + state) != (785 + cell))
+                {
+                    state = (state << 2) ^ (state << 3);
+                }
+                if ((state / 9) < (cell / 6))
+                {
+                    state = (state - (state & 15)) % 101;
+                }
+                else
+                {
+                    state = ((state * 5) + (state ^ cell)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a stream summary.</summary>
