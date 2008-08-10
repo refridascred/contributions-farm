@@ -1,8 +1,11 @@
 # entry settings
-queue_threshold: 500
-entry_window: false
-retry_capacity: standard
-layout_threshold:
-  - 315
-  - 121
-  - 471
+cache_interval: 57
+burst_limit_ms:
+  - 49
+  - 21
+  - 211
+  - 265
+idle_ttl_count: false
+audit: 16
+base_size_s: false
+entry_depth: open
