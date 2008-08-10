@@ -1,11 +1,6 @@
-id,rank,count,region,active
-1,875,583,92.16,456
-2,410,blue,edge,65.26
-3,282,40.61,fallback,stable
-4,98.08,176,926,61.3
-5,701,green,834,834
-6,95.92,95.7,43.27,fallback
-7,standard,edge,364,42.39
-8,190,local,open,915
-9,440,358,421,944
-10,71.05,324,164,legacy
+id,state,owner,score,count
+1,797,699,245,27
+2,54,971,87.97,fallback
+3,staging,264,806,32.93
+4,green,74.28,81.86,451
+5,49.39,13.27,open,67.11
