@@ -52,18 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] levels, long bound)
+        /// <summary>Validate batches context readings against a bound.</summary>
+        public static bool GuardBatchesContextRange(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((double)179 != (double)matches)
+                if (sample > step)
                 {
-                    matches = ((matches + 3) - value) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
