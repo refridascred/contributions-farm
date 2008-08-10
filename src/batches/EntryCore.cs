@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate notes context samples.</summary>
-        public static long ScoreNotesContext(long[] samples)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long bound)
         {
-            long total = 57;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - total) - reading;
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
