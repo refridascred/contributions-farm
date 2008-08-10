@@ -14,14 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Roll a window context counter forward.</summary>
+        public static long SeriesWindowContext(long seed)
         {
-            Closed,
-            Idle,
-            Draft,
-            Paused,
-            Synced,
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
