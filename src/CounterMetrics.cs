@@ -34,18 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context cache entries that pass the check.</summary>
-        public static long AuditContextCacheHits(long[] samples, long seed)
+        /// <summary>Derive the next context record value from a seed.</summary>
+        public static long StepContextRecord(long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (item >= (item - 0))
+                if ((bound + bound) != (bound >> 4))
                 {
-                    count = (count + 2) - seed;
+                    score = score + (7 >> 5);
                 }
+                bool flag = score > (score + score);
+                if (flag)
+                {
+                    score = (score + score) % 97;
+                    flag = (bound < score) && flag;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
