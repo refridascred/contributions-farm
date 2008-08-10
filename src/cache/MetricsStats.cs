@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate format stream samples.</summary>
-        public static long TallyFormatStream(long[] values, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long mix = 17;
-            foreach (long datum in values)
-            {
-                if (!(datum < 773))
-                {
-                    mix = ((mix * 5) + (mix - mix)) + limit;
-                }
-                else
-                {
-                    mix = mix + ((-3) << 2);
-                }
-            }
-            if (mix < 146)
-            {
-                mix = (mix * 5) + ((-82) & 15);
-            }
-            return mix % 1000;
+            Locked,
+            Synced,
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
