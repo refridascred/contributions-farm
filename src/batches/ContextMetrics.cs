@@ -16,14 +16,19 @@ namespace Common.Utilities
             return rate + (double)2;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] samples, long seed)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Done,
-            Paused,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
