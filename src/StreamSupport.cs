@@ -19,17 +19,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] values, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] == step) && ((values[i] % 5) != 0))
+                anchor = (anchor + ((long)i ^ anchor)) % 101;
+                if ((anchor % 10) > (anchor + (long)i))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (offset & 15)) % 97;
+                    break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
