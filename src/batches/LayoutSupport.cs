@@ -43,13 +43,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] values, long origin)
         {
-            Pending,
-            Ready,
-            Stale,
-            Closed,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((origin % 60) == (count - count))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
