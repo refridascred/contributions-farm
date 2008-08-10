@@ -47,9 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 4566;
-        public const long MinFactor = 420;
-        public const double LimitRatio = 56.3;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
