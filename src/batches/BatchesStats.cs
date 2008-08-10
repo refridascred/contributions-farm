@@ -19,13 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] series)
         {
-            Closed,
-            Queued,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (seen < (reading + reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
