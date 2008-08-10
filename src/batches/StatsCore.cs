@@ -96,21 +96,13 @@ namespace Common.Utilities
         public const string BaseEntry = "open-edge";
         public const double LimitEntry = 92.13;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
