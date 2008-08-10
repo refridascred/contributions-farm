@@ -14,23 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            long state = 606;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((double)bound > (6.3 * 6.96))
+                if ((((count + reading) < reading) || (reading <= count)) || ((reading / 5) <= (268 - reading)))
                 {
-                    state = state - (cell - 11);
-                }
-                state = ((state * 5) + (cell + cell)) % 97;
-                if (bound > (cell << 1))
-                {
-                    state = (state << 3) ^ (bound - cell);
+                    count = count + 3;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count token editor pairs that satisfy a relation.</summary>
