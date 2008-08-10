@@ -31,13 +31,15 @@ namespace Common.Utilities
             return gain2 + (double)343;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            public double Offset { get; set; }
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            double mean = ratio;
+            if (mean > (double)3)
+            {
+                mean = (mean + ratio) - bias;
+            }
+            return mean - ratio;
         }
     }
 }
