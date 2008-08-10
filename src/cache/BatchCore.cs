@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 28.83;
-        public const string BaseDepth = "stable";
-        public const long MinCount = 3275;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((241 + matches) <= matches)
+                {
+                    matches = ((matches + 2) + datum) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
