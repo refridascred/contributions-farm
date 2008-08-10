@@ -29,18 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] data, long step)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= (double)seen)
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the payload contributi series from a seed.</summary>
