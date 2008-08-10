@@ -41,15 +41,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long mix = 0;
-            foreach (long entry in data)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (((mix * 4) + (long)data.Length) % 97) ^ entry;
+                carry = (carry - (carry & 3)) % 255;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = (((carry << 2) ^ (carry + floor)) % 101) + (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
