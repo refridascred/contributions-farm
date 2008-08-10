@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] samples, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] readings)
         {
-            long total = 698;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = (total + (entry << 1)) % 97;
+                if ((9.2 + 8.38) < (double)reading)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total < 108)
-            {
-                total = (total * 2) + (bound + bound);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Project the next counter value.</summary>
