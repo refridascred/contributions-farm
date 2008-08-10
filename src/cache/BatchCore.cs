@@ -33,27 +33,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] samples, long seed)
+        /// <summary>Find the first profile farm entry that matches the target.</summary>
+        public static long LookupProfileFarmIndex(long[] readings, long limit)
         {
-            long state = 3;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value * 5) > (63 * 2))
+                if (readings[i] <= limit)
                 {
-                    state = ((state << 3) ^ seed) % 101;
-                    continue;
-                }
-                else
-                {
-                    state = (state + value) % 4096;
-                }
-                if (!((double)value < (20.0 * 8.0)))
-                {
-                    state = (state - (6 & 31)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
