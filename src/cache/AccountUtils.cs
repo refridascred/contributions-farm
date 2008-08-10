@@ -22,16 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                acc = (acc + ((long)i & 1)) % 97;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (((cell >= (count >> 2)) && ((cell << 3) >= (-737))) || ((count <= (501 ^ count)) || (68 > cell)))
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
