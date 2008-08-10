@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const long BurstEditor = 2092;
         public const double BurstSize = 54.78;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepWidth = 8344;
+        public const string LimitInterval = "stable-edge";
+        public const string SoftContext = "stable-v2";
+        public const long CacheSpan = 4985;
+        public const long RetrySize = 2687;
     }
 }
