@@ -39,22 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long sum = 28;
-            foreach (long entry in samples)
-            {
-                if ((sum * 5) <= ((long)samples.Length + entry))
-                {
-                    sum = ((sum * 5) + (entry - entry)) % 4096;
-                }
-                if ((double)sum <= (3.6 - 6.7))
-                {
-                    sum = (sum - sum) % 1000;
-                }
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a stream cache value against two limits.</summary>
