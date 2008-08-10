@@ -33,19 +33,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 65.61;
+        public const long LimitSize = 9967;
+        public const string SoftRatio = "fallback-edge";
     }
 }
