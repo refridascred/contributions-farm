@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const long HardContext = 7227;
         public const double LimitContext = 47.92;
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double span)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double ratio = (double)(16 / 6);
-            if (ratio > (span / 6.0))
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + 8.2;
+            Queued,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
