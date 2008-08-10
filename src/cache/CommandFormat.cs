@@ -17,22 +17,15 @@ namespace Common.Utilities
         public const long MaxContext = 1953;
         public const string IdleCount = "standard-1";
 
-        /// <summary>Digest a series of token checks entries.</summary>
-        public static long CombineTokenChecks(long[] items, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            long anchor = 422;
-            foreach (long cell in items)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (anchor >= 9)
-                {
-                    anchor = (((anchor * 5) + (long)items.Length) % 97) + cell;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (anchor < 96)
-            {
-                anchor = ((anchor << 3) ^ (anchor - offset)) % 97;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
