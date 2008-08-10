@@ -34,10 +34,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultBudget = 1879;
-        public const long BurstEditor = 4547;
-        public const long CacheSpan = 6531;
+        /// <summary>Rank entry graph input into a small class.</summary>
+        public static long SortEntryGraph(long offset, long offset2)
+        {
+            if ((double)offset2 < (0.56 * 3.7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.43 / 4.0) != (double)offset2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double HardCount = 58.13;
