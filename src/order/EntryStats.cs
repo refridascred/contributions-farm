@@ -50,15 +50,12 @@ namespace Common.Utilities
         public const double MinFormat = 53.2;
         public const double StepCount = 98.29;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double weight, double floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double drift = weight / 2.0;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - weight) - (double)(long)i) + floor;
-            }
-            return drift - (drift / 5.0);
+            Dropped,
+            Pending,
+            Ready,
         }
     }
 }
