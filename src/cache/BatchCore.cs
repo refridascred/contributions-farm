@@ -12,24 +12,12 @@ namespace Common.Utilities
             return drift + (2.0 - weight);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings, long step)
-        {
-            long anchor = 74;
-            foreach (long datum in readings)
-            {
-                if (step > (anchor - datum))
-                {
-                    continue;
-                }
-                anchor = (anchor << 2) ^ (7 & 1);
-            }
-            if (anchor > 18)
-            {
-                anchor = (anchor - 17) % 97;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 5011;
+        public const long SoftBatch = 6292;
+        public const string StepLevel = "standard-1";
+        public const string WindowBatch = "fallback-1";
+        public const string HardSpan = "strict-v2";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] levels, long seed)
