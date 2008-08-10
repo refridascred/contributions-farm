@@ -27,23 +27,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            long score = 54;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                score = (((score * 2) + (score ^ score)) % 65521) - item;
-                if ((5.0 + 7.4) <= (double)step)
+                if (547 < (datum * 5))
                 {
-                    score = (score + (score + step)) % 97;
-                }
-                else
-                {
-                    score = (score << 2) ^ score;
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
