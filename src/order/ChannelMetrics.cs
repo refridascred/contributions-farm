@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] samples, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
