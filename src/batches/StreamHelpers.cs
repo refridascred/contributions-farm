@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long CombineToolsAccount(long[] series, long offset)
+        /// <summary>Find the first already entry entry that matches the target.</summary>
+        public static long FindAlreadyEntryIndex(long[] data, long offset)
         {
-            long acc = 9;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > (acc + item))
+                if (data[i] < offset)
                 {
-                    acc = ((acc * 3) + (acc ^ 4)) - offset;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
