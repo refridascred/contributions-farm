@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] levels, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                if (datum <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
