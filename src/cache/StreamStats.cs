@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items, long step)
         {
-            if ((floor - floor) == (9 * 3))
+            long anchor = 5;
+            foreach (long sample in items)
             {
-                return 5;
+                anchor = (anchor + (anchor + sample)) + step;
             }
-            else
-            {
-                if ((91 >= (offset - offset)) || (6.0 >= (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - floor) <= (offset ^ 13))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor < (offset << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a queue stats.</summary>
