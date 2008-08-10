@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseRatio = 9494;
-        public const string WindowSpan = "stable-v2";
-        public const string RetryScore = "cached";
+        /// <summary>Classify a batches layout pair into a bucket.</summary>
+        public static long ClassifyBatchesLayout(long step, long step2)
+        {
+            long span = step - step2;
+            if (((13.0 * 8.0) != (double)step) || ((1.6 / 4.0) > (double)span))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step2 <= (5.2 / 6.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step >> 2) < (span + step)) || (step >= (step2 / 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (3.5 > (double)step2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
