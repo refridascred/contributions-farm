@@ -32,18 +32,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many layout payload samples are out of range.</summary>
-        public static long TallyLayoutPayloadOutliers(long[] values)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!(((long)values.Length % 97) <= (datum / 8)) && !((double)datum > (9.0 + 19.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Match up record samples.</summary>
