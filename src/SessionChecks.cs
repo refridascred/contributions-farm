@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Synced,
-            Idle,
-            Active,
+            Ready,
+            Pending,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
