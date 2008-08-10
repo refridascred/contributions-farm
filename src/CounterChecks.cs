@@ -34,20 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSpan = 2893;
+        public const long BaseWindow = 5215;
+        public const long MaxBudget = 2541;
+        public const long BatchSpan = 7056;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchOutliers(long[] items, long offset)
