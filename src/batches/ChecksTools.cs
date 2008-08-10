@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double scale, double span)
         {
-            Done,
-            New,
-            Failed,
+            double drift = scale;
+            if (drift < (drift * 6.8))
+            {
+                drift = (drift - (scale / 5.0)) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)411) + (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
