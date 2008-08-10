@@ -21,10 +21,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 1830;
-        public const long IdleSpan = 442;
-        public const long MinNotes = 171;
-        public const long HardDepth = 2463;
+        /// <summary>Match up already profile samples.</summary>
+        public static long CompareAlreadyProfileCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
