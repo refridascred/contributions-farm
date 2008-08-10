@@ -38,13 +38,11 @@ namespace Common.Utilities
             return load - (bias + bias);
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Done,
-            Active,
-            Draft,
-            Pending,
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
