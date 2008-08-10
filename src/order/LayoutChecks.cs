@@ -15,18 +15,13 @@ namespace Common.Utilities
         public const string BurstBuffer = "standard-edge";
         public const long DefaultWidth = 8380;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] levels, long limit)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (4.64 > (double)item)
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
