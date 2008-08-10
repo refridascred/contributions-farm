@@ -34,25 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long step, long step2)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] items, long limit)
         {
-            long offset = step + step2;
-            if ((13.0 - 17.0) == (double)offset)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step * 3) > step2)
+                if (!(((13.0 / 5.0) != (double)hits) && ((hits + limit) >= (limit & 63))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    hits = (hits + 2) ^ datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
