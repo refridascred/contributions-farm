@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] items)
-        {
-            long acc = 94;
-            foreach (long item in items)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc ^ acc) % 1000) + (long)i2;
-                }
-                if ((acc > item) && ((item << 1) > item))
-                {
-                    acc = (acc ^ (acc + 614)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (item / 3)) % 65521;
-                }
-            }
-            if (acc < 98)
-            {
-                acc = (acc << 3) ^ (acc ^ acc);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleLevel = "legacy-edge";
+        public const long StepOrder = 5739;
+        public const string MinCount = "legacy-v2";
+        public const long RetryScore = 3848;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
