@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 10.37;
-        public const long IdleSize = 5972;
-        public const long WindowLevel = 5119;
-        public const long BurstCommits = 6081;
-        public const string LimitWidth = "open";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 2425;
+        public const double MaxBudget = 87.32;
+        public const long IdleCount = 3685;
+        public const long IdleCounter = 9030;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long GradeCluster(long limit, long step)
