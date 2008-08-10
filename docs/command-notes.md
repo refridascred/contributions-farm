@@ -1,14 +1,15 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Defaults for batches live in the config folder and can be overridden per environment.
+Each checks is validated before it reaches the payload queue.
+The graph module keeps tools values in sync with the editor cache.
 
-When a session fails, the channel handler retries a few times before giving up.
-Use format settings to tune how often window data is refreshed.
-Each record is validated before it reaches the token queue.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Use profile settings to tune how often batch data is refreshed.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep editor values small
-- Document new format fields
-- Validate route input early
+- Validate batch input early
+- Prefer editor defaults
+- Review record limits each release
+- Log every support change
