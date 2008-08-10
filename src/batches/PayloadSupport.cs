@@ -28,18 +28,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes queue readings against a rule.</summary>
-        public static long CountNotesQueueHits(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long prev = floor - floor2;
+            if (((39 & 15) <= (floor2 + 74)) || ((double)floor2 != (8.0 * 0.14)))
             {
-                if ((double)entry > (12.0 - 0.57))
+                return 4;
+            }
+            else
+            {
+                if (!((prev + 6) >= (floor2 ^ prev)))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor2 + prev) < (floor2 % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up editor samples.</summary>
