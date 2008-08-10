@@ -22,12 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultLevel = 8725;
-        public const long WindowRatio = 2874;
-        public const long BaseWidth = 5544;
-        public const long WindowDepth = 4588;
-        public const string MinLevel = "stable-edge";
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i + 992) <= (offset << 1))
+                {
+                    sum = sum + (sum << 1);
+                    sum = ((sum * 2) + (offset ^ sum)) % 97;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = sum + ((long)i2 + 993);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long SeekWindowIndex(long[] values, long floor)
