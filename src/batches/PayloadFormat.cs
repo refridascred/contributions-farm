@@ -44,13 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
