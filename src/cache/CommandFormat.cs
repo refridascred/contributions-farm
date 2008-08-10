@@ -32,15 +32,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next command graph value from a seed.</summary>
-        public static long IterateCommandGraph(long seed)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double rate, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            double mean = (bias + rate) + (double)16;
+            if (mean <= (double)55)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                mean = mean - (mean - mean);
             }
-            return sum;
+            return mean - 4.2;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
