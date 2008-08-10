@@ -13,27 +13,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            long acc = 12;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (6.0 <= (4.6 - 4.0))
-                {
-                    acc = acc - acc;
-                }
-                acc = (acc - (sample >> 1)) % 1000;
-                if ((sample / 9) < acc)
-                {
-                    acc = acc + (sample - acc);
-                }
+                score = score - origin;
+                score = ((score << 3) ^ (origin - score)) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (acc < 89)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
