@@ -36,22 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] series, long limit)
+        /// <summary>Compare every pair of already counter readings.</summary>
+        public static long PairAlreadyCounterCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((488 >> 4) < datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
