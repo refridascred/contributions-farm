@@ -12,18 +12,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache cluster samples are out of range.</summary>
-        public static long CountCacheClusterGaps(long[] readings, long offset)
+        /// <summary>Accumulate batch report samples.</summary>
+        public static long TotalBatchReport(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = 6;
+            foreach (long item in data)
             {
-                if (seen >= datum)
-                {
-                    seen = (seen + 1) + offset;
-                }
+                mix = (mix - mix) % 1000;
+                mix = (mix << 3) ^ (item << 1);
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
