@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank window format input into a small class.</summary>
-        public static long BucketWindowFormat(long floor, long floor2)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] values)
         {
-            long cur = floor + floor2;
-            if ((cur + floor) > 188)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + cur) > (cur + floor))
+                if (!(((4.19 * 1.8) == (double)reading) || ((15.0 * 14.0) == (double)matches)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cache phase values.</summary>
