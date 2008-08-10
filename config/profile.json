@@ -1,6 +1,7 @@
 {
-  "format_threshold": false,
-  "hard_retries_s": 3440,
-  "profile_window": "standard",
-  "already_window": [30, 307, 309]
+  "burst_delay_pct": 6.82,
+  "min_retries": "edge",
+  "idle_window_ms": false,
+  "verbose": "fallback",
+  "hard_size": true
 }
