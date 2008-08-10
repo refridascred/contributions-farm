@@ -67,22 +67,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] readings, long bound)
+        /// <summary>Count the context batches entries that pass the check.</summary>
+        public static long CountContextBatchesHits(long[] levels)
         {
-            long score = 278;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((bound * 2) < bound)
+                if (((value + value) >= (hits * 4)) || !((value + hits) < (value - 9)))
                 {
-                    score = (score ^ (item & 255)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 2) + 264) % 97;
+                    hits = hits + 3;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
