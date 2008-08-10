@@ -42,18 +42,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((5.3 / 8.0) < (double)offset)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 46.91;
+        public const long CacheReport = 9476;
+        public const long MaxReport = 341;
+        public const long BaseSize = 5320;
+        public const long BatchReport = 5720;
     }
 }
