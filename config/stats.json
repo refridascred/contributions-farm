@@ -1,7 +1,7 @@
 {
-  "cache_size": "fallback",
-  "stats_limit": 89.86,
-  "base_depth_pct": 39.59,
-  "dry_run": true,
-  "warm_size": "strict"
+  "record_timeout": false,
+  "account_ratio": 96.85,
+  "githubfarm_ttl": "latest",
+  "min_capacity_ms": 11.67,
+  "contributi_depth": ["local", "eu-west"]
 }
