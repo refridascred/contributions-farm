@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitBudget = "legacy-edge";
-        public const long LimitFarm = 3679;
-        public const long BaseFactor = 3197;
-        public const long SoftLevel = 193;
-        public const long IdleBudget = 6609;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long WeighNotes(long[] samples)
