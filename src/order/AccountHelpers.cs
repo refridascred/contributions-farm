@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 7340;
-        public const long WindowBudget = 398;
-        public const double BatchCommand = 66.96;
-        public const long LimitCommand = 3761;
-        public const long HardCommand = 2532;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long DigestOrder(long[] data)
