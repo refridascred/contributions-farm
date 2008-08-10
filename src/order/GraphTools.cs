@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] readings, long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((offset - sample) < 6)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Failed,
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Adjust a metric reading.</summary>
