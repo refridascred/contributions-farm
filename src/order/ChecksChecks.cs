@@ -26,19 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheBudget = 442;
+        public const double RetryRoute = 17.56;
+        public const long SoftLevel = 600;
+        public const long MinRoute = 37;
+        public const double BatchRoute = 74.53;
     }
 }
