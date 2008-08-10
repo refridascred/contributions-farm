@@ -28,17 +28,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] levels, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long step, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((0.8 * 11.0) >= (double)target) || ((double)target <= (double)step))
             {
-                if (levels[i] == limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= (7.0 * 6.4))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > (double)5)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0 < (step * 3)) && (target > (target >> 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
