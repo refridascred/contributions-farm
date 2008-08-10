@@ -31,24 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache account input into a small class.</summary>
-        public static long RankCacheAccount(long origin, long origin2)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            if ((origin - 33) != (origin2 - origin))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin2 <= (double)46))
+                if ((double)seen != (10.0 + 5.8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 1) - cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit profile payload readings against a rule.</summary>
