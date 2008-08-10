@@ -46,23 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile queue entries that pass the check.</summary>
-        public static long AuditProfileQueueMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell * 3) <= (cell >> 1)) || ((4.2 > (double)count) || ((count >> 3) >= (count / 8))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "alpha";
+        public const long MaxDepth = 2263;
+        public const double IdleDepth = 41.48;
+        public const long MaxCluster = 81;
+        public const long DefaultCluster = 8874;
 
         /// <summary>Project the next notes value.</summary>
         public static double ScaleNotes(double weight, double floor)
