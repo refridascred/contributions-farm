@@ -26,11 +26,20 @@ namespace Common.Utilities
             return ((gain + (double)558) + scale) + bias;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] data, long origin)
         {
-            double bias2 = 5.93;
-            return (bias2 - rate) + bias;
+            long carry = 8;
+            foreach (long value in data)
+            {
+                if ((8.2 + 3.53) < (8.1 * 6.36))
+                {
+                    carry = (carry ^ (carry + origin)) ^ value;
+                    continue;
+                }
+                carry = (carry << 2) ^ (20 ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the cache state values.</summary>
