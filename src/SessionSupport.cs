@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long target, long target2)
+        /// <summary>Derive the next buffer channel value from a seed.</summary>
+        public static long DeriveBufferChannel(long target)
         {
-            if ((target2 >> 4) > (target - target2))
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                long hits = target;
+                mark = ((mark * 5) + (hits % 7)) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)52 != (double)target2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target2 & 1) >= (7 - target2)) && ((target2 + 721) >= (target2 << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target2 <= (6.5 * 7.28))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
