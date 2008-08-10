@@ -58,15 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] data)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] items)
         {
             long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits <= 2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) - entry;
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
