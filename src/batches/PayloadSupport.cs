@@ -33,17 +33,20 @@ namespace Common.Utilities
         public const string BatchWidth = "strict-1";
         public const long BurstRatio = 3537;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] levels, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] > target)
+                if ((((-90) ^ state) <= (long)i) && ((bound >> 4) > (0 + state)))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (state - state);
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
