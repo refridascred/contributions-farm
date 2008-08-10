@@ -1,13 +1,14 @@
 # entry settings
-enabled: 3723
-persist:
-  - 435
-  - 139
-  - 471
-poll_window_pct: 42.71
-stats_ratio:
-  - 158
-  - 421
-  - 127
-  - 424
-min_interval_s: green
+batch_ratio_pct:
+  - stable
+  - edge
+  - staging
+  - staging
+tools_delay: eu-west
+retry_threshold: 6.32
+default_window_ms: 500
+enabled:
+  - primary
+  - cached
+  - green
+  - green
