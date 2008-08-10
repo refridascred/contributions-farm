@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches graph reading by value.</summary>
-        public static long SeekBatchesGraphIndex(long[] values, long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] <= limit)
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
