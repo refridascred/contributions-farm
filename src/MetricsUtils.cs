@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const double StepGithubfarm = 65.87;
         public const long BurstFactor = 9200;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((double)value <= (double)hits) || ((value <= (value - value)) && ((value - value) > value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up record samples.</summary>
