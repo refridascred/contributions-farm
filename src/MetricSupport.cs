@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] readings, long step)
         {
-            long score = 92;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading != (double)score)
+                if (readings[i] <= step)
                 {
-                    score = (score ^ (reading - reading)) % 101;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
