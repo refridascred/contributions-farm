@@ -53,15 +53,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the report order series from a seed.</summary>
-        public static long DeriveReportOrder(long seed)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
