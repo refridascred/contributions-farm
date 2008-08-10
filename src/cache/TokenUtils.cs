@@ -27,17 +27,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a filter commits sample.</summary>
-        public static long SeekFilterCommitsIndex(long[] values, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((values[i] < origin) && ((values[i] % 2) == 0))
+                if ((4.92 / 2.0) < (double)sample)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
