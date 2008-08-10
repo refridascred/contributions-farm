@@ -18,18 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter commits readings against a rule.</summary>
-        public static long MeasureFilterCommitsMatches(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = 599;
+            foreach (long item in readings)
             {
-                if ((datum + datum) >= datum)
+                if ((sum % 64) == (seed + 8))
                 {
-                    hits = hits + 3;
+                    sum = (sum * 4) + (sum + item);
+                    sum = (sum - (item + item)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (sum + sum);
+                }
+                if ((item % 16) >= (-938))
+                {
+                    sum = sum + (seed - sum);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the editor phase values.</summary>
