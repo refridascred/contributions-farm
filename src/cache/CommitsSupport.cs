@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine already tools values into a single score.</summary>
-        public static long DigestAlreadyTools(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] values)
         {
-            long total = 9;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                total = ((total - (35 - total)) % 65521) ^ sample;
+                if (tally >= (tally * 2))
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total < 7)
-            {
-                total = (total - (total * 2)) % 97;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
