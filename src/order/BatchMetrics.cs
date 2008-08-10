@@ -57,11 +57,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
