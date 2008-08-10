@@ -53,39 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long cur = limit ^ step;
-            if ((limit & 127) < limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)cur > (7.77 * 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - (-53)) != (step % 10))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (9.3 / 8.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Ready,
+            Pending,
+            New,
         }
     }
 }
