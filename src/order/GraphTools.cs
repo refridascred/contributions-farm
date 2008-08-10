@@ -54,13 +54,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
