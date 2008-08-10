@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a checks info.</summary>
