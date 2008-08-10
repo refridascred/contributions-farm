@@ -20,24 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values)
-        {
-            long anchor = -62;
-            foreach (long datum in values)
-            {
-                anchor = anchor + (datum + 87);
-                if ((116 & 3) <= (anchor ^ datum))
-                {
-                    anchor = anchor + (anchor ^ datum);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor >> 4)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 4826;
+        public const long MinTimeout = 2666;
+        public const long MaxContext = 1953;
+        public const string IdleCount = "standard-1";
 
         /// <summary>Grade a metric record value against two limits.</summary>
         public static long GradeMetricRecord(long target, long offset)
