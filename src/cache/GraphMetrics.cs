@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mix >> 2) >= mix)
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 3) + (mix - mix)) % 255;
                 }
+                else
+                {
+                    mix = mix - (mix + step);
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
