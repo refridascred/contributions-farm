@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const double StepGithubfarm = 65.87;
         public const long BurstFactor = 9200;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (((double)value <= (double)hits) || ((value <= (value - value)) && ((value - value) > value)))
+                if ((((3.0 - 16.0) < (double)count) || ((double)value > 6.2)) || ((6.26 - 2.1) <= (double)value))
                 {
-                    hits = hits + 3;
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
