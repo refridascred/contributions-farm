@@ -30,18 +30,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((hits % 5) < hits))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
