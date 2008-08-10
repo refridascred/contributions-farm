@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the support already entries that pass the check.</summary>
-        public static long AuditSupportAlreadyOutliers(long[] values)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (9.17 <= (double)entry)
+                if (samples[i] >= step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
