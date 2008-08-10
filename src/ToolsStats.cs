@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] series, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (item < bound)
+                if (((value + tally) == (value / 3)) && !((tally + tally) != (value >> 1)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
