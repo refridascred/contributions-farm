@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] readings)
+        /// <summary>Check that every editor token entry stays within the limit.</summary>
+        public static bool GuardEditorTokenBounds(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((9.2 + 8.38) < (double)reading)
+                if (item >= floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Project the next counter value.</summary>
