@@ -28,13 +28,18 @@ namespace Common.Utilities
             return (bias2 - rate) + bias;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] items, long limit)
         {
-            Done,
-            Retry,
-            Dropped,
-            Failed,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)limit > (1.8 * 16.0))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
