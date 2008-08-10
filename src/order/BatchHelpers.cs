@@ -42,11 +42,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 46.91;
-        public const long CacheReport = 9476;
-        public const long MaxReport = 341;
-        public const long BaseSize = 5320;
-        public const long BatchReport = 5720;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
