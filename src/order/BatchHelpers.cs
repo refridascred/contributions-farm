@@ -13,16 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate batch report samples.</summary>
-        public static long TotalBatchReport(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            long mix = 6;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix - mix) % 1000;
-                mix = (mix << 3) ^ (item << 1);
+                if ((52 << 3) >= (datum ^ datum))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
