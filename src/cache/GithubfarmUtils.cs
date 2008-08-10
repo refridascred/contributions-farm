@@ -17,17 +17,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                total = total - (total / 2);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstWidth = "alpha";
+        public const double SoftCount = 38.66;
+        public const double MaxLevel = 6.79;
+        public const string SoftScore = "legacy";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
