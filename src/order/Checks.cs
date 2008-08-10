@@ -13,30 +13,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of checks already entries.</summary>
-        public static long CombineChecksAlready(long[] samples, long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mix = 221;
-            foreach (long item in samples)
-            {
-                if ((step - 9) == (mix / 3))
-                {
-                    mix = (mix - (item / 3)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (item - step)) % 101;
-                }
-                if ((0 & 3) >= (item << 3))
-                {
-                    break;
-                }
-            }
-            if (mix < 57)
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a metrics token pair into a bucket.</summary>
