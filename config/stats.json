@@ -1,7 +1,5 @@
 {
-  "checks_depth": "staging",
-  "strict": 18,
-  "tools_delay": "green",
-  "stream_depth": "edge",
-  "retry_ttl": 60
+  "sync_retries": ["fallback", "primary", "legacy", "legacy"],
+  "verbose": "latest",
+  "metric_timeout": 65.51
 }
