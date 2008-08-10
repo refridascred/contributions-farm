@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 1518;
+        public const double SoftScore = 25.96;
+        public const double MinContext = 18.62;
+        public const long HardContext = 9783;
+        public const double BurstScore = 24.07;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenMatches(long[] items, long bound)
