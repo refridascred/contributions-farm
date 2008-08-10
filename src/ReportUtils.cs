@@ -47,10 +47,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultOrder = 79.91;
-        public const long BurstCount = 5483;
-        public const string HardLevel = "strict-1";
-        public const double LimitOrder = 40.97;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples)
+        {
+            long state = 49;
+            foreach (long value in samples)
+            {
+                if (((value + value) < state) || ((value - value) == (value + value)))
+                {
+                    state = (state - 9) % 101;
+                }
+            }
+            if (state > 44)
+            {
+                state = ((state * 2) + (state & 127)) % 65521;
+            }
+            return state;
+        }
     }
 }
