@@ -26,18 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "primary-1";
+        public const long SoftDepth = 9450;
+        public const string RetryTimeout = "open-v2";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 8356;
