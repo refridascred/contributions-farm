@@ -63,16 +63,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score << 3) ^ ((long)i ^ 560)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Dropped,
+            Active,
+            Failed,
+            New,
         }
     }
 }
