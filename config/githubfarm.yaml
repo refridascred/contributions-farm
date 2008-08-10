@@ -1,42 +1,6 @@
 # githubfarm settings
-cache_limit:
-  - staging
-  - staging
-  - staging
-token_delay:
-  - edge
-  - legacy
-  - open
-retry_interval:
-  - 56
-  - 489
-dry_run: true
-hard_delay_ms: staging
-already_ratio:
-  max_ttl_count:
-    strict: green
-    burst_ttl_pct: 8049
-    batch_threshold_count:
-      - 64
-      - 10
-    poll_ttl: 60
-    flush_delay_ms: 7
-    metrics_delay: green
-  min_ttl_s:
-    cache_depth_count: 57.25
-    base_capacity_ms:
-      - green
-      - eu-west
-      - fallback
-    warm_interval_count: fallback
-  soft_capacity:
-    - 460
-    - 411
-    - 79
-    - 349
-  batches_depth:
-    - legacy
-    - primary
-    - strict
-  hard_timeout_ms: 73.47
-  warm_window_pct: 3.31
+counter_ttl: fallback
+queue_ratio: 250
+readonly: 5039
+warm_interval_count: 46.77
+audit: 20
