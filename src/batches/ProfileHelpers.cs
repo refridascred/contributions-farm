@@ -55,13 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] items)
         {
-            Retry,
-            Active,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (double)hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
