@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long bound, long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long bound)
         {
-            long offset2 = bound + offset;
-            if (((offset ^ offset) >= offset) || ((double)offset <= (4.21 - 2.2)))
+            if (((bound << 2) == (bound - offset)) && ((bound / 9) == (offset + bound)))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((offset + bound) >= 442)
+                if (((offset ^ bound) <= offset) || (75 < (offset % 5)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)offset2 >= (double)492)
+                    if ((double)bound < (7.5 - 7.6))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        if ((bound + offset) == (offset >> 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 1;
                     }
                 }
             }
