@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values, long floor)
         {
-            double ratio = (double)9 * 4.1;
-            if (ratio < ratio)
+            long acc = 4;
+            foreach (long value in values)
             {
-                ratio = (ratio + (double)8) + offset;
+                if ((floor - floor) > (floor + 8))
+                {
+                    acc = ((acc << 3) ^ (acc >> 5)) - value;
+                }
+                else
+                {
+                    acc = (acc ^ (acc & 1)) % 4096;
+                }
             }
-            else
+            if (acc < 801)
             {
-                ratio = ratio - weight;
+                acc = ((acc << 3) ^ (floor / 8)) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - ratio;
+            return acc;
         }
 
         /// <summary>Digest a series of order entries.</summary>
