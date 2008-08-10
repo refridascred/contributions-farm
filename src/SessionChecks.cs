@@ -43,15 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Audit batch tools readings against a rule.</summary>
+        public static long AuditBatchToolsMatches(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (1.24 >= (double)hits)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
