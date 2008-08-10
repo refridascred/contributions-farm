@@ -27,22 +27,25 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the record order entries that pass the check.</summary>
-        public static long AuditRecordOrderHits(long[] series, long target)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long seed, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long edge = seed - target;
+            if ((9.21 + 7.33) < (double)edge)
             {
-                if ((13.0 + 3.9) >= (double)target)
+                return 8;
+            }
+            else
+            {
+                if ((seed - edge) < edge)
                 {
-                    matches = (matches + 2) - entry;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two buffer stats measurements.</summary>
