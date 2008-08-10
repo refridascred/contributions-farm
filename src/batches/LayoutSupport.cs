@@ -35,11 +35,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 8262;
-        public const long CacheChannel = 8005;
-        public const long BaseDepth = 1868;
-        public const long IdleChannel = 1154;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (item >= (293 & 127))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a channel notes pair into a bucket.</summary>
         public static long ClassifyChannelNotes(long target, long limit)
