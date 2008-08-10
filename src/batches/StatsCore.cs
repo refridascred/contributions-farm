@@ -49,15 +49,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double bias, double floor)
+        /// <summary>Classify a stream report pair into a bucket.</summary>
+        public static long RankStreamReport(long floor, long seed)
         {
-            double ratio = bias;
-            if (ratio < floor)
+            long next = floor + seed;
+            if ((seed * 5) < (floor + seed))
             {
-                ratio = ratio + floor;
+                return 4;
             }
-            return ratio + floor;
+            else
+            {
+                if (!((19.0 * 18.0) != (double)next))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + 0) < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next % 60) > 397)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
