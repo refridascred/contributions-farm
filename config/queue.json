@@ -1,7 +1,8 @@
 {
-  "warm_ttl_s": "primary",
-  "buffer_threshold": 250,
-  "sync_ratio_count": ["stable", "stable", "latest", "green"],
-  "default_threshold": 55,
-  "audit": 70
+  "max_ratio": [82, 41, 85, 206],
+  "readonly": false,
+  "idle_ttl": 85.17,
+  "idle_capacity": [146, 209, 154],
+  "graph_ratio": 999,
+  "flush_window": "standard"
 }
