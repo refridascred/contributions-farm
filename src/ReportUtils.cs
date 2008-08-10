@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of editor checks readings.</summary>
-        public static long PairEditorChecksCount(long[] series)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long target)
         {
-            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] < target) && ((series[i] % 5) != 0))
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
