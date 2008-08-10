@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double ratio, double bias)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            double weight = ratio;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight - ratio) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + (bias * 2.0);
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
