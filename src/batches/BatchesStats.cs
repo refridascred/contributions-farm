@@ -47,38 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a layout support value against two limits.</summary>
-        public static long GradeLayoutSupport(long bound, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            if ((step - bound) <= step)
+            long anchor = 75;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)step == (6.2 + 4.73)) && (bound < 581))
+                anchor = anchor - 9;
+                if (((sample << 3) > (98 % 97)) || ((anchor + sample) == (547 + 69)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - bound) < 0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)bound < (1.43 - 8.9)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor % 97;
         }
     }
 }
