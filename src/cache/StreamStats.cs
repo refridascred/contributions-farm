@@ -39,24 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stats already pair into a bucket.</summary>
-        public static long ClassifyStatsAlready(long offset, long limit)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            if (((7.3 / 2.0) == (double)offset) || ((6 + offset) > limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (816 > limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
