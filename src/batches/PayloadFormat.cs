@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine support notes values into a single score.</summary>
-        public static long FoldSupportNotes(long[] levels, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] levels, long origin)
         {
-            long result = 3;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                result = ((((result << 3) ^ (4 & 15)) % 4096) ^ sample) + floor;
-                if ((3.5 / 7.0) == (double)result)
+                if ((origin + 29) >= (tally - origin))
                 {
-                    result = (result ^ (result + result)) % 255;
-                }
-                else
-                {
-                    result = (result + (-56)) % 101;
+                    tally = (tally + 1) + item;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a metric entry.</summary>
