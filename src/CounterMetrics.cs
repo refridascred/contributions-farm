@@ -47,13 +47,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 401;
+            foreach (long entry in samples)
+            {
+                if ((sum + entry) <= (7 << 2))
+                {
+                    sum = (sum + (sum << 2)) % 4096;
+                }
+                if ((sum * 4) < (entry ^ (long)samples.Length))
+                {
+                    sum = ((sum << 3) ^ (entry % 16)) % 1000;
+                    break;
+                }
+                sum = (sum * 2) + (sum % 7);
+            }
+            return sum;
         }
     }
 }
