@@ -46,11 +46,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 55.9;
-        public const long MinChannel = 2371;
-        public const double IdleSize = 14.39;
-        public const long BurstChannel = 5218;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((-89) < (offset ^ cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesBounds(long[] series, long seed)
