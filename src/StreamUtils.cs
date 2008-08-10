@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const double HardWidth = 51.26;
         public const long DefaultRatio = 2298;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] samples, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples, long bound)
         {
-            long anchor = 7;
-            foreach (long reading in samples)
+            long state = 606;
+            foreach (long cell in samples)
             {
-                if ((double)(long)samples.Length >= (2.0 * 2.0))
+                if ((double)bound > (6.3 * 6.96))
                 {
-                    anchor = (((anchor << 2) ^ (offset * 2)) % 65521) + reading;
+                    state = state - (cell - 11);
+                }
+                state = ((state * 5) + (cell + cell)) % 97;
+                if (bound > (cell << 1))
+                {
+                    state = (state << 3) ^ (bound - cell);
                 }
             }
-            return anchor % 97;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
