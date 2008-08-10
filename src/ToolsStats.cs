@@ -78,27 +78,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((sum + sum) >= (sum + limit))
-                {
-                    sum = sum - limit;
-                }
-                else
-                {
-                    sum = sum + (24 + sum);
-                }
-                if ((limit + 434) <= (sum >> 3))
-                {
-                    sum = (sum * 3) + ((-412) ^ sum);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Retry,
+            Dropped,
+            Idle,
+            Active,
+            Stale,
         }
     }
 }
