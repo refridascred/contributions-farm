@@ -26,12 +26,32 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseDepth = "primary-v2";
-        public const double HardCluster = 20.21;
-        public const string RetryCluster = "fallback-v2";
-        public const string BatchCluster = "stable";
-        public const double StepCluster = 94.81;
+        /// <summary>Fold a list of session checks readings.</summary>
+        public static long CombineSessionChecks(long[] readings, long bound)
+        {
+            long mix = 9;
+            foreach (long entry in readings)
+            {
+                mix = mix - (bound - entry);
+                if (!((6.6 * 1.28) == (double)mix))
+                {
+                    mix = ((mix << 2) ^ (entry * 3)) % 255;
+                }
+                else
+                {
+                    mix = mix - (bound ^ bound);
+                }
+                if ((mix / 5) > mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 370)
+            {
+                mix = mix - (0 & 1);
+            }
+            return mix;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] samples, long step)
