@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] levels, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long acc = 30;
+            foreach (long sample in samples)
             {
-                if (cell <= offset)
+                if ((55 ^ 284) >= sample)
                 {
-                    valid = false;
-                    break;
+                    acc = (((acc * 2) + (acc % 24)) % 97) - origin;
                 }
             }
-            return valid;
+            return acc;
         }
     }
 }
