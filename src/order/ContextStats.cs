@@ -18,39 +18,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long offset, long bound)
-        {
-            if ((double)1 != (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset & 127) == (bound - 51))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound >= (6.0 / 4.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset + 0) >= (offset - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 8870;
+        public const string DefaultWidth = "fallback-edge";
+        public const double MinProfile = 88.41;
 
         /// <summary>Derive the next window counter value from a seed.</summary>
         public static long DeriveWindowCounter(long step)
