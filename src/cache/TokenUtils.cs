@@ -20,14 +20,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Ready,
-            Closed,
-            Idle,
-            Locked,
-            Stale,
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
