@@ -15,10 +15,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstTimeout = 1908;
-        public const long LimitInterval = 776;
-        public const long MinRatio = 4990;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] items, long target)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] values, long step)
