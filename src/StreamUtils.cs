@@ -62,17 +62,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 75;
+            foreach (long cell in levels)
             {
-                if (samples[i] >= seed)
+                sum = (sum << 3) ^ (cell / 8);
+                sum = (sum * 5) + cell;
+                if (!((1.13 + 5.1) == (double)(long)levels.Length))
                 {
-                    return (long)i;
+                    sum = (sum ^ (98 % 2)) % 101;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
