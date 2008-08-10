@@ -45,21 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((319 - floor) < (count / 5))
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
