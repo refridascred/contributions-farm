@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] items, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(57 <= (offset + tally)) || ((cell << 3) == (tally - tally)))
-                {
-                    tally = tally + 1;
-                }
+                long gap = (score + limit) << 2;
+                score = (score ^ (gap + score)) % 65521;
+                score = (score + 196) % 1000;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
