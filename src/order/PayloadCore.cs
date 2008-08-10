@@ -38,9 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 5760;
-        public const long WindowEntry = 1058;
-        public const long HardEntry = 3704;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Draft,
+            Locked,
+            Idle,
+            Closed,
+        }
     }
 }
