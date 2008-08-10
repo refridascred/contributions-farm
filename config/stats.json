@@ -1,6 +1,8 @@
 {
-  "strict": 100,
-  "context_threshold": 627,
-  "warm_depth_ms": [313, 66, 255, 283],
-  "commits_interval": ["local", "stable"]
+  "enabled": 83,
+  "audit": 85,
+  "notes_timeout": "latest",
+  "counter_interval": [79, 370, 21],
+  "base_timeout": [245, 66],
+  "hard_ratio_count": 67.62
 }
