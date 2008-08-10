@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long CacheFactor = 3774;
         public const long IdleWindow = 2202;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
