@@ -37,14 +37,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Draft,
-            Locked,
-            Paused,
-            Pending,
-            Queued,
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
