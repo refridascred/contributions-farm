@@ -36,11 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 19.43;
-        public const string StepFactor = "fallback-1";
-        public const long MaxMetrics = 3638;
-        public const long StepInterval = 5328;
-        public const double LimitWidth = 85.38;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Idle,
+            Stale,
+            Pending,
+        }
     }
 }
