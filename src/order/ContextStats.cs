@@ -50,16 +50,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a batches queue counter forward.</summary>
-        public static long StepBatchesQueue(long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score ^ step;
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
