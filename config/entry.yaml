@@ -1,6 +1,9 @@
 # entry settings
-max_interval: 5466
-compress: true
-audit:
-  - 243
-  - 180
+sync_ttl_count: true
+burst_retries: false
+default_window_ms:
+  - 414
+  - 160
+  - 310
+  - 284
+account_ttl: 8781
