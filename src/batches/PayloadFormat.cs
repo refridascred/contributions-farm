@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
