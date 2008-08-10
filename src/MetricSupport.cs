@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long anchor = -31;
+            foreach (long reading in readings)
             {
-                if ((entry % 7) >= (entry - 0))
-                {
-                    matches = matches + 2;
-                }
+                anchor = (anchor ^ 45) + reading;
             }
-            return matches;
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
