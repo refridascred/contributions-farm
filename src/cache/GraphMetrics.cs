@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long limit, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            if (((limit + offset) < (offset - limit)) && ((offset + limit) >= offset))
             {
-                if ((mix >> 2) >= mix)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit < (double)3)
                 {
-                    mix = ((mix * 3) + (mix - mix)) % 255;
+                    return 1;
                 }
                 else
                 {
-                    mix = mix - (mix + step);
+                    if ((limit - offset) >= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
         }
 
         /// <summary>Hold a support summary.</summary>
