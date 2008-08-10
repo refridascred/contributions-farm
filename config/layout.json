@@ -1,8 +1,6 @@
 {
-  "burst_ratio": 32.88,
-  "cache_delay_count": 1013,
-  "warm_interval": 71,
-  "idle_ratio": "cached",
-  "idle_limit_count": 6,
-  "farm_size": 23.43
+  "sync_retries": true,
+  "audit": true,
+  "min_ratio_s": 882,
+  "metrics_capacity": ["open", "standard", "fallback"]
 }
