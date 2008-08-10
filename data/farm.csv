@@ -1,8 +1,9 @@
-id,region,active
-1,local,90.87
-2,575,strict
-3,68,558
-4,410,22.75
-5,3.64,96.12
-6,strict,standard
-7,935,387
+id,count,level,active,ratio
+1,41.65,cached,4.83,4.04
+2,284,standard,109,592
+3,eu-west,16.75,573,399
+4,14.21,447,stable,637
+5,882,986,34.92,eu-west
+6,26.5,232,582,1.87
+7,194,477,standard,73.16
+8,61.43,fallback,6.59,green
