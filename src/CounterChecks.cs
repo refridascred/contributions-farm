@@ -34,11 +34,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSpan = 2893;
-        public const long BaseWindow = 5215;
-        public const long MaxBudget = 2541;
-        public const long BatchSpan = 7056;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchOutliers(long[] items, long offset)
