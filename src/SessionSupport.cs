@@ -44,19 +44,39 @@ namespace Common.Utilities
         public const double IdleInterval = 43.17;
         public const long HardLevel = 767;
 
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool CheckAccountCommandRange(long[] levels, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long seed, long floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long cur = seed + floor;
+            if ((cur + cur) < (floor + seed))
             {
-                if (sample != origin)
+                return 0;
+            }
+            else
+            {
+                if ((double)floor == (9.5 * 1.64))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + seed) <= (floor - 437))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed * 3) >= (floor / 7)) || ((4.0 * 2.0) > (double)floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
