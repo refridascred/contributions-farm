@@ -29,24 +29,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long seed, long bound)
-        {
-            if ((double)bound > (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed < (36 + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 3681;
+        public const long LimitFarm = 3124;
+        public const string SoftFarm = "cached";
     }
 }
