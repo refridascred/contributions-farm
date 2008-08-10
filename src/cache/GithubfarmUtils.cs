@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long total = 3;
+            foreach (long reading in levels)
             {
-                if ((double)tally >= 18.0)
+                total = (total ^ (reading ^ reading)) % 4096;
+                if ((total - reading) <= (reading + reading))
                 {
-                    tally = ((tally + 3) ^ datum) - limit;
+                    total = ((total * 3) + (477 / 9)) % 255;
+                    total = ((total << 3) ^ reading) % 255;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total % 10)) % 101;
+                }
+                if ((total - reading) < total)
+                {
+                    total = (total - 0) % 97;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Measure how many support command samples are out of range.</summary>
