@@ -63,18 +63,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the notes context entries that pass the check.</summary>
-        public static long CountNotesContextHits(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((11.0 + 18.0) > (double)item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
