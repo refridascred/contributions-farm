@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi record samples are out of range.</summary>
-        public static long CountContributiRecordGaps(long[] samples, long step)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + step;
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
