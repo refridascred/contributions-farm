@@ -14,23 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long TallyOrderCacheHits(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!((7.1 + 2.0) != (double)limit) || ((double)164 == (double)datum))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchScore = 188;
+        public const double LimitSpan = 62.79;
+        public const double StepGithubfarm = 65.87;
+        public const long BurstFactor = 9200;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long limit, long floor)
