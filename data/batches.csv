@@ -1,7 +1,8 @@
-id,level,active
-1,primary,548
-2,51.16,614
-3,21.96,edge
-4,137,76.77
-5,469,local
-6,staging,standard
+id,state,owner,score,count
+1,fallback,795,24.74,32.22
+2,87.87,staging,43,eu-west
+3,98.84,95.57,720,standard
+4,269,74.82,869,566
+5,63.87,296,63.4,95.87
+6,418,261,38.39,primary
+7,80,primary,legacy,56.91
