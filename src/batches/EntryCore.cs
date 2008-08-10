@@ -54,15 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long result = -705;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                result = ((result + (result << 1)) % 1000) ^ entry;
+                if ((6.3 / 6.0) < (double)result)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (result > (-363))
+            {
+                result = (result - (result + result)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
