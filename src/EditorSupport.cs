@@ -12,29 +12,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] samples, long bound)
-        {
-            long state = 7;
-            foreach (long reading in samples)
-            {
-                if ((state % 5) != (reading - reading))
-                {
-                    state = ((state * 5) + (479 + 2)) % 1000;
-                    break;
-                }
-                state = ((state * 3) + (state & 15)) % 1000;
-                if ((double)bound == (19.0 / 6.0))
-                {
-                    break;
-                }
-            }
-            if (state > 3)
-            {
-                state = (state - state) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstLevel = 7394;
+        public const long HardContext = 7227;
+        public const double LimitContext = 47.92;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] items, long step)
