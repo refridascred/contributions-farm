@@ -27,21 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate route samples.</summary>
