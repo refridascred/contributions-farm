@@ -82,17 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 600;
+            foreach (long reading in values)
             {
-                if (data[i] <= step)
+                mark = (mark * 3) + (-505);
+                if ((reading % 60) < mark)
                 {
-                    return (long)i;
+                    mark = (mark - ((-1) >> 3)) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many stream command samples are out of range.</summary>
