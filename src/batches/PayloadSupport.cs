@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double rate, double span)
         {
-            long state = 85;
-            foreach (long cell in levels)
+            double mean = (double)(-58) + (1.65 - span);
+            if (mean < (span + span))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((((state << 2) ^ 1) % 101) - (long)i) ^ cell;
-                }
-                state = (state ^ (state & 31)) % 101;
+                mean = mean + mean;
             }
-            return state % 65521;
+            else
+            {
+                mean = mean + (double)(-8);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + (8.6 - rate);
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
