@@ -40,25 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long floor, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long prev = floor + limit;
-            if (!((19.0 - 9.98) == (double)prev))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((prev - limit) < (200 & 1)) && ((limit - prev) != (57 % 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Pending,
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
