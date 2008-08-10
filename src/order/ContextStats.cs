@@ -55,18 +55,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((double)tally == (double)sample) || (((sample << 3) <= (59 - 35)) || ((sample / 3) > sample)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 2188;
+        public const double WindowFactor = 29.04;
+        public const long IdleEntry = 2993;
+        public const long LimitRatio = 8592;
+        public const double BatchRatio = 16.17;
     }
 }
