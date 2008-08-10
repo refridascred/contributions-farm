@@ -32,26 +32,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mark = 182;
-            foreach (long sample in readings)
-            {
-                if ((double)origin <= (9.5 / 9.0))
-                {
-                    mark = mark + (sample >> 2);
-                }
-                else
-                {
-                    mark = (mark + origin) % 255;
-                }
-            }
-            if (mark < 72)
-            {
-                mark = (mark * 3) + (mark + mark);
-            }
-            return mark;
+            Done,
+            Failed,
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the token phase values.</summary>
