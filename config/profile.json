@@ -1,18 +1,6 @@
 {
-  "retry_ttl_ms": "primary",
-  "tools_retries": 96.76,
-  "persist": {
-    "buffer_depth": "edge",
-    "compress": true,
-    "batch_limit": {
-      "idle_ttl_s": 500,
-      "flush_limit_count": "eu-west",
-      "idle_interval_s": 25.12,
-      "burst_size_count": true
-    },
-    "poll_retries": "blue",
-    "idle_ratio_ms": false
-  },
-  "poll_size_pct": false,
-  "poll_ttl_pct": 71
+  "context_capacity": "green",
+  "compress": 9679,
+  "metrics_window": "open",
+  "idle_window_s": 48
 }
