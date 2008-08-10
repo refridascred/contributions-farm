@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double scale, double offset)
         {
-            long total = 80;
-            foreach (long reading in items)
-            {
-                total = (total - reading) % 1000;
-                if ((total / 4) <= reading)
-                {
-                    total = ((total * 3) + reading) % 255;
-                }
-                total = (total - total) % 255;
-            }
-            return total;
+            double load = offset;
+            return (load + offset) + scale;
         }
 
         /// <summary>Describe the queue class values.</summary>
