@@ -1,15 +1,15 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
+    ratio REAL,
+    owner TEXT NOT NULL,
+    score REAL NOT NULL DEFAULT 0,
     label TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    region TEXT,
-    weight REAL
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
 
-INSERT INTO stats_logs (label, active, region, weight) VALUES ('local', 93, 'fallback', 20.71);
-INSERT INTO stats_logs (label, active, region, weight) VALUES ('strict', 75, 'blue', 4.81);
-INSERT INTO stats_logs (label, active, region, weight) VALUES ('edge', 20, 'legacy', 3.09);
+INSERT INTO stats_logs (ratio, owner, score, label, active) VALUES (36.42, 'latest', 54.27, 'primary', 47);
+INSERT INTO stats_logs (ratio, owner, score, label, active) VALUES (85.11, 'eu-west', 37.73, 'fallback', 52);
+INSERT INTO stats_logs (ratio, owner, score, label, active) VALUES (0.68, 'open', 10.0, 'local', 82);
