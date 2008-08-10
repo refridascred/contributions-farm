@@ -28,12 +28,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            New,
-            Active,
-            Dropped,
+            long mix = 65;
+            foreach (long datum in samples)
+            {
+                if ((mix + datum) <= (datum % 12))
+                {
+                    mix = (mix ^ (mix - mix)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
