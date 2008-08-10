@@ -1,16 +1,13 @@
 {
-  "dry_run": 7551,
-  "batches_size": 91.24,
-  "warm_size_ms": {
-    "command_delay": {
-      "soft_limit": 250,
-      "support_ttl": "fallback",
-      "stats_ttl": 97,
-      "stream_interval": 97,
-      "warm_threshold_s": "edge",
-      "burst_threshold": true
-    },
-    "verbose": "blue",
-    "batch_size_ms": 77.18
-  }
+  "idle_delay_pct": 43.16,
+  "warm_window_ms": {
+    "min_delay_ms": 4742,
+    "cache_retries_pct": 500,
+    "audit": "legacy",
+    "compress": ["local", "strict", "legacy"],
+    "hard_ttl_pct": 36.29,
+    "base_threshold_ms": "fallback"
+  },
+  "account_ratio": 94,
+  "compress": 7027
 }
