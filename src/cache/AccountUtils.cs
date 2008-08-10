@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] values)
         {
-            double rate2 = floor;
-            if (rate2 < (8.0 * 12.0))
+            long matches = 0;
+            foreach (long value in values)
             {
-                rate2 = (rate2 + floor) - rate;
+                if ((value >> 2) < (-73))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 - floor;
+            return matches;
         }
 
         /// <summary>Fold a list of already readings.</summary>
