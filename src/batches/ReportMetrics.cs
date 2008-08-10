@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 21;
+            foreach (long sample in samples)
             {
-                if ((double)matches == (4.6 + 8.26))
+                result = result - (sample * 3);
+                if (result <= offset)
                 {
-                    matches = (matches + 3) + item;
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Locate a checks schema reading by value.</summary>
