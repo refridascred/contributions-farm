@@ -35,13 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
