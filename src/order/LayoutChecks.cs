@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 5511;
-        public const double CacheToken = 78.98;
-        public const double WindowToken = 91.03;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long LimitTimeout = 2207;
