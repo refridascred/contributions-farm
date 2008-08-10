@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepTimeout = 7224;
-        public const long SoftFilter = 6442;
-        public const long BaseBudget = 1562;
-        public const double StepInterval = 89.91;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitBudget = 7528;
+        public const long BatchCluster = 7432;
+        public const long RetryTimeout = 8926;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] levels, long target)
