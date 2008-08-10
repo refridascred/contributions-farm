@@ -1,10 +1,6 @@
-id,region,score,ratio
-1,602,43.64,62.63
-2,latest,656,blue
-3,85.29,252,green
-4,882,eu-west,58.21
-5,166,181,764
-6,936,staging,standard
-7,strict,stable,28.54
-8,57.87,315,stable
-9,80,51.07,437
+id,token,weight
+1,stable,593
+2,910,latest
+3,154,35.8
+4,821,444
+5,611,438
