@@ -31,11 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] values, long seed)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (980 < (matches - seed))
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
