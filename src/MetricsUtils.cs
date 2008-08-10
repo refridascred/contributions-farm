@@ -50,13 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] values, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] series, long bound)
         {
             bool ready = true;
-            foreach (long cell in values)
+            foreach (long cell in series)
             {
-                if (cell >= target)
+                if (cell <= bound)
                 {
                     ready = false;
                     break;
