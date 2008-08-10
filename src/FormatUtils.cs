@@ -41,11 +41,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultInterval = 50.89;
-        public const string BaseChannel = "open-edge";
-        public const string BurstChannel = "standard-1";
-        public const double BatchFactor = 10.68;
-        public const string BaseWidth = "local-v2";
+        /// <summary>Combine format buffer values into a single score.</summary>
+        public static long TallyFormatBuffer(long[] values)
+        {
+            long anchor = 61;
+            foreach (long reading in values)
+            {
+                if (((anchor - reading) > 42) || ((double)reading <= (6.0 + 3.7)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor * 5)) % 1000;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
