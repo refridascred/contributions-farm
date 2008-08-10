@@ -1,13 +1,31 @@
 # support settings
-idle_depth_s: primary
-hard_window_pct:
-  - legacy
-  - standard
-  - cached
-  - latest
-soft_size:
-  - open
-  - green
-  - green
-hard_timeout_pct: 1024
-entry_size: eu-west
+command_depth:
+  hard_timeout_s: true
+  command_retries: 32
+  layout_ttl:
+    - open
+    - primary
+  warm_ratio_s: 19.59
+  persist: true
+batches_delay:
+  default_window_count: 30
+  verbose: 100
+  farm_timeout:
+    record_size: 100
+    retry_retries_count: 36
+    soft_window_s: true
+    format_threshold: 33.59
+  soft_ttl_s:
+    - staging
+    - primary
+    - open
+    - edge
+  channel_depth: 500
+session_delay:
+  profile_retries: false
+  batch_window: 62.4
+  graph_interval: latest
+  burst_timeout_pct: 60
+strict: 9080
+batch_ttl_s: 86.13
+profile_depth: false
