@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySize = 1430;
-        public const string LimitSupport = "alpha-v2";
-        public const long SoftSupport = 2105;
-        public const double BurstSupport = 70.42;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] readings, long offset)
