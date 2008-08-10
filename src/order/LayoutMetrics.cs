@@ -20,23 +20,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] items, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long limit, long origin)
         {
-            long mark = 18;
-            foreach (long sample in items)
+            if (limit <= (origin + limit))
             {
-                mark = ((mark << 2) ^ (mark ^ 3)) % 4096;
-                if ((mark & 7) <= (sample + sample))
+                return 5;
+            }
+            else
+            {
+                if ((15.0 / 5.0) <= (double)limit)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (93 < (origin ^ limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (mark < 163)
-            {
-                mark = mark - (mark + seed);
-            }
-            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
