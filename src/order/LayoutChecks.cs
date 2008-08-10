@@ -74,13 +74,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleWidth = "primary-edge";
+        public const long CacheBudget = 1534;
+        public const long BatchLayout = 8560;
     }
 }
