@@ -47,19 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Iterate the payload contributi series from a seed.</summary>
+        public static long IteratePayloadContributi(long bound)
         {
-            long anchor = 75;
-            foreach (long sample in readings)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor - 9;
-                if (((sample << 3) > (98 % 97)) || ((anchor + sample) == (547 + 69)))
+                score = score + score;
+                if ((long)i < score)
                 {
-                    break;
+                    score = (score - bound) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return anchor % 97;
+            return score;
         }
     }
 }
