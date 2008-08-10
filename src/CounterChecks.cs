@@ -32,12 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 3075;
-        public const long CacheWidth = 2397;
-        public const long RetryDepth = 467;
-        public const string BurstFactor = "legacy-edge";
-        public const long MaxInterval = 9342;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] values)
+        {
+            long result = -92;
+            foreach (long value in values)
+            {
+                result = (result - ((-4) / 5)) % 4096;
+                result = (result * 2) + (value ^ result);
+            }
+            return result;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long floor)
