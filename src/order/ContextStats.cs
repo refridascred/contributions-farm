@@ -48,14 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Derive the next window counter value from a seed.</summary>
+        public static long DeriveWindowCounter(long step)
         {
-            Closed,
-            New,
-            Idle,
-            Retry,
-            Stale,
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                bool found = ((0 + step) >= (anchor - (long)i)) || ((1 * 5) > (long)i);
+                if (found)
+                {
+                    found = (anchor + step) < step;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor & 7);
+                    found = found;
+                }
+                found = (anchor + step) < anchor;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
