@@ -66,16 +66,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next githubfarm checks value from a seed.</summary>
-        public static long DeriveGithubfarmChecks(long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Pending,
+            Dropped,
+            Queued,
         }
     }
 }
