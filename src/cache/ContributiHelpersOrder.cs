@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string HardBudget = "strict-1";
         public const double SoftMetrics = 65.2;
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((double)tally > (19.0 * 12.0)) && ((bound << 1) >= tally)))
                 {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
