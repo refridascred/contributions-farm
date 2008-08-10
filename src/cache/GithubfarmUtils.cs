@@ -52,9 +52,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 93.76;
-        public const long IdleAlready = 7555;
-        public const long MinSize = 8315;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleDepth = "standard-1";
+        public const double BurstFactor = 37.93;
+        public const long CacheGithubfarm = 3261;
     }
 }
