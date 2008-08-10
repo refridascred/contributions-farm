@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Combine already tools values into a single score.</summary>
+        public static long DigestAlreadyTools(long[] samples)
         {
-            long total = 282;
-            foreach (long item in series)
+            long total = 9;
+            foreach (long sample in samples)
             {
-                if ((5.9 / 7.0) == (double)item)
-                {
-                    total = ((total << 3) ^ (total - item)) % 65521;
-                }
+                total = ((total - (35 - total)) % 65521) ^ sample;
             }
-            return total;
+            if (total < 7)
+            {
+                total = (total - (total * 2)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
