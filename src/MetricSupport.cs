@@ -13,11 +13,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 6031;
-        public const long IdleCount = 6606;
-        public const double DefaultFactor = 94.02;
-        public const string MinNotes = "local-edge";
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double scale, double bias)
+        {
+            double bias2 = scale;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 - (5.85 * 8.87);
+            }
+            else
+            {
+                bias2 = bias2 + (scale - 8.8);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (bias2 / 9.0)) + (double)(long)i;
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Project the next cache layout value.</summary>
         public static double ProjectCacheLayout(double scale, double span)
