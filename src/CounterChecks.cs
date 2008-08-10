@@ -52,21 +52,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((22 % 7) >= (matches & 63))
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 2) ^ value) + seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a context reading by value.</summary>
