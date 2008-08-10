@@ -75,25 +75,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long limit, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long lane = limit + target;
-            if ((target % 7) >= (lane / 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit - target) > (-754))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
