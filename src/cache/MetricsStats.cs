@@ -52,32 +52,18 @@ namespace Common.Utilities
             return (drift - (double)48) + span;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long seed, long seed2)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] items, long seed)
         {
-            long bound = seed ^ seed2;
-            if ((8.41 + 3.72) == (double)seed2)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound >= 9.77)
+                if ((cell ^ 0) <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (6.7 <= (double)seed2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate account samples.</summary>
