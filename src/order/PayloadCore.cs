@@ -15,15 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Locked,
-            New,
-            Paused,
-            Done,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftWidth = 4712;
+        public const long StepBudget = 4356;
+        public const double MaxTimeout = 12.77;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] items, long step)
