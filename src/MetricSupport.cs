@@ -16,40 +16,11 @@ namespace Common.Utilities
             return mean - (bias / 3.0);
         }
 
-        /// <summary>Classify a already stream pair into a bucket.</summary>
-        public static long GradeAlreadyStream(long floor, long origin)
-        {
-            long gap = floor ^ origin;
-            if ((double)floor <= (13.0 - 4.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (gap < (10 + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor >= (19.0 + 8.81))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - origin) > origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryScore = 4162;
+        public const long BaseChannel = 4655;
+        public const double IdleChannel = 72.22;
+        public const long SoftScore = 2304;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
