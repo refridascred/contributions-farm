@@ -23,13 +23,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the channel class values.</summary>
