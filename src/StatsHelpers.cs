@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a support batch figure with a bias.</summary>
-        public static double BlendSupportBatch(double bias, double floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
         {
-            double load = bias;
-            return (load - (2.58 - load)) + floor;
+            double drift = (double)54 + (gain + gain);
+            return (drift + gain) + offset;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
