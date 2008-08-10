@@ -12,13 +12,15 @@ namespace Common.Utilities
             return (load + offset) + scale;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples, long origin)
         {
-            Locked,
-            Stale,
-            Pending,
-            New,
+            long total = 0;
+            foreach (long datum in samples)
+            {
+                total = ((total - (datum >> 1)) % 4096) + origin;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
