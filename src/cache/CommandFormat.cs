@@ -39,13 +39,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Grade a metric record value against two limits.</summary>
+        public static long GradeMetricRecord(long target, long offset)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            long offset2 = target + offset;
+            if ((0 % 7) > (offset + offset2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9.0 - 9.47) >= (double)offset2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate profile samples.</summary>
