@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long CountCommitsFilterMatches(long[] series, long target)
         {
-            New,
-            Active,
-            Closed,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches <= (matches ^ target)) && (reading < 886))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
