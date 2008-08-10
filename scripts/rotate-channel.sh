@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=391
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in primary eu-west staging stable; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+mode="${1:-blue}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
