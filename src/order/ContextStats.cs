@@ -36,19 +36,17 @@ namespace Common.Utilities
         public const long CacheReport = 876;
         public const string DefaultTimeout = "open-v2";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] samples, long limit)
         {
-            long total = 401;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total + (831 - value)) % 1000;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 5)
-            {
-                total = (total + total) % 255;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Roll a batches queue counter forward.</summary>
