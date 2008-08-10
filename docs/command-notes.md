@@ -1,11 +1,15 @@
 # Command notes
 
-Use channel settings to tune how often session data is refreshed.
-A route that stays idle for too long is moved to the schema list.
-Run the command check before changing any metric limits.
+Keep buffer and order names short and lowercase.
+Run the notes check before changing any batches limits.
+
+When a tools fails, the queue handler retries a few times before giving up.
+Defaults for token live in the config folder and can be overridden per environment.
+Keep metrics and payload names short and lowercase.
 
 ## Guidelines
 
-- Review batches limits each release
-- Log every account change
-- Prefer farm defaults
+- Log every batch change
+- Validate window input early
+- Review record limits each release
+- Document new cluster fields
