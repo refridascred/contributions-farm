@@ -13,13 +13,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit already commits readings against a rule.</summary>
+        public static long TallyAlreadyCommitsMatches(long[] series)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item << 3) < (6 + item))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a format counter forward.</summary>
