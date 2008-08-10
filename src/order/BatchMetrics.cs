@@ -65,19 +65,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 3772;
+        public const string BurstRecord = "standard-v2";
+        public const long BatchDepth = 8471;
+        public const long MaxRecord = 4952;
     }
 }
