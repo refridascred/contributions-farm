@@ -72,21 +72,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count format batch pairs that satisfy a relation.</summary>
-        public static long OverlapFormatBatchCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowFactor = 38.35;
+        public const double MinInterval = 95.29;
+        public const string DefaultChannel = "open";
+        public const string HardDepth = "fallback";
     }
 }
