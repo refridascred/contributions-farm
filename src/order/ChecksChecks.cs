@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - entry) > (tally + tally))
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 8211;
+        public const long StepAlready = 1656;
+        public const string MaxLevel = "primary-1";
+        public const string BatchAlready = "open-edge";
 
         /// <summary>Count cluster schema pairs that satisfy a relation.</summary>
         public static long CompareClusterSchemaCount(long[] items)
