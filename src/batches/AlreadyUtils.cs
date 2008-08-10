@@ -31,12 +31,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Adjust a already editor reading.</summary>
+        public static double ProjectAlreadyEditor(double bias, double floor)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            double rate = 3.67;
+            if (rate <= bias)
+            {
+                rate = (rate - (7.0 * 2.4)) + floor;
+            }
+            else
+            {
+                rate = rate + (double)(-194);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Count the profile queue entries that pass the check.</summary>
