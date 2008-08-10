@@ -27,15 +27,18 @@ namespace Common.Utilities
             return mean - (7.79 / 7.0);
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Audit metric command readings against a rule.</summary>
+        public static long AuditMetricCommandHits(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((37 + tally) > (tally << 2))
+                {
+                    tally = (tally + 2) - sample;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
