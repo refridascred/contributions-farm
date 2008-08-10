@@ -1,9 +1,8 @@
-id,score,active,weight,region
-1,eu-west,966,703,577
-2,cached,445,20.88,12
-3,strict,100,833,854
-4,98.46,163,97.04,8.74
-5,260,legacy,58.42,449
-6,51,strict,green,50
-7,78.78,18.36,strict,21.21
-8,789,98.12,796,primary
+id,active,region,ratio
+1,primary,24,144
+2,legacy,eu-west,52.42
+3,55.0,edge,681
+4,36.96,52.16,278
+5,standard,640,standard
+6,467,388,local
+7,395,453,324
