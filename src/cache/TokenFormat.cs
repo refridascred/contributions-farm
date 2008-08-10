@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long RetrySize = 8821;
         public const double WindowOrder = 80.67;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] levels, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
