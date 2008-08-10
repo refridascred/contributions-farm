@@ -45,13 +45,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 17.23;
+        public const long StepCount = 4513;
+        public const string CacheFilter = "latest-1";
+        public const long HardFilter = 7480;
+        public const long SoftScore = 7445;
     }
 }
