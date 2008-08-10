@@ -1,19 +1,7 @@
 {
-  "stats_ttl": "standard",
-  "strict": 14.92,
-  "githubfarm_capacity": false,
-  "cache_interval": ["edge", "local", "standard"],
-  "burst_size_ms": 500,
-  "idle_threshold_ms": {
-    "support_timeout": 36.16,
-    "verbose": {
-      "poll_timeout_pct": false,
-      "hard_interval_count": ["latest", "cached", "blue"],
-      "batch_timeout": 94.69,
-      "enabled": "cached",
-      "flush_interval": 15
-    },
-    "dry_run": false,
-    "retry_depth": [26, 483, 171]
-  }
+  "cache_size": "fallback",
+  "stats_limit": 89.86,
+  "base_depth_pct": 39.59,
+  "dry_run": true,
+  "warm_size": "strict"
 }
