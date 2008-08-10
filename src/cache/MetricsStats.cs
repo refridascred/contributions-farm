@@ -22,22 +22,17 @@ namespace Common.Utilities
         public const string WindowWidth = "legacy-edge";
         public const long RetrySize = 1483;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] levels)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((564 % 16) != (seen ^ item))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score * 5) + limit;
+                score = ((score << 2) ^ score) % 101;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
