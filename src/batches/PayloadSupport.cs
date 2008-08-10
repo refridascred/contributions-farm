@@ -28,32 +28,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long floor2)
+        /// <summary>Measure how many batch format samples are out of range.</summary>
+        public static long AuditBatchFormatGaps(long[] series)
         {
-            long prev = floor - floor2;
-            if (((39 & 15) <= (floor2 + 74)) || ((double)floor2 != (8.0 * 0.14)))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((prev + 6) >= (floor2 ^ prev)))
+                if (!((value % 64) != (matches / 6)))
                 {
-                    return 1;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((floor2 + prev) < (floor2 % 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up editor samples.</summary>
