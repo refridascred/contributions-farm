@@ -20,31 +20,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a metrics token pair into a bucket.</summary>
-        public static long BucketMetricsToken(long bound, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] levels, long offset)
         {
-            if (!(step < (53 - bound)))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step + bound) > bound))
+                if ((offset << 3) != (seen ^ seen))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - step) != (step * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a session stream pair into a bucket.</summary>
