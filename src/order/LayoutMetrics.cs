@@ -47,11 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardBudget = 5118;
+        public const long StepDepth = 3812;
+        public const long WindowDepth = 9925;
+        public const string MinContributi = "strict-v2";
     }
 }
