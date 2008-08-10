@@ -1,11 +1,6 @@
-id,state,score
-1,57.55,993
-2,73.41,558
-3,local,60.76
-4,strict,stable
-5,46.39,eu-west
-6,36.87,fallback
-7,70.53,539
-8,standard,434
-9,40.17,45.16
-10,legacy,13.1
+id,owner,level,state,active
+1,921,stable,17.09,open
+2,35.41,strict,cached,edge
+3,40,76.05,cached,legacy
+4,79,621,471,cached
+5,staging,513,stable,0.11
