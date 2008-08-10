@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values)
         {
-            Dropped,
-            Locked,
-            New,
+            long score = 92;
+            foreach (long reading in values)
+            {
+                if ((double)reading != (double)score)
+                {
+                    score = (score ^ (reading - reading)) % 101;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Adjust a farm reading.</summary>
