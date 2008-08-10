@@ -1,18 +1,8 @@
 {
-  "default_retries_ms": 1024,
-  "report_size": false,
-  "batches_depth": {
-    "base_threshold": false,
-    "flush_ttl_count": false,
-    "record_timeout": 6387,
-    "enabled": {
-      "token_delay": ["edge", "local", "eu-west"],
-      "persist": 100,
-      "filter_capacity": ["cached", "edge", "strict"],
-      "compress": 9162
-    },
-    "retry_delay_count": "green"
-  },
-  "cache_threshold": true,
-  "sync_interval": [56, 266, 114, 123]
+  "batch_limit_pct": 42.75,
+  "metrics_capacity": "standard",
+  "hard_interval_ms": "green",
+  "idle_size_s": true,
+  "hard_ratio_count": [268, 142],
+  "cache_retries_s": false
 }
