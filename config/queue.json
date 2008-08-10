@@ -1,12 +1,8 @@
 {
-  "flush_window_s": "blue",
-  "strict": {
-    "base_threshold": true,
-    "readonly": 2.33,
-    "context_window": "standard"
-  },
-  "min_retries": 250,
-  "farm_depth": [378, 362, 412, 450],
-  "batches_size": "edge",
-  "readonly": 100
+  "sync_delay_count": 7,
+  "poll_size": [294, 361, 367],
+  "sync_interval": [334, 214, 360, 428],
+  "flush_capacity": 1024,
+  "checks_window": true,
+  "base_interval": true
 }
