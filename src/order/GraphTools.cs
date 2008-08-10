@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Synced,
-            Failed,
-            Draft,
-            Idle,
-            Stale,
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
