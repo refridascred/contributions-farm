@@ -1,11 +1,4 @@
 # entry settings
-cache_interval: 57
-burst_limit_ms:
-  - 49
-  - 21
-  - 211
-  - 265
-idle_ttl_count: false
-audit: 16
-base_size_s: false
-entry_depth: open
+strict: 500
+poll_capacity_count: blue
+flush_timeout: fallback
