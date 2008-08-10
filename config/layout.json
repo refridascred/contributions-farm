@@ -1,11 +1,18 @@
 {
-  "max_threshold": 250,
-  "burst_ttl_count": {
-    "batch_window_ms": 59,
-    "soft_ratio_pct": true,
-    "flush_ttl": false
+  "default_retries_ms": 1024,
+  "report_size": false,
+  "batches_depth": {
+    "base_threshold": false,
+    "flush_ttl_count": false,
+    "record_timeout": 6387,
+    "enabled": {
+      "token_delay": ["edge", "local", "eu-west"],
+      "persist": 100,
+      "filter_capacity": ["cached", "edge", "strict"],
+      "compress": 9162
+    },
+    "retry_delay_count": "green"
   },
-  "verbose": [277, 283, 318, 438],
-  "idle_threshold_pct": false,
-  "sync_size_pct": "edge"
+  "cache_threshold": true,
+  "sync_interval": [56, 266, 114, 123]
 }
