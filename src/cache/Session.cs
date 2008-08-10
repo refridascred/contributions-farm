@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double rate, double floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] samples)
         {
-            double drift = rate;
-            if (drift < floor)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                drift = drift + (rate / 6.0);
+                if ((double)hits >= (17.0 + 18.0))
+                {
+                    hits = (hits + 3) + reading;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)119) + (double)(long)i;
-            }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Hold a already snapshot.</summary>
