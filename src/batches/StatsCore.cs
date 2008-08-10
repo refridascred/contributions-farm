@@ -23,13 +23,30 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate token order samples.</summary>
+        public static long WeighTokenOrder(long[] data)
         {
-            Pending,
-            Failed,
-            Idle,
-            Retry,
+            long carry = 10;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry << 3) ^ ((long)i + 881)) % 97;
+                }
+                if ((2.73 / 8.0) <= (double)datum)
+                {
+                    carry = (carry ^ (46 / 3)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (datum >> 4)) % 101;
+                }
+            }
+            if (carry < 668)
+            {
+                carry = ((carry * 3) + (carry * 5)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
