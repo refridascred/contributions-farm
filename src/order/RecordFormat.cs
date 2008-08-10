@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] readings, long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a tools header.</summary>
