@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long limit, long floor)
         {
-            if ((double)bound <= 9.83)
+            if ((double)floor >= (1.37 / 4.0))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (!((seed + bound) <= (12 * 5)))
+                if (((floor / 5) < (limit - floor)) && (limit < floor))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((seed + (-91)) >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 6;
                 }
             }
         }
