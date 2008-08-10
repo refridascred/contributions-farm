@@ -20,16 +20,12 @@ namespace Common.Utilities
             return bias + 5.0;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix ^ (target >> 2)) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
