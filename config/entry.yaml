@@ -1,10 +1,19 @@
 # entry settings
-hard_interval_count: 74.37
-min_delay_count: staging
-notes_depth:
-  - 383
-  - 84
-  - 264
-retry_timeout: open
-enabled: 5.99
-default_retries_count: 9495
+cache_delay:
+  audit: stable
+  batch_timeout_pct: standard
+  token_capacity: false
+  soft_timeout:
+    max_threshold_s: primary
+    format_interval: true
+    retry_timeout_pct: fallback
+    support_capacity: 6
+    warm_size: 90.64
+readonly:
+  - strict
+  - latest
+  - legacy
+  - primary
+strict: 4368
+enabled: stable
+cache_depth_ms: 5
