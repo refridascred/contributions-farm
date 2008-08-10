@@ -69,21 +69,17 @@ namespace Common.Utilities
         public const long BurstPayload = 9435;
         public const double RetryDepth = 24.42;
 
-        /// <summary>Compare every pair of cache layout readings.</summary>
-        public static long PairCacheLayoutCount(long[] levels)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((values[i] >= bound) && ((values[i] % 3) == 0))
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
