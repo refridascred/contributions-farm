@@ -37,14 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Retry,
-            Done,
             Active,
-            Queued,
             Idle,
+            Paused,
         }
     }
 }
