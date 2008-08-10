@@ -26,39 +26,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long limit, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] values, long bound)
         {
-            long cur = limit ^ step;
-            if ((cur / 3) == (57 % 12))
+            bool found = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.0 * 15.0) < (double)limit)
+                if (item >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur - step) < step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit > (limit / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
