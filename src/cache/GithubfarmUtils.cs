@@ -13,23 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a batch farm reading.</summary>
-        public static double ProjectBatchFarm(double bias, double floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] levels, long origin)
         {
-            double weight = 2.6;
-            if (weight < bias)
+            long carry = 870;
+            foreach (long reading in levels)
             {
-                weight = weight - floor;
+                if ((origin ^ reading) >= (origin + reading))
+                {
+                    carry = ((carry * 4) + 190) % 65521;
+                }
             }
-            else
-            {
-                weight = weight - (double)7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (double)26;
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
