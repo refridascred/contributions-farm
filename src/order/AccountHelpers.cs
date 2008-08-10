@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 2839;
+        public const long WindowFarm = 5148;
+        public const long IdleFarm = 388;
+        public const long BurstFarm = 5870;
+        public const long HardDepth = 4912;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long FoldCluster(long[] series)
