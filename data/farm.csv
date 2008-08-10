@@ -1,10 +1,6 @@
-id,label,weight
-1,open,standard
-2,158,cached
-3,eu-west,54.39
-4,strict,standard
-5,87.53,31.75
-6,11.28,eu-west
-7,43.58,112
-8,staging,18.03
-9,32.62,local
+id,count,owner
+1,46.8,primary
+2,staging,753
+3,4.57,400
+4,2.75,170
+5,fallback,11
