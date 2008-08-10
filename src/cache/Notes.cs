@@ -14,15 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double bias, double bias2)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double scale, double bias)
         {
-            double rate = bias;
-            if (rate <= (double)47)
-            {
-                rate = rate - (bias + bias2);
-            }
-            return rate + bias;
+            double gain = (double)(982 + 997);
+            return ((gain + (double)558) + scale) + bias;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
