@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] levels)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long offset2 = bound + offset;
+            if (((offset ^ offset) >= offset) || ((double)offset <= (4.21 - 2.2)))
             {
-                if ((tally << 3) >= cell)
+                return 3;
+            }
+            else
+            {
+                if ((offset + bound) >= 442)
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset2 >= (double)492)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + offset) == (offset >> 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
