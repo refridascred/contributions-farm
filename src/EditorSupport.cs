@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            Retry,
-            Pending,
-            Stale,
+            long result = 3;
+            foreach (long datum in values)
+            {
+                result = ((result ^ (result << 3)) % 1000) + datum;
+            }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
