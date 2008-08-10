@@ -19,14 +19,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double offset)
         {
-            Retry,
-            Ready,
-            Idle,
-            Closed,
-            Dropped,
+            double drift = (double)(88 - 8);
+            if (drift > (offset - drift))
+            {
+                drift = (drift - (double)2) + gain;
+            }
+            return drift - (double)73;
         }
     }
 }
