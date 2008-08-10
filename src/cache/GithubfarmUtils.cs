@@ -28,13 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Find the first session channel entry that matches the target.</summary>
+        public static long LookupSessionChannelIndex(long[] series, long offset)
         {
-            Draft,
-            Failed,
-            Locked,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
