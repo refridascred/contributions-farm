@@ -32,18 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] samples, long limit)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((25 >> 3) <= matches)
-                {
-                    matches = ((matches + 3) - value) - limit;
-                }
-            }
-            return matches;
+            Pending,
+            Done,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
