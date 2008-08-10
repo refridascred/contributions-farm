@@ -37,19 +37,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels, long offset)
+        /// <summary>Derive the next layout metrics value from a seed.</summary>
+        public static long DeriveLayoutMetrics(long offset)
         {
-            long anchor = 47;
-            foreach (long entry in levels)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor * 4) + ((-21) - entry)) + offset;
+                total = (total << 3) ^ total;
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (anchor > 484)
-            {
-                anchor = ((anchor * 5) + anchor) % 97;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
