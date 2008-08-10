@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const long WindowCounter = 9073;
         public const long DefaultCounter = 5805;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] readings, long step)
+        /// <summary>Project the next batch tools value.</summary>
+        public static double ScaleBatchTools(double bias, double span)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double gain = span;
+            if (gain <= (gain / 7.0))
             {
-                if (seen <= (step - value))
-                {
-                    seen = seen + 3;
-                }
+                gain = (gain - (span * 14.0)) - bias;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (10.0 - span)) - (double)(long)i;
+            }
+            return gain - (double)139;
         }
     }
 }
