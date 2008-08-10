@@ -50,19 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] values, long target)
         {
-            long state = 7;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                state = (state - (datum & 7)) % 101;
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 418)
-            {
-                state = ((state << 2) ^ ((-143) + state)) % 1000;
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Validate stats notes readings against a bound.</summary>
