@@ -25,19 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate queue layout readings against a bound.</summary>
-        public static bool VerifyQueueLayoutLimits(long[] levels, long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
